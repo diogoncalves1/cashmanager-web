@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import React, { useState } from "react";
+import React from "react";
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
-import AccountDetails from "@/components/accouts/AccountDetails";
+import AccountDetails from "@/components/accouts/details/AccountDetails";
 
 export const metadata: Metadata = {
   title: "Cash Manager | Account",

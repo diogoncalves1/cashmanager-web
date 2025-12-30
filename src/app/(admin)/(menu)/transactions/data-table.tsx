@@ -15,7 +15,6 @@ import {
   Activity,
   ChevronDown,
   Circle,
-  CreditCard,
   Dot,
   Edit3,
   Eye,
@@ -23,7 +22,6 @@ import {
   LucideTrendingUp,
   Plus,
   Trash2,
-  Wallet,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -45,14 +43,12 @@ import {
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
 import { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDown, Banknote, Building2Icon } from "lucide-react";
-import { Checkbox } from "@/components/ui/checkbox";
+import { ArrowUpDown } from "lucide-react";
 import Badge from "@/components/ui/badge/Badge";
 import { AppLink } from "@/components/ui/button/AppLink";
 import { onDeleteAccount } from "@/services/accounts/service";
-import Image from "next/image";
-import { User } from "@/lib/models/user";
-import { AccountType, accountTypes } from "@/lib/models/account";
+import * as LucideIcons from "lucide-react";
+import { Transaction, transactionStatus, transactionTypes } from "@/lib/models/transaction";
 
 const TypeIcons = {
   revenue: <LucideTrendingUp className="w-12" />,
@@ -60,118 +56,161 @@ const TypeIcons = {
   none: "",
 };
 
-export type ActionsType = {
-  view: boolean;
-  edit: boolean;
-  manage: boolean;
-  destroy: boolean;
+type DataTableProps = {
+  enableFilters?: boolean;
+  enableSearch?: boolean;
+  enableStatusFilter?: boolean;
+  enableTypeFilter?: boolean;
+  accountId?: string;
+  enableUser?: boolean;
+  userId?: string;
 };
 
-export type Account = {
-  id: string;
-  balance: number;
-  name: string;
-  type: AccountType;
-  typeTranslated?: string;
-  status: 1 | 0;
-  actions?: ActionsType;
-  balanceFormated?: string;
-  statusTranslated?: string;
-  users: User[];
-};
-
-export function DataTable() {
-  const transactionStatus = [
-    {
-      value: "pending",
-      label: "Pending",
-    },
-    {
-      value: "completed",
-      label: "Completed",
-    },
-  ];
-
-  const [data, setData] = React.useState<Account[]>([]);
+export function TransactionsDataTable({
+  enableFilters = true,
+  enableSearch = true,
+  enableStatusFilter = true,
+  enableTypeFilter = true,
+  accountId,
+  enableUser = true,
+  userId,
+}: DataTableProps) {
+  const [data, setData] = React.useState<Transaction[]>([]);
   const pagination = {
     pageIndex: 0,
     pageSize: 10,
   };
-  const [sorting, setSorting] = React.useState<SortingState>([{ desc: true, id: "name" }]);
+  const [sorting, setSorting] = React.useState<SortingState>([{ desc: true, id: "date" }]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
   const [pageCount, setPageCount] = React.useState(0);
   const sortingString = sorting.map((s) => `${s.id}:${s.desc ? "desc" : "asc"}`).join(",");
-  const filterString = columnFilters.map((f) => `${f.id}=${encodeURIComponent(f.value)}`).join("&");
 
-  const columns: ColumnDef<Account>[] = [
+  const filterString = columnFilters
+    .map(function (f) {
+      const params = new URLSearchParams();
+
+      const filterObj = { [f.id]: f.value };
+
+      Object.entries(filterObj).forEach(([key, val]) => {
+        if (typeof val === "object") {
+          Object.entries(val).forEach(([k, v]) => {
+            params.append(`${key}[${k}]`, v as string);
+          });
+        } else {
+          params.append(key, val as string);
+        }
+      });
+
+      const queryString = params.toString();
+
+      return queryString;
+    })
+    .join("&");
+
+  const extraOpt = [];
+  if (userId) {
+    extraOpt.push({ id: "userId", value: userId });
+  }
+  if (accountId) {
+    extraOpt.push({ id: "accountId", value: accountId });
+  }
+
+  const extraOptString = extraOpt
+    .map(function (f) {
+      const params = new URLSearchParams();
+
+      const filterObj = { [f.id]: f.value };
+
+      Object.entries(filterObj).forEach(([key, val]) => {
+        if (typeof val === "object") {
+          Object.entries(val).forEach(([k, v]) => {
+            params.append(`${key}[${k}]`, v as string);
+          });
+        } else {
+          params.append(key, val as string);
+        }
+      });
+
+      const queryString = params.toString();
+
+      return queryString;
+    })
+    .join("&");
+
+  var columns: ColumnDef<Transaction>[] = [
     {
-      id: "select",
-      header: ({ table }) => (
-        <Checkbox
-          checked={
-            table.getIsAllPageRowsSelected() ||
-            (table.getIsSomePageRowsSelected() && "indeterminate")
-          }
-          onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-          aria-label="Select all"
-        />
-      ),
-      cell: ({ row }) => (
-        <Checkbox
-          checked={row.getIsSelected()}
-          onCheckedChange={(value) => row.toggleSelected(!!value)}
-          aria-label="Select row"
-        />
-      ),
-      enableSorting: false,
-      enableHiding: false,
-    },
-    {
-      accessorKey: "name",
+      accessorKey: "amount",
       header: ({ column }) => (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Name <ArrowUpDown />
-        </Button>
-      ),
-      cell: ({ row }) => (
-        <div className="flex items-center gap-3">
-          <div className="flex items-center text-success-600 justify-center w-10 h-10 rounded-full bg-muted">
-            {TypeIcons[row.original.type]}
-          </div>
-
-          <div className="flex flex-col">
-            <span className="font-light text-md capitalize">{row.getValue("name")}</span>
-            <span className="text-xs text-muted-foreground capitalize">
-              {row.original.typeTranslated}
-            </span>
-          </div>
-        </div>
-      ),
-    },
-    {
-      accessorKey: "balance",
-      header: ({ column }) => (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Balance
-          <ArrowUpDown />
+          Amount <ArrowUpDown />
         </Button>
       ),
       cell: ({ row }) => {
+        const transaction = row.original;
+
+        const Icon = LucideIcons[transaction.categoryIcon ?? "Eye"];
         return (
-          <div className="font-light text-left px-4 py-2 has-[>svg]:px-3">
-            {row.original.balanceFormated}
+          <div className="flex items-center gap-3">
+            <div className="flex items-center  justify-center w-10 h-10 rounded-full bg-muted">
+              <Icon style={{ color: transaction.categoryColor }} />
+            </div>
+
+            <div className="flex flex-col">
+              <span
+                className={`font-light text-md ${
+                  transaction.type == "revenue" ? "text-success-600" : "text-error-600"
+                } capitalize`}
+              >
+                {transaction.type == "revenue" ? "+" : "-"} {transaction.amountFormated}
+              </span>
+              <span className="text-xs text-muted-foreground capitalize">
+                {transaction.categoryName}
+              </span>
+            </div>
           </div>
         );
       },
     },
+    {
+      accessorKey: "date",
+      header: ({ column }) => (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Date <ArrowUpDown />
+        </Button>
+      ),
+      cell: ({ row }) => (
+        <div className="flex items-center gap-3">
+          <div className="flex flex-col">
+            <span className="font-light text-md capitalize">{row.getValue("date")}</span>
+            <span className="text-xs text-muted-foreground capitalize">{row.original.date}</span>
+          </div>
+        </div>
+      ),
+    },
+  ];
+
+  if (enableUser) {
+    columns = [
+      ...columns,
+      {
+        accessorKey: "user",
+        header: "User",
+        cell: ({ row }) => {
+          return <div className="flex -space-x-2">{row.original.userName}</div>;
+        },
+      },
+    ];
+  }
+  columns = [
+    ...columns,
     {
       accessorKey: "search",
       header: () => null,
@@ -195,43 +234,16 @@ export function DataTable() {
       ),
     },
     {
-      accessorKey: "users",
-      header: "Users",
-      cell: ({ row }) => {
-        const account = row.original;
-        return (
-          <div className="flex -space-x-2">
-            {account.users?.map((user, index) => {
-              return (
-                <div
-                  key={index}
-                  className="w-6 h-6 overflow-hidden border-2 border-white rounded-full dark:border-gray-900"
-                >
-                  <Image
-                    width={24}
-                    height={24}
-                    src={"http://127.0.0.1:8000/assets/images/logos/logo.png"}
-                    alt={`Team member ${index + 1}`}
-                    className="w-full"
-                  />
-                </div>
-              );
-            })}
-          </div>
-        );
-      },
-    },
-    {
       id: "actions",
       header: "Ações",
       cell: ({ row }) => {
-        const account = row.original;
+        const transaction = row.original;
         return (
-          account.actions?.view && (
+          transaction.actions?.view && (
             <>
-              {account.actions?.view && (
+              {transaction.actions?.view && (
                 <AppLink
-                  path={`accounts/${account.id}`}
+                  path={`/transactions/${transaction.id}`}
                   className="bg-blue-100  text-blue-500 hover:bg-blue-500 hover:text-white ms-1"
                   size={"icon-sm"}
                   variant={"ghost"}
@@ -239,9 +251,9 @@ export function DataTable() {
                   <Eye />
                 </AppLink>
               )}
-              {account.actions?.edit && (
+              {transaction.actions?.edit && (
                 <AppLink
-                  path={`accounts/${account.id}/edit`}
+                  path={`/transactions/${transaction.id}/edit`}
                   className="bg-blue-100 text-blue-500 hover:bg-blue-500 hover:text-white ms-1"
                   size={"icon-sm"}
                   variant={"ghost"}
@@ -249,14 +261,14 @@ export function DataTable() {
                   <Edit3 />
                 </AppLink>
               )}
-              {account.actions?.destroy && (
+              {transaction.actions?.destroy && (
                 <Button
                   className="bg-error-100 text-error-500 hover:bg-error-500 hover:text-white ms-1"
                   size={"icon-sm"}
                   variant={"ghost"}
                   onClick={async () => {
                     try {
-                      onDeleteAccount(account.id, table, pagination, mutate);
+                      onDeleteAccount(transaction.id, table, pagination, mutate);
                     } catch (err) {
                       console.error(err);
                     }
@@ -290,6 +302,7 @@ export function DataTable() {
       rowSelection,
     },
   });
+
   const {
     data: apiData,
     error,
@@ -297,7 +310,7 @@ export function DataTable() {
     mutate,
   } = useSWR(
     [
-      `/accounts?page=${pagination.pageIndex}&size=${pagination.pageSize}&sort=${sortingString}&${filterString}`,
+      `/transactions?page=${pagination.pageIndex}&size=${pagination.pageSize}&sort=${sortingString}&${filterString}&${extraOptString}`,
       { method: "GET" },
     ],
     fetcher
@@ -310,122 +323,131 @@ export function DataTable() {
     }
   }, [apiData]);
 
+  if (isLoading) return <></>;
+
   return (
-    <div className="w-full bg-white rounded-sm shadow-md  border border-gray-50 dark:border-gray-800 dark:bg-white/[0.03]">
-      <div className="border-b items-center p-4 py-4">
-        <div className="w-full grid grid-cols-12 justify-between gap-4">
-          <div className="col-span-12 md:col-span-3">
-            <Input
-              placeholder="Search ..."
-              value={(table.getColumn("search")?.getFilterValue() as string) ?? ""}
-              onChange={(event) => {
-                table.getColumn("name")?.setFilterValue(event.target.value);
-                table.getColumn("balance")?.setFilterValue(event.target.value);
-                table.getColumn("search")?.setFilterValue(event.target.value);
-              }}
-              className=" md:max-w-xs"
-            />
-          </div>
-          <div className="col-span-12 text-center md:col-span-6 justify-center items-center flex gap-2">
-            <p className="mr-2 text-sm ">Filtra por:</p>
-            <div>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="outline" className="ml-auto text-gray-dark font-light">
-                    <Activity className="mr-auto" />
-                    {transactionStatus.find(
-                      (status) => status.value == table.getColumn("status")?.getFilterValue()
-                    )?.label ?? "Status"}
-                    <ChevronDown />
-                  </Button>
-                </DropdownMenuTrigger>
+    <div className="w-full bg-white rounded-sm  border border-gray-50 dark:border-gray-800 dark:bg-white/[0.03]">
+      {enableFilters && (
+        <div className="border-b items-center p-4 py-4">
+          <div className="w-full grid grid-cols-12 justify-between gap-4">
+            {enableSearch && (
+              <div className="col-span-12 md:col-span-3">
+                <Input
+                  placeholder="Search ..."
+                  value={(table.getColumn("search")?.getFilterValue()?.value as string) ?? ""}
+                  onChange={(event) => {
+                    table
+                      .getColumn("search")
+                      ?.setFilterValue({ value: event.target.value, regex: event.target.value });
+                  }}
+                  className=" md:max-w-xs"
+                />
+              </div>
+            )}
+            <div className="col-span-12 text-center md:col-span-6 justify-center items-center flex gap-2">
+              <p className="mr-2 text-sm ">Filtra por:</p>
+              <div>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="outline" className="ml-auto text-gray-dark font-light">
+                      <Activity className="mr-auto" />
+                      {transactionStatus.find(
+                        (status) => status.value == table.getColumn("status")?.getFilterValue()
+                      )?.label ?? "Status"}
+                      <ChevronDown />
+                    </Button>
+                  </DropdownMenuTrigger>
 
-                <DropdownMenuContent align="end">
-                  <DropdownMenuItem
-                    key="all"
-                    className="capitalize"
-                    defaultValue={(table.getColumn("status")?.getFilterValue() as string) ?? ""}
-                    onClick={() => {
-                      table.getColumn("status")?.setFilterValue(null);
-                    }}
-                  >
-                    Status
-                  </DropdownMenuItem>
-                  {transactionStatus.map((status) => {
-                    return (
-                      <DropdownMenuItem
-                        key={status.value}
-                        className="capitalize"
-                        defaultValue={(table.getColumn("status")?.getFilterValue() as string) ?? ""}
-                        onClick={() => {
-                          table.getColumn("status")?.setFilterValue(status.value);
-                        }}
-                      >
-                        {status.label}
-                      </DropdownMenuItem>
-                    );
-                  })}
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
-            <div>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="outline" className="ml-auto  text-gray-dark font-light">
-                    {TypeIcons[(table.getColumn("type")?.getFilterValue() as string) ?? "none"]}
-                    {accountTypes.find(
-                      (type) => type.value == (table.getColumn("type")?.getFilterValue() as string)
-                    )?.label ?? (
-                      <>
-                        <Circle /> Tipo
-                      </>
-                    )}
-                    <ChevronDown />
-                  </Button>
-                </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuItem
+                      key="all"
+                      className="capitalize"
+                      defaultValue={(table.getColumn("status")?.getFilterValue() as string) ?? ""}
+                      onClick={() => {
+                        table.getColumn("status")?.setFilterValue(null);
+                      }}
+                    >
+                      Status
+                    </DropdownMenuItem>
+                    {transactionStatus.map((status) => {
+                      return (
+                        <DropdownMenuItem
+                          key={status.value}
+                          className="capitalize"
+                          defaultValue={
+                            (table.getColumn("status")?.getFilterValue() as string) ?? ""
+                          }
+                          onClick={() => {
+                            table.getColumn("status")?.setFilterValue(status.value);
+                          }}
+                        >
+                          {status.label}
+                        </DropdownMenuItem>
+                      );
+                    })}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+              <div>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="outline" className="ml-auto  text-gray-dark font-light">
+                      {TypeIcons[(table.getColumn("type")?.getFilterValue() as string) ?? "none"]}
+                      {transactionTypes.find(
+                        (type) =>
+                          type.value == (table.getColumn("type")?.getFilterValue() as string)
+                      )?.label ?? (
+                        <>
+                          <Circle /> Tipo
+                        </>
+                      )}
+                      <ChevronDown />
+                    </Button>
+                  </DropdownMenuTrigger>
 
-                <DropdownMenuContent align="end">
-                  <DropdownMenuItem
-                    key="all"
-                    className="capitalize"
-                    defaultValue={(table.getColumn("type")?.getFilterValue() as string) ?? ""}
-                    onClick={() => {
-                      table.getColumn("type")?.setFilterValue(null);
-                    }}
-                  >
-                    <Circle /> Tipo
-                  </DropdownMenuItem>
-                  {accountTypes.map((type) => {
-                    return (
-                      <DropdownMenuItem
-                        key={type.value}
-                        className="capitalize"
-                        defaultValue={(table.getColumn("type")?.getFilterValue() as string) ?? ""}
-                        onClick={() => {
-                          table.getColumn("type")?.setFilterValue(type.value);
-                        }}
-                      >
-                        {TypeIcons[type.value]}
-                        {type.label}
-                      </DropdownMenuItem>
-                    );
-                  })}
-                </DropdownMenuContent>
-              </DropdownMenu>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuItem
+                      key="all"
+                      className="capitalize"
+                      defaultValue={(table.getColumn("type")?.getFilterValue() as string) ?? ""}
+                      onClick={() => {
+                        table.getColumn("type")?.setFilterValue(null);
+                      }}
+                    >
+                      <Circle /> Tipo
+                    </DropdownMenuItem>
+                    {transactionTypes.map((type) => {
+                      return (
+                        <DropdownMenuItem
+                          key={type.value}
+                          className="capitalize"
+                          defaultValue={(table.getColumn("type")?.getFilterValue() as string) ?? ""}
+                          onClick={() => {
+                            table.getColumn("type")?.setFilterValue(type.value);
+                          }}
+                        >
+                          {TypeIcons[type.value]}
+                          {type.label}
+                        </DropdownMenuItem>
+                      );
+                    })}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
             </div>
-          </div>
-          <div className="col-span-12 md:col-span-3 md:text-end">
-            <AppLink
-              variant="default"
-              path="/accounts/create"
-              className="bg-blue-100 text-blue-500 hover:bg-blue-500 hover:text-white text-sm gap-2"
-            >
-              <Plus className="size-5" />
-              Adicionar
-            </AppLink>
+            <div className={`col-span-12 md:col-span-3 md:text-end`}>
+              <AppLink
+                variant="default"
+                path="/accounts/create"
+                className="bg-blue-100 text-blue-500 hover:bg-blue-500 hover:text-white text-sm gap-2"
+              >
+                <Plus className="size-5" />
+                Adicionar
+              </AppLink>
+            </div>
           </div>
         </div>
-      </div>
+      )}
       <Table className="border-b">
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -465,7 +487,7 @@ export function DataTable() {
 
       <div className="flex p-4 items-center justify-end space-x-2">
         <div className="text-muted-foreground flex-1 text-sm">
-          {table.getFilteredSelectedRowModel().rows.length} of {pageCount} row(s) selected.
+          A mostrar {table.getRowCount()} de {pageCount} transações.
         </div>
         <div className="space-x-2">
           <Button

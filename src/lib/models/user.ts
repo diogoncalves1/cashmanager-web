@@ -1,7 +1,7 @@
 import { SharedRole } from "./sharedRole";
 
 export interface User {
-  id: number;
+  id: string;
   name: string;
   sharedRole?: SharedRole;
 }

@@ -44,13 +44,10 @@ import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown, Banknote, Building2Icon } from "lucide-react";
-import { Checkbox } from "@/components/ui/checkbox";
 import Badge from "@/components/ui/badge/Badge";
 import { AppLink } from "@/components/ui/button/AppLink";
 import { onDeleteAccount } from "@/services/accounts/service";
-import Image from "next/image";
-import { User } from "@/lib/models/user";
-import { AccountType, accountTypes } from "@/lib/models/account";
+import { Account, accountTypes } from "@/lib/models/account";
 
 const TypeIcons = {
   bank_account: <Building2Icon className="w-12" />,
@@ -65,19 +62,6 @@ export type ActionsType = {
   edit: boolean;
   manage: boolean;
   destroy: boolean;
-};
-
-export type Account = {
-  id: string;
-  balance: number;
-  name: string;
-  type: AccountType;
-  typeTranslated?: string;
-  status: 1 | 0;
-  actions?: ActionsType;
-  balanceFormated?: string;
-  statusTranslated?: string;
-  users: User[];
 };
 
 export function DataTable() {
@@ -106,28 +90,6 @@ export function DataTable() {
   const filterString = columnFilters.map((f) => `${f.id}=${encodeURIComponent(f.value)}`).join("&");
 
   const columns: ColumnDef<Account>[] = [
-    {
-      id: "select",
-      header: ({ table }) => (
-        <Checkbox
-          checked={
-            table.getIsAllPageRowsSelected() ||
-            (table.getIsSomePageRowsSelected() && "indeterminate")
-          }
-          onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-          aria-label="Select all"
-        />
-      ),
-      cell: ({ row }) => (
-        <Checkbox
-          checked={row.getIsSelected()}
-          onCheckedChange={(value) => row.toggleSelected(!!value)}
-          aria-label="Select row"
-        />
-      ),
-      enableSorting: false,
-      enableHiding: false,
-    },
     {
       accessorKey: "name",
       header: ({ column }) => (
@@ -201,22 +163,46 @@ export function DataTable() {
         const account = row.original;
         return (
           <div className="flex -space-x-2">
-            {account.users?.map((user, index) => {
-              return (
+            {account.users?.map((user, index) => (
+              <div
+                key={index}
+                className="
+        relative group
+        size-6
+        rounded-full bg-blue-100
+        flex items-center justify-center
+        text-xs font-medium text-blue-700
+        cursor-default
+        transition-all duration-200
+        hover:z-20 hover:scale-110
+      "
+              >
+                {user.name.charAt(0)}
+
+                {/* Tooltip */}
                 <div
-                  key={index}
-                  className="w-6 h-6 overflow-hidden border-2 border-white rounded-full dark:border-gray-900"
+                  className="
+          pointer-events-none
+          absolute bottom-full left-1/2
+          z-30
+          mb-2
+          w-max
+          -translate-x-1/2
+          rounded-md bg-gray-900
+          px-2 py-1
+          text-xs text-white
+          opacity-0 scale-95
+          transition-all duration-200 ease-out
+          group-hover:opacity-100 group-hover:scale-100
+        "
                 >
-                  <Image
-                    width={24}
-                    height={24}
-                    src={"http://127.0.0.1:8000/assets/images/logos/logo.png"}
-                    alt={`Team member ${index + 1}`}
-                    className="w-full"
-                  />
+                  {user.name}
+
+                  {/* Arrow */}
+                  <div className="absolute left-1/2 top-full h-1.5 w-1.5 -translate-x-1/2 rotate-45 bg-gray-900" />
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         );
       },
@@ -465,7 +451,7 @@ export function DataTable() {
 
       <div className="flex p-4 items-center justify-end space-x-2">
         <div className="text-muted-foreground flex-1 text-sm">
-          {table.getFilteredSelectedRowModel().rows.length} of {pageCount} row(s) selected.
+          A mostrar {table.getRowCount()} de {pageCount} contas.
         </div>
         <div className="space-x-2">
           <Button

@@ -1,3 +1,4 @@
+import { Currency } from "./currency";
 import { User } from "./user";
 
 export type AccountType = "bank_account" | "cash" | "credit_card" | "digital_wallet";
@@ -27,12 +28,22 @@ export const accountTypes = [
 ];
 
 export interface Account {
-  id: number;
+  id: string;
   name: string;
-  active: boolean;
+  totalRevenues?: string;
+  totalExpenses?: string;
   balance: number;
+  balanceFormated?: string;
+  balanceFormatedWithoutSymbol?: string;
+  active: boolean;
+  statusTranslated?: string;
   type: AccountType;
   typeTranslated?: string;
   users?: Array<User>;
+  totalTransactions: number;
   actions?: Actions;
+  currencyCode?: string;
+  currencySymbol: string;
+  currency?: Currency;
+  createdAt?: string;
 }

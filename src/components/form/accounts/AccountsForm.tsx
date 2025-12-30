@@ -53,11 +53,11 @@ export default function AccountsForm({ id }: AccountsFormProps) {
     if (accountError) {
       router.push("/accounts");
     }
-
+    console.log(accountData);
     if (accountData)
       setFormData({
         type: accountData.data.type,
-        active: accountData.data.status ? true : false,
+        active: accountData.data.active,
         name: accountData.data.name,
         currency_id: accountData.data.currencyId,
       });
