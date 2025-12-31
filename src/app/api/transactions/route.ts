@@ -1,9 +1,33 @@
 import { NextRequest, NextResponse } from "next/server";
 
+function parseColumns(searchParams: URLSearchParams) {
+  const columns: any[] = [];
+
+  for (const [key, value] of searchParams.entries()) {
+    const match = key.match(/^columns\[(\d+)\]\[(.+)\]$/);
+    if (!match) continue;
+
+    const index = Number(match[1]);
+    const field = match[2];
+
+    if (!columns[index]) columns[index] = {};
+
+    // trata search[value] e search[regex]
+    if (field.startsWith("search[")) {
+      const searchKey = field.match(/search\[(.+)\]/)?.[1];
+      columns[index].search ??= {};
+      columns[index].search[searchKey!] = value;
+    } else {
+      columns[index][field] = value;
+    }
+  }
+
+  return columns.filter(Boolean);
+}
+
 export async function GET(req: NextRequest) {
   try {
     const token = req.cookies.get("token")?.value;
-
     const url = new URL(req.url);
 
     const page = Number(url.searchParams.get("page") || 1);
@@ -19,26 +43,31 @@ export async function GET(req: NextRequest) {
     if (sortParam) {
       const [columnName, direction] = sortParam.split(":");
 
-      params.set("order[0][column]", "0");
-      params.set("order[0][dir]", direction);
+      const columns = parseColumns(url.searchParams);
+      const columnIndex = columns.findIndex((c) => c.data === columnName);
 
-      params.set("columns[0][data]", columnName);
+      if (columnIndex >= 0) {
+        params.set("order[0][column]", String(columnIndex));
+        params.set("order[0][dir]", direction);
+      }
     }
 
-    const urlApi = "http://127.0.0.1:8000/api/v1/transactions?" + params;
+    const urlApi = "http://127.0.0.1:8000/api/v1/transactions?" + params.toString();
+
     const res = await fetch(urlApi, {
       headers: { Authorization: `Bearer ${token}` },
     });
+
     if (!res.ok) throw new Error(`External API error: ${res.status}`);
+
     const data = await res.json();
+
     return NextResponse.json({
       page,
       length,
       recordsTotal: data.recordsTotal,
       recordsFiltered: data.recordsFiltered,
       data: data.data,
-      url,
-      params,
     });
   } catch (err) {
     console.error("API Error:", err);

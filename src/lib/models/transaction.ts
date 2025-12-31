@@ -1,3 +1,4 @@
+import { AccountType } from "./account";
 import { Category } from "./category";
 import { User } from "./user";
 
@@ -53,6 +54,8 @@ export interface Transaction {
   category?: Category;
   categoryName?: string;
   categoryIcon?: string;
+  accountTypeTranslated: string;
+  accountType: AccountType;
   categoryColor?: string;
   actions: Actions;
 }

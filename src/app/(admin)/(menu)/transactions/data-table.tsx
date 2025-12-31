@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import {
+  ColumnDef,
   ColumnFiltersState,
   flexRender,
   getCoreRowModel,
@@ -11,19 +12,7 @@ import {
   useReactTable,
   VisibilityState,
 } from "@tanstack/react-table";
-import {
-  Activity,
-  ChevronDown,
-  Circle,
-  Dot,
-  Edit3,
-  Eye,
-  LucideTrendingDown,
-  LucideTrendingUp,
-  Plus,
-  Trash2,
-} from "lucide-react";
-
+import { ArrowUpDown, ChevronDown, Dot, Edit3, Eye, Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -42,17 +31,23 @@ import {
 } from "@/components/ui/table";
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
-import { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDown } from "lucide-react";
 import Badge from "@/components/ui/badge/Badge";
 import { AppLink } from "@/components/ui/button/AppLink";
-import { onDeleteAccount } from "@/services/accounts/service";
+import { onDeleteAccount } from "@/services/accounts/service"; // ajusta se for de transactions
 import * as LucideIcons from "lucide-react";
 import { Transaction, transactionStatus, transactionTypes } from "@/lib/models/transaction";
+import { LucideTrendingUp, LucideTrendingDown, Circle, Activity } from "lucide-react";
 
 const TypeIcons = {
-  revenue: <LucideTrendingUp className="w-12" />,
-  expense: <LucideTrendingDown className="w-12" />,
+  revenue: <LucideTrendingUp className="w-5 h-5" />,
+  expense: <LucideTrendingDown className="w-5 h-5" />,
+  none: <Circle className="w-5 h-5" />,
+};
+const AccountTypeIcons = {
+  bank_account: <LucideIcons.Building2Icon className="w-12" />,
+  cash: <LucideIcons.Banknote className="w-12" />,
+  digital_wallet: <LucideIcons.Wallet className="w-12" />,
+  credit_card: <LucideIcons.CreditCard className="w-12" />,
   none: "",
 };
 
@@ -75,370 +70,387 @@ export function TransactionsDataTable({
   enableUser = true,
   userId,
 }: DataTableProps) {
-  const [data, setData] = React.useState<Transaction[]>([]);
-  const pagination = {
-    pageIndex: 0,
-    pageSize: 10,
+  const [sorting, setSorting] = React.useState<SortingState>([{ id: "date", desc: true }]);
+  const columnsString = () => {
+    const columns = [
+      { data: "date", name: "date", searchable: true },
+      { data: "amount", name: "amount", searchable: true },
+      { data: "userName", name: "userName", searchable: true },
+      { data: "accountName", name: "accountName", searchable: true },
+      { data: "categoryName", name: "categoryName", searchable: true },
+    ];
+
+    const params = new URLSearchParams();
+
+    columns.forEach((column, index) => {
+      Object.entries(column).forEach(([key, value]) => {
+        params.append(`columns[${index}][${key}]`, String(value));
+      });
+    });
+
+    return params.toString();
   };
-  const [sorting, setSorting] = React.useState<SortingState>([{ desc: true, id: "date" }]);
+
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
+  const [pagination, setPagination] = React.useState({
+    pageIndex: 0,
+    pageSize: 10,
+  });
   const [pageCount, setPageCount] = React.useState(0);
+
   const sortingString = sorting.map((s) => `${s.id}:${s.desc ? "desc" : "asc"}`).join(",");
 
   const filterString = columnFilters
-    .map(function (f) {
-      const params = new URLSearchParams();
-
-      const filterObj = { [f.id]: f.value };
-
-      Object.entries(filterObj).forEach(([key, val]) => {
-        if (typeof val === "object") {
-          Object.entries(val).forEach(([k, v]) => {
-            params.append(`${key}[${k}]`, v as string);
-          });
-        } else {
-          params.append(key, val as string);
-        }
-      });
-
-      const queryString = params.toString();
-
-      return queryString;
+    .map((f: any) => {
+      if (f.value && typeof f.value === "object") {
+        return Object.entries(f.value)
+          .map(([k, v]) => `${f.id}[${k}]=${v}`)
+          .join("&");
+      }
+      return f.value ? `${f.id}=${f.value}` : "";
     })
+    .filter(Boolean)
     .join("&");
 
-  const extraOpt = [];
-  if (userId) {
-    extraOpt.push({ id: "userId", value: userId });
-  }
-  if (accountId) {
-    extraOpt.push({ id: "accountId", value: accountId });
-  }
+  const extraParams = new URLSearchParams();
+  if (userId) extraParams.append("userId", userId);
+  if (accountId) extraParams.append("accountId", accountId);
+  const extraOptString = extraParams.toString();
 
-  const extraOptString = extraOpt
-    .map(function (f) {
-      const params = new URLSearchParams();
+  const url = `/transactions?page=${pagination.pageIndex}&size=${
+    pagination.pageSize
+  }&sort=${sortingString}&${filterString}&${extraOptString}&${columnsString()}`;
 
-      const filterObj = { [f.id]: f.value };
+  const getPageNumbers = () => {
+    const totalPages = pageCount;
+    const current = pagination.pageIndex + 1; // 1-based
+    const delta = 2; // quantas páginas mostrar de cada lado
 
-      Object.entries(filterObj).forEach(([key, val]) => {
-        if (typeof val === "object") {
-          Object.entries(val).forEach(([k, v]) => {
-            params.append(`${key}[${k}]`, v as string);
-          });
-        } else {
-          params.append(key, val as string);
+    const range: number[] = [];
+    const rangeWithDots: (number | string)[] = [];
+    let l: number | undefined;
+
+    for (let i = 1; i <= totalPages; i++) {
+      if (i === 1 || i === totalPages || (i >= current - delta && i <= current + delta)) {
+        range.push(i);
+      }
+    }
+
+    for (const i of range) {
+      if (l) {
+        if (i - l === 2) {
+          rangeWithDots.push(l + 1);
+        } else if (i - l !== 1) {
+          rangeWithDots.push("...");
         }
-      });
+      }
+      rangeWithDots.push(i);
+      l = i;
+    }
 
-      const queryString = params.toString();
+    return rangeWithDots;
+  };
 
-      return queryString;
-    })
-    .join("&");
+  const {
+    data: apiData,
+    mutate,
+    isLoading,
+  } = useSWR(url ? [url, { method: "GET" }] : null, fetcher);
 
-  var columns: ColumnDef<Transaction>[] = [
-    {
-      accessorKey: "amount",
-      header: ({ column }) => (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Amount <ArrowUpDown />
-        </Button>
-      ),
-      cell: ({ row }) => {
-        const transaction = row.original;
+  // Atualiza dados e total de páginas
+  React.useEffect(() => {
+    if (apiData) {
+      setPageCount(Math.ceil(apiData.recordsTotal / pagination.pageSize));
+    }
+  }, [apiData, pagination.pageSize]);
 
-        const Icon = LucideIcons[transaction.categoryIcon ?? "Eye"];
-        return (
-          <div className="flex items-center gap-3">
-            <div className="flex items-center  justify-center w-10 h-10 rounded-full bg-muted">
-              <Icon style={{ color: transaction.categoryColor }} />
-            </div>
-
-            <div className="flex flex-col">
-              <span
-                className={`font-light text-md ${
-                  transaction.type == "revenue" ? "text-success-600" : "text-error-600"
-                } capitalize`}
-              >
-                {transaction.type == "revenue" ? "+" : "-"} {transaction.amountFormated}
-              </span>
-              <span className="text-xs text-muted-foreground capitalize">
-                {transaction.categoryName}
-              </span>
-            </div>
-          </div>
-        );
-      },
-    },
-    {
-      accessorKey: "date",
-      header: ({ column }) => (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Date <ArrowUpDown />
-        </Button>
-      ),
-      cell: ({ row }) => (
-        <div className="flex items-center gap-3">
-          <div className="flex flex-col">
-            <span className="font-light text-md capitalize">{row.getValue("date")}</span>
-            <span className="text-xs text-muted-foreground capitalize">{row.original.date}</span>
-          </div>
-        </div>
-      ),
-    },
-  ];
-
-  if (enableUser) {
-    columns = [
-      ...columns,
+  // Colunas base (sem ações ainda)
+  const columns: ColumnDef<Transaction>[] = React.useMemo(
+    () => [
       {
-        accessorKey: "user",
-        header: "User",
+        accessorKey: "amount",
+        header: ({ column }) => (
+          <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            Amount <ArrowUpDown className="ml-2 h-4 w-4" />
+          </Button>
+        ),
         cell: ({ row }) => {
-          return <div className="flex -space-x-2">{row.original.userName}</div>;
+          const t = row.original;
+          const Icon = LucideIcons[t.categoryIcon ?? "Circle"] as any;
+          return (
+            <div className="flex items-center gap-3">
+              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-muted">
+                <Icon className="h-5 w-5" style={{ color: t.categoryColor }} />
+              </div>
+              <div className="flex flex-col">
+                <span
+                  className={`font-medium ${
+                    t.type === "revenue" ? "text-success-600" : "text-error-600"
+                  }`}
+                >
+                  {t.type === "revenue" ? "+" : "-"} {t.amountFormated}
+                </span>
+                <span className="text-xs text-muted-foreground">{t.categoryName}</span>
+              </div>
+            </div>
+          );
         },
       },
-    ];
-  }
-  columns = [
-    ...columns,
-    {
-      accessorKey: "search",
-      header: () => null,
-      cell: () => null,
-      enableHiding: true,
-    },
-    {
-      accessorKey: "type",
-      header: () => null,
-      cell: () => null,
-      enableHiding: true,
-    },
-    {
-      accessorKey: "status",
-      header: "Status",
-      cell: ({ row }) => (
-        <Badge type="rounded" size="sm" color={row.getValue("status") ? "success" : "error"}>
-          <Dot className="size-4" strokeWidth={6} />
-          {row.original.statusTranslated}
-        </Badge>
-      ),
-    },
-    {
-      id: "actions",
-      header: "Ações",
-      cell: ({ row }) => {
-        const transaction = row.original;
-        return (
-          transaction.actions?.view && (
-            <>
-              {transaction.actions?.view && (
-                <AppLink
-                  path={`/transactions/${transaction.id}`}
-                  className="bg-blue-100  text-blue-500 hover:bg-blue-500 hover:text-white ms-1"
-                  size={"icon-sm"}
-                  variant={"ghost"}
-                >
-                  <Eye />
-                </AppLink>
-              )}
-              {transaction.actions?.edit && (
-                <AppLink
-                  path={`/transactions/${transaction.id}/edit`}
-                  className="bg-blue-100 text-blue-500 hover:bg-blue-500 hover:text-white ms-1"
-                  size={"icon-sm"}
-                  variant={"ghost"}
-                >
-                  <Edit3 />
-                </AppLink>
-              )}
-              {transaction.actions?.destroy && (
-                <Button
-                  className="bg-error-100 text-error-500 hover:bg-error-500 hover:text-white ms-1"
-                  size={"icon-sm"}
-                  variant={"ghost"}
-                  onClick={async () => {
-                    try {
-                      onDeleteAccount(transaction.id, table, pagination, mutate);
-                    } catch (err) {
-                      console.error(err);
-                    }
-                  }}
-                >
-                  <Trash2 />
-                </Button>
-              )}
-            </>
-          )
-        );
+      {
+        accessorKey: "date",
+        header: ({ column }) => (
+          <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            Date <ArrowUpDown className="ml-2 h-4 w-4" />
+          </Button>
+        ),
+        cell: ({ row }) => (
+          <div className="flex flex-col">
+            <span className="font-medium">{row.getValue("date")}</span>
+            <span className="text-xs text-muted-foreground">{row.original.date}</span>
+          </div>
+        ),
       },
-    },
-  ];
+      ...(enableUser
+        ? [
+            {
+              accessorKey: "user",
+              header: "User",
+              cell: ({ row }) => <div className="font-medium">{row.original.userName}</div>,
+            } as ColumnDef<Transaction>,
+          ]
+        : []),
+      ...(!accountId
+        ? [
+            {
+              accessorKey: "account",
+              header: "Account",
+              cell: ({ row }) => (
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center text-success-600 justify-center w-10 h-10 rounded-full bg-muted">
+                    {AccountTypeIcons[row.original.accountType]}
+                  </div>
 
+                  <div className="flex flex-col">
+                    <span className="font-light text-md capitalize">
+                      {row.original.accountName}
+                    </span>
+                    <span className="text-xs text-muted-foreground capitalize">
+                      {row.original.accountTypeTranslated}
+                    </span>
+                  </div>
+                </div>
+              ),
+            } as ColumnDef<Transaction>,
+          ]
+        : []),
+      {
+        accessorKey: "search",
+        header: () => null,
+        cell: () => null,
+        enableHiding: true,
+      },
+      {
+        accessorKey: "type",
+        header: () => null,
+        cell: () => null,
+        enableHiding: true,
+      },
+      {
+        accessorKey: "status",
+        header: "Status",
+        cell: ({ row }) => (
+          <Badge
+            type="rounded"
+            size="sm"
+            color={row.original.status == "pending" ? "warning" : "success"}
+          >
+            <Dot className="size-4" strokeWidth={6} />
+            {row.original.statusTranslated}
+          </Badge>
+        ),
+      },
+      {
+        id: "actions",
+        header: "Ações",
+        cell: ({ row }) => {
+          const transaction = row.original;
+          return (
+            transaction.actions?.view && (
+              <>
+                {transaction.actions?.view && (
+                  <AppLink
+                    path={`/transactions/${transaction.id}`}
+                    className="bg-blue-100  text-blue-500 hover:bg-blue-500 hover:text-white ms-1"
+                    size={"icon-sm"}
+                    variant={"ghost"}
+                  >
+                    <Eye />
+                  </AppLink>
+                )}
+                {transaction.actions?.edit && (
+                  <AppLink
+                    path={`/transactions/${transaction.id}/edit`}
+                    className="bg-blue-100 text-blue-500 hover:bg-blue-500 hover:text-white ms-1"
+                    size={"icon-sm"}
+                    variant={"ghost"}
+                  >
+                    <Edit3 />
+                  </AppLink>
+                )}
+                {transaction.actions?.destroy && (
+                  <Button
+                    className="bg-error-100 text-error-500 hover:bg-error-500 hover:text-white ms-1"
+                    size={"icon-sm"}
+                    variant={"ghost"}
+                    onClick={async () => {
+                      try {
+                        onDeleteAccount(transaction.id, table, pagination, mutate);
+                      } catch (err) {
+                        console.error(err);
+                      }
+                    }}
+                  >
+                    <Trash2 />
+                  </Button>
+                )}
+              </>
+            )
+          );
+        },
+      },
+    ],
+    [enableUser]
+  );
+
+  // Tabela com paginação manual
   const table = useReactTable({
-    data,
-    columns,
+    data: apiData?.data ?? [],
+    columns: columns,
+    pageCount: pageCount,
+    manualPagination: true,
+    manualSorting: true,
+    manualFiltering: true,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
-    pageCount: pageCount,
+    onPaginationChange: setPagination, // ← Crucial!
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
     state: {
       sorting,
       columnFilters,
       columnVisibility,
       rowSelection,
+      pagination,
     },
   });
 
-  const {
-    data: apiData,
-    error,
-    isLoading,
-    mutate,
-  } = useSWR(
-    [
-      `/transactions?page=${pagination.pageIndex}&size=${pagination.pageSize}&sort=${sortingString}&${filterString}&${extraOptString}`,
-      { method: "GET" },
-    ],
-    fetcher
-  );
-
+  // Atualiza colunas da tabela
   React.useEffect(() => {
-    if (apiData) {
-      setData(apiData.data);
-      setPageCount(apiData.recordsTotal);
-    }
-  }, [apiData]);
-
-  if (isLoading) return <></>;
+    table.setOptions((prev) => ({
+      ...prev,
+      columns,
+    }));
+  }, [table, columns]);
 
   return (
-    <div className="w-full bg-white rounded-sm  border border-gray-50 dark:border-gray-800 dark:bg-white/[0.03]">
+    <div className="w-full bg-white rounded-sm border border-gray-50 dark:border-gray-800 dark:bg-white/[0.03]">
       {enableFilters && (
-        <div className="border-b items-center p-4 py-4">
-          <div className="w-full grid grid-cols-12 justify-between gap-4">
+        <div className="border-b p-4">
+          <div className="grid grid-cols-12 gap-4">
             {enableSearch && (
-              <div className="col-span-12 md:col-span-3">
+              <div className="col-span-12 md:col-span-4">
                 <Input
-                  placeholder="Search ..."
-                  value={(table.getColumn("search")?.getFilterValue()?.value as string) ?? ""}
-                  onChange={(event) => {
-                    table
-                      .getColumn("search")
-                      ?.setFilterValue({ value: event.target.value, regex: event.target.value });
-                  }}
-                  className=" md:max-w-xs"
+                  placeholder="Pesquisar..."
+                  value={(table.getColumn("search")?.getFilterValue() as any)?.value ?? ""}
+                  onChange={(e) =>
+                    table.getColumn("search")?.setFilterValue({ value: e.target.value })
+                  }
                 />
               </div>
             )}
-            <div className="col-span-12 text-center md:col-span-6 justify-center items-center flex gap-2">
-              <p className="mr-2 text-sm ">Filtra por:</p>
-              <div>
+
+            <div className="col-span-12 md:col-span-5 flex items-center gap-3">
+              <span className="text-sm">Filtrar por:</span>
+              {enableStatusFilter && (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="outline" className="ml-auto text-gray-dark font-light">
-                      <Activity className="mr-auto" />
+                    <Button variant="outline">
+                      <Activity className="mr-2 h-4 w-4" />
                       {transactionStatus.find(
-                        (status) => status.value == table.getColumn("status")?.getFilterValue()
+                        (s) => s.value === table.getColumn("status")?.getFilterValue()
                       )?.label ?? "Status"}
-                      <ChevronDown />
+                      <ChevronDown className="ml-2 h-4 w-4" />
                     </Button>
                   </DropdownMenuTrigger>
-
-                  <DropdownMenuContent align="end">
+                  <DropdownMenuContent>
                     <DropdownMenuItem
-                      key="all"
-                      className="capitalize"
-                      defaultValue={(table.getColumn("status")?.getFilterValue() as string) ?? ""}
-                      onClick={() => {
-                        table.getColumn("status")?.setFilterValue(null);
-                      }}
+                      onClick={() => table.getColumn("status")?.setFilterValue(undefined)}
                     >
-                      Status
+                      Todos
                     </DropdownMenuItem>
-                    {transactionStatus.map((status) => {
-                      return (
-                        <DropdownMenuItem
-                          key={status.value}
-                          className="capitalize"
-                          defaultValue={
-                            (table.getColumn("status")?.getFilterValue() as string) ?? ""
-                          }
-                          onClick={() => {
-                            table.getColumn("status")?.setFilterValue(status.value);
-                          }}
-                        >
-                          {status.label}
-                        </DropdownMenuItem>
-                      );
-                    })}
+                    {transactionStatus.map((s) => (
+                      <DropdownMenuItem
+                        key={s.value}
+                        onClick={() => table.getColumn("status")?.setFilterValue(s.value)}
+                      >
+                        {s.label}
+                      </DropdownMenuItem>
+                    ))}
                   </DropdownMenuContent>
                 </DropdownMenu>
-              </div>
-              <div>
+              )}
+
+              {/* Type Filter */}
+              {enableTypeFilter && (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="outline" className="ml-auto  text-gray-dark font-light">
-                      {TypeIcons[(table.getColumn("type")?.getFilterValue() as string) ?? "none"]}
+                    <Button variant="outline">
+                      {
+                        TypeIcons[
+                          (table.getColumn("type")?.getFilterValue() as keyof typeof TypeIcons) ||
+                            "none"
+                        ]
+                      }
                       {transactionTypes.find(
-                        (type) =>
-                          type.value == (table.getColumn("type")?.getFilterValue() as string)
-                      )?.label ?? (
-                        <>
-                          <Circle /> Tipo
-                        </>
-                      )}
-                      <ChevronDown />
+                        (t) => t.value === table.getColumn("type")?.getFilterValue()
+                      )?.label ?? "Tipo"}
+                      <ChevronDown className="ml-2 h-4 w-4" />
                     </Button>
                   </DropdownMenuTrigger>
-
-                  <DropdownMenuContent align="end">
+                  <DropdownMenuContent>
                     <DropdownMenuItem
-                      key="all"
-                      className="capitalize"
-                      defaultValue={(table.getColumn("type")?.getFilterValue() as string) ?? ""}
-                      onClick={() => {
-                        table.getColumn("type")?.setFilterValue(null);
-                      }}
+                      onClick={() => table.getColumn("type")?.setFilterValue(undefined)}
                     >
-                      <Circle /> Tipo
+                      <Circle className="mr-2 h-4 w-4" /> Todos
                     </DropdownMenuItem>
-                    {transactionTypes.map((type) => {
-                      return (
-                        <DropdownMenuItem
-                          key={type.value}
-                          className="capitalize"
-                          defaultValue={(table.getColumn("type")?.getFilterValue() as string) ?? ""}
-                          onClick={() => {
-                            table.getColumn("type")?.setFilterValue(type.value);
-                          }}
-                        >
-                          {TypeIcons[type.value]}
-                          {type.label}
-                        </DropdownMenuItem>
-                      );
-                    })}
+                    {transactionTypes.map((t) => (
+                      <DropdownMenuItem
+                        key={t.value}
+                        onClick={() => table.getColumn("type")?.setFilterValue(t.value)}
+                      >
+                        {TypeIcons[t.value as keyof typeof TypeIcons]} {t.label}
+                      </DropdownMenuItem>
+                    ))}
                   </DropdownMenuContent>
                 </DropdownMenu>
-              </div>
+              )}
             </div>
-            <div className={`col-span-12 md:col-span-3 md:text-end`}>
+
+            <div className="col-span-12 md:col-span-3 text-end">
               <AppLink
                 variant="default"
-                path="/accounts/create"
+                path="/transactions/create"
                 className="bg-blue-100 text-blue-500 hover:bg-blue-500 hover:text-white text-sm gap-2"
               >
                 <Plus className="size-5" />
@@ -448,26 +460,33 @@ export function TransactionsDataTable({
           </div>
         </div>
       )}
-      <Table className="border-b">
+
+      {/* Tabela */}
+      <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
-              {headerGroup.headers.map((header) => {
-                return header.column.getIsVisible() ? (
-                  <TableHead key={header.id}>
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(header.column.columnDef.header, header.getContext())}
-                  </TableHead>
-                ) : null;
-              })}
+              {headerGroup.headers.map(
+                (header) =>
+                  header.column.getIsVisible() && (
+                    <TableHead key={header.id}>
+                      {flexRender(header.column.columnDef.header, header.getContext())}
+                    </TableHead>
+                  )
+              )}
             </TableRow>
           ))}
         </TableHeader>
         <TableBody>
-          {table.getRowModel().rows?.length ? (
+          {isLoading ? (
+            <TableRow>
+              <TableCell colSpan={columns.length} className="h-24 text-center">
+                Carregando...
+              </TableCell>
+            </TableRow>
+          ) : table.getRowModel().rows.length ? (
             table.getRowModel().rows.map((row) => (
-              <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
+              <TableRow key={row.id}>
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -478,39 +497,74 @@ export function TransactionsDataTable({
           ) : (
             <TableRow>
               <TableCell colSpan={columns.length} className="h-24 text-center">
-                No results.
+                Sem resultados.
               </TableCell>
             </TableRow>
           )}
         </TableBody>
       </Table>
 
-      <div className="flex p-4 items-center justify-end space-x-2">
-        <div className="text-muted-foreground flex-1 text-sm">
-          A mostrar {table.getRowCount()} de {pageCount} transações.
+      {/* Paginação */}
+      <div className="flex items-center justify-between p-4">
+        <div className="text-sm text-muted-foreground">
+          Mostrando {table.getRowModel().rows.length} de {apiData?.recordsTotal ?? 0} transações
         </div>
-        <div className="space-x-2">
+        <div className="flex gap-2">
           <Button
             variant="outline"
             size="sm"
-            onClick={() => {
-              table.previousPage();
-              pagination.pageIndex--;
-            }}
-            disabled={pagination.pageIndex == 0}
+            onClick={() => table.setPageIndex(0)}
+            disabled={!table.getCanPreviousPage()}
           >
-            Previous
+            Primeira
           </Button>
+
           <Button
             variant="outline"
             size="sm"
-            onClick={() => {
-              table.nextPage();
-              pagination.pageIndex++;
-            }}
-            disabled={pagination.pageIndex >= Math.floor((pageCount - 1) / pagination.pageSize)}
+            onClick={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
           >
-            Next
+            Anterior
+          </Button>
+
+          {/* Números de página */}
+          <div className="hidden sm:flex items-center gap-1 mx-2">
+            {getPageNumbers().map((page, index) =>
+              typeof page === "number" ? (
+                <Button
+                  key={page}
+                  variant={page === pagination.pageIndex + 1 ? "default" : "outline"}
+                  size="sm"
+                  className="min-w-[36px]"
+                  onClick={() => table.setPageIndex(page - 1)}
+                >
+                  {page}
+                </Button>
+              ) : (
+                <span key={`ellipsis-${index}`} className="px-2 text-muted-foreground">
+                  {page}
+                </span>
+              )
+            )}
+          </div>
+
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+          >
+            Próxima
+          </Button>
+
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.setPageIndex(pageCount - 1)}
+            disabled={!table.getCanNextPage()}
+          >
+            Última
           </Button>
         </div>
       </div>
