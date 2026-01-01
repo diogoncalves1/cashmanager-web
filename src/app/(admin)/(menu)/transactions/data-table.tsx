@@ -33,10 +33,11 @@ import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
 import Badge from "@/components/ui/badge/Badge";
 import { AppLink } from "@/components/ui/button/AppLink";
-import { onDeleteAccount } from "@/services/accounts/service"; // ajusta se for de transactions
+import { onDeleteAccount } from "@/services/accounts/service";
 import * as LucideIcons from "lucide-react";
 import { Transaction, transactionStatus, transactionTypes } from "@/lib/models/transaction";
 import { LucideTrendingUp, LucideTrendingDown, Circle, Activity } from "lucide-react";
+import { onConfirmTransaction, onDeleteTransaction } from "@/services/transactions/service";
 
 const TypeIcons = {
   revenue: <LucideTrendingUp className="w-5 h-5" />,
@@ -214,7 +215,6 @@ export function TransactionsDataTable({
         cell: ({ row }) => (
           <div className="flex flex-col">
             <span className="font-medium">{row.getValue("date")}</span>
-            <span className="text-xs text-muted-foreground">{row.original.date}</span>
           </div>
         ),
       },
@@ -285,6 +285,22 @@ export function TransactionsDataTable({
           return (
             transaction.actions?.view && (
               <>
+                {transaction.actions?.confirm && (
+                  <Button
+                    onClick={async () => {
+                      try {
+                        onConfirmTransaction(transaction.id, mutate);
+                      } catch (err) {
+                        console.error(err);
+                      }
+                    }}
+                    className="bg-success-100  text-success-500 hover:bg-success-500 hover:text-white ms-1"
+                    size={"icon-sm"}
+                    variant={"ghost"}
+                  >
+                    <LucideIcons.CheckCircle2 />
+                  </Button>
+                )}
                 {transaction.actions?.view && (
                   <AppLink
                     path={`/transactions/${transaction.id}`}
@@ -312,7 +328,7 @@ export function TransactionsDataTable({
                     variant={"ghost"}
                     onClick={async () => {
                       try {
-                        onDeleteAccount(transaction.id, table, pagination, mutate);
+                        onDeleteTransaction(transaction.id, table, pagination, mutate);
                       } catch (err) {
                         console.error(err);
                       }

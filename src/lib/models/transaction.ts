@@ -1,3 +1,4 @@
+import { icons } from "lucide-react";
 import { AccountType } from "./account";
 import { Category } from "./category";
 import { User } from "./user";
@@ -17,16 +18,17 @@ export const transactionTypes = [
 
 export const transactionStatus = [
   {
-    value: "pending",
-    label: "Pending",
-  },
-  {
     value: "completed",
     label: "Completed",
+  },
+  {
+    value: "pending",
+    label: "Pending",
   },
 ];
 
 export type Actions = {
+  confirm: boolean;
   view: boolean;
   edit: boolean;
   destroy: boolean;
@@ -53,7 +55,7 @@ export interface Transaction {
   currencyCode?: string;
   category?: Category;
   categoryName?: string;
-  categoryIcon?: string;
+  categoryIcon?: keyof typeof icons;
   accountTypeTranslated: string;
   accountType: AccountType;
   categoryColor?: string;

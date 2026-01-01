@@ -1,3 +1,4 @@
+import LoadingToast from "@/components/swal/LoadingToast";
 import { SwalToast } from "@/components/swal/SwalToast";
 import Swal from "sweetalert2";
 
@@ -13,8 +14,9 @@ export async function onDeleteTransaction(id: string, table?: any, pagination?: 
     cancelButtonText: "Cancelar",
   });
   if (result.isConfirmed) {
+    LoadingToast({ title: "Excluindo...", message: "Removendo transação..." });
     try {
-      const res = await fetch(`/api/accounts/${id}`, {
+      const res = await fetch(`/api/transactions/${id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       });
@@ -40,26 +42,29 @@ export async function onDeleteTransaction(id: string, table?: any, pagination?: 
   return 0;
 }
 
-export async function onChangeStatus(id: string, status: boolean) {
+export async function onConfirmTransaction(id: string, mutate?: any) {
   const result = await Swal.fire({
-    title: `${status ? "Desativar" : "Ativar"} conta?`,
+    title: "Confirm transaction?",
     icon: "warning",
     showCancelButton: true,
     confirmButtonColor: "#3085d6",
     cancelButtonColor: "#d33",
-    confirmButtonText: `Sim, ${status ? "desativar" : "ativar"}!`,
+    confirmButtonText: "Sim, confirmar!",
     cancelButtonText: "Cancelar",
   });
   if (result.isConfirmed) {
+    LoadingToast({ title: "A confirmar...", message: "A confirmar a sua transação..." });
     try {
-      const res = await fetch(`/api/accounts/${id}/status`, {
-        method: "PATCH",
+      const res = await fetch(`/api/transactions/${id}/confirm`, {
+        method: "POST",
         headers: { "Content-Type": "application/json" },
       });
 
       const data = await res.json();
 
       if (!res.ok) throw new Error(data.message);
+
+      if (mutate) await mutate();
 
       if (data.success) {
         SwalToast({ message: data.message, icon: "success" });

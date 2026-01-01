@@ -18,6 +18,7 @@ import AccountCategoryExpenses from "./AccountCategoryExpenses";
 import AccountOthers from "./AccountOthers";
 import AccountTransactions from "./AccountTransactions";
 import AccountUsers from "./AccountUsers";
+import page from "@/app/(admin)/(others-pages)/calendar/page";
 
 type AccountsDetailsProps = {
   id: string;
@@ -119,7 +120,12 @@ export default function AccountDetails({ id }: AccountsDetailsProps) {
       <AccountBalance account={pageData.account} />
 
       {/* Tabs */}
-      <AccountTabs activeTab={activeTab} setActiveTab={setActiveTab} />
+      <AccountTabs
+        enableCategories={pageData.categorySummary.data.length > 0}
+        enableMonthly={pageData.monthlySummary.length > 0}
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+      />
 
       <AnimatePresence mode="wait">
         <motion.div

@@ -6,17 +6,29 @@ type AccountTabsProps = {
   setActiveTab: Dispatch<
     SetStateAction<"overview" | "transactions" | "users" | "others" | "monthly" | "categories">
   >;
+  enableMonthly: boolean;
+  enableCategories: boolean;
 };
 
-export function AccountTabs({ activeTab, setActiveTab }: AccountTabsProps) {
+type Tab = {
+  id: string;
+  label: string;
+};
+
+export function AccountTabs({
+  activeTab,
+  setActiveTab,
+  enableCategories,
+  enableMonthly,
+}: AccountTabsProps) {
   const tabs = [
     { id: "overview", label: "Visão Geral" },
     { id: "transactions", label: "Transações" },
     { id: "users", label: "Utilizadores" },
-    { id: "monthly", label: "Resumo Mensal" },
-    { id: "categories", label: "Categorias" },
+    enableMonthly && { id: "monthly", label: "Resumo Mensal" },
+    enableCategories && { id: "categories", label: "Categorias" },
     { id: "others", label: "Outros" },
-  ];
+  ].filter((tab): tab is Tab => Boolean(tab));
 
   return (
     <div className="relative border-b border-gray-200">
