@@ -360,6 +360,7 @@ const AppSidebar: React.FC = () => {
 
   return (
     <aside
+      style={{ zIndex: 50 }}
       className={`fixed mt-10 shadow-xl flex flex-col lg:mt-0 top-0 px-5 left-0 bg-white dark:bg-gray-900 dark:border-gray-800 text-gray-900 h-screen transition-all duration-300 ease-in-out border-r border-gray-200 
         ${isExpanded || isMobileOpen ? "w-[235px]" : isHovered ? "w-[235px]" : "w-[90px]"}
         ${isMobileOpen ? "translate-x-0" : "-translate-x-full"}
