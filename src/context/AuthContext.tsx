@@ -1,17 +1,12 @@
 "use client";
 
+import { User } from "@/lib/models/user";
 import { createContext, useContext, useState, useEffect } from "react";
-
-export interface User {
-  id: string;
-  name: string;
-  email: string;
-}
 
 interface AuthContextType {
   user: User | null;
   loading: boolean;
-  login: (email: string, password: string) => { logged: boolean };
+  login: (email: string, password: string, remember: boolean) => Promise<{ logged: boolean }>;
   logout: () => void;
 }
 
@@ -30,11 +25,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setLoading(false);
   }, []);
 
-  async function login(email: string, password: string) {
+  async function login(email: string, password: string, remeber: boolean) {
     const res = await fetch("/api/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, password, remeber }),
     });
 
     const data = await res.json();
@@ -42,6 +37,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (!data.user) return { logged: false };
 
     localStorage.setItem("user", JSON.stringify(data.user));
+
     setUser(data.user);
 
     return { logged: true };

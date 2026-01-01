@@ -23,7 +23,7 @@ export default function SignInForm() {
     setError("");
 
     try {
-      const res = await login(email, password);
+      const res = await login(email, password, isChecked);
 
       if (!res.logged) {
         setError("Erro ao fazer login");
