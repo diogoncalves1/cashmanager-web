@@ -7,6 +7,7 @@ import { AuthProvider } from "@/context/AuthContext";
 import { HeroUIProvider } from "@heroui/system";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
+import { getUser } from "@/lib/auth/getUser";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -19,6 +20,8 @@ export default async function RootLayout({
 }>) {
   const messages = await getMessages();
 
+  const user = await getUser();
+
   return (
     <html lang="en">
       <body className={`${outfit.className}  dark:bg-gray-900`}>
@@ -26,7 +29,7 @@ export default async function RootLayout({
           <HeroUIProvider>
             <ThemeProvider>
               <SidebarProvider>
-                <AuthProvider>{children}</AuthProvider>
+                <AuthProvider user={user}>{children}</AuthProvider>
               </SidebarProvider>
             </ThemeProvider>
           </HeroUIProvider>

@@ -4,8 +4,13 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { Dropdown } from "../ui/dropdown/Dropdown";
 import { DropdownItem } from "../ui/dropdown/DropdownItem";
+import { User } from "@/lib/models/user";
 
-export default function UserDropdown() {
+type Props = {
+  user: User | null;
+};
+
+export default function UserDropdown({ user }: Props) {
   const [isOpen, setIsOpen] = useState(false);
 
   function toggleDropdown(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
@@ -22,11 +27,14 @@ export default function UserDropdown() {
         onClick={toggleDropdown}
         className="flex items-center text-gray-700 dark:text-gray-400 dropdown-toggle"
       >
-        <span className="mr-3 overflow-hidden rounded-full h-8 w-8">
-          <Image width={34} height={34} src="/images/user/default.jpg" alt="User" />
-        </span>
+        <div
+          className="relative group mr-3 overflow-hidden size-8 rounded-full bg-blue-100
+        flex items-center justify-center text-md font-medium text-blue-700 cursor-default transition-all duration-200 hover:z-20 hover:scale-110"
+        >
+          {user?.name.charAt(0)}
+        </div>
 
-        <span className="block mr-1 font-medium text-gray-700 text-theme-sm">Default</span>
+        <span className="block mr-1 font-medium text-gray-700 text-theme-sm">{user?.name}</span>
 
         <svg
           className={`stroke-gray-500 dark:stroke-gray-400 transition-transform duration-200 ${
@@ -55,10 +63,10 @@ export default function UserDropdown() {
       >
         <div>
           <span className="block font-medium text-gray-700 text-theme-sm dark:text-gray-400">
-            Default
+            {user?.name}
           </span>
           <span className="mt-0.5 block text-theme-xs text-gray-500 dark:text-gray-400">
-            default@gmail.com
+            {user?.email}
           </span>
         </div>
 

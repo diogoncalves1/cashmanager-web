@@ -1,12 +1,10 @@
-import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
-import { baseUrl } from "../../config";
+import { cookies } from "next/headers";
 
 export async function POST(req: Request) {
-  const body = await req.json();
-  const { email, password, remember } = body;
+  const { email, password, remember } = await req.json();
 
-  const res = await fetch(`${baseUrl}login`, {
+  const res = await fetch(`${process.env.API_URL}login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
@@ -17,6 +15,8 @@ export async function POST(req: Request) {
   if (!res.ok) {
     return NextResponse.json({ error: data.message || "Login failed" }, { status: 401 });
   }
+
+  const response = NextResponse.json({ ok: true });
 
   const cookieStore = await cookies();
 
@@ -32,5 +32,13 @@ export async function POST(req: Request) {
     maxAge: remember ? 60 * 60 * 24 * 365 : 60 * 60 * 24,
   });
 
-  return NextResponse.json({ user: data.user });
+  response.cookies.set("user", JSON.stringify(data.user), {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    path: "/",
+    maxAge: remember ? 60 * 60 * 24 * 365 : 60 * 60 * 24,
+  });
+
+  return response;
 }

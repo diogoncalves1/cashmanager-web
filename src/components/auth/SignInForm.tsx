@@ -16,19 +16,28 @@ export default function SignInForm() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
-  const { login } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
     try {
-      const res = await login(email, password, isChecked);
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          password,
+          remember: isChecked,
+        }),
+      });
 
-      if (!res.logged) {
-        setError("Erro ao fazer login");
+      if (!res.ok) {
+        setError("Credenciais inválidas");
         return;
       }
+
+      router.refresh();
 
       router.push("/dashboard");
     } catch (err) {
