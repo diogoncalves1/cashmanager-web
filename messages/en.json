@@ -1,10 +1,42 @@
 {
-    "home": {
-        "HOME": "Home"
-    },
+  "HOME": {
+    "HOME": "Home"
+  },
 
-    "ACCOUNTS": {
-         "ACCOUNTS": "Accounts"
+  "ACCOUNTS": {
+    "ACCOUNTS": "Accounts",
+    "ACCOUNT": "ACCOUNT"
+  },
 
-    }
+  "LAYOUTS": {
+    "SIDEBAR_SETTINGS": "Settings",
+    "SIDEBAR_LOGOUT": "Logout",
+    "SIDEBAR_COMPOUND_INTEREST_CALCULATOR": "Comp. Int. Calculator",
+    "SIDEBAR_CURRENCY_CONVERTER": "Currency Converter",
+    "SIDEBAR_TOOLS": "Tools",
+    "SIDEBAR_FRIENDS": "Friends",
+    "SIDEBAR_PROFILE": "Profile",
+    "SIDEBAR_SOCIAL": "Social",
+    "SIDEBAR_STOCKS": "Stocks",
+    "SIDEBAR_STOCKS_WATCHLIST": "Watchlist",
+    "SIDEBAR_STOCKS_SEARCH": "Seach",
+    "SIDEBAR_PORTFOLIOS": "Portfolios",
+    "SIDEBAR_DEBTS": "Debts",
+    "SIDEBAR_FINANCIAL_GOALS": "Financial Goals",
+    "SIDEBAR_TRANSACTIONS": "Transactions",
+    "SIDEBAR_ACCOUNTS": "Accounts",
+    "SIDEBAR_HOME": "Home",
+    "SIDEBAR_MENU": "Menu",
+
+    "HEADER_ACCOUNT_DETAILS": "Account Details",
+
+    "LOGOUT": "Logging out…",
+    "LOGOUT_WAIT": "Please wait while we end your session",
+    "LOGOUT_ERROR": "We couldn't end your session. Please try again."
+  },
+
+  "SIGNIN": {
+    "SIGNIN": "Signing in…",
+    "SIGNIN_WAIT": "Please wait while we verify your credentials"
+  }
 }
