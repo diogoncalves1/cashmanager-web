@@ -11,7 +11,6 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
   const { data, error, isLoading } = useSWR(["/auth/me", { method: "GET" }], fetcher);
 
   useEffect(() => {
-    console.log(data);
     if (!isLoading && !data.token) {
       router.push("/signin");
     }

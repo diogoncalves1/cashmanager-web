@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin(); // ← Add this line (no path needed in 99% of cases)
+
 const nextConfig = {
   webpack(config) {
     config.module.rules.push({
@@ -31,4 +35,5 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+// Apply the next-intl plugin → very important!
+export default withNextIntl(nextConfig);

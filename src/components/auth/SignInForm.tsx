@@ -8,6 +8,8 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
+import LoadingToast from "../swal/LoadingToast";
+import { useTranslations } from "next-intl";
 
 export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -16,19 +18,32 @@ export default function SignInForm() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
-  const { login } = useAuth();
+  const t = useTranslations("SIGNIN");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
     try {
-      const res = await login(email, password);
+      const toast = LoadingToast({ title: t("SIGNIN"), message: t("SIGNIN_WAIT") });
 
-      if (!res.logged) {
-        setError("Erro ao fazer login");
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          password,
+          remember: isChecked,
+        }),
+      });
+
+      toast.close();
+      if (!res.ok) {
+        setError("Credenciais inválidas");
         return;
       }
+
+      router.refresh();
 
       router.push("/dashboard");
     } catch (err) {

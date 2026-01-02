@@ -1,8 +1,6 @@
 "use client";
 
 import ProtectedRoute from "@/components/auth/ProtectedRoute";
-import PageBreadcrumb from "@/components/common/PageBreadCrumb";
-import { AuthProvider } from "@/context/AuthContext";
 import { useSidebar } from "@/context/SidebarContext";
 import AppHeader from "@/layout/AppHeader";
 import AppSidebar from "@/layout/AppSidebar";

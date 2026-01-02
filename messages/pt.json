@@ -1,0 +1,41 @@
+{
+  "HOME": {
+    "HOME": "Início"
+  },
+  "ACCOUNTS": {
+    "ACCOUNTS": "Contas",
+    "ACCOUNT": "CONTA"
+  },
+
+  "LAYOUTS": {
+    "SIDEBAR_SETTINGS": "Definições",
+    "SIDEBAR_LOGOUT": "Sair",
+    "SIDEBAR_COMPOUND_INTEREST_CALCULATOR": "Calc. Juros Compos.",
+    "SIDEBAR_CURRENCY_CONVERTER": "Conversor de Moeda",
+    "SIDEBAR_TOOLS": "Ferramentas",
+    "SIDEBAR_FRIENDS": "Amizades",
+    "SIDEBAR_PROFILE": "Perfil",
+    "SIDEBAR_SOCIAL": "Social",
+    "SIDEBAR_STOCKS": "Ações",
+    "SIDEBAR_STOCKS_WATCHLIST": "Watchlist",
+    "SIDEBAR_STOCKS_SEARCH": "Procurar",
+    "SIDEBAR_PORTFOLIOS": "Portfolios",
+    "SIDEBAR_DEBTS": "Dívidas",
+    "SIDEBAR_FINANCIAL_GOALS": "Metas Financeiras",
+    "SIDEBAR_TRANSACTIONS": "Transações",
+    "SIDEBAR_ACCOUNTS": "Contas",
+    "SIDEBAR_HOME": "Início",
+    "SIDEBAR_MENU": "Menu",
+
+    "HEADER_ACCOUNT_DETAILS": "Detalhes da Conta",
+
+    "LOGOUT": "Saindo…",
+    "LOGOUT_WAIT": "Aguarde enquanto encerramos sua sessão",
+    "LOGOUT_ERROR": "Não foi possível encerrar sua sessão. Tente novamente."
+  },
+
+  "SIGNIN": {
+    "SIGNIN": "Entrando…",
+    "SIGNIN_WAIT": "Aguarde enquanto verificamos suas credenciais"
+  }
+}
