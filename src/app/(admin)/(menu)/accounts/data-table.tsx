@@ -11,19 +11,7 @@ import {
   useReactTable,
   VisibilityState,
 } from "@tanstack/react-table";
-import {
-  Activity,
-  ChevronDown,
-  Circle,
-  CreditCard,
-  Dot,
-  Edit3,
-  Eye,
-  Plus,
-  Trash2,
-  Wallet,
-} from "lucide-react";
-
+import { Activity, ChevronDown, Circle, Dot, Edit3, Eye, Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -43,28 +31,17 @@ import {
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
 import { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDown, Banknote, Building2Icon } from "lucide-react";
+import { ArrowUpDown } from "lucide-react";
 import Badge from "@/components/ui/badge/Badge";
 import { AppLink } from "@/components/ui/button/AppLink";
 import { onDeleteAccount } from "@/services/accounts/service";
-import { Account, accountTypes } from "@/lib/models/account";
-
-const TypeIcons = {
-  bank_account: <Building2Icon className="w-12" />,
-  cash: <Banknote className="w-12" />,
-  digital_wallet: <Wallet className="w-12" />,
-  credit_card: <CreditCard className="w-12" />,
-  none: "",
-};
-
-export type ActionsType = {
-  view: boolean;
-  edit: boolean;
-  manage: boolean;
-  destroy: boolean;
-};
+import { Account, AccountType, accountTypes } from "@/lib/models/account";
+import { useTranslations } from "next-intl";
+import { TypeIcons } from "@/components/accouts/TypeIcons";
 
 export function DataTable() {
+  const t = useTranslations("ACCOUNTS");
+
   const accountStatus = [
     {
       value: "active",
@@ -87,7 +64,9 @@ export function DataTable() {
   const [rowSelection, setRowSelection] = React.useState({});
   const [pageCount, setPageCount] = React.useState(0);
   const sortingString = sorting.map((s) => `${s.id}:${s.desc ? "desc" : "asc"}`).join(",");
-  const filterString = columnFilters.map((f) => `${f.id}=${encodeURIComponent(f.value)}`).join("&");
+  const filterString = columnFilters
+    .map((f) => `${f.id}=${encodeURIComponent(f.value as string)}`)
+    .join("&");
 
   const columns: ColumnDef<Account>[] = [
     {
@@ -358,7 +337,11 @@ export function DataTable() {
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="outline" className="ml-auto w-40 text-gray-dark font-light">
-                    {TypeIcons[(table.getColumn("type")?.getFilterValue() as string) ?? "none"]}
+                    {
+                      TypeIcons[
+                        (table.getColumn("type")?.getFilterValue() as AccountType) ?? "none"
+                      ]
+                    }
                     {accountTypes.find(
                       (type) => type.value == (table.getColumn("type")?.getFilterValue() as string)
                     )?.label ?? (
@@ -391,7 +374,7 @@ export function DataTable() {
                           table.getColumn("type")?.setFilterValue(type.value);
                         }}
                       >
-                        {TypeIcons[type.value]}
+                        {TypeIcons[type.value as AccountType]}
                         {type.label}
                       </DropdownMenuItem>
                     );

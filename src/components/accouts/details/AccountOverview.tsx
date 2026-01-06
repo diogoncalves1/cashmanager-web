@@ -3,6 +3,7 @@ import { Transaction } from "@/lib/models/transaction";
 
 import { memo } from "react";
 import { StatusBadge } from "@/components/accouts/StatusBadge";
+import { useTranslations } from "next-intl";
 
 type AccountOverviewProps = {
   account?: Account;
@@ -11,14 +12,15 @@ type AccountOverviewProps = {
 
 function AccountOverview({ account, recentTransaction }: AccountOverviewProps) {
   if (!account) return <></>;
+  const t = useTranslations("ACCOUNTS");
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
       <div className="lg:col-span-2 space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {[
-            { label: "Transações", value: account.totalTransactions },
-            { label: "Utilizadores", value: account.users?.length },
+            { label: t("TRANSACTIONS"), value: account.totalTransactions },
+            { label: t("USERS"), value: account.users?.length },
             {
               label: "Criada em",
               value: new Date(account.createdAt ?? "2025-01-20").toLocaleDateString("pt-PT", {

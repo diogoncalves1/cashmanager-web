@@ -4,7 +4,30 @@
   },
   "ACCOUNTS": {
     "ACCOUNTS": "Contas",
-    "ACCOUNT": "CONTA"
+    "ACCOUNT": "CONTA",
+    "DETAILS": "Detalhes",
+
+    "OTHERS": "Outros",
+    "MONTH": "Mês",
+
+    "REVENUE": "Receita",
+    "EXPENSE": "Despesa",
+    "RESULT": "Resultado",
+
+    "OVERVIEW": "Visão Geral",
+    "TRANSACTIONS": "Transações",
+    "USERS": "Utilizadores",
+    "MONTHLY_RESUME": "Resumo Mensal",
+    "CATEGORIES": "Categorias",
+
+    "EDIT": "Editar",
+    "ADD": "Adicionar",
+
+    "ALL_TRANSACTIONS": "Todas as Transações",
+    "ADD_TRANSACTION": "Nova Transação",
+    "DISABLE_ACCOUNT": "Desativar Conta",
+    "ACTIVATE_ACCOUNT": "Ativar Conta",
+    "DELETE_ACCOUNT": "Delete Account"
   },
 
   "LAYOUTS": {
@@ -37,5 +60,10 @@
   "SIGNIN": {
     "SIGNIN": "Entrando…",
     "SIGNIN_WAIT": "Aguarde enquanto verificamos suas credenciais"
+  },
+
+  "TRANSACTIONS": {
+    "TRANSACTIONS": "Transações",
+    "TRANSACTIONS_DETAILS": "Detalhes"
   }
 }

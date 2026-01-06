@@ -13,7 +13,7 @@ export default function AccountsPage() {
   const t = useTranslations("ACCOUNTS");
   return (
     <>
-      <PageBreadcrumb pageTitle="ACCOUNT" breadcrumb={[{ title: t("ACCOUNTS") }]} />
+      <PageBreadcrumb pageTitle={t("ACCOUNT")} breadcrumb={[{ title: t("ACCOUNTS") }]} />
       <div className="grid grid-cols-12 p-2 md:p-6 gap-4 md:gap-6">
         <div className="col-span-12">
           <DataTable />
