@@ -45,6 +45,7 @@
     "SIDEBAR_PORTFOLIOS": "Portfolios",
     "SIDEBAR_DEBTS": "Dívidas",
     "SIDEBAR_FINANCIAL_GOALS": "Metas Financeiras",
+    "SIDEBAR_FINANCIAL_GOALS_CONTRIBUTIONS": "Contribuíções",
     "SIDEBAR_TRANSACTIONS": "Transações",
     "SIDEBAR_ACCOUNTS": "Contas",
     "SIDEBAR_HOME": "Início",
@@ -65,5 +66,42 @@
   "TRANSACTIONS": {
     "TRANSACTIONS": "Transações",
     "TRANSACTIONS_DETAILS": "Detalhes"
+  },
+
+  "FINANCIAL_GOALS": {
+    "ADD": "Adicionar",
+
+    "FINANCIAL_GOAL": "META FINANCEIRA",
+    "FINANCIAL_GOALS": "Metas Financeiras",
+
+    "COMPLETED": "Completa",
+    "IN_PROGRESS": "Em Progresso",
+    "CANCELED": "Cancelada",
+
+    "LOW": "Baixa",
+    "MEDIUM": "Média",
+    "HIGH": "Alta",
+
+    "NAME": "Nome",
+    "TOTAL_AMOUNT": "Valor Total",
+    "CONTRIBUTED_AMOUNT": "Valor Contribuído",
+    "PRIORITY": "Prioridade",
+    "USERS": "Utilizadores",
+    "DUE_DATE": "Data de Fim",
+    "START_DATE": "Data de Início",
+    "STATUS": "Estado",
+    "ACTIONS": "Ações",
+
+    "SEARCH": "Procura",
+    "FILTER_BY": "Filtra por",
+    "SHOWING": "A mostrar",
+    "OF": "de",
+    "THIS": "metas financeiras",
+    "NEXT": "Próximo",
+    "PREVIOUS": "Anterior",
+    "FIRST": "Primeira",
+    "LAST": "Última",
+    "NO_RESULTS": "Sem Resultados",
+    "LOADING": "Carregando"
   }
 }
