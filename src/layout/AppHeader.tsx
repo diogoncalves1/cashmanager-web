@@ -11,8 +11,6 @@ import React, { useState, useEffect, useRef } from "react";
 const AppHeader: React.FC = () => {
   const { user } = useAuth();
 
-  console.log(user);
-
   const [isApplicationMenuOpen, setApplicationMenuOpen] = useState(false);
 
   const { isMobileOpen, toggleSidebar, toggleMobileSidebar } = useSidebar();

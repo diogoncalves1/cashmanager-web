@@ -62,13 +62,11 @@ const AppSidebar: React.FC = () => {
     {
       icon: <Target size={18} strokeWidth={2} />,
       name: t("SIDEBAR_FINANCIAL_GOALS"),
-      disable: true,
       subItems: [
         { name: t("SIDEBAR_FINANCIAL_GOALS"), path: "/financial-goals", pro: false },
-        { name: "Contributions", path: "/financial-goals/contributions", pro: false },
         {
-          name: "Scheduled Contributions",
-          path: "/financial-goals/contributions/scheduled",
+          name: t("SIDEBAR_FINANCIAL_GOALS_CONTRIBUTIONS"),
+          path: "/financial-goals/contributions",
           pro: false,
         },
       ],

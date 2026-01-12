@@ -5,7 +5,30 @@
 
   "ACCOUNTS": {
     "ACCOUNTS": "Accounts",
-    "ACCOUNT": "ACCOUNT"
+    "ACCOUNT": "ACCOUNT",
+    "DETAILS": "Details",
+
+    "OTHERS": "Others",
+    "MONTH": "Month",
+
+    "REVENUE": "Revenue",
+    "EXPENSE": "Expense",
+    "RESULT": "Result",
+
+    "OVERVIEW": "Overview",
+    "TRANSACTIONS": "Transactions",
+    "USERS": "Users",
+    "MONTHLY_RESUME": "Monthly Resume",
+    "CATEGORIES": "Categories",
+
+    "EDIT": "Edit",
+    "ADD": "Add",
+
+    "ALL_TRANSACTIONS": "All Transactions",
+    "ADD_TRANSACTION": "Add Transaction",
+    "DISABLE_ACCOUNT": "Disable Account",
+    "ACTIVATE_ACCOUNT": "Activate Account",
+    "DELETE_ACCOUNT": "Deletar Conta"
   },
 
   "LAYOUTS": {
@@ -23,6 +46,7 @@
     "SIDEBAR_PORTFOLIOS": "Portfolios",
     "SIDEBAR_DEBTS": "Debts",
     "SIDEBAR_FINANCIAL_GOALS": "Financial Goals",
+    "SIDEBAR_FINANCIAL_GOALS_CONTRIBUTIONS": "Contributions",
     "SIDEBAR_TRANSACTIONS": "Transactions",
     "SIDEBAR_ACCOUNTS": "Accounts",
     "SIDEBAR_HOME": "Home",
@@ -38,5 +62,47 @@
   "SIGNIN": {
     "SIGNIN": "Signing in…",
     "SIGNIN_WAIT": "Please wait while we verify your credentials"
+  },
+
+  "TRANSACTIONS": {
+    "TRANSACTIONS": "Transactions",
+    "TRANSACTIONS_DETAILS": "Details"
+  },
+
+  "FINANCIAL_GOALS": {
+    "ADD": "Add",
+
+    "FINANCIAL_GOAL": "FINANCIAL GOAL",
+    "FINANCIAL_GOALS": "Financial Goals",
+
+    "COMPLETED": "Completed",
+    "IN_PROGRESS": "In Progress",
+    "CANCELED": "Canceled",
+
+    "LOW": "Low",
+    "MEDIUM": "Medium",
+    "HIGH": "High",
+
+    "NAME": "Name",
+    "TOTAL_AMOUNT": "Total Amount",
+    "CONTRIBUTED_AMOUNT": "Contributed Amount",
+    "PRIORITY": "Priority",
+    "STATUS": "Status",
+    "USERS": "Users",
+    "DUE_DATE": "Due Date",
+    "START_DATE": "Start Date",
+    "ACTIONS": "Actions",
+
+    "SEARCH": "Search",
+    "FILTER_BY": "Filter By",
+    "SHOWING": "Showing",
+    "OF": "of",
+    "THIS": "financial goals",
+    "NEXT": "Next",
+    "PREVIOUS": "Previous",
+    "FIRST": "First",
+    "LAST": "Last",
+    "NO_RESULTS": "No Results",
+    "LOADING": "Loading"
   }
 }

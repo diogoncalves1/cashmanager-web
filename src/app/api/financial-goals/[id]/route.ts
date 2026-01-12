@@ -1,13 +1,13 @@
 // /app/api/accounts/route.ts
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
   try {
-    const { id } = await params;
-
     const token = req.cookies.get("token")?.value;
 
-    const urlApi = `${process.env.API_BACKEND_URL}accounts/${id}`;
+    const id = params.id;
+
+    const urlApi = `${process.env.API_BACKEND_URL}financial-goals/${id}`;
 
     const res = await fetch(urlApi, {
       headers: { Authorization: `Bearer ${token}` },
@@ -30,7 +30,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
 
     const body = await req.json();
 
-    const urlApi = `http://127.0.0.1:8000/api/v1/accounts/${id}`;
+    const urlApi = `${process.env.API_BACKEND_URL}financial-goals/${id}`;
 
     const res = await fetch(urlApi, {
       headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
@@ -55,7 +55,7 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
 
     if (!id) throw new Error("Id invalido");
 
-    const urlApi = "http://127.0.0.1:8000/api/v1/accounts/" + id;
+    const urlApi = `${process.env.API_BACKEND_URL}financial-goals/${id}`;
     const res = await fetch(urlApi, {
       headers: { Authorization: `Bearer ${token}` },
       method: "DELETE",

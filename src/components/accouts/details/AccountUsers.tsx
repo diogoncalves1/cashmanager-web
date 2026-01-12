@@ -1,8 +1,10 @@
 import { Account } from "@/lib/models/account";
 import { memo, useState } from "react";
 import { motion } from "framer-motion";
-import { Activity, ArrowRight } from "lucide-react";
+import { Activity, ArrowRight, Plus } from "lucide-react";
 import { UserTransactionsModal } from "@/components/ui/modal/UserTransactionsModal";
+import { AppLink } from "@/components/ui/button/AppLink";
+import { useTranslations } from "next-intl";
 
 type AccountUsersProps = {
   account?: Account;
@@ -10,6 +12,7 @@ type AccountUsersProps = {
 
 function AccountUsers({ account }: AccountUsersProps) {
   if (!account) return <></>;
+  const t = useTranslations("ACCOUNTS");
 
   const [selectedUser, setSelectedUser] = useState<{
     id: string;
@@ -19,8 +22,17 @@ function AccountUsers({ account }: AccountUsersProps) {
   return (
     <div className="rounded-2xl border bg-white shadow-sm">
       <div className="border-b px-6 py-4 flex justify-between">
-        <h2 className="text-lg font-semibold">Utilizadores</h2>
-        <button className="rounded-xl bg-blue-600 px-4 py-2 text-sm text-white">Adicionar</button>
+        <h2 className="text-lg font-semibold">{t("USERS")}</h2>
+        {account.actions?.manage && (
+          <AppLink
+            variant="default"
+            path="/accounts/users"
+            className="bg-blue-100 text-blue-500 hover:bg-blue-500 hover:text-white text-sm gap-2 rounded-xl px-4 py-2"
+          >
+            <Plus className="size-5" />
+            {t("ADD")}
+          </AppLink>
+        )}
       </div>
 
       <div className="divide-y">
@@ -57,7 +69,7 @@ function AccountUsers({ account }: AccountUsersProps) {
                       "
             >
               <Activity className="size-4 text-blue-600" />
-              <span>Transações</span>
+              <span>{t("TRANSACTIONS")}</span>
               <ArrowRight className="size-4 opacity-0 transition-all group-hover:opacity-100 group-hover:translate-x-0.5" />
             </motion.button>
           </div>

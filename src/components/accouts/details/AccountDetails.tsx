@@ -18,7 +18,6 @@ import AccountCategoryExpenses from "./AccountCategoryExpenses";
 import AccountOthers from "./AccountOthers";
 import AccountTransactions from "./AccountTransactions";
 import AccountUsers from "./AccountUsers";
-import page from "@/app/(admin)/(others-pages)/calendar/page";
 
 type AccountsDetailsProps = {
   id: string;

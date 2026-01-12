@@ -125,7 +125,6 @@ export function TransactionsForm({ id }: Props) {
             onChange={(id: any) => setFormData((p) => ({ ...p, category_id: id }))}
           />
         )}
-        {formData.category_id === "" ? <>Testeo</> : <></>}
       </div>
 
       <div className="col-span-12">

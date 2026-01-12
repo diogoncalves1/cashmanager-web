@@ -8,6 +8,7 @@ import { Account } from "@/lib/models/account";
 import { Download } from "lucide-react";
 import * as XLSX from "xlsx";
 import { memo } from "react";
+import { useTranslations } from "next-intl";
 
 type AccountMonthlySummaryProps = {
   account?: Account;
@@ -16,6 +17,7 @@ type AccountMonthlySummaryProps = {
 
 function AccountMonthlySummary({ data, account }: AccountMonthlySummaryProps) {
   if (!account) return <></>;
+  const t = useTranslations("ACCOUNTS");
 
   const exportToExcel = () => {
     if (!data?.length) return;
@@ -26,10 +28,10 @@ function AccountMonthlySummary({ data, account }: AccountMonthlySummaryProps) {
       const profit = revenue - expense;
 
       return {
-        Mês: item.month,
-        Receita: revenue,
-        Despesa: expense,
-        Resultado: profit,
+        [t("MONTH")]: item.month,
+        [t("REVENUE")]: revenue,
+        [t("EXPENSE")]: expense,
+        [t("RESULT")]: profit,
       };
     });
 
@@ -48,14 +50,13 @@ function AccountMonthlySummary({ data, account }: AccountMonthlySummaryProps) {
       });
     }
 
-    XLSX.writeFile(workbook, `resumo-mensal-${new Date().toISOString().slice(0, 10)}.xlsx`);
+    XLSX.writeFile(workbook, `monthly-resume-${new Date().toISOString().slice(0, 10)}.xlsx`);
   };
 
   return (
     <div className="rounded-2xl border bg-white p-6 shadow-sm">
       <h2 className="text-lg font-semibold mb-4">Resumo Mensal</h2>
       <div className="relative">
-        {/* Botão de exportação */}
         <div className="absolute top-0 right-0 z-10">
           <button
             onClick={exportToExcel}

@@ -33,7 +33,6 @@ import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
 import Badge from "@/components/ui/badge/Badge";
 import { AppLink } from "@/components/ui/button/AppLink";
-import { onDeleteAccount } from "@/services/accounts/service";
 import * as LucideIcons from "lucide-react";
 import { Transaction, transactionStatus, transactionTypes } from "@/lib/models/transaction";
 import { LucideTrendingUp, LucideTrendingDown, Circle, Activity } from "lucide-react";
@@ -185,8 +184,16 @@ export function TransactionsDataTable({
           const Icon = LucideIcons[t.categoryIcon ?? "Circle"] as any;
           return (
             <div className="flex items-center gap-3">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-muted">
-                <Icon className="h-5 w-5" style={{ color: t.categoryColor }} />
+              <div
+                className="flex items-center justify-center w-10 h-10 rounded-full"
+                style={{ backgroundColor: `${t.categoryColor}1A` }}
+              >
+                <Icon
+                  className="h-5 w-5"
+                  style={{
+                    color: t.categoryColor,
+                  }}
+                />
               </div>
               <div className="flex flex-col">
                 <span

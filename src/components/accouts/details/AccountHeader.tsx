@@ -3,8 +3,11 @@ import { motion } from "framer-motion";
 import { StatusBadge } from "@/components/accouts/StatusBadge";
 import Link from "next/link";
 import { AccountTypeIcon } from "@/components/accouts/AccountTypeIcons";
+import { useTranslations } from "next-intl";
 
 export function AccountHeader({ account }: { account: Account }) {
+  const t = useTranslations("ACCOUNTS");
+
   return (
     <motion.div
       initial={{ opacity: 0, y: -20 }}
@@ -30,18 +33,22 @@ export function AccountHeader({ account }: { account: Account }) {
           </div>
 
           <div className="flex gap-3">
-            <Link
-              href={`/transactions/create`}
-              className="rounded-xl bg-blue-600 px-5 py-2 text-sm font-medium text-white shadow hover:bg-blue-700 transition"
-            >
-              Nova Transação
-            </Link>
-            <Link
-              href={`/accounts/${account.id}/edit`}
-              className="rounded-xl border px-5 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 transition"
-            >
-              Editar
-            </Link>
+            {account.actions?.addTransaction && (
+              <Link
+                href={`/transactions/create`}
+                className="rounded-xl bg-blue-600 px-5 py-2 text-sm font-medium text-white shadow hover:bg-blue-700 transition"
+              >
+                {t("ADD_TRANSACTION")}
+              </Link>
+            )}
+            {account.actions?.edit && (
+              <Link
+                href={`/accounts/${account.id}/edit`}
+                className="rounded-xl border px-5 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 transition"
+              >
+                {t("EDIT")}
+              </Link>
+            )}
           </div>
         </div>
       </div>

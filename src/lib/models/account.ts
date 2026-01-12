@@ -3,9 +3,12 @@ import { User } from "./user";
 
 export type AccountType = "bank_account" | "cash" | "credit_card" | "digital_wallet";
 
-export type Actions = {
+export type ActionsType = {
+  view: boolean;
   edit: boolean;
+  manage: boolean;
   destroy: boolean;
+  addTransaction?: boolean;
 };
 
 export const accountTypes = [
@@ -41,7 +44,7 @@ export interface Account {
   typeTranslated?: string;
   users?: Array<User>;
   totalTransactions: number;
-  actions?: Actions;
+  actions?: ActionsType;
   currencyCode?: string;
   currencySymbol: string;
   currency?: Currency;

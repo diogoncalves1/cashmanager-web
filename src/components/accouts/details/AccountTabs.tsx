@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { Dispatch, SetStateAction } from "react";
 
 type AccountTabsProps = {
@@ -21,13 +22,15 @@ export function AccountTabs({
   enableCategories,
   enableMonthly,
 }: AccountTabsProps) {
+  const t = useTranslations("ACCOUNTS");
+
   const tabs = [
-    { id: "overview", label: "Visão Geral" },
-    { id: "transactions", label: "Transações" },
-    { id: "users", label: "Utilizadores" },
-    enableMonthly && { id: "monthly", label: "Resumo Mensal" },
-    enableCategories && { id: "categories", label: "Categorias" },
-    { id: "others", label: "Outros" },
+    { id: "overview", label: t("OVERVIEW") },
+    { id: "transactions", label: t("TRANSACTIONS") },
+    { id: "users", label: t("USERS") },
+    enableMonthly && { id: "monthly", label: t("MONTHLY_RESUME") },
+    enableCategories && { id: "categories", label: t("CATEGORIES") },
+    { id: "others", label: t("OTHERS") },
   ].filter((tab): tab is Tab => Boolean(tab));
 
   return (
