@@ -7,7 +7,6 @@ import { EyeCloseIcon, EyeIcon } from "@/icons";
 import Link from "next/link";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/context/AuthContext";
 import LoadingToast from "../swal/LoadingToast";
 import { useTranslations } from "next-intl";
 
@@ -47,6 +46,7 @@ export default function SignInForm() {
 
       router.push("/dashboard");
     } catch (err) {
+      console.error(err);
       setError("Credenciais inválidas");
     }
   };

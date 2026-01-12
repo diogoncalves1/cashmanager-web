@@ -12,7 +12,24 @@ import {
   useReactTable,
   VisibilityState,
 } from "@tanstack/react-table";
-import { ArrowUpDown, ChevronDown, Dot, Edit3, Eye, Plus, Trash2 } from "lucide-react";
+import {
+  Activity,
+  ArrowUpDown,
+  Banknote,
+  Building2Icon,
+  CheckCircle2,
+  ChevronDown,
+  Circle,
+  CreditCard,
+  Dot,
+  Edit3,
+  Eye,
+  LucideTrendingDown,
+  LucideTrendingUpDown,
+  Plus,
+  Trash2,
+  Wallet,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -33,21 +50,20 @@ import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
 import Badge from "@/components/ui/badge/Badge";
 import { AppLink } from "@/components/ui/button/AppLink";
-import * as LucideIcons from "lucide-react";
 import { Transaction, transactionStatus, transactionTypes } from "@/lib/models/transaction";
-import { LucideTrendingUp, LucideTrendingDown, Circle, Activity } from "lucide-react";
 import { onConfirmTransaction, onDeleteTransaction } from "@/services/transactions/service";
+import { iconMap } from "@/lib/models/category";
 
 const TypeIcons = {
-  revenue: <LucideTrendingUp className="w-5 h-5" />,
+  revenue: <LucideTrendingUpDown className="w-5 h-5" />,
   expense: <LucideTrendingDown className="w-5 h-5" />,
   none: <Circle className="w-5 h-5" />,
 };
 const AccountTypeIcons = {
-  bank_account: <LucideIcons.Building2Icon className="w-12" />,
-  cash: <LucideIcons.Banknote className="w-12" />,
-  digital_wallet: <LucideIcons.Wallet className="w-12" />,
-  credit_card: <LucideIcons.CreditCard className="w-12" />,
+  bank_account: <Building2Icon className="w-12" />,
+  cash: <Banknote className="w-12" />,
+  digital_wallet: <Wallet className="w-12" />,
+  credit_card: <CreditCard className="w-12" />,
   none: "",
 };
 
@@ -73,11 +89,11 @@ export function TransactionsDataTable({
   const [sorting, setSorting] = React.useState<SortingState>([{ id: "date", desc: true }]);
   const columnsString = () => {
     const columns = [
-      { data: "date", name: "date", searchable: true },
-      { data: "amount", name: "amount", searchable: true },
-      { data: "userName", name: "userName", searchable: true },
-      { data: "accountName", name: "accountName", searchable: true },
-      { data: "categoryName", name: "categoryName", searchable: true },
+      { data: "date", name: "date" },
+      { data: "amount", name: "amount" },
+      { data: "userName", name: "userName" },
+      { data: "accountName", name: "accountName" },
+      { data: "categoryName", name: "categoryName" },
     ];
 
     const params = new URLSearchParams();
@@ -100,28 +116,35 @@ export function TransactionsDataTable({
   });
   const [pageCount, setPageCount] = React.useState(0);
 
-  const sortingString = sorting.map((s) => `${s.id}:${s.desc ? "desc" : "asc"}`).join(",");
-
-  const filterString = columnFilters
-    .map((f: any) => {
-      if (f.value && typeof f.value === "object") {
-        return Object.entries(f.value)
-          .map(([k, v]) => `${f.id}[${k}]=${v}`)
-          .join("&");
-      }
-      return f.value ? `${f.id}=${f.value}` : "";
-    })
-    .filter(Boolean)
-    .join("&");
-
   const extraParams = new URLSearchParams();
   if (userId) extraParams.append("userId", userId);
   if (accountId) extraParams.append("accountId", accountId);
   const extraOptString = extraParams.toString();
 
-  const url = `/transactions?page=${pagination.pageIndex}&size=${
-    pagination.pageSize
-  }&sort=${sortingString}&${filterString}&${extraOptString}&${columnsString()}`;
+  const columnsQuery = React.useMemo(() => columnsString(), []);
+
+  const sortingQuery = React.useMemo(
+    () => sorting.map((s) => `${s.id}:${s.desc ? "desc" : "asc"}`).join(","),
+    [sorting]
+  );
+
+  const filterQuery = React.useMemo(() => {
+    return columnFilters
+      .map((f: any) => {
+        if (f.value && typeof f.value === "object") {
+          return Object.entries(f.value)
+            .map(([k, v]) => `${f.id}[${k}]=${v}`)
+            .join("&");
+        }
+        return f.value ? `${f.id}=${f.value}` : "";
+      })
+      .filter(Boolean)
+      .join("&");
+  }, [columnFilters]);
+
+  const url = React.useMemo(() => {
+    return `/transactions?page=${pagination.pageIndex}&size=${pagination.pageSize}&sort=${sortingQuery}&${filterQuery}&${extraOptString}&${columnsQuery}`;
+  }, [pagination, sortingQuery, filterQuery, extraOptString, columnsQuery]);
 
   const getPageNumbers = () => {
     const totalPages = pageCount;
@@ -159,14 +182,12 @@ export function TransactionsDataTable({
     isLoading,
   } = useSWR(url ? [url, { method: "GET" }] : null, fetcher);
 
-  // Atualiza dados e total de páginas
   React.useEffect(() => {
     if (apiData) {
       setPageCount(Math.ceil(apiData.recordsTotal / pagination.pageSize));
     }
   }, [apiData, pagination.pageSize]);
 
-  // Colunas base (sem ações ainda)
   const columns: ColumnDef<Transaction>[] = React.useMemo(
     () => [
       {
@@ -181,7 +202,7 @@ export function TransactionsDataTable({
         ),
         cell: ({ row }) => {
           const t = row.original;
-          const Icon = LucideIcons[t.categoryIcon ?? "Circle"] as any;
+          const Icon = iconMap[t.categoryIcon ?? "Car"];
           return (
             <div className="flex items-center gap-3">
               <div
@@ -305,7 +326,7 @@ export function TransactionsDataTable({
                     size={"icon-sm"}
                     variant={"ghost"}
                   >
-                    <LucideIcons.CheckCircle2 />
+                    <CheckCircle2 />
                   </Button>
                 )}
                 {transaction.actions?.view && (
@@ -350,7 +371,7 @@ export function TransactionsDataTable({
         },
       },
     ],
-    [enableUser]
+    [enableUser, accountId, mutate, pagination]
   );
 
   // Tabela com paginação manual
@@ -378,13 +399,15 @@ export function TransactionsDataTable({
     },
   });
 
-  // Atualiza colunas da tabela
+  const [search, setSearch] = React.useState("");
+
   React.useEffect(() => {
-    table.setOptions((prev) => ({
-      ...prev,
-      columns,
-    }));
-  }, [table, columns]);
+    const t = setTimeout(() => {
+      table.getColumn("search")?.setFilterValue({ value: search });
+    }, 400);
+
+    return () => clearTimeout(t);
+  }, [search, table]);
 
   return (
     <div className="w-full bg-white rounded-sm border border-gray-50 dark:border-gray-800 dark:bg-white/[0.03]">
@@ -393,13 +416,7 @@ export function TransactionsDataTable({
           <div className="grid grid-cols-12 gap-4">
             {enableSearch && (
               <div className="col-span-12 md:col-span-4">
-                <Input
-                  placeholder="Pesquisar..."
-                  value={(table.getColumn("search")?.getFilterValue() as any)?.value ?? ""}
-                  onChange={(e) =>
-                    table.getColumn("search")?.setFilterValue({ value: e.target.value })
-                  }
-                />
+                <Input placeholder="Pesquisar..." onChange={(e) => setSearch(e.target.value)} />
               </div>
             )}
 
@@ -434,7 +451,6 @@ export function TransactionsDataTable({
                 </DropdownMenu>
               )}
 
-              {/* Type Filter */}
               {enableTypeFilter && (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>

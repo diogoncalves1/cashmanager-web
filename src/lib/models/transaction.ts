@@ -1,6 +1,5 @@
-import { icons } from "lucide-react";
 import { AccountType } from "./account";
-import { Category } from "./category";
+import { Category, IconName } from "./category";
 import { User } from "./user";
 
 export type TransactionType = "revenue" | "expense";
@@ -55,7 +54,7 @@ export interface Transaction {
   currencyCode?: string;
   category?: Category;
   categoryName?: string;
-  categoryIcon?: keyof typeof icons;
+  categoryIcon?: IconName;
   accountTypeTranslated: string;
   accountType: AccountType;
   categoryColor?: string;

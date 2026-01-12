@@ -26,7 +26,6 @@ export function MonthlySummaryChart({ data, account }: MonthlySummaryProps) {
 
   const revenue = data.totalRevenue || 0;
   const expense = data.totalExpense || 0;
-  const profit = revenue - expense;
 
   const series = [revenue, expense];
 

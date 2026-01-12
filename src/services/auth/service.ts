@@ -14,7 +14,8 @@ export async function onLogout(t: (key: string) => string) {
     if (!res.ok) throw new Error(data.message);
     toastRef.close();
     return 1;
-  } catch (err: any) {
+  } catch (err: unknown) {
+    console.error(err);
     return 0;
   }
 }

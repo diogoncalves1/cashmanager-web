@@ -13,7 +13,6 @@ import RichTextEditor from "../input/RichTextEditor";
 import { useTransactionForm } from "@/components/form/transactions/hooks/useTransactionForm";
 import { SwalToast } from "@/components/swal/SwalToast";
 import { TransactionStatus } from "@/lib/models/transaction";
-import Swal from "sweetalert2";
 import LoadingToast from "@/components/swal/LoadingToast";
 
 type Props = { id?: string };
@@ -72,7 +71,7 @@ export function TransactionsForm({ id }: Props) {
               <AccountSelect
                 accountData={accountsData}
                 value={formData.account_id}
-                onChange={(id: any) => setFormData((prev) => ({ ...prev, account_id: id }))}
+                onChange={(id: string) => setFormData((prev) => ({ ...prev, account_id: id }))}
               />
             )}
           </div>
@@ -109,7 +108,7 @@ export function TransactionsForm({ id }: Props) {
         <Label>Date *</Label>
         <TransactionDatePicker
           date={formData.date}
-          onChangeDate={(newDate: any) => setFormData((p) => ({ ...p, date: newDate }))}
+          onChangeDate={(newDate: string) => setFormData((p) => ({ ...p, date: newDate }))}
           dateLimits={dateLimits}
         />
       </div>
@@ -122,7 +121,7 @@ export function TransactionsForm({ id }: Props) {
           <CategorySelect
             categoriesData={categoriesData}
             value={formData.category_id}
-            onChange={(id: any) => setFormData((p) => ({ ...p, category_id: id }))}
+            onChange={(id: string) => setFormData((p) => ({ ...p, category_id: id }))}
           />
         )}
       </div>

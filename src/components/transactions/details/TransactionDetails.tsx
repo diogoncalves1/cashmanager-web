@@ -5,12 +5,11 @@ import { fetcher } from "@/lib/fetcher";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, AlertTriangle, Repeat, Star, Pencil } from "lucide-react";
+import { ArrowLeft, AlertTriangle, Star, Pencil } from "lucide-react";
 import { Transaction } from "@/lib/models/transaction";
 import * as LucideIcons from "lucide-react";
 import { RelationSection } from "./RelationSection";
 import { RelatedTransaction } from "./RelationTransaction";
-import { PatternCard } from "./PatternCard";
 import Badge from "@/components/ui/badge/Badge";
 
 type Tab = "overview" | "relations" | "actions";
@@ -220,15 +219,6 @@ function InfoCard({ title, value }: { title: string; value: string }) {
     <div className="bg-gray-50 rounded-2xl p-6 shadow">
       <p className="text-gray-500">{title}</p>
       <p className="text-lg font-semibold">{value}</p>
-    </div>
-  );
-}
-
-function ContextCard({ icon, text }: { icon: React.ReactNode; text: string }) {
-  return (
-    <div className="bg-gray-50 rounded-2xl p-6 shadow flex items-center gap-4">
-      <div className="text-indigo-600">{icon}</div>
-      <p>{text}</p>
     </div>
   );
 }

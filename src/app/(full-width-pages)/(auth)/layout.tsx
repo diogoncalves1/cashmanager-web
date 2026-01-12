@@ -3,14 +3,9 @@ import ThemeTogglerTwo from "@/components/common/ThemeTogglerTwo";
 
 import { ThemeProvider } from "@/context/ThemeContext";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
-export default function AuthLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative p-6 bg-white z-1 dark:bg-gray-900 sm:p-0">
       <ThemeProvider>
@@ -22,8 +17,7 @@ export default function AuthLayout({
               <GridShape />
               <div className="flex flex-col items-center max-w-xs">
                 <div className="block mb-4">
-                <Image src="/images/logo/logo-long.png" width={200} height={50} alt="Logo" />
-
+                  <Image src="/images/logo/logo-long.png" width={200} height={50} alt="Logo" />
                 </div>
                 <p className="text-center text-gray-400 dark:text-white/60">
                   Cash Manager The Best Financial Manager
