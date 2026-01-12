@@ -22,7 +22,8 @@ export async function getUser(): Promise<User | null> {
     const user = data.data;
 
     return user;
-  } catch (err) {
+  } catch (err: unknown) {
+    console.error(err);
     return null;
   }
 }

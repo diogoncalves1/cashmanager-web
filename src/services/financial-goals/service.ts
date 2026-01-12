@@ -39,8 +39,12 @@ export async function onDeleteFinancialGoal(
         SwalToast({ message: data.message, icon: "success" });
         return 1;
       }
-    } catch (err: any) {
-      SwalToast({ message: err.message, icon: "error" });
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        SwalToast({ message: err.message, icon: "error" });
+      } else {
+        SwalToast({ message: String(err), icon: "error" });
+      }
       return 0;
     }
   }
@@ -75,8 +79,12 @@ export async function onMarkPaidFinancialGoal(id: string, mutate?: any) {
         SwalToast({ message: data.message, icon: "success" });
         return 1;
       }
-    } catch (err: any) {
-      SwalToast({ message: err.message, icon: "error" });
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        SwalToast({ message: err.message, icon: "error" });
+      } else {
+        SwalToast({ message: String(err), icon: "error" });
+      }
       return 0;
     }
   }

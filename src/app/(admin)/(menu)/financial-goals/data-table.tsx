@@ -133,7 +133,7 @@ export function DataTable({
     if (apiData) {
       setPageCount(Math.ceil(apiData.recordsTotal / pagination.pageSize));
     }
-  }, [apiData]);
+  }, [apiData, setPageCount, pagination.pageSize]);
 
   const columns: ColumnDef<FinancialGoal>[] = [
     {
