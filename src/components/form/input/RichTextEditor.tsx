@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { Bold, Italic, List, ListOrdered, Heading1 } from "lucide-react";
@@ -19,7 +20,7 @@ interface RichTextEditorProps {
 export default function RichTextEditor({ content = "", onChange }: RichTextEditorProps) {
   const editor = useEditor({
     extensions,
-    content,
+    content: "", // ⚠️ deixa vazio aqui
     immediatelyRender: false,
     editorProps: {
       attributes: {
@@ -32,60 +33,78 @@ export default function RichTextEditor({ content = "", onChange }: RichTextEdito
     },
   });
 
+  // 🔥 SINCRONIZAÇÃO DO CONTEÚDO
+  useEffect(() => {
+    if (!editor) return;
+
+    const current = editor.getHTML();
+    if (content && content !== current) {
+      editor.commands.setContent(content);
+    }
+  }, [content, editor]);
+
   if (!editor) return null;
 
   return (
     <div className="border rounded-md overflow-hidden">
-      {/* Toolbar simples */}
       <div className="bg-gray-50 border-b p-2 flex gap-1 flex-wrap">
-        <button
-          type="button"
+        <ToolbarButton
           onClick={() => editor.chain().focus().toggleBold().run()}
-          className={`p-1.5 rounded ${
-            editor.isActive("bold") ? "bg-gray-200" : "hover:bg-gray-200"
-          }`}
+          active={editor.isActive("bold")}
         >
           <Bold size={18} />
-        </button>
-        <button
-          type="button"
+        </ToolbarButton>
+
+        <ToolbarButton
           onClick={() => editor.chain().focus().toggleItalic().run()}
-          className={`p-1.5 rounded ${
-            editor.isActive("italic") ? "bg-gray-200" : "hover:bg-gray-200"
-          }`}
+          active={editor.isActive("italic")}
         >
           <Italic size={18} />
-        </button>
-        <button
-          type="button"
+        </ToolbarButton>
+
+        <ToolbarButton
           onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-          className={`p-1.5 rounded ${
-            editor.isActive("heading", { level: 1 }) ? "bg-gray-200" : "hover:bg-gray-200"
-          }`}
+          active={editor.isActive("heading", { level: 1 })}
         >
           <Heading1 size={18} />
-        </button>
-        <button
-          type="button"
+        </ToolbarButton>
+
+        <ToolbarButton
           onClick={() => editor.chain().focus().toggleBulletList().run()}
-          className={`p-1.5 rounded ${
-            editor.isActive("bulletList") ? "bg-gray-200" : "hover:bg-gray-200"
-          }`}
+          active={editor.isActive("bulletList")}
         >
           <List size={18} />
-        </button>
-        <button
-          type="button"
+        </ToolbarButton>
+
+        <ToolbarButton
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
-          className={`p-1.5 rounded ${
-            editor.isActive("orderedList") ? "bg-gray-200" : "hover:bg-gray-200"
-          }`}
+          active={editor.isActive("orderedList")}
         >
           <ListOrdered size={18} />
-        </button>
+        </ToolbarButton>
       </div>
 
       <EditorContent editor={editor} />
     </div>
+  );
+}
+
+function ToolbarButton({
+  children,
+  onClick,
+  active,
+}: {
+  children: React.ReactNode;
+  onClick: () => void;
+  active: boolean;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`p-1.5 rounded ${active ? "bg-gray-200" : "hover:bg-gray-200"}`}
+    >
+      {children}
+    </button>
   );
 }

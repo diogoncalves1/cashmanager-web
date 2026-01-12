@@ -24,6 +24,8 @@
     "EDIT": "Edit",
     "ADD": "Add",
 
+    "ACTIVE": "Active",
+
     "ALL_TRANSACTIONS": "All Transactions",
     "ADD_TRANSACTION": "Add Transaction",
     "DISABLE_ACCOUNT": "Disable Account",
@@ -71,6 +73,7 @@
 
   "FINANCIAL_GOALS": {
     "ADD": "Add",
+    "EDIT": "Edit",
 
     "FINANCIAL_GOAL": "FINANCIAL GOAL",
     "FINANCIAL_GOALS": "Financial Goals",

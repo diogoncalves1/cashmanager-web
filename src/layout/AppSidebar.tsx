@@ -4,14 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useSidebar } from "../context/SidebarContext";
-import { BoxCubeIcon, HorizontaLDots } from "../icons/index";
+import { HorizontaLDots } from "../icons/index";
 import { useRouter } from "next/navigation";
 import SidebarWidget from "./SidebarWidget";
 import {
-  PieChartIcon,
   ChevronRight,
   Wallet,
-  CalendarIcon,
   ArrowLeftRight,
   Target,
   TrendingDown,

@@ -23,6 +23,8 @@
     "EDIT": "Editar",
     "ADD": "Adicionar",
 
+    "ACTIVE": "Ativa",
+
     "ALL_TRANSACTIONS": "Todas as Transações",
     "ADD_TRANSACTION": "Nova Transação",
     "DISABLE_ACCOUNT": "Desativar Conta",
@@ -70,6 +72,7 @@
 
   "FINANCIAL_GOALS": {
     "ADD": "Adicionar",
+    "EDIT": "Editar",
 
     "FINANCIAL_GOAL": "META FINANCEIRA",
     "FINANCIAL_GOALS": "Metas Financeiras",
