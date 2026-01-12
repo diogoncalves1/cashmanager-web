@@ -11,8 +11,8 @@ type AccountOverviewProps = {
 };
 
 function AccountOverview({ account, recentTransaction }: AccountOverviewProps) {
-  if (!account) return <></>;
   const t = useTranslations("ACCOUNTS");
+  if (!account) return <></>;
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

@@ -16,8 +16,8 @@ type AccountMonthlySummaryProps = {
 };
 
 function AccountMonthlySummary({ data, account }: AccountMonthlySummaryProps) {
-  if (!account) return <></>;
   const t = useTranslations("ACCOUNTS");
+  if (!account) return <></>;
 
   const exportToExcel = () => {
     if (!data?.length) return;

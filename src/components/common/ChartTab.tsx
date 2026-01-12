@@ -125,8 +125,14 @@ const options: ApexOptions = {
   },
 };
 
-function ChartTab({ data, onChangeSeries, onChangeOptions, onChangeType, height }: ChartTabProps) {
-  const [chartHeigth, setChartHeight] = useState(310);
+function ChartTab({
+  data,
+  onChangeSeries,
+  onChangeOptions,
+  onChangeType,
+  height = 0,
+}: ChartTabProps) {
+  const [chartHeight, setChartHeight] = useState(height);
   useEffect(() => {
     function handleResize() {
       if (window.innerWidth > 1200) setChartHeight(310);
@@ -154,7 +160,7 @@ function ChartTab({ data, onChangeSeries, onChangeOptions, onChangeType, height 
           const rev = { name: "Revenues", data: Array(currentMonth + 1).fill(0) };
           const exp = { name: "Expenses", data: Array(currentMonth + 1).fill(0) };
 
-          data.data.charts.monthly.forEach((item: any) => {
+          data?.data.charts.monthly.forEach((item: any) => {
             const monthIndex = parseInt(item.month.replace("2025-", "")) - 1;
 
             rev.data[monthIndex] = parseFloat(item.revenues);
@@ -206,9 +212,9 @@ function ChartTab({ data, onChangeSeries, onChangeOptions, onChangeType, height 
           const rev = { name: "Revenues", data: Array(currentQuarter).fill(0) };
           const exp = { name: "Expenses", data: Array(currentQuarter).fill(0) };
 
-          console.log(data.data.charts);
+          console.log(data?.data.charts);
 
-          data.data.charts.quarterly?.forEach((item: QuarterlyData) => {
+          data?.data.charts.quarterly?.forEach((item: QuarterlyData) => {
             console.log(item);
             const quarterIndex = item.quarter - 1;
 
@@ -226,7 +232,7 @@ function ChartTab({ data, onChangeSeries, onChangeOptions, onChangeType, height 
               plotOptions: {
                 bar: {
                   horizontal: false, // vertical (colunas)
-                  columnWidth: height < 380 ? "40%" : "20%", // largura das colunas
+                  columnWidth: chartHeight < 380 ? "40%" : "20%", // largura das colunas
                   borderRadius: 4, // cantos arredondados
                 },
               },
@@ -251,10 +257,10 @@ function ChartTab({ data, onChangeSeries, onChangeOptions, onChangeType, height 
           const rev = { name: "Revenues", data: Array(1).fill(0) };
           const exp = { name: "Expenses", data: Array(1).fill(0) };
 
-          console.log(data.data.charts);
+          console.log(data?.data.charts);
           const years: string[] = [];
 
-          data.data.charts.annualy?.forEach((item: AnnualyData, index: number) => {
+          data?.data.charts.annualy?.forEach((item: AnnualyData, index: number) => {
             years.push(item.year);
             rev.data[index] = item.revenues;
             exp.data[index] = item.expenses;
@@ -270,7 +276,7 @@ function ChartTab({ data, onChangeSeries, onChangeOptions, onChangeType, height 
               plotOptions: {
                 bar: {
                   horizontal: false,
-                  columnWidth: height < 380 ? "15%" : "5%",
+                  columnWidth: chartHeight < 380 ? "15%" : "5%",
                   borderRadius: 4,
                 },
               },

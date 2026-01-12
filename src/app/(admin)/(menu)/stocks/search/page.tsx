@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import React from "react";
 
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
-import AccountsForm from "@/components/form/accounts/AccountsForm";
 import StocksSearch from "@/components/stocks/StockSearch";
 
 export const metadata: Metadata = {

@@ -5,7 +5,6 @@ import { MoreDotIcon } from "@/icons";
 import { DropdownItem } from "../ui/dropdown/DropdownItem";
 import { useState } from "react";
 import { Dropdown } from "../ui/dropdown/Dropdown";
-import LineChartLoading from "../charts/line/LineChartLoading";
 import MonthlyBalanceChartLoading from "./MonthlyBalanceChartLoading";
 
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
@@ -20,6 +19,8 @@ interface MonthlySalesChartProps {
 }
 
 export default function MonthlySalesChart({ userData }: MonthlySalesChartProps) {
+  const [isOpen, setIsOpen] = useState(false);
+
   if (!userData?.length) return <MonthlyBalanceChartLoading />;
 
   const options: ApexOptions = {
@@ -92,7 +93,6 @@ export default function MonthlySalesChart({ userData }: MonthlySalesChartProps) 
       data: userData.map((item) => item.balance),
     },
   ];
-  const [isOpen, setIsOpen] = useState(false);
 
   function toggleDropdown() {
     setIsOpen(!isOpen);

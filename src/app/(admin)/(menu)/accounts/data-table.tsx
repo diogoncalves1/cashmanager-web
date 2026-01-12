@@ -38,6 +38,7 @@ import { onDeleteAccount } from "@/services/accounts/service";
 import { Account, AccountType, accountTypes } from "@/lib/models/account";
 import { useTranslations } from "next-intl";
 import { TypeIcons } from "@/components/accouts/TypeIcons";
+import { UserCircle } from "@/components/ui/avatar/UserCircle";
 
 export function DataTable() {
   const t = useTranslations("ACCOUNTS");
@@ -45,7 +46,7 @@ export function DataTable() {
   const accountStatus = [
     {
       value: "active",
-      label: "Active",
+      label: t("ACTIVE"),
     },
     {
       value: "inactive",
@@ -143,44 +144,7 @@ export function DataTable() {
         return (
           <div className="flex -space-x-2">
             {account.users?.map((user, index) => (
-              <div
-                key={index}
-                className="
-        relative group
-        size-6
-        rounded-full bg-blue-100
-        flex items-center justify-center
-        text-xs font-medium text-blue-700
-        cursor-default
-        transition-all duration-200
-        hover:z-20 hover:scale-110
-      "
-              >
-                {user.name.charAt(0)}
-
-                {/* Tooltip */}
-                <div
-                  className="
-          pointer-events-none
-          absolute bottom-full left-1/2
-          z-30
-          mb-2
-          w-max
-          -translate-x-1/2
-          rounded-md bg-gray-900
-          px-2 py-1
-          text-xs text-white
-          opacity-0 scale-95
-          transition-all duration-200 ease-out
-          group-hover:opacity-100 group-hover:scale-100
-        "
-                >
-                  {user.name}
-
-                  {/* Arrow */}
-                  <div className="absolute left-1/2 top-full h-1.5 w-1.5 -translate-x-1/2 rotate-45 bg-gray-900" />
-                </div>
-              </div>
+              <UserCircle key={index} userName={user.name} />
             ))}
           </div>
         );
@@ -255,12 +219,7 @@ export function DataTable() {
       rowSelection,
     },
   });
-  const {
-    data: apiData,
-    error,
-    isLoading,
-    mutate,
-  } = useSWR(
+  const { data: apiData, mutate } = useSWR(
     [
       `/accounts?page=${pagination.pageIndex}&size=${pagination.pageSize}&sort=${sortingString}&${filterString}`,
       { method: "GET" },

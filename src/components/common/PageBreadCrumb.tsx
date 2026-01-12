@@ -1,7 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import DashboardMetrics from "../dashboard/DashboardMetrics";
-import { LayoutDashboard } from "lucide-react";
 
 interface Breadcrumb {
   title: string;

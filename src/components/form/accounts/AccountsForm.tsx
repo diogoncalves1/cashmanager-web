@@ -36,11 +36,10 @@ export default function AccountsForm({ id }: AccountsFormProps) {
     isLoading: isLoadingAccount,
   } = useSWR(id ? [`/accounts/${id}`, { method: "GET" }] : null, fetcher);
 
-  const {
-    data: currenciesData,
-    error: currenciesError,
-    isLoading: isLoadingCurrencies,
-  } = useSWR([`/currencies`, { method: "GET" }], fetcher);
+  const { data: currenciesData, isLoading: isLoadingCurrencies } = useSWR(
+    [`/currencies`, { method: "GET" }],
+    fetcher
+  );
 
   const [formData, setFormData] = useState<AccountFormData>({
     name: "",
@@ -86,9 +85,16 @@ export default function AccountsForm({ id }: AccountsFormProps) {
       if (!response.ok) throw new Error(data.message);
 
       return SwalToast({ message: data.message, icon: "success" });
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(err);
-      return SwalToast({ message: err.message ?? "Erro ao tentar atualizar conta", icon: "error" });
+      if (err instanceof Error) {
+        return SwalToast({
+          message: err.message ?? "Erro ao tentar atualizar conta",
+          icon: "error",
+        });
+      } else {
+        return SwalToast({ message: "Erro ao tentar atualizar conta", icon: "error" });
+      }
     } finally {
       setIsLoadingHandle(false);
     }

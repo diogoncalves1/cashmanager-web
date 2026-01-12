@@ -10,7 +10,6 @@ import { ArrowLeftRight, Wallet } from "lucide-react";
 import AppSwiper from "./AppSwiper";
 import SwiperLoading from "./SwiperLoading";
 import { Currency } from "@/lib/models/currency";
-import { Router } from "next/router";
 import { useRouter } from "next/navigation";
 
 interface Portfolio {

@@ -27,10 +27,7 @@ export type KpiInterface = {
 };
 
 export default function DashboardMetrics() {
-  const { data, error, isLoading } = useSWR(
-    ["/dashboard-overview?min_date=2025-01-01", { method: "GET" }],
-    fetcher
-  );
+  const { data } = useSWR(["/dashboard-overview?min_date=2025-01-01", { method: "GET" }], fetcher);
   const [revenues, setRevenues] = useState({ name: "Revenues", data: [0] });
   const [expenses, setExpenses] = useState({ name: "Expenses", data: [0] });
   const [userData, setUserData] = useState<{ balance: number; monthYear: string }[]>();

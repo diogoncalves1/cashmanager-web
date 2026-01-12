@@ -1,11 +1,10 @@
 "use client";
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ApexOptions } from "apexcharts";
 import ChartTab from "../common/ChartTab";
 import dynamic from "next/dynamic";
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
-import LienChartLoading from "../charts/line/LineChartLoading";
 import StatisticsChartLoading from "./StatisticsChartLoading";
 
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
@@ -48,7 +47,7 @@ export default function StatisticsChart() {
     },
   };
 
-  const [chartKey, setChartKey] = useState(0);
+  const chartKey = 0;
   const [typeKey, setTypeKey] = useState<"bar" | "area">("area");
 
   const { data, error, isLoading } = useSWR(
