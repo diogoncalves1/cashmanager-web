@@ -39,7 +39,9 @@ export type FinancialGoalActions = {
   view: boolean;
   edit: boolean;
   destroy: boolean;
+  manage: boolean;
   markCompleted: boolean;
+  createTransactions: boolean;
 };
 
 export const prioritiesColors: Record<FinancialGoalPriority, BadgeColor> = {
@@ -57,20 +59,44 @@ export interface FinancialGoal {
   id: string;
   name: string;
   currencyId: string;
+  currencyCode: string;
   currency?: Currency;
+
+  percentageCompleted: number;
+
   totalAmount: number;
   totalAmountFormated: string;
+  totalAmountFormatedWithoutSymbol: string;
+
   contributedAmount: number;
   contributedAmountFormated: string;
+  contributedAmountFormatedWithoutSymbol: string;
+
+  missingAmount: number;
+  missingAmountFormated: string;
+
+  averageTransactionValue?: number;
+  averageTransactionValueFormated?: string;
+
+  totalContributions: number;
+  totalContributionsFormated: number;
+
+  totalWithdrawals: number;
+  totalWithdrawalsFormated: number;
+
   startDate: string;
   dueDate: string;
   status: FinancialGoalStatus;
+  totalTransactions?: number;
   statusTranslated: string;
   description?: string;
   completedAt?: string;
-  priority?: FinancialGoalPriority;
+  priority: FinancialGoalPriority;
   priorityTranslated?: string;
-  canceled_at?: string;
+  canceledAt?: string;
+  createdAt: string;
+  updatedAt: string;
+
   users?: User[];
   actions?: FinancialGoalActions;
 }

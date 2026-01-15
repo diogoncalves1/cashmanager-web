@@ -64,9 +64,7 @@ type DataTableProps = {
   enableSearch?: boolean;
   enableStatusFilter?: boolean;
   enablePriorityFilter?: boolean;
-  accountId?: string;
   enableUser?: boolean;
-  userId?: string;
 };
 
 export function DataTable({
@@ -131,7 +129,7 @@ export function DataTable({
 
   React.useEffect(() => {
     if (apiData) {
-      setPageCount(Math.ceil(apiData.recordsTotal / pagination.pageSize));
+      setPageCount(apiData.recordsTotal);
     }
   }, [apiData, setPageCount, pagination.pageSize]);
 
@@ -323,7 +321,7 @@ export function DataTable({
   const table = useReactTable({
     data: apiData?.data ?? [],
     columns: columns,
-    pageCount: pageCount,
+    pageCount: Math.ceil(pageCount / pagination.pageSize),
     manualPagination: true,
     manualSorting: true,
     manualFiltering: true,

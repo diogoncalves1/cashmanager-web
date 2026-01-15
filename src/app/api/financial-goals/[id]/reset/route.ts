@@ -1,3 +1,4 @@
+import { baseUrl } from "@/app/api/config";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest, { params }: { params: { id: string } }) {
@@ -6,7 +7,7 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
 
     const id = params.id;
 
-    const urlApi = `${process.env.API_BACKEND_URL}financial-goals/${id}/complete`;
+    const urlApi = `${baseUrl}financial-goals/${id}/reset`;
 
     const res = await fetch(urlApi, {
       headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
