@@ -73,9 +73,16 @@
   "FINANCIAL_GOALS": {
     "ADD": "Adicionar",
     "EDIT": "Editar",
+    "DELETE": "Apagar Meta Financeira",
+    "DETAILS": "Detalhes",
 
     "FINANCIAL_GOAL": "META FINANCEIRA",
     "FINANCIAL_GOALS": "Metas Financeiras",
+
+    "TRANSACTIONS": "Transações",
+    "ADD_TRANSACTION": "Nova Transação",
+
+    "ALL_TRANSACTIONS": "Todas as Transações",
 
     "COMPLETED": "Completa",
     "IN_PROGRESS": "Em Progresso",
@@ -90,6 +97,7 @@
     "CONTRIBUTED_AMOUNT": "Valor Contribuído",
     "PRIORITY": "Prioridade",
     "USERS": "Utilizadores",
+    "CURRENCY": "Moeda",
     "DUE_DATE": "Data de Fim",
     "START_DATE": "Data de Início",
     "STATUS": "Estado",
@@ -105,6 +113,100 @@
     "FIRST": "Primeira",
     "LAST": "Última",
     "NO_RESULTS": "Sem Resultados",
+    "LOADING": "Carregando",
+
+    "CANCELED_FINANCIAL_GOAL_TITLE": "A cancelar...",
+    "CANCELED_FINANCIAL_GOAL_MESSAGE": "A cancelar meta financeira ...",
+    "CANCEL_FINANCIAL_GOAL_MESSAGE": "Cancelar meta financeira?",
+    "YES_CANCEL": "Sim, cancelar!",
+    "CANCEL": "Cancelar",
+
+    "RESET_FINANCIAL_GOAL_MESSAGE": "Resetar meta financeira?",
+    "RESETED_FINANCIAL_GOAL_TITLE": "A resetar...",
+    "RESETED_FINANCIAL_GOAL_MESSAGE": "A resetar a meta financeira ...",
+    "YES_RESET": "Sim, resetar!",
+
+    "OTHERS_INFORMATION": "Outras Informações",
+    "CREATED_AT": "Criada em",
+
+    "RECENT_TRANSACTIONS": "Transações Recentes",
+    "FINANCIAL_GOAL_DETAILS": "Detalhes da Meta Financeira",
+    "WITHDRAWALS": "Retiradas",
+    "CONTRIBUTIONS": "Contribuições",
+
+    "OVERVIEW": "Visão Geral",
+    "OTHERS": "Outros",
+    "DESCRIPTION": "Descrição",
+    "RESET": "Resetar",
+    "LAST_UPDATE": "Última atualização",
+    "COMPLETE": "Completar",
+    "MISSING_AMOUNT": "Valor em Falta",
+    "COLLECTED_AMOUNT": "Valor Arrecadado",
+    "GOAL_PROGRESS": "Progresso da Meta",
+    "GOAL_COMPLETED": "Meta Conquistada!",
+    "GOAL_COMPLETED_MESSAGE": "Parabéns! Objetivo alcançado com sucesso",
+
+    "MONTHLY_SUMMARY": "Resumo Mensal"
+  },
+
+  "FINANCIAL_GOAL_TRANSACTIONS": {
+    "ADD": "Adicionar",
+    "EDIT": "Editar",
+    "DETAILS": "Detalhes",
+
+    "FINANCIAL_GOAL": "META FINANCEIRA",
+    "FINANCIAL_GOALS": "Metas Financeiras",
+
+    "TRANSACTIONS": "Transações",
+    "ADD_TRANSACTION": "Nova Transação",
+
+    "TYPE": "Tipo",
+    "ALL": "Todos",
+
+    "ALL_TRANSACTIONS": "Todas as Transações",
+
+    "COMPLETED": "Completa",
+    "PENDING": "Pendente",
+
+    "CONTRIBUTION": "Contribuíção",
+    "WITHDRAWAL": "Retirada",
+
+    "NAME": "Nome",
+    "TOTAL_AMOUNT": "Valor Total",
+    "CONTRIBUTED_AMOUNT": "Valor Contribuído",
+    "PRIORITY": "Prioridade",
+    "USERS": "Utilizadores",
+    "CURRENCY": "Moeda",
+    "DUE_DATE": "Data de Fim",
+    "START_DATE": "Data de Início",
+    "STATUS": "Estado",
+    "ACTIONS": "Ações",
+
+    "SEARCH": "Procura",
+    "FILTER_BY": "Filtra por",
+    "SHOWING": "A mostrar",
+    "OF": "de",
+    "THIS": "transações",
+    "NEXT": "Próximo",
+    "PREVIOUS": "Anterior",
+    "FIRST": "Primeira",
+    "LAST": "Última",
+    "NO_RESULTS": "Sem Resultados",
     "LOADING": "Carregando"
+  },
+
+  "MONTHS": {
+    "JAN": "Jan",
+    "FEB": "Fev",
+    "MAR": "Mar",
+    "APR": "Abr",
+    "MAY": "Mai",
+    "JUN": "Jun",
+    "JUL": "Jul",
+    "AUG": "Ago",
+    "SEP": "Set",
+    "OCT": "Out",
+    "NOV": "Nov",
+    "DEC": "Dez"
   }
 }

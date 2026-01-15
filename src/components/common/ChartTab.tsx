@@ -1,4 +1,6 @@
+import { Currency } from "@/lib/models/currency";
 import { ApexOptions } from "apexcharts";
+import { useTranslations } from "next-intl";
 import React, { useEffect, useState } from "react";
 
 type MonthlyData = {
@@ -8,7 +10,7 @@ type MonthlyData = {
 };
 
 type QuarterlyData = {
-  quarter: number;
+  quarter: string;
   revenues: number;
   expenses: number;
 };
@@ -38,11 +40,11 @@ interface ChartTabProps {
   data?: ChartDataType;
   onChangeSeries?: (series: ChartSeries[]) => void;
   onChangeOptions?: (prev: ApexOptions) => void;
-  onChangeType?: (type: "bar" | "area") => void;
+  currency?: Currency;
   height?: number;
 }
 
-const columnChartOptions: ApexOptions = {
+const options: ApexOptions = {
   chart: {
     type: "bar", // gráfico de colunas
     height: 310,
@@ -58,24 +60,30 @@ const columnChartOptions: ApexOptions = {
   },
   colors: ["#12b76a", "#f04438"], // cores das colunas
   dataLabels: {
-    enabled: false, // desabilita valores acima das colunas
+    enabled: false,
   },
   stroke: {
     show: true,
     width: 2,
-    colors: ["#12b76a", "#f04438"], // sem borda visível
+    colors: ["#12b76a", "#f04438"],
   },
   xaxis: {
     type: "category",
     categories: [],
     axisBorder: { show: false },
     axisTicks: { show: false },
-    tooltip: { enabled: false },
+    tooltip: {
+      enabled: true,
+    },
   },
   yaxis: {
     show: false,
   },
   grid: {
+    padding: {
+      left: 10,
+      right: 10,
+    },
     xaxis: { lines: { show: false } },
     yaxis: { lines: { show: true } },
   },
@@ -90,49 +98,9 @@ const columnChartOptions: ApexOptions = {
   },
 };
 
-const options: ApexOptions = {
-  legend: { show: false, position: "top", horizontalAlign: "left" },
-  colors: ["#12b76a", "#f04438"],
-  chart: { fontFamily: "Outfit, sans-serif", height: 310, type: "bar", toolbar: { show: false } },
-  stroke: { curve: "smooth", width: [2, 2] },
-  fill: { type: "gradient", gradient: { opacityFrom: 0.55, opacityTo: 0 } },
-  markers: { size: 0, strokeColors: "#fff", strokeWidth: 2, hover: { size: 6 } },
-  grid: { xaxis: { lines: { show: false } }, yaxis: { lines: { show: true } } },
-  dataLabels: { enabled: false },
-  tooltip: { enabled: true, x: { format: "dd MMM yyyy" } },
-  xaxis: {
-    type: "category",
-    categories: [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ],
-    axisBorder: { show: false },
-    axisTicks: { show: false },
-    tooltip: { enabled: false },
-  },
-  yaxis: {
-    show: false,
-  },
-};
-
-function ChartTab({
-  data,
-  onChangeSeries,
-  onChangeOptions,
-  onChangeType,
-  height = 0,
-}: ChartTabProps) {
+function ChartTab({ data, onChangeSeries, onChangeOptions, height = 0, currency }: ChartTabProps) {
   const [chartHeight, setChartHeight] = useState(height);
+  const t = useTranslations("MONTHS");
   useEffect(() => {
     function handleResize() {
       if (window.innerWidth > 1200) setChartHeight(310);
@@ -155,45 +123,65 @@ function ChartTab({
     <div className="flex items-center gap-0.5 rounded-lg bg-gray-100 p-0.5 dark:bg-gray-900">
       <button
         onClick={function () {
-          const currentMonth = new Date().getUTCMonth();
+          const rev = { name: "Revenues", data: [] as number[] };
+          const exp = { name: "Expenses", data: [] as number[] };
 
-          const rev = { name: "Revenues", data: Array(currentMonth + 1).fill(0) };
-          const exp = { name: "Expenses", data: Array(currentMonth + 1).fill(0) };
+          const MONTHS: { [key: number]: string } = {
+            0: t("JAN"),
+            1: t("FEB"),
+            2: t("MAR"),
+            3: t("APR"),
+            4: t("MAY"),
+            5: t("JUN"),
+            6: t("JUL"),
+            7: t("AUG"),
+            8: t("SEP"),
+            9: t("OCT"),
+            10: t("NOV"),
+            11: t("DEC"),
+          };
+
+          const months: string[] = [];
 
           data?.data.charts.monthly.forEach((item: any) => {
-            const monthIndex = parseInt(item.month.replace("2025-", "")) - 1;
+            console.log(item.month);
+            months.push(
+              MONTHS[parseInt(String(item.month).split("-")[0]) - 1] +
+                " " +
+                String(item.month).split(" ")[1]
+            );
 
-            rev.data[monthIndex] = parseFloat(item.revenues);
-            exp.data[monthIndex] = parseFloat(item.expenses);
+            console.log(months);
+
+            rev.data.push(parseFloat(item.revenues));
+            exp.data.push(parseFloat(item.expenses));
           });
+
           const series = [rev, exp];
 
           setSelected("monthly");
-          onChangeSeries([rev, exp]);
-          onChangeType("area");
+          onChangeSeries(series);
 
           onChangeOptions(() => {
             return {
               ...options,
               xaxis: {
                 type: "category",
-                categories: [
-                  "Jan",
-                  "Feb",
-                  "Mar",
-                  "Apr",
-                  "May",
-                  "Jun",
-                  "Jul",
-                  "Aug",
-                  "Sep",
-                  "Oct",
-                  "Nov",
-                  "Dec",
-                ],
+                categories: months,
                 axisBorder: { show: false },
                 axisTicks: { show: false },
-                tooltip: { enabled: false },
+              },
+              tooltip: {
+                enabled: true,
+                shared: true,
+                intersect: false,
+                y: {
+                  formatter: (value: number) =>
+                    new Intl.NumberFormat("pt-BR", {
+                      style: "currency",
+                      currency: currency?.code,
+                    }).format(value),
+                },
               },
             };
           });
@@ -206,29 +194,29 @@ function ChartTab({
       </button>
       <button
         onClick={function () {
-          const currentMonth = new Date().getUTCMonth();
-          const currentQuarter = Math.floor(currentMonth / 3) + 1;
-
-          const rev = { name: "Revenues", data: Array(currentQuarter).fill(0) };
-          const exp = { name: "Expenses", data: Array(currentQuarter).fill(0) };
+          const rev = { name: "Revenues", data: [] as number[] };
+          const exp = { name: "Expenses", data: [] as number[] };
 
           console.log(data?.data.charts);
 
+          const quartsers: string[] = [];
+
           data?.data.charts.quarterly?.forEach((item: QuarterlyData) => {
             console.log(item);
-            const quarterIndex = item.quarter - 1;
+            quartsers.push(item.quarter);
 
-            rev.data[quarterIndex] = item.revenues;
-            exp.data[quarterIndex] = item.expenses;
+            rev.data.push(item.revenues);
+            exp.data.push(item.expenses);
+
+            console.log(rev, exp);
           });
 
           setSelected("quarterly");
           onChangeSeries([rev, exp]);
-          onChangeType("bar");
 
           onChangeOptions(() => {
             return {
-              ...columnChartOptions,
+              ...options,
               plotOptions: {
                 bar: {
                   horizontal: false, // vertical (colunas)
@@ -238,10 +226,21 @@ function ChartTab({
               },
               xaxis: {
                 type: "category",
-                categories: ["Q1", "Q2", "Q3", "Q4"],
+                categories: quartsers,
                 axisBorder: { show: false },
                 axisTicks: { show: false },
-                tooltip: { enabled: false },
+              },
+              tooltip: {
+                enabled: true,
+                shared: true,
+                intersect: false,
+                y: {
+                  formatter: (value: number) =>
+                    new Intl.NumberFormat("pt-BR", {
+                      style: "currency",
+                      currency: currency?.code,
+                    }).format(value),
+                },
               },
             };
           });
@@ -257,7 +256,6 @@ function ChartTab({
           const rev = { name: "Revenues", data: Array(1).fill(0) };
           const exp = { name: "Expenses", data: Array(1).fill(0) };
 
-          console.log(data?.data.charts);
           const years: string[] = [];
 
           data?.data.charts.annualy?.forEach((item: AnnualyData, index: number) => {
@@ -267,12 +265,11 @@ function ChartTab({
           });
 
           setSelected("annualy");
-          onChangeType("bar");
           onChangeSeries([rev, exp]);
 
           onChangeOptions(() => {
             return {
-              ...columnChartOptions,
+              ...options,
               plotOptions: {
                 bar: {
                   horizontal: false,
@@ -285,7 +282,18 @@ function ChartTab({
                 categories: years,
                 axisBorder: { show: false },
                 axisTicks: { show: false },
-                tooltip: { enabled: false },
+              },
+              tooltip: {
+                enabled: true,
+                shared: true,
+                intersect: false,
+                y: {
+                  formatter: (value: number) =>
+                    new Intl.NumberFormat("pt-BR", {
+                      style: "currency",
+                      currency: currency.code,
+                    }).format(value),
+                },
               },
             };
           });

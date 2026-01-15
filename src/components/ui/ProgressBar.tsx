@@ -1,26 +1,28 @@
 import React from "react";
 
 interface ProgressBarProps {
-  value: number; // valor entre 0 e 1
-  height?: string; // opcional, altura da barra
-  color?: string; // cor da barra
-  className?: string; // classes extras
+  progress: number;
+  isCompleted: boolean;
 }
 
-const ProgressBar: React.FC<ProgressBarProps> = ({
-  value,
-  height = "h-3",
-  color = "bg-green-500",
-  className = "",
-}) => {
-  const clampedValue = Math.max(0, Math.min(1, value)); // garante que fique entre 0 e 1
-
+const ProgressBar: React.FC<ProgressBarProps> = ({ progress, isCompleted }) => {
   return (
-    <div className={`w-full bg-gray-200 rounded-full ${height} ${className}`}>
-      <div
-        className={`rounded-full ${color} transition-all duration-300`}
-        style={{ width: `${clampedValue * 100}%` }}
-      />
+    <div className="mb-8 relative z-10">
+      <div className="w-full h-5 bg-gray-100 rounded-full overflow-hidden shadow-inner">
+        <div
+          className={`h-full rounded-full transition-all duration-1000 ease-out ${
+            isCompleted
+              ? "bg-gradient-to-r from-emerald-500 via-emerald-400 to-emerald-500"
+              : "bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-600"
+          }`}
+          style={{
+            width: `${progress}%`,
+            boxShadow: isCompleted
+              ? "0 0 20px 2px rgba(16, 185, 129, 0.4)"
+              : "0 0 15px 1px rgba(59, 130, 246, 0.35)",
+          }}
+        />
+      </div>
     </div>
   );
 };

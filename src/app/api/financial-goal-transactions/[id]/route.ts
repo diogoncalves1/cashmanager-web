@@ -1,4 +1,6 @@
+// /app/api/accounts/route.ts
 import { NextRequest, NextResponse } from "next/server";
+import { baseUrl } from "../../config";
 
 export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
   try {
@@ -6,7 +8,7 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
 
     const id = params.id;
 
-    const urlApi = `${process.env.API_BACKEND_URL}financial-goals/${id}`;
+    const urlApi = `${baseUrl}financial-goal-transactions/${id}`;
 
     const res = await fetch(urlApi, {
       headers: { Authorization: `Bearer ${token}` },
@@ -29,7 +31,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
 
     const body = await req.json();
 
-    const urlApi = `${process.env.API_BACKEND_URL}financial-goals/${id}`;
+    const urlApi = `${baseUrl}financial-goal-transactions/${id}`;
 
     const res = await fetch(urlApi, {
       headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
@@ -54,7 +56,7 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
 
     if (!id) throw new Error("Id invalido");
 
-    const urlApi = `${process.env.API_BACKEND_URL}financial-goals/${id}`;
+    const urlApi = `${baseUrl}financial-goal-transactions/${id}`;
     const res = await fetch(urlApi, {
       headers: { Authorization: `Bearer ${token}` },
       method: "DELETE",

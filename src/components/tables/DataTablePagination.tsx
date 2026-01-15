@@ -9,7 +9,9 @@ type Props = {
 
 export function DataTablePagination({ table, pageCount, pagination, t }: Props) {
   const getPageNumbers = () => {
-    const totalPages = pageCount;
+    const totalPages = Math.ceil(pageCount / pagination.pageSize);
+
+    console.log(totalPages);
     const current = pagination.pageIndex + 1;
     const delta = 2;
 

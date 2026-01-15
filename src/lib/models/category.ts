@@ -1,4 +1,13 @@
-import { icons, TrendingDown, TrendingUp, Car, Utensils, Wallet, ShoppingCart } from "lucide-react";
+import {
+  icons,
+  TrendingDown,
+  TrendingUp,
+  Car,
+  Utensils,
+  Wallet,
+  ShoppingCart,
+  Banknote,
+} from "lucide-react";
 
 export interface Category {
   id: number;
@@ -16,6 +25,7 @@ export const iconMap = {
   ShoppingCart,
   TrendingDown,
   TrendingUp,
+  Banknote,
 } as const;
 
 export type IconName = keyof typeof iconMap;
