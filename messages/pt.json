@@ -1,6 +1,18 @@
 {
   "HOME": {
-    "HOME": "Início"
+    "HOME": "Início",
+    "MONTHLY_BALANCE": "Saldo Mensal",
+    "REVENUE": "Receita",
+    "EXPENSE": "Despesa",
+    "RESULT": "Resultado",
+    "BALANCE": "Saldo",
+
+    "MONTHLY": "Mensal",
+    "QUARTERLY": "Trimestral",
+    "ANNUALLY": "Anual",
+
+    "CASH_FLOW_CHART_DESCRIPTION": "Rastreie as suas receitas e despesas em diferentes períodos.",
+    "CASH_FLOW_CHART_TITLE": "Visão Geral do Fluxo de Caixa"
   },
   "ACCOUNTS": {
     "ACCOUNTS": "Contas",

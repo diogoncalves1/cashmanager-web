@@ -6,14 +6,15 @@ import LineChartOne from "../charts/line/LineChartOne";
 import { ApexOptions } from "apexcharts";
 import { DollarSign, ShoppingCart } from "lucide-react";
 import { KpiInterface } from "./DashboardMetrics";
+import { useTranslations } from "next-intl";
 
-interface EcommerceMetricsProps {
+interface IncomeExpensesMetricsProps {
   revenues: { name: string; data: number[] };
   expenses: { name: string; data: number[] };
   kpis: KpiInterface;
 }
 
-export const EcommerceMetrics = ({ revenues, expenses, kpis }: EcommerceMetricsProps) => {
+export const IncomeExpensesMetrics = ({ revenues, expenses, kpis }: IncomeExpensesMetricsProps) => {
   const options: ApexOptions = {
     chart: {
       type: "line",
@@ -74,6 +75,8 @@ export const EcommerceMetrics = ({ revenues, expenses, kpis }: EcommerceMetricsP
     },
   };
 
+  const t = useTranslations("HOME");
+
   const optionsRevenues = {
     ...options,
     colors: ["#12b76a"],
@@ -84,7 +87,7 @@ export const EcommerceMetrics = ({ revenues, expenses, kpis }: EcommerceMetricsP
   };
 
   return (
-    <div className="col-span-12 md:col-span-3 ">
+    <div className="col-span-12 xl:col-span-3 ">
       <div className="grid grid-cols-3 gap-4 md:gap-6">
         <div className="rounded-2xl col-span-3 md:col-span-6 border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] md:p-6">
           <div className="grid grid-cols-12">
@@ -97,9 +100,9 @@ export const EcommerceMetrics = ({ revenues, expenses, kpis }: EcommerceMetricsP
           </div>
           <div className="flex items-end justify-between mt-5">
             <div>
-              <span className="text-sm text-gray-500 dark:text-gray-400">Revenues</span>
+              <span className="text-sm text-gray-500 dark:text-gray-400">{t("REVENUE")}</span>
               <h4 className="mt-2 font-bold text-gray-800 md:text-2xl text-md dark:text-white/90">
-                {kpis.totalRevenues.value} {kpis.totalRevenues.unit} {kpis.currency}
+                {kpis.totalRevenues} {kpis.currency?.symbol}
               </h4>
             </div>
             <Badge color={kpis.revenuesClasses}>
@@ -120,9 +123,9 @@ export const EcommerceMetrics = ({ revenues, expenses, kpis }: EcommerceMetricsP
           </div>
           <div className="flex items-end justify-between mt-5">
             <div>
-              <span className="text-sm text-gray-500 dark:text-gray-400">Expenses</span>
+              <span className="text-sm text-gray-500 dark:text-gray-400">{t("EXPENSE")}</span>
               <h4 className="mt-2 font-bold text-gray-800 md:text-2xl text-md dark:text-white/90">
-                {kpis.totalExpenses.value} {kpis.totalExpenses.unit} {kpis.currency}
+                {kpis.totalExpenses} {kpis.currency?.symbol}
               </h4>
             </div>
             <Badge color={kpis.expensesClasses}>

@@ -100,7 +100,24 @@ const options: ApexOptions = {
 
 function ChartTab({ data, onChangeSeries, onChangeOptions, height = 0, currency }: ChartTabProps) {
   const [chartHeight, setChartHeight] = useState(height);
-  const t = useTranslations("MONTHS");
+
+  const tMonths = useTranslations("MONTHS");
+  const MONTHS: { [key: number]: string } = {
+    0: tMonths("JAN"),
+    1: tMonths("FEB"),
+    2: tMonths("MAR"),
+    3: tMonths("APR"),
+    4: tMonths("MAY"),
+    5: tMonths("JUN"),
+    6: tMonths("JUL"),
+    7: tMonths("AUG"),
+    8: tMonths("SEP"),
+    9: tMonths("OCT"),
+    10: tMonths("NOV"),
+    11: tMonths("DEC"),
+  };
+
+  const t = useTranslations("HOME");
   useEffect(() => {
     function handleResize() {
       if (window.innerWidth > 1200) setChartHeight(310);
@@ -123,23 +140,8 @@ function ChartTab({ data, onChangeSeries, onChangeOptions, height = 0, currency 
     <div className="flex items-center gap-0.5 rounded-lg bg-gray-100 p-0.5 dark:bg-gray-900">
       <button
         onClick={function () {
-          const rev = { name: "Revenues", data: [] as number[] };
-          const exp = { name: "Expenses", data: [] as number[] };
-
-          const MONTHS: { [key: number]: string } = {
-            0: t("JAN"),
-            1: t("FEB"),
-            2: t("MAR"),
-            3: t("APR"),
-            4: t("MAY"),
-            5: t("JUN"),
-            6: t("JUL"),
-            7: t("AUG"),
-            8: t("SEP"),
-            9: t("OCT"),
-            10: t("NOV"),
-            11: t("DEC"),
-          };
+          const rev = { name: t("REVENUE"), data: [] as number[] };
+          const exp = { name: t("EXPENSE"), data: [] as number[] };
 
           const months: string[] = [];
 
@@ -150,8 +152,6 @@ function ChartTab({ data, onChangeSeries, onChangeOptions, height = 0, currency 
                 " " +
                 String(item.month).split(" ")[1]
             );
-
-            console.log(months);
 
             rev.data.push(parseFloat(item.revenues));
             exp.data.push(parseFloat(item.expenses));
@@ -190,14 +190,12 @@ function ChartTab({ data, onChangeSeries, onChangeOptions, height = 0, currency 
           "monthly"
         )}`}
       >
-        Monthly
+        {t("MONTHLY")}
       </button>
       <button
         onClick={function () {
-          const rev = { name: "Revenues", data: [] as number[] };
-          const exp = { name: "Expenses", data: [] as number[] };
-
-          console.log(data?.data.charts);
+          const rev = { name: t("REVENUE"), data: [] as number[] };
+          const exp = { name: t("EXPENSE"), data: [] as number[] };
 
           const quartsers: string[] = [];
 
@@ -249,12 +247,12 @@ function ChartTab({ data, onChangeSeries, onChangeOptions, height = 0, currency 
           "quarterly"
         )}`}
       >
-        Quarterly
+        {t("QUARTERLY")}
       </button>
       <button
         onClick={function () {
-          const rev = { name: "Revenues", data: Array(1).fill(0) };
-          const exp = { name: "Expenses", data: Array(1).fill(0) };
+          const rev = { name: t("REVENUE"), data: Array(1).fill(0) };
+          const exp = { name: t("EXPENSE"), data: Array(1).fill(0) };
 
           const years: string[] = [];
 
@@ -302,7 +300,7 @@ function ChartTab({ data, onChangeSeries, onChangeOptions, height = 0, currency 
           "annualy"
         )}`}
       >
-        Annually
+        {t("ANNUALLY")}
       </button>
     </div>
   );

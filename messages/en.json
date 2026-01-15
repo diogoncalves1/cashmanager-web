@@ -1,6 +1,18 @@
 {
   "HOME": {
-    "HOME": "Home"
+    "HOME": "Home",
+    "MONTHLY_BALANCE": "Monthly Balance",
+    "REVENUE": "Revenue",
+    "EXPENSE": "Expense",
+    "RESULT": "Result",
+    "BALANCE": "Balance",
+
+    "MONTHLY": "Monthly",
+    "QUARTERLY": "Quarterly",
+    "ANNUALLY": "Annually",
+
+    "CASH_FLOW_CHART_DESCRIPTION": "Track your income and expenses across different periods.",
+    "CASH_FLOW_CHART_TITLE": "Cash Flow Overview"
   },
 
   "ACCOUNTS": {
