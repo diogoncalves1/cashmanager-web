@@ -1,4 +1,4 @@
-{
+{  
   "HOME": {
     "HOME": "Início",
     "MONTHLY_BALANCE": "Saldo Mensal",
@@ -220,5 +220,79 @@
     "OCT": "Out",
     "NOV": "Nov",
     "DEC": "Dez"
+  },
+
+  "FRIENDS": {
+    "FRIENDS": "Amizades",
+    "FRIEND": "AMIZADES",
+    "FRIEND_REQUESTS": "Pedidos de Amizade",
+    "SEARCH": "Procurar",
+    "SEND": "Enviar",
+    "ALL_FRIENDS": "Todos os Amigos",
+    "BLOCKED_USERS": "Utilizadores Bloqueados",
+    "NO_FRIENDS": "Sem Amigos",
+    "NO_BLOCKED_USERS": "Sem Utilizadores Bloqueados",
+    "LOADING": "Carregando",
+
+    "SEARCH_BY_USER": "Buscar por utilizador...",
+    "TRY_AGAIN": "Tentar novamente",
+    "LOADING_MORE_BLOCKED_USERS": "A carregar mais utilizadores bloqueados...",
+    "LOADING_BLOCKED_USERS": "A carregar utilizadores bloqueados...",
+    "WITHOUT_BLOCKED_USERS": "Não tens utilizadores bloqueados.",
+    "SCROLL_TO_SEE_MORE": "Scroll para baixo para ver mais",
+    
+    "REMOVE": "Remover",
+    "HAVENT_ADDED_FRIENDS": "Ainda não tens amigos adicionados.",
+
+    "SEARCH_FRIEND": "Procurar amigo",
+
+    "LOADING_REQUESTS": "A carregar pedidos...",
+    "BLOCK": "Bloquear",
+
+    "LOADING_FRIENDS": "A carregar amigos...",
+
+    "LOADING_MORE_FRIENDS": "A carregar mais amigos...",
+
+    "HAVE_NO_REQUESTS": "Não tens pedidos.",
+
+    "SENT_REQUESTS": "Pedidos enviados",
+
+    "ADD_BY_ID": "Adicionar amigo pelo ID",
+
+    "LOADING_MORE_REQUESTS": "A carregar mais pedidos...",
+
+    "ACCEPT": "Aceitar",
+    "DECLINE": "Recusar",
+    "CANCEL_REQUEST": "Cancelar Pedido",
+    "YES_UNLBOCK": "Sim, desbloquear",
+    "UNBLOCK": "Desbloquear",
+
+    "BLOCK_USER_MESSAGE": "Bloquear utilizador?",
+    "BLOCKING_USER_TITLE": "A bloquear...",
+    "BLOCKING_USER_MESSAGE": "A bloquear utilizador...",
+
+    "REMOVE_FRIEND_MESSAGE": "Remover amigo?",
+    "REMOVING_FRIEND_TITLE": "A remover...",
+    "REMOVING_FRIEND_MESSAGE": "A remover amigo...",
+
+    "SENDING_FRIEND_REQUEST_TITLE": "A enviar...",
+    "SENDING_FRIEND_REQUEST_MESSAGE": "A enviar pedido de amizade...",
+
+    "ACCEPT_REQUEST_TITLE": "A aceitar...",
+    "ACCEPT_REQUEST_MESSAGE": "A aceitar pedido de amizade...",
+
+    "DECLINE_REQUEST_TITLE": "A recusar...",
+    "DECLINE_REQUEST_MESSAGE": "A recusar pedido de amizade...",
+
+    "CANCEL_REQUEST_TITLE": "A cancelar...",
+    "CANCEL_REQUEST_MESSAGE": "A cancelar pedido de amizade...",
+
+    "UNBLOCK_USER_MESSAGE": "Desbloquear utilizador?",
+    "UNBLOCKING_USER_TITLE": "A desbloquear...",
+    "UNBLOCKING_USER_MESSAGE": "A desbloquear utilizador...",
+
+    "YES_BLOCK": "Sim, bloquear!",
+    "YES_REMOVE": "Sim, remover!",
+    "CANCEL": "Cancelar"
   }
 }
