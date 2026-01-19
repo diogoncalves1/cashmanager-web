@@ -48,7 +48,7 @@ import {
 } from "@/components/ui/table";
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
-import Badge from "@/components/ui/badge/Badge";
+import { Badge } from "@/components/ui/badge";
 import { AppLink } from "@/components/ui/button/AppLink";
 import { Transaction, transactionStatus, transactionTypes } from "@/lib/models/transaction";
 import { onConfirmTransaction, onDeleteTransaction } from "@/services/transactions/service";
@@ -202,7 +202,11 @@ export function TransactionsDataTable({
         ),
         cell: ({ row }) => {
           const t = row.original;
-          const Icon = iconMap[t.categoryIcon ?? "Car"];
+          const iconKey = t.categoryIcon;
+
+          console.log(iconKey);
+          const Icon = iconMap[iconKey as keyof typeof iconMap] ?? Circle;
+
           return (
             <div className="flex items-center gap-3">
               <div
