@@ -88,7 +88,7 @@ const AppSidebar: React.FC = () => {
     {
       icon: <TrendingUp size={18} strokeWidth={2} />,
       name: t("SIDEBAR_STOCKS"),
-      disable: false,
+      disable: true,
       subItems: [
         { name: t("SIDEBAR_STOCKS"), path: "/stocks", pro: false },
         { name: t("SIDEBAR_STOCKS_SEARCH"), path: "/stocks/search", pro: false },
@@ -98,11 +98,6 @@ const AppSidebar: React.FC = () => {
   ];
 
   const socialItems: NavItem[] = [
-    {
-      icon: <User size={18} strokeWidth={2} />,
-      name: t("SIDEBAR_PROFILE"),
-      path: "/profile",
-    },
     {
       icon: <Users size={18} strokeWidth={2} />,
       name: t("SIDEBAR_FRIENDS"),
@@ -115,11 +110,13 @@ const AppSidebar: React.FC = () => {
       icon: <Coins size={18} strokeWidth={2} />,
       name: t("SIDEBAR_CURRENCY_CONVERTER"),
       path: "/tools/currency-converter",
+      disable: true,
     },
     {
       icon: <Calculator size={18} strokeWidth={2} />,
       name: t("SIDEBAR_COMPOUND_INTEREST_CALCULATOR"),
       path: "/tools/compound-interest-calculator",
+      disable: true,
     },
   ];
   const settingsItems: NavItem[] = [
@@ -127,6 +124,7 @@ const AppSidebar: React.FC = () => {
       icon: <Settings size={18} strokeWidth={2} />,
       name: t("SIDEBAR_SETTINGS"),
       path: "/settings",
+      disable: true,
     },
     {
       icon: <DoorOpen size={18} strokeWidth={2} />,
