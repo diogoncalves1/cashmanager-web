@@ -72,11 +72,9 @@ const AppSidebar: React.FC = () => {
     {
       icon: <TrendingDown size={18} strokeWidth={2} />,
       name: t("SIDEBAR_DEBTS"),
-      disable: true,
       subItems: [
         { name: t("SIDEBAR_DEBTS"), path: "/debts", pro: false },
-        { name: "Payments", path: "/debts/payments", pro: false },
-        { name: "Scheduled Payments", path: "/debts/payments/scheduled", pro: false },
+        { name: t("SIDEBAR_DEBT_PAYMENTS"), path: "/debts/payments", pro: false },
       ],
     },
     {
