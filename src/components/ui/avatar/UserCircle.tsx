@@ -1,4 +1,4 @@
-export function UserCircle({ userName, size = 6 }: { userName: string; size: number }) {
+export function UserCircle({ userName, size = 6 }: { userName: string; size?: number }) {
   const sizeClass = `size-${size}`;
   const sizeText = size <= 6 ? "text-xs" : size <= 8 ? "text-lg" : "text-xl";
   return (

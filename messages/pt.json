@@ -1,4 +1,4 @@
-{  
+{
   "HOME": {
     "HOME": "Início",
     "MONTHLY_BALANCE": "Saldo Mensal",
@@ -58,6 +58,7 @@
     "SIDEBAR_STOCKS_SEARCH": "Procurar",
     "SIDEBAR_PORTFOLIOS": "Portfolios",
     "SIDEBAR_DEBTS": "Dívidas",
+    "SIDEBAR_DEBT_PAYMENTS": "Pagamentos",
     "SIDEBAR_FINANCIAL_GOALS": "Metas Financeiras",
     "SIDEBAR_FINANCIAL_GOALS_CONTRIBUTIONS": "Contribuíções",
     "SIDEBAR_TRANSACTIONS": "Transações",
@@ -240,7 +241,7 @@
     "LOADING_BLOCKED_USERS": "A carregar utilizadores bloqueados...",
     "WITHOUT_BLOCKED_USERS": "Não tens utilizadores bloqueados.",
     "SCROLL_TO_SEE_MORE": "Scroll para baixo para ver mais",
-    
+
     "REMOVE": "Remover",
     "HAVENT_ADDED_FRIENDS": "Ainda não tens amigos adicionados.",
 
@@ -294,5 +295,80 @@
     "YES_BLOCK": "Sim, bloquear!",
     "YES_REMOVE": "Sim, remover!",
     "CANCEL": "Cancelar"
+  },
+
+  "DEBTS": {
+    "ADD": "Adicionar",
+    "EDIT": "Editar",
+    "DELETE": "Apagar Dívida",
+    "DETAILS": "Detalhes",
+
+    "DEBT": "DÍVIDA",
+    "DEBTS": "Dívidas",
+
+    "TRANSACTIONS": "Pagamentos",
+    "ADD_TRANSACTION": "Novo Pagamento",
+
+    "ALL_TRANSACTIONS": "Todos os pagamentos",
+
+    "COMPLETED": "Completa",
+    "PENDING": "Pendente",
+
+    "NAME": "Nome",
+    "TOTAL_AMOUNT": "Valor Total",
+    "PAID_AMOUNT": "Valor Pago",
+    "USERS": "Utilizadores",
+    "CURRENCY": "Moeda",
+    "DUE_DATE": "Data de Fim",
+    "START_DATE": "Data de Início",
+    "STATUS": "Estado",
+    "ACTIONS": "Ações",
+
+    "SEARCH": "Procura",
+    "FILTER_BY": "Filtra por",
+    "SHOWING": "A mostrar",
+    "OF": "de",
+    "THIS": "dívidas",
+    "NEXT": "Próximo",
+    "PREVIOUS": "Anterior",
+    "FIRST": "Primeira",
+    "LAST": "Última",
+    "NO_RESULTS": "Sem Resultados",
+    "LOADING": "Carregando",
+
+    "CANCEL": "Cancelar",
+    "YES_MARK": "Sim, marcar",
+    "MARK_DEBT_PAID": "Marcar dívida paga?",
+    "MARKING_TITLE": "A marcar...",
+    "MARKING_MESSAGE": "A marcar dívida como paga...",
+
+    "RESET_DEBT_MESSAGE": "Resetar dívida?",
+    "RESETED_DEBT_TITLE": "A resetar...",
+    "RESETED_DEBT_MESSAGE": "A resetar a dívida ...",
+    "YES_DELETE": "Sim, apagar!",
+    "YES_RESET": "Sim, resetar!",
+    "YOU_SURE": "Tem a certeza?",
+    "YOU_DONT_REVERT_THIS": "Não irá conseguir reverter isso!",
+    "DELETING_TITLE": "Apagando...",
+    "DELETING_MESSAGE": "Apagando dívida...",
+
+    "OTHERS_INFORMATION": "Outras Informações",
+    "CREATED_AT": "Criada em",
+
+    "RECENT_TRANSACTIONS": "Pagamentos Recentes",
+    "DEBT_DETAILS": "Detalhes da Dívida",
+
+    "OVERVIEW": "Visão Geral",
+    "OTHERS": "Outros",
+    "DESCRIPTION": "Descrição",
+    "RESET": "Resetar",
+    "LAST_UPDATE": "Última atualização",
+    "COMPLETE": "Completar",
+    "MISSING_AMOUNT": "Valor em Falta",
+    "DEBT_PROGRESS": "Progresso da dívida",
+    "DEBT_COMPLETED": "Dívida Paga!",
+    "DEBT_COMPLETED_MESSAGE": "Parabéns! Dívida paga com sucesso",
+
+    "MONTHLY_SUMMARY": "Resumo Mensal"
   }
 }
