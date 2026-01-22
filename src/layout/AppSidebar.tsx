@@ -64,7 +64,7 @@ const AppSidebar: React.FC = () => {
         { name: t("SIDEBAR_FINANCIAL_GOALS"), path: "/financial-goals", pro: false },
         {
           name: t("SIDEBAR_TRANSACTIONS"),
-          path: "/financial-goals-transactions",
+          path: "/financial-goal-transactions",
           pro: false,
         },
       ],
