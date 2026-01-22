@@ -1,6 +1,6 @@
 "use client";
 
-import { FinancialGoalTransactionsDataTable } from "@/app/(admin)/(menu)/financial-goal-transactions/data-table";
+import { FinancialGoalTransactionsDataTable } from "@/app/(root)/(menu)/financial-goal-transactions/data-table";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
