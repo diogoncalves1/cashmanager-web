@@ -17,7 +17,6 @@ import {
   DoorOpen,
   Briefcase,
   TrendingUp,
-  User,
   Users,
   Coins,
   Calculator,
@@ -74,7 +73,7 @@ const AppSidebar: React.FC = () => {
       name: t("SIDEBAR_DEBTS"),
       subItems: [
         { name: t("SIDEBAR_DEBTS"), path: "/debts", pro: false },
-        { name: t("SIDEBAR_DEBT_PAYMENTS"), path: "/debts/payments", pro: false },
+        { name: t("SIDEBAR_DEBT_PAYMENTS"), path: "/debt-payments", pro: false },
       ],
     },
     {

@@ -1,7 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
+import { baseUrl } from "../config";
 
 function parseColumns(searchParams: URLSearchParams) {
-  const columns: any[] = [];
+  const defaultColumns = [
+    { data: "name", searchable: true },
+    { data: "status", searchable: true, orderable: true },
+    { data: "priority", searchable: true, orderable: true },
+    { data: "totalAmount", searchable: true, orderable: true },
+  ];
+
+  const columns: any[] = [...defaultColumns]; // inicia com defaults
 
   for (const [key, value] of searchParams.entries()) {
     const match = key.match(/^columns\[(\d+)\]\[(.+)\]$/);
@@ -22,7 +30,27 @@ function parseColumns(searchParams: URLSearchParams) {
     }
   }
 
+  // retorna o array filtrando posições vazias (undefined)
   return columns.filter(Boolean);
+}
+
+function addColumnsToParams(columns: any[], searchParams: URLSearchParams) {
+  columns.forEach((col, index) => {
+    for (const key in col) {
+      const value = col[key];
+
+      if (key === "search" && typeof value === "object") {
+        // Trata search[value], search[regex] etc
+        for (const searchKey in value) {
+          searchParams.append(`columns[${index}][search][${searchKey}]`, value[searchKey]);
+        }
+      } else {
+        searchParams.append(`columns[${index}][${key}]`, value);
+      }
+    }
+  });
+
+  return searchParams;
 }
 
 export async function GET(req: NextRequest) {
@@ -32,24 +60,25 @@ export async function GET(req: NextRequest) {
     const url = new URL(req.url);
 
     const page = Number(url.searchParams.get("page") || 1);
-    const length = Number(url.searchParams.get("size") || 10);
+    const length = Number(url.searchParams.get("pageSize") || 10);
     const start = page * length;
 
     const params = new URLSearchParams(url.search);
+    addColumnsToParams(parseColumns(url.searchParams), params);
     params.set("start", start.toString());
     params.set("length", length.toString());
 
     const sortParam = url.searchParams.get("sort");
+    const searchParam = url.searchParams.get("search");
 
+    if (searchParam) params.set("search[value]", String(searchParam));
+
+    const columns = parseColumns(url.searchParams);
     if (sortParam) {
-      const [columnName, direction] = sortParam.split(":");
-
-      const columns = parseColumns(url.searchParams);
-      const columnIndex = columns.findIndex((c) => c.data === columnName);
-
+      const columnIndex = columns.findIndex((c) => c.data === sortParam);
       if (columnIndex >= 0) {
         params.set("order[0][column]", String(columnIndex));
-        params.set("order[0][dir]", direction);
+        params.set("order[0][dir]", "desc");
       }
     }
 
@@ -66,6 +95,7 @@ export async function GET(req: NextRequest) {
       data: data.data,
       url,
       params,
+      stats: data.stats,
     });
   } catch (err) {
     console.error("API Error:", err);
@@ -79,7 +109,7 @@ export async function POST(req: NextRequest) {
 
     const body = await req.json();
 
-    const res = await fetch(`${process.env.API_BACKEND_URL}financial-goals`, {
+    const res = await fetch(`${baseUrl}financial-goals`, {
       headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
       method: "POST",
       body: JSON.stringify(body),
