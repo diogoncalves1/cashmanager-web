@@ -1,29 +1,28 @@
-import { FinancialGoalStatus } from "@/lib/models/financialGoal";
-import { useTranslations } from "next-intl";
+import { FinancialGoalStatus } from "@/models/financialGoal";
 
-export default function StatusBadge({ status }: { status: FinancialGoalStatus }) {
-  const t = useTranslations("FINANCIAL_GOALS");
-
+export default function StatusBadge({
+  status,
+  translate,
+}: {
+  status: FinancialGoalStatus;
+  translate?: string;
+}) {
   const getStatusInfo = (status: string) => {
     switch (status) {
       case "completed":
         return {
-          text: t("COMPLETED"),
           color: "success",
         };
       case "canceled":
         return {
-          text: t("CANCELED"),
           color: "error",
         };
       case "in_progress":
         return {
-          text: t("IN_PROGRESS"),
           color: "warning",
         };
       default:
         return {
-          text: t("IN_PROGRESS"),
           color: "warning",
         };
     }
@@ -66,7 +65,7 @@ export default function StatusBadge({ status }: { status: FinancialGoalStatus })
       className={`inline-flex items-center gap-1 rounded-full ${colorClasses.bg} px-3 py-1 text-xs font-medium ${colorClasses.text} ring-1 ${colorClasses.ring}`}
     >
       <span className={`h-1.5 w-1.5 rounded-full ${colorClasses.bgText}`} />
-      {statusInfo?.text}
+      {translate}
     </span>
   );
 }

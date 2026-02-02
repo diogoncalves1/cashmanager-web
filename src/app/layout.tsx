@@ -13,6 +13,27 @@ const outfit = Outfit({
   subsets: ["latin"],
 });
 
+import localFont from "next/font/local";
+
+// Importa Geist
+const geist = localFont({
+  src: [
+    {
+      path: "fonts/Geist-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "fonts/Geist-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-geist",
+  display: "swap",
+  fallback: ["Geist Fallback", "sans-serif"], // define fallback
+});
+
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -24,7 +45,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${outfit.className}  dark:bg-gray-900`}>
+      <body className={`${outfit.className} ${geist.variable} dark:bg-gray-900`}>
         <NextIntlClientProvider messages={messages}>
           <HeroUIProvider>
             <ThemeProvider>
