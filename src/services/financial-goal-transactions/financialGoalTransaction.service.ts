@@ -1,0 +1,53 @@
+import { FinancialGoal } from "@/models/financialGoal";
+
+interface GoalsFilters {
+  search?: string;
+  status?: string;
+  priority?: string;
+  page?: number;
+  pageSize?: number;
+}
+
+interface ApiResponse<T> {
+  data: T[];
+  success: number;
+  message: number;
+}
+
+export async function getAllFinancialGoals(
+  filters: GoalsFilters
+): Promise<ApiResponse<FinancialGoal[]>> {
+  const params = new URLSearchParams(
+    Object.entries(filters).filter(([_, v]) => v !== null) as [string, string][]
+  );
+
+  const res = await fetch(`/api/financial-goals?${params.toString()}`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (!res.ok) throw new Error("Failed to fetch financial goals");
+
+  const response = await res.json();
+  return response;
+}
+
+export async function getFinancialGoalById(id: string): Promise<FinancialGoal> {
+  try {
+    const res = await fetch(`/api/financial-goals/${id}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (!res.ok) throw new Error("Failed to fetch financial goal");
+
+    const response = await res.json();
+
+    if (response.data) return response.data as FinancialGoal;
+
+    throw new Error("Financial goal not found");
+  } catch (err) {
+    console.error(err);
+    return {} as FinancialGoal;
+  }
+}

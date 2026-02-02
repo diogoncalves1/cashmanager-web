@@ -1,4 +1,8 @@
 {
+  "DATATABLE": {
+    "NO_RESULTS": "Sem Resultados"
+  },
+
   "HOME": {
     "HOME": "Início",
     "MONTHLY_BALANCE": "Saldo Mensal",
@@ -80,7 +84,9 @@
 
   "TRANSACTIONS": {
     "TRANSACTIONS": "Transações",
-    "TRANSACTIONS_DETAILS": "Detalhes"
+    "TRANSACTIONS_DETAILS": "Detalhes",
+
+    "SELECT_ACCOUNT": "Selecione uma conta..."
   },
 
   "FINANCIAL_GOALS": {
@@ -100,6 +106,11 @@
     "COMPLETED": "Completa",
     "IN_PROGRESS": "Em Progresso",
     "CANCELED": "Cancelada",
+
+    "TOTAL_GOALS": "Total de Metas",
+    "TOTAL_SAVED": "Total Economizado",
+    "OVERALL_PROGRESS": "Progresso Geral",
+    "ALL": "Todos",
 
     "LOW": "Baixa",
     "MEDIUM": "Média",
@@ -166,9 +177,14 @@
     "ADD": "Adicionar",
     "EDIT": "Editar",
     "DETAILS": "Detalhes",
+    "SAVING": "A guardar...",
+    "ACCOUNT": "Conta",
 
-    "FINANCIAL_GOAL": "META FINANCEIRA",
+    "FINANCIAL_GOAL_TRANSACTION": "TRANSAÇÕES META FINANCEIRA",
+    "FINANCIAL_GOAL": "Meta Financeira",
     "FINANCIAL_GOALS": "Metas Financeiras",
+
+    "SELECT_FINANCIAL_GOAL": "Selecione a meta financeira",
 
     "TRANSACTIONS": "Transações",
     "ADD_TRANSACTION": "Nova Transação",
@@ -317,6 +333,8 @@
     "NAME": "Nome",
     "TOTAL_AMOUNT": "Valor Total",
     "PAID_AMOUNT": "Valor Pago",
+    "PAID": "Paga",
+    "ALL": "Todos",
     "USERS": "Utilizadores",
     "CURRENCY": "Moeda",
     "DUE_DATE": "Data de Fim",
@@ -370,5 +388,25 @@
     "DEBT_COMPLETED_MESSAGE": "Parabéns! Dívida paga com sucesso",
 
     "MONTHLY_SUMMARY": "Resumo Mensal"
+  },
+
+  "DEBT_PAYMENTS": {
+    "ADD_PAYMENT": "Adicionar Pagamento",
+    "ADD": "Adicionar",
+    "DEBTS": "Dívidas",
+    "PAYMENTS": "Pagamentos",
+    "DEBT": "Dívida",
+    "NEXT": "Próximo",
+    "FIRST": "Primeira",
+    "THIS": "pagamentos",
+    "OF": "de",
+    "PREVIOUS": "Anterior",
+    "SHOWING": "A mostrar",
+    "LAST": "Última",
+    "SEARCH": "Procurar",
+    "DEBT_PAYMENTS": "PAGAMENTOS",
+    "PENDING": "Pendente",
+    "LOADING": "Carregando",
+    "COMPLETED": "Completa"
   }
 }

@@ -39,14 +39,22 @@ export interface FinancialGoalTransaction {
   amount: string;
   transactionId: string;
   description: string;
-  userName?: string;
+  userName: string;
   amountFormated: string;
 
-  status: string;
+  status: FinancialGoalTransactionStatus;
   statusTranslated: string;
 
-  type: string;
+  type: FinancialGoalTransactionType;
   typeTranslated: string;
+
+  accountName: string;
+  accountType: string;
+
+  sharedRole: string;
+
+  balanceBefore?: string;
+  balanceAfter?: string;
 
   actions: Actions;
 }
