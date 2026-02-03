@@ -8,14 +8,16 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { onDeleteFinancialGoalTransaction } from "@/services/financial-goal-transactions/service";
+import { useRouter } from "next/navigation";
 
 type Props = {
   isDeleteDialogOpen: boolean;
   setIsDeleteOpen: any;
-  mutate: () => void;
-  table: any;
-  pagination: any;
+  mutate?: () => void;
+  table?: any;
+  pagination?: any;
   selectedId: string;
+  goBack?: boolean;
 };
 
 export default function DeleteGoalTransactionDialog({
@@ -25,7 +27,10 @@ export default function DeleteGoalTransactionDialog({
   table,
   pagination,
   selectedId,
+  goBack = false,
 }: Props) {
+  const router = useRouter();
+
   return (
     <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteOpen}>
       <DialogContent className="sm:max-w-md">
@@ -57,6 +62,7 @@ export default function DeleteGoalTransactionDialog({
               try {
                 setIsDeleteOpen(false);
                 onDeleteFinancialGoalTransaction(selectedId, table, pagination, mutate);
+                if (goBack) router.push("/financial-goal-transactions");
               } catch (err) {
                 console.error(err);
               }
