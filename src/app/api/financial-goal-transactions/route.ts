@@ -39,6 +39,7 @@ export async function GET(req: NextRequest) {
     params.set("length", length.toString());
 
     const sortParam = url.searchParams.get("sort");
+    params.set("search[value]", url.searchParams.get("search") || "");
 
     if (sortParam) {
       const [columnName, direction] = sortParam.split(":");
@@ -81,7 +82,7 @@ export async function POST(req: NextRequest) {
 
     const body = await req.json();
 
-    const urlApi = `${baseUrl}transactions`;
+    const urlApi = `${baseUrl}financial-goal-transactions`;
 
     const res = await fetch(urlApi, {
       headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },

@@ -1,17 +1,19 @@
 import { Button } from "@/components/ui/button";
 
+type TFunction = (key: string, values?: Record<string, any>) => string;
+
 type Props = {
   table: any;
   pageCount: number;
+  total: number;
   pagination: any;
-  t: any;
+  t: TFunction;
 };
 
-export function DataTablePagination({ table, pageCount, pagination, t }: Props) {
+export function DataTablePagination({ table, pageCount, total, pagination, t }: Props) {
   const getPageNumbers = () => {
-    const totalPages = Math.ceil(pageCount / pagination.pageSize);
+    const totalPages = Math.ceil(total / pagination.pageSize);
 
-    console.log(totalPages);
     const current = pagination.pageIndex + 1;
     const delta = 2;
 
@@ -43,7 +45,7 @@ export function DataTablePagination({ table, pageCount, pagination, t }: Props) 
   return (
     <div className="flex p-4 items-center justify-end space-x-2">
       <div className="text-muted-foreground flex-1 text-sm">
-        {t("SHOWING")} {table.getRowCount()} {t("OF")} {pageCount} {t("THIS")}.
+        {t("SHOWING")} {table.getRowCount()} {t("OF")} {total} {t("THIS")}.
       </div>
       <div className="flex gap-2">
         <Button

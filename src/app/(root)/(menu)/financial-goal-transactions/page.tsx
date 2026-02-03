@@ -15,7 +15,10 @@ export default function AccountsPage() {
     <>
       <PageBreadcrumb
         pageTitle={t("FINANCIAL_GOAL_TRANSACTION")}
-        breadcrumb={[{ title: t("TRANSACTIONS") }]}
+        breadcrumb={[
+          { title: t("FINANCIAL_GOALS"), path: "/financial-goals" },
+          { title: t("TRANSACTIONS") },
+        ]}
       />
       <div className="grid grid-cols-12 p-2 md:p-6 gap-4 md:gap-6">
         <div className="col-span-12">
