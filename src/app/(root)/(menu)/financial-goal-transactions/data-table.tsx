@@ -33,7 +33,6 @@ import {
   financialGoalTransactionStatus,
   financialGoalTransactionTypes,
 } from "@/models/financialGoalTransactions";
-import { onConfirmFinancialGoalTransaction } from "@/services/financial-goal-transactions/service";
 import { cn, formatDate } from "@/lib/utils";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import Link from "next/link";
@@ -48,6 +47,7 @@ import { useFinancialGoalTransactionForm } from "@/app/(root)/(menu)/financial-g
 import EditGoalTransactionDialog from "@/components/ui/dialogs/GoalTransactions/EditGoalTransactionDialog";
 import DeleteGoalTransactionDialog from "@/components/ui/dialogs/GoalTransactions/DeleteGoalTransactionDialog";
 import DataTable from "@/components/tables/DataTable";
+import ConfirmGoalTransactionDialog from "@/components/ui/dialogs/GoalTransactions/ConfirmGoalTransactionDialog";
 
 type DataTableProps = {
   enableFilters?: boolean;
@@ -98,6 +98,7 @@ export function FinancialGoalTransactionsDataTable({
   };
 
   const [isEditGoalOpen, setIsEditGoalOpen] = React.useState(false);
+  const [isConfirmDialogOpen, setIsConfirmOpen] = React.useState(false);
   const [isDeleteGoalOpen, setIsDeleteGoalOpen] = React.useState(false);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
@@ -327,12 +328,10 @@ export function FinancialGoalTransactionsDataTable({
                 <DropdownMenuContent align="end">
                   {transaction.actions?.confirm && (
                     <DropdownMenuItem
-                      onClick={async () => {
-                        try {
-                          onConfirmFinancialGoalTransaction(transaction.id, mutate);
-                        } catch (err) {
-                          console.error(err);
-                        }
+                      onClick={() => {
+                        setSelectedId(transaction.id);
+
+                        setIsConfirmOpen(true);
                       }}
                     >
                       Confirmar Transação
@@ -499,6 +498,13 @@ export function FinancialGoalTransactionsDataTable({
         mutate={mutate}
         table={table}
         pagination={pagination}
+        selectedId={selectedId}
+      />
+
+      <ConfirmGoalTransactionDialog
+        setIsConfirmOpen={setIsConfirmOpen}
+        isConfirmDialogOpen={isConfirmDialogOpen}
+        mutate={mutate}
         selectedId={selectedId}
       />
     </div>
