@@ -44,7 +44,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useFinancialGoalTransactionForm } from "@/components/form/financial-goal-transactions/hooks/useFinancialGoalTransactionForm";
+import { useFinancialGoalTransactionForm } from "@/app/(root)/(menu)/financial-goal-transactions/create/hooks/useFinancialGoalTransactionForm";
 import EditGoalTransactionDialog from "@/components/ui/dialogs/GoalTransactions/EditGoalTransactionDialog";
 import DeleteGoalTransactionDialog from "@/components/ui/dialogs/GoalTransactions/DeleteGoalTransactionDialog";
 import DataTable from "@/components/tables/DataTable";

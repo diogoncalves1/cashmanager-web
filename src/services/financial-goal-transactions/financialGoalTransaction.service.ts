@@ -1,4 +1,5 @@
 import { FinancialGoal } from "@/models/financialGoal";
+import { FinancialGoalTransaction } from "@/models/financialGoalTransactions";
 
 interface GoalsFilters {
   search?: string;
@@ -50,4 +51,34 @@ export async function getFinancialGoalById(id: string): Promise<FinancialGoal> {
     console.error(err);
     return {} as FinancialGoal;
   }
+}
+
+type TransactionSummary = {
+  thisMonth: string;
+  difLastMonth: number;
+  totalSaved: string;
+  totalGoals: number;
+  currentYearTotalTransactions: number;
+};
+
+type FormStats = {
+  recentTransactions: FinancialGoalTransaction[];
+  transactionSummary: TransactionSummary;
+};
+
+interface ApiResponseStats {
+  data: FormStats;
+  success: number;
+  message: number;
+}
+export async function getFormStats(): Promise<ApiResponseStats> {
+  const res = await fetch(`/api/financial-goals/stats`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (!res.ok) throw new Error("Failed to fetch financial goals stats");
+
+  const response = await res.json();
+  return response;
 }
