@@ -30,9 +30,8 @@ type Props = {
   hasMore: boolean;
   total: number;
   filters: Filters | undefined;
-  setFilters: React.Dispatch<React.SetStateAction<Filters | undefined>>;
+  setFilters: React.Dispatch<React.SetStateAction<Filters>>;
   loading: boolean;
-  error: boolean;
 };
 
 export default function GoalsList({
@@ -43,7 +42,6 @@ export default function GoalsList({
   filters,
   setFilters,
   loading,
-  error,
 }: Props) {
   const t = useTranslations("FINANCIAL_GOALS");
 
@@ -55,7 +53,7 @@ export default function GoalsList({
           <Input
             placeholder="Search financial goals..."
             value={filters?.search || ""}
-            onChange={(e) => setFilters((prev: any) => ({ ...prev, search: e.target.value }))}
+            onChange={(e) => setFilters((prev) => ({ ...prev, search: e.target.value }))}
             className="pl-9 bg-white"
           />
         </div>
@@ -73,9 +71,9 @@ export default function GoalsList({
               <button
                 key={status.value}
                 onClick={() =>
-                  setFilters((prev: any) => ({
+                  setFilters((prev) => ({
                     ...prev,
-                    status: status.value !== "all" ? status.value : null,
+                    status: status.value !== "all" ? status.value : undefined,
                   }))
                 }
                 className={cn(
@@ -102,7 +100,7 @@ export default function GoalsList({
           <Select
             value={filters?.priority || "all"}
             onValueChange={(v) =>
-              setFilters((prev: any) => ({ ...prev, priority: v !== "all" ? v : null }))
+              setFilters((prev) => ({ ...prev, priority: v !== "all" ? v : undefined }))
             }
           >
             <SelectTrigger className="w-32 h-9 bg-secondary border-0">
@@ -123,7 +121,7 @@ export default function GoalsList({
           <span className="text-sm text-muted-foreground">Sort:</span>
           <Select
             value={filters?.sort || "priority"}
-            onValueChange={(v) => setFilters((prev: any) => ({ ...prev, sort: v }))}
+            onValueChange={(v) => setFilters((prev) => ({ ...prev, sort: v }))}
           >
             <SelectTrigger className="w-36 h-9 bg-secondary border-0">
               <SelectValue />

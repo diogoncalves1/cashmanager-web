@@ -1,5 +1,4 @@
 import React, { ReactNode } from "react";
-import { success } from "zod";
 
 interface ButtonProps {
   children: ReactNode; // Button text or content
@@ -16,7 +15,6 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({
   children,
   size = "md",
-  variant = "primary",
   startIcon,
   color = "primary",
   endIcon,

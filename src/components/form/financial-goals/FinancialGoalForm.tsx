@@ -4,14 +4,14 @@ import Form from "../Form";
 import Input from "../input/InputField";
 import Label from "../Label";
 import { Button } from "@/components/ui/button";
-import Select from "react-select";
 
 import { SwalToast } from "@/components/swal/SwalToast";
-import { Currency } from "@/lib/models/currency";
+import { Currency } from "@/models/currency";
 import RichTextEditor from "../input/RichTextEditor";
 import { FinancialGoalDatePicker } from "./FinancialGoalDatePicker";
 import { useFinancialGoalForm } from "./hooks/useFinancialGoalForm";
 import LoadingToast from "@/components/swal/LoadingToast";
+import Select from "react-select";
 
 type Props = {
   id?: string;
@@ -46,8 +46,6 @@ export function FinancialGoalForm({ id }: Props) {
       icon: result.success ? "success" : "error",
     });
   };
-
-  console.log(formData);
 
   return (
     <Form
@@ -86,22 +84,55 @@ export function FinancialGoalForm({ id }: Props) {
         {isLoadingCurrencies ? (
           <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
         ) : (
-          <Select
-            isSearchable
-            key={formData.currency_id}
-            options={currenciesData.data.map((c: Currency) => ({
-              value: c.id,
-              label: `${c.code} - ${c.name}`,
-            }))}
-            onChange={(e: any) => setFormData((prev) => ({ ...prev, currency_id: e.value }))}
-            defaultValue={currenciesData.data
-              .map((c: Currency) => ({
+          <>
+            {/* <Select
+              value={formData.currency_id || ""}
+              onValueChange={(e: string) => {
+                setFormData((prev: any) => ({ ...prev, currency_id: e }));
+              }}
+            >
+              <SelectTrigger className="h-14 bg-input border-border text-foreground">
+                <SelectValue placeholder="Choose a financial goal" />
+              </SelectTrigger>
+              <SelectContent className="bg-card border-border">
+                {!isLoadingCurrencies &&
+                  currenciesData.data.map((currency: Currency) => (
+                    <SelectItem
+                      key={currency.id}
+                      value={currency.id}
+                      className="py-3 cursor-pointer focus:bg-secondary"
+                    >
+                      <div className="flex flex-col items-start gap-0.5">
+                        <span className="font-medium">{currency.name}</span>
+                        <span className="text-xs text-muted-foreground">
+                          {currency.code} {currency.symbol}
+                        </span>
+                      </div>
+                    </SelectItem>
+                  ))}
+              </SelectContent>
+            </Select> */}
+            <Select
+              isSearchable
+              key={formData.currency_id}
+              options={currenciesData.data.map((c: Currency) => ({
                 value: c.id,
                 label: `${c.code} - ${c.name}`,
-              }))
-              .find((option: any) => option.value === formData.currency_id)}
-            required
-          />
+              }))}
+              onChange={(e: any) => setFormData((prev) => ({ ...prev, currency_id: e.value }))}
+              defaultValue={currenciesData.data
+                .map((c: Currency) => ({
+                  value: c.id,
+                  label: `${c.code} - ${c.name}`,
+                }))
+                .find((c: any) => {
+                  console.log(c.value);
+                  console.log(`${formData.currency_id}`);
+                  return c.value === `${formData.currency_id}`;
+                })}
+              required
+            />
+          </>
         )}
       </div>
 
