@@ -8,19 +8,27 @@ interface GoalsFilters {
   pageSize?: number;
 }
 
+type Stats = {
+  totalGoals?: number;
+  activeGoals?: number;
+  totalTarget?: string;
+  totalSavedFormated?: string;
+  totalSaved?: string;
+};
+
 interface ApiResponse<T> {
   data: T[];
   recordsFiltered: number;
   page: number;
   pageSize: number;
-  stats: Record<string, any>;
+  stats: Stats;
 }
 
 export async function getAllFinancialGoals(
   filters: GoalsFilters
 ): Promise<ApiResponse<FinancialGoal[]>> {
   const params = new URLSearchParams(
-    Object.entries(filters).filter(([_, v]) => v !== null) as [string, string][]
+    Object.entries(filters).filter(([, v]) => v !== null) as [string, string][]
   );
 
   const res = await fetch(`/api/financial-goals?${params.toString()}`, {

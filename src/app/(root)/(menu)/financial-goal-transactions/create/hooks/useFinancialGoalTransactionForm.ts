@@ -64,9 +64,11 @@ export function useFinancialGoalTransactionForm(id?: string) {
   };
 
   useEffect(() => {
-    fetchGoals();
-    fetchAccounts();
-  }, []);
+    if (!id) {
+      fetchGoals();
+      fetchAccounts();
+    }
+  }, [id]);
 
   const updateDateLimits = (status: TransactionStatus) => {
     const today = new Date();

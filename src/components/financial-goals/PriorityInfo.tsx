@@ -10,15 +10,15 @@ export default function PriorityInfo({
 }) {
   const priorityConfig = {
     low: {
-      className: "border-muted-foreground/30",
+      className: "text-muted-foreground",
       dotColor: "bg-muted-foreground",
     },
     medium: {
-      className: "border-chart-3/50",
+      className: "text-chart-3",
       dotColor: "bg-chart-3",
     },
     high: {
-      className: "border-destructive/50",
+      className: "text-destructive",
       dotColor: "bg-destructive",
     },
   };
@@ -26,7 +26,9 @@ export default function PriorityInfo({
   return (
     <div className="flex items-center gap-2">
       <div className={cn("w-2 h-2 rounded-full", priorityConfig[priority].dotColor)} />
-      <span className="text-xs text-muted-foreground">Priority: {translate}</span>
+      <span className={cn("text-xs text-muted-foreground", priorityConfig[priority].className)}>
+        Priority: {translate}
+      </span>
     </div>
   );
 }

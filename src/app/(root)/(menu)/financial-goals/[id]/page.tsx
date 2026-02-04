@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import React from "react";
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
-import FinancialGoalDetails from "@/components/financial-goals/details/FinancialGoalDetails";
 import { getTranslations } from "next-intl/server";
+import FinancialGoalDetails from "./components/FinancialGoalDetails";
 
 export const metadata: Metadata = {
   title: "Cash Manager | Financial Goals",

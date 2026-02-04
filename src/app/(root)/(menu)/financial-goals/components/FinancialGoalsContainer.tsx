@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import GoalsList from "../components/GoalsList";
 import { useFinancialGoals } from "../hooks/useFinancialGoals";
@@ -15,9 +15,18 @@ interface Filters {
 
 export default function FinancialGoalsContainer() {
   const t = useTranslations("FINANCIAL_GOALS");
-  const [filters, setFilters] = useState<Filters>();
+  const [filters, setFilters] = useState<Filters>({});
+  const [debouncedFilters, setDebouncedFilters] = useState<Filters>(filters);
 
-  const { goals, loading, error, loadMore, hasMore, total, stats } = useFinancialGoals(filters);
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedFilters(filters);
+    }, 300);
+
+    return () => clearTimeout(handler);
+  }, [filters]);
+
+  const { goals, loading, loadMore, hasMore, total, stats } = useFinancialGoals(debouncedFilters);
 
   return (
     <>
@@ -57,7 +66,6 @@ export default function FinancialGoalsContainer() {
         filters={filters}
         setFilters={setFilters}
         loading={loading}
-        error={error}
       />
     </>
   );

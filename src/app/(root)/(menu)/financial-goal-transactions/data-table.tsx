@@ -111,7 +111,7 @@ export function FinancialGoalTransactionsDataTable({
 
   const [total, setTotal] = React.useState(0);
   const [pageCount, setPageCount] = React.useState(0);
-  const [selectedId, setSelectedId] = React.useState("");
+  const [selectedId, setSelectedId] = React.useState("0");
 
   const { formData, setFormData, handleSubmit } = useFinancialGoalTransactionForm(selectedId);
 

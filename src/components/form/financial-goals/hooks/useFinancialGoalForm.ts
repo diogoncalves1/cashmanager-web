@@ -2,7 +2,7 @@ import useSWR from "swr";
 import { useRouter } from "next/navigation";
 import { fetcher } from "@/lib/fetcher";
 import { useEffect, useState } from "react";
-import { FinancialGoalPriority } from "@/lib/models/financialGoal";
+import { FinancialGoalPriority } from "@/models/financialGoal";
 
 interface FinancialGoalFormData {
   name: string;
@@ -59,7 +59,7 @@ export function useFinancialGoalForm(id?: string) {
       setFormData({
         name: fg.name,
         total_amount: fg.totalAmount,
-        currency_id: fg.currencyId || "",
+        currency_id: (fg.currencyId as string) || "",
         start_date: fg.startDate,
         due_date: fg.dueDate,
         description: fg.description || "",

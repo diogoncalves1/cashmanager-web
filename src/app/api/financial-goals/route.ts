@@ -1,6 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { baseUrl } from "../config";
 
+// interface DataTableColumn {
+//   data: string;
+//   searchable?: boolean;
+//   orderable?: boolean;
+// }
+
 function parseColumns(searchParams: URLSearchParams) {
   const defaultColumns = [
     { data: "name", searchable: true },

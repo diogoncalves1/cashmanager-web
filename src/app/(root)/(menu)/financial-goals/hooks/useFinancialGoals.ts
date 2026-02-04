@@ -1,5 +1,5 @@
 import { FinancialGoal } from "@/models/financialGoal";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { getAllFinancialGoals } from "../services/financialGoal.service";
 
 interface Filters {
@@ -9,37 +9,48 @@ interface Filters {
   sort?: string;
 }
 
+type Stats = {
+  totalGoals?: number;
+  activeGoals?: number;
+  totalTarget?: string;
+  totalSavedFormated?: string;
+  totalSaved?: string;
+};
+
 export function useFinancialGoals(filters: Filters = {}, pageSize = 6) {
   const [goals, setGoals] = useState<FinancialGoal[]>([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [stats, setStats] = useState<Record<string, any>>({});
+  const [stats, setStats] = useState<Stats>({});
   const [error, setError] = useState(false);
 
-  const fetchGoals = async (currentPage = 1, append = false) => {
-    try {
-      setLoading(true);
+  const fetchGoals = useCallback(
+    async (currentPage = 1, append = false) => {
+      try {
+        setLoading(true);
 
-      const res = await getAllFinancialGoals({ ...filters, page: currentPage - 1, pageSize });
+        const res = await getAllFinancialGoals({ ...filters, page: currentPage - 1, pageSize });
 
-      setTotal(res.recordsFiltered);
-      setStats(res.stats || {});
-      setGoals((prev: any) => (append ? [...prev, ...res.data] : res.data));
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        console.error(err);
+        setTotal(res.recordsFiltered);
+        setStats(res.stats || {});
+        setGoals((prev: any) => (append ? [...prev, ...res.data] : res.data));
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          console.error(err);
+        }
+        setError(true);
+      } finally {
+        setLoading(false);
       }
-      setError(true);
-    } finally {
-      setLoading(false);
-    }
-  };
+    },
+    [filters]
+  );
 
   useEffect(() => {
     setPage(1);
     fetchGoals(1, false);
-  }, [filters.status, filters.priority, filters.search, filters.sort]);
+  }, [filters, fetchGoals]);
 
   const loadMore = () => {
     if (goals.length < total) {

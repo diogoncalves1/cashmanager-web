@@ -1,6 +1,6 @@
 import { BadgeColor } from "@/components/ui/badge/Badge";
 import { Currency } from "./currency";
-import { User } from "./user";
+import { SharedRole } from "./sharedRole";
 
 export const getFinancialGoalStatus = (t: any) => [
   {
@@ -55,6 +55,14 @@ export const statusColors: Record<FinancialGoalStatus, BadgeColor> = {
   canceled: "error",
 };
 
+interface UserContribution {
+  id: string;
+  name: string;
+  email?: string;
+  sharedRole?: SharedRole;
+  contribution: string;
+}
+
 export interface FinancialGoal {
   id: string;
   name: string;
@@ -97,7 +105,7 @@ export interface FinancialGoal {
   createdAt: string;
   updatedAt: string;
 
-  users?: User[];
+  users?: UserContribution[];
   actions?: FinancialGoalActions;
 }
 
