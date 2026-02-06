@@ -1,5 +1,5 @@
 export interface Currency {
-  id: number;
+  id: string;
   symbol: string;
   name: string;
   rate: number;

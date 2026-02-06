@@ -73,7 +73,7 @@ export default function GoalsList({
                 onClick={() =>
                   setFilters((prev) => ({
                     ...prev,
-                    status: status.value !== "all" ? status.value : undefined,
+                    status: status.value !== "all" ? status.value : "",
                   }))
                 }
                 className={cn(
@@ -100,7 +100,7 @@ export default function GoalsList({
           <Select
             value={filters?.priority || "all"}
             onValueChange={(v) =>
-              setFilters((prev) => ({ ...prev, priority: v !== "all" ? v : undefined }))
+              setFilters((prev) => ({ ...prev, priority: v !== "all" ? v : "" }))
             }
           >
             <SelectTrigger className="w-32 h-9 bg-secondary border-0">
