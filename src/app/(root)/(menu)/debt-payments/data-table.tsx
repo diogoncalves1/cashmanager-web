@@ -39,7 +39,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { DebtPayment } from "@/models/debtPayment";
-import { onConfirmDebtPayment, onDeleteDebtPayment } from "@/services/debt-payments/service";
 import { useDebtPaymentForm } from "@/components/form/debt-payments/hooks/useDebtPaymentForm";
 import DataTable from "@/components/tables/DataTable";
 import EditDebtPaymentDialog from "@/components/ui/dialogs/DebtPayments/EditDebtPaymentDialog";
