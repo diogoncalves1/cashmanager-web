@@ -16,7 +16,7 @@ export default function DataTable({
   isLoading,
   columns,
 }: {
-  table: ReactTable<FinancialGoalTransaction>;
+  table: ReactTable<any>;
   isLoading: boolean;
   columns: any;
 }) {
