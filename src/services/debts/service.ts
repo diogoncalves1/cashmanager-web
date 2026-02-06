@@ -93,7 +93,7 @@ export async function onResetDebt(id: string, t: any) {
   return 0;
 }
 
-export async function onMarkPaidDebt(id: string, mutate?: any, t?: any) {
+export async function onMarkPaidDebt(id: string, mutate?: () => void, t?: any) {
   const result = await Swal.fire({
     title: t("MARK_DEBT_PAID"),
     icon: "warning",

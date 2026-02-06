@@ -1,16 +1,9 @@
-import type { Metadata } from "next";
-import React from "react";
-import { useTranslations } from "next-intl";
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
-import DebtsContainer from "./components/DebtsContainer";
 import { AppLink } from "@/components/ui/button/AppLink";
+import { useTranslations } from "next-intl";
+import React from "react";
 
-export const metadata: Metadata = {
-  title: "Cash Manager | Debts",
-  description: "This is Next.js Home for TailAdmin Dashboard Template",
-};
-
-export default function DebtsPage() {
+const Loading = () => {
   const t = useTranslations("DEBTS");
 
   return (
@@ -35,9 +28,26 @@ export default function DebtsPage() {
             Add Debt
           </AppLink>
         </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          {[...Array(4)].map((_, i) => (
+            <div
+              key={i}
+              className="p-5 rounded-xl bg-card border border-border shadow-sm animate-pulse h-28"
+            />
+          ))}
+        </div>
 
-        <DebtsContainer />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {[...Array(4)].map((_, i) => (
+            <div
+              key={i}
+              className="p-4 flex justify-center border border-border rounded-lg bg-card animate-pulse h-50"
+            />
+          ))}
+        </div>
       </div>
     </>
   );
-}
+};
+
+export default Loading;
