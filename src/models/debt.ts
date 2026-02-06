@@ -36,9 +36,32 @@ export interface Debt {
   totalAmount: number;
   totalAmountFormated: string;
   dueDate: string;
+  startDate: string;
   status: DebtStatus;
   statusTranslated: string;
 
+  monthsPaid: number;
+  months: number;
+  interestRate: number;
+  monthlyAmount: number;
+
+  description: string;
+
+  currencyCode: string;
+  currencyId: string;
+
   users: User[];
   actions: DebtActions;
+}
+
+export interface DebtBasic {
+  id: string;
+  name: string;
+  current: number;
+  currentFormated: string;
+  monthlyAmount: number;
+  target: number;
+  targetFormated: string;
+  currencySymbol: string;
+  interestRate: number;
 }
