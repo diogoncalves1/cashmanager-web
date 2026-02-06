@@ -21,14 +21,17 @@ export const getFinancialGoalPriorities = (t: any) => [
   {
     value: "low",
     label: t("LOW"),
+    color: "bg-muted-foreground",
   },
   {
     value: "medium",
     label: t("MEDIUM"),
+    color: "bg-chart-3",
   },
   {
     value: "high",
     label: t("HIGH"),
+    color: "bg-destructive",
   },
 ];
 

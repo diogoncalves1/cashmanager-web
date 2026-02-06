@@ -12,9 +12,9 @@ interface Filters {
 type Stats = {
   totalGoals?: number;
   activeGoals?: number;
-  totalTarget?: string;
+  totalTarget?: number;
   totalSavedFormated?: string;
-  totalSaved?: string;
+  totalSaved?: number;
 };
 
 export function useFinancialGoals(filters: Filters = {}, pageSize = 6) {
@@ -33,7 +33,7 @@ export function useFinancialGoals(filters: Filters = {}, pageSize = 6) {
         const res = await getAllFinancialGoals({ ...filters, page: currentPage - 1, pageSize });
 
         setTotal(res.recordsFiltered);
-        setStats(res.stats || {});
+        setStats(res.stats);
         setGoals((prev: any) => (append ? [...prev, ...res.data] : res.data));
       } catch (err: unknown) {
         if (err instanceof Error) {

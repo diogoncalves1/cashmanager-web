@@ -20,7 +20,7 @@ export function FinancialGoalDatePicker({
         <Button
           variant="outline"
           className={cn(
-            "w-full justify-start text-left font-normal border-input bg-background",
+            "w-full h-14 bg-input border-border text-foreground justify-start text-left font-normal ",
             !date && "text-muted-foreground"
           )}
         >

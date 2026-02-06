@@ -54,7 +54,10 @@ export default function FinancialGoalsContainer() {
             {t("OVERALL_PROGRESS")}
           </div>
           <div className="text-2xl font-semibold text-accent">
-            {stats.totalTarget ? Math.round((stats.totalSaved / stats.totalTarget) * 100) : 0}%
+            {stats.totalTarget
+              ? Math.round(((stats.totalSaved as number) / stats.totalTarget) * 100)
+              : 0}
+            %
           </div>
         </div>
       </div>

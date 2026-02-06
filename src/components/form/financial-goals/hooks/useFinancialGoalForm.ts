@@ -3,11 +3,13 @@ import { useRouter } from "next/navigation";
 import { fetcher } from "@/lib/fetcher";
 import { useEffect, useState } from "react";
 import { FinancialGoalPriority } from "@/models/financialGoal";
+import { getCurrencies } from "@/services/currencies/currency.service";
+import { Currency } from "@/models/currency";
 
 interface FinancialGoalFormData {
   name: string;
-  total_amount?: number;
-  currency_id: string;
+  total_amount?: string;
+  currency_id?: string;
   start_date: string;
   due_date: string;
   description: string;
@@ -18,10 +20,11 @@ export function useFinancialGoalForm(id?: string) {
   const router = useRouter();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [currencies, setCurrencies] = useState<Currency[]>([]);
+  const [loadingCurrencies, setLoadingCurrencies] = useState(true);
 
   const [formData, setFormData] = useState<FinancialGoalFormData>({
     name: "",
-    currency_id: "",
     start_date: "",
     due_date: "",
     description: "",
@@ -45,10 +48,23 @@ export function useFinancialGoalForm(id?: string) {
     isLoading: isLoadingFinancialGoal,
   } = useSWR(id ? [`/financial-goals/${id}`, { method: "GET" }] : null, fetcher);
 
-  const { data: currenciesData, isLoading: isLoadingCurrencies } = useSWR(
-    [`/currencies`, { method: "GET" }],
-    fetcher
-  );
+  const fetchCurrencies = async () => {
+    try {
+      const res = await getCurrencies();
+
+      setCurrencies(res.data);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        console.error(err);
+      }
+    } finally {
+      setLoadingCurrencies(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchCurrencies();
+  }, []);
 
   useEffect(() => {
     if (financialGoalError) router.push("/financial-goals");
@@ -59,7 +75,7 @@ export function useFinancialGoalForm(id?: string) {
       setFormData({
         name: fg.name,
         total_amount: fg.totalAmount,
-        currency_id: (fg.currencyId as string) || "",
+        currency_id: fg.currencyId,
         start_date: fg.startDate,
         due_date: fg.dueDate,
         description: fg.description || "",
@@ -118,7 +134,7 @@ export function useFinancialGoalForm(id?: string) {
     isSubmitting,
     handleSubmit,
     isLoadingFinancialGoal,
-    isLoadingCurrencies,
-    currenciesData,
+    loadingCurrencies,
+    currencies,
   };
 }

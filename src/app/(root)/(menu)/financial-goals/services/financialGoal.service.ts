@@ -11,9 +11,9 @@ interface GoalsFilters {
 type Stats = {
   totalGoals?: number;
   activeGoals?: number;
-  totalTarget?: string;
+  totalTarget?: number;
   totalSavedFormated?: string;
-  totalSaved?: string;
+  totalSaved?: number;
 };
 
 interface ApiResponse<T> {
