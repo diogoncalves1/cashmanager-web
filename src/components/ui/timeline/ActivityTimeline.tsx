@@ -19,7 +19,7 @@ interface Page {
 }
 
 const ActivityTimeline = ({ type, id }: Props) => {
-  const t = useTranslations("FRIENDS");
+  const t = useTranslations("ACTIVITY");
   const monthsT = useTranslations("MONTHS");
 
   const fetchActivity = async ({
@@ -70,7 +70,7 @@ const ActivityTimeline = ({ type, id }: Props) => {
   if (isLoading) {
     return (
       <div className="text-center py-12 text-gray-500 dark:text-gray-400">
-        {t("LOADING_BLOCKED_USERS")}
+        {t("LOADING_ACTIVITY")}
       </div>
     );
   }
@@ -96,7 +96,7 @@ const ActivityTimeline = ({ type, id }: Props) => {
         <div className="space-y-6">
           {activity.length === 0 ? (
             <p className="text-center py-10 text-gray-500 dark:text-gray-400">
-              {t("WITHOUT_BLOCKED_USERS")}
+              {t("WITHOUT_ACTIVITY")}
             </p>
           ) : (
             activity.map((activity, idx) => (

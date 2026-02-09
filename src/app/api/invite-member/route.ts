@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
 
     const type = body.type;
     const userId = body.user_id;
-    const id = body.id;
+    const id = body.id || body.subject_id;
 
     const urlApi = `${baseUrl}${type}/${id}/invite/${userId}`;
 

@@ -27,16 +27,17 @@ type Props = {
   isInviteOpen: boolean;
   setIsInviteOpen: any;
   type: InviteType;
-  id: string;
+  id?: string;
 };
 
 export default function InviteMemberDialog({ isInviteOpen, setIsInviteOpen, type, id }: Props) {
   const t = useTranslations("INVITE_MEMBER");
-  const { roles, friends, loading, handleSubmit, formData, setFormData } = useDataForInvite({
-    type,
-    id,
-    load: isInviteOpen,
-  });
+  const { roles, friends, loading, handleSubmit, formData, setFormData, subjects } =
+    useDataForInvite({
+      type,
+      id,
+      load: isInviteOpen,
+    });
 
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
@@ -66,6 +67,33 @@ export default function InviteMemberDialog({ isInviteOpen, setIsInviteOpen, type
             <DialogDescription>Invite someone to contribute to this goal.</DialogDescription>
           </DialogHeader>
           <div className="space-y-4 py-4">
+            {!id && (
+              <div className="space-y-2">
+                <Label>Subject</Label>
+                <Select
+                  value={formData.subject_id || ""}
+                  onValueChange={(e: string) => {
+                    setFormData((prev: any) => ({
+                      ...prev,
+                      subject_id: e,
+                    }));
+                  }}
+                >
+                  <SelectTrigger className="h-14 bg-input border-border text-foreground">
+                    <SelectValue placeholder="Choose a subject" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {!loading &&
+                      subjects?.map((subject: any) => (
+                        <SelectItem key={subject.id} value={`${subject.id}`}>
+                          {subject.name}
+                        </SelectItem>
+                      ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            )}
+
             <div className="space-y-2">
               <Label>Friend</Label>
               <Select
@@ -130,7 +158,9 @@ export default function InviteMemberDialog({ isInviteOpen, setIsInviteOpen, type
                 setIsInviteOpen(false);
                 setIsSubmitting(true);
               }}
-              //   disabled={isSubmitting}
+              disabled={
+                !formData.shared_role_id || !formData.user_id || (!id && !formData.subject_id)
+              }
             >
               {isSubmitting ? "Sending..." : "Send Invitation"}
             </Button>
