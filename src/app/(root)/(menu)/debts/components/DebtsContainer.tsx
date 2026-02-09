@@ -32,8 +32,10 @@ export default function DebtsContainer() {
           </div>
           <div className="text-2xl font-semibold text-accent">{stats.totalPaidFormated}</div>
           <div className="text-xs text-muted-foreground mt-2">
-            {stats.totalDebt == 0 ? 0 : Math.round((stats.totalPaid / stats.totalDebt) * 100)}% of
-            total
+            {stats.totalAmounDebt == 0
+              ? 0
+              : Math.round((stats.totalPaid / stats.totalAmounDebt) * 100)}
+            % of total
           </div>
         </div>
         <div className="p-5 rounded-xl bg-card border border-border shadow-sm">

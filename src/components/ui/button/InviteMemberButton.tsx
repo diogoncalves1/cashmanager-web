@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import InviteMemberDialog from "@/components/ui/dialogs/InviteMemberDialog";
 import { Button } from "@/components/ui/button";
@@ -10,7 +12,7 @@ const InviteMemberButton = ({
   isLigth = false,
 }: {
   type: InviteType;
-  id: string;
+  id?: string;
   isLigth?: boolean;
 }) => {
   const [isInviteOpen, setIsInviteOpen] = useState(false);

@@ -1,6 +1,7 @@
 import { Debt } from "@/models/debt";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import StatusBadge from "@/components/debts/StatusBadge";
 
 const statusColors: Record<string, string> = {
   pending: "bg-accent/15 text-accent border-accent/30",
@@ -39,14 +40,7 @@ export default function DebtCard({ debt }: Props) {
           </h3>
           <p className="text-sm text-muted-foreground mt-0.5">{debt.description}</p>
         </div>
-        <span
-          className={cn(
-            "px-2.5 py-1 rounded-full text-xs font-medium border",
-            statusColors[debt.status]
-          )}
-        >
-          {debt.statusTranslated}
-        </span>
+        <StatusBadge status={debt.status} translate={debt.statusTranslated} />
       </div>
 
       {/* Progress */}

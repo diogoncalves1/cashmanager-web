@@ -1,4 +1,4 @@
-import { User } from "./user";
+import { SharedRole } from "./sharedRole";
 import { BadgeColor } from "@/components/ui/badge";
 
 export type DebtStatus = "pending" | "paid";
@@ -28,6 +28,14 @@ export const statusColors: Record<DebtStatus, BadgeColor> = {
   pending: "warning",
 };
 
+interface UserPayment {
+  id: string;
+  name: string;
+  email?: string;
+  sharedRole?: SharedRole;
+  paid: string;
+}
+
 export interface Debt {
   id: string;
   name: string;
@@ -44,13 +52,17 @@ export interface Debt {
   months: number;
   interestRate: number;
   monthlyAmount: number;
+  monthlyAmountFormated: string;
+
+  interestPaid: number;
+  interestPaidFormated: string;
 
   description: string;
 
   currencyCode: string;
   currencyId: string;
 
-  users: User[];
+  users: UserPayment[];
   actions: DebtActions;
 }
 
