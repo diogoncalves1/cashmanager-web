@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import InviteMemberDialog from "@/components/ui/dialogs/InviteMemberDialog";
+import InviteMemberDialog from "@/components/invitations/InviteMemberDialog";
 import { Button } from "@/components/ui/button";
+import { LucideUserPlus2 } from "lucide-react";
 
 type InviteType = "debts" | "financial-goals" | "accounts";
 
@@ -10,10 +11,12 @@ const InviteMemberButton = ({
   type,
   id,
   isLigth = false,
+  mutate,
 }: {
   type: InviteType;
   id?: string;
   isLigth?: boolean;
+  mutate?: () => void;
 }) => {
   const [isInviteOpen, setIsInviteOpen] = useState(false);
 
@@ -26,26 +29,12 @@ const InviteMemberButton = ({
           className="bg-transparent"
           onClick={() => setIsInviteOpen(true)}
         >
-          <svg className="w-4 h-4 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
-            />
-          </svg>
+          <LucideUserPlus2 className="w-4 h-4 mr-2" />
           <span className="hidden sm:inline">Invite</span>
         </Button>
       ) : (
         <Button size="sm" onClick={() => setIsInviteOpen(true)}>
-          <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
-            />
-          </svg>
+          <LucideUserPlus2 className="w-4 h-4 mr-2" />
           Invite Member
         </Button>
       )}
@@ -56,6 +45,7 @@ const InviteMemberButton = ({
         setIsInviteOpen={setIsInviteOpen}
         type={type}
         id={id}
+        mutate={mutate}
       />
     </div>
   );

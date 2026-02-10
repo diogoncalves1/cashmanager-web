@@ -28,9 +28,16 @@ type Props = {
   setIsInviteOpen: any;
   type: InviteType;
   id?: string;
+  mutate?: () => void;
 };
 
-export default function InviteMemberDialog({ isInviteOpen, setIsInviteOpen, type, id }: Props) {
+export default function InviteMemberDialog({
+  isInviteOpen,
+  setIsInviteOpen,
+  type,
+  id,
+  mutate,
+}: Props) {
   const t = useTranslations("INVITE_MEMBER");
   const { roles, friends, loading, handleSubmit, formData, setFormData, subjects } =
     useDataForInvite({
@@ -53,6 +60,7 @@ export default function InviteMemberDialog({ isInviteOpen, setIsInviteOpen, type
     setIsSubmitting(false);
     setIsInviteOpen(false);
     if (res.success) {
+      if (mutate) mutate();
       return SwalToast({ message: res.message, icon: "success" });
     }
     return SwalToast({ message: res.message, icon: "error" });

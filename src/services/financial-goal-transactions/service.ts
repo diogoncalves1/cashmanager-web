@@ -1,6 +1,5 @@
 import LoadingToast from "@/components/swal/LoadingToast";
 import { SwalToast } from "@/components/swal/SwalToast";
-import Swal from "sweetalert2";
 
 export async function onDeleteFinancialGoalTransaction(
   id: string,

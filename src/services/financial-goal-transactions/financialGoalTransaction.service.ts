@@ -71,8 +71,34 @@ interface ApiResponseStats {
   success: number;
   message: number;
 }
+
 export async function getFormStats(): Promise<ApiResponseStats> {
   const res = await fetch(`/api/financial-goals/stats`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (!res.ok) throw new Error("Failed to fetch financial goals stats");
+
+  const response = await res.json();
+  return response;
+}
+
+type Summary = {
+  sentInvites: number;
+  receivedInvites: number;
+  pendingInvites: number;
+  awaitingInvites: number;
+};
+
+interface ApiResponseInvitationStats {
+  data: Summary;
+  success: number;
+  message: number;
+}
+
+export async function getInvitationStats(): Promise<ApiResponseInvitationStats> {
+  const res = await fetch(`/api/financial-goals/invitations-stats`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   });
