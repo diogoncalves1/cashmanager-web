@@ -58,7 +58,7 @@ export const statusColors: Record<FinancialGoalStatus, BadgeColor> = {
   canceled: "error",
 };
 
-interface UserContribution {
+export interface UserContribution {
   id: string;
   name: string;
   email?: string;
