@@ -2,13 +2,13 @@
 import Checkbox from "@/components/form/input/Checkbox";
 import Input from "@/components/form/input/InputField";
 import Label from "@/components/form/Label";
-import Button from "@/components/ui/button/Button";
 import { EyeCloseIcon, EyeIcon } from "@/icons";
 import Link from "next/link";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import LoadingToast from "../swal/LoadingToast";
 import { useTranslations } from "next-intl";
+import AuthSubmitButton from "./AuthSubmitButton";
 
 export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -118,9 +118,7 @@ export default function SignInForm() {
                 {error && <p className="text-error-500">{error}</p>}
 
                 <div>
-                  <Button className="w-full" size="sm">
-                    Sign in
-                  </Button>
+                  <AuthSubmitButton>Sign In</AuthSubmitButton>
                 </div>
               </div>
             </form>
