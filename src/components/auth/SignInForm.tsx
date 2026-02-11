@@ -42,9 +42,8 @@ export default function SignInForm() {
         return;
       }
 
+      await router.push("/dashboard");
       router.refresh();
-
-      router.push("/dashboard");
     } catch (err) {
       console.error(err);
       setError("Credenciais inválidas");
