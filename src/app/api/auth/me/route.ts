@@ -60,15 +60,9 @@ export async function PUT(req: NextRequest) {
 
   const response = NextResponse.json({ success: true, message: data.message });
 
-  response.cookies.set("user", JSON.stringify(data.data), {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    path: "/",
-    maxAge: 60 * 60 * 24 * 365,
-  });
+  cookieStore.set("NEXT_LOCALE", lang);
 
-  response.cookies.set("NEXT_LOCALE", lang, {
+  response.cookies.set("user", JSON.stringify(data.data), {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
