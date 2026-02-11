@@ -1,4 +1,5 @@
 import { cookies } from "next/headers";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
   const cookieStore = await cookies();
@@ -39,4 +40,41 @@ export async function GET() {
   });
 
   return Response.json({ token, user, cached: false });
+}
+
+export async function PUT(req: NextRequest) {
+  const { lang, currency_id, name, email } = await req.json();
+  const token = req.cookies.get("token")?.value;
+
+  const res = await fetch(`${process.env.API_BACKEND_URL}me`, {
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+    method: "PUT",
+    body: JSON.stringify({ email, currency_id, lang, name }),
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    return NextResponse.json({ error: data.message || "Login failed" }, { status: 401 });
+  }
+
+  const response = NextResponse.json({ success: true, message: data.message });
+
+  response.cookies.set("user", JSON.stringify(data.data), {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    path: "/",
+    maxAge: 60 * 60 * 24 * 365,
+  });
+
+  response.cookies.set("NEXT_LOCALE", lang, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    path: "/",
+    maxAge: 60 * 60 * 24 * 365,
+  });
+
+  return response;
 }

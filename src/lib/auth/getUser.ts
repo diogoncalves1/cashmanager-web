@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { User } from "../models/user";
+import { User } from "../../models/user";
 
 export async function getUser(): Promise<User | null> {
   const cookieStore = await cookies();
