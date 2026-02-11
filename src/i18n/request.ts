@@ -1,6 +1,5 @@
-// src/i18n/request.ts
 import { getRequestConfig } from "next-intl/server";
-import { cookies } from "next/headers"; // ← Add this import
+import { cookies } from "next/headers";
 
 const SUPPORTED_LOCALES = ["pt", "en"] as const;
 const DEFAULT_LOCALE = "en";

@@ -125,7 +125,6 @@ const AppSidebar: React.FC = () => {
       icon: <Settings size={18} strokeWidth={2} />,
       name: t("SIDEBAR_SETTINGS"),
       path: "/settings",
-      disable: true,
     },
     {
       icon: <DoorOpen size={18} strokeWidth={2} />,
