@@ -39,6 +39,7 @@ export interface Account {
   balanceFormated?: string;
   balanceFormatedWithoutSymbol?: string;
   active: boolean;
+  status: boolean;
   statusTranslated?: string;
   type: AccountType;
   typeTranslated?: string;
@@ -49,4 +50,10 @@ export interface Account {
   currencySymbol: string;
   currency?: Currency;
   createdAt?: string;
+}
+
+export interface AccountBasic {
+  id: string;
+  name: string;
+  type: string;
 }
