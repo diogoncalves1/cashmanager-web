@@ -1,171 +1,196 @@
 "use client";
 
-import useSWR from "swr";
-import { AccountType, accountTypes } from "@/lib/models/account";
-import { useRouter } from "next/navigation";
-import { fetcher } from "@/lib/fetcher";
-import { FormEvent, useEffect, useState } from "react";
-import Form from "../Form";
-import Input from "../input/InputField";
+import { Input } from "@/components/ui/input";
 import Label from "../Label";
-import { Button } from "@/components/ui/button";
-import Select from "react-select";
-
-import Checkbox from "../input/Checkbox";
 import { SwalToast } from "@/components/swal/SwalToast";
-import { Currency } from "@/lib/models/currency";
+import { Currency } from "@/models/currency";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import LoadingToast from "@/components/swal/LoadingToast";
+import { useTranslations } from "next-intl";
+import SubmitFormButton from "@/components/ui/button/SubmitFormButton";
+import { useAccountForm } from "./hooks/useAccountForm";
+import { accountTypes } from "@/models/account";
+import Checkbox from "../input/Checkbox";
 
-type AccountsFormProps = {
+type Props = {
   id?: string;
 };
 
-interface AccountFormData {
-  name: string;
-  currency_id: string;
-  type: AccountType | string;
-  active: boolean;
-}
+export default function AccountsForm({ id }: Props) {
+  const { formData, setFormData, isSubmitting, handleSubmit, loadingCurrencies, currencies } =
+    useAccountForm(id);
 
-export default function AccountsForm({ id }: AccountsFormProps) {
-  const router = useRouter();
-  const [isLoadingHandle, setIsLoadingHandle] = useState(false);
+  const t = useTranslations("FINANCIAL_GOALS");
 
-  const {
-    data: accountData,
-    error: accountError,
-    isLoading: isLoadingAccount,
-  } = useSWR(id ? [`/accounts/${id}`, { method: "GET" }] : null, fetcher);
-
-  const { data: currenciesData, isLoading: isLoadingCurrencies } = useSWR(
-    [`/currencies`, { method: "GET" }],
-    fetcher
-  );
-
-  const [formData, setFormData] = useState<AccountFormData>({
-    name: "",
-    currency_id: "",
-    active: true,
-    type: "",
-  });
-
-  useEffect(() => {
-    if (accountError) {
-      router.push("/accounts");
-    }
-    console.log(accountData);
-    if (accountData)
-      setFormData({
-        type: accountData.data.type,
-        active: accountData.data.active,
-        name: accountData.data.name,
-        currency_id: accountData.data.currencyId,
-      });
-  }, [accountData, accountError, router]);
-
-  if (isLoadingAccount || isLoadingCurrencies || (formData.currency_id == "" && id)) return <></>;
-
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setIsLoadingHandle(true);
-
-    try {
-      const method = id ? "PUT" : "POST";
-      const url = id ? `/api/accounts/${id}` : "/api/accounts";
-
-      const response = await fetch(url, {
-        method: method,
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) throw new Error(data.message);
-
-      return SwalToast({ message: data.message, icon: "success" });
-    } catch (err: unknown) {
-      console.error(err);
-      if (err instanceof Error) {
-        return SwalToast({
-          message: err.message ?? "Erro ao tentar atualizar conta",
-          icon: "error",
-        });
-      } else {
-        return SwalToast({ message: "Erro ao tentar atualizar conta", icon: "error" });
-      }
-    } finally {
-      setIsLoadingHandle(false);
-    }
+  const onSubmit = async (e: React.FormEvent) => {
+    LoadingToast({
+      title: id ? "A atualizar..." : "A criar...",
+      message: id ? "A atualizar transação..." : "A criar a sua transação...",
+    });
+    e.preventDefault();
+    const result = await handleSubmit();
+    SwalToast({
+      message: result.message,
+      icon: result.success ? "success" : "error",
+    });
   };
 
-  console.log(formData);
+  const currencySelected = currencies.find((c) => c.id == formData.currency_id);
+
+  accountTypes;
 
   return (
-    <Form
-      onSubmit={handleSubmit}
-      className="grid-cols-12 xl:mx-20 gap-5 p-5 rounded-sm grid border border-gray-200 dark:border-gray-800 bg-white dark:bg-white/[0.03]"
-    >
-      <div className="md:col-span-6 col-span-12">
-        <Label>Name</Label>
-        <Input
-          placeholder="Name..."
-          required={true}
-          defaultValue={formData.name}
+    <form onSubmit={onSubmit} className="space-y-8">
+      <div className="space-y-3">
+        <div className="flex items-center justify-between">
+          <Label className="text-sm font-medium tracking-wide text-muted-foreground uppercase">
+            Details
+          </Label>
+          <span className="text-xs text-muted-foreground">Step 1 of 3</span>
+        </div>
+        {/* sm:grid-cols-2 */}
+        <div className="grid grid-cols-1  gap-4">
+          <div className="space-y-2">
+            <Label htmlFor="date" className="text-sm text-muted-foreground">
+              Name
+            </Label>
+            <Input
+              id="date"
+              type="text"
+              value={formData.name}
+              onChange={(e) => {
+                setFormData((prev) => ({ ...prev, name: e.target.value }));
+              }}
+              className="h-14 bg-input border-border text-foreground"
+            />
+          </div>
+          {/* <div className="space-y-2">
+            <Label htmlFor="amount" className="text-sm text-muted-foreground">
+              Amount
+            </Label>
+            <div className="relative">
+              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground text-lg">
+                {currencySelected?.symbol || "$"}
+              </span>
+              <Input
+                id="amount"
+                type="number"
+                placeholder="0.00"
+                value={formData.total_amount ?? ""}
+                onChange={(e) => {
+                  setFormData((prev) => ({ ...prev, total_amount: e.target.value }));
+                }}
+                className="h-14 pl-12 text-lg bg-input border-border placeholder:text-muted-foreground/50"
+                min="0"
+                step="0.01"
+              />
+            </div>
+          </div> */}
+        </div>
+      </div>
+
+      {/* Type */}
+      <div className="space-y-3">
+        <div className="flex items-center justify-between">
+          <Label className="text-sm font-medium tracking-wide text-muted-foreground uppercase">
+            Select Type
+          </Label>
+          <span className="text-xs text-muted-foreground">Step 2 of 3</span>
+        </div>
+        <Select
+          value={formData.type}
+          onValueChange={(e: string) => {
+            setFormData((prev) => ({ ...prev, type: e }));
+          }}
+        >
+          <SelectTrigger className="h-14 bg-input border-border text-foreground">
+            <SelectValue placeholder="Choose a type" />
+          </SelectTrigger>
+          <SelectContent className="bg-card border-border">
+            {accountTypes?.map((type) => (
+              <SelectItem
+                key={type.value}
+                value={type.value}
+                className="py-3 cursor-pointer focus:bg-accent"
+              >
+                <div className="flex flex-col items-start gap-0.5">
+                  <span className="font-medium">{type.label}</span>
+                </div>
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+
+      {/* Currency */}
+      <div className="space-y-3">
+        <div className="flex items-center justify-between">
+          <Label className="text-sm font-medium tracking-wide text-muted-foreground uppercase">
+            Select Currency
+          </Label>
+          <span className="text-xs text-muted-foreground">Step 3 of 3</span>
+        </div>
+        {!loadingCurrencies ? (
+          <Select
+            value={formData.currency_id}
+            onValueChange={(e: string) => {
+              setFormData((prev) => ({ ...prev, currency_id: e }));
+            }}
+          >
+            <SelectTrigger className="h-14 bg-input border-border text-foreground">
+              <SelectValue placeholder="Choose a currency" />
+            </SelectTrigger>
+            <SelectContent className="bg-card border-border">
+              {!loadingCurrencies &&
+                currencies?.map((currency: Currency) => (
+                  <SelectItem
+                    key={currency.id}
+                    value={currency.id}
+                    className="py-3 cursor-pointer focus:bg-secondary"
+                  >
+                    <div className="flex flex-col items-start gap-0.5">
+                      <span className="font-medium">{currency.name}</span>
+                      <span className="text-xs text-muted-foreground">
+                        {currency.code} {currency.symbol}
+                      </span>
+                    </div>
+                  </SelectItem>
+                ))}
+            </SelectContent>
+          </Select>
+        ) : (
+          <div className="p-2 space-y-2">
+            <div className="h-8 rounded bg-muted animate-pulse" />
+          </div>
+        )}
+      </div>
+
+      <div className="space-y-3">
+        <Checkbox
+          label="Ativa"
+          checked={formData.active}
           onChange={(e) => {
-            setFormData((prev) => ({ ...prev, name: e.target.value }));
+            setFormData((prev) => ({ ...prev, active: e }));
           }}
         />
       </div>
-      <div className="md:col-span-6 col-span-12">
-        <Label>Moeda</Label>
-        <Select
-          isSearchable={true}
-          key={formData.currency_id}
-          options={currenciesData.data.map((c: Currency) => {
-            return {
-              value: c.id,
-              label: c.code + " " + c.name,
-            };
-          })}
-          onChange={(e: any) => {
-            setFormData((prev) => ({ ...prev, currency_id: e.value }));
-          }}
-          defaultValue={currenciesData.data
-            .map((c: Currency) => ({ value: c.id, label: c.code + " " + c.name }))
-            .find((option: any) => option.value === formData.currency_id)}
-          required={true}
-        ></Select>
-      </div>
-      <div className="col-span-12">
-        <Label>Tipo</Label>
-        <Select
-          key={formData.type}
-          options={accountTypes}
-          onChange={(e: any) => {
-            setFormData((prev) => ({ ...prev, type: e.value }));
-          }}
-          defaultValue={accountTypes.find((type) => type.value === formData.type)}
-          required={true}
-        ></Select>
-      </div>
-      <div className="col-span-12">
-        <div className="justify-between flex">
-          <div>
-            <Checkbox
-              checked={formData.active}
-              onChange={(value) => {
-                setFormData((prev) => ({ ...prev, active: value }));
-              }}
-              label="Ativa"
-            />
-          </div>
-          <Button variant={"outline"} disabled={isLoadingHandle} className="mt-4 ">
-            {isLoadingHandle ? "Enviando..." : "Enviar"}
-          </Button>
-        </div>
-      </div>
-    </Form>
+
+      {/* Submit */}
+      <SubmitFormButton
+        isSubmitting={isSubmitting}
+        isDisable={!formData.currency_id || !formData.name || !formData.type}
+      />
+
+      {/* Form Helper */}
+      <p className="text-center text-xs text-muted-foreground">
+        All goals are securely processed and recorded instantly.
+      </p>
+    </form>
   );
 }

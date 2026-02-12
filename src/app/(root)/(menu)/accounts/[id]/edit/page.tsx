@@ -24,8 +24,18 @@ export default function AccountsPage({ params }: AccountsPageParams) {
         pageTitle="EDIT ACCOUNT"
         breadcrumb={[{ title: "Accounts", path: "/accounts" }, { title: "Edit" }]}
       />
-      <div className="grid grid-cols-12 p-6 gap-4 md:gap-6">
-        <div className="col-span-12">
+      <div className="max-w-6xl mx-auto px-6 py-12 md:py-16">
+        {/* Page Header */}
+        <div className="mb-10">
+          <h1 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight text-balance">
+            Edit Account
+          </h1>
+          <p className="mt-3 text-muted-foreground text-lg">
+            Record a deposit, withdrawal, or progress update for your financial goals.
+          </p>
+        </div>
+
+        <div className="rounded-2xl bg-card border border-border p-6 md:p-8 shadow-sm">
           <AccountsForm id={id} />
         </div>
       </div>
