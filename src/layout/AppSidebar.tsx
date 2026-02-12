@@ -84,6 +84,10 @@ const AppSidebar: React.FC = () => {
       subItems: [
         { name: t("SIDEBAR_DEBTS"), path: "/debts", pro: false },
         { name: t("SIDEBAR_DEBT_PAYMENTS"), path: "/debt-payments", pro: false },
+        {
+          name: t("SIDEBAR_INVITES"),
+          path: "/debt-invitations",
+        },
       ],
     },
     {
