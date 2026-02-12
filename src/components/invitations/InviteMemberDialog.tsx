@@ -78,77 +78,95 @@ export default function InviteMemberDialog({
             {!id && (
               <div className="space-y-2">
                 <Label>Subject</Label>
-                <Select
-                  value={formData.subject_id || ""}
-                  onValueChange={(e: string) => {
-                    setFormData((prev: any) => ({
-                      ...prev,
-                      subject_id: e,
-                    }));
-                  }}
-                >
-                  <SelectTrigger className="h-14 bg-input border-border text-foreground">
-                    <SelectValue placeholder="Choose a subject" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {!loading &&
-                      subjects?.map((subject: any) => (
-                        <SelectItem key={subject.id} value={`${subject.id}`}>
-                          {subject.name}
-                        </SelectItem>
-                      ))}
-                  </SelectContent>
-                </Select>
+                {!loading ? (
+                  <Select
+                    value={formData.subject_id || ""}
+                    onValueChange={(e: string) => {
+                      setFormData((prev: any) => ({
+                        ...prev,
+                        subject_id: e,
+                      }));
+                    }}
+                  >
+                    <SelectTrigger className="h-14 bg-input border-border text-foreground">
+                      <SelectValue placeholder="Choose a subject" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {!loading &&
+                        subjects?.map((subject: any) => (
+                          <SelectItem key={subject.id} value={`${subject.id}`}>
+                            {subject.name}
+                          </SelectItem>
+                        ))}
+                    </SelectContent>
+                  </Select>
+                ) : (
+                  <div className="p-2 space-y-2">
+                    <div className="h-8 rounded bg-muted animate-pulse" />
+                  </div>
+                )}
               </div>
             )}
 
             <div className="space-y-2">
               <Label>Friend</Label>
-              <Select
-                value={formData.user_id || ""}
-                onValueChange={(e: string) => {
-                  setFormData((prev: any) => ({
-                    ...prev,
-                    user_id: e,
-                  }));
-                }}
-              >
-                <SelectTrigger className="h-14 bg-input border-border text-foreground">
-                  <SelectValue placeholder="Choose a friend" />
-                </SelectTrigger>
-                <SelectContent>
-                  {!loading &&
-                    friends?.map((friend) => (
-                      <SelectItem key={friend.id} value={`${friend.user.id}`}>
-                        {friend.user.name}
-                      </SelectItem>
-                    ))}
-                </SelectContent>
-              </Select>
+              {!loading ? (
+                <Select
+                  value={formData.user_id || ""}
+                  onValueChange={(e: string) => {
+                    setFormData((prev: any) => ({
+                      ...prev,
+                      user_id: e,
+                    }));
+                  }}
+                >
+                  <SelectTrigger className="h-14 bg-input border-border text-foreground">
+                    <SelectValue placeholder="Choose a friend" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {!loading &&
+                      friends?.map((friend) => (
+                        <SelectItem key={friend.id} value={`${friend.user.id}`}>
+                          {friend.user.name}
+                        </SelectItem>
+                      ))}
+                  </SelectContent>
+                </Select>
+              ) : (
+                <div className="p-2 space-y-2">
+                  <div className="h-8 rounded bg-muted animate-pulse" />
+                </div>
+              )}
             </div>
             <div className="space-y-2">
               <Label>Role</Label>
-              <Select
-                value={formData.shared_role_id || ""}
-                onValueChange={(e: string) => {
-                  setFormData((prev: any) => ({
-                    ...prev,
-                    shared_role_id: e,
-                  }));
-                }}
-              >
-                <SelectTrigger className="h-14 bg-input border-border text-foreground">
-                  <SelectValue placeholder="Choose a role" />
-                </SelectTrigger>
-                <SelectContent>
-                  {!loading &&
-                    roles?.map((sharedRole) => (
-                      <SelectItem key={sharedRole.id} value={sharedRole.id}>
-                        {sharedRole.name}
-                      </SelectItem>
-                    ))}
-                </SelectContent>
-              </Select>
+              {!loading ? (
+                <Select
+                  value={formData.shared_role_id || ""}
+                  onValueChange={(e: string) => {
+                    setFormData((prev: any) => ({
+                      ...prev,
+                      shared_role_id: e,
+                    }));
+                  }}
+                >
+                  <SelectTrigger className="h-14 bg-input border-border text-foreground">
+                    <SelectValue placeholder="Choose a role" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {!loading &&
+                      roles?.map((sharedRole) => (
+                        <SelectItem key={sharedRole.id} value={sharedRole.id}>
+                          {sharedRole.name}
+                        </SelectItem>
+                      ))}
+                  </SelectContent>
+                </Select>
+              ) : (
+                <div className="p-2 space-y-2">
+                  <div className="h-8 rounded bg-muted animate-pulse" />
+                </div>
+              )}
             </div>
           </div>
           <DialogFooter>
