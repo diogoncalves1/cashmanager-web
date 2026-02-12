@@ -3,7 +3,7 @@ import React from "react";
 type BadgeVariant = "light" | "solid";
 type BadgeSize = "sm" | "md" | "lg";
 export type BadgeColor = "primary" | "success" | "error" | "warning" | "info" | "light" | "dark";
-type BadgeType = "rounded-sm" | "rounded" | "rounded-0";
+type BadgeType = "rounded-sm" | "rounded" | "rounded-0" | "rounded-xl";
 
 interface BadgeProps {
   variant?: BadgeVariant; // Light or solid variant
@@ -13,6 +13,7 @@ interface BadgeProps {
   startIcon?: React.ReactNode; // Icon at the start
   endIcon?: React.ReactNode; // Icon at the end
   children: React.ReactNode; // Badge content
+  className?: string;
 }
 
 const Badge: React.FC<BadgeProps> = ({
@@ -23,8 +24,9 @@ const Badge: React.FC<BadgeProps> = ({
   startIcon,
   endIcon,
   children,
+  className,
 }) => {
-  const baseStyles = `inline-flex items-center py-0 justify-center ${type} font-medium`;
+  const baseStyles = `inline-flex items-center py-0 justify-center ${type} ${className} font-medium`;
 
   // Define size styles
   const sizeStyles = {

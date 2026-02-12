@@ -4,21 +4,18 @@ import InvitationContainer from "./components/InvitationContainer";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Cash Manager | Financial Goals",
+  title: "Cash Manager | Accounts",
   description: "This is Next.js Home for TailAdmin Dashboard Template",
 };
 
 export default function InvitationsPage() {
-  const t = useTranslations("FINANCIAL_GOALS");
+  const t = useTranslations("ACCOUNTS");
 
   return (
     <>
       <PageBreadcrumb
-        pageTitle={t("FINANCIAL_GOALS")}
-        breadcrumb={[
-          { title: t("FINANCIAL_GOALS"), path: "/financial-goals" },
-          { title: t("INVITES") },
-        ]}
+        pageTitle={t("ACCOUNTS")}
+        breadcrumb={[{ title: t("ACCOUNTS"), path: "/accounts" }, { title: t("INVITES") }]}
       />
 
       <InvitationContainer />

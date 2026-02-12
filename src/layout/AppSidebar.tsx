@@ -56,6 +56,10 @@ const AppSidebar: React.FC = () => {
           path: "/transactions",
           pro: false,
         },
+        {
+          name: t("SIDEBAR_INVITES"),
+          path: "/account-invitations",
+        },
       ],
     },
     {
