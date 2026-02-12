@@ -49,12 +49,14 @@ const AppSidebar: React.FC = () => {
     {
       icon: <Wallet size={18} strokeWidth={2} />,
       name: t("SIDEBAR_ACCOUNTS"),
-      path: "/accounts",
-    },
-    {
-      icon: <ArrowLeftRight size={18} strokeWidth={2} />,
-      name: t("SIDEBAR_TRANSACTIONS"),
-      path: "/transactions",
+      subItems: [
+        { name: t("SIDEBAR_ACCOUNTS"), path: "/accounts", pro: false },
+        {
+          name: t("SIDEBAR_TRANSACTIONS"),
+          path: "/transactions",
+          pro: false,
+        },
+      ],
     },
     {
       icon: <Target size={18} strokeWidth={2} />,
