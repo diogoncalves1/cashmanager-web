@@ -16,11 +16,34 @@ export default function SignUpForm() {
   const [email, setEmail] = useState("");
   const [fname, setFName] = useState("");
   const [lname, setLName] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [checkError, setCheckError] = useState("");
   const [error, setError] = useState("");
+  const [errorUsername, setErrorUsername] = useState("");
   const router = useRouter();
   const t = useTranslations("SIGNIN");
+
+  useEffect(() => {
+    if (!username) return;
+
+    const timeout = setTimeout(() => {
+      checkUsername();
+    }, 500);
+
+    return () => clearTimeout(timeout);
+
+    async function checkUsername() {
+      try {
+        const res = await fetch(`/api/auth/check-username?username=${username}`);
+        const data = await res.json();
+        console.log(data);
+        setErrorUsername(data.data.exists ? "Username já registado" : "");
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  }, [username]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -40,6 +63,7 @@ export default function SignUpForm() {
           email,
           password,
           name: fname + " " + lname,
+          username: username,
         }),
       });
 
@@ -76,6 +100,23 @@ export default function SignUpForm() {
           <div>
             <form onSubmit={handleSubmit}>
               <div className="space-y-5">
+                {/* <!-- Username --> */}
+                <div>
+                  <Label>
+                    Username<span className="text-error-500">*</span>
+                  </Label>
+                  <Input
+                    type="text"
+                    id="username"
+                    onChange={(e) => {
+                      setUsername(e.target.value.toLowerCase());
+                    }}
+                    className="lowercase placeholder:capitalize"
+                    placeholder="Enter your username"
+                    hint={errorUsername}
+                    error={errorUsername != ""}
+                  />
+                </div>
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                   {/* <!-- First Name --> */}
                   <div className="sm:col-span-1">

@@ -2,12 +2,12 @@ import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
 export async function POST(req: Request) {
-  const { email, password, name } = await req.json();
+  const { email, password, name, username } = await req.json();
 
   const res = await fetch(`${process.env.API_BACKEND_URL}register`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password, name }),
+    body: JSON.stringify({ email, password, name, username }),
   });
 
   const data = await res.json();

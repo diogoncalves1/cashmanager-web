@@ -43,13 +43,14 @@ export async function GET() {
 }
 
 export async function PUT(req: NextRequest) {
-  const { lang, currency_id, name, email } = await req.json();
+  const cookieStore = await cookies();
+  const { lang, currency_id, name, email, username } = await req.json();
   const token = req.cookies.get("token")?.value;
 
   const res = await fetch(`${process.env.API_BACKEND_URL}me`, {
     headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
     method: "PUT",
-    body: JSON.stringify({ email, currency_id, lang, name }),
+    body: JSON.stringify({ email, currency_id, lang, name, username }),
   });
 
   const data = await res.json();
