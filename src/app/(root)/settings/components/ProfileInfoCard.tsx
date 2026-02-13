@@ -8,6 +8,7 @@ import Skeleton from "@/components/ui/skeleton/Skeleton";
 
 interface ProfileInfoCardProps {
   firstName: string;
+  username: string;
   lastName: string;
   email?: string;
   errors: Record<string, string>;
@@ -17,6 +18,7 @@ interface ProfileInfoCardProps {
 
 export function ProfileInfoCard({
   firstName,
+  username,
   lastName,
   email,
   errors,
@@ -37,6 +39,29 @@ export function ProfileInfoCard({
         </div>
       </CardHeader>
       <CardContent className="space-y-5">
+        <div className="space-y-2">
+          <Label htmlFor="email">
+            Username <span className="text-destructive">*</span>
+          </Label>
+          {isLoading ? (
+            <Skeleton className="h-9 w-full" />
+          ) : (
+            <>
+              <Input
+                id="username"
+                type="text"
+                value={username}
+                onChange={(e) => onChange("username", e.target.value)}
+                placeholder="Username"
+                aria-invalid={!!errors.username}
+                className={
+                  errors.username ? "border-destructive focus-visible:ring-destructive/50" : ""
+                }
+              />
+              {errors.username && <p className="text-xs text-destructive">{errors.username}</p>}
+            </>
+          )}
+        </div>
         <div className="grid gap-5 sm:grid-cols-2">
           <div className="space-y-2">
             <Label htmlFor="firstName">

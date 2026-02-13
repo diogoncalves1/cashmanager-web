@@ -7,6 +7,7 @@ import { useAuth } from "@/context/AuthContext";
 
 type FormData = {
   id: string;
+  username: string;
   firstName: string;
   lastName: string;
   email?: string;
@@ -21,6 +22,7 @@ export function useSettingsForm(id?: string) {
 
   const [initialData, setInitialData] = useState<FormData>({
     id: user.id,
+    username: user.username,
     firstName: user.name.split(" ")[0],
     lastName: user.name.split(" ")[user.name.split(" ").length - 1],
     email: user.email,
@@ -29,6 +31,7 @@ export function useSettingsForm(id?: string) {
   });
   const [formData, setFormData] = useState<FormData>({
     id: user.id,
+    username: user.username,
     firstName: user.name.split(" ")[0],
     lastName: user.name.split(" ")[user.name.split(" ").length - 1],
     email: user.email,
@@ -40,6 +43,7 @@ export function useSettingsForm(id?: string) {
     const timer = setTimeout(() => {
       setFormData({
         id: user.id,
+        username: user.username,
         firstName: user.name.split(" ")[0],
         lastName: user.name.split(" ")[user.name.split(" ").length - 1],
         email: user.email,
@@ -48,6 +52,7 @@ export function useSettingsForm(id?: string) {
       });
       setInitialData({
         id: user.id,
+        username: user.username,
         firstName: user.name.split(" ")[0],
         lastName: user.name.split(" ")[user.name.split(" ").length - 1],
         email: user.email,

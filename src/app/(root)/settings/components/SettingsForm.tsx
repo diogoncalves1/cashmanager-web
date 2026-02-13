@@ -15,6 +15,7 @@ type FormData = {
   id: string;
   firstName: string;
   lastName: string;
+  username: string;
   email?: string;
   lang?: "pt" | "en";
   currency_id?: string;
@@ -57,6 +58,9 @@ const SettingsForm = () => {
   const validate = useCallback((): boolean => {
     const newErrors: FormErrors = {};
 
+    if (!formData.username.trim()) {
+      newErrors.username = "Username is required";
+    }
     if (!formData.firstName.trim()) {
       newErrors.firstName = "First name is required";
     }
@@ -153,6 +157,7 @@ const SettingsForm = () => {
       {/* Profile Section */}
       <ProfileInfoCard
         firstName={formData.firstName}
+        username={formData.username}
         lastName={formData.lastName}
         email={formData.email}
         errors={errors}
