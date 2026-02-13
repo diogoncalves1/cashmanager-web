@@ -66,6 +66,12 @@ export default function InviteMemberDialog({
     return SwalToast({ message: res.message, icon: "error" });
   };
 
+  if (!loading && subjects.length == 0) {
+    SwalToast({ message: "No subjects", icon: "warning" });
+    setIsInviteOpen(false);
+    return <></>;
+  }
+
   return (
     <Dialog open={isInviteOpen} onOpenChange={setIsInviteOpen}>
       <DialogContent>

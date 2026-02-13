@@ -1,4 +1,7 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
+import { InvitationStatus } from "@/models/invitation";
+import { useState } from "react";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import {
   Select,
   SelectContent,
@@ -6,13 +9,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { InvitationStatus } from "@/models/invitation";
-import { useInView } from "react-intersection-observer";
-import { useInfiniteQuery } from "@tanstack/react-query";
-import { useTranslations } from "next-intl";
 import { InvitationCard } from "@/components/invitations/InvitationCard";
+import { onCancelInvite } from "@/services/invitations/invitations.service";
 import { InvitationEmpty } from "@/components/invitations/InvitationEmpty";
-import { onAcceptInvite, onRevokeInvite } from "@/services/invitations/invitations.service";
+import { useTranslations } from "next-intl";
+import { useInView } from "react-intersection-observer";
 
 interface Page {
   data: [];
@@ -24,13 +25,13 @@ type Props = {
   load: boolean;
 };
 
-const ReceivedInvitesList = ({ setLoad, load }: Props) => {
+const InvitesList = ({ setLoad, load }: Props) => {
   const t = useTranslations("INVITATION");
-  const [receivedFilter, setReceivedFilter] = useState<InvitationStatus | "all">("all");
+  const [sentFilter, setSentFilter] = useState<InvitationStatus | "all">("all");
 
-  const fetchReceived = async ({ pageParam = 1, status }: any): Promise<Page> => {
+  const fetchInvited = async ({ pageParam = 1, status }: any): Promise<Page> => {
     const response = await fetch(
-      `/api/accounts/received-invitations?page=${pageParam}&size=10&status=${status}`,
+      `/api/debts/sent-invitations?page=${pageParam}&size=10&status=${status}`,
       {
         method: "GET",
         credentials: "include",
@@ -39,7 +40,7 @@ const ReceivedInvitesList = ({ setLoad, load }: Props) => {
     );
 
     if (!response.ok) {
-      throw new Error("Erro ao carregar atividade");
+      throw new Error("Erro ao carregar convites");
     }
 
     return response.json();
@@ -55,15 +56,15 @@ const ReceivedInvitesList = ({ setLoad, load }: Props) => {
   const {
     data,
     error,
-    fetchNextPage,
     refetch,
+    fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
     isLoading,
     isError,
   } = useInfiniteQuery<Page, Error>({
-    queryKey: ["received-invites-accounts", receivedFilter],
-    queryFn: ({ pageParam = 1 }) => fetchReceived({ pageParam: pageParam, status: receivedFilter }),
+    queryKey: ["sent-invites-debts", sentFilter],
+    queryFn: ({ pageParam = 1 }) => fetchInvited({ pageParam: pageParam, status: sentFilter }),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => lastPage.nextPage ?? undefined,
     staleTime: 1000 * 60 * 5,
@@ -81,21 +82,14 @@ const ReceivedInvitesList = ({ setLoad, load }: Props) => {
     if (load) refetch();
   }, [load]);
 
-  const handleAccept = async (id: string) => {
-    await onAcceptInvite(id, "accounts", () => {
-      setLoad(true);
+  const handleCancel = async (id: string, userId: string) => {
+    await onCancelInvite(id, userId, "debts", () => {
       refetch();
+      setLoad(true);
     });
   };
 
-  const handleReject = async (id: string) => {
-    await onRevokeInvite(id, "accounts", () => {
-      setLoad(true);
-      refetch();
-    });
-  };
-
-  if (isLoading) {
+  if (isLoading)
     return (
       <div className="flex justify-center space-x-2">
         <span className="w-3 h-3 bg-gray-500 rounded-full animate-bounce"></span>
@@ -103,7 +97,6 @@ const ReceivedInvitesList = ({ setLoad, load }: Props) => {
         <span className="w-3 h-3 bg-gray-500 rounded-full animate-bounce delay-300"></span>
       </div>
     );
-  }
 
   if (isError) {
     return (
@@ -116,14 +109,15 @@ const ReceivedInvitesList = ({ setLoad, load }: Props) => {
     );
   }
 
-  const receivedInvitations = data?.pages.flatMap((page: any) => page.data) ?? [];
+  const sentInvitations = data?.pages.flatMap((page: any) => page.data) ?? [];
 
   return (
     <div className="space-y-4">
+      {/* Filter */}
       <div className="flex justify-end">
         <Select
-          value={receivedFilter}
-          onValueChange={(v) => setReceivedFilter(v as InvitationStatus | "all")}
+          value={sentFilter}
+          onValueChange={(v) => setSentFilter(v as InvitationStatus | "all")}
         >
           <SelectTrigger className="w-[160px]">
             <SelectValue placeholder="Filter status" />
@@ -137,17 +131,16 @@ const ReceivedInvitesList = ({ setLoad, load }: Props) => {
         </Select>
       </div>
 
-      {receivedInvitations.length === 0 ? (
+      {sentInvitations.length === 0 ? (
         <InvitationEmpty direction="sent" />
       ) : (
-        receivedInvitations.map((invitation) => (
+        sentInvitations.map((invitation) => (
           <InvitationCard
+            type="debts"
             key={invitation.id}
             invitation={invitation}
-            direction="received"
-            type="financial-goals"
-            onAccept={handleAccept}
-            onReject={handleReject}
+            direction="sent"
+            onCancel={handleCancel}
           />
         ))
       )}
@@ -169,4 +162,4 @@ const ReceivedInvitesList = ({ setLoad, load }: Props) => {
   );
 };
 
-export default ReceivedInvitesList;
+export default InvitesList;

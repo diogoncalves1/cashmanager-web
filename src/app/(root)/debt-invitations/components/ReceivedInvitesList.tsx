@@ -30,7 +30,7 @@ const ReceivedInvitesList = ({ setLoad, load }: Props) => {
 
   const fetchReceived = async ({ pageParam = 1, status }: any): Promise<Page> => {
     const response = await fetch(
-      `/api/accounts/received-invitations?page=${pageParam}&size=10&status=${status}`,
+      `/api/debts/received-invitations?page=${pageParam}&size=10&status=${status}`,
       {
         method: "GET",
         credentials: "include",
@@ -62,7 +62,7 @@ const ReceivedInvitesList = ({ setLoad, load }: Props) => {
     isLoading,
     isError,
   } = useInfiniteQuery<Page, Error>({
-    queryKey: ["received-invites-accounts", receivedFilter],
+    queryKey: ["received-invites-debts", receivedFilter],
     queryFn: ({ pageParam = 1 }) => fetchReceived({ pageParam: pageParam, status: receivedFilter }),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => lastPage.nextPage ?? undefined,
@@ -82,14 +82,14 @@ const ReceivedInvitesList = ({ setLoad, load }: Props) => {
   }, [load]);
 
   const handleAccept = async (id: string) => {
-    await onAcceptInvite(id, "accounts", () => {
+    await onAcceptInvite(id, "debts", () => {
       setLoad(true);
       refetch();
     });
   };
 
   const handleReject = async (id: string) => {
-    await onRevokeInvite(id, "accounts", () => {
+    await onRevokeInvite(id, "debts", () => {
       setLoad(true);
       refetch();
     });

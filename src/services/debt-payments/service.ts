@@ -1,4 +1,3 @@
-import Swal from "sweetalert2";
 import LoadingToast from "@/components/swal/LoadingToast";
 import { SwalToast } from "@/components/swal/SwalToast";
 

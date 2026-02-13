@@ -63,7 +63,7 @@ const InvitesList = ({ setLoad, load }: Props) => {
     isLoading,
     isError,
   } = useInfiniteQuery<Page, Error>({
-    queryKey: ["sent-invites", sentFilter],
+    queryKey: ["sent-invites-accounts", sentFilter],
     queryFn: ({ pageParam = 1 }) => fetchInvited({ pageParam: pageParam, status: sentFilter }),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => lastPage.nextPage ?? undefined,
