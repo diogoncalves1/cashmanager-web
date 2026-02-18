@@ -57,19 +57,15 @@ export async function onDeclineRequest(id: string, t: any) {
 }
 
 export async function onCancelRequest(id: string, t: any) {
-  LoadingToast({
-    title: t("CANCEL_REQUEST_TITLE"),
-    message: t("CANCEL_REQUEST_MESSAGE"),
-  });
   try {
     const res = await fetch(`/api/friend-requests/${id}/cancel`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     });
 
-    const data = await res.json();
+    if (!res.ok) throw new Error("Failed to fetch requests");
 
-    if (!res.ok) throw new Error(data.message);
+    const data = await res.json();
 
     if (data.success) {
       SwalToast({ message: data.message, icon: "success" });

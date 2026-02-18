@@ -1,7 +1,8 @@
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
-import SocialTabs from "@/components/social/SocialTabs";
+import SocialTabs from "./components/SocialTabs";
 import { Metadata } from "next";
 import { useTranslations } from "next-intl";
+import { FriendsProvider } from "./context/FriendsContext";
 
 export const metadata: Metadata = {
   title: "Cash Manager | Amizades",
@@ -14,10 +15,15 @@ export default function SocialPage() {
   return (
     <>
       <PageBreadcrumb pageTitle={t("FRIEND")} breadcrumb={[{ title: t("FRIENDS") }]} />
-      <div className="grid grid-cols-12 p-2 md:p-6 gap-4 md:gap-6">
-        <div className="col-span-12">
-          <SocialTabs />
+      <div className="space-y-8 max-w-6xl mx-auto px-6 py-10">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight text-balance">Friends</h1>
+          <p className="mt-2 text-muted-foreground">Manage your connections and friend requests.</p>
         </div>
+
+        <FriendsProvider>
+          <SocialTabs />
+        </FriendsProvider>
       </div>
     </>
   );
