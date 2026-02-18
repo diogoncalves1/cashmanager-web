@@ -1,4 +1,4 @@
-import { baseUrl } from "@/app/api/config";
+import { baseUrl } from "../../../config";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
@@ -7,10 +7,11 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
 
     const id = params.id;
 
-    const urlApi = `${baseUrl}friendship-requests/${id}/cancel`;
+    if (!id) throw new Error("Id invalido");
 
+    const urlApi = `${baseUrl}friendship-requests/${id}/cancel`;
     const res = await fetch(urlApi, {
-      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+      headers: { Authorization: `Bearer ${token}` },
       method: "DELETE",
     });
     const data = await res.json();

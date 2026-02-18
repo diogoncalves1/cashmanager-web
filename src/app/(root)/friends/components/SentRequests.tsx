@@ -1,15 +1,16 @@
-// components/FriendsList.tsx
 "use client";
 
 import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
-import { Friendship } from "@/lib/models/friendship";
-import { UserCircle } from "../ui/avatar/UserCircle";
-import Button from "../ui/button/Button";
-import { X } from "lucide-react";
+import { Friendship } from "@/models/friendship";
+import { Clock, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { onCancelRequest } from "@/services/friend-requests/service";
+import { FriendsEmptyState } from "./FriendsEmptyState";
+import { PendingRequestCard } from "./PendingRequestCard";
+import LoadingList from "@/components/ui/loading/LoadingList";
+import { useFriendsContext } from "../context/FriendsContext";
 
 type Page = { data: Friendship[]; nextPage: number | null };
 
@@ -40,23 +41,32 @@ const fetchFriends = async ({
 export default function SentRequests() {
   const t = useTranslations("FRIENDS");
 
+  const { loadCounter, setLoadCounter } = useFriendsContext();
   const [search, setSearch] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState(search);
   const { ref, inView } = useInView({
     threshold: 0.1,
-    rootMargin: "200px", // carrega antes de chegar ao fundo
+    rootMargin: "5px",
   });
 
-  const { data, error, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError } =
-    useInfiniteQuery<Page, Error>({
-      queryKey: ["sentRequests", debouncedSearch],
-      queryFn: fetchFriends,
-      initialPageParam: 1,
-      getNextPageParam: (lastPage) => {
-        return lastPage.nextPage ?? undefined;
-      },
-      staleTime: 1000 * 60 * 5,
-    });
+  const {
+    data,
+    error,
+    fetchNextPage,
+    refetch,
+    hasNextPage,
+    isFetchingNextPage,
+    isLoading,
+    isError,
+  } = useInfiniteQuery<Page, Error>({
+    queryKey: ["sentRequests", debouncedSearch],
+    queryFn: fetchFriends,
+    initialPageParam: 1,
+    getNextPageParam: (lastPage) => {
+      return lastPage.nextPage ?? undefined;
+    },
+    staleTime: 1000 * 60 * 5,
+  });
   const queryClient = useQueryClient();
 
   useEffect(() => {
@@ -73,13 +83,9 @@ export default function SentRequests() {
     return () => clearTimeout(handler);
   }, [search]);
 
-  if (isLoading) {
-    return (
-      <div className="text-center py-12 text-gray-500 dark:text-gray-400">
-        {t("LOADING_REQUESTS")}
-      </div>
-    );
-  }
+  useEffect(() => {
+    refetch();
+  }, [loadCounter]);
 
   if (isError) {
     return (
@@ -92,7 +98,7 @@ export default function SentRequests() {
     );
   }
 
-  const allFriends = data?.pages.flatMap((page: any) => page.data) ?? [];
+  const allRequests = data?.pages.flatMap((page: any) => page.data) ?? [];
 
   return (
     <div className="space-y-4">
@@ -105,47 +111,33 @@ export default function SentRequests() {
           className="w-full p-2 border rounded"
         />
       </div>
+      {isLoading ? (
+        <LoadingList />
+      ) : allRequests.length > 0 ? (
+        allRequests.map((f) => (
+          <PendingRequestCard
+            key={f.id}
+            friendship={f}
+            direction="sent"
+            onCancel={async () => {
+              await onCancelRequest(f.user.id, t);
+              setLoadCounter((prev) => prev + 1);
 
-      {allFriends.length === 0 ? (
-        <p className="text-center py-10 text-gray-500 dark:text-gray-400">
-          {t("HAVE_NO_REQUESTS")}
-        </p>
-      ) : (
-        allFriends.map((friend) => (
-          <div
-            key={friend.id}
-            className="p-4 bg-gray-50 dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700 flex items-center gap-4 justify-between"
-          >
-            <div className="flex items-center gap-4">
-              <UserCircle userName={friend.user.name} size={10} />
-              <div>
-                <p className="font-medium">{friend?.user?.name}</p>
-              </div>
-            </div>
-
-            <div className="flex gap-2">
-              <Button
-                onClick={async () => {
-                  if (await onCancelRequest(friend.user.id, t)) {
-                    queryClient.invalidateQueries(["sentRequests", debouncedSearch]);
-                  }
-                }}
-                color="danger"
-                startIcon={<X size={16} />}
-              >
-                {t("CANCEL_REQUEST")}
-              </Button>
-            </div>
-          </div>
+              queryClient.invalidateQueries(["sentRequests", debouncedSearch]);
+              refetch();
+            }}
+          />
         ))
+      ) : (
+        <FriendsEmptyState
+          icon={Clock}
+          title="No sent requests"
+          description="You haven't sent any friend requests yet. Search for users above."
+        />
       )}
 
       <div ref={ref} className="py-8 text-center text-sm text-gray-500">
-        {isFetchingNextPage
-          ? t("LOADING_MORE_REQUESTS")
-          : hasNextPage
-            ? t("SCROLL_TO_SEE_MORE")
-            : ""}
+        {isFetchingNextPage ? <LoadingList /> : hasNextPage ? <LoadingList /> : ""}
       </div>
     </div>
   );
