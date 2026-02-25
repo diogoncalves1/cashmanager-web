@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import React from "react";
 
-import { TransactionsDataTable } from "./data-table";
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
+import TransactionsContainer from "@/components/transactions/TransactionsContainer";
 
 export const metadata: Metadata = {
   title: "Cash Manager | Transactions",
@@ -13,10 +13,8 @@ export default function TransactionsPage() {
   return (
     <>
       <PageBreadcrumb pageTitle="TRANSACTION" breadcrumb={[{ title: "Transactions" }]} />
-      <div className="grid grid-cols-12 p-2 md:p-6 gap-4 md:gap-6">
-        <div className="col-span-12">
-          <TransactionsDataTable />
-        </div>
+      <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
+        <TransactionsContainer />
       </div>
     </>
   );
