@@ -23,5 +23,14 @@ export function formatDate(dateString: string, t: any): string {
     11: t("DEC"),
   };
 
-  return `${day} ${MONTHS[parseInt(month) - 1]} ${year}`;
+  if (day) return `${day} ${MONTHS[parseInt(month) - 1]} ${year}`;
+  if (month) return `${MONTHS[parseInt(month) - 1]} ${year}`;
+  return year;
+}
+
+export function getUserInitials(name?: string): string {
+  if (!name) return "?";
+  const parts = name.split(" ");
+  if (parts.length >= 2) return `${parts[0][0]}${parts[1][0]}`.toUpperCase();
+  return name.slice(0, 2).toUpperCase();
 }

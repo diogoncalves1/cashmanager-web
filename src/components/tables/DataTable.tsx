@@ -15,10 +15,14 @@ export default function DataTable({
   table,
   isLoading,
   columns,
+  nLines = 10,
+  nCols = 7,
 }: {
   table: ReactTable<any>;
   isLoading: boolean;
   columns: any;
+  nLines?: number;
+  nCols?: number;
 }) {
   const t = useTranslations("DATATABLE");
 
@@ -50,9 +54,9 @@ export default function DataTable({
             </TableRow>
           ))
         ) : isLoading ? (
-          Array.from({ length: 10 }).map((_, i) => (
+          Array.from({ length: nLines }).map((_, i) => (
             <TableRow key={i}>
-              {Array.from({ length: 7 }).map((_, i) => (
+              {Array.from({ length: nCols }).map((_, i) => (
                 <TableCell key={i} className="text-sm text-muted-foreground">
                   <div className="flex items-baseline justify-between shadow-sm animate-pulse">
                     <div className="h-5 w-20 bg-muted rounded" />

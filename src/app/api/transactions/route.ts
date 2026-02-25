@@ -38,6 +38,15 @@ export async function GET(req: NextRequest) {
     const params = new URLSearchParams(url.search);
     params.set("start", start.toString());
     params.set("length", length.toString());
+    if (url.searchParams.get("search"))
+      params.set("search[value]", url.searchParams.get("search") ?? "");
+    if (url.searchParams.get("type")) params.set("type", url.searchParams.get("type") ?? "");
+    if (url.searchParams.get("categoryId"))
+      params.set("categoryId", url.searchParams.get("categoryId") ?? "");
+    if (url.searchParams.get("dateFrom"))
+      params.set("dateFrom", url.searchParams.get("dateFrom") ?? "");
+    if (url.searchParams.get("dateTo")) params.set("dateTo", url.searchParams.get("dateTo") ?? "");
+    if (url.searchParams.get("status")) params.set("status", url.searchParams.get("status") ?? "");
 
     const sortParam = url.searchParams.get("sort");
 
@@ -69,6 +78,9 @@ export async function GET(req: NextRequest) {
       recordsTotal: data.recordsTotal,
       recordsFiltered: data.recordsFiltered,
       data: data.data,
+      stats: data.stats,
+      accounts: data.accounts,
+      categories: data.categories,
     });
   } catch (err) {
     console.error("API Error:", err);
