@@ -1,4 +1,84 @@
 {
+  "TRANSACTIONS": {
+    "TRANSACTIONS": "Transactions",
+    "TRANSACTIONS_DETAILS": "Details",
+
+    "META_TITLE": "Cash Manager | Transactions",
+    "META_DESCRIPTION": "Manage your financial transactions efficiently with Cash Manager. Track your income, expenses, and keep your finances organized.",
+
+    "TRANSACTIONS_PAGE_TEXT": "View and manage all transactions across your accounts.",
+    "NEW_TRANSACTION": "New Transaction",
+    "EDIT_TRANSACTION": "Edit Transaction",
+    "NEW_TRANSACTION_FORM_DIALOG_TEXT": "Record a new income or expense.",
+    "EDIT_TRANSACTION_FORM_DIALOG_TEXT": "Update your transaction details.",
+
+    "ACCOUNT": "Account",
+    "AMOUNT": "Amount",
+    "CATEGORY": "Category",
+    "DATE": "Date",
+    "DESCRIPTION": "Description",
+    "USERS": "Users",
+    "STATUS": "Status",
+    "PENDING": "Pending",
+    "COMPLETED": "Completed",
+    "TYPE": "Type",
+    "INCOME": "Income",
+    "EXPENSE": "Expense",
+
+    "SELECT_ACCOUNT": "Select an account",
+    "SELECT_CATEGORY": "Select a category",
+    "SELECT_DATE": "Select a date",
+
+    "WHAT_WAS_THIS_FOR": "What was this for?",
+
+    "CANCEL": "Cancel",
+    "SAVE": "Save",
+    "CREATE": "Create",
+
+    "TOTAL_INCOME": "Total Income",
+    "TOTAL_EXPENSE": "Total Expense",
+    "BALANCE": "Balance",
+
+    "SHOWING": "Showing",
+    "OF": "of",
+    "THIS": "transactions",
+    "FIRST": "First",
+    "PREVIOUS": "Previous",
+    "NEXT": "Next",
+    "LAST": "Last",
+
+    "SEARCH_TRANSACTION": "Search for a transaction",
+    "ALL_STATUS": "All statuses",
+    "ALL_CATEGORIES": "All categories",
+    "ALL_TYPES": "All types",
+    "TO": "to",
+    "CLEAR": "Clear",
+    "NO_ACCOUNTS_AVAILABLE": "No accounts available",
+
+    "VIEW_ACCOUNT": "View account",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "CONFIRM": "Confirm",
+    "ACTIONS": "Actions",
+
+    "CONFIRM_TRANSACTION": "Confirm Transaction?",
+    "CONFIRM_TRANSACTION_TEXT": "Are you sure you want to confirm this transaction?",
+
+    "DELETE_TRANSACTION": "Delete transaction?",
+    "DELETE_TRANSACTION_TEXT": "Are you sure you want to delete this? This action cannot be undone."
+  },
+
+  "DATATABLE": {
+    "NO_RESULTS": "No Results"
+  },
+
+  "ACTIVITY": {
+    "LOADING_ACTIVITY": "Loading Activity...",
+    "TRY_AGAIN": "Try again",
+    "LOADING_MORE": "Loading more",
+    "SCROLL_TO_SEE_MORE": "Scroll down to see more"
+  },
+
   "HOME": {
     "HOME": "Home",
     "MONTHLY_BALANCE": "Monthly Balance",
@@ -66,6 +146,7 @@
     "SIDEBAR_ACCOUNTS": "Accounts",
     "SIDEBAR_HOME": "Home",
     "SIDEBAR_MENU": "Menu",
+    "SIDEBAR_INVITES": "Invites",
 
     "HEADER_ACCOUNT_DETAILS": "Account Details",
 
@@ -79,9 +160,14 @@
     "SIGNIN_WAIT": "Please wait while we verify your credentials"
   },
 
-  "TRANSACTIONS": {
-    "TRANSACTIONS": "Transactions",
-    "TRANSACTIONS_DETAILS": "Details"
+  "INVITATION": {
+    "LOADING_INVITES": "Loading Invites",
+    "LOADING_MORE": "Loading more",
+    "SCROLL_TO_SEE_MORE": "Scroll down to see more"
+  },
+
+  "SETTINGS": {
+    "SETTINGS": "Settings"
   },
 
   "FINANCIAL_GOALS": {
@@ -160,7 +246,8 @@
     "GOAL_COMPLETED": "Goal Completed!",
     "GOAL_COMPLETED_MESSAGE": "Congratulations! Goal successfully achieved",
 
-    "MONTHLY_SUMMARY": "Monthly Summary"
+    "MONTHLY_SUMMARY": "Monthly Summary",
+    "INVITES": "Invites"
   },
   "FINANCIAL_GOAL_TRANSACTIONS": {
     "ADD": "Add",
