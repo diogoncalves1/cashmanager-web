@@ -1,4 +1,73 @@
 {
+  "TRANSACTIONS": {
+    "TRANSACTIONS": "Transações",
+    "TRANSACTIONS_DETAILS": "Detalhes",
+
+    "META_TITLE": "Cash Manager | Transações",
+    "META_DESCRIPTION": "Gerencie suas transações financeiras de forma eficiente com o Cash Manager. Acompanhe suas receitas, despesas e mantenha suas finanças organizadas.",
+
+    "TRANSACTIONS_PAGE_TEXT": "Visualize e gerencie todas as transações em suas contas.",
+    "NEW_TRANSACTION": "Nova Transação",
+    "EDIT_TRANSACTION": "Editar Transação",
+    "NEW_TRANSACTION_FORM_DIALOG_TEXT": "Registre uma nova receita ou despesa.",
+    "EDIT_TRANSACTION_FORM_DIALOG_TEXT": "Atualize os detalhes da sua transação.",
+
+    "ACCOUNT": "Conta",
+    "AMOUNT": "Valor",
+    "CATEGORY": "Categoria",
+    "DATE": "Data",
+    "DESCRIPTION": "Descrição",
+    "USERS": "Utilizadores",
+    "STATUS": "Estado",
+    "PENDING": "Pendente",
+    "COMPLETED": "Completa",
+    "TYPE": "Tipo",
+    "INCOME": "Receita",
+    "EXPENSE": "Despesa",
+
+    "SELECT_ACCOUNT": "Selecione uma conta",
+    "SELECT_CATEGORY": "Selecione uma categoria",
+    "SELECT_DATE": "Selecione a data",
+
+    "WHAT_WAS_THIS_FOR": "Para que serviu isso?",
+
+    "CANCEL": "Cancelar",
+    "SAVE": "Guardar",
+    "CREATE": "Criar",
+
+    "TOTAL_INCOME": "Receita Total",
+    "TOTAL_EXPENSE": "Despesa Total",
+    "BALANCE": "Saldo",
+
+    "SHOWING": "A mostrar",
+    "OF": "de",
+    "THIS": "transações",
+    "FIRST": "Primeira",
+    "PREVIOUS": "Anterior",
+    "NEXT": "Próxima",
+    "LAST": "Última",
+
+    "SEARCH_TRANSACTION": "Procure pela transação",
+    "ALL_STATUS": "Todos os estados",
+    "ALL_CATEGORIES": "Todas as categorias",
+    "ALL_TYPES": "Todos os tipos",
+    "TO": "até",
+    "CLEAR": "Limpar",
+    "NO_ACCOUNTS_AVAILABLE": "Sem contas disponíveis",
+
+    "VIEW_ACCOUNT": "Ver conta",
+    "EDIT": "Editar",
+    "DELETE": "Apagar",
+    "CONFIRM": "Confirmar",
+    "ACTIONS": "Ações",
+
+    "CONFIRM_TRANSACTION": "Confirmar Transação?",
+    "CONFIRM_TRANSACTION_TEXT": "Tem a certeza que pretende confirmar esta transação?",
+
+    "DELETE_TRANSACTION": "Apagar transação?",
+    "DELETE_TRANSACTION_TEXT": "Tem certeza de que deseja apagar? Esta ação não pode ser desfeita."
+  },
+
   "DATATABLE": {
     "NO_RESULTS": "Sem Resultados"
   },
@@ -69,6 +138,7 @@
     "SIDEBAR_ACCOUNTS": "Contas",
     "SIDEBAR_HOME": "Início",
     "SIDEBAR_MENU": "Menu",
+    "SIDEBAR_INVITES": "Convites",
 
     "HEADER_ACCOUNT_DETAILS": "Detalhes da Conta",
 
@@ -82,11 +152,8 @@
     "SIGNIN_WAIT": "Aguarde enquanto verificamos suas credenciais"
   },
 
-  "TRANSACTIONS": {
-    "TRANSACTIONS": "Transações",
-    "TRANSACTIONS_DETAILS": "Detalhes",
-
-    "SELECT_ACCOUNT": "Selecione uma conta..."
+  "SETTINGS": {
+    "SETTINGS": "Definições"
   },
 
   "FINANCIAL_GOALS": {
@@ -94,6 +161,7 @@
     "EDIT": "Editar",
     "DELETE": "Apagar Meta Financeira",
     "DETAILS": "Detalhes",
+    "INVITES": "Convites",
 
     "FINANCIAL_GOAL": "META FINANCEIRA",
     "FINANCIAL_GOALS": "Metas Financeiras",
