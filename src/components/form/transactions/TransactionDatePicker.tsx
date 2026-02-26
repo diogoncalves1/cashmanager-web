@@ -4,16 +4,27 @@ import { cn } from "@/lib/utils";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
+import { enUS, pt } from "date-fns/locale";
+import { useAuth } from "@/context/AuthContext";
+import { useTranslations } from "next-intl";
 
 export function TransactionDatePicker({
   date,
   dateLimits,
   onChangeDate,
+  className,
 }: {
-  date: any;
-  dateLimits: any;
+  date?: string;
+  dateLimits: { min?: string; max?: string };
   onChangeDate: any;
+  className?: string;
 }) {
+  const t = useTranslations("TRANSACTIONS");
+  const { user } = useAuth();
+  const lang = user.preferences?.lang || "en";
+
+  const locales = { pt: pt, en: enUS };
+
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -21,11 +32,16 @@ export function TransactionDatePicker({
           variant="outline"
           className={cn(
             "w-full justify-start text-left font-normal border-input bg-background",
-            !date && "text-muted-foreground"
+            !date && "text-muted-foreground",
+            className
           )}
         >
           <CalendarIcon className="mr-2 h-4 w-4" />
-          {date ? format(new Date(date), "PPP") : <span>Selecione a data...</span>}
+          {date ? (
+            format(new Date(date), "PPP", { locale: locales[lang] })
+          ) : (
+            <span>{t("SELECT_DATE")}</span>
+          )}
         </Button>
       </PopoverTrigger>
 
@@ -33,6 +49,7 @@ export function TransactionDatePicker({
         <Calendar
           required={true}
           mode="single"
+          locale={locales[lang]}
           selected={date ? new Date(date) : undefined}
           disabled={(day: Date) => {
             if (!dateLimits.min && !dateLimits.max) return false;

@@ -3,6 +3,7 @@
 import { TrendingUp, TrendingDown, Wallet } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 interface TransactionsSummaryProps {
   totalIncome?: string;
@@ -16,21 +17,22 @@ export function TransactionsSummary({
   totalExpenses,
   balance,
 }: TransactionsSummaryProps) {
+  const t = useTranslations("TRANSACTIONS");
   const stats = [
     {
-      label: "Total Income",
+      label: t("TOTAL_INCOME"),
       value: totalIncome,
       icon: TrendingUp,
       iconClass: "text-accent bg-accent/10",
     },
     {
-      label: "Total Expenses",
+      label: t("TOTAL_EXPENSE"),
       value: totalExpenses,
       icon: TrendingDown,
       iconClass: "text-destructive bg-destructive/10",
     },
     {
-      label: "Balance",
+      label: t("BALANCE"),
       value: balance,
       icon: Wallet,
       iconClass:

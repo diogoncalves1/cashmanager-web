@@ -19,11 +19,13 @@ import {
 } from "@/components/ui/select";
 import { TransactionStatus, TransactionType } from "@/models/transaction";
 import { useToast } from "@/hooks/useToast";
-import { useTransactionForm } from "../form/transactions/hooks/useTransactionForm";
+import { useTransactionForm } from "@/components/form/transactions/hooks/useTransactionForm";
 import { Account } from "@/models/account";
 import { Category, iconMap } from "@/models/category";
-import { TransactionDatePicker } from "../form/transactions/TransactionDatePicker";
-import { Textarea } from "../ui/textarea";
+import { TransactionDatePicker } from "@/components/form/transactions/TransactionDatePicker";
+import { Textarea } from "@/components/ui/textarea";
+import { useTranslations } from "next-intl";
+import { SwalToast } from "@/components/swal/SwalToast";
 
 type NewTransactionDialogProps = {
   id?: string;
@@ -33,6 +35,7 @@ type NewTransactionDialogProps = {
 };
 
 const FormTransactionDialog = ({ id, setIsOpen, isOpen, mutate }: NewTransactionDialogProps) => {
+  const t = useTranslations("TRANSACTIONS");
   const {
     formData,
     setFormData,
@@ -86,26 +89,33 @@ const FormTransactionDialog = ({ id, setIsOpen, isOpen, mutate }: NewTransaction
     return <div className="h-96 animate-pulse bg-gray-100 rounded" />;
   }
 
+  if (!isLoadingAccounts && !id && accounts?.data?.length == 0) {
+    SwalToast({ message: t("NO_ACCOUNTS_AVAILABLE"), icon: "warning" });
+    setIsOpen(false);
+    return <></>;
+  }
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-lg">
         <form onSubmit={onSubmit}>
           <DialogHeader>
-            <DialogTitle>New Transaction</DialogTitle>
-            <DialogDescription>Record a new income, expense, or transfer.</DialogDescription>
+            <DialogTitle>{id ? t("EDIT_TRANSACTION") : t("NEW_TRANSACTION")}</DialogTitle>
+            <DialogDescription>
+              {id ? t("EDIT_TRANSACTION_FORM_DIALOG_TEXT") : t("NEW_TRANSACTION_FORM_DIALOG_TEXT")}
+            </DialogDescription>
           </DialogHeader>
 
           <div className="mt-4 grid gap-4">
             {!id && (
               <div className="grid gap-1.5">
-                <Label htmlFor="tx-account">Account</Label>
+                <Label htmlFor="tx-account">{t("ACCOUNT")}</Label>
                 {!isLoadingAccounts ? (
                   <Select
                     value={formData.account_id}
                     onValueChange={(id: string) => setFormData((p) => ({ ...p, account_id: id }))}
                   >
                     <SelectTrigger id="tx-account">
-                      <SelectValue placeholder="Select account" />
+                      <SelectValue placeholder={t("SELECT_ACCOUNT")} />
                     </SelectTrigger>
                     <SelectContent>
                       {accounts?.data.map((a: Account) => (
@@ -125,13 +135,13 @@ const FormTransactionDialog = ({ id, setIsOpen, isOpen, mutate }: NewTransaction
 
             <div className="grid grid-cols-2 gap-4">
               <div className="grid gap-1.5">
-                <Label htmlFor="tx-amount">Amount</Label>
+                <Label htmlFor="tx-amount">{t("AMOUNT")}</Label>
                 <Input
                   id="tx-amount"
                   type="number"
                   step="0.01"
                   min="0"
-                  placeholder="0.00"
+                  placeholder="$ 0.00"
                   value={(formData.amount as number) ?? ""}
                   onChange={(e) =>
                     setFormData((prev) => ({
@@ -144,7 +154,7 @@ const FormTransactionDialog = ({ id, setIsOpen, isOpen, mutate }: NewTransaction
               </div>
               {!id && (
                 <div className="grid gap-1.5">
-                  <Label htmlFor="tx-type">Type</Label>
+                  <Label htmlFor="tx-type">{t("TYPE")}</Label>
                   <Select
                     value={formData.type}
                     onValueChange={(e) =>
@@ -160,8 +170,8 @@ const FormTransactionDialog = ({ id, setIsOpen, isOpen, mutate }: NewTransaction
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="revenue">Income</SelectItem>
-                      <SelectItem value="expense">Expense</SelectItem>
+                      <SelectItem value="revenue">{t("INCOME")}</SelectItem>
+                      <SelectItem value="expense">{t("EXPENSE")}</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -170,14 +180,14 @@ const FormTransactionDialog = ({ id, setIsOpen, isOpen, mutate }: NewTransaction
 
             <div className="grid grid-cols-2 gap-4">
               <div className="grid gap-1.5">
-                <Label htmlFor="tx-category">Category</Label>
+                <Label htmlFor="tx-category">{t("CATEGORY")}</Label>
                 {!isLoadingCategories ? (
                   <Select
                     value={formData.category_id}
                     onValueChange={(id: string) => setFormData((p) => ({ ...p, category_id: id }))}
                   >
                     <SelectTrigger id="tx-category">
-                      <SelectValue placeholder="Select" />
+                      <SelectValue placeholder={t("SELECT_CATEGORY")} />
                     </SelectTrigger>
                     <SelectContent>
                       {categories.data.map((c: Category) => {
@@ -204,11 +214,11 @@ const FormTransactionDialog = ({ id, setIsOpen, isOpen, mutate }: NewTransaction
               </div>
               {!id && (
                 <div className="grid gap-1.5">
-                  <Label htmlFor="tx-status">Status</Label>
+                  <Label htmlFor="tx-status">{t("STATUS")}</Label>
                   <Select
                     value={formData.status}
                     onValueChange={(status: TransactionStatus) => {
-                      setFormData((prev) => ({ ...prev, status }));
+                      setFormData((prev) => ({ ...prev, status: status }));
                       updateDateLimits(status);
                     }}
                   >
@@ -216,8 +226,8 @@ const FormTransactionDialog = ({ id, setIsOpen, isOpen, mutate }: NewTransaction
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="completed">Completed</SelectItem>
-                      <SelectItem value="pending">Pending</SelectItem>
+                      <SelectItem value="completed">{t("COMPLETED")}</SelectItem>
+                      <SelectItem value="pending">{t("PENDING")}</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -225,7 +235,7 @@ const FormTransactionDialog = ({ id, setIsOpen, isOpen, mutate }: NewTransaction
             </div>
 
             <div className="grid gap-1.5">
-              <Label htmlFor="tx-date">Date</Label>
+              <Label htmlFor="tx-date">{t("DATE")}</Label>
               <TransactionDatePicker
                 dateLimits={dateLimits}
                 date={formData.date}
@@ -234,10 +244,10 @@ const FormTransactionDialog = ({ id, setIsOpen, isOpen, mutate }: NewTransaction
             </div>
 
             <div className="grid gap-1.5">
-              <Label htmlFor="tx-description">Description</Label>
+              <Label htmlFor="tx-description">{t("DESCRIPTION")}</Label>
               <Textarea
                 id="tx-description"
-                placeholder="What was this for?"
+                placeholder={t("WHAT_WAS_THIS_FOR")}
                 value={formData.description}
                 onChange={(e) => setFormData((prev) => ({ ...prev, description: e.target.value }))}
               />
@@ -246,7 +256,7 @@ const FormTransactionDialog = ({ id, setIsOpen, isOpen, mutate }: NewTransaction
 
           <DialogFooter className="mt-6">
             <Button type="button" variant="outline" onClick={() => setIsOpen(false)}>
-              Cancel
+              {t("CANCEL")}
             </Button>
             <Button
               type="submit"
@@ -260,7 +270,7 @@ const FormTransactionDialog = ({ id, setIsOpen, isOpen, mutate }: NewTransaction
                 isSubmitting
               }
             >
-              Create
+              {id ? t("SAVE") : t("CREATE")}
             </Button>
           </DialogFooter>
         </form>

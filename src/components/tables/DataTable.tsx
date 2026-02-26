@@ -58,7 +58,10 @@ export default function DataTable({
             <TableRow key={i}>
               {Array.from({ length: nCols }).map((_, i) => (
                 <TableCell key={i} className="text-sm text-muted-foreground">
-                  <div className="flex items-baseline justify-between shadow-sm animate-pulse">
+                  <div
+                    key={i}
+                    className="flex items-baseline justify-between shadow-sm animate-pulse"
+                  >
                     <div className="h-5 w-20 bg-muted rounded" />
                   </div>
                 </TableCell>
