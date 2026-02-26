@@ -209,6 +209,7 @@ const TableContainer = ({ userId, accountId, load, includeSummary = true }: Prop
         hasActiveFilters={hasActiveFilters}
         onClearFilters={clearFilters}
       />
+
       <TransactionsDataTable
         pagination={pagination}
         accountId={accountId}

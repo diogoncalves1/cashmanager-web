@@ -18,6 +18,7 @@ import {
 } from "@tanstack/react-table";
 import {
   ArrowUpDown,
+  Check,
   Circle,
   CreditCard,
   Dot,
@@ -41,9 +42,9 @@ import { Badge } from "@/components/ui/badge";
 import { Transaction } from "@/models/transaction";
 import { iconMap } from "@/models/category";
 import { MyPagination } from "@/components/transactions/TableContainer";
-import FormTransactionDialog from "@/components/transactions/FormTransactionDialog";
+import FormTransactionDialog from "@/components/ui/dialogs/transactions/FormTransactionDialog";
 import Link from "next/link";
-import { DeleteTransactionDialog } from "@/components/transactions/DeleteTransactionDialog";
+import { DeleteTransactionDialog } from "@/components/ui/dialogs/transactions/DeleteTransactionDialog";
 import { cn, formatDate, getUserInitials } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -51,6 +52,7 @@ import { useMemo } from "react";
 import { AccountType } from "@/models/account";
 import DataTable from "@/components/tables/DataTable";
 import { DataTablePagination } from "@/components/tables/DataTablePagination";
+import { ConfirmTransactionDialog } from "@/components/ui/dialogs/transactions/ConfirmTransactionDialog";
 
 type DataTableProps = {
   accountId?: string;
@@ -158,12 +160,12 @@ export function TransactionsDataTable({
 
   const DateHeader = ({ column }: { column: Column<any> }) => (
     <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
-      Date <ArrowUpDown className="ml-2 h-4 w-4" />
+      {t("DATE")} <ArrowUpDown className="ml-2 h-4 w-4" />
     </Button>
   );
   const AmountHeader = ({ column }: { column: Column<any> }) => (
     <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
-      Amount <ArrowUpDown className="ml-2 h-4 w-4" />
+      {t("AMOUNT")} <ArrowUpDown className="ml-2 h-4 w-4" />
     </Button>
   );
 
@@ -186,7 +188,7 @@ export function TransactionsDataTable({
             className="size-8 group-hover:opacity-100 transition-opacity"
           >
             <MoreHorizontal className="size-4" />
-            <span className="sr-only">Actions</span>
+            <span className="sr-only">{t("ACTIONS")}</span>
           </Button>
         </DropdownMenuTrigger>
 
@@ -194,7 +196,7 @@ export function TransactionsDataTable({
           <DropdownMenuItem asChild>
             <Link href={`/accounts/${transaction.accountId}`}>
               <ExternalLink className="mr-2 size-4" />
-              View Account
+              {t("VIEW_ACCOUNT")}
             </Link>
           </DropdownMenuItem>
 
@@ -206,7 +208,7 @@ export function TransactionsDataTable({
               }}
             >
               <Pencil className="mr-2 size-4" />
-              Edit
+              {t("EDIT")}
             </DropdownMenuItem>
           )}
 
@@ -217,8 +219,8 @@ export function TransactionsDataTable({
                 setIsConfirmOpen(true);
               }}
             >
-              <Pencil className="mr-2 size-4" />
-              Confirm
+              <Check className="mr-2 size-4" />
+              {t("CONFIRM")}
             </DropdownMenuItem>
           )}
 
@@ -233,7 +235,7 @@ export function TransactionsDataTable({
                 }}
               >
                 <Trash2 className="mr-2 size-4" />
-                Delete
+                {t("DELETE")}
               </DropdownMenuItem>
             </>
           )}
@@ -286,7 +288,7 @@ export function TransactionsDataTable({
       },
       {
         accessorKey: "description",
-        header: "Description",
+        header: t("DESCRIPTION"),
         cell: ({ row }) => (
           <div className="max-w-2xs whitespace-normal">{row.getValue("description")}</div>
         ),
@@ -297,7 +299,7 @@ export function TransactionsDataTable({
       ? [
           {
             accessorKey: "user",
-            header: "User",
+            header: t("USERS"),
             cell: ({ row }) =>
               row.original.userName ? (
                 <Avatar className={cn("size-8 ring-1", getUserColor(row.original.userName))}>
@@ -318,7 +320,7 @@ export function TransactionsDataTable({
       ? [
           {
             accessorKey: "account",
-            header: "Account",
+            header: t("ACCOUNT"),
             cell: ({ row }) => <AccountCell row={row} />,
           },
         ]
@@ -329,7 +331,7 @@ export function TransactionsDataTable({
       ...baseColumns,
       {
         accessorKey: "status",
-        header: "Status",
+        header: t("STATUS"),
         cell: StatusCell,
       },
       ...userColumn,
@@ -398,12 +400,10 @@ export function TransactionsDataTable({
         pagination={pagination}
         mutate={mutate}
       />
-      <DeleteTransactionDialog
+      <ConfirmTransactionDialog
         id={selectedId as string}
         open={isConfirmDialogOpen}
         onOpenChange={setIsConfirmOpen}
-        table={table}
-        pagination={pagination}
         mutate={mutate}
       />
     </div>

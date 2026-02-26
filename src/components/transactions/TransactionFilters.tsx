@@ -10,9 +10,16 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { TransactionStatus, TransactionType } from "@/models/transaction";
+import {
+  getTransactionStatus,
+  getTransactionTypes,
+  TransactionStatus,
+  TransactionType,
+} from "@/models/transaction";
 import { Category } from "@/models/category";
 import { AccountBasic } from "@/models/account";
+import { useTranslations } from "next-intl";
+import { TransactionDatePicker } from "../form/transactions/TransactionDatePicker";
 
 interface TransactionsFiltersProps {
   search: string;
@@ -31,7 +38,6 @@ interface TransactionsFiltersProps {
   categories: Category[];
   hasActiveFilters: boolean;
   onClearFilters: () => void;
-  enableFilters?: boolean;
   enableSearch?: boolean;
   enableStatusFilter?: boolean;
   enableTypeFilter?: boolean;
@@ -53,43 +59,53 @@ export function TransactionsFilters({
   categories,
   hasActiveFilters,
   onClearFilters,
-  enableFilters = true,
   enableSearch = true,
   enableStatusFilter = true,
   enableTypeFilter = true,
 }: TransactionsFiltersProps) {
+  const t = useTranslations("TRANSACTIONS");
+  const transactionStatus = getTransactionStatus(t);
+  const transactionTypes = getTransactionTypes(t);
+
   return (
     <div className="space-y-3">
       {/* Search */}
-      <div className="relative ">
-        <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground " />
-        <Input
-          placeholder="Search transactions..."
-          value={search}
-          onChange={(e) => onSearchChange(e.target.value)}
-          className="pl-9 bg-white"
-        />
-      </div>
+      {enableSearch && (
+        <div className="relative ">
+          <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground " />
+          <Input
+            placeholder={t("SEARCH_TRANSACTION")}
+            value={search}
+            onChange={(e) => onSearchChange(e.target.value)}
+            className="pl-9 bg-white"
+          />
+        </div>
+      )}
 
       {/* Filter row */}
       <div className="flex flex-wrap items-center gap-2">
-        <Select value={statusFilter} onValueChange={onStatusFilterChange}>
-          <SelectTrigger className="w-[160px] bg-white">
-            <SelectValue placeholder="Account" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">All Status</SelectItem>
-            <SelectItem value="pending">Pending</SelectItem>
-            <SelectItem value="completed">Completed</SelectItem>
-          </SelectContent>
-        </Select>
+        {enableStatusFilter && (
+          <Select value={statusFilter} onValueChange={onStatusFilterChange}>
+            <SelectTrigger className="w-[160px] bg-white">
+              <SelectValue placeholder="Account" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">{t("ALL_STATUS")}</SelectItem>
+              {transactionStatus.map((status) => (
+                <SelectItem key={status.value} value={status.value}>
+                  {status.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        )}
 
         <Select value={categoryFilter} onValueChange={onCategoryFilterChange}>
-          <SelectTrigger className="w-[150px] bg-white">
+          <SelectTrigger className="w-[180px] bg-white">
             <SelectValue placeholder="Category" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">All Categories</SelectItem>
+            <SelectItem value="all">{t("ALL_CATEGORIES")}</SelectItem>
             {categories?.map((c) => {
               return (
                 <SelectItem key={c.id} value={c.id}>
@@ -100,36 +116,37 @@ export function TransactionsFilters({
           </SelectContent>
         </Select>
 
-        <Select
-          value={typeFilter}
-          onValueChange={(v) => onTypeFilterChange(v as TransactionType | "all")}
-        >
-          <SelectTrigger className="w-[140px] bg-white">
-            <SelectValue placeholder="Type" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">All Types</SelectItem>
-            <SelectItem value="revenue">Income</SelectItem>
-            <SelectItem value="expense">Expense</SelectItem>
-          </SelectContent>
-        </Select>
+        {enableTypeFilter && (
+          <Select
+            value={typeFilter}
+            onValueChange={(v) => onTypeFilterChange(v as TransactionType | "all")}
+          >
+            <SelectTrigger className="w-[140px] bg-white">
+              <SelectValue placeholder="Type" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">{t("ALL_TYPES")}</SelectItem>
+              {transactionTypes.map((type) => (
+                <SelectItem key={type.value} value={type.value}>
+                  {type.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        )}
 
-        <Input
-          type="date"
-          value={dateFrom}
-          onChange={(e) => onDateFromChange(e.target.value)}
-          className="w-[145px] bg-white"
-          aria-label="Date from"
-          max={dateTo}
+        <TransactionDatePicker
+          date={dateFrom}
+          dateLimits={{ max: dateTo }}
+          className="w-min bg-white"
+          onChangeDate={(newDate: string) => onDateFromChange(newDate)}
         />
-        <span className="text-xs text-muted-foreground">to</span>
-        <Input
-          type="date"
-          value={dateTo}
-          onChange={(e) => onDateToChange(e.target.value)}
-          className="w-[145px] bg-white"
-          aria-label="Date to"
-          min={dateFrom}
+        <span className="text-xs text-muted-foreground">{t("TO")}</span>
+        <TransactionDatePicker
+          date={dateTo}
+          dateLimits={{ min: dateFrom }}
+          className="w-min bg-white"
+          onChangeDate={(newDate: string) => onDateToChange(newDate)}
         />
 
         {hasActiveFilters && (
@@ -140,7 +157,7 @@ export function TransactionsFilters({
             className="gap-1 text-muted-foreground"
           >
             <X className="size-3" />
-            Clear
+            {t("CLEAR")}
           </Button>
         )}
       </div>

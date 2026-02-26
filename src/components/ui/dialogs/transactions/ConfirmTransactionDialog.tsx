@@ -11,40 +11,37 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { useToast } from "@/hooks/useToast";
-import { onDeleteTransaction } from "@/services/transactions/service";
+import { onConfirmTransaction } from "@/services/transactions/service";
+import { useTranslations } from "next-intl";
 
-interface DeleteTransactionDialogProps {
+interface ConfirmTransactionDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   id: string;
-  table: any;
-  pagination: any;
   mutate: () => void;
 }
 
-export function DeleteTransactionDialog({
+export function ConfirmTransactionDialog({
   open,
   onOpenChange,
   id,
-  table,
-  pagination,
   mutate,
-}: DeleteTransactionDialogProps) {
+}: ConfirmTransactionDialogProps) {
   const { toast } = useToast();
+  const t = useTranslations("TRANSACTIONS");
+
   return (
     <AlertDialog open={open} onOpenChange={onOpenChange}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Delete Transaction</AlertDialogTitle>
-          <AlertDialogDescription>
-            Are you sure you want to delete? This action cannot be undone.
-          </AlertDialogDescription>
+          <AlertDialogTitle>{t("CONFIRM_TRANSACTION")}</AlertDialogTitle>
+          <AlertDialogDescription>{t("CONFIRM_TRANSACTION_TEXT")}</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel>{t("CANCEL")}</AlertDialogCancel>
           <AlertDialogAction
             onClick={async () => {
-              const result = await onDeleteTransaction(id, table, pagination);
+              const result = await onConfirmTransaction(id, mutate);
               if (mutate) mutate();
               toast({
                 description: result.message,
@@ -53,7 +50,7 @@ export function DeleteTransactionDialog({
             }}
             className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
           >
-            Delete
+            {t("CONFIRM")}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

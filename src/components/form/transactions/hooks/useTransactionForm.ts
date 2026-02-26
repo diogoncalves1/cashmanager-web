@@ -1,9 +1,8 @@
-// hooks/useTransactionForm.ts
 import { useState, useEffect } from "react";
 import useSWR from "swr";
 import { useRouter } from "next/navigation";
 import { fetcher } from "@/lib/fetcher";
-import { TransactionStatus, TransactionType } from "@/lib/models/transaction";
+import { TransactionStatus, TransactionType } from "@/models/transaction";
 
 export function useTransactionForm(id?: string) {
   const router = useRouter();
@@ -23,7 +22,7 @@ export function useTransactionForm(id?: string) {
     status: "completed",
   });
 
-  const [dateLimits, setDateLimits] = useState({
+  const [dateLimits, setDateLimits] = useState<{ min: string; max: string }>({
     min: "",
     max: new Date().toISOString().split("T")[0],
   });
@@ -34,12 +33,12 @@ export function useTransactionForm(id?: string) {
     isLoading: isLoadingTransaction,
   } = useSWR(id ? [`/transactions/${id}`, { method: "GET" }] : null, fetcher);
 
-  const { data: categoriesData, isLoading: isLoadingCategories } = useSWR(
+  const { data: categories, isLoading: isLoadingCategories } = useSWR(
     [`/categories?type=${formData.type}`, { method: "GET" }],
     fetcher
   );
 
-  const { data: accountsData, isLoading: isLoadingAccounts } = useSWR(
+  const { data: accounts, isLoading: isLoadingAccounts } = useSWR(
     id ? null : ["/accounts/all", { method: "GET" }],
     fetcher
   );
@@ -50,7 +49,7 @@ export function useTransactionForm(id?: string) {
     if (transactionData?.data) {
       const tx = transactionData.data;
       setFormData({
-        account_id: tx.account_id,
+        account_id: tx.accountId,
         category_id: tx.category?.id || "",
         amount: tx.amount,
         type: tx.type,
@@ -58,6 +57,9 @@ export function useTransactionForm(id?: string) {
         status: tx.status,
         description: tx.description || "",
       });
+
+      console.log(transactionData.data);
+
       updateDateLimits(tx.status);
     }
   }, [transactionData, transactionError, router]);
@@ -123,8 +125,8 @@ export function useTransactionForm(id?: string) {
     isLoadingTransaction,
     isLoadingCategories,
     isLoadingAccounts,
-    categoriesData,
-    accountsData,
+    categories,
+    accounts,
     transactionData,
   };
 }

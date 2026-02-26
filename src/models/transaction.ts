@@ -4,25 +4,25 @@ import { User } from "./user";
 
 export type TransactionType = "revenue" | "expense";
 
-export const transactionTypes = [
+export const getTransactionTypes = (t: any) => [
   {
     value: "revenue",
-    label: "Revenue",
+    label: t("INCOME"),
   },
   {
     value: "expense",
-    label: "Expense",
+    label: t("EXPENSE"),
   },
 ];
 
-export const transactionStatus = [
+export const getTransactionStatus = (t: any) => [
   {
     value: "completed",
-    label: "Completed",
+    label: t("COMPLETED"),
   },
   {
     value: "pending",
-    label: "Pending",
+    label: t("PENDING"),
   },
 ];
 
