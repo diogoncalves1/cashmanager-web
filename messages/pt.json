@@ -72,6 +72,66 @@
     "NO_RESULTS": "Sem Resultados"
   },
 
+  "ACCOUNTS": {
+    "META_TITLE": "Cash Manager | Contas",
+    "META_DESCRIPTION": "Gerencie suas contas financeiras de forma eficiente com o Cash Manager. Acompanhe suas receitas, despesas e mantenha suas finanças organizadas.",
+
+    "ACCOUNTS": "Contas",
+    "ACCOUNTS_TEXT": "Gerencie suas contas financeiras e acompanhe os saldos.",
+    "DETAILS": "Detalhes",
+
+    "BALANCE": "Saldo",
+    "TOTAL_INCOME": "Receita Total",
+    "TOTAL_EXPENSE": "Despesa Total",
+    "ACTIVE_ACCOUNTS": "Contas Ativas",
+
+    "ALL_TYPES": "Todos os tipos",
+    "BANK_ACCOUNT": "Conta bancária",
+    "CASH": "Dinheiro",
+    "DIGITAL_WALLET": "Cateira digital",
+    "CREDIT_CARD": "Cartão de crédito",
+
+    "ALL_STATUS": "Todos os estados",
+
+    "INCOME": "Receita",
+    "EXPENSE": "Despesa",
+
+    "TRANSACTIONS": "Transações",
+    "TRANSACTION": "Transação",
+    "USERS": "Utilizadores",
+
+    "EDIT": "Editar",
+    "ADD": "Adicionar",
+
+    "ACTIVE": "Ativa",
+    "INACTIVE": "Inativa",
+    "STATUS": "Estado",
+
+    "DISABLE_ACCOUNT": "Desativar Conta",
+    "ACTIVATE_ACCOUNT": "Ativar Conta",
+    "DELETE_ACCOUNT": "Delete Account",
+
+    "NEW_ACCOUNT": "Nova Conta",
+    "SEARCH_ACCOUNT": "Procurar pela conta",
+    "SORT_BY": "Ordernar por",
+    "ORDER": "Ordem",
+    "ASCENDING": "Crescente",
+    "DESCENDING": "Decrescente",
+
+    "OWED": "Devida",
+
+    "NAME": "Nome",
+    "TYPE": "Tipo",
+
+    "NO_ACCOUNTS_FOUND": "Nenhuma conta encontrada",
+    "NO_ACCOUNTS_FOUND_TEXT": "Tente ajustar seus filtros ou crie uma nova conta."
+  },
+
+  "LISTS": {
+    "REMAINING": "Restante",
+    "REMAINING_PLURAL": "Restantes"
+  },
+
   "HOME": {
     "HOME": "Início",
     "MONTHLY_BALANCE": "Saldo Mensal",
@@ -86,35 +146,6 @@
 
     "CASH_FLOW_CHART_DESCRIPTION": "Rastreie as suas receitas e despesas em diferentes períodos.",
     "CASH_FLOW_CHART_TITLE": "Visão Geral do Fluxo de Caixa"
-  },
-  "ACCOUNTS": {
-    "ACCOUNTS": "Contas",
-    "ACCOUNT": "CONTA",
-    "DETAILS": "Detalhes",
-
-    "OTHERS": "Outros",
-    "MONTH": "Mês",
-
-    "REVENUE": "Receita",
-    "EXPENSE": "Despesa",
-    "RESULT": "Resultado",
-
-    "OVERVIEW": "Visão Geral",
-    "TRANSACTIONS": "Transações",
-    "USERS": "Utilizadores",
-    "MONTHLY_RESUME": "Resumo Mensal",
-    "CATEGORIES": "Categorias",
-
-    "EDIT": "Editar",
-    "ADD": "Adicionar",
-
-    "ACTIVE": "Ativa",
-
-    "ALL_TRANSACTIONS": "Todas as Transações",
-    "ADD_TRANSACTION": "Nova Transação",
-    "DISABLE_ACCOUNT": "Desativar Conta",
-    "ACTIVATE_ACCOUNT": "Ativar Conta",
-    "DELETE_ACCOUNT": "Delete Account"
   },
 
   "LAYOUTS": {

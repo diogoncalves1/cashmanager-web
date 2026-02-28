@@ -1,4 +1,5 @@
 // /app/api/accounts/route.ts
+
 import { NextRequest, NextResponse } from "next/server";
 
 function parseColumns(searchParams: URLSearchParams) {
@@ -9,20 +10,29 @@ function parseColumns(searchParams: URLSearchParams) {
     { data: "balance", searchable: true, orderable: true },
   ];
 
-  const columns: any[] = [...defaultColumns]; // inicia com defaults
+  const columns: {
+    data?: string;
+    name?: string;
+    searchable?: boolean | string;
+    orderable?: boolean | string;
+    search?: {
+      value?: string;
+      regex?: string;
+    };
+  }[] = [...defaultColumns];
 
   for (const [key, value] of searchParams.entries()) {
     const match = key.match(/^columns\[(\d+)\]\[(.+)\]$/);
     if (!match) continue;
 
     const index = Number(match[1]);
-    const field = match[2];
+    const field = match[2] as "search" | "name" | "searchable" | "orderable" | "data";
 
     if (!columns[index]) columns[index] = {};
 
     // trata search[value] e search[regex]
     if (field.startsWith("search[")) {
-      const searchKey = field.match(/search\[(.+)\]/)?.[1];
+      const searchKey = field.match(/search\[(.+)\]/)?.[1] as "value" | "regex";
       columns[index].search ??= {};
       columns[index].search[searchKey!] = value;
     } else {
@@ -34,7 +44,19 @@ function parseColumns(searchParams: URLSearchParams) {
   return columns.filter(Boolean);
 }
 
-function addColumnsToParams(columns: any[], searchParams: URLSearchParams) {
+function addColumnsToParams(
+  columns: {
+    data?: string;
+    name?: string;
+    searchable?: boolean | string;
+    orderable?: boolean | string;
+    search?: {
+      value?: string;
+      regex?: string;
+    };
+  }[],
+  searchParams: URLSearchParams
+) {
   columns.forEach((col, index) => {
     for (const key in col) {
       const value = col[key];

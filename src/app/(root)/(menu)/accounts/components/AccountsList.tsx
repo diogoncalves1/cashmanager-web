@@ -1,11 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { useTranslations } from "next-intl";
 import AccountsListFail from "./AccountsListFail";
 import { AccountCard } from "./AccountCard";
 import { GoalCardLoading } from "../../financial-goals/components/GoalCardLoading";
 import { useAccounts } from "../hooks/useAccounts";
+import LoadMoreList from "@/components/ui/lists/LoadMoreList";
 
 type Props = {
   accounts: ReturnType<typeof useAccounts>["accounts"];
@@ -16,8 +15,6 @@ type Props = {
 };
 
 export default function AccountsList({ accounts, loadMore, hasMore, total, loading }: Props) {
-  const t = useTranslations("FINANCIAL_GOALS");
-
   return (
     <>
       {!loading && accounts.length == 0 ? (
@@ -29,17 +26,7 @@ export default function AccountsList({ accounts, loadMore, hasMore, total, loadi
           ))}
 
           {hasMore && (
-            <div className="flex justify-center col-span-3">
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={loadMore}
-                className="gap-2 bg-transparent"
-              >
-                Load More
-                <span className="text-muted-foreground">({total - accounts.length} remaining)</span>
-              </Button>
-            </div>
+            <LoadMoreList loadMore={loadMore} total={total} subjectLength={accounts.length} />
           )}
         </div>
       ) : (
