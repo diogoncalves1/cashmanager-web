@@ -72,6 +72,66 @@
     "NO_RESULTS": "No Results"
   },
 
+  "ACCOUNTS": {
+    "META_TITLE": "Cash Manager | Accounts",
+    "META_DESCRIPTION": "Manage your financial accounts efficiently with Cash Manager. Track your income, expenses, and keep your finances organized.",
+
+    "ACCOUNTS": "Accounts",
+    "ACCOUNTS_TEXT": "Manage your financial accounts and track balances.",
+    "DETAILS": "Details",
+
+    "BALANCE": "Balance",
+    "TOTAL_INCOME": "Total Income",
+    "TOTAL_EXPENSE": "Total Expense",
+    "ACTIVE_ACCOUNTS": "Active Accounts",
+
+    "ALL_TYPES": "All types",
+    "BANK_ACCOUNT": "Bank account",
+    "CASH": "Cash",
+    "DIGITAL_WALLET": "Digital wallet",
+    "CREDIT_CARD": "Credit card",
+
+    "ALL_STATUS": "All statuses",
+
+    "INCOME": "Income",
+    "EXPENSE": "Expense",
+
+    "TRANSACTIONS": "Transactions",
+    "TRANSACTION": "Transaction",
+    "USERS": "Users",
+
+    "EDIT": "Edit",
+    "ADD": "Add",
+
+    "ACTIVE": "Active",
+    "INACTIVE": "Inactive",
+    "STATUS": "Status",
+
+    "DISABLE_ACCOUNT": "Disable Account",
+    "ACTIVATE_ACCOUNT": "Activate Account",
+    "DELETE_ACCOUNT": "Delete Account",
+
+    "NEW_ACCOUNT": "New Account",
+    "SEARCH_ACCOUNT": "Search account",
+    "SORT_BY": "Sort by",
+    "ORDER": "Order",
+    "ASCENDING": "Ascending",
+    "DESCENDING": "Descending",
+
+    "OWED": "Owed",
+
+    "NAME": "Name",
+    "TYPE": "Type",
+
+    "NO_ACCOUNTS_FOUND": "No accounts found",
+    "NO_ACCOUNTS_FOUND_TEXT": "Try adjusting your filters or create a new account."
+  },
+
+  "LISTS": {
+    "REMAINING": "Remaining",
+    "REMAINING_PLURAL": "Remaining"
+  },
+
   "ACTIVITY": {
     "LOADING_ACTIVITY": "Loading Activity...",
     "TRY_AGAIN": "Try again",
@@ -93,36 +153,6 @@
 
     "CASH_FLOW_CHART_DESCRIPTION": "Track your income and expenses across different periods.",
     "CASH_FLOW_CHART_TITLE": "Cash Flow Overview"
-  },
-
-  "ACCOUNTS": {
-    "ACCOUNTS": "Accounts",
-    "ACCOUNT": "ACCOUNT",
-    "DETAILS": "Details",
-
-    "OTHERS": "Others",
-    "MONTH": "Month",
-
-    "REVENUE": "Revenue",
-    "EXPENSE": "Expense",
-    "RESULT": "Result",
-
-    "OVERVIEW": "Overview",
-    "TRANSACTIONS": "Transactions",
-    "USERS": "Users",
-    "MONTHLY_RESUME": "Monthly Resume",
-    "CATEGORIES": "Categories",
-
-    "EDIT": "Edit",
-    "ADD": "Add",
-
-    "ACTIVE": "Active",
-
-    "ALL_TRANSACTIONS": "All Transactions",
-    "ADD_TRANSACTION": "Add Transaction",
-    "DISABLE_ACCOUNT": "Disable Account",
-    "ACTIVATE_ACCOUNT": "Activate Account",
-    "DELETE_ACCOUNT": "Deletar Conta"
   },
 
   "LAYOUTS": {

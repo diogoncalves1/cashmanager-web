@@ -23,8 +23,9 @@ export function useAccounts(filters: Filters = {}, pageSize = 9) {
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState<Stats>({});
   const [error, setError] = useState(false);
+  const [load, setLoad] = useState(false);
 
-  const fetchGoals = useCallback(
+  const fetchAccounts = useCallback(
     async (currentPage = 1, append = false) => {
       try {
         setLoading(true);
@@ -33,7 +34,7 @@ export function useAccounts(filters: Filters = {}, pageSize = 9) {
 
         setTotal(res.recordsFiltered);
         setStats(res.stats);
-        setAccounts((prev: any) => (append ? [...prev, ...res.data] : res.data));
+        setAccounts((prev: Account[]) => (append ? [...prev, ...res.data] : res.data));
       } catch (err: unknown) {
         if (err instanceof Error) {
           console.error(err);
@@ -43,19 +44,23 @@ export function useAccounts(filters: Filters = {}, pageSize = 9) {
         setLoading(false);
       }
     },
-    [filters]
+    [filters, pageSize]
   );
 
   useEffect(() => {
     setPage(1);
-    fetchGoals(1, false);
-  }, [filters, fetchGoals]);
+    fetchAccounts(1, false);
+  }, [filters, fetchAccounts]);
+
+  useEffect(() => {
+    fetchAccounts(1);
+  }, [load, fetchAccounts]);
 
   const loadMore = () => {
     if (accounts.length < total) {
       const nextPage = page + 1;
       setPage(nextPage);
-      fetchGoals(nextPage, true);
+      fetchAccounts(nextPage, true);
     }
   };
 
@@ -67,5 +72,6 @@ export function useAccounts(filters: Filters = {}, pageSize = 9) {
     hasMore: total > page * pageSize ? true : false,
     total: total,
     stats,
+    setLoad,
   };
 }

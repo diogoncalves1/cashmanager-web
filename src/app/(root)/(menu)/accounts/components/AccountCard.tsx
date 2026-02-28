@@ -64,11 +64,11 @@ export function AccountCard({ account }: AccountCardProps) {
                   </h4>
                   {!account.status && (
                     <Badge
-                      color="light"
-                      type="rounded-xl"
+                      variant="destructive"
+                      color="error"
                       className="text-xs bg-muted text-muted-foreground"
                     >
-                      Inactive
+                      {t("INACTIVE")}
                     </Badge>
                   )}
                 </div>
@@ -86,13 +86,16 @@ export function AccountCard({ account }: AccountCardProps) {
                 >
                   {account.balanceFormated}
                 </p>
-                {isNegative && <p className="text-xs text-muted-foreground">owed</p>}
+                {isNegative && <p className="text-xs text-muted-foreground">{t("OWED")}</p>}
               </div>
             </div>
           </div>
 
-          <div className="mt-4 flex items-center justify-between text-xs text-muted-foreground">
-            <span>{account.totalTransactions} transactions</span>
+          <div className="mt-4 flex items-center justify-between text-xs text-muted-foreground lowercase">
+            <span>
+              {account.totalTransactions}{" "}
+              {account.totalTransactions > 1 ? t("TRANSACTIONS") : t("TRANSACTION")}
+            </span>
             <span>{account.currencyCode}</span>
           </div>
           <div className="flex items-center justify-between pt-3 border-border">

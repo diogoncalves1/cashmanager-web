@@ -7,6 +7,8 @@ import { AccountSummaryCards } from "./AccountSummaryCards";
 import { AccountFilters } from "./AccountFilters";
 import AccountsList from "./AccountsList";
 import { useAccounts } from "../hooks/useAccounts";
+import { NewAccountButton } from "@/components/accounts/NewAccountButton";
+import { useTranslations } from "next-intl";
 
 export interface AccountFormData {
   name: string;
@@ -26,6 +28,7 @@ interface Filters {
 }
 
 const AccountsContainer = () => {
+  const t = useTranslations("ACCOUNTS");
   const [filters, setFilters] = useState<Filters>({
     active: "all",
     type: "all",
@@ -42,17 +45,25 @@ const AccountsContainer = () => {
     return () => clearTimeout(handler);
   }, [filters]);
 
-  const { accounts, loading, loadMore, hasMore, total, stats } = useAccounts(debouncedFilters);
+  const { accounts, loading, loadMore, hasMore, total, stats, setLoad } =
+    useAccounts(debouncedFilters);
 
   return (
     <div className="space-y-6">
+      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight">{t("ACCOUNTS")}</h1>
+          <p className="mt-1 text-muted-foreground">{t("ACCOUNTS_TEXT")}</p>
+        </div>
+        <NewAccountButton setLoad={setLoad} />
+      </div>
+
       <AccountSummaryCards stats={stats} />
 
       <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <AccountFilters setFilters={setFilters} filters={filters} />
-        <p className="text-sm text-muted-foreground">
-          {total} account
-          {total !== 1 ? "s" : ""}
+        <p className="text-sm text-muted-foreground lowercase">
+          {total} {total !== 1 ? t("ACCOUNTS") : t("ACCOUNT")}
         </p>
       </div>
 

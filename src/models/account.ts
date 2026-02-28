@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import { Currency } from "./currency";
 import { User } from "./user";
 
@@ -11,22 +12,32 @@ export type ActionsType = {
   createTransactions?: boolean;
 };
 
-export const accountTypes = [
+export const getAccountTypes = (t: ReturnType<typeof useTranslations>) => [
   {
     value: "bank_account",
-    label: "Conta Bancária",
+    label: t("BANK_ACCOUNT"),
   },
   {
     value: "cash",
-    label: "Dinheiro",
+    label: t("CASH"),
   },
   {
     value: "digital_wallet",
-    label: "Carteira Digital",
+    label: t("DIGITAL_WALLET"),
   },
   {
     value: "credit_card",
-    label: "Cartão de Crédito",
+    label: t("CREDIT_CARD"),
+  },
+];
+export const getAccountStatus = (t: ReturnType<typeof useTranslations>) => [
+  {
+    value: "active",
+    label: t("ACTIVE"),
+  },
+  {
+    value: "inactive",
+    label: t("INACTIVE"),
   },
 ];
 

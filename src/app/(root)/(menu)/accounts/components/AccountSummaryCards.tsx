@@ -2,6 +2,7 @@
 
 import { Wallet, TrendingUp, TrendingDown, CreditCard } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { useTranslations } from "next-intl";
 
 type Stats = {
   activeAccounts?: number;
@@ -15,6 +16,7 @@ interface AccountSummaryCardsProps {
 }
 
 export function AccountSummaryCards({ stats }: AccountSummaryCardsProps) {
+  const t = useTranslations("ACCOUNTS");
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       <Card>
@@ -24,7 +26,7 @@ export function AccountSummaryCards({ stats }: AccountSummaryCardsProps) {
               <Wallet className="size-5 text-primary" />
             </div>
             <div>
-              <p className="text-sm text-muted-foreground">Net Worth</p>
+              <p className="text-sm text-muted-foreground">{t("BALANCE")}</p>
               <p className="text-2xl font-bold">{stats.netWorth}</p>
             </div>
           </div>
@@ -34,12 +36,12 @@ export function AccountSummaryCards({ stats }: AccountSummaryCardsProps) {
       <Card>
         <CardContent className="px-5">
           <div className="flex items-center gap-3">
-            <div className="flex size-10 items-center justify-center rounded-lg bg-emerald-500/10">
-              <TrendingUp className="size-5 text-emerald-600" />
+            <div className="flex size-10 items-center justify-center rounded-lg bg-accent/10">
+              <TrendingUp className="size-5 text-accent" />
             </div>
             <div>
-              <p className="text-sm text-muted-foreground">Total Revenues</p>
-              <p className="text-2xl font-bold text-emerald-600">{stats.totalRevenues}</p>
+              <p className="text-sm text-muted-foreground">{t("TOTAL_INCOME")}</p>
+              <p className="text-2xl font-bold text-accent">{stats.totalRevenues}</p>
             </div>
           </div>
         </CardContent>
@@ -52,7 +54,7 @@ export function AccountSummaryCards({ stats }: AccountSummaryCardsProps) {
               <TrendingDown className="size-5 text-destructive" />
             </div>
             <div>
-              <p className="text-sm text-muted-foreground">Total Expenses</p>
+              <p className="text-sm text-muted-foreground">{t("TOTAL_EXPENSE")}</p>
               <p className="text-2xl font-bold text-destructive">{stats.totalExpenses}</p>
             </div>
           </div>
@@ -66,7 +68,7 @@ export function AccountSummaryCards({ stats }: AccountSummaryCardsProps) {
               <CreditCard className="size-5 text-blue-500" />
             </div>
             <div>
-              <p className="text-sm text-muted-foreground">Active Accounts</p>
+              <p className="text-sm text-muted-foreground">{t("ACTIVE_ACCOUNTS")}</p>
               <p className="text-2xl font-bold">{stats.activeAccounts}</p>
             </div>
           </div>

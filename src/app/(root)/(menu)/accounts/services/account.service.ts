@@ -23,7 +23,7 @@ interface ApiResponse<T> {
   stats: Stats;
 }
 
-export async function getAllAccounts(filters: GoalsFilters): Promise<ApiResponse<Account[]>> {
+export async function getAllAccounts(filters: GoalsFilters): Promise<ApiResponse<Account>> {
   const params = new URLSearchParams(
     Object.entries(filters).filter(([, v]) => v !== null) as [string, string][]
   );
