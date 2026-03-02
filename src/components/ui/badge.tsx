@@ -39,14 +39,14 @@ const badgeColors = cva("", {
 
 function Badge({
   className,
-  color,
+  color = "default",
   variant,
   asChild = false,
   ...props
 }: React.ComponentProps<"span"> &
   VariantProps<typeof badgeVariants> & {
     asChild?: boolean;
-    color: "default" | "error" | "warning" | "success";
+    color?: "default" | "error" | "warning" | "success";
   }) {
   const Comp = asChild ? Slot : "span";
 

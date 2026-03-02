@@ -1,16 +1,27 @@
 import { Button } from "@/components/ui/button";
+import { Table as ReactTable } from "@tanstack/react-table";
+import { useTranslations } from "next-intl";
 
-type TFunction = (key: string, values?: Record<string, any>) => string;
+type TFunction = ReturnType<typeof useTranslations>;
 
-type Props = {
-  table: any;
-  pageCount: number;
-  total: number;
-  pagination: any;
-  t: TFunction;
+type PaginationState = {
+  pageIndex: number;
+  pageSize: number;
 };
 
-export function DataTablePagination({ table, pageCount, total, pagination, t }: Props) {
+export function DataTablePagination<TData>({
+  table,
+  pageCount,
+  total,
+  pagination,
+  t,
+}: {
+  table: ReactTable<TData>;
+  pageCount: number;
+  total: number;
+  pagination: PaginationState;
+  t: TFunction;
+}) {
   const getPageNumbers = () => {
     const totalPages = Math.ceil(total / pagination.pageSize);
 

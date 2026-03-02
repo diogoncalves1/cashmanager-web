@@ -27,14 +27,21 @@ import { Textarea } from "@/components/ui/textarea";
 import { useTranslations } from "next-intl";
 import { SwalToast } from "@/components/swal/SwalToast";
 
-type NewTransactionDialogProps = {
+type TransactionDialogProps = {
   id?: string;
-  setIsOpen: any;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isOpen: boolean;
   mutate?: () => void;
+  // accountId?: string;
 };
 
-const FormTransactionDialog = ({ id, setIsOpen, isOpen, mutate }: NewTransactionDialogProps) => {
+const FormTransactionDialog = ({
+  id,
+  setIsOpen,
+  isOpen,
+  mutate,
+  // accountId,
+}: TransactionDialogProps) => {
   const t = useTranslations("TRANSACTIONS");
   const {
     formData,

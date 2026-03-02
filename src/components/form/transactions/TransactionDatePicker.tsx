@@ -16,7 +16,7 @@ export function TransactionDatePicker({
 }: {
   date?: string;
   dateLimits: { min?: string; max?: string };
-  onChangeDate: any;
+  onChangeDate: (value: string) => void;
   className?: string;
 }) {
   const t = useTranslations("TRANSACTIONS");

@@ -11,7 +11,7 @@ export const fetcher = async ([url, options]: [string, RequestInit]) => {
     }
 
     return res.json();
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("Fetcher error:", err);
     throw err;
   }

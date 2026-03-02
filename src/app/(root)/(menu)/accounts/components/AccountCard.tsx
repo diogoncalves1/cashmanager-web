@@ -5,7 +5,7 @@ import { Building2, Wallet, CreditCard, Smartphone } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
+import { cn, getUserColor } from "@/lib/utils";
 import { Account, AccountType } from "@/models/account";
 import { useTranslations } from "next-intl";
 
@@ -91,8 +91,8 @@ export function AccountCard({ account }: AccountCardProps) {
             </div>
           </div>
 
-          <div className="mt-4 flex items-center justify-between text-xs text-muted-foreground lowercase">
-            <span>
+          <div className="mt-4 flex items-center justify-between text-xs text-muted-foreground ">
+            <span className="lowercase">
               {account.totalTransactions}{" "}
               {account.totalTransactions > 1 ? t("TRANSACTIONS") : t("TRANSACTION")}
             </span>
@@ -103,7 +103,12 @@ export function AccountCard({ account }: AccountCardProps) {
               <div className="flex items-center -space-x-2">
                 {account.users.slice(0, 3).map((user) => (
                   <Avatar key={user.id} className="w-7 h-7 border-2 border-card">
-                    <AvatarFallback className="text-[10px] bg-secondary text-secondary-foreground">
+                    <AvatarFallback
+                      className={cn(
+                        "text-[10px] text-secondary-foreground",
+                        getUserColor(user.name)
+                      )}
+                    >
                       {user.name
                         .split(" ")
                         .map((n) => n[0])

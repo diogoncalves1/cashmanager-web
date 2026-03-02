@@ -1,10 +1,11 @@
+import { useTranslations } from "next-intl";
 import { AccountType } from "./account";
 import { Category, IconName } from "./category";
 import { User } from "./user";
 
 export type TransactionType = "revenue" | "expense";
 
-export const getTransactionTypes = (t: any) => [
+export const getTransactionTypes = (t: ReturnType<typeof useTranslations>) => [
   {
     value: "revenue",
     label: t("INCOME"),
@@ -15,7 +16,7 @@ export const getTransactionTypes = (t: any) => [
   },
 ];
 
-export const getTransactionStatus = (t: any) => [
+export const getTransactionStatus = (t: ReturnType<typeof useTranslations>) => [
   {
     value: "completed",
     label: t("COMPLETED"),

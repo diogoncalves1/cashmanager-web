@@ -38,7 +38,6 @@ function AppLink({
   className,
   variant,
   size,
-  asChild = false,
   path,
   ...props
 }: React.ComponentProps<"button"> &

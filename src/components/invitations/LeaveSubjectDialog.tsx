@@ -9,14 +9,15 @@ import {
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { onLeaveSuject, onRemoveMember } from "@/services/invitations/invitations.service";
+import { onLeaveSuject } from "@/services/invitations/invitations.service";
 import { useRouter } from "next/navigation";
+import { useToast } from "@/hooks/useToast";
 
 type InviteType = "debts" | "financial-goals" | "accounts";
 
 type Props = {
   isOpen: boolean;
-  setIsOpen: any;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   type: InviteType;
   id: string;
   goBack: boolean;
@@ -25,6 +26,7 @@ type Props = {
 
 export default function LeaveSubjectDialog({ isOpen, setIsOpen, type, goBack, id, mutate }: Props) {
   const t = useTranslations("INVITE_MEMBER");
+  const { toast } = useToast();
   const router = useRouter();
 
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
@@ -33,8 +35,8 @@ export default function LeaveSubjectDialog({ isOpen, setIsOpen, type, goBack, id
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Leave</DialogTitle>
-          <DialogDescription>Leave someone to contribute to this goal.</DialogDescription>
+          <DialogTitle>{t("LEAVE")}</DialogTitle>
+          <DialogDescription>{t("LEAVE_TEXT")}</DialogDescription>
         </DialogHeader>
         <DialogFooter>
           <Button
@@ -43,20 +45,24 @@ export default function LeaveSubjectDialog({ isOpen, setIsOpen, type, goBack, id
             onClick={() => setIsOpen(false)}
             className="bg-transparent"
           >
-            Cancel
+            {t("CANCEL")}
           </Button>
           <Button
             type="submit"
             variant="destructive"
             onClick={async () => {
               setIsSubmitting(true);
-              if ((await onLeaveSuject(id, type, t, mutate)) && goBack) router.back();
+              const res = await onLeaveSuject(id, type, mutate);
               setIsSubmitting(false);
               setIsOpen(false);
+              toast({
+                description: res.message,
+              });
+              if (goBack) router.back();
             }}
             disabled={isSubmitting}
           >
-            {isSubmitting ? "Removendo..." : "Remover"}
+            {isSubmitting ? t("LEAVING") : t("LEAVE")}
           </Button>
         </DialogFooter>
       </DialogContent>

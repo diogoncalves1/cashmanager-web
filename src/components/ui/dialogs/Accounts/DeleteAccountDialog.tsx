@@ -11,6 +11,7 @@ import {
 import { useToast } from "@/hooks/useToast";
 import { Account } from "@/models/account";
 import { onDeleteAccount } from "@/services/accounts/service";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 
 type Props = {
@@ -21,6 +22,7 @@ type Props = {
 };
 
 const DeleteAccountDialog = ({ isOpen, setIsDeleteOpen, account, back = false }: Props) => {
+  const t = useTranslations("ACCOUNTS");
   const router = useRouter();
   const { toast } = useToast();
 
@@ -28,7 +30,7 @@ const DeleteAccountDialog = ({ isOpen, setIsDeleteOpen, account, back = false }:
     const res = await onDeleteAccount(account.id);
 
     toast({
-      title: "Account deleted",
+      title: t("ACCOUNT_DELETED"),
       description: res.message,
     });
 
@@ -44,19 +46,18 @@ const DeleteAccountDialog = ({ isOpen, setIsDeleteOpen, account, back = false }:
     <AlertDialog open={isOpen} onOpenChange={setIsDeleteOpen}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Delete Account</AlertDialogTitle>
+          <AlertDialogTitle>{t("DELETE_ACCOUNT")}?</AlertDialogTitle>
           <AlertDialogDescription>
-            Are you sure you want to delete &quot;{account.name}&quot;? All transactions will be
-            permanently removed. This action cannot be undone.
+            {t("DELETE_ACCOUNT_TEXT", { name: account.name })}
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel>{t("CANCEL")}</AlertDialogCancel>
           <AlertDialogAction
             onClick={handleDelete}
             className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
           >
-            Delete Account
+            {t("DELETE_ACCOUNT")}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

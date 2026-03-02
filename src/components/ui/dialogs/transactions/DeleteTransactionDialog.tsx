@@ -11,15 +11,22 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { useToast } from "@/hooks/useToast";
+import { Transaction } from "@/models/transaction";
 import { onDeleteTransaction } from "@/services/transactions/service";
 import { useTranslations } from "next-intl";
+import { Table as ReactTable } from "@tanstack/react-table";
+
+type PaginationState = {
+  pageIndex: number;
+  pageSize: number;
+};
 
 interface DeleteTransactionDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   id: string;
-  table: any;
-  pagination: any;
+  table: ReactTable<Transaction>;
+  pagination: PaginationState;
   mutate: () => void;
 }
 

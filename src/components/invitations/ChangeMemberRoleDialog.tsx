@@ -18,18 +18,17 @@ import {
 import { useState } from "react";
 import { useDataForChangeRole } from "@/hooks/useDataForInvite";
 import { useTranslations } from "next-intl";
-import LoadingToast from "@/components/swal/LoadingToast";
-import { SwalToast } from "@/components/swal/SwalToast";
+import { useToast } from "@/hooks/useToast";
 
 type InviteType = "debts" | "financial-goals" | "accounts";
 
 type Props = {
   isOpen: boolean;
-  setIsOpen: any;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   type: InviteType;
   id: string;
   userId: string;
-  mutate: () => void;
+  mutate?: () => void;
 };
 
 export default function ChangeMemberRoleDialog({
@@ -41,6 +40,7 @@ export default function ChangeMemberRoleDialog({
   mutate,
 }: Props) {
   const t = useTranslations("INVITE_MEMBER");
+  const { toast } = useToast();
   const { roles, loading, handleSubmit, formData, setFormData } = useDataForChangeRole({
     type,
     id,
@@ -50,23 +50,18 @@ export default function ChangeMemberRoleDialog({
 
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  console.log(formData);
-
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    LoadingToast({
-      title: t("INVITING_TITLE"),
-      message: t("INVITING_MESSAGE"),
-    });
+    setIsSubmitting(true);
 
     const res = await handleSubmit(mutate);
 
     setIsSubmitting(false);
     setIsOpen(false);
     if (res.success) {
-      return SwalToast({ message: res.message, icon: "success" });
+      return toast({ description: res.message });
     }
-    return SwalToast({ message: res.message, icon: "error" });
+    return toast({ description: res.message });
   };
 
   return (
@@ -74,23 +69,23 @@ export default function ChangeMemberRoleDialog({
       <DialogContent>
         <form onSubmit={onSubmit}>
           <DialogHeader>
-            <DialogTitle>Change Role</DialogTitle>
-            <DialogDescription>Change role someone to contribute to this goal.</DialogDescription>
+            <DialogTitle>{t("CHANGE_ROLE")}</DialogTitle>
+            <DialogDescription>{t("CHANGE_ROLE_TEXT")}</DialogDescription>
           </DialogHeader>
           <div className="space-y-4 py-4">
             <div className="space-y-2">
-              <Label>Role</Label>
+              <Label>{t("ROLE")}</Label>
               <Select
                 value={formData.shared_role_id || ""}
                 onValueChange={(e: string) => {
-                  setFormData((prev: any) => ({
+                  setFormData((prev) => ({
                     ...prev,
                     shared_role_id: e,
                   }));
                 }}
               >
                 <SelectTrigger className="h-14 bg-input border-border text-foreground">
-                  <SelectValue placeholder="Choose a role" />
+                  <SelectValue placeholder={t("CHOOSE_A_ROLE")} />
                 </SelectTrigger>
                 <SelectContent>
                   {!loading &&
@@ -110,17 +105,10 @@ export default function ChangeMemberRoleDialog({
               onClick={() => setIsOpen(false)}
               className="bg-transparent"
             >
-              Cancel
+              {t("CANCEL")}
             </Button>
-            <Button
-              type="submit"
-              onClick={() => {
-                setIsOpen(false);
-                setIsSubmitting(true);
-              }}
-              disabled={!formData.shared_role_id}
-            >
-              {isSubmitting ? "Sending..." : "Send Invitation"}
+            <Button type="submit" disabled={!formData.shared_role_id || isSubmitting}>
+              {isSubmitting ? t("CHANGING") : t("CHANGE")}
             </Button>
           </DialogFooter>
         </form>

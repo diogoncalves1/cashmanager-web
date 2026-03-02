@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 
 import { useTranslations } from "next-intl";
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
-
 import AccountsContainer from "./components/AccountsContainer";
 import { getTranslations } from "next-intl/server";
 

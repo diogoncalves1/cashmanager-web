@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import useSWR from "swr";
 import { useRouter } from "next/navigation";
 import { fetcher } from "@/lib/fetcher";
@@ -43,6 +43,35 @@ export function useTransactionForm(id?: string) {
     fetcher
   );
 
+  const updateDateLimits = useCallback(
+    (status: TransactionStatus) => {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      const todayStr = today.toISOString().split("T")[0];
+
+      let min = "";
+      let max = "";
+
+      if (status === "completed") {
+        max = todayStr;
+
+        if ((formData.date as string) > max) {
+          setFormData((prev) => ({ ...prev, date: "" }));
+        }
+      } else if (status === "pending") {
+        min = todayStr;
+
+        if ((formData.date as string) < min) {
+          setFormData((prev) => ({ ...prev, date: "" }));
+        }
+      }
+
+      setDateLimits({ min, max });
+    },
+    [formData.date]
+  );
+
   useEffect(() => {
     if (transactionError) router.push("/transactions");
 
@@ -58,31 +87,9 @@ export function useTransactionForm(id?: string) {
         description: tx.description || "",
       });
 
-      console.log(transactionData.data);
-
       updateDateLimits(tx.status);
     }
-  }, [transactionData, transactionError, router]);
-
-  const updateDateLimits = (status: TransactionStatus) => {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    let min = "";
-    let max = "";
-
-    if (status === "completed") {
-      max = today.toISOString().split("T")[0];
-
-      if ((formData.date as string) > max) setFormData({ ...formData, date: "" });
-    } else if (status === "pending") {
-      min = today.toISOString().split("T")[0];
-
-      if ((formData.date as string) < min) setFormData({ ...formData, date: "" });
-    }
-
-    setDateLimits({ min, max });
-  };
+  }, [transactionData, transactionError, router, updateDateLimits]);
 
   type SubmitResult = {
     success: boolean;
@@ -108,8 +115,11 @@ export function useTransactionForm(id?: string) {
       if (!res.ok) throw new Error(result.message);
 
       return { success: true, message: result.message };
-    } catch (err: any) {
-      return { success: false, message: err.message || "Erro ao guardar transação" };
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        return { success: false, message: err.message || "Erro ao guardar transação" };
+      }
+      return { success: false, message: String(err) };
     } finally {
       setIsSubmitting(false);
     }

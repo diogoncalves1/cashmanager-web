@@ -6,7 +6,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { InvitationStatus } from "@/models/invitation";
+import { Invitation, InvitationStatus } from "@/models/invitation";
 import { useInView } from "react-intersection-observer";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
@@ -15,7 +15,7 @@ import { InvitationEmpty } from "@/components/invitations/InvitationEmpty";
 import { onAcceptInvite, onRevokeInvite } from "@/services/invitations/invitations.service";
 
 interface Page {
-  data: [];
+  data: Invitation[];
   nextPage: number | null;
 }
 
@@ -24,11 +24,16 @@ type Props = {
   load: boolean;
 };
 
+type FetchInvitedParams = {
+  pageParam?: number | unknown;
+  status?: string;
+};
+
 const ReceivedInvitesList = ({ setLoad, load }: Props) => {
   const t = useTranslations("INVITATION");
   const [receivedFilter, setReceivedFilter] = useState<InvitationStatus | "all">("all");
 
-  const fetchReceived = async ({ pageParam = 1, status }: any): Promise<Page> => {
+  const fetchReceived = async ({ pageParam = 1, status }: FetchInvitedParams): Promise<Page> => {
     const response = await fetch(
       `/api/accounts/received-invitations?page=${pageParam}&size=10&status=${status}`,
       {
@@ -79,7 +84,7 @@ const ReceivedInvitesList = ({ setLoad, load }: Props) => {
 
   useEffect(() => {
     if (load) refetch();
-  }, [load]);
+  }, [load, refetch]);
 
   const handleAccept = async (id: string) => {
     await onAcceptInvite(id, "accounts", () => {
@@ -116,7 +121,7 @@ const ReceivedInvitesList = ({ setLoad, load }: Props) => {
     );
   }
 
-  const receivedInvitations = data?.pages.flatMap((page: any) => page.data) ?? [];
+  const receivedInvitations = data?.pages.flatMap((page) => page.data) ?? [];
 
   return (
     <div className="space-y-4">

@@ -1,8 +1,17 @@
-import LoadingToast from "@/components/swal/LoadingToast";
 import { SwalToast } from "@/components/swal/SwalToast";
-import Swal from "sweetalert2";
+import { Transaction } from "@/models/transaction";
+import { Table } from "@tanstack/react-table";
 
-export async function onDeleteTransaction(id: string, table?: any, pagination?: any) {
+type PaginationState = {
+  pageIndex: number;
+  pageSize: number;
+};
+
+export async function onDeleteTransaction(
+  id: string,
+  table?: Table<Transaction>,
+  pagination?: PaginationState
+) {
   const res = await fetch(`/api/transactions/${id}`, {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
@@ -14,7 +23,7 @@ export async function onDeleteTransaction(id: string, table?: any, pagination?: 
 
   if (data.success) {
     if (table) {
-      if (table.getRowCount() == 0) pagination.pageIndex--;
+      if (table.getRowCount() == 0 && pagination) pagination.pageIndex--;
     }
   }
   return data;

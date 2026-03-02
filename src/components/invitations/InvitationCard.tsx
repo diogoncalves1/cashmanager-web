@@ -44,7 +44,6 @@ const roleConfig = {
 export function InvitationCard({
   invitation,
   direction,
-  type,
   onAccept,
   onReject,
   onCancel,
