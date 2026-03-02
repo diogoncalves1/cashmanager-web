@@ -109,7 +109,6 @@
 
     "DISABLE_ACCOUNT": "Desativar Conta",
     "ACTIVATE_ACCOUNT": "Ativar Conta",
-    "DELETE_ACCOUNT": "Delete Account",
 
     "NEW_ACCOUNT": "Nova Conta",
     "SEARCH_ACCOUNT": "Procurar pela conta",
@@ -124,12 +123,141 @@
     "TYPE": "Tipo",
 
     "NO_ACCOUNTS_FOUND": "Nenhuma conta encontrada",
-    "NO_ACCOUNTS_FOUND_TEXT": "Tente ajustar seus filtros ou crie uma nova conta."
+    "NO_ACCOUNTS_FOUND_TEXT": "Tente ajustar seus filtros ou crie uma nova conta.",
+
+    "ACCOUNT_NOT_FOUND": "Conta não encontrada",
+    "BACK_TO_ACCOUNTS": "Voltar para contas",
+
+    "EDIT_ACCOUNT": "Editar Conta",
+    "DELETE_ACCOUNT": "Apagar Conta",
+
+    "CURRENT_BALANCE": "Saldo atual",
+    "MONTHLY_INCOME": "Receita mensal",
+    "MONTHLY_EXPENSE": "Despesa mensal",
+    "VS_LAST_MONTH": "vs último mês",
+
+    "OVERVIEW": "Visão Geral",
+    "ACTIVITY": "Atividade",
+    "ANALYTICS": "Análise",
+    "SETTINGS": "Definições",
+
+    "EXPENSES_BY_CATEGORY": "Despesas por categoria",
+    "NO_DATA_AVAILABLE": "Sem dados registados.",
+    "MONTHLY_RESUME": "Resumo Mensal",
+    "CATEGORIES": "categorias",
+    "CATEGORY": "categoria",
+    "TOTAL": "total",
+    "AMOUNT": "Valor",
+    "SHARE": "Percentagem",
+    "BREAKDOWN": "Detalhamento",
+    "ACCOUNT_DELETED": "Conta apagada",
+    "CANCEL": "Cancelar",
+    "DELETE_ACCOUNT_TEXT": "Tem certeza de que deseja apagar {name}? Todas as transações serão removidas permanentemente. Esta ação não pode ser desfeita.",
+
+    "CREATE_NEW_ACCOUNT": "Criar nova conta",
+    "EDIT_ACCOUNT_TEXT": "Atualize as informações desta conta.",
+    "CREATE_ACCOUNT_TEXT": "Adicione uma nova conta financeira para acompanhar seu saldo e transações.",
+    "ACCOUNT_NAME": "Nome da conta",
+    "ACCOUNT_NAME_EG": "Ex.: Fundo de Emergência",
+    "ACCOUNT_TYPE": "Tipo de conta",
+    "ACTIVE_ACCOUNT": "Conta ativa",
+    "ACTIVE_ACCOUNT_TEXT": "Contas inativas são ocultadas dos resumos.",
+    "CURRENCY": "Moeda",
+    "SAVE_CHANGES": "Guardar alterações",
+    "SAVING": "A guardar...",
+
+    "GENERAL_INFORMATION": "Informações gerais",
+    "GENERAL_INFORMATION_TEXT": "Atualize os detalhes e preferências da sua conta.",
+
+    "PREFERENCES": "Preferências",
+    "PREFRENCES_TEXT": "Controle o comportamento desta conta.",
+
+    "DANGER_ZONE": "Zona de perigo",
+    "DANGER_ZONE_TEXT": "Ações irreversíveis que afetam sua conta",
+    "DELETE_THIS_ACCOUNT": "Apagar esta conta",
+    "DELETE_THIS_ACCOUNT_TEXT": "Remova permanentemente esta conta e todas as suas transações.",
+
+    "CHOOSE_A_TYPE": "Escolha o tipo",
+    "CHOOSE_A_CURRENCY": "Escolha a moeda",
+
+    "CREATE_ACCOUNT": "Criar conta",
+    "CREATING_ACCOUNT": "A criar conta...",
+
+    "BALANCE_OVER_TIME": "Evolução do saldo ao longo do tempo",
+
+    "7D": "7D",
+    "1M": "1M",
+    "3M": "3M",
+    "1Y": "1A",
+
+    "USER_MANAGEMENT": "Gestão de utilizadores",
+    "USER_MANAGEMENT_TEXT": "Gerir membros associados a esta conta",
+
+    "INVITES": "Convites",
+    "ACTIVE_USER": "ativo",
+    "ACTIVE_USERS": "ativos",
+    "PENDING": "Pendente",
+    "PENDING_S": "Pendentes",
+    "ACTIONS": "Ações",
+
+    "USER": "Utilizador",
+    "ROLE": "Papel",
+
+    "CHANGE_ROLE": "Mudar papel",
+    "REMOVE_MEMBER": "Remover membro",
+    "CANCEL_INVITE": "Cancelar convite",
+    "NO_MEMBERS_YET": "Sem membros ainda",
+    "NO_MEMBERS_YET_TEXT": "Adicione membros para colaborar nesta conta.",
+    "YOU": "Tu"
   },
 
   "LISTS": {
     "REMAINING": "Restante",
     "REMAINING_PLURAL": "Restantes"
+  },
+
+  "INVITE_MEMBER": {
+    "INVITE": "Convidar",
+    "INVITE_MEMBER": "Convidar membro",
+    "INVITE_MEMBER_TEXT": "Convide algum amigo.",
+
+    "SEND_INVITATION": "Enviar convite",
+    "SENDING": "A enviar...",
+    "FRIEND": "Amigo",
+    "CHOOSE_A_FRIEND": "Escolha o amigo",
+
+    "CANCELING_TITLE": "A cancelar...",
+    "CANCELING_MESSAGE": "A cancelar convite...",
+
+    "CANCEL": "Cancelar",
+    "LEAVE": "Sair",
+    "LEAVE_TEXT": "Tem a certeza de que pretende sair?",
+
+    "REMOVE_MEMBER": "Remover membro?",
+    "REMOVE_MEMBER_TEXT": "Esta ação irá remover o membro do grupo.",
+
+    "CHANGE_ROLE": "Mudar papel?",
+    "CHANGE_ROLE_TEXT": "Atribua a função a este utilizador.",
+
+    "ROLE": "Papel",
+    "CHOOSE_A_ROLE": "Escolher papel",
+
+    "CHANGE": "Mudar",
+    "CHANGING": "A mudar...",
+
+    "REMOVE": "Remover",
+    "REMOVING": "A remover...",
+
+    "ACCOUNTS": "Conta",
+    "DEBTS": "Dívida",
+    "FINANCIAL-GOALS": "Meta Financeira"
+  },
+
+  "ACTIVITY": {
+    "ACTIVITY_TIMELINE": "Cronograma de atividades",
+    "WITHOUT_ACTIVITY": "Sem atividade",
+    "ERROR": "Erro",
+    "TRY_AGAIN": "Tente novamente"
   },
 
   "HOME": {

@@ -10,7 +10,6 @@ import SidebarWidget from "./SidebarWidget";
 import {
   ChevronRight,
   Wallet,
-  ArrowLeftRight,
   Target,
   TrendingDown,
   Settings,

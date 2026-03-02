@@ -36,7 +36,12 @@ export function getUserInitials(name?: string): string {
   return name.slice(0, 2).toUpperCase();
 }
 
-export function formatCurrency(amount: number, example: string, addSymbol: boolean = true): string {
+export function formatCurrency(
+  amount: number,
+  example: string = "",
+  addSymbol: boolean = true,
+  decimals: number = 2
+): string {
   const [number, symbol] = example.split(" ");
   let unit = "";
 
@@ -56,6 +61,24 @@ export function formatCurrency(amount: number, example: string, addSymbol: boole
   }
 
   return Number.isNaN(Number(number))
-    ? `${symbol} ${amount.toFixed(2)} ${unit}`
-    : `${amount.toFixed(2)} ${symbol} `;
+    ? `${symbol} ${amount.toFixed(decimals)} ${unit}`
+    : `${amount.toFixed(decimals)} ${symbol} `;
+}
+
+const userColors = [
+  "bg-blue-500/15 text-blue-400 ring-blue-500/20",
+  "bg-accent/15 text-accent-400 ring-accent-500/20",
+  "bg-violet-500/15 text-violet-400 ring-violet-500/20",
+  "bg-amber-500/15 text-amber-400 ring-amber-500/20",
+  "bg-rose-500/15 text-rose-400 ring-rose-500/20",
+  "bg-cyan-500/15 text-cyan-400 ring-cyan-500/20",
+];
+
+export function getUserColor(name?: string): string {
+  if (!name) return userColors[0];
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) {
+    hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  return userColors[Math.abs(hash) % userColors.length];
 }

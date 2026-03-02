@@ -1,30 +1,35 @@
-import type { Metadata } from "next";
-import React from "react";
+import AccountDetailsContainer from "@/components/accounts/AccountDetailsContainer";
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
-import AccountDetails from "@/components/accouts/details/AccountDetails";
+import { AccountDetailsProvider } from "./context/AccountDetailsContext";
 import { getTranslations } from "next-intl/server";
+import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: `Cash Manager | Contas`,
-  description: "Account financial overview",
-};
-
-type AccountsPageParams = {
+interface AccountDetailsProps {
   params: Promise<{ id: string }>;
-};
+}
 
-export default async function AccountsPage({ params }: AccountsPageParams) {
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("ACCOUNTS");
+
+  return {
+    title: t("META_TITLE"),
+    description: t("META_DESCRIPTION"),
+  };
+}
+
+export default async function AccountDetailsPage({ params }: AccountDetailsProps) {
   const { id } = await params;
   const t = await getTranslations("ACCOUNTS");
 
   return (
     <>
       <PageBreadcrumb
-        pageTitle={t("ACCOUNT")}
+        pageTitle={t("ACCOUNTS")}
         breadcrumb={[{ title: t("ACCOUNTS"), path: "/accounts" }, { title: t("DETAILS") }]}
       />
-
-      <AccountDetails id={id} />
+      <AccountDetailsProvider>
+        <AccountDetailsContainer id={id} />
+      </AccountDetailsProvider>
     </>
   );
 }

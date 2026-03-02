@@ -15,7 +15,7 @@ type InviteType = "debts" | "financial-goals" | "accounts";
 
 type Props = {
   isOpen: boolean;
-  setIsOpen: any;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   type: InviteType;
   id: string;
   userId: string;
@@ -31,8 +31,8 @@ export default function RemoveMemberDialog({ isOpen, setIsOpen, type, id, userId
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Invite Member</DialogTitle>
-          <DialogDescription>Invite someone to contribute to this goal.</DialogDescription>
+          <DialogTitle>{t("REMOVE_MEMBER")}</DialogTitle>
+          <DialogDescription>{t("REMOVE_MEMBER_TEXT")}</DialogDescription>
         </DialogHeader>
         <DialogFooter>
           <Button
@@ -41,7 +41,7 @@ export default function RemoveMemberDialog({ isOpen, setIsOpen, type, id, userId
             onClick={() => setIsOpen(false)}
             className="bg-transparent"
           >
-            Cancel
+            {t("CANCEL")}
           </Button>
           <Button
             type="submit"
@@ -54,7 +54,7 @@ export default function RemoveMemberDialog({ isOpen, setIsOpen, type, id, userId
             }}
             disabled={isSubmitting}
           >
-            {isSubmitting ? "Removendo..." : "Remover"}
+            {isSubmitting ? t("REMOVING") : t("REMOVE")}
           </Button>
         </DialogFooter>
       </DialogContent>

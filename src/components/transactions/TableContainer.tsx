@@ -120,7 +120,7 @@ const TableContainer = ({ userId, accountId, load, includeSummary = true }: Prop
 
   const filterQuery = React.useMemo(() => {
     return columnFilters
-      .map((f: any) => {
+      .map((f) => {
         if (f.value && typeof f.value === "object") {
           return Object.entries(f.value)
             .map(([k, v]) => `${f.id}[${k}]=${v}`)
@@ -144,7 +144,7 @@ const TableContainer = ({ userId, accountId, load, includeSummary = true }: Prop
 
   useEffect(() => {
     mutate();
-  }, [load]);
+  }, [load, mutate]);
 
   return (
     <div className="space-y-6">

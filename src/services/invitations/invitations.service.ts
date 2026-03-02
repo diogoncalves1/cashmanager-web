@@ -1,5 +1,6 @@
 import LoadingToast from "@/components/swal/LoadingToast";
 import { SwalToast } from "@/components/swal/SwalToast";
+import { useTranslations } from "next-intl";
 
 type InviteType = "debts" | "financial-goals" | "accounts";
 
@@ -7,9 +8,11 @@ export async function onCancelInvite(
   id: string,
   userId: string,
   type: InviteType,
+  t: ReturnType<typeof useTranslations>,
   mutate?: () => void
 ) {
-  LoadingToast({ title: "A cancelar...", message: "A cancelar convite..." });
+  const loadingT = LoadingToast({ title: t("CANCELING_TITLE"), message: t("CANCELING_MESSAGE") });
+
   try {
     const res = await fetch(`/api/${type}/${id}/invite/${userId}`, {
       method: "DELETE",
@@ -21,18 +24,14 @@ export async function onCancelInvite(
     if (!res.ok) throw new Error(data.message);
 
     if (mutate) await mutate();
-
-    if (data.success) {
-      SwalToast({ message: data.message, icon: "success" });
-      return 1;
-    }
+    return { message: data.message, success: true };
   } catch (err: unknown) {
     if (err instanceof Error) {
-      SwalToast({ message: err.message, icon: "error" });
-    } else {
-      SwalToast({ message: String(err), icon: "error" });
+      return { message: err.message, success: false };
     }
-    return 0;
+    return { message: String(err), success: false };
+  } finally {
+    loadingT.close();
   }
 }
 
@@ -111,20 +110,17 @@ export async function onRemoveMember(
     if (mutate) await mutate();
 
     if (data.success) {
-      SwalToast({ message: data.message, icon: "success" });
-      return 1;
+      return { message: data.message, success: true };
     }
   } catch (err: unknown) {
     if (err instanceof Error) {
-      SwalToast({ message: err.message, icon: "error" });
-    } else {
-      SwalToast({ message: String(err), icon: "error" });
+      return { message: err.message, success: true };
     }
-    return 0;
+    return { message: String(err), success: true };
   }
 }
 
-export async function onLeaveSuject(id: string, type: InviteType, t: any, mutate?: () => void) {
+export async function onLeaveSuject(id: string, type: InviteType, mutate?: () => void) {
   try {
     const res = await fetch(`/api/${type}/${id}/leave`, {
       method: "DELETE",
@@ -137,16 +133,11 @@ export async function onLeaveSuject(id: string, type: InviteType, t: any, mutate
 
     if (mutate) await mutate();
 
-    if (data.success) {
-      SwalToast({ message: data.message, icon: "success" });
-      return 1;
-    }
+    return { message: data.message, success: true };
   } catch (err: unknown) {
     if (err instanceof Error) {
-      SwalToast({ message: err.message, icon: "error" });
-    } else {
-      SwalToast({ message: String(err), icon: "error" });
+      return { message: err.message, icon: true };
     }
-    return 0;
+    return { message: String(err), icon: true };
   }
 }

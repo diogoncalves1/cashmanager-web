@@ -93,18 +93,18 @@ export function FormAccountDialog({
       <DialogContent className="sm:max-w-[500px]">
         <form onSubmit={onSubmit}>
           <DialogHeader>
-            <DialogTitle>Create New Account</DialogTitle>
+            <DialogTitle>{id ? t("EDIT_ACCOUNT") : t("CREATE_NEW_ACCOUNT")}</DialogTitle>
             <DialogDescription>
-              Add a new financial account to track your balance and transactions.
+              {id ? t("EDIT_ACCOUNT_TEXT") : t("CREATE_ACCOUNT_TEXT")}
             </DialogDescription>
           </DialogHeader>
 
           <div className="grid gap-5 py-6">
             <div className="grid gap-2">
-              <Label htmlFor="name">Account Name</Label>
+              <Label htmlFor="name">{t("ACCOUNT_NAME")}</Label>
               <Input
                 id="name"
-                placeholder="e.g., Main Checking"
+                placeholder={t("ACCOUNT_NAME_EG")}
                 value={formData.name}
                 onChange={(e) => {
                   setFormData((prev) => ({ ...prev, name: e.target.value }));
@@ -116,7 +116,7 @@ export function FormAccountDialog({
 
             <div className="grid grid-cols-2 gap-4">
               <div className="grid gap-2">
-                <Label htmlFor="type">Account Type</Label>
+                <Label htmlFor="type">{t("ACCOUNT_TYPE")}</Label>
                 {!isLoadingAccount ? (
                   <Select
                     value={formData.type}
@@ -125,7 +125,7 @@ export function FormAccountDialog({
                     }}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Choose a type" />
+                      <SelectValue placeholder={t("CHOOSE_A_TYPE")} />
                     </SelectTrigger>
                     <SelectContent className="bg-card border-border">
                       {accountTypes?.map((type) => (
@@ -158,7 +158,7 @@ export function FormAccountDialog({
                     }}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Choose a currency" />
+                      <SelectValue placeholder={t("CHOOSE_A_CURRENCY")} />
                     </SelectTrigger>
                     <SelectContent className="bg-card border-border">
                       {!loadingCurrencies &&
@@ -189,11 +189,9 @@ export function FormAccountDialog({
             <div className="flex items-center justify-between rounded-lg border p-4">
               <div className="space-y-0.5">
                 <Label htmlFor="isActive" className="text-sm font-medium">
-                  Active Account
+                  {t("ACTIVE_ACCOUNT")}
                 </Label>
-                <p className="text-xs text-muted-foreground">
-                  Active accounts are included in balance totals
-                </p>
+                <p className="text-xs text-muted-foreground">{t("ACTIVE_ACCOUNT_TEXT")}</p>
               </div>
               <Switch
                 id="isActive"
@@ -205,10 +203,16 @@ export function FormAccountDialog({
 
           <DialogFooter>
             <Button type="button" variant="outline" onClick={() => setIsOpen(false)}>
-              Cancel
+              {t("CANCEL")}
             </Button>
             <Button type="submit" disabled={isSubmitting}>
-              Create Account
+              {id
+                ? isSubmitting
+                  ? t("SAVE_CHANGES")
+                  : t("SAVING")
+                : isSubmitting
+                  ? t("CREATING_ACCOUNT")
+                  : t("CREATE_ACCOUNT")}
             </Button>
           </DialogFooter>
         </form>

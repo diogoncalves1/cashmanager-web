@@ -1,5 +1,4 @@
-import { FinancialGoalTransaction } from "@/models/financialGoalTransactions";
-import { flexRender, Table as ReactTable } from "@tanstack/react-table";
+import { flexRender, Table as ReactTable, ColumnDef } from "@tanstack/react-table";
 
 import {
   Table,
@@ -11,16 +10,16 @@ import {
 } from "@/components/ui/table";
 import { useTranslations } from "next-intl";
 
-export default function DataTable({
+export default function DataTable<TData>({
   table,
   isLoading,
   columns,
   nLines = 10,
   nCols = 7,
 }: {
-  table: ReactTable<any>;
+  table: ReactTable<TData>;
   isLoading: boolean;
-  columns: any;
+  columns: ColumnDef<TData, unknown>[];
   nLines?: number;
   nCols?: number;
 }) {

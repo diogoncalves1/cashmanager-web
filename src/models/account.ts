@@ -55,6 +55,7 @@ export interface Account {
   type: AccountType;
   typeTranslated?: string;
   users?: Array<User>;
+  invites?: Array<User>;
   totalTransactions: number;
   actions?: ActionsType;
   currencyCode?: string;

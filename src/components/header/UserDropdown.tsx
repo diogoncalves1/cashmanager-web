@@ -9,6 +9,7 @@ import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { LucideUserCog } from "lucide-react";
+import { cn, getUserColor } from "@/lib/utils";
 
 type Props = {
   user: User | null;
@@ -34,8 +35,8 @@ export default function UserDropdown({ user }: Props) {
         onClick={toggleDropdown}
         className="flex items-center text-gray-700 dark:text-gray-400 gap-2 dropdown-toggle"
       >
-        <Avatar className="size-8">
-          <AvatarFallback className="bg-primary/10 text-primary text-xs font-semibold">
+        <Avatar className={cn("size-8 ring-1", getUserColor(user?.name))}>
+          <AvatarFallback className={cn("text-xs font-medium", getUserColor(user?.name))}>
             {user?.name
               .split(" ")
               .map((n) => n[0])

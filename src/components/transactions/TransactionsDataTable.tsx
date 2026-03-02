@@ -45,7 +45,7 @@ import { MyPagination } from "@/components/transactions/TableContainer";
 import FormTransactionDialog from "@/components/ui/dialogs/transactions/FormTransactionDialog";
 import Link from "next/link";
 import { DeleteTransactionDialog } from "@/components/ui/dialogs/transactions/DeleteTransactionDialog";
-import { cn, formatDate, getUserInitials } from "@/lib/utils";
+import { cn, formatDate, getUserColor, getUserInitials } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { useMemo } from "react";
@@ -99,24 +99,6 @@ export function TransactionsDataTable({
   const [selectedId, setSelectedId] = React.useState<string>();
   const [total, setTotal] = React.useState(0);
 
-  const userColors = [
-    "bg-blue-500/15 text-blue-400 ring-blue-500/20",
-    "bg-accent/15 text-accent-400 ring-accent-500/20",
-    "bg-violet-500/15 text-violet-400 ring-violet-500/20",
-    "bg-amber-500/15 text-amber-400 ring-amber-500/20",
-    "bg-rose-500/15 text-rose-400 ring-rose-500/20",
-    "bg-cyan-500/15 text-cyan-400 ring-cyan-500/20",
-  ];
-
-  function getUserColor(name?: string): string {
-    if (!name) return userColors[0];
-    let hash = 0;
-    for (let i = 0; i < name.length; i++) {
-      hash = name.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    return userColors[Math.abs(hash) % userColors.length];
-  }
-
   React.useEffect(() => {
     if (data) {
       setPageCount(Math.ceil(data.recordsTotal / pagination.pageSize));
@@ -124,157 +106,158 @@ export function TransactionsDataTable({
     }
   }, [data, pagination.pageSize]);
 
-  const AmountCell = ({ row }: { row: Row<Transaction> }) => {
-    const t = row.original;
-    const Icon = iconMap[t.categoryIcon as keyof typeof iconMap] ?? Circle;
+  const columns = useMemo<ColumnDef<Transaction>[]>(() => {
+    const accountTypeConfig: Record<
+      AccountType,
+      { icon: typeof Landmark; bg: string; text: string }
+    > = {
+      bank_account: { icon: Landmark, bg: "bg-blue-500/10", text: "text-blue-500" },
+      cash: { icon: Wallet, bg: "bg-accent/10", text: "text-accent" },
+      credit_card: { icon: CreditCard, bg: "bg-orange-500/10", text: "text-orange-500" },
+      digital_wallet: { icon: PiggyBank, bg: "bg-violet-500/10", text: "text-violet-500" },
+    };
+    const AccountCell = ({ row }: { row: Row<Transaction> }) => {
+      const t = row.original;
+      const acctCfg = accountTypeConfig[t.accountType || "bank"];
+      const AcctIcon = acctCfg.icon;
 
-    const isRevenue = t.type === "revenue";
-    const isExpense = t.type === "expense";
-
-    return (
-      <div className="flex items-center gap-3">
-        <div
-          className="flex size-8 shrink-0 items-center justify-center rounded-lg"
-          style={{
-            backgroundColor: `${t.categoryColor}15`,
-          }}
-        >
-          <Icon className="size-3.5" style={{ color: t.categoryColor }} />
-        </div>
-        <div className="min-w-0">
-          <p
+      return (
+        <div className="flex items-center gap-3">
+          <div
             className={cn(
-              "text-sm font-semibold tabular-nums",
-              isRevenue && "text-accent",
-              isExpense && "text-destructive",
-              !isRevenue && !isExpense && "text-muted-foreground"
+              "flex size-9 shrink-0 items-center justify-center rounded-lg",
+              acctCfg.bg
             )}
           >
-            {t.amountFormated}
-          </p>
-          <p className="text-xs text-muted-foreground">{t.categoryName || "Uncategorized"}</p>
+            <AcctIcon className={cn("size-4", acctCfg.text)} />
+          </div>
+          <div className="min-w-0">
+            <p className="truncate text-sm font-medium text-foreground">{t.accountName}</p>
+            <p className="text-xs text-muted-foreground"> {t.accountTypeTranslated}</p>
+          </div>
         </div>
-      </div>
-    );
-  };
+      );
+    };
 
-  const DateHeader = ({ column }: { column: Column<any> }) => (
-    <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
-      {t("DATE")} <ArrowUpDown className="ml-2 h-4 w-4" />
-    </Button>
-  );
-  const AmountHeader = ({ column }: { column: Column<any> }) => (
-    <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
-      {t("AMOUNT")} <ArrowUpDown className="ml-2 h-4 w-4" />
-    </Button>
-  );
+    const AmountCell = ({ row }: { row: Row<Transaction> }) => {
+      const t = row.original;
+      const Icon = iconMap[t.categoryIcon as keyof typeof iconMap] ?? Circle;
 
-  const StatusCell = ({ row }: { row: Row<Transaction> }) => (
-    <Badge variant="outline" color={row.original.status === "pending" ? "warning" : "success"}>
-      <Dot className="size-4" strokeWidth={6} />
-      {row.original.statusTranslated}
-    </Badge>
-  );
+      const isRevenue = t.type === "revenue";
+      const isExpense = t.type === "expense";
 
-  const ActionsCell = ({ transaction }: { transaction: Transaction }) => {
-    if (!transaction.actions?.view) return null;
-
-    return (
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="size-8 group-hover:opacity-100 transition-opacity"
+      return (
+        <div className="flex items-center gap-3">
+          <div
+            className="flex size-8 shrink-0 items-center justify-center rounded-lg"
+            style={{
+              backgroundColor: `${t.categoryColor}15`,
+            }}
           >
-            <MoreHorizontal className="size-4" />
-            <span className="sr-only">{t("ACTIONS")}</span>
-          </Button>
-        </DropdownMenuTrigger>
-
-        <DropdownMenuContent align="end">
-          <DropdownMenuItem asChild>
-            <Link href={`/accounts/${transaction.accountId}`}>
-              <ExternalLink className="mr-2 size-4" />
-              {t("VIEW_ACCOUNT")}
-            </Link>
-          </DropdownMenuItem>
-
-          {transaction.actions.edit && (
-            <DropdownMenuItem
-              onClick={() => {
-                setSelectedId(transaction.id);
-                setIsEditOpen(true);
-              }}
+            <Icon className="size-3.5" style={{ color: t.categoryColor }} />
+          </div>
+          <div className="min-w-0">
+            <p
+              className={cn(
+                "text-sm font-semibold tabular-nums",
+                isRevenue && "text-accent",
+                isExpense && "text-destructive",
+                !isRevenue && !isExpense && "text-muted-foreground"
+              )}
             >
-              <Pencil className="mr-2 size-4" />
-              {t("EDIT")}
-            </DropdownMenuItem>
-          )}
+              {t.amountFormated}
+            </p>
+            <p className="text-xs text-muted-foreground">{t.categoryName || "Uncategorized"}</p>
+          </div>
+        </div>
+      );
+    };
 
-          {transaction.actions.confirm && (
-            <DropdownMenuItem
-              onClick={() => {
-                setSelectedId(transaction.id);
-                setIsConfirmOpen(true);
-              }}
+    const DateHeader = <TData,>({ column }: { column: Column<TData> }) => (
+      <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+        {t("DATE")} <ArrowUpDown className="ml-2 h-4 w-4" />
+      </Button>
+    );
+    const AmountHeader = <TData,>({ column }: { column: Column<TData> }) => (
+      <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+        {t("AMOUNT")} <ArrowUpDown className="ml-2 h-4 w-4" />
+      </Button>
+    );
+
+    const StatusCell = ({ row }: { row: Row<Transaction> }) => (
+      <Badge variant="outline" color={row.original.status === "pending" ? "warning" : "success"}>
+        <Dot className="size-4" strokeWidth={6} />
+        {row.original.statusTranslated}
+      </Badge>
+    );
+
+    const ActionsCell = ({ transaction }: { transaction: Transaction }) => {
+      if (!transaction.actions?.view) return null;
+
+      return (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="size-8 group-hover:opacity-100 transition-opacity"
             >
-              <Check className="mr-2 size-4" />
-              {t("CONFIRM")}
-            </DropdownMenuItem>
-          )}
+              <MoreHorizontal className="size-4" />
+              <span className="sr-only">{t("ACTIONS")}</span>
+            </Button>
+          </DropdownMenuTrigger>
 
-          {transaction.actions.destroy && (
-            <>
-              <DropdownMenuSeparator />
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem asChild>
+              <Link href={`/accounts/${transaction.accountId}`}>
+                <ExternalLink className="mr-2 size-4" />
+                {t("VIEW_ACCOUNT")}
+              </Link>
+            </DropdownMenuItem>
+
+            {transaction.actions.edit && (
               <DropdownMenuItem
-                className="text-destructive"
                 onClick={() => {
                   setSelectedId(transaction.id);
-                  setIsDeleteOpen(true);
+                  setIsEditOpen(true);
                 }}
               >
-                <Trash2 className="mr-2 size-4" />
-                {t("DELETE")}
+                <Pencil className="mr-2 size-4" />
+                {t("EDIT")}
               </DropdownMenuItem>
-            </>
-          )}
-        </DropdownMenuContent>
-      </DropdownMenu>
-    );
-  };
+            )}
 
-  const accountTypeConfig: Record<
-    AccountType,
-    { icon: typeof Landmark; bg: string; text: string }
-  > = {
-    bank_account: { icon: Landmark, bg: "bg-blue-500/10", text: "text-blue-500" },
-    cash: { icon: Wallet, bg: "bg-accent/10", text: "text-accent" },
-    credit_card: { icon: CreditCard, bg: "bg-orange-500/10", text: "text-orange-500" },
-    digital_wallet: { icon: PiggyBank, bg: "bg-violet-500/10", text: "text-violet-500" },
-  };
+            {transaction.actions.confirm && (
+              <DropdownMenuItem
+                onClick={() => {
+                  setSelectedId(transaction.id);
+                  setIsConfirmOpen(true);
+                }}
+              >
+                <Check className="mr-2 size-4" />
+                {t("CONFIRM")}
+              </DropdownMenuItem>
+            )}
 
-  const AccountCell = ({ row }: { row: Row<Transaction> }) => {
-    const t = row.original;
-    const acctCfg = accountTypeConfig[t.accountType || "bank"];
-    const AcctIcon = acctCfg.icon;
-
-    return (
-      <div className="flex items-center gap-3">
-        <div
-          className={cn("flex size-9 shrink-0 items-center justify-center rounded-lg", acctCfg.bg)}
-        >
-          <AcctIcon className={cn("size-4", acctCfg.text)} />
-        </div>
-        <div className="min-w-0">
-          <p className="truncate text-sm font-medium text-foreground">{t.accountName}</p>
-          <p className="text-xs text-muted-foreground"> {t.accountTypeTranslated}</p>
-        </div>
-      </div>
-    );
-  };
-
-  const columns = useMemo<ColumnDef<Transaction>[]>(() => {
+            {transaction.actions.destroy && (
+              <>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem
+                  className="text-destructive"
+                  onClick={() => {
+                    setSelectedId(transaction.id);
+                    setIsDeleteOpen(true);
+                  }}
+                >
+                  <Trash2 className="mr-2 size-4" />
+                  {t("DELETE")}
+                </DropdownMenuItem>
+              </>
+            )}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      );
+    };
     const baseColumns: ColumnDef<Transaction>[] = [
       {
         accessorKey: "amount",
@@ -340,7 +323,7 @@ export function TransactionsDataTable({
         cell: ({ row }) => <ActionsCell transaction={row.original} />,
       },
     ];
-  }, [enableUser, accountId]);
+  }, [enableUser, accountId, monthsT, t]);
 
   const table = useReactTable({
     data: data?.data ?? [],

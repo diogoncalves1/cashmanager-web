@@ -109,10 +109,9 @@
 
     "DISABLE_ACCOUNT": "Disable Account",
     "ACTIVATE_ACCOUNT": "Activate Account",
-    "DELETE_ACCOUNT": "Delete Account",
 
     "NEW_ACCOUNT": "New Account",
-    "SEARCH_ACCOUNT": "Search account",
+    "SEARCH_ACCOUNT": "Search for account",
     "SORT_BY": "Sort by",
     "ORDER": "Order",
     "ASCENDING": "Ascending",
@@ -124,7 +123,92 @@
     "TYPE": "Type",
 
     "NO_ACCOUNTS_FOUND": "No accounts found",
-    "NO_ACCOUNTS_FOUND_TEXT": "Try adjusting your filters or create a new account."
+    "NO_ACCOUNTS_FOUND_TEXT": "Try adjusting your filters or create a new account.",
+
+    "ACCOUNT_NOT_FOUND": "Account not found",
+    "BACK_TO_ACCOUNTS": "Back to accounts",
+
+    "EDIT_ACCOUNT": "Edit Account",
+    "DELETE_ACCOUNT": "Delete Account",
+
+    "CURRENT_BALANCE": "Current balance",
+    "MONTHLY_INCOME": "Monthly income",
+    "MONTHLY_EXPENSE": "Monthly expense",
+    "VS_LAST_MONTH": "vs last month",
+
+    "OVERVIEW": "Overview",
+    "ACTIVITY": "Activity",
+    "ANALYTICS": "Analytics",
+    "SETTINGS": "Settings",
+
+    "EXPENSES_BY_CATEGORY": "Expenses by category",
+    "NO_DATA_AVAILABLE": "No data recorded.",
+    "MONTHLY_RESUME": "Monthly Summary",
+    "CATEGORIES": "categories",
+    "CATEGORY": "category",
+    "TOTAL": "Total",
+    "AMOUNT": "Amount",
+    "SHARE": "Share",
+    "BREAKDOWN": "Breakdown",
+    "ACCOUNT_DELETED": "Account deleted",
+    "CANCEL": "Cancel",
+    "DELETE_ACCOUNT_TEXT": "Are you sure you want to delete {name}? All transactions will be permanently removed. This action cannot be undone.",
+
+    "CREATE_NEW_ACCOUNT": "Create new account",
+    "EDIT_ACCOUNT_TEXT": "Update the information of this account.",
+    "CREATE_ACCOUNT_TEXT": "Add a new financial account to track your balance and transactions.",
+    "ACCOUNT_NAME": "Account name",
+    "ACCOUNT_NAME_EG": "Ex.: Emergency Fund",
+    "ACCOUNT_TYPE": "Account type",
+    "ACTIVE_ACCOUNT": "Active account",
+    "ACTIVE_ACCOUNT_TEXT": "Inactive accounts are hidden from summaries.",
+    "CURRENCY": "Currency",
+    "SAVE_CHANGES": "Save changes",
+    "SAVING": "Saving...",
+
+    "GENERAL_INFORMATION": "General information",
+    "GENERAL_INFORMATION_TEXT": "Update your account details and preferences.",
+
+    "PREFERENCES": "Preferences",
+    "PREFRENCES_TEXT": "Control the behavior of this account.",
+
+    "DANGER_ZONE": "Danger zone",
+    "DANGER_ZONE_TEXT": "Irreversible actions affecting your account",
+    "DELETE_THIS_ACCOUNT": "Delete this account",
+    "DELETE_THIS_ACCOUNT_TEXT": "Permanently remove this account and all its transactions.",
+
+    "CHOOSE_A_TYPE": "Choose a type",
+    "CHOOSE_A_CURRENCY": "Choose a currency",
+
+    "CREATE_ACCOUNT": "Create account",
+    "CREATING_ACCOUNT": "Creating account...",
+
+    "BALANCE_OVER_TIME": "Balance over time",
+
+    "7D": "7D",
+    "1M": "1M",
+    "3M": "3M",
+    "1Y": "1Y",
+
+    "USER_MANAGEMENT": "User management",
+    "USER_MANAGEMENT_TEXT": "Manage members associated with this account",
+
+    "INVITES": "Invites",
+    "ACTIVE_USER": "active",
+    "ACTIVE_USERS": "active",
+    "PENDING": "Pending",
+    "PENDING_S": "Pending",
+    "ACTIONS": "Actions",
+
+    "USER": "User",
+    "ROLE": "Role",
+
+    "CHANGE_ROLE": "Change role",
+    "REMOVE_MEMBER": "Remove member",
+    "CANCEL_INVITE": "Cancel invite",
+    "NO_MEMBERS_YET": "No members yet",
+    "NO_MEMBERS_YET_TEXT": "Add members to collaborate on this account.",
+    "YOU": "You"
   },
 
   "LISTS": {
@@ -132,11 +216,48 @@
     "REMAINING_PLURAL": "Remaining"
   },
 
+  "INVITE_MEMBER": {
+    "INVITE": "Invite",
+    "INVITE_MEMBER": "Invite member",
+    "INVITE_MEMBER_TEXT": "Invite a friend.",
+
+    "SEND_INVITATION": "Send invitation",
+    "SENDING": "Sending...",
+    "FRIEND": "Friend",
+    "CHOOSE_A_FRIEND": "Choose a friend",
+
+    "CANCELING_TITLE": "Canceling...",
+    "CANCELING_MESSAGE": "Canceling invitation...",
+
+    "CANCEL": "Cancel",
+    "LEAVE": "Leave",
+    "LEAVE_TEXT": "Are you sure you want to leave?",
+
+    "REMOVE_MEMBER": "Remove member?",
+    "REMOVE_MEMBER_TEXT": "This action will remove the member from the group.",
+
+    "CHANGE_ROLE": "Change role?",
+    "CHANGE_ROLE_TEXT": "Assign a role to this user.",
+
+    "ROLE": "Role",
+    "CHOOSE_A_ROLE": "Choose role",
+
+    "CHANGE": "Change",
+    "CHANGING": "Changing...",
+
+    "REMOVE": "Remove",
+    "REMOVING": "Removing...",
+
+    "ACCOUNTS": "Account",
+    "DEBTS": "Debt",
+    "FINANCIAL-GOALS": "Financial Goal"
+  },
+
   "ACTIVITY": {
-    "LOADING_ACTIVITY": "Loading Activity...",
-    "TRY_AGAIN": "Try again",
-    "LOADING_MORE": "Loading more",
-    "SCROLL_TO_SEE_MORE": "Scroll down to see more"
+    "ACTIVITY_TIMELINE": "Activity timeline",
+    "WITHOUT_ACTIVITY": "No activity",
+    "ERROR": "Error",
+    "TRY_AGAIN": "Try again"
   },
 
   "HOME": {

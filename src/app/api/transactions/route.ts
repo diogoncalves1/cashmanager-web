@@ -1,8 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
 import { baseUrl } from "../config";
 
-function parseColumns(searchParams: URLSearchParams) {
-  const columns: any[] = [];
+type ColumnSearch = {
+  value?: string;
+  regex?: string;
+};
+
+type Column = {
+  data?: string;
+  name?: string;
+  searchable?: string;
+  orderable?: string;
+  search?: ColumnSearch;
+};
+
+function parseColumns(searchParams: URLSearchParams): Column[] {
+  const columns: Column[] = [];
 
   for (const [key, value] of searchParams.entries()) {
     const match = key.match(/^columns\[(\d+)\]\[(.+)\]$/);
@@ -13,13 +26,12 @@ function parseColumns(searchParams: URLSearchParams) {
 
     if (!columns[index]) columns[index] = {};
 
-    // trata search[value] e search[regex]
     if (field.startsWith("search[")) {
-      const searchKey = field.match(/search\[(.+)\]/)?.[1];
+      const searchKey = field.match(/search\[(.+)\]/)?.[1] as keyof ColumnSearch;
       columns[index].search ??= {};
-      columns[index].search[searchKey!] = value;
+      columns[index].search![searchKey] = value;
     } else {
-      columns[index][field] = value;
+      (columns[index] as Record<string, string>)[field] = value;
     }
   }
 

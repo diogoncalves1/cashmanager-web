@@ -18,14 +18,17 @@ import {
 import { useState } from "react";
 import { useDataForInvite } from "@/hooks/useDataForInvite";
 import { useTranslations } from "next-intl";
-import LoadingToast from "@/components/swal/LoadingToast";
 import { SwalToast } from "@/components/swal/SwalToast";
+import { Account } from "@/models/account";
+import { Debt } from "@/models/debt";
+import { FinancialGoal } from "@/models/financialGoal";
+import { toast } from "@/hooks/useToast";
 
 type InviteType = "debts" | "financial-goals" | "accounts";
 
 type Props = {
   isInviteOpen: boolean;
-  setIsInviteOpen: any;
+  setIsInviteOpen: React.Dispatch<React.SetStateAction<boolean>>;
   type: InviteType;
   id?: string;
   mutate?: () => void;
@@ -42,7 +45,7 @@ export default function InviteMemberDialog({
   const { roles, friends, loading, handleSubmit, formData, setFormData, subjects } =
     useDataForInvite({
       type,
-      id,
+      id: id,
       load: isInviteOpen,
     });
 
@@ -50,23 +53,17 @@ export default function InviteMemberDialog({
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    LoadingToast({
-      title: t("INVITING_TITLE"),
-      message: t("INVITING_MESSAGE"),
-    });
+    setIsSubmitting(true);
 
     const res = await handleSubmit();
 
     setIsSubmitting(false);
     setIsInviteOpen(false);
-    if (res.success) {
-      if (mutate) mutate();
-      return SwalToast({ message: res.message, icon: "success" });
-    }
-    return SwalToast({ message: res.message, icon: "error" });
+    toast({ description: res.message });
+    if (res.success && mutate) mutate();
   };
 
-  if (!loading && subjects.length == 0) {
+  if (!loading && !id && subjects.length == 0) {
     SwalToast({ message: "No subjects", icon: "warning" });
     setIsInviteOpen(false);
     return <></>;
@@ -77,18 +74,18 @@ export default function InviteMemberDialog({
       <DialogContent>
         <form onSubmit={onSubmit}>
           <DialogHeader>
-            <DialogTitle>Invite Member</DialogTitle>
-            <DialogDescription>Invite someone to contribute to this goal.</DialogDescription>
+            <DialogTitle>{t("INVITE_MEMBER")}</DialogTitle>
+            <DialogDescription>{t("INVITE_MEMBER_TEXT")}</DialogDescription>
           </DialogHeader>
           <div className="space-y-4 py-4">
             {!id && (
               <div className="space-y-2">
-                <Label>Subject</Label>
+                <Label>{t(type.toUpperCase())}</Label>
                 {!loading ? (
                   <Select
                     value={formData.subject_id || ""}
                     onValueChange={(e: string) => {
-                      setFormData((prev: any) => ({
+                      setFormData((prev) => ({
                         ...prev,
                         subject_id: e,
                       }));
@@ -99,7 +96,7 @@ export default function InviteMemberDialog({
                     </SelectTrigger>
                     <SelectContent>
                       {!loading &&
-                        subjects?.map((subject: any) => (
+                        subjects?.map((subject: Account | Debt | FinancialGoal) => (
                           <SelectItem key={subject.id} value={`${subject.id}`}>
                             {subject.name}
                           </SelectItem>
@@ -115,19 +112,19 @@ export default function InviteMemberDialog({
             )}
 
             <div className="space-y-2">
-              <Label>Friend</Label>
+              <Label>{t("FRIEND")}</Label>
               {!loading ? (
                 <Select
                   value={formData.user_id || ""}
                   onValueChange={(e: string) => {
-                    setFormData((prev: any) => ({
+                    setFormData((prev) => ({
                       ...prev,
                       user_id: e,
                     }));
                   }}
                 >
                   <SelectTrigger className="h-14 bg-input border-border text-foreground">
-                    <SelectValue placeholder="Choose a friend" />
+                    <SelectValue placeholder={t("CHOOSE_A_FRIEND")} />
                   </SelectTrigger>
                   <SelectContent>
                     {!loading &&
@@ -145,19 +142,19 @@ export default function InviteMemberDialog({
               )}
             </div>
             <div className="space-y-2">
-              <Label>Role</Label>
+              <Label>{t("ROLE")}</Label>
               {!loading ? (
                 <Select
                   value={formData.shared_role_id || ""}
                   onValueChange={(e: string) => {
-                    setFormData((prev: any) => ({
+                    setFormData((prev) => ({
                       ...prev,
                       shared_role_id: e,
                     }));
                   }}
                 >
                   <SelectTrigger className="h-14 bg-input border-border text-foreground">
-                    <SelectValue placeholder="Choose a role" />
+                    <SelectValue placeholder={t("CHOOSE_A_ROLE")} />
                   </SelectTrigger>
                   <SelectContent>
                     {!loading &&
@@ -182,19 +179,18 @@ export default function InviteMemberDialog({
               onClick={() => setIsInviteOpen(false)}
               className="bg-transparent"
             >
-              Cancel
+              {t("CANCEL")}
             </Button>
             <Button
               type="submit"
-              onClick={() => {
-                setIsInviteOpen(false);
-                setIsSubmitting(true);
-              }}
               disabled={
-                !formData.shared_role_id || !formData.user_id || (!id && !formData.subject_id)
+                !formData.shared_role_id ||
+                !formData.user_id ||
+                (!id && !formData.subject_id) ||
+                isSubmitting
               }
             >
-              {isSubmitting ? "Sending..." : "Send Invitation"}
+              {isSubmitting ? t("SENDING") : t("SEND_INVITATION")}
             </Button>
           </DialogFooter>
         </form>

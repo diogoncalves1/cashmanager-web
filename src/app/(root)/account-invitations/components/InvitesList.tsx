@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { InvitationStatus } from "@/models/invitation";
+import { Invitation, InvitationStatus } from "@/models/invitation";
 import { useState } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import {
@@ -16,7 +16,7 @@ import { useTranslations } from "next-intl";
 import { useInView } from "react-intersection-observer";
 
 interface Page {
-  data: [];
+  data: Invitation[];
   nextPage: number | null;
 }
 
@@ -25,11 +25,16 @@ type Props = {
   load: boolean;
 };
 
+type FetchInvitedParams = {
+  pageParam?: number | unknown;
+  status?: string;
+};
+
 const InvitesList = ({ setLoad, load }: Props) => {
   const t = useTranslations("INVITATION");
   const [sentFilter, setSentFilter] = useState<InvitationStatus | "all">("all");
 
-  const fetchInvited = async ({ pageParam = 1, status }: any): Promise<Page> => {
+  const fetchInvited = async ({ pageParam = 1, status }: FetchInvitedParams): Promise<Page> => {
     const response = await fetch(
       `/api/accounts/sent-invitations?page=${pageParam}&size=10&status=${status}`,
       {
@@ -76,11 +81,11 @@ const InvitesList = ({ setLoad, load }: Props) => {
     }
 
     prevInViewRef.current = inView;
-  }, [inView, hasNextPage, fetchNextPage]);
+  }, [inView, hasNextPage, fetchNextPage, refetch]);
 
   useEffect(() => {
     if (load) refetch();
-  }, [load]);
+  }, [load, refetch]);
 
   const handleCancel = async (id: string, userId: string) => {
     await onCancelInvite(id, userId, "accounts", () => {
@@ -109,7 +114,7 @@ const InvitesList = ({ setLoad, load }: Props) => {
     );
   }
 
-  const sentInvitations = data?.pages.flatMap((page: any) => page.data) ?? [];
+  const sentInvitations = data?.pages.flatMap((page) => page.data) ?? [];
 
   return (
     <div className="space-y-4">

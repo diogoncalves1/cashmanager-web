@@ -31,6 +31,7 @@ export function useDataForInvite({ type, id, load = true }: Props) {
   const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState<FormData>({
     type: type,
+    subject_id: id,
   });
 
   useEffect(() => {
@@ -55,14 +56,18 @@ export function useDataForInvite({ type, id, load = true }: Props) {
           const subjectsData = await subjectsRes.json();
           setSubjects(subjectsData.data);
         }
-      } catch (err: any) {
-        setError(err.message ?? "Erro inesperado");
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError(err.message ?? "Erro inesperado");
+        } else {
+          setError("Erro inesperado");
+        }
       } finally {
         setLoading(false);
       }
     }
     if (load) loadData();
-  }, [load]);
+  }, [load, id, type]);
 
   const handleSubmit = async (): Promise<SubmitResult> => {
     try {
@@ -78,8 +83,12 @@ export function useDataForInvite({ type, id, load = true }: Props) {
       if (!res.ok) throw new Error(result.message);
 
       return { success: true, message: result.message };
-    } catch (err: any) {
-      return { success: false, message: err.message || "Erro ao guardar transação" };
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        return { success: false, message: err.message || "Erro ao guardar transação" };
+      } else {
+        return { success: false, message: String(err) };
+      }
     }
   };
 
@@ -126,8 +135,12 @@ export function useDataForChangeRole({ type, id, load = true, userId }: PropsCha
         const rolesData = await rolesRes.json();
 
         setRoles(rolesData.data);
-      } catch (err: any) {
-        setError(err.message ?? "Erro inesperado");
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError(err.message ?? "Erro inesperado");
+        } else {
+          setError(String(err));
+        }
       } finally {
         setLoading(false);
       }
@@ -135,7 +148,7 @@ export function useDataForChangeRole({ type, id, load = true, userId }: PropsCha
     if (load) loadData();
   }, [load]);
 
-  const handleSubmit = async (mutate: () => void): Promise<SubmitResult> => {
+  const handleSubmit = async (mutate?: () => void): Promise<SubmitResult> => {
     try {
       const url = `/api/change-member-role`;
 
@@ -151,8 +164,11 @@ export function useDataForChangeRole({ type, id, load = true, userId }: PropsCha
       if (!res.ok) throw new Error(result.message);
 
       return { success: true, message: result.message };
-    } catch (err: any) {
-      return { success: false, message: err.message || "Erro ao alterar papel" };
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        return { success: false, message: err.message ?? "Erro inesperado" };
+      }
+      return { success: false, message: "Erro inesperado" };
     }
   };
 
