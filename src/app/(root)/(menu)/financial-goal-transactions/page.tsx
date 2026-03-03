@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
 import React from "react";
 import { useTranslations } from "next-intl";
-import { FinancialGoalTransactionsDataTable } from "./data-table";
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
+import { getTranslations } from "next-intl/server";
+import TransactionsContainer from "@/components/goal-transactions/TransactionsContainer";
 
-export const metadata: Metadata = {
-  title: "Cash Manager | Financial Goals Transactions",
-  description: "This is Next.js Home for TailAdmin Dashboard Template",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("FINANCIAL_GOAL_TRANSACTIONS");
+
+  return {
+    title: t("META_TITLE"),
+    description: t("META_DESCRIPTION"),
+  };
+}
 
 export default function AccountsPage() {
   const t = useTranslations("FINANCIAL_GOAL_TRANSACTIONS");
@@ -20,10 +25,8 @@ export default function AccountsPage() {
           { title: t("TRANSACTIONS") },
         ]}
       />
-      <div className="grid grid-cols-12 p-2 md:p-6 gap-4 md:gap-6">
-        <div className="col-span-12">
-          <FinancialGoalTransactionsDataTable />
-        </div>
+      <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
+        <TransactionsContainer />
       </div>
     </>
   );

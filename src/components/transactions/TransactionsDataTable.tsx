@@ -282,7 +282,7 @@ export function TransactionsDataTable({
       ? [
           {
             accessorKey: "user",
-            header: t("USERS"),
+            header: t("USER"),
             cell: ({ row }) =>
               row.original.userName ? (
                 <Avatar className={cn("size-8 ring-1", getUserColor(row.original.userName))}>

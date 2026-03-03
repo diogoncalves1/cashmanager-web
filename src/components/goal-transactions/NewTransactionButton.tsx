@@ -2,16 +2,16 @@
 
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import FormTransactionDialog from "@/components/ui/dialogs/transactions/FormTransactionDialog";
+import FormTransactionDialog from "@/components/ui/dialogs/goal-transactions/FormTransactionDialog";
 import { Dispatch, SetStateAction, useState } from "react";
 import { useTranslations } from "next-intl";
 
 type Props = {
   setLoad?: Dispatch<SetStateAction<boolean>>;
-  // accountId?: string;
+  // financialGoalId?: string;
 };
 
-export function NewTransactionButton({ setLoad /* accountId */ }: Props) {
+export function NewTransactionButton({ setLoad /*, financialGoalId*/ }: Props) {
   const t = useTranslations("TRANSACTIONS");
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -23,7 +23,7 @@ export function NewTransactionButton({ setLoad /* accountId */ }: Props) {
       <FormTransactionDialog
         isOpen={isOpen}
         setIsOpen={setIsOpen}
-        // accountId={accountId}
+        // financialGoalId={financialGoalId}
         mutate={() => {
           if (setLoad) setLoad((prev) => !prev);
         }}

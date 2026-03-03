@@ -6,7 +6,7 @@
     "META_TITLE": "Cash Manager | Transactions",
     "META_DESCRIPTION": "Manage your financial transactions efficiently with Cash Manager. Track your income, expenses, and keep your finances organized.",
 
-    "TRANSACTIONS_PAGE_TEXT": "View and manage all transactions across your accounts.",
+    "TRANSACTIONS_PAGE_TEXT": "View and manage all transactions in your accounts.",
     "NEW_TRANSACTION": "New Transaction",
     "EDIT_TRANSACTION": "Edit Transaction",
     "NEW_TRANSACTION_FORM_DIALOG_TEXT": "Record a new income or expense.",
@@ -18,6 +18,7 @@
     "DATE": "Date",
     "DESCRIPTION": "Description",
     "USERS": "Users",
+    "USER": "User",
     "STATUS": "Status",
     "PENDING": "Pending",
     "COMPLETED": "Completed",
@@ -47,7 +48,7 @@
     "NEXT": "Next",
     "LAST": "Last",
 
-    "SEARCH_TRANSACTION": "Search for a transaction",
+    "SEARCH_TRANSACTION": "Search transaction",
     "ALL_STATUS": "All statuses",
     "ALL_CATEGORIES": "All categories",
     "ALL_TYPES": "All types",
@@ -65,7 +66,7 @@
     "CONFIRM_TRANSACTION_TEXT": "Are you sure you want to confirm this transaction?",
 
     "DELETE_TRANSACTION": "Delete transaction?",
-    "DELETE_TRANSACTION_TEXT": "Are you sure you want to delete this? This action cannot be undone."
+    "DELETE_TRANSACTION_TEXT": "Are you sure you want to delete? This action cannot be undone."
   },
 
   "DATATABLE": {
@@ -86,10 +87,10 @@
     "ACTIVE_ACCOUNTS": "Active Accounts",
 
     "ALL_TYPES": "All types",
-    "BANK_ACCOUNT": "Bank account",
+    "BANK_ACCOUNT": "Bank Account",
     "CASH": "Cash",
-    "DIGITAL_WALLET": "Digital wallet",
-    "CREDIT_CARD": "Credit card",
+    "DIGITAL_WALLET": "Digital Wallet",
+    "CREDIT_CARD": "Credit Card",
 
     "ALL_STATUS": "All statuses",
 
@@ -111,7 +112,7 @@
     "ACTIVATE_ACCOUNT": "Activate Account",
 
     "NEW_ACCOUNT": "New Account",
-    "SEARCH_ACCOUNT": "Search for account",
+    "SEARCH_ACCOUNT": "Search account",
     "SORT_BY": "Sort by",
     "ORDER": "Order",
     "ASCENDING": "Ascending",
@@ -146,19 +147,19 @@
     "MONTHLY_RESUME": "Monthly Summary",
     "CATEGORIES": "categories",
     "CATEGORY": "category",
-    "TOTAL": "Total",
+    "TOTAL": "total",
     "AMOUNT": "Amount",
-    "SHARE": "Share",
+    "SHARE": "Percentage",
     "BREAKDOWN": "Breakdown",
     "ACCOUNT_DELETED": "Account deleted",
     "CANCEL": "Cancel",
     "DELETE_ACCOUNT_TEXT": "Are you sure you want to delete {name}? All transactions will be permanently removed. This action cannot be undone.",
 
     "CREATE_NEW_ACCOUNT": "Create new account",
-    "EDIT_ACCOUNT_TEXT": "Update the information of this account.",
+    "EDIT_ACCOUNT_TEXT": "Update this account's information.",
     "CREATE_ACCOUNT_TEXT": "Add a new financial account to track your balance and transactions.",
     "ACCOUNT_NAME": "Account name",
-    "ACCOUNT_NAME_EG": "Ex.: Emergency Fund",
+    "ACCOUNT_NAME_EG": "Ex: Emergency Fund",
     "ACCOUNT_TYPE": "Account type",
     "ACTIVE_ACCOUNT": "Active account",
     "ACTIVE_ACCOUNT_TEXT": "Inactive accounts are hidden from summaries.",
@@ -170,10 +171,10 @@
     "GENERAL_INFORMATION_TEXT": "Update your account details and preferences.",
 
     "PREFERENCES": "Preferences",
-    "PREFRENCES_TEXT": "Control the behavior of this account.",
+    "PREFRENCES_TEXT": "Control this account's behavior.",
 
     "DANGER_ZONE": "Danger zone",
-    "DANGER_ZONE_TEXT": "Irreversible actions affecting your account",
+    "DANGER_ZONE_TEXT": "Irreversible actions that affect your account",
     "DELETE_THIS_ACCOUNT": "Delete this account",
     "DELETE_THIS_ACCOUNT_TEXT": "Permanently remove this account and all its transactions.",
 
@@ -260,8 +261,8 @@
     "INVITATIONS": "Invitations",
     "INVITATIONS_TEXT": "Manage your sent and received invitations.",
 
-    "NO_INVITATIONS_SENT": "No sent invitations",
-    "NO_INVITATIONS_RECEIVED": "No received invitations",
+    "NO_INVITATIONS_SENT": "No invitations sent",
+    "NO_INVITATIONS_RECEIVED": "No invitations received",
 
     "FILTER_STATUS": "Filter status",
     "ALL_STATUS": "All statuses",
@@ -278,21 +279,22 @@
     "TRY_AGAIN": "Try again",
 
     "NO_INVITATIONS_SENT_TEXT": "You haven't sent any invitations yet. Click \"Invite member\" to invite someone to collaborate.",
-    "NO_INVITATIONS_RECEIVED_TEXT": "You currently have no received invitations. Please check back later."
+    "NO_INVITATIONS_RECEIVED_TEXT": "You don’t have any invitations at the moment. Please check back later."
   },
 
   "ACTIVITY": {
     "ACTIVITY_TIMELINE": "Activity timeline",
     "WITHOUT_ACTIVITY": "No activity",
     "ERROR": "Error",
-    "TRY_AGAIN": "Try again"
+    "TRY_AGAIN": "Try again",
+    "BY": "By"
   },
 
   "FINANCIAL_GOALS": {
     "META_TITLE": "Cash Manager | Financial Goals",
     "META_DESCRIPTION": "Manage your financial goals efficiently with Cash Manager. Track your contributions, withdrawals, and keep your finances organized.",
 
-    "NEW_GOAL": "New Goal",
+    "NEW_GOAL": "New goal",
     "FINANCIAL_GOALS_TEXT": "Track and manage your savings goals in one place.",
 
     "ADD": "Add",
@@ -335,6 +337,7 @@
 
     "REMAINING": "Remaining",
     "REMAINING_PLURAL": "Remaining",
+    "USER": "User",
 
     "SORT": "Sort",
     "SEARCH_FINANCIAL_GOALS": "Search financial goal...",
@@ -363,7 +366,7 @@
     "YES_RESET": "Yes, reset!",
 
     "OTHERS_INFORMATION": "Other Information",
-    "CREATED_AT": "Created At",
+    "CREATED_AT": "Created at",
 
     "RECENT_TRANSACTIONS": "Recent Transactions",
     "FINANCIAL_GOAL_DETAILS": "Financial Goal Details",
@@ -374,7 +377,7 @@
     "OTHERS": "Others",
     "DESCRIPTION": "Description",
     "RESET": "Reset",
-    "LAST_UPDATE": "Last Update",
+    "LAST_UPDATE": "Last update",
     "COMPLETE": "Complete",
     "P_COMPLETE": "completed",
     "MISSING_AMOUNT": "Missing Amount",
@@ -386,7 +389,7 @@
     "MONTHLY_SUMMARY": "Monthly Summary",
 
     "NEW_FINANCIAL_GOAL": "New Financial Goal",
-    "NEW_FINANCIAL_GOAL_TEXT": "Record your financial goals.",
+    "NEW_FINANCIAL_GOAL_TEXT": "Register your financial goals.",
     "EDIT_FINANCIAL_GOAL": "Edit Financial Goal",
     "EDIT_FINANCIAL_GOAL_TEXT": "Update your financial goal.",
 
@@ -401,14 +404,117 @@
     "STEP": "Step",
     "START": "Start",
     "DUE": "Due",
-    "SELECT_CURRENCY": "Select Currency",
+    "SELECT_CURRENCY": "Select currency",
     "FORM_HELPER": "All goals are securely processed and recorded instantly.",
-    "NAME_PLACEHOLDER": "Ex: New Car"
+    "NAME_PLACEHOLDER": "Ex: New car",
+
+    "TARGET": "Target",
+    "DAYS_PASSED": "days passed",
+    "DAYS_REMAINING": "days remaining",
+    "CONTRIBUTED": "Contributed",
+    "CONTRIBUTORS": "Contributors",
+    "ACTIVITY": "Activity",
+    "MEMBER": "Member",
+    "ROLE": "Role",
+    "DELETE_GOAL": "Delete goal",
+    "DELETE_GOAL_TEXT": "Are you sure you want to delete this goal? This action cannot be undone and all transaction history will be lost.",
+    "EDIT_GOAL": "Edit goal",
+    "CANCEL_GOAL": "Cancel goal",
+    "DELETING_GOAL": "Deleting",
+    "RESET_GOAL": "Reset goal",
+    "TO_FINISH": "to finish",
+
+    "MARK_COMPLETED": "Mark as completed",
+    "MARK_COMPLETED_FINANCIAL_GOAL": "Mark financial goal as completed?",
+    "MARK_COMPLETED_FINANCIAL_GOAL_TEXT": "Are you sure you want to mark this financial goal as completed?"
   },
 
   "BUTTONS": {
     "SUBMIT": "Submit",
     "PROCESSING": "Processing..."
+  },
+
+  "FINANCIAL_GOAL_TRANSACTIONS": {
+    "META_TITLE": "Cash Manager | Financial Goal Transactions",
+    "META_DESCRIPTION": "Manage your financial goal transactions efficiently with Cash Manager. Track your contributions, withdrawals, and keep your finances organized.",
+
+    "ADD": "Add",
+    "EDIT": "Edit",
+    "DETAILS": "Details",
+    "SAVING": "Saving...",
+    "ACCOUNT": "Account",
+
+    "FINANCIAL_GOAL_TRANSACTION": "FINANCIAL GOAL TRANSACTIONS",
+    "FINANCIAL_GOAL": "Financial Goal",
+    "FINANCIAL_GOALS": "Financial Goals",
+
+    "SELECT_FINANCIAL_GOAL": "Select financial goal",
+
+    "TRANSACTIONS": "Transactions",
+    "ADD_TRANSACTION": "New Transaction",
+
+    "TYPE": "Type",
+    "USER": "User",
+    "DATE": "Date",
+    "ALL": "All",
+
+    "CLEAR": "Clear",
+    "VIEW_FINANCIAL_GOAL": "View financial goal",
+    "ALL_STATUS": "All statuses",
+    "ALL_TYPES": "All types",
+
+    "ALL_TRANSACTIONS": "All Transactions",
+
+    "NEW_TRANSACTION": "New Transaction",
+    "SELECT_ACCOUNT": "Select an account",
+    "WHAT_WAS_THIS_FOR": "What was this for?",
+
+    "CANCEL": "Cancel",
+    "CREATE": "Create",
+
+    "NEW_TRANSACTION_FORM_DIALOG_TEXT": "Record a new contribution or withdrawal.",
+    "CREATING": "Creating...",
+    "DESCRIPTION": "Description",
+    "SAVE": "Save",
+    "EDIT_TRANSACTION": "Edit Transaction",
+    "EDIT_TRANSACTION_FORM_DIALOG_TEXT": "Update your transaction details.",
+
+    "COMPLETED": "Completed",
+    "PENDING": "Pending",
+
+    "CONTRIBUTION": "Contribution",
+    "WITHDRAWAL": "Withdrawal",
+
+    "NAME": "Name",
+    "TOTAL_AMOUNT": "Total Amount",
+    "CONTRIBUTED_AMOUNT": "Contributed Amount",
+    "PRIORITY": "Priority",
+    "USERS": "Users",
+    "CURRENCY": "Currency",
+    "DUE_DATE": "Due Date",
+    "START_DATE": "Start Date",
+    "STATUS": "Status",
+    "ACTIONS": "Actions",
+
+    "TRANSACTION_HISTORY": "Transaction History",
+    "TRANSACTION": "Transaction",
+    "AMOUNT": "Amount",
+
+    "SEARCH": "Search",
+    "FILTER_BY": "Filter by",
+    "SHOWING": "Showing",
+    "OF": "of",
+    "THIS": "transactions",
+    "NEXT": "Next",
+    "PREVIOUS": "Previous",
+    "FIRST": "First",
+    "LAST": "Last",
+    "NO_RESULTS": "No Results",
+    "LOADING": "Loading",
+
+    "DELETE": "Delete",
+    "TO": "to",
+    "SEARCH_TRANSACTION": "Search transaction"
   },
 
   "HOME": {
@@ -470,52 +576,6 @@
 
   "SETTINGS": {
     "SETTINGS": "Settings"
-  },
-
-  "FINANCIAL_GOAL_TRANSACTIONS": {
-    "ADD": "Add",
-    "EDIT": "Edit",
-    "DETAILS": "Details",
-
-    "FINANCIAL_GOAL": "FINANCIAL GOAL",
-    "FINANCIAL_GOALS": "Financial Goals",
-
-    "TRANSACTIONS": "Transactions",
-    "ADD_TRANSACTION": "Add Transaction",
-
-    "ALL_TRANSACTIONS": "All Transactions",
-
-    "COMPLETED": "Completed",
-    "PENDING": "Pending",
-
-    "TYPE": "Type",
-    "ALL": "All",
-
-    "CONTRIBUTION": "Contribution",
-    "WITHDRAWAL": "Withdrawal",
-
-    "NAME": "Name",
-    "TOTAL_AMOUNT": "Total Amount",
-    "CONTRIBUTED_AMOUNT": "Contributed Amount",
-    "PRIORITY": "Priority",
-    "STATUS": "Status",
-    "CURRENCY": "Currency",
-    "USERS": "Users",
-    "DUE_DATE": "Due Date",
-    "START_DATE": "Start Date",
-    "ACTIONS": "Actions",
-
-    "SEARCH": "Search",
-    "FILTER_BY": "Filter By",
-    "SHOWING": "Showing",
-    "OF": "of",
-    "THIS": "financial goals",
-    "NEXT": "Next",
-    "PREVIOUS": "Previous",
-    "FIRST": "First",
-    "LAST": "Last",
-    "NO_RESULTS": "No Results",
-    "LOADING": "Loading"
   },
 
   "MONTHS": {

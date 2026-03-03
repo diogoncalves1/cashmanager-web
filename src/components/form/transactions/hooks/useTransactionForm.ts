@@ -20,6 +20,7 @@ export function useTransactionForm(id?: string) {
   }>({
     type: "revenue",
     status: "completed",
+    date: new Date().toISOString().split("T")[0],
   });
 
   const [dateLimits, setDateLimits] = useState<{ min: string; max: string }>({

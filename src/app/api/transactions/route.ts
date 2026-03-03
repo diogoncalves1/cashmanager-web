@@ -91,7 +91,6 @@ export async function GET(req: NextRequest) {
       recordsFiltered: data.recordsFiltered,
       data: data.data,
       stats: data.stats,
-      accounts: data.accounts,
       categories: data.categories,
     });
   } catch (err) {
