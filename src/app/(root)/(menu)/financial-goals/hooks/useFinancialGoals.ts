@@ -34,7 +34,7 @@ export function useFinancialGoals(filters: Filters = {}, pageSize = 6) {
 
         setTotal(res.recordsFiltered);
         setStats(res.stats);
-        setGoals((prev: any) => (append ? [...prev, ...res.data] : res.data));
+        setGoals((prev) => (append ? [...prev, ...res.data] : res.data));
       } catch (err: unknown) {
         if (err instanceof Error) {
           console.error(err);
@@ -44,7 +44,7 @@ export function useFinancialGoals(filters: Filters = {}, pageSize = 6) {
         setLoading(false);
       }
     },
-    [filters]
+    [filters, pageSize]
   );
 
   useEffect(() => {

@@ -26,7 +26,7 @@ interface ApiResponse<T> {
 
 export async function getAllFinancialGoals(
   filters: GoalsFilters
-): Promise<ApiResponse<FinancialGoal[]>> {
+): Promise<ApiResponse<FinancialGoal>> {
   const params = new URLSearchParams(
     Object.entries(filters).filter(([, v]) => v !== null) as [string, string][]
   );

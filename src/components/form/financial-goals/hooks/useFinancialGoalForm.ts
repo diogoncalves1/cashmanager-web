@@ -119,8 +119,11 @@ export function useFinancialGoalForm(id?: string) {
       if (!res.ok) throw new Error(result.message);
 
       return { success: true, message: result.message };
-    } catch (err: any) {
-      return { success: false, message: err.message || "Erro ao guardar meta financeira" };
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        return { success: false, message: err.message || "Erro ao guardar meta financeira" };
+      }
+      return { success: false, message: String(err) };
     } finally {
       setIsSubmitting(false);
     }

@@ -5,7 +5,7 @@ export async function onDeleteFinancialGoalTransaction(
   id: string,
   table?: any,
   pagination?: any,
-  mutate?: any
+  mutate?: () => void
 ) {
   LoadingToast({ title: "Excluindo...", message: "Removendo transação..." });
   try {
@@ -38,7 +38,7 @@ export async function onDeleteFinancialGoalTransaction(
   return 0;
 }
 
-export async function onConfirmFinancialGoalTransaction(id: string, mutate?: any) {
+export async function onConfirmFinancialGoalTransaction(id: string, mutate?: () => void) {
   LoadingToast({ title: "A confirmar...", message: "A confirmar a sua transação..." });
   try {
     const res = await fetch(`/api/financial-goal-transactions/${id}/confirm`, {

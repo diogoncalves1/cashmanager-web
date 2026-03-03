@@ -229,7 +229,7 @@ export function FinancialGoalForm({ id }: Props) {
           placeholder="Add a note about this transaction..."
           value={formData.description}
           onChange={(e) => {
-            setFormData((prev: any) => ({ ...prev, description: e.target.value }));
+            setFormData((prev) => ({ ...prev, description: e.target.value }));
           }}
           className="min-h-24 bg-input border-border resize-none placeholder:text-muted-foreground/50"
         />

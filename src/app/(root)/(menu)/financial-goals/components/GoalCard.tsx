@@ -6,6 +6,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { FinancialGoal } from "@/models/financialGoal";
 import StatusBadge from "@/components/financial-goals/StatusBadge";
 import PriorityInfo from "@/components/financial-goals/PriorityInfo";
+import { useTranslations } from "next-intl";
 
 interface GoalCardProps {
   financialGoal: FinancialGoal;
@@ -13,6 +14,7 @@ interface GoalCardProps {
 }
 
 export function GoalCard({ financialGoal }: GoalCardProps) {
+  const t = useTranslations("FINANCIAL_GOALS");
   const progress = Math.min(
     Math.round((financialGoal.contributedAmount / financialGoal.totalAmount) * 100),
     100
@@ -43,7 +45,7 @@ export function GoalCard({ financialGoal }: GoalCardProps) {
             {financialGoal.contributedAmountFormated}
           </span>
           <span className="text-sm text-muted-foreground">
-            of {financialGoal.totalAmountFormated}
+            {t("OF")} {financialGoal.totalAmountFormated}
           </span>
         </div>
         <div className="h-2.5 bg-muted rounded-full overflow-hidden">
@@ -56,7 +58,9 @@ export function GoalCard({ financialGoal }: GoalCardProps) {
           />
         </div>
         <div className="flex items-center justify-between text-xs">
-          <span className="text-accent font-medium">{progress}% complete</span>
+          <span className="text-accent font-medium">
+            {progress}% {t("P_COMPLETE")}
+          </span>
           {remaining > 0 && (
             <span className="text-muted-foreground">
               {/* {formatCurrency(remaining, financialGoal.currencyCode)} remaining */}

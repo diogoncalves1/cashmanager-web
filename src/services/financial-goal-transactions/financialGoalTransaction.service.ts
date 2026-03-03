@@ -19,7 +19,7 @@ export async function getAllFinancialGoals(
   filters: GoalsFilters
 ): Promise<ApiResponse<FinancialGoal[]>> {
   const params = new URLSearchParams(
-    Object.entries(filters).filter(([_, v]) => v !== null) as [string, string][]
+    Object.entries(filters).filter(([, v]) => v !== null) as [string, string][]
   );
 
   const res = await fetch(`/api/financial-goals?${params.toString()}`, {
