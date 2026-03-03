@@ -15,7 +15,7 @@ import { useTranslations } from "next-intl";
 
 type Props = {
   isDeleteOpen: boolean;
-  setIsDeleteOpen: any;
+  setIsDeleteOpen: (open: boolean) => void;
   selectedId: string;
   goBack?: boolean;
 };

@@ -1,17 +1,22 @@
 import LoadingToast from "@/components/swal/LoadingToast";
 import { SwalToast } from "@/components/swal/SwalToast";
+import { useTranslations } from "next-intl";
 
 interface TableInstance {
   reload: () => void;
   clear: () => void;
   getRowCount: () => number;
 }
+type PaginationState = {
+  pageIndex: number;
+  pageSize: number;
+};
 
 export async function onDeleteFinancialGoal(
   id: string,
-  t: any,
+  t: ReturnType<typeof useTranslations>,
   table?: TableInstance,
-  pagination?: any,
+  pagination?: PaginationState,
   mutate?: () => void
 ) {
   // const result = await Swal.fire({
@@ -40,7 +45,7 @@ export async function onDeleteFinancialGoal(
 
     if (data.success) {
       if (table) {
-        if (table.getRowCount() == 0) pagination.pageIndex--;
+        if (table.getRowCount() == 0 && pagination) pagination.pageIndex--;
       }
       SwalToast({ message: data.message, icon: "success" });
       return 1;
@@ -57,7 +62,11 @@ export async function onDeleteFinancialGoal(
   // return 0;
 }
 
-export async function onCancelFinancialGoal(id: string, t: any, mutate?: () => void) {
+export async function onCancelFinancialGoal(
+  id: string,
+  t: ReturnType<typeof useTranslations>,
+  mutate?: () => void
+) {
   LoadingToast({
     title: t("CANCELED_FINANCIAL_GOAL_TITLE"),
     message: t("CANCELED_FINANCIAL_GOAL_MESSAGE"),
@@ -88,7 +97,11 @@ export async function onCancelFinancialGoal(id: string, t: any, mutate?: () => v
   }
 }
 
-export async function onResetFinancialGoal(id: string, t: any, mutate?: () => void) {
+export async function onResetFinancialGoal(
+  id: string,
+  t: ReturnType<typeof useTranslations>,
+  mutate?: () => void
+) {
   LoadingToast({
     title: t("RESETED_FINANCIAL_GOAL_TITLE"),
     message: t("RESETED_FINANCIAL_GOAL_MESSAGE"),
@@ -119,7 +132,11 @@ export async function onResetFinancialGoal(id: string, t: any, mutate?: () => vo
   }
 }
 
-export async function onMarkPaidFinancialGoal(id: string, t: any, mutate?: () => void) {
+export async function onMarkPaidFinancialGoal(
+  id: string,
+  t: ReturnType<typeof useTranslations>,
+  mutate?: () => void
+) {
   LoadingToast({ title: "A completar...", message: "A completar a sua meta financeira..." });
   try {
     const res = await fetch(`/api/financial-goals/${id}/complete`, {

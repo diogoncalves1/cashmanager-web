@@ -1,8 +1,8 @@
-import { BadgeColor } from "@/components/ui/badge/Badge";
+import { useTranslations } from "next-intl";
 import { Currency } from "./currency";
 import { SharedRole } from "./sharedRole";
 
-export const getFinancialGoalStatus = (t: any) => [
+export const getFinancialGoalStatus = (t: ReturnType<typeof useTranslations>) => [
   {
     value: "completed",
     label: t("COMPLETED"),
@@ -17,7 +17,7 @@ export const getFinancialGoalStatus = (t: any) => [
   },
 ];
 
-export const getFinancialGoalPriorities = (t: any) => [
+export const getFinancialGoalPriorities = (t: ReturnType<typeof useTranslations>) => [
   {
     value: "low",
     label: t("LOW"),
@@ -47,12 +47,12 @@ export type FinancialGoalActions = {
   createTransactions: boolean;
 };
 
-export const prioritiesColors: Record<FinancialGoalPriority, BadgeColor> = {
+export const prioritiesColors: Record<FinancialGoalPriority, string> = {
   low: "success",
   medium: "warning",
   high: "error",
 };
-export const statusColors: Record<FinancialGoalStatus, BadgeColor> = {
+export const statusColors: Record<FinancialGoalStatus, string> = {
   completed: "success",
   in_progress: "warning",
   canceled: "error",

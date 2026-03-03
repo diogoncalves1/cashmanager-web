@@ -51,7 +51,7 @@ export default function GoalsList({
         <div className="relative flex-1 max-w-sm">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
-            placeholder="Search financial goals..."
+            placeholder={t("SEARCH_FINANCIAL_GOALS")}
             value={filters?.search || ""}
             onChange={(e) => setFilters((prev) => ({ ...prev, search: e.target.value }))}
             className="pl-9 bg-white"
@@ -107,10 +107,10 @@ export default function GoalsList({
               <SelectValue />
             </SelectTrigger>
             <SelectContent className="bg-card border-border">
-              <SelectItem value="all">All</SelectItem>
-              <SelectItem value="high">High</SelectItem>
-              <SelectItem value="medium">Medium</SelectItem>
-              <SelectItem value="low">Low</SelectItem>
+              <SelectItem value="all">{t("ALL")}</SelectItem>
+              <SelectItem value="high">{t("HIGH")}</SelectItem>
+              <SelectItem value="medium">{t("MEDIUM")}</SelectItem>
+              <SelectItem value="low">{t("LOW")}</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -118,7 +118,7 @@ export default function GoalsList({
         <div className="h-6 w-px bg-border hidden sm:block" />
 
         <div className="flex items-center gap-2">
-          <span className="text-sm text-muted-foreground">Sort:</span>
+          <span className="text-sm text-muted-foreground">{t("SORT")}:</span>
           <Select
             value={filters?.sort || "priority"}
             onValueChange={(v) => setFilters((prev) => ({ ...prev, sort: v }))}
@@ -127,8 +127,8 @@ export default function GoalsList({
               <SelectValue />
             </SelectTrigger>
             <SelectContent className="bg-card border-border">
-              <SelectItem value="priority">Priority</SelectItem>
-              <SelectItem value="totalAmount">Amount</SelectItem>
+              <SelectItem value="priority">{t("PRIORITY")}</SelectItem>
+              <SelectItem value="totalAmount">{t("TOTAL_AMOUNT")}</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -151,8 +151,11 @@ export default function GoalsList({
                 onClick={loadMore}
                 className="gap-2 bg-transparent"
               >
-                Load More
-                <span className="text-muted-foreground">({total - goals.length} remaining)</span>
+                {t("LOAD_MORE")}
+                <span className="text-muted-foreground">
+                  ({total - goals.length}{" "}
+                  {total - goals.length > 1 ? t("REMAINING_PLURAL") : t("REMAINING")})
+                </span>
               </Button>
             </div>
           )}

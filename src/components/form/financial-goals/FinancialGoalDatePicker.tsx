@@ -11,8 +11,8 @@ export function FinancialGoalDatePicker({
   onChangeDate,
 }: {
   date: string;
-  dateLimits: any;
-  onChangeDate: any;
+  dateLimits: { min?: string; max?: string };
+  onChangeDate: (value: string) => void;
 }) {
   return (
     <Popover>

@@ -1,7 +1,8 @@
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import { useTranslations } from "next-intl";
-import InvitationContainer from "./components/InvitationContainer";
+
 import { Metadata } from "next";
+import InvitationContainer from "@/components/invitations/InvitationContainer";
 
 export const metadata: Metadata = {
   title: "Cash Manager | Financial Goals",
@@ -21,7 +22,7 @@ export default function InvitationsPage() {
         ]}
       />
 
-      <InvitationContainer />
+      <InvitationContainer type="financial-goals" />
     </>
   );
 }

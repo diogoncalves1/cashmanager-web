@@ -12,7 +12,7 @@ import { useTranslations } from "next-intl";
 
 type Props = {
   isConfirmDialogOpen: boolean;
-  setIsConfirmOpen: any;
+  setIsConfirmOpen: (open: boolean) => void;
   mutate?: () => void;
   selectedId: string;
 };
@@ -47,7 +47,7 @@ export default function MarkCompletedGoalTransactionDialog({
             Cancel
           </Button>
           <Button
-            variant="success"
+            color="success"
             onClick={async () => {
               try {
                 setIsConfirmOpen(false);
