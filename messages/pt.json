@@ -383,7 +383,32 @@
     "GOAL_COMPLETED": "Meta Conquistada!",
     "GOAL_COMPLETED_MESSAGE": "Parabéns! Objetivo alcançado com sucesso",
 
-    "MONTHLY_SUMMARY": "Resumo Mensal"
+    "MONTHLY_SUMMARY": "Resumo Mensal",
+
+    "NEW_FINANCIAL_GOAL": "Nova meta financeira",
+    "NEW_FINANCIAL_GOAL_TEXT": "Registe as suas metas financeiras.",
+    "EDIT_FINANCIAL_GOAL": "Editar meta financeira",
+    "EDIT_FINANCIAL_GOAL_TEXT": "Atualize a sua meta financeira.",
+
+    "SAVING": "A guardar...",
+    "SAVING_TEXT": "A atualizar meta financeira...",
+    "CREATING": "A criar...",
+    "CREATING_TEXT": "A criar a sua meta financeira...",
+
+    "DESCRIPTION_TEXT": "Adicione uma nota sobre essa meta financeira...",
+    "OPTIONAL": "Opcional",
+    "DATES": "Datas",
+    "STEP": "Passo",
+    "START": "Início",
+    "DUE": "Fim",
+    "SELECT_CURRENCY": "Selecione a moeda",
+    "FORM_HELPER": "Todas as metas são processadas ​​com segurança e registadas instantaneamente.",
+    "NAME_PLACEHOLDER": "Ex: Carro novo"
+  },
+
+  "BUTTONS": {
+    "SUBMIT": "Submeter",
+    "PROCESSING": "A processar..."
   },
 
   "HOME": {

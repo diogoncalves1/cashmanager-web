@@ -20,6 +20,8 @@ import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
 import SubmitFormButton from "@/components/ui/button/SubmitFormButton";
+import { useToast } from "@/hooks/useToast";
+import { TransactionDatePicker } from "../transactions/TransactionDatePicker";
 
 type Props = {
   id?: string;
@@ -38,18 +40,17 @@ export function FinancialGoalForm({ id }: Props) {
   } = useFinancialGoalForm(id);
 
   const t = useTranslations("FINANCIAL_GOALS");
+  const { toast } = useToast();
 
   const onSubmit = async (e: React.FormEvent) => {
-    LoadingToast({
-      title: id ? "A atualizar..." : "A criar...",
-      message: id ? "A atualizar transação..." : "A criar a sua transação...",
+    const loadingT = LoadingToast({
+      title: id ? t("SAVING") : t("CREATING"),
+      message: id ? t("SAVING_TEXT") : t("CREATING_TEXT"),
     });
     e.preventDefault();
     const result = await handleSubmit();
-    SwalToast({
-      message: result.message,
-      icon: result.success ? "success" : "error",
-    });
+    loadingT.close();
+    toast({ description: result.message });
   };
 
   const currencySelected = currencies.find((c) => c.id == formData.currency_id);
@@ -61,28 +62,31 @@ export function FinancialGoalForm({ id }: Props) {
       <div className="space-y-3">
         <div className="flex items-center justify-between">
           <Label className="text-sm font-medium tracking-wide text-muted-foreground uppercase">
-            Details
+            {t("DETAILS")}
           </Label>
-          <span className="text-xs text-muted-foreground">Step 1 of 4</span>
+          <span className="text-xs text-muted-foreground">
+            {t("STEP")} 1 {t("OF")} 4
+          </span>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-2">
-            <Label htmlFor="date" className="text-sm text-muted-foreground">
-              Name
+            <Label htmlFor="name" className="text-sm text-muted-foreground">
+              {t("NAME")}
             </Label>
             <Input
-              id="date"
+              id="name"
               type="text"
               value={formData.name}
               onChange={(e) => {
                 setFormData((prev) => ({ ...prev, name: e.target.value }));
               }}
+              placeholder={t("NAME_PLACEHOLDER")}
               className="h-14 bg-input border-border text-foreground"
             />
           </div>
           <div className="space-y-2">
             <Label htmlFor="amount" className="text-sm text-muted-foreground">
-              Amount
+              {t("TOTAL_AMOUNT")}
             </Label>
             <div className="relative">
               <span className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground text-lg">
@@ -109,9 +113,11 @@ export function FinancialGoalForm({ id }: Props) {
       <div className="space-y-3">
         <div className="flex items-center justify-between">
           <Label className="text-sm font-medium tracking-wide text-muted-foreground uppercase">
-            Select Currency
+            {t("SELECT_CURRENCY")}
           </Label>
-          <span className="text-xs text-muted-foreground">Step 2 of 4</span>
+          <span className="text-xs text-muted-foreground">
+            {t("STEP")} 2 {t("OF")} 4
+          </span>
         </div>
         {!loadingCurrencies ? (
           <Select
@@ -121,7 +127,7 @@ export function FinancialGoalForm({ id }: Props) {
             }}
           >
             <SelectTrigger className="h-14 bg-input border-border text-foreground">
-              <SelectValue placeholder="Choose a currency" />
+              <SelectValue placeholder={t("SELECT_CURRENCY")} />
             </SelectTrigger>
             <SelectContent className="bg-card border-border">
               {!loadingCurrencies &&
@@ -151,16 +157,18 @@ export function FinancialGoalForm({ id }: Props) {
       <div className="space-y-3">
         <div className="flex items-center justify-between">
           <Label className="text-sm font-medium tracking-wide text-muted-foreground uppercase">
-            Dates
+            {t("DATES")}
           </Label>
-          <span className="text-xs text-muted-foreground">Step 3 of 4</span>
+          <span className="text-xs text-muted-foreground">
+            {t("STEP")} 3 {t("OF")} 4
+          </span>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-2">
             <Label htmlFor="date" className="text-sm text-muted-foreground">
-              Start
+              {t("START")}
             </Label>
-            <FinancialGoalDatePicker
+            <TransactionDatePicker
               date={formData.start_date}
               onChangeDate={(newDate: string) => {
                 setFormData((p) => ({ ...p, start_date: newDate }));
@@ -171,9 +179,9 @@ export function FinancialGoalForm({ id }: Props) {
           </div>
           <div className="space-y-2">
             <Label htmlFor="date" className="text-sm text-muted-foreground">
-              Due
+              {t("DUE")}
             </Label>
-            <FinancialGoalDatePicker
+            <TransactionDatePicker
               date={formData.due_date}
               onChangeDate={(newDate: string) => {
                 setFormData((p) => ({ ...p, due_date: newDate }));
@@ -189,9 +197,11 @@ export function FinancialGoalForm({ id }: Props) {
       <div className="space-y-3">
         <div className="flex items-center justify-between">
           <Label className="text-sm font-medium tracking-wide text-muted-foreground uppercase">
-            Prioridade
+            {t("PRIORITY")}
           </Label>
-          <span className="text-xs text-muted-foreground">Step 4 of 4</span>
+          <span className="text-xs text-muted-foreground">
+            {t("STEP")} 4 {t("OF")} 4
+          </span>
         </div>
         <div className="grid grid-cols-3 gap-3">
           {priorityOptions.map((option) => (
@@ -222,11 +232,11 @@ export function FinancialGoalForm({ id }: Props) {
       {/* Description */}
       <div className="space-y-2">
         <Label htmlFor="description" className="text-sm text-muted-foreground">
-          Description <span className="text-muted-foreground/50">(optional)</span>
+          {t("DESCRIPTION")} <span className="text-muted-foreground/50">({t("OPTIONAL")})</span>
         </Label>
         <Textarea
           id="description"
-          placeholder="Add a note about this transaction..."
+          placeholder={t("DESCRIPTION_TEXT")}
           value={formData.description}
           onChange={(e) => {
             setFormData((prev) => ({ ...prev, description: e.target.value }));
@@ -249,9 +259,7 @@ export function FinancialGoalForm({ id }: Props) {
       />
 
       {/* Form Helper */}
-      <p className="text-center text-xs text-muted-foreground">
-        All goals are securely processed and recorded instantly.
-      </p>
+      <p className="text-center text-xs text-muted-foreground">{t("FORM_HELPER")}</p>
     </form>
   );
 }

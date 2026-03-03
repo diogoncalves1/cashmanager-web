@@ -3,11 +3,16 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import { FinancialGoalForm } from "@/components/form/financial-goals/FinancialGoalForm";
+import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Cash Manager | Financial Goals",
-  description: "This is Next.js Home for TailAdmin Dashboard Template",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("FINANCIAL_GOALS");
+
+  return {
+    title: t("META_TITLE"),
+    description: t("META_DESCRIPTION"),
+  };
+}
 
 export default function AccountsPage() {
   const t = useTranslations("FINANCIAL_GOALS");
@@ -24,11 +29,9 @@ export default function AccountsPage() {
         {/* Page Header */}
         <div className="mb-10">
           <h1 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight text-balance">
-            New Financial Goal
+            {t("NEW_FINANCIAL_GOAL")}
           </h1>
-          <p className="mt-3 text-muted-foreground text-lg">
-            Record a deposit, withdrawal, or progress update for your financial goals.
-          </p>
+          <p className="mt-3 text-muted-foreground text-lg">{t("NEW_FINANCIAL_GOAL_TEXT")}</p>
         </div>
 
         <div className="rounded-2xl bg-card border border-border p-6 md:p-8 shadow-sm">
