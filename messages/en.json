@@ -240,7 +240,7 @@
     "CHANGE_ROLE_TEXT": "Assign a role to this user.",
 
     "ROLE": "Role",
-    "CHOOSE_A_ROLE": "Choose role",
+    "CHOOSE_A_ROLE": "Choose a role",
 
     "CHANGE": "Change",
     "CHANGING": "Changing...",
@@ -250,7 +250,35 @@
 
     "ACCOUNTS": "Account",
     "DEBTS": "Debt",
-    "FINANCIAL-GOALS": "Financial Goal"
+    "FINANCIAL-GOALS": "Financial Goal",
+
+    "SENT": "Sent",
+    "RECEIVED": "Received",
+    "PENDING_SENT": "Pending sent",
+    "AWAITING_RESPONSE": "Awaiting response",
+
+    "INVITATIONS": "Invitations",
+    "INVITATIONS_TEXT": "Manage your sent and received invitations.",
+
+    "NO_INVITATIONS_SENT": "No sent invitations",
+    "NO_INVITATIONS_RECEIVED": "No received invitations",
+
+    "FILTER_STATUS": "Filter status",
+    "ALL_STATUS": "All statuses",
+    "PENDING": "Pending",
+    "ACCEPTED": "Accepted",
+    "ACCEPT": "Accept",
+    "REJECT": "Reject",
+    "REJECTING": "Rejecting...",
+    "REJECTING_TEXT": "Rejecting invitation...",
+    "ACCEPTING": "Accepting...",
+    "ACCEPTING_TEXT": "Accepting invitation...",
+    "REVOKED": "Revoked",
+    "ERROR": "Error",
+    "TRY_AGAIN": "Try again",
+
+    "NO_INVITATIONS_SENT_TEXT": "You haven't sent any invitations yet. Click \"Invite member\" to invite someone to collaborate.",
+    "NO_INVITATIONS_RECEIVED_TEXT": "You currently have no received invitations. Please check back later."
   },
 
   "ACTIVITY": {

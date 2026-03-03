@@ -9,6 +9,8 @@ export type InvitationStatus = "pending" | "accepted" | "revoked";
 export type InvitationRole = "participant" | "view_only";
 export type InvitationDirection = "sent" | "received";
 
+export type InvitationType = "accounts" | "debts" | "financial-goals";
+
 export interface Invitation {
   id: string;
   sender: User;

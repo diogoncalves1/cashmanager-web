@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { getInvitationStats } from "@/services/accounts/account.service";
+import { getInvitationStats } from "@/services/invitations/invitations.service";
+import { useState, useEffect, useCallback } from "react";
 
 type Summary = {
   sentInvites: number;
@@ -8,7 +8,7 @@ type Summary = {
   awaitingInvites: number;
 };
 
-export function useInvitationStats() {
+export function useInvitationStats(type: "accounts" | "debts" | "financial-goals") {
   const [stats, setStats] = useState<Summary>({
     sentInvites: 0,
     receivedInvites: 0,
@@ -18,9 +18,9 @@ export function useInvitationStats() {
   const [load, setLoad] = useState(true);
   const [loading, setLoading] = useState(true);
 
-  const fetchStats = async () => {
+  const fetchStats = useCallback(async () => {
     try {
-      const res = await getInvitationStats();
+      const res = await getInvitationStats(type);
 
       setStats(res.data);
     } catch (err: unknown) {
@@ -30,12 +30,12 @@ export function useInvitationStats() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [type]);
 
   useEffect(() => {
     if (load) fetchStats();
     setLoad(false);
-  }, [load]);
+  }, [load, fetchStats]);
 
   return {
     stats,

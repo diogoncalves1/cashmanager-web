@@ -250,7 +250,35 @@
 
     "ACCOUNTS": "Conta",
     "DEBTS": "Dívida",
-    "FINANCIAL-GOALS": "Meta Financeira"
+    "FINANCIAL-GOALS": "Meta Financeira",
+
+    "SENT": "Enviados",
+    "RECEIVED": "Recebidos",
+    "PENDING_SENT": "Pendente enviados",
+    "AWAITING_RESPONSE": "Aguardando resposta",
+
+    "INVITATIONS": "Convites",
+    "INVITATIONS_TEXT": "Gira os seus convites enviados e recebidos.",
+
+    "NO_INVITATIONS_SENT": "Sem convites enviados",
+    "NO_INVITATIONS_RECEIVED": "Sem convites recevidos",
+
+    "FILTER_STATUS": "Filtar estado",
+    "ALL_STATUS": "Todos os estados",
+    "PENDING": "Pendente",
+    "ACCEPTED": "Aceite",
+    "ACCEPT": "Aceitar",
+    "REJECT": "Rejeitar",
+    "REJECTING": "A rejeitar...",
+    "REJECTING_TEXT": "A rejeitar convite...",
+    "ACCEPTING": "A aceitar...",
+    "ACCEPTING_TEXT": "A aceitar convite...",
+    "REVOKED": "Rejeitado",
+    "ERROR": "Erro",
+    "TRY_AGAIN": "Tente novamente",
+
+    "NO_INVITATIONS_SENT_TEXT": "Ainda não enviou nenhum convite. Clique em \"Convidar membro\" para convidar alguém para colaborar.",
+    "NO_INVITATIONS_RECEIVED_TEXT": "Não tem nenhum convite recebido no momento. Volte mais tarde."
   },
 
   "ACTIVITY": {
