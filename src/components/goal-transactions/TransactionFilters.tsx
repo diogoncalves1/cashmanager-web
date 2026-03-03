@@ -10,30 +10,25 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import {
-  getTransactionStatus,
-  getTransactionTypes,
-  TransactionStatus,
-  TransactionType,
-} from "@/models/transaction";
-import { Category } from "@/models/category";
+import { TransactionStatus, TransactionType } from "@/models/transaction";
 import { useTranslations } from "next-intl";
 import { TransactionDatePicker } from "../form/transactions/TransactionDatePicker";
+import {
+  financialGoalTransactionStatus,
+  financialGoalTransactionTypes,
+} from "@/models/financialGoalTransactions";
 
 interface TransactionsFiltersProps {
   search: string;
   onSearchChange: (v: string) => void;
   statusFilter: TransactionStatus | "all";
   onStatusFilterChange: (v: TransactionStatus) => void;
-  categoryFilter: string;
-  onCategoryFilterChange: (v: string) => void;
   typeFilter: TransactionType | "all";
   onTypeFilterChange: (v: TransactionType | "all") => void;
   dateFrom: string;
   onDateFromChange: (v: string) => void;
   dateTo: string;
   onDateToChange: (v: string) => void;
-  categories: Category[];
   hasActiveFilters: boolean;
   onClearFilters: () => void;
   enableSearch?: boolean;
@@ -46,24 +41,21 @@ export function TransactionsFilters({
   onSearchChange,
   statusFilter,
   onStatusFilterChange,
-  categoryFilter,
-  onCategoryFilterChange,
   typeFilter,
   onTypeFilterChange,
   dateFrom,
   onDateFromChange,
   dateTo,
   onDateToChange,
-  categories,
   hasActiveFilters,
   onClearFilters,
   enableSearch = true,
   enableStatusFilter = true,
   enableTypeFilter = true,
 }: TransactionsFiltersProps) {
-  const t = useTranslations("TRANSACTIONS");
-  const transactionStatus = getTransactionStatus(t);
-  const transactionTypes = getTransactionTypes(t);
+  const t = useTranslations("FINANCIAL_GOAL_TRANSACTIONS");
+  const transactionStatus = financialGoalTransactionStatus(t);
+  const transactionTypes = financialGoalTransactionTypes(t);
 
   return (
     <div className="space-y-3">
@@ -85,7 +77,7 @@ export function TransactionsFilters({
         {enableStatusFilter && (
           <Select value={statusFilter} onValueChange={onStatusFilterChange}>
             <SelectTrigger className="w-[160px] bg-white">
-              <SelectValue placeholder="Account" />
+              <SelectValue placeholder={t("STATUS")} />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="all">{t("ALL_STATUS")}</SelectItem>
@@ -98,29 +90,13 @@ export function TransactionsFilters({
           </Select>
         )}
 
-        <Select value={categoryFilter} onValueChange={onCategoryFilterChange}>
-          <SelectTrigger className="w-[180px] bg-white">
-            <SelectValue placeholder="Category" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">{t("ALL_CATEGORIES")}</SelectItem>
-            {categories?.map((c) => {
-              return (
-                <SelectItem key={c.id} value={c.id}>
-                  {c.name}
-                </SelectItem>
-              );
-            })}
-          </SelectContent>
-        </Select>
-
         {enableTypeFilter && (
           <Select
             value={typeFilter}
             onValueChange={(v) => onTypeFilterChange(v as TransactionType | "all")}
           >
             <SelectTrigger className="w-[140px] bg-white">
-              <SelectValue placeholder="Type" />
+              <SelectValue placeholder={t("TYPE")} />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="all">{t("ALL_TYPES")}</SelectItem>

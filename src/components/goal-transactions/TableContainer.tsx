@@ -4,10 +4,9 @@ import { fetcher } from "@/lib/fetcher";
 import { ColumnFiltersState, SortingState } from "@tanstack/react-table";
 import React, { useCallback, useEffect, useState } from "react";
 import useSWR from "swr";
-import { TransactionsDataTable } from "@/components/transactions/TransactionsDataTable";
 import { TransactionStatus, TransactionType } from "@/models/transaction";
 import { TransactionsFilters } from "./TransactionFilters";
-import { TransactionsSummary } from "./TransactionsSummary";
+import { GoalTransactionDataTable } from "./GoalTransactionDataTable";
 
 export type MyPagination = {
   pageIndex: number;
@@ -16,12 +15,11 @@ export type MyPagination = {
 
 type Props = {
   userId?: string;
-  accountId?: string;
+  financialGoalId?: string;
   load?: boolean;
-  includeSummary?: boolean;
 };
 
-const TableContainer = ({ userId, accountId, load, includeSummary = true }: Props) => {
+const TableContainer = ({ userId, financialGoalId, load }: Props) => {
   const [sorting, setSorting] = React.useState<SortingState>([{ id: "date", desc: true }]);
   // Filters
   const [search, setSearch] = useState("");
@@ -80,7 +78,7 @@ const TableContainer = ({ userId, accountId, load, includeSummary = true }: Prop
       { data: "amount", name: "amount" },
       { data: "userName", name: "userName" },
       { data: "accountName", name: "accountName" },
-      { data: "categoryName", name: "categoryName" },
+      { data: "goalName", name: "goalName" },
     ];
 
     const params = new URLSearchParams();
@@ -102,7 +100,7 @@ const TableContainer = ({ userId, accountId, load, includeSummary = true }: Prop
 
   const extraParams = new URLSearchParams();
   if (userId) extraParams.append("userId", userId);
-  if (accountId) extraParams.append("accountId", accountId);
+  if (financialGoalId) extraParams.append("accountId", financialGoalId);
   if (debouncedSearch) extraParams.append("search", debouncedSearch);
   if (debouncedCategoryFilter !== "all") extraParams.append("categoryId", debouncedCategoryFilter);
   if (debouncedDateFrom) extraParams.append("dateFrom", debouncedDateFrom);
@@ -133,7 +131,7 @@ const TableContainer = ({ userId, accountId, load, includeSummary = true }: Prop
   }, [columnFilters]);
 
   const url = React.useMemo(() => {
-    return `/transactions?page=${pagination.pageIndex}&size=${pagination.pageSize}&sort=${sortingQuery}&${filterQuery}&${extraOptString}&${columnsQuery}`;
+    return `/financial-goal-transactions?page=${pagination.pageIndex}&size=${pagination.pageSize}&sort=${sortingQuery}&${filterQuery}&${extraOptString}&${columnsQuery}`;
   }, [pagination, sortingQuery, filterQuery, extraOptString, columnsQuery]);
 
   const {
@@ -148,13 +146,6 @@ const TableContainer = ({ userId, accountId, load, includeSummary = true }: Prop
 
   return (
     <div className="space-y-6">
-      {includeSummary && (
-        <TransactionsSummary
-          totalIncome={apiData?.stats.income}
-          totalExpenses={apiData?.stats.expenses}
-          balance={apiData?.stats.balance}
-        />
-      )}
       <TransactionsFilters
         search={search}
         onSearchChange={(v: string) => {
@@ -167,14 +158,6 @@ const TableContainer = ({ userId, accountId, load, includeSummary = true }: Prop
         statusFilter={statusFilter}
         onStatusFilterChange={(v: TransactionStatus) => {
           setStatusFilter(v);
-          setPagination({
-            pageIndex: 0,
-            pageSize: 10,
-          });
-        }}
-        categoryFilter={categoryFilter}
-        onCategoryFilterChange={(v: string) => {
-          setCategoryFilter(v);
           setPagination({
             pageIndex: 0,
             pageSize: 10,
@@ -204,14 +187,13 @@ const TableContainer = ({ userId, accountId, load, includeSummary = true }: Prop
             pageSize: 10,
           });
         }}
-        categories={apiData?.categories}
         hasActiveFilters={hasActiveFilters}
         onClearFilters={clearFilters}
       />
 
-      <TransactionsDataTable
+      <GoalTransactionDataTable
         pagination={pagination}
-        accountId={accountId}
+        financialGoalId={financialGoalId}
         userId={userId}
         data={apiData}
         isLoading={isLoading}

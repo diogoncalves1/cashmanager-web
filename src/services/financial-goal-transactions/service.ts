@@ -1,10 +1,17 @@
 import LoadingToast from "@/components/swal/LoadingToast";
 import { SwalToast } from "@/components/swal/SwalToast";
+import { FinancialGoalTransaction } from "@/models/financialGoalTransactions";
+import { Table } from "@tanstack/react-table";
+
+type PaginationState = {
+  pageIndex: number;
+  pageSize: number;
+};
 
 export async function onDeleteFinancialGoalTransaction(
   id: string,
-  table?: any,
-  pagination?: any,
+  table?: Table<FinancialGoalTransaction>,
+  pagination?: PaginationState,
   mutate?: () => void
 ) {
   LoadingToast({ title: "Excluindo...", message: "Removendo transação..." });
@@ -22,7 +29,7 @@ export async function onDeleteFinancialGoalTransaction(
 
     if (data.success) {
       if (table) {
-        if (table.getRowCount() == 0) pagination.pageIndex--;
+        if (table.getRowCount() == 0 && pagination) pagination.pageIndex--;
       }
       SwalToast({ message: data.message, icon: "success" });
       return 1;

@@ -18,6 +18,7 @@
     "DATE": "Data",
     "DESCRIPTION": "Descrição",
     "USERS": "Utilizadores",
+    "USER": "Utilizador",
     "STATUS": "Estado",
     "PENDING": "Pendente",
     "COMPLETED": "Completa",
@@ -285,7 +286,8 @@
     "ACTIVITY_TIMELINE": "Cronograma de atividades",
     "WITHOUT_ACTIVITY": "Sem atividade",
     "ERROR": "Erro",
-    "TRY_AGAIN": "Tente novamente"
+    "TRY_AGAIN": "Tente novamente",
+    "BY": "Por"
   },
 
   "FINANCIAL_GOALS": {
@@ -335,6 +337,7 @@
 
     "REMAINING": "Restante",
     "REMAINING_PLURAL": "Restantes",
+    "USER": "Utilizador",
 
     "SORT": "Ordenar",
     "SEARCH_FINANCIAL_GOALS": "Procurar meta financeira...",
@@ -402,13 +405,116 @@
     "START": "Início",
     "DUE": "Fim",
     "SELECT_CURRENCY": "Selecione a moeda",
-    "FORM_HELPER": "Todas as metas são processadas ​​com segurança e registadas instantaneamente.",
-    "NAME_PLACEHOLDER": "Ex: Carro novo"
+    "FORM_HELPER": "Todas as metas são processadas ​com segurança e registadas instantaneamente.",
+    "NAME_PLACEHOLDER": "Ex: Carro novo",
+
+    "TARGET": "Objetivo",
+    "DAYS_PASSED": "dias passados",
+    "DAYS_REMAINING": "dias restantes",
+    "CONTRIBUTED": "Contribuído",
+    "CONTRIBUTORS": "Contribuídores",
+    "ACTIVITY": "Atividade",
+    "MEMBER": "Membro",
+    "ROLE": "Papel",
+    "DELETE_GOAL": "Apagar meta",
+    "DELETE_GOAL_TEXT": "Tem certeza de que deseja excluir este objetivo? Esta ação não pode ser desfeita e todo o histórico de transações será perdido.",
+    "EDIT_GOAL": "Editar meta",
+    "CANCEL_GOAL": "Cancelar meta",
+    "DELETING_GOAL": "A apagar",
+    "RESET_GOAL": "Resetar meta",
+    "TO_FINISH": "para finalizar",
+
+    "MARK_COMPLETED": "Marcar como concluída",
+    "MARK_COMPLETED_FINANCIAL_GOAL": "Marcar meta financeira como concluída?",
+    "MARK_COMPLETED_FINANCIAL_GOAL_TEXT": "Tem a certeza que quer marcar a meta financeira como concluída?"
   },
 
   "BUTTONS": {
     "SUBMIT": "Submeter",
     "PROCESSING": "A processar..."
+  },
+
+  "FINANCIAL_GOAL_TRANSACTIONS": {
+    "META_TITLE": "Cash Manager | Transações Metas Financeiras",
+    "META_DESCRIPTION": "Gerencie suas transações das metas financeiras de forma eficiente com o Cash Manager. Acompanhe suas contribuições, retiradas e mantenha suas finanças organizadas.",
+
+    "ADD": "Adicionar",
+    "EDIT": "Editar",
+    "DETAILS": "Detalhes",
+    "SAVING": "A guardar...",
+    "ACCOUNT": "Conta",
+
+    "FINANCIAL_GOAL_TRANSACTION": "TRANSAÇÕES META FINANCEIRA",
+    "FINANCIAL_GOAL": "Meta Financeira",
+    "FINANCIAL_GOALS": "Metas Financeiras",
+
+    "SELECT_FINANCIAL_GOAL": "Selecione a meta financeira",
+
+    "TRANSACTIONS": "Transações",
+    "ADD_TRANSACTION": "Nova Transação",
+
+    "TYPE": "Tipo",
+    "USER": "Utilizador",
+    "DATE": "Data",
+    "ALL": "Todos",
+
+    "CLEAR": "Limpar",
+    "VIEW_FINANCIAL_GOAL": "Ver meta financeira",
+    "ALL_STATUS": "Todos os estados",
+    "ALL_TYPES": "Todos os tipos",
+
+    "ALL_TRANSACTIONS": "Todas as Transações",
+
+    "NEW_TRANSACTION": "Nova Transação",
+    "SELECT_ACCOUNT": "Selecione uma conta",
+    "WHAT_WAS_THIS_FOR": "Para que serviu isso?",
+
+    "CANCEL": "Cancelar",
+    "CREATE": "Criar",
+
+    "NEW_TRANSACTION_FORM_DIALOG_TEXT": "Registre uma nova contribuíção ou retirada.",
+    "CREATING": "A criar...",
+    "DESCRIPTION": "Descrição",
+    "SAVE": "Guardar",
+    "EDIT_TRANSACTION": "Editar Transação",
+    "EDIT_TRANSACTION_FORM_DIALOG_TEXT": "Atualize os detalhes da sua transação.",
+
+    "COMPLETED": "Completa",
+    "PENDING": "Pendente",
+
+    "CONTRIBUTION": "Contribuíção",
+    "WITHDRAWAL": "Retirada",
+
+    "NAME": "Nome",
+    "TOTAL_AMOUNT": "Valor Total",
+    "CONTRIBUTED_AMOUNT": "Valor Contribuído",
+    "PRIORITY": "Prioridade",
+    "USERS": "Utilizadores",
+    "CURRENCY": "Moeda",
+    "DUE_DATE": "Data de Fim",
+    "START_DATE": "Data de Início",
+    "STATUS": "Estado",
+    "ACTIONS": "Ações",
+
+    "TRANSACTION_HISTORY": "Histórico de Transações",
+    "TRANSACTION": "Transação",
+    "AMOUNT": "Valor",
+
+    "SEARCH": "Procura",
+    "FILTER_BY": "Filtra por",
+    "SHOWING": "A mostrar",
+    "OF": "de",
+    "THIS": "transações",
+    "NEXT": "Próximo",
+    "PREVIOUS": "Anterior",
+    "FIRST": "Primeira",
+    "LAST": "Última",
+    "NO_RESULTS": "Sem Resultados",
+    "LOADING": "Carregando",
+
+    "DELETE": "Apagar",
+    "TO": "até",
+    "SEARCH_TRANSACTION": "Procure pela transação"
   },
 
   "HOME": {
@@ -464,57 +570,6 @@
 
   "SETTINGS": {
     "SETTINGS": "Definições"
-  },
-
-  "FINANCIAL_GOAL_TRANSACTIONS": {
-    "ADD": "Adicionar",
-    "EDIT": "Editar",
-    "DETAILS": "Detalhes",
-    "SAVING": "A guardar...",
-    "ACCOUNT": "Conta",
-
-    "FINANCIAL_GOAL_TRANSACTION": "TRANSAÇÕES META FINANCEIRA",
-    "FINANCIAL_GOAL": "Meta Financeira",
-    "FINANCIAL_GOALS": "Metas Financeiras",
-
-    "SELECT_FINANCIAL_GOAL": "Selecione a meta financeira",
-
-    "TRANSACTIONS": "Transações",
-    "ADD_TRANSACTION": "Nova Transação",
-
-    "TYPE": "Tipo",
-    "ALL": "Todos",
-
-    "ALL_TRANSACTIONS": "Todas as Transações",
-
-    "COMPLETED": "Completa",
-    "PENDING": "Pendente",
-
-    "CONTRIBUTION": "Contribuíção",
-    "WITHDRAWAL": "Retirada",
-
-    "NAME": "Nome",
-    "TOTAL_AMOUNT": "Valor Total",
-    "CONTRIBUTED_AMOUNT": "Valor Contribuído",
-    "PRIORITY": "Prioridade",
-    "USERS": "Utilizadores",
-    "CURRENCY": "Moeda",
-    "DUE_DATE": "Data de Fim",
-    "START_DATE": "Data de Início",
-    "STATUS": "Estado",
-    "ACTIONS": "Ações",
-
-    "SEARCH": "Procura",
-    "FILTER_BY": "Filtra por",
-    "SHOWING": "A mostrar",
-    "OF": "de",
-    "THIS": "transações",
-    "NEXT": "Próximo",
-    "PREVIOUS": "Anterior",
-    "FIRST": "Primeira",
-    "LAST": "Última",
-    "NO_RESULTS": "Sem Resultados",
-    "LOADING": "Carregando"
   },
 
   "MONTHS": {

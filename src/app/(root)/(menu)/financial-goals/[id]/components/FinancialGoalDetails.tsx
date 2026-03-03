@@ -15,7 +15,6 @@ import { formatDate } from "@/lib/utils";
 import { useFinancialGoal } from "../hooks/useFinancialGoal";
 import { useTranslations } from "next-intl";
 import { AppLink } from "@/components/ui/button/AppLink";
-import { FinancialGoalTransactionsDataTable } from "../../../financial-goal-transactions/data-table";
 import Link from "next/link";
 import PriorityInfo from "@/components/financial-goals/PriorityInfo";
 import DeleteFinancialGoalDialog from "@/components/ui/dialogs/FinancialGoals/DeleteFinancialGoalDialog";
@@ -37,6 +36,7 @@ import ActivityTimeline from "@/components/ui/timeline/ActivityTimeline";
 import UsersTable from "./UsersTable";
 import { useAuth } from "@/context/AuthContext";
 import LeaveSubjectDialog from "@/components/invitations/LeaveSubjectDialog";
+import { GoalTransactionDataTable } from "@/components/goal-transactions/GoalTransactionDataTable";
 
 type FinancialGoalDetailsProps = {
   id: string;
@@ -307,7 +307,7 @@ export default function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) 
           {/* Transactions Tab */}
           <TabsContent value="transactions">
             <div className="rounded-2xl bg-card border border-border shadow-sm overflow-hidden">
-              <FinancialGoalTransactionsDataTable financialGoalId={id} enableFilters={false} />
+              <GoalTransactionDataTable financialGoalId={id} enableFilters={false} />
             </div>
           </TabsContent>
 

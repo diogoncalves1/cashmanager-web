@@ -1,4 +1,6 @@
-export const financialGoalTransactionTypes = (t: any) => [
+import { useTranslations } from "next-intl";
+
+export const financialGoalTransactionTypes = (t: ReturnType<typeof useTranslations>) => [
   {
     value: "contribution",
     label: t("CONTRIBUTION"),
@@ -12,7 +14,7 @@ export const financialGoalTransactionTypes = (t: any) => [
 export type FinancialGoalTransactionType = "contribution" | "withdrawal";
 export type FinancialGoalTransactionStatus = "completed" | "pending";
 
-export const financialGoalTransactionStatus = (t: any) => [
+export const financialGoalTransactionStatus = (t: ReturnType<typeof useTranslations>) => [
   {
     value: "completed",
     label: t("COMPLETED"),
