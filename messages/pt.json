@@ -288,6 +288,104 @@
     "TRY_AGAIN": "Tente novamente"
   },
 
+  "FINANCIAL_GOALS": {
+    "META_TITLE": "Cash Manager | Metas Financeiras",
+    "META_DESCRIPTION": "Gerencie suas metas financeiras de forma eficiente com o Cash Manager. Acompanhe suas contribuições, retiradas e mantenha suas finanças organizadas.",
+
+    "NEW_GOAL": "Nova meta",
+    "FINANCIAL_GOALS_TEXT": "Acompanha e gere suas metas de poupança em um só lugar.",
+
+    "ADD": "Adicionar",
+    "EDIT": "Editar",
+    "DELETE": "Apagar Meta Financeira",
+    "DETAILS": "Detalhes",
+    "INVITES": "Convites",
+
+    "FINANCIAL_GOAL": "META FINANCEIRA",
+    "FINANCIAL_GOALS": "Metas Financeiras",
+
+    "TRANSACTIONS": "Transações",
+    "ADD_TRANSACTION": "Nova Transação",
+
+    "ALL_TRANSACTIONS": "Todas as Transações",
+
+    "COMPLETED": "Completa",
+    "IN_PROGRESS": "Em Progresso",
+    "CANCELED": "Cancelada",
+
+    "TOTAL_GOALS": "Total de Metas",
+    "TOTAL_SAVED": "Total Economizado",
+    "OVERALL_PROGRESS": "Progresso Geral",
+    "ALL": "Todos",
+
+    "LOW": "Baixa",
+    "MEDIUM": "Média",
+    "HIGH": "Alta",
+
+    "NAME": "Nome",
+    "TOTAL_AMOUNT": "Valor Total",
+    "CONTRIBUTED_AMOUNT": "Valor Contribuído",
+    "PRIORITY": "Prioridade",
+    "USERS": "Utilizadores",
+    "CURRENCY": "Moeda",
+    "DUE_DATE": "Data de Fim",
+    "START_DATE": "Data de Início",
+    "STATUS": "Estado",
+    "ACTIONS": "Ações",
+
+    "REMAINING": "Restante",
+    "REMAINING_PLURAL": "Restantes",
+
+    "SORT": "Ordenar",
+    "SEARCH_FINANCIAL_GOALS": "Procurar meta financeira...",
+
+    "SEARCH": "Procura",
+    "FILTER_BY": "Filtra por",
+    "SHOWING": "A mostrar",
+    "OF": "de",
+    "THIS": "metas financeiras",
+    "NEXT": "Próximo",
+    "PREVIOUS": "Anterior",
+    "FIRST": "Primeira",
+    "LAST": "Última",
+    "NO_RESULTS": "Sem Resultados",
+    "LOADING": "Carregando",
+
+    "CANCELED_FINANCIAL_GOAL_TITLE": "A cancelar...",
+    "CANCELED_FINANCIAL_GOAL_MESSAGE": "A cancelar meta financeira ...",
+    "CANCEL_FINANCIAL_GOAL_MESSAGE": "Cancelar meta financeira?",
+    "YES_CANCEL": "Sim, cancelar!",
+    "CANCEL": "Cancelar",
+
+    "RESET_FINANCIAL_GOAL_MESSAGE": "Resetar meta financeira?",
+    "RESETED_FINANCIAL_GOAL_TITLE": "A resetar...",
+    "RESETED_FINANCIAL_GOAL_MESSAGE": "A resetar a meta financeira ...",
+    "YES_RESET": "Sim, resetar!",
+
+    "OTHERS_INFORMATION": "Outras Informações",
+    "CREATED_AT": "Criada em",
+
+    "RECENT_TRANSACTIONS": "Transações Recentes",
+    "FINANCIAL_GOAL_DETAILS": "Detalhes da Meta Financeira",
+    "WITHDRAWALS": "Retiradas",
+    "CONTRIBUTIONS": "Contribuições",
+
+    "OVERVIEW": "Visão Geral",
+    "OTHERS": "Outros",
+    "DESCRIPTION": "Descrição",
+    "RESET": "Resetar",
+    "LAST_UPDATE": "Última atualização",
+    "COMPLETE": "Completar",
+    "P_COMPLETE": "concluído",
+    "MISSING_AMOUNT": "Valor em Falta",
+    "COLLECTED_AMOUNT": "Valor Arrecadado",
+    "GOAL_PROGRESS": "Progresso da Meta",
+    "GOAL_COMPLETED": "Meta Conquistada!",
+    "GOAL_COMPLETED_MESSAGE": "Parabéns! Objetivo alcançado com sucesso",
+
+    "MONTHLY_SUMMARY": "Resumo Mensal"
+  },
+
   "HOME": {
     "HOME": "Início",
     "MONTHLY_BALANCE": "Saldo Mensal",
@@ -341,91 +439,6 @@
 
   "SETTINGS": {
     "SETTINGS": "Definições"
-  },
-
-  "FINANCIAL_GOALS": {
-    "ADD": "Adicionar",
-    "EDIT": "Editar",
-    "DELETE": "Apagar Meta Financeira",
-    "DETAILS": "Detalhes",
-    "INVITES": "Convites",
-
-    "FINANCIAL_GOAL": "META FINANCEIRA",
-    "FINANCIAL_GOALS": "Metas Financeiras",
-
-    "TRANSACTIONS": "Transações",
-    "ADD_TRANSACTION": "Nova Transação",
-
-    "ALL_TRANSACTIONS": "Todas as Transações",
-
-    "COMPLETED": "Completa",
-    "IN_PROGRESS": "Em Progresso",
-    "CANCELED": "Cancelada",
-
-    "TOTAL_GOALS": "Total de Metas",
-    "TOTAL_SAVED": "Total Economizado",
-    "OVERALL_PROGRESS": "Progresso Geral",
-    "ALL": "Todos",
-
-    "LOW": "Baixa",
-    "MEDIUM": "Média",
-    "HIGH": "Alta",
-
-    "NAME": "Nome",
-    "TOTAL_AMOUNT": "Valor Total",
-    "CONTRIBUTED_AMOUNT": "Valor Contribuído",
-    "PRIORITY": "Prioridade",
-    "USERS": "Utilizadores",
-    "CURRENCY": "Moeda",
-    "DUE_DATE": "Data de Fim",
-    "START_DATE": "Data de Início",
-    "STATUS": "Estado",
-    "ACTIONS": "Ações",
-
-    "SEARCH": "Procura",
-    "FILTER_BY": "Filtra por",
-    "SHOWING": "A mostrar",
-    "OF": "de",
-    "THIS": "metas financeiras",
-    "NEXT": "Próximo",
-    "PREVIOUS": "Anterior",
-    "FIRST": "Primeira",
-    "LAST": "Última",
-    "NO_RESULTS": "Sem Resultados",
-    "LOADING": "Carregando",
-
-    "CANCELED_FINANCIAL_GOAL_TITLE": "A cancelar...",
-    "CANCELED_FINANCIAL_GOAL_MESSAGE": "A cancelar meta financeira ...",
-    "CANCEL_FINANCIAL_GOAL_MESSAGE": "Cancelar meta financeira?",
-    "YES_CANCEL": "Sim, cancelar!",
-    "CANCEL": "Cancelar",
-
-    "RESET_FINANCIAL_GOAL_MESSAGE": "Resetar meta financeira?",
-    "RESETED_FINANCIAL_GOAL_TITLE": "A resetar...",
-    "RESETED_FINANCIAL_GOAL_MESSAGE": "A resetar a meta financeira ...",
-    "YES_RESET": "Sim, resetar!",
-
-    "OTHERS_INFORMATION": "Outras Informações",
-    "CREATED_AT": "Criada em",
-
-    "RECENT_TRANSACTIONS": "Transações Recentes",
-    "FINANCIAL_GOAL_DETAILS": "Detalhes da Meta Financeira",
-    "WITHDRAWALS": "Retiradas",
-    "CONTRIBUTIONS": "Contribuições",
-
-    "OVERVIEW": "Visão Geral",
-    "OTHERS": "Outros",
-    "DESCRIPTION": "Descrição",
-    "RESET": "Resetar",
-    "LAST_UPDATE": "Última atualização",
-    "COMPLETE": "Completar",
-    "MISSING_AMOUNT": "Valor em Falta",
-    "COLLECTED_AMOUNT": "Valor Arrecadado",
-    "GOAL_PROGRESS": "Progresso da Meta",
-    "GOAL_COMPLETED": "Meta Conquistada!",
-    "GOAL_COMPLETED_MESSAGE": "Parabéns! Objetivo alcançado com sucesso",
-
-    "MONTHLY_SUMMARY": "Resumo Mensal"
   },
 
   "FINANCIAL_GOAL_TRANSACTIONS": {

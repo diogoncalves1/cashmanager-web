@@ -288,6 +288,104 @@
     "TRY_AGAIN": "Try again"
   },
 
+  "FINANCIAL_GOALS": {
+    "META_TITLE": "Cash Manager | Financial Goals",
+    "META_DESCRIPTION": "Manage your financial goals efficiently with Cash Manager. Track your contributions, withdrawals, and keep your finances organized.",
+
+    "NEW_GOAL": "New Goal",
+    "FINANCIAL_GOALS_TEXT": "Track and manage your savings goals all in one place.",
+
+    "ADD": "Add",
+    "EDIT": "Edit",
+    "DELETE": "Delete Financial Goal",
+    "DETAILS": "Details",
+    "INVITES": "Invites",
+
+    "FINANCIAL_GOAL": "FINANCIAL GOAL",
+    "FINANCIAL_GOALS": "Financial Goals",
+
+    "TRANSACTIONS": "Transactions",
+    "ADD_TRANSACTION": "New Transaction",
+
+    "ALL_TRANSACTIONS": "All Transactions",
+
+    "COMPLETED": "Completed",
+    "IN_PROGRESS": "In Progress",
+    "CANCELED": "Canceled",
+
+    "TOTAL_GOALS": "Total Goals",
+    "TOTAL_SAVED": "Total Saved",
+    "OVERALL_PROGRESS": "Overall Progress",
+    "ALL": "All",
+
+    "LOW": "Low",
+    "MEDIUM": "Medium",
+    "HIGH": "High",
+
+    "NAME": "Name",
+    "TOTAL_AMOUNT": "Total Amount",
+    "CONTRIBUTED_AMOUNT": "Contributed Amount",
+    "PRIORITY": "Priority",
+    "USERS": "Users",
+    "CURRENCY": "Currency",
+    "DUE_DATE": "Due Date",
+    "START_DATE": "Start Date",
+    "STATUS": "Status",
+    "ACTIONS": "Actions",
+
+    "REMAINING": "Remaining",
+    "REMAINING_PLURAL": "Remaining",
+
+    "SORT": "Sort",
+    "SEARCH_FINANCIAL_GOALS": "Search financial goal...",
+
+    "SEARCH": "Search",
+    "FILTER_BY": "Filter by",
+    "SHOWING": "Showing",
+    "OF": "of",
+    "THIS": "financial goals",
+    "NEXT": "Next",
+    "PREVIOUS": "Previous",
+    "FIRST": "First",
+    "LAST": "Last",
+    "NO_RESULTS": "No Results",
+    "LOADING": "Loading",
+
+    "CANCELED_FINANCIAL_GOAL_TITLE": "Canceling...",
+    "CANCELED_FINANCIAL_GOAL_MESSAGE": "Canceling financial goal ...",
+    "CANCEL_FINANCIAL_GOAL_MESSAGE": "Cancel financial goal?",
+    "YES_CANCEL": "Yes, cancel!",
+    "CANCEL": "Cancel",
+
+    "RESET_FINANCIAL_GOAL_MESSAGE": "Reset financial goal?",
+    "RESETED_FINANCIAL_GOAL_TITLE": "Resetting...",
+    "RESETED_FINANCIAL_GOAL_MESSAGE": "Resetting financial goal ...",
+    "YES_RESET": "Yes, reset!",
+
+    "OTHERS_INFORMATION": "Other Information",
+    "CREATED_AT": "Created At",
+
+    "RECENT_TRANSACTIONS": "Recent Transactions",
+    "FINANCIAL_GOAL_DETAILS": "Financial Goal Details",
+    "WITHDRAWALS": "Withdrawals",
+    "CONTRIBUTIONS": "Contributions",
+
+    "OVERVIEW": "Overview",
+    "OTHERS": "Others",
+    "DESCRIPTION": "Description",
+    "RESET": "Reset",
+    "LAST_UPDATE": "Last Update",
+    "COMPLETE": "Complete",
+    "P_COMPLETE": "completed",
+    "MISSING_AMOUNT": "Missing Amount",
+    "COLLECTED_AMOUNT": "Collected Amount",
+    "GOAL_PROGRESS": "Goal Progress",
+    "GOAL_COMPLETED": "Goal Achieved!",
+    "GOAL_COMPLETED_MESSAGE": "Congratulations! Goal successfully reached",
+
+    "MONTHLY_SUMMARY": "Monthly Summary"
+  },
+
   "HOME": {
     "HOME": "Home",
     "MONTHLY_BALANCE": "Monthly Balance",
@@ -349,85 +447,6 @@
     "SETTINGS": "Settings"
   },
 
-  "FINANCIAL_GOALS": {
-    "ADD": "Add",
-    "EDIT": "Edit",
-    "DELETE": "Delete Financial Goal",
-    "DETAILS": "Details",
-
-    "FINANCIAL_GOAL": "FINANCIAL GOAL",
-    "FINANCIAL_GOALS": "Financial Goals",
-
-    "TRANSACTIONS": "Transactions",
-    "ADD_TRANSACTION": "Add Transaction",
-
-    "ALL_TRANSACTIONS": "All Transactions",
-
-    "COMPLETED": "Completed",
-    "IN_PROGRESS": "In Progress",
-    "CANCELED": "Canceled",
-
-    "LOW": "Low",
-    "MEDIUM": "Medium",
-    "HIGH": "High",
-
-    "NAME": "Name",
-    "TOTAL_AMOUNT": "Total Amount",
-    "CONTRIBUTED_AMOUNT": "Contributed Amount",
-    "PRIORITY": "Priority",
-    "STATUS": "Status",
-    "CURRENCY": "Currency",
-    "USERS": "Users",
-    "DUE_DATE": "Due Date",
-    "START_DATE": "Start Date",
-    "ACTIONS": "Actions",
-
-    "SEARCH": "Search",
-    "FILTER_BY": "Filter By",
-    "SHOWING": "Showing",
-    "OF": "of",
-    "THIS": "financial goals",
-    "NEXT": "Next",
-    "PREVIOUS": "Previous",
-    "FIRST": "First",
-    "LAST": "Last",
-    "NO_RESULTS": "No Results",
-    "LOADING": "Loading",
-
-    "CANCELED_FINANCIAL_GOAL_TITLE": "Canceling...",
-    "CANCELED_FINANCIAL_GOAL_MESSAGE": "Canceling financial goal ...",
-    "CANCEL_FINANCIAL_GOAL_MESSAGE": "Cancel financial goal?",
-    "YES_CANCEL": "Yes, cancel!",
-    "CANCEL": "Cancel",
-
-    "RESET_FINANCIAL_GOAL_MESSAGE": "Reset financial goal?",
-    "RESETED_FINANCIAL_GOAL_TITLE": "Resetting...",
-    "RESETED_FINANCIAL_GOAL_MESSAGE": "Resetting financial goal ...",
-    "YES_RESET": "Yes, reset!",
-
-    "OTHERS_INFORMATION": "Others Information",
-    "CREATED_AT": "Created At",
-
-    "RECENT_TRANSACTIONS": "Recent Transactions",
-    "FINANCIAL_GOAL_DETAILS": "Financial Goal Details",
-    "WITHDRAWALS": "Withdrawals",
-    "CONTRIBUTIONS": "Contributions",
-
-    "OVERVIEW": "Overview",
-    "OTHERS": "Others",
-    "DESCRIPTION": "Description",
-    "RESET": "Reset",
-    "LAST_UPDATE": "Last Update",
-    "COMPLETE": "Complete",
-    "MISSING_AMOUNT": "Missing Amount",
-    "COLLECTED_AMOUNT": "Collected Amount",
-    "GOAL_PROGRESS": "Goal Progress",
-    "GOAL_COMPLETED": "Goal Completed!",
-    "GOAL_COMPLETED_MESSAGE": "Congratulations! Goal successfully achieved",
-
-    "MONTHLY_SUMMARY": "Monthly Summary",
-    "INVITES": "Invites"
-  },
   "FINANCIAL_GOAL_TRANSACTIONS": {
     "ADD": "Add",
     "EDIT": "Edit",
