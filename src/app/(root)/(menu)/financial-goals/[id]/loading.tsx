@@ -1,4 +1,15 @@
-import Skeleton from "@/components/ui/skeleton/Skeleton";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("FINANCIAL_GOALS");
+
+  return {
+    title: t("META_TITLE"),
+    description: t("META_DESCRIPTION"),
+  };
+}
 
 export default function Loading() {
   return (

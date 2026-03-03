@@ -23,7 +23,7 @@ import {
 import { Input } from "@/components/ui/input";
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
-import Badge from "@/components/ui/badge/Badge";
+import { Badge } from "@/components/ui/badge";
 import { AppLink } from "@/components/ui/button/AppLink";
 import { useTranslations } from "next-intl";
 import { DataTablePagination } from "@/components/tables/DataTablePagination";
@@ -198,11 +198,7 @@ export function DebtPaymentsDataTable({
         accessorKey: "status",
         header: "Status",
         cell: ({ row }) => (
-          <Badge
-            type="rounded"
-            size="sm"
-            color={row.original.status == "pending" ? "warning" : "success"}
-          >
+          <Badge variant="outline" color={row.original.status == "pending" ? "warning" : "success"}>
             <Dot className="size-4" strokeWidth={6} />
             {row.original.statusTranslated}
           </Badge>
@@ -390,7 +386,7 @@ export function DebtPaymentsDataTable({
         </div>
       </div>
 
-      <DataTable table={table} columns={columns} isLoading={isLoading} />
+      <DataTable table={table} columns={columns} isLoading={isLoading} nCols={6} />
 
       <DataTablePagination
         table={table}

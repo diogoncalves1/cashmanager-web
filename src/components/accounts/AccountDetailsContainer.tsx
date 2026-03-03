@@ -344,7 +344,7 @@ const AccountDetailsContainer = ({ id }: { id: string }) => {
                 {
                   label: t("CURRENT_BALANCE"),
                   code: "current_balance",
-                  value: account.balanceFormated,
+                  value: account.balanceFormatedWithoutSymbol,
                   trend: pageData.extraData?.balanceVsLastMonth || 0,
                   color: isNeg ? "text-destructive" : "text-foreground",
                   trendLabel: t("VS_LAST_MONTH"),
@@ -418,7 +418,7 @@ const AccountDetailsContainer = ({ id }: { id: string }) => {
                 annualy: [],
               }
             }
-            balanceFormated={account.balanceFormated}
+            balanceFormated={account.balanceFormatedWithoutSymbol}
             balance={account.balance}
             isLoading={isLoading}
           />

@@ -14,23 +14,10 @@ type PaginationState = {
 
 export async function onDeleteFinancialGoal(
   id: string,
-  t: ReturnType<typeof useTranslations>,
   table?: TableInstance,
   pagination?: PaginationState,
   mutate?: () => void
 ) {
-  // const result = await Swal.fire({
-  //   title: "Tem certeza?",
-  //   text: "Você não poderá reverter isso!",
-  //   icon: "warning",
-  //   showCancelButton: true,
-  //   confirmButtonColor: "#3085d6",
-  //   cancelButtonColor: "#d33",
-  //   confirmButtonText: "Sim, deletar!",
-  //   cancelButtonText: "Cancelar",
-  // });
-  // if (result.isConfirmed) {
-  LoadingToast({ title: "Excluindo...", message: "Removendo meta financeira ..." });
   try {
     const res = await fetch(`/api/financial-goals/${id}`, {
       method: "DELETE",
@@ -47,19 +34,14 @@ export async function onDeleteFinancialGoal(
       if (table) {
         if (table.getRowCount() == 0 && pagination) pagination.pageIndex--;
       }
-      SwalToast({ message: data.message, icon: "success" });
-      return 1;
     }
+    return { message: data.message, success: true };
   } catch (err: unknown) {
     if (err instanceof Error) {
-      SwalToast({ message: err.message, icon: "error" });
-    } else {
-      SwalToast({ message: String(err), icon: "error" });
+      return { message: err.message, success: false };
     }
-    return 0;
+    return { message: String(err), success: false };
   }
-  // }
-  // return 0;
 }
 
 export async function onCancelFinancialGoal(

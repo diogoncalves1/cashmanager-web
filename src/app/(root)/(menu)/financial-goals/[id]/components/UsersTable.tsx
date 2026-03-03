@@ -25,6 +25,7 @@ import ChangeMemberRoleDialog from "@/components/invitations/ChangeMemberRoleDia
 import RemoveMemberDialog from "@/components/invitations/RemoveMemberDialog";
 import InviteMemberButton from "@/components/ui/button/InviteMemberButton";
 import { useAuth } from "@/context/AuthContext";
+import { useTranslations } from "next-intl";
 
 type Props = {
   users?: UserContribution[];
@@ -33,19 +34,20 @@ type Props = {
 };
 
 const UsersTable = ({ users, id, setLoad }: Props) => {
+  const t = useTranslations("FINANCIAL_GOALS");
   const [removeMember, setRemoveMember] = useState(false);
   const [changeRole, setChageRole] = useState(false);
   const [selectedId, setSelectedId] = useState<string>("");
   const { user: userSelf } = useAuth();
 
-  console.log(userSelf);
-
   return (
     <div className="rounded-2xl bg-card border border-border shadow-sm overflow-hidden">
       <div className="p-5 border-b border-border flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-lg font-semibold text-foreground">Contributors</h2>
-          <p className="text-sm text-muted-foreground">{users?.length} member(s)</p>
+          <h2 className="text-lg font-semibold text-foreground">{t("CONTRIBUTORS")}</h2>
+          <p className="text-sm text-muted-foreground lowercase">
+            {users?.length} {(users?.length ?? 0) > 1 ? t("USERS") : t("USER")}
+          </p>
         </div>
 
         <InviteMemberButton type="financial-goals" id={id} />
@@ -53,9 +55,9 @@ const UsersTable = ({ users, id, setLoad }: Props) => {
       <Table>
         <TableHeader>
           <TableRow className="hover:bg-transparent">
-            <TableHead>Member</TableHead>
-            <TableHead>Role</TableHead>
-            <TableHead>Contributions</TableHead>
+            <TableHead>{t("MEMBER")}</TableHead>
+            <TableHead>{t("ROLE")}</TableHead>
+            <TableHead>{t("CONTRIBUTIONS")}</TableHead>
             <TableHead className="w-10"></TableHead>
           </TableRow>
         </TableHeader>
@@ -104,7 +106,7 @@ const UsersTable = ({ users, id, setLoad }: Props) => {
                           setChageRole(true);
                         }}
                       >
-                        Change Role
+                        {t("CHANGE_ROLE")}
                       </DropdownMenuItem>
                       <DropdownMenuSeparator />
                       <DropdownMenuItem
@@ -114,7 +116,7 @@ const UsersTable = ({ users, id, setLoad }: Props) => {
                           setRemoveMember(true);
                         }}
                       >
-                        Remove Member
+                        {t("REMOVE_MEMBER")}
                       </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>

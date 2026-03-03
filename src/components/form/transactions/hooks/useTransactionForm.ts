@@ -86,10 +86,12 @@ export function useTransactionForm(id?: string) {
         status: tx.status,
         description: tx.description || "",
       });
-
-      updateDateLimits(tx.status);
     }
-  }, [transactionData, transactionError, router, updateDateLimits]);
+  }, [transactionData, transactionError, router]);
+
+  useEffect(() => {
+    updateDateLimits(formData.status);
+  }, [formData.status, updateDateLimits]);
 
   type SubmitResult = {
     success: boolean;

@@ -246,7 +246,7 @@ const FormTransactionDialog = ({
               <TransactionDatePicker
                 dateLimits={dateLimits}
                 date={formData.date}
-                onChangeDate={(newDate: string) => setFormData((p) => ({ ...p, date: newDate }))}
+                onChangeDate={(newDate) => setFormData((p) => ({ ...p, date: newDate }))}
               />
             </div>
 

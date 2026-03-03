@@ -80,7 +80,7 @@ export function BalanceOverTimeChart({
 
       let lastData = {
         amount: balance + Number(transactionsSum.toFixed(2)),
-        amountFormated: `${formatCurrency(balance + Number(transactionsSum.toFixed(2)), balanceFormated ?? "$ 0")}`,
+        amountFormated: `${formatCurrency(balance + Number(transactionsSum.toFixed(2)), balanceFormated ?? "$ 0", false, 2)}`,
       };
       const currentData = chartsData[type].find((entry) => entry.date === dateStr);
       if (currentData) {
@@ -93,7 +93,7 @@ export function BalanceOverTimeChart({
           ? lastChartData
           : {
               amount: balance + Number(transactionsSum.toFixed(2)),
-              amountFormated: `${formatCurrency(balance + Number(transactionsSum.toFixed(2)), balanceFormated ?? "$ 0")}`,
+              amountFormated: `${formatCurrency(balance + Number(transactionsSum.toFixed(2)), balanceFormated ?? "$ 0", false, 2)}`,
             };
       } else {
         chartsData[type].unshift({
