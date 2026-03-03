@@ -1,4 +1,13 @@
-import { useState, useEffect, useRef } from "react";
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { Invitation, InvitationStatus, InvitationType } from "@/models/invitation";
+import { useInView } from "react-intersection-observer";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { useTranslations } from "next-intl";
+import { InvitationCard } from "@/components/invitations/InvitationCard";
+import { InvitationEmpty } from "@/components/invitations/InvitationEmpty";
+import { onAcceptInvite, onRevokeInvite } from "@/services/invitations/invitations.service";
 import {
   Select,
   SelectContent,
@@ -6,13 +15,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Invitation, InvitationStatus } from "@/models/invitation";
-import { useInView } from "react-intersection-observer";
-import { useInfiniteQuery } from "@tanstack/react-query";
-import { useTranslations } from "next-intl";
-import { InvitationCard } from "@/components/invitations/InvitationCard";
-import { InvitationEmpty } from "@/components/invitations/InvitationEmpty";
-import { onAcceptInvite, onRevokeInvite } from "@/services/invitations/invitations.service";
+import LoadingToast from "../swal/LoadingToast";
+import { useToast } from "@/hooks/useToast";
 
 interface Page {
   data: Invitation[];
@@ -22,20 +26,22 @@ interface Page {
 type Props = {
   setLoad: React.Dispatch<React.SetStateAction<boolean>>;
   load: boolean;
+  type: InvitationType;
 };
 
 type FetchInvitedParams = {
   pageParam?: number | unknown;
-  status?: string;
+  status: InvitationStatus | "all";
 };
 
-const ReceivedInvitesList = ({ setLoad, load }: Props) => {
-  const t = useTranslations("INVITATION");
+const ReceivedInvitesList = ({ setLoad, load, type }: Props) => {
+  const t = useTranslations("INVITE_MEMBER");
+  const { toast } = useToast();
   const [receivedFilter, setReceivedFilter] = useState<InvitationStatus | "all">("all");
 
   const fetchReceived = async ({ pageParam = 1, status }: FetchInvitedParams): Promise<Page> => {
     const response = await fetch(
-      `/api/accounts/received-invitations?page=${pageParam}&size=10&status=${status}`,
+      `/api/${type}/received-invitations?page=${pageParam}&size=10&status=${status}`,
       {
         method: "GET",
         credentials: "include",
@@ -44,7 +50,7 @@ const ReceivedInvitesList = ({ setLoad, load }: Props) => {
     );
 
     if (!response.ok) {
-      throw new Error("Erro ao carregar atividade");
+      throw new Error("Erro ao carregar pedidos");
     }
 
     return response.json();
@@ -57,22 +63,15 @@ const ReceivedInvitesList = ({ setLoad, load }: Props) => {
 
   const prevInViewRef = useRef(false);
 
-  const {
-    data,
-    error,
-    fetchNextPage,
-    refetch,
-    hasNextPage,
-    isFetchingNextPage,
-    isLoading,
-    isError,
-  } = useInfiniteQuery<Page, Error>({
-    queryKey: ["received-invites-accounts", receivedFilter],
-    queryFn: ({ pageParam = 1 }) => fetchReceived({ pageParam: pageParam, status: receivedFilter }),
-    initialPageParam: 1,
-    getNextPageParam: (lastPage) => lastPage.nextPage ?? undefined,
-    staleTime: 1000 * 60 * 5,
-  });
+  const { data, fetchNextPage, refetch, hasNextPage, isFetchingNextPage, isLoading, isError } =
+    useInfiniteQuery<Page, Error>({
+      queryKey: [`received-invites-${type}`, receivedFilter],
+      queryFn: ({ pageParam = 1 }) =>
+        fetchReceived({ pageParam: pageParam, status: receivedFilter }),
+      initialPageParam: 1,
+      getNextPageParam: (lastPage) => lastPage.nextPage ?? undefined,
+      staleTime: 1000 * 60 * 5,
+    });
 
   useEffect(() => {
     if (inView && !prevInViewRef.current && hasNextPage) {
@@ -87,17 +86,24 @@ const ReceivedInvitesList = ({ setLoad, load }: Props) => {
   }, [load, refetch]);
 
   const handleAccept = async (id: string) => {
-    await onAcceptInvite(id, "accounts", () => {
+    const loadingT = await LoadingToast({ title: t("ACCEPTING"), message: t("ACCEPTING_TEXT") });
+    const res = await onAcceptInvite(id, type, () => {
       setLoad(true);
       refetch();
     });
+    loadingT.close();
+
+    toast({ description: res.message });
   };
 
   const handleReject = async (id: string) => {
-    await onRevokeInvite(id, "accounts", () => {
+    const loadingT = await LoadingToast({ title: t("REJECTING"), message: t("REJECTING_TEXT") });
+    const res = await onRevokeInvite(id, type, () => {
       setLoad(true);
       refetch();
     });
+    loadingT.close();
+    toast({ description: res.message });
   };
 
   if (isLoading) {
@@ -113,7 +119,7 @@ const ReceivedInvitesList = ({ setLoad, load }: Props) => {
   if (isError) {
     return (
       <div className="text-center py-12 text-red-600">
-        Error: {error.message}
+        {t("ERROR")}:
         <button onClick={() => window.location.reload()} className="ml-3 underline">
           {t("TRY_AGAIN")}
         </button>
@@ -131,26 +137,25 @@ const ReceivedInvitesList = ({ setLoad, load }: Props) => {
           onValueChange={(v) => setReceivedFilter(v as InvitationStatus | "all")}
         >
           <SelectTrigger className="w-[160px]">
-            <SelectValue placeholder="Filter status" />
+            <SelectValue placeholder={t("FILTER_STATUS")} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">All Status</SelectItem>
-            <SelectItem value="pending">Pending</SelectItem>
-            <SelectItem value="accepted">Accepted</SelectItem>
-            <SelectItem value="revoked">Rejected</SelectItem>
+            <SelectItem value="all">{t("ALL_STATUS")}</SelectItem>
+            <SelectItem value="pending">{t("PENDING")}</SelectItem>
+            <SelectItem value="accepted">{t("ACCEPTED")}</SelectItem>
+            <SelectItem value="revoked">{t("REVOKED")}</SelectItem>
           </SelectContent>
         </Select>
       </div>
-
       {receivedInvitations.length === 0 ? (
-        <InvitationEmpty direction="sent" />
+        <InvitationEmpty direction="received" />
       ) : (
         receivedInvitations.map((invitation) => (
           <InvitationCard
             key={invitation.id}
             invitation={invitation}
             direction="received"
-            type="financial-goals"
+            type={type}
             onAccept={handleAccept}
             onReject={handleReject}
           />

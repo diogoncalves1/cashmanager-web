@@ -2,16 +2,17 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
 import { Send, Mail, Clock, Timer } from "lucide-react";
-import { useInvitationStats } from "../hooks/useInvitationStats";
+import { useInvitationStats } from "@/hooks/useInvitationStats";
 import InvitationContainerLoading from "./InvitationContainerLoading";
 import InvitesList from "./InvitesList";
 import ReceivedInvitesList from "./ReceivedInvitesList";
 import InviteMemberButton from "@/components/ui/button/InviteMemberButton";
+import { useTranslations } from "next-intl";
 
-const InvitationContainer = () => {
-  const { stats, loading, setLoad, load } = useInvitationStats();
+const InvitationContainer = ({ type }: { type: "accounts" | "debts" | "financial-goals" }) => {
+  const { stats, loading, setLoad, load } = useInvitationStats(type);
+  const t = useTranslations("INVITE_MEMBER");
 
   if (loading) return <InvitationContainerLoading />;
 
@@ -24,13 +25,13 @@ const InvitationContainer = () => {
               {/* Page header */}
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                  <h1 className="text-3xl font-bold tracking-tight md:text-4xl">Invitations</h1>
-                  <p className="text-muted-foreground mt-1">
-                    Manage your sent and received invitations.
-                  </p>
+                  <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
+                    {t("INVITATIONS")}
+                  </h1>
+                  <p className="text-muted-foreground mt-1">{t("INVITATIONS_TEXT")}</p>
                 </div>
                 <InviteMemberButton
-                  type="accounts"
+                  type={type}
                   mutate={() => {
                     setLoad(true);
                   }}
@@ -45,7 +46,7 @@ const InvitationContainer = () => {
                         <Send className="size-5 text-primary" />
                       </div>
                       <div>
-                        <p className="text-sm text-muted-foreground">Sent</p>
+                        <p className="text-sm text-muted-foreground">{t("SENT")}</p>
                         <p className="text-2xl font-bold">{stats.sentInvites}</p>
                       </div>
                     </CardContent>
@@ -56,7 +57,7 @@ const InvitationContainer = () => {
                         <Mail className="size-5 text-primary" />
                       </div>
                       <div>
-                        <p className="text-sm text-muted-foreground">Received</p>
+                        <p className="text-sm text-muted-foreground">{t("RECEIVED")}</p>
                         <p className="text-2xl font-bold">{stats.receivedInvites}</p>
                       </div>
                     </CardContent>
@@ -67,7 +68,7 @@ const InvitationContainer = () => {
                         <Clock className="size-5 text-warning" />
                       </div>
                       <div>
-                        <p className="text-sm text-muted-foreground">Pending Sent</p>
+                        <p className="text-sm text-muted-foreground">{t("PENDING_SENT")}</p>
                         <p className="text-2xl font-bold">{stats.pendingInvites}</p>
                       </div>
                     </CardContent>
@@ -78,7 +79,7 @@ const InvitationContainer = () => {
                         <Timer className="size-5 text-primary" />
                       </div>
                       <div>
-                        <p className="text-sm text-muted-foreground">Awaiting Response</p>
+                        <p className="text-sm text-muted-foreground">{t("AWAITING_RESPONSE")}</p>
                         <p className="text-2xl font-bold">{stats.awaitingInvites}</p>
                       </div>
                     </CardContent>
@@ -89,7 +90,7 @@ const InvitationContainer = () => {
                 <Tabs defaultValue="received" className="space-y-6">
                   <TabsList>
                     <TabsTrigger value="received" className="gap-2">
-                      Received
+                      {t("RECEIVED")}
                       {stats.awaitingInvites > 0 && (
                         <span className="flex size-5 items-center justify-center rounded-full bg-primary/10 text-xs text-primary">
                           {stats.awaitingInvites}
@@ -97,7 +98,7 @@ const InvitationContainer = () => {
                       )}
                     </TabsTrigger>
                     <TabsTrigger value="sent" className="gap-2">
-                      Sent
+                      {t("SENT")}
                       {stats.pendingInvites > 0 && (
                         <span className="flex size-5 items-center justify-center rounded-full bg-primary/10 text-xs text-primary">
                           {stats.pendingInvites}
@@ -107,11 +108,11 @@ const InvitationContainer = () => {
                   </TabsList>
 
                   <TabsContent value="received">
-                    <ReceivedInvitesList setLoad={setLoad} load={load} />
+                    <ReceivedInvitesList type={type} setLoad={setLoad} load={load} />
                   </TabsContent>
 
                   <TabsContent value="sent">
-                    <InvitesList setLoad={setLoad} load={load} />
+                    <InvitesList type={type} setLoad={setLoad} load={load} />
                   </TabsContent>
                 </Tabs>
               </div>

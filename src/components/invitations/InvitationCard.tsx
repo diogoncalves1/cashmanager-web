@@ -53,6 +53,7 @@ export function InvitationCard({
   const StatusIcon = status.icon;
   const roleInfo = roleConfig[(invitation.sharedRole?.code as "viewer" | "admin") ?? "viewer"];
   const RoleIcon = roleInfo.icon;
+  const t = useTranslations("INVITE_MEMBER");
 
   const displayName = direction === "sent" ? invitation.receiver.name : invitation.sender.name;
   const initials = displayName
@@ -116,7 +117,7 @@ export function InvitationCard({
                 <>
                   <Button size="sm" onClick={handleAccept} className="gap-1.5">
                     <Check className="size-3.5" />
-                    Accept
+                    {t("ACCEPT")}
                   </Button>
                   <Button
                     size="sm"
@@ -125,7 +126,7 @@ export function InvitationCard({
                     className="gap-1.5 bg-transparent"
                   >
                     <X className="size-3.5" />
-                    Reject
+                    {t("REJECT")}
                   </Button>
                 </>
               ) : (
@@ -138,7 +139,7 @@ export function InvitationCard({
                   hover:bg-error-50 bg-transparent"
                 >
                   <Trash2 className="size-3.5" />
-                  Cancel
+                  {t("CANCEL")}
                 </Button>
               )}
             </div>

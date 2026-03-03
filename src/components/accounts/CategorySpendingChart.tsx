@@ -14,7 +14,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { CategorySummary } from "@/components/charts/accounts/CategoryExpensesChart";
 import { Badge } from "@/components/ui/badge";
-import { ChevronDown, ChevronUp, Filter, BarChart3, Circle } from "lucide-react";
+import { ChevronDown, ChevronUp, BarChart3, Circle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { iconMap } from "@/models/category";
 import { useTranslations } from "next-intl";

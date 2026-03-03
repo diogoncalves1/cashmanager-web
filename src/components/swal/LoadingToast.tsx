@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 type Props = { title: string; message: string };
 
 export default function LoadingToast({ title, message }: Props) {
-  const swalRef = Swal.fire({
+  Swal.fire({
     title: title,
     html: `
       <div class="flex flex-col items-center py-6">
@@ -21,5 +21,5 @@ export default function LoadingToast({ title, message }: Props) {
     allowEscapeKey: false,
   });
 
-  return swalRef;
+  return { close: () => Swal.close() };
 }
