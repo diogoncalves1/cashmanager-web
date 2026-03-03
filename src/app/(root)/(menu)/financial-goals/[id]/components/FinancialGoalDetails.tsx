@@ -25,7 +25,9 @@ import { onCancelFinancialGoal, onResetFinancialGoal } from "@/services/financia
 import {
   CheckCircle2,
   DoorOpen,
+  Edit,
   EllipsisVertical,
+  PauseCircle,
   PlayCircle,
   Plus,
   Trash2Icon,
@@ -34,7 +36,6 @@ import InviteMemberButton from "@/components/ui/button/InviteMemberButton";
 import ActivityTimeline from "@/components/ui/timeline/ActivityTimeline";
 import UsersTable from "./UsersTable";
 import { useAuth } from "@/context/AuthContext";
-import { onLeaveSuject } from "@/services/invitations/invitations.service";
 import LeaveSubjectDialog from "@/components/invitations/LeaveSubjectDialog";
 
 type FinancialGoalDetailsProps = {
@@ -43,7 +44,7 @@ type FinancialGoalDetailsProps = {
 
 export default function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) {
   const monthsT = useTranslations("MONTHS");
-  const t = useTranslations("FINANCIAL_GOAL");
+  const t = useTranslations("FINANCIAL_GOALS");
   const { user } = useAuth();
 
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
@@ -101,12 +102,12 @@ export default function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) 
                 translate={financialGoal.priorityTranslated}
               />
               <span className="text-muted-foreground">
-                Target: {formatDate(financialGoal.dueDate, monthsT)}
+                {t("TARGET")}: {formatDate(financialGoal.dueDate, monthsT)}
               </span>
               <span className="text-muted-foreground">
                 {daysRemaining >= 0
-                  ? `${daysRemaining} days remaining`
-                  : `${-daysRemaining} days passed`}
+                  ? `${daysRemaining} ${t("DAYS_REMAINING")}`
+                  : `${-daysRemaining} ${t("DAYS_PASSED")}`}
               </span>
             </div>
           </div>
@@ -123,20 +124,8 @@ export default function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) 
                 {financialGoal.actions?.edit && (
                   <Link href={`${id}/edit`}>
                     <DropdownMenuItem>
-                      <svg
-                        className="w-4 h-4 mr-2"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                        />
-                      </svg>
-                      Edit Goal
+                      <Edit />
+                      {t("EDIT_GOAL")}
                     </DropdownMenuItem>
                   </Link>
                 )}
@@ -144,20 +133,8 @@ export default function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) 
                   <DropdownMenuItem
                     onClick={() => onCancelFinancialGoal(id, t, () => setUpdate(true))}
                   >
-                    <svg
-                      className="w-4 h-4 mr-2"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                    Cancel Goal
+                    <PauseCircle />
+                    {t("CANCEL_GOAL")}
                   </DropdownMenuItem>
                 )}
                 {financialGoal.status != "in_progress" && financialGoal.actions?.edit && (
@@ -165,7 +142,7 @@ export default function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) 
                     onClick={() => onResetFinancialGoal(id, t, () => setUpdate(true))}
                   >
                     <PlayCircle className="size-4 mr-2" />
-                    Reset Goal
+                    {t("RESET_GOAL")}
                   </DropdownMenuItem>
                 )}
 
@@ -174,7 +151,7 @@ export default function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) 
                   financialGoal.status == "in_progress" && (
                     <DropdownMenuItem onClick={() => setIsConfirmOpen(true)}>
                       <CheckCircle2 className="size-4 mr-2" />
-                      Complete Goal
+                      {t("COMPLETE_GOAL")}
                     </DropdownMenuItem>
                   )}
 
@@ -188,29 +165,27 @@ export default function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) 
                     }}
                   >
                     <DoorOpen className="size-4 mr-2" />
-                    Leave Goal
+                    {t("LEAVE_GOAL")}
                   </DropdownMenuItem>
                 )}
                 {financialGoal.actions?.destroy && (
                   <DropdownMenuItem variant="destructive" onClick={() => setIsDeleteOpen(true)}>
                     <Trash2Icon className="size-4 mr-2" />
-                    Delete Goal
+                    {t("DELETE_GOAL")}
                   </DropdownMenuItem>
                 )}
               </DropdownMenuContent>
             </DropdownMenu>
+            {financialGoal.actions?.manage && (
+              <InviteMemberButton isLigth={true} id={id} type="financial-goals" />
+            )}
 
-            <InviteMemberButton isLigth={true} id={id} type="financial-goals" />
-
-            <AppLink path="/financial-goal-transactions/create" size="sm">
-              <Plus
-                className="w-4 h-4 sm:mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              />
-              <span className="hidden sm:inline">Add Transaction</span>
-            </AppLink>
+            {financialGoal.actions?.createTransactions && (
+              <AppLink path="/financial-goal-transactions/create" size="sm">
+                <Plus className="w-4 h-4 sm:mr-2" />
+                <span className="hidden sm:inline">{t("ADD_TRANSACTION")}</span>
+              </AppLink>
+            )}
           </div>
         </div>
 
@@ -244,7 +219,9 @@ export default function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) 
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
                   <span className="text-2xl font-bold text-foreground">{progress}%</span>
-                  <span className="text-xs text-muted-foreground">Complete</span>
+                  <span className="text-xs text-muted-foreground capitalize">
+                    {t("P_COMPLETE")}
+                  </span>
                 </div>
               </div>
             </div>
@@ -257,15 +234,15 @@ export default function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) 
                     {financialGoal.contributedAmountFormated}
                   </span>
                   <span className="text-muted-foreground ml-2">
-                    of {financialGoal.totalAmountFormated}
+                    {t("OF")} {financialGoal.totalAmountFormated}
                   </span>
                 </div>
                 {financialGoal.missingAmount > 0 ? (
                   <span className="text-accent font-medium">
-                    {financialGoal.missingAmountFormated} to go
+                    {financialGoal.missingAmountFormated} {t("TO_FINISH")}
                   </span>
                 ) : (
-                  <span className="text-accent font-medium">Completed</span>
+                  <span className="text-accent font-medium">{t("COMPLETED")}</span>
                 )}
               </div>
               <div className="h-3 bg-muted rounded-full overflow-hidden">
@@ -284,14 +261,16 @@ export default function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) 
         {/* Metrics Cards */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           <div className="p-5 rounded-xl bg-card border border-border shadow-sm">
-            <div className="text-xs text-muted-foreground uppercase tracking-wide mb-2">Target</div>
+            <div className="text-xs text-muted-foreground uppercase tracking-wide mb-2">
+              {t("TARGET")}
+            </div>
             <div className="text-xl font-bold text-foreground">
               {financialGoal.totalAmountFormated}
             </div>
           </div>
           <div className="p-5 rounded-xl bg-card border border-border shadow-sm">
             <div className="text-xs text-muted-foreground uppercase tracking-wide mb-2">
-              Contributed
+              {t("CONTRIBUTED")}
             </div>
             <div className="text-xl font-bold text-accent">
               {financialGoal.contributedAmountFormated}
@@ -299,13 +278,13 @@ export default function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) 
           </div>
           <div className="p-5 rounded-xl bg-card border border-border shadow-sm">
             <div className="text-xs text-muted-foreground uppercase tracking-wide mb-2">
-              Currency
+              {t("CURRENCY")}
             </div>
             <div className="text-xl font-bold text-foreground">{financialGoal.currencyCode}</div>
           </div>
           <div className="p-5 rounded-xl bg-card border border-border shadow-sm">
             <div className="text-xs text-muted-foreground uppercase tracking-wide mb-2">
-              Contributors
+              {t("CONTRIBUTORS")}
             </div>
             <div className="text-xl font-bold text-foreground">{financialGoal.users?.length}</div>
           </div>
@@ -315,13 +294,13 @@ export default function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) 
         <Tabs defaultValue="transactions" className="space-y-6">
           <TabsList className="bg-secondary/50 p-1">
             <TabsTrigger value="transactions" className="data-[state=active]:bg-card">
-              Transactions
+              {t("TRANSACTIONS")}
             </TabsTrigger>
             <TabsTrigger value="contributors" className="data-[state=active]:bg-card">
-              Contributors
+              {t("CONTRIBUTORS")}
             </TabsTrigger>
             <TabsTrigger value="activity" className="data-[state=active]:bg-card">
-              Activity
+              {t("ACTIVITY")}
             </TabsTrigger>
           </TabsList>
 

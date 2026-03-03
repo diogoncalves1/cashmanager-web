@@ -23,7 +23,7 @@ export default async function FinancialGoalEditPage({ params }: Props) {
   return (
     <>
       <PageBreadcrumb
-        pageTitle={t("FINANCIAL_GOAL")}
+        pageTitle={t("FINANCIAL_GOALS")}
         breadcrumb={[
           { title: t("FINANCIAL_GOALS"), path: "/financial-goals" },
           { title: t("EDIT") },

@@ -12,6 +12,8 @@ import {
 import { onDeleteFinancialGoal } from "@/services/financial-goals/service";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
+import { useToast } from "@/hooks/useToast";
+import { useState } from "react";
 
 type Props = {
   isDeleteOpen: boolean;
@@ -27,17 +29,16 @@ const DeleteFinancialGoalDialog = ({
   goBack = false,
 }: Props) => {
   const router = useRouter();
+  const { toast } = useToast();
   const t = useTranslations("FINANCIAL_GOALS");
+  const [isSubmiting, setIsSubmiting] = useState(false);
 
   return (
     <Dialog open={isDeleteOpen} onOpenChange={setIsDeleteOpen}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Delete Goal</DialogTitle>
-          <DialogDescription>
-            Are you sure you want to delete this goal? This action cannot be undone and all
-            transaction history will be lost.
-          </DialogDescription>
+          <DialogTitle>{t("DELETE_GOAL")}</DialogTitle>
+          <DialogDescription>{t("DELETE_GOAL_TEXT")}</DialogDescription>
         </DialogHeader>
         <DialogFooter>
           <Button
@@ -45,18 +46,24 @@ const DeleteFinancialGoalDialog = ({
             onClick={() => setIsDeleteOpen(false)}
             className="bg-transparent"
           >
-            Cancel
+            {t("CANCEL")}
           </Button>
           <Button
             variant="destructive"
+            disabled={isSubmiting}
             onClick={async () => {
+              setIsSubmiting(true);
+              const res = await onDeleteFinancialGoal(selectedId);
+
               setIsDeleteOpen(false);
-              if ((await onDeleteFinancialGoal(selectedId, t)) && goBack) {
+              setIsSubmiting(false);
+              toast({ description: res.message });
+              if (res.success && goBack) {
                 router.push("/financial-goals");
               }
             }}
           >
-            Delete Goal
+            {isSubmiting ? t("DELETING_GOAL") : t("DELETE_GOAL")}
           </Button>
         </DialogFooter>
       </DialogContent>

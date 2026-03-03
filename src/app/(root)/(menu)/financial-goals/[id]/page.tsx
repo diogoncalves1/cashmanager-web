@@ -4,10 +4,14 @@ import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import { getTranslations } from "next-intl/server";
 import FinancialGoalDetails from "./components/FinancialGoalDetails";
 
-export const metadata: Metadata = {
-  title: "Cash Manager | Financial Goals",
-  description: "This is Next.js Home for TailAdmin Dashboard Template",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("FINANCIAL_GOALS");
+
+  return {
+    title: t("META_TITLE"),
+    description: t("META_DESCRIPTION"),
+  };
+}
 
 type FinancialGoalPageParams = {
   params: Promise<{ id: string }>;
@@ -19,7 +23,7 @@ export default async function FinancialGoalPage({ params }: FinancialGoalPagePar
   return (
     <>
       <PageBreadcrumb
-        pageTitle={t("FINANCIAL_GOAL")}
+        pageTitle={t("FINANCIAL_GOALS")}
         breadcrumb={[
           { title: t("FINANCIAL_GOALS"), path: "/financial-goals" },
           { title: t("DETAILS") },

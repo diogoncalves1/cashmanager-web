@@ -208,8 +208,8 @@ export function FormAccountDialog({
             <Button type="submit" disabled={isSubmitting}>
               {id
                 ? isSubmitting
-                  ? t("SAVE_CHANGES")
-                  : t("SAVING")
+                  ? t("SAVING")
+                  : t("SAVE_CHANGES")
                 : isSubmitting
                   ? t("CREATING_ACCOUNT")
                   : t("CREATE_ACCOUNT")}

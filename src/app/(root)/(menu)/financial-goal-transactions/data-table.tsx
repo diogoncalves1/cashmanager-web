@@ -24,7 +24,7 @@ import { Input } from "@/components/ui/input";
 
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
-import Badge from "@/components/ui/badge/Badge";
+import { Badge } from "@/components/ui/badge";
 import { AppLink } from "@/components/ui/button/AppLink";
 import { useTranslations } from "next-intl";
 import { DataTablePagination } from "@/components/tables/DataTablePagination";
@@ -161,7 +161,7 @@ export function FinancialGoalTransactionsDataTable({
     () => [
       {
         accessorKey: "type",
-        header: () => "Type",
+        header: () => t("TYPE"),
         cell: ({ row }) => {
           const tx = row.original;
 
@@ -212,7 +212,7 @@ export function FinancialGoalTransactionsDataTable({
         ? [
             {
               accessorKey: "user",
-              header: "User",
+              header: t("USER"),
               cell: ({ row }) => (
                 <div className="flex items-center gap-2">
                   <Avatar className="w-6 h-6">
@@ -254,20 +254,16 @@ export function FinancialGoalTransactionsDataTable({
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
-            Date <ArrowUpDown className="ml-2 h-4 w-4" />
+            {t("DATE")} <ArrowUpDown className="ml-2 h-4 w-4" />
           </Button>
         ),
         cell: ({ row }) => formatDate(row.original.date, monthsT),
       },
       {
         accessorKey: "status",
-        header: "Status",
+        header: t("STATUS"),
         cell: ({ row }) => (
-          <Badge
-            type="rounded"
-            size="sm"
-            color={row.original.status == "pending" ? "warning" : "success"}
-          >
+          <Badge color={row.original.status == "pending" ? "warning" : "success"}>
             <Dot className="size-4" strokeWidth={6} />
             {row.original.statusTranslated}
           </Badge>
@@ -280,7 +276,7 @@ export function FinancialGoalTransactionsDataTable({
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
-            Amount <ArrowUpDown className="ml-2 h-4 w-4" />
+            {t("AMOUNT")} <ArrowUpDown className="ml-2 h-4 w-4" />
           </Button>
         ),
         cell: ({ row }) => {
@@ -334,7 +330,7 @@ export function FinancialGoalTransactionsDataTable({
                         setIsConfirmOpen(true);
                       }}
                     >
-                      Confirmar Transação
+                      {t("CONFIRM_TRANSACTION")}
                     </DropdownMenuItem>
                   )}
                   {transaction.actions?.view && (
@@ -355,7 +351,7 @@ export function FinancialGoalTransactionsDataTable({
                         setIsEditGoalOpen(true);
                       }}
                     >
-                      Edit
+                      {t("EDIT")}
                     </DropdownMenuItem>
                   )}
                   <DropdownMenuSeparator />
@@ -367,7 +363,7 @@ export function FinancialGoalTransactionsDataTable({
                       }}
                       variant="destructive"
                     >
-                      Delete Transaction
+                      {t("DELETE")}
                     </DropdownMenuItem>
                   )}
                 </DropdownMenuContent>
@@ -411,8 +407,10 @@ export function FinancialGoalTransactionsDataTable({
     <div className="w-full bg-white rounded-sm border border-gray-50 dark:border-gray-800 dark:bg-white/[0.03]">
       <div className="p-5 border-b border-border flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-lg font-semibold text-foreground">Transaction History</h2>
-          <p className="text-sm text-muted-foreground">{total} total transactions</p>
+          <h2 className="text-lg font-semibold text-foreground">{t("TRANSACTION_HISTORY")}</h2>
+          <p className="text-sm text-muted-foreground lowercase">
+            {total} {total > 1 ? t("TRANSACTIONS") : t("TRANSACTION")}
+          </p>
         </div>
         <div className="flex flex-col sm:flex-row sm:items-center gap-2">
           {enableSearch && (
@@ -420,7 +418,7 @@ export function FinancialGoalTransactionsDataTable({
               <Input
                 placeholder={`${t("SEARCH")}...`}
                 value={filters?.search || ""}
-                onChange={(e) => setFilters((prev: any) => ({ ...prev, search: e.target.value }))}
+                onChange={(e) => setFilters((prev) => ({ ...prev, search: e.target.value }))}
               />
             </div>
           )}
@@ -431,11 +429,11 @@ export function FinancialGoalTransactionsDataTable({
                 setFilters((prev: any) => ({ ...prev, type: v !== "all" ? v : null }))
               }
             >
-              <SelectTrigger className="w-[140px]">
+              <SelectTrigger className="w-[160px]">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">All Types</SelectItem>
+                <SelectItem value="all">{t("ALL_TYPES")}</SelectItem>
                 {transactionTypes.map((type) => (
                   <SelectItem key={type.value} value={type.value}>
                     {type.label}
@@ -451,11 +449,11 @@ export function FinancialGoalTransactionsDataTable({
                 setFilters((prev: any) => ({ ...prev, status: v !== "all" ? v : null }))
               }
             >
-              <SelectTrigger className="w-[140px]">
+              <SelectTrigger className="w-[160px]">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">All Status</SelectItem>
+                <SelectItem value="all">{t("ALL_STATUS")}</SelectItem>
                 {transactionStatus.map((status) => (
                   <SelectItem key={status.value} value={status.value}>
                     {status.label}

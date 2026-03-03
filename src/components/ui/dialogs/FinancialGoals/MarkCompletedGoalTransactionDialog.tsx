@@ -28,36 +28,25 @@ export default function MarkCompletedGoalTransactionDialog({
     <Dialog open={isConfirmDialogOpen} onOpenChange={setIsConfirmOpen}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Mark Completed Financial Goal</DialogTitle>
-          <DialogDescription>Are you sure you want to confirm this transaction?</DialogDescription>
+          <DialogTitle>{t("MARK_COMPLETED_FINANCIAL_GOAL")}</DialogTitle>
+          <DialogDescription>{t("MARK_COMPLETED_FINANCIAL_GOAL_TEXT")}</DialogDescription>
         </DialogHeader>
-        {/* <div className="py-4">
-          <div className="p-4 rounded-xl bg-success-500/10 border border-success-500/20">
-            <p className="text-sm text-accent font-medium">
-              Warning: Deleting this transaction will remove the amount from the goal balance.
-            </p>
-          </div>
-        </div> */}
         <DialogFooter>
           <Button
             variant="outline"
             onClick={() => setIsConfirmOpen(false)}
             className="bg-transparent"
           >
-            Cancel
+            {t("CANCEL")}
           </Button>
           <Button
             color="success"
             onClick={async () => {
-              try {
-                setIsConfirmOpen(false);
-                onMarkPaidFinancialGoal(selectedId, t, mutate);
-              } catch (err) {
-                console.error(err);
-              }
+              setIsConfirmOpen(false);
+              onMarkPaidFinancialGoal(selectedId, t, mutate);
             }}
           >
-            Mark Completed
+            {t("MARK_COMPLETED")}
           </Button>
         </DialogFooter>
       </DialogContent>

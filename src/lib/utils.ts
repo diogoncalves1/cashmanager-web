@@ -45,7 +45,7 @@ export function formatCurrency(
   const [number, symbol] = example.split(" ");
   let unit = "";
 
-  if (!addSymbol) {
+  if (addSymbol) {
     if (amount >= 1000) {
       amount = amount / 1000;
       unit = "k";
@@ -60,9 +60,9 @@ export function formatCurrency(
     }
   }
 
-  return Number.isNaN(Number(number))
-    ? `${symbol} ${amount.toFixed(decimals)} ${unit}`
-    : `${amount.toFixed(decimals)} ${symbol} `;
+  return Number.isNaN(Number(number.replace(",", "")))
+    ? `${number.replace(",", "")} ${unit} ${amount.toFixed(decimals)} `
+    : `${amount.toFixed(decimals)} ${unit} ${symbol} `;
 }
 
 const userColors = [
