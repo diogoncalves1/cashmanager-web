@@ -293,7 +293,7 @@
     "META_DESCRIPTION": "Manage your financial goals efficiently with Cash Manager. Track your contributions, withdrawals, and keep your finances organized.",
 
     "NEW_GOAL": "New Goal",
-    "FINANCIAL_GOALS_TEXT": "Track and manage your savings goals all in one place.",
+    "FINANCIAL_GOALS_TEXT": "Track and manage your savings goals in one place.",
 
     "ADD": "Add",
     "EDIT": "Edit",
@@ -352,14 +352,14 @@
     "LOADING": "Loading",
 
     "CANCELED_FINANCIAL_GOAL_TITLE": "Canceling...",
-    "CANCELED_FINANCIAL_GOAL_MESSAGE": "Canceling financial goal ...",
+    "CANCELED_FINANCIAL_GOAL_MESSAGE": "Canceling financial goal...",
     "CANCEL_FINANCIAL_GOAL_MESSAGE": "Cancel financial goal?",
     "YES_CANCEL": "Yes, cancel!",
     "CANCEL": "Cancel",
 
     "RESET_FINANCIAL_GOAL_MESSAGE": "Reset financial goal?",
     "RESETED_FINANCIAL_GOAL_TITLE": "Resetting...",
-    "RESETED_FINANCIAL_GOAL_MESSAGE": "Resetting financial goal ...",
+    "RESETED_FINANCIAL_GOAL_MESSAGE": "Resetting financial goal...",
     "YES_RESET": "Yes, reset!",
 
     "OTHERS_INFORMATION": "Other Information",
@@ -381,9 +381,34 @@
     "COLLECTED_AMOUNT": "Collected Amount",
     "GOAL_PROGRESS": "Goal Progress",
     "GOAL_COMPLETED": "Goal Achieved!",
-    "GOAL_COMPLETED_MESSAGE": "Congratulations! Goal successfully reached",
+    "GOAL_COMPLETED_MESSAGE": "Congratulations! Goal successfully achieved",
 
-    "MONTHLY_SUMMARY": "Monthly Summary"
+    "MONTHLY_SUMMARY": "Monthly Summary",
+
+    "NEW_FINANCIAL_GOAL": "New Financial Goal",
+    "NEW_FINANCIAL_GOAL_TEXT": "Record your financial goals.",
+    "EDIT_FINANCIAL_GOAL": "Edit Financial Goal",
+    "EDIT_FINANCIAL_GOAL_TEXT": "Update your financial goal.",
+
+    "SAVING": "Saving...",
+    "SAVING_TEXT": "Updating financial goal...",
+    "CREATING": "Creating...",
+    "CREATING_TEXT": "Creating your financial goal...",
+
+    "DESCRIPTION_TEXT": "Add a note about this financial goal...",
+    "OPTIONAL": "Optional",
+    "DATES": "Dates",
+    "STEP": "Step",
+    "START": "Start",
+    "DUE": "Due",
+    "SELECT_CURRENCY": "Select Currency",
+    "FORM_HELPER": "All goals are securely processed and recorded instantly.",
+    "NAME_PLACEHOLDER": "Ex: New Car"
+  },
+
+  "BUTTONS": {
+    "SUBMIT": "Submit",
+    "PROCESSING": "Processing..."
   },
 
   "HOME": {
