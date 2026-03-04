@@ -24,10 +24,9 @@ export function useDebts(filters: Filters = {}, pageSize = 4) {
 
       setTotal(res.recordsFiltered);
       setStats(res.stats || {});
-      setDebts((prev: any) => (append ? [...prev, ...res.data] : res.data));
+      setDebts((prev) => (append ? [...prev, ...res.data] : res.data));
     } catch (err: unknown) {
       if (err instanceof Error) {
-        console.error(err);
         setError(err.message || "Failed to fetch financial goals");
       } else {
         setError(String(err));

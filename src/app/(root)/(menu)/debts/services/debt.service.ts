@@ -12,12 +12,12 @@ interface ApiResponse<T> {
   recordsFiltered: number;
   page: number;
   pageSize: number;
-  stats: Record<string, any>;
+  stats: Record<string, string>;
 }
 
-export async function getAllDebts(filters: DebtsFilters): Promise<ApiResponse<Debt[]>> {
+export async function getAllDebts(filters: DebtsFilters): Promise<ApiResponse<Debt>> {
   const params = new URLSearchParams(
-    Object.entries(filters).filter(([_, v]) => v !== null) as [string, string][]
+    Object.entries(filters).filter(([, v]) => v !== null) as [string, string][]
   );
 
   const res = await fetch(`/api/debts?${params.toString()}`, {

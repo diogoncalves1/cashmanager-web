@@ -4,35 +4,34 @@ import { useTranslations } from "next-intl";
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import DebtsContainer from "./components/DebtsContainer";
 import { AppLink } from "@/components/ui/button/AppLink";
+import { getTranslations } from "next-intl/server";
+import { Plus } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Cash Manager | Debts",
-  description: "This is Next.js Home for TailAdmin Dashboard Template",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("DEBTS");
+
+  return {
+    title: t("META_TITLE"),
+    description: t("META_DESCRIPTION"),
+  };
+}
 
 export default function DebtsPage() {
   const t = useTranslations("DEBTS");
 
   return (
     <>
-      <PageBreadcrumb pageTitle={t("DEBT")} breadcrumb={[{ title: t("DEBTS") }]} />
+      <PageBreadcrumb pageTitle={t("DEBTS")} breadcrumb={[{ title: t("DEBTS") }]} />
       <div className="max-w-6xl mx-auto px-6 py-10">
         {/* Page Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <div>
-            <h1 className="text-2xl font-semibold text-foreground tracking-tight">Debts</h1>
-            <p className="text-muted-foreground mt-1">Track and manage your debt payments</p>
+            <h1 className="text-2xl font-semibold text-foreground tracking-tight">{t("DEBTS")}</h1>
+            <p className="text-muted-foreground mt-1">{t("DEBTS_TEXT")}</p>
           </div>
           <AppLink path="/debts/create" className=" px-5">
-            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 4v16m8-8H4"
-              />
-            </svg>
-            Add Debt
+            <Plus className="w-4 h-4 mr-2" />
+            {t("ADD_DEBT")}
           </AppLink>
         </div>
 

@@ -517,6 +517,106 @@
     "SEARCH_TRANSACTION": "Search transaction"
   },
 
+  "DEBTS": {
+    "META_TITLE": "Cash Manager | Debts",
+    "META_DESCRIPTION": "Manage your debt payments efficiently with Cash Manager. Track your payments and keep your finances organized.",
+
+    "ADD_DEBT": "Add Debt",
+    "EDIT": "Edit",
+    "DELETE": "Delete Debt",
+    "DETAILS": "Details",
+
+    "TOTAL_DEBT": "Total Owed",
+    "ACROSS": "Across",
+    "TOTAL_PAID": "Total Paid",
+    "OF_TOTAL": "of total",
+    "ACTIVE_DEBTS": "Active Debts",
+    "MONTHLY_PAYMENTS": "Monthly Payments",
+
+    "DEBT": "Debt",
+    "DEBTS": "Debts",
+    "DEBTS_TEXT": "Track and manage your debt payments.",
+
+    "TRANSACTIONS": "Payments",
+    "ADD_TRANSACTION": "New Payment",
+
+    "ALL_TRANSACTIONS": "All Payments",
+
+    "COMPLETED": "Completed",
+    "COMPLETED_PLURAL": "Completed",
+    "ACTIVE_DEBTS_ONLY": "Active Debts Only",
+    "PENDING": "Pending",
+
+    "MONTHS": "months",
+    "MONTH": "month",
+    "APR": "APR",
+    "REMAINING": "Remaining",
+
+    "SEARCH_DEBTS": "Search for a debt...",
+    "PROGRESS": "Progress",
+    "TOTAL": "Total",
+    "MONTH_ABR": "mo",
+
+    "NAME": "Name",
+    "TOTAL_AMOUNT": "Total Amount",
+    "PAID_AMOUNT": "Paid Amount",
+    "PAID": "Paid",
+    "ALL": "All",
+    "USERS": "Users",
+    "CURRENCY": "Currency",
+    "DUE_DATE": "Due Date",
+    "START_DATE": "Start Date",
+    "STATUS": "Status",
+    "ACTIONS": "Actions",
+
+    "SEARCH": "Search",
+    "FILTER_BY": "Filter by",
+    "SHOWING": "Showing",
+    "OF": "of",
+    "THIS": "debts",
+    "NEXT": "Next",
+    "PREVIOUS": "Previous",
+    "FIRST": "First",
+    "LAST": "Last",
+    "NO_RESULTS": "No Results",
+    "LOADING": "Loading",
+
+    "CANCEL": "Cancel",
+    "YES_MARK": "Yes, mark",
+    "MARK_DEBT_PAID": "Mark debt as paid?",
+    "MARKING_TITLE": "Marking...",
+    "MARKING_MESSAGE": "Marking debt as paid...",
+
+    "RESET_DEBT_MESSAGE": "Reset debt?",
+    "RESETED_DEBT_TITLE": "Resetting...",
+    "RESETED_DEBT_MESSAGE": "Resetting debt...",
+    "YES_DELETE": "Yes, delete!",
+    "YES_RESET": "Yes, reset!",
+    "YOU_SURE": "Are you sure?",
+    "YOU_DONT_REVERT_THIS": "You won't be able to revert this!",
+    "DELETING_TITLE": "Deleting...",
+    "DELETING_MESSAGE": "Deleting debt...",
+
+    "OTHERS_INFORMATION": "Other Information",
+    "CREATED_AT": "Created At",
+
+    "RECENT_TRANSACTIONS": "Recent Payments",
+    "DEBT_DETAILS": "Debt Details",
+
+    "OVERVIEW": "Overview",
+    "OTHERS": "Others",
+    "DESCRIPTION": "Description",
+    "RESET": "Reset",
+    "LAST_UPDATE": "Last Update",
+    "COMPLETE": "Complete",
+    "MISSING_AMOUNT": "Remaining Amount",
+    "DEBT_PROGRESS": "Debt Progress",
+    "DEBT_COMPLETED": "Debt Paid!",
+    "DEBT_COMPLETED_MESSAGE": "Congratulations! Debt successfully paid",
+
+    "MONTHLY_SUMMARY": "Monthly Summary"
+  },
+
   "HOME": {
     "HOME": "Home",
     "MONTHLY_BALANCE": "Monthly Balance",
@@ -664,80 +764,5 @@
     "YES_BLOCK": "Yes, block!",
     "YES_REMOVE": "Yes, remove!",
     "CANCEL": "Cancel"
-  },
-
-  "DEBTS": {
-    "ADD": "Add",
-    "EDIT": "Edit",
-    "DELETE": "Delete Debt",
-    "DETAILS": "Details",
-
-    "DEBT": "DEBT",
-    "DEBTS": "Debts",
-
-    "TRANSACTIONS": "Payments",
-    "ADD_TRANSACTION": "New Payment",
-
-    "ALL_TRANSACTIONS": "All Payments",
-
-    "COMPLETED": "Completed",
-    "PENDING": "Pending",
-
-    "NAME": "Name",
-    "TOTAL_AMOUNT": "Total Amount",
-    "PAID_AMOUNT": "Paid Amount",
-    "USERS": "Users",
-    "CURRENCY": "Currency",
-    "DUE_DATE": "End Date",
-    "START_DATE": "Start Date",
-    "STATUS": "Status",
-    "ACTIONS": "Actions",
-
-    "SEARCH": "Search",
-    "FILTER_BY": "Filter by",
-    "SHOWING": "Showing",
-    "OF": "of",
-    "THIS": "debts",
-    "NEXT": "Next",
-    "PREVIOUS": "Previous",
-    "FIRST": "First",
-    "LAST": "Last",
-    "NO_RESULTS": "No Results",
-    "LOADING": "Loading",
-
-    "CANCEL": "Cancel",
-    "YES_MARK": "Yes, mark",
-    "MARK_DEBT_PAID": "Mark debt as paid?",
-    "MARKING_TITLE": "Marking...",
-    "MARKING_MESSAGE": "Marking debt as paid...",
-
-    "RESET_DEBT_MESSAGE": "Reset debt?",
-    "RESETED_DEBT_TITLE": "Resetting...",
-    "RESETED_DEBT_MESSAGE": "Resetting the debt...",
-    "YES_DELETE": "Yes, delete!",
-    "YES_RESET": "Yes, reset!",
-    "YOU_SURE": "Are you sure?",
-    "YOU_DONT_REVERT_THIS": "You won't be able to revert this!",
-    "DELETING_TITLE": "Deleting...",
-    "DELETING_MESSAGE": "Deleting debt...",
-
-    "OTHERS_INFORMATION": "Other Information",
-    "CREATED_AT": "Created at",
-
-    "RECENT_TRANSACTIONS": "Recent Payments",
-    "DEBT_DETAILS": "Debt Details",
-
-    "OVERVIEW": "Overview",
-    "OTHERS": "Others",
-    "DESCRIPTION": "Description",
-    "RESET": "Reset",
-    "LAST_UPDATE": "Last update",
-    "COMPLETE": "Complete",
-    "MISSING_AMOUNT": "Remaining Amount",
-    "DEBT_PROGRESS": "Debt Progress",
-    "DEBT_COMPLETED": "Debt Paid!",
-    "DEBT_COMPLETED_MESSAGE": "Congratulations! Debt successfully paid",
-
-    "MONTHLY_SUMMARY": "Monthly Summary"
   }
 }

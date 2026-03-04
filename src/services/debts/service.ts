@@ -1,13 +1,17 @@
 import LoadingToast from "@/components/swal/LoadingToast";
 import { SwalToast } from "@/components/swal/SwalToast";
+import { MyPagination } from "@/components/transactions/TableContainer";
+import { Debt } from "@/models/debt";
+import { Table } from "@tanstack/react-table";
+import { useTranslations } from "next-intl";
 import Swal from "sweetalert2";
 
 export async function onDeleteDebt(
   id: string,
-  t: any,
-  table?: any,
-  pagination?: any,
-  mutate?: any
+  t: ReturnType<typeof useTranslations>,
+  table?: Table<Debt>,
+  pagination?: MyPagination,
+  mutate?: () => void
 ) {
   const result = await Swal.fire({
     title: t("YOU_SURE"),
@@ -35,7 +39,7 @@ export async function onDeleteDebt(
 
       if (data.success) {
         if (table) {
-          if (table.getRowCount() == 0) pagination.pageIndex--;
+          if (table.getRowCount() == 0 && pagination) pagination.pageIndex--;
         }
         SwalToast({ message: data.message, icon: "success" });
         return 1;
@@ -52,7 +56,7 @@ export async function onDeleteDebt(
   return 0;
 }
 
-export async function onResetDebt(id: string, t: any) {
+export async function onResetDebt(id: string, t: ReturnType<typeof useTranslations>) {
   const result = await Swal.fire({
     title: t("RESET_FINANCIAL_GOAL_MESSAGE"),
     icon: "warning",
@@ -93,7 +97,11 @@ export async function onResetDebt(id: string, t: any) {
   return 0;
 }
 
-export async function onMarkPaidDebt(id: string, mutate?: () => void, t?: any) {
+export async function onMarkPaidDebt(
+  id: string,
+  t: ReturnType<typeof useTranslations>,
+  mutate?: () => void
+) {
   const result = await Swal.fire({
     title: t("MARK_DEBT_PAID"),
     icon: "warning",

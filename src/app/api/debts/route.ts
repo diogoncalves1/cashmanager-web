@@ -1,8 +1,20 @@
 import { NextRequest, NextResponse } from "next/server";
 import { baseUrl } from "../config";
 
+type ColumnSearch = {
+  value?: string;
+  regex?: string;
+};
+
+type Column = {
+  data?: string;
+  name?: string;
+  searchable?: boolean;
+  orderable?: boolean;
+  search?: ColumnSearch;
+};
 function parseColumns(searchParams: URLSearchParams) {
-  const defaultColumns = [
+  const defaultColumns: Column[] = [
     { data: "name", searchable: true },
     { data: "status", searchable: true, orderable: true },
     { data: "interestRate", searchable: true, orderable: true },
@@ -10,7 +22,7 @@ function parseColumns(searchParams: URLSearchParams) {
     { data: "totalAmount", searchable: true, orderable: true },
   ];
 
-  const columns: any[] = [...defaultColumns]; // inicia com defaults
+  const columns: Column[] = [...defaultColumns];
 
   for (const [key, value] of searchParams.entries()) {
     const match = key.match(/^columns\[(\d+)\]\[(.+)\]$/);
@@ -21,12 +33,23 @@ function parseColumns(searchParams: URLSearchParams) {
 
     if (!columns[index]) columns[index] = {};
 
+    // 🔎 search[value] ou search[regex]
     if (field.startsWith("search[")) {
       const searchKey = field.match(/search\[(.+)\]/)?.[1];
-      columns[index].search ??= {};
-      columns[index].search[searchKey!] = value;
+
+      if (searchKey === "value" || searchKey === "regex") {
+        columns[index].search ??= {};
+        columns[index].search[searchKey] = value;
+      }
     } else {
-      columns[index][field] = value;
+      // campos simples
+      if (field === "data" || field === "name") {
+        columns[index][field] = value;
+      }
+
+      if (field === "searchable" || field === "orderable") {
+        columns[index][field] = value === "true";
+      }
     }
   }
 

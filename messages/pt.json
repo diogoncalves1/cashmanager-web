@@ -517,6 +517,106 @@
     "SEARCH_TRANSACTION": "Procure pela transação"
   },
 
+  "DEBTS": {
+    "META_TITLE": "Cash Manager | Dívidas",
+    "META_DESCRIPTION": "Gire os seus pagamentos das dívidas de forma eficiente com o Cash Manager. Acompanhe os seus pagamentos e mantenha suas finanças organizadas.",
+
+    "ADD_DEBT": "Adicionar dívida",
+    "EDIT": "Editar",
+    "DELETE": "Apagar Dívida",
+    "DETAILS": "Detalhes",
+
+    "TOTAL_DEBT": "Total devido",
+    "ACROSS": "Em relação a",
+    "TOTAL_PAID": "Total pago",
+    "OF_TOTAL": "do total",
+    "ACTIVE_DEBTS": "Dívidas ativas",
+    "MONTHLY_PAYMENTS": "Pagamentos mensais",
+
+    "DEBT": "Dívida",
+    "DEBTS": "Dívidas",
+    "DEBTS_TEXT": "Acompanhe e faça a gestão dos seus pagamentos de dívidas.",
+
+    "TRANSACTIONS": "Pagamentos",
+    "ADD_TRANSACTION": "Novo Pagamento",
+
+    "ALL_TRANSACTIONS": "Todos os pagamentos",
+
+    "COMPLETED": "Completa",
+    "COMPLETED_PLURAL": "Completas",
+    "ACTIVE_DEBTS_ONLY": "Apenas dívidas ativas",
+    "PENDING": "Pendente",
+
+    "MONTHS": "meses",
+    "MONTH": "mês",
+    "APR": "TPA",
+    "REMAINING": "Restante",
+
+    "SEARCH_DEBTS": "Procure pela dívida...",
+    "PROGRESS": "Progresso",
+    "TOTAL": "Total",
+    "MONTH_ABR": "mês",
+
+    "NAME": "Nome",
+    "TOTAL_AMOUNT": "Valor Total",
+    "PAID_AMOUNT": "Valor Pago",
+    "PAID": "Paga",
+    "ALL": "Todos",
+    "USERS": "Utilizadores",
+    "CURRENCY": "Moeda",
+    "DUE_DATE": "Data de Fim",
+    "START_DATE": "Data de Início",
+    "STATUS": "Estado",
+    "ACTIONS": "Ações",
+
+    "SEARCH": "Procura",
+    "FILTER_BY": "Filtra por",
+    "SHOWING": "A mostrar",
+    "OF": "de",
+    "THIS": "dívidas",
+    "NEXT": "Próximo",
+    "PREVIOUS": "Anterior",
+    "FIRST": "Primeira",
+    "LAST": "Última",
+    "NO_RESULTS": "Sem Resultados",
+    "LOADING": "Carregando",
+
+    "CANCEL": "Cancelar",
+    "YES_MARK": "Sim, marcar",
+    "MARK_DEBT_PAID": "Marcar dívida paga?",
+    "MARKING_TITLE": "A marcar...",
+    "MARKING_MESSAGE": "A marcar dívida como paga...",
+
+    "RESET_DEBT_MESSAGE": "Resetar dívida?",
+    "RESETED_DEBT_TITLE": "A resetar...",
+    "RESETED_DEBT_MESSAGE": "A resetar a dívida ...",
+    "YES_DELETE": "Sim, apagar!",
+    "YES_RESET": "Sim, resetar!",
+    "YOU_SURE": "Tem a certeza?",
+    "YOU_DONT_REVERT_THIS": "Não irá conseguir reverter isso!",
+    "DELETING_TITLE": "Apagando...",
+    "DELETING_MESSAGE": "Apagando dívida...",
+
+    "OTHERS_INFORMATION": "Outras Informações",
+    "CREATED_AT": "Criada em",
+
+    "RECENT_TRANSACTIONS": "Pagamentos Recentes",
+    "DEBT_DETAILS": "Detalhes da Dívida",
+
+    "OVERVIEW": "Visão Geral",
+    "OTHERS": "Outros",
+    "DESCRIPTION": "Descrição",
+    "RESET": "Resetar",
+    "LAST_UPDATE": "Última atualização",
+    "COMPLETE": "Completar",
+    "MISSING_AMOUNT": "Valor em Falta",
+    "DEBT_PROGRESS": "Progresso da dívida",
+    "DEBT_COMPLETED": "Dívida Paga!",
+    "DEBT_COMPLETED_MESSAGE": "Parabéns! Dívida paga com sucesso",
+
+    "MONTHLY_SUMMARY": "Resumo Mensal"
+  },
+
   "HOME": {
     "HOME": "Início",
     "MONTHLY_BALANCE": "Saldo Mensal",
@@ -659,83 +759,6 @@
     "YES_BLOCK": "Sim, bloquear!",
     "YES_REMOVE": "Sim, remover!",
     "CANCEL": "Cancelar"
-  },
-
-  "DEBTS": {
-    "ADD": "Adicionar",
-    "EDIT": "Editar",
-    "DELETE": "Apagar Dívida",
-    "DETAILS": "Detalhes",
-
-    "DEBT": "DÍVIDA",
-    "DEBTS": "Dívidas",
-
-    "TRANSACTIONS": "Pagamentos",
-    "ADD_TRANSACTION": "Novo Pagamento",
-
-    "ALL_TRANSACTIONS": "Todos os pagamentos",
-
-    "COMPLETED": "Completa",
-    "PENDING": "Pendente",
-
-    "NAME": "Nome",
-    "TOTAL_AMOUNT": "Valor Total",
-    "PAID_AMOUNT": "Valor Pago",
-    "PAID": "Paga",
-    "ALL": "Todos",
-    "USERS": "Utilizadores",
-    "CURRENCY": "Moeda",
-    "DUE_DATE": "Data de Fim",
-    "START_DATE": "Data de Início",
-    "STATUS": "Estado",
-    "ACTIONS": "Ações",
-
-    "SEARCH": "Procura",
-    "FILTER_BY": "Filtra por",
-    "SHOWING": "A mostrar",
-    "OF": "de",
-    "THIS": "dívidas",
-    "NEXT": "Próximo",
-    "PREVIOUS": "Anterior",
-    "FIRST": "Primeira",
-    "LAST": "Última",
-    "NO_RESULTS": "Sem Resultados",
-    "LOADING": "Carregando",
-
-    "CANCEL": "Cancelar",
-    "YES_MARK": "Sim, marcar",
-    "MARK_DEBT_PAID": "Marcar dívida paga?",
-    "MARKING_TITLE": "A marcar...",
-    "MARKING_MESSAGE": "A marcar dívida como paga...",
-
-    "RESET_DEBT_MESSAGE": "Resetar dívida?",
-    "RESETED_DEBT_TITLE": "A resetar...",
-    "RESETED_DEBT_MESSAGE": "A resetar a dívida ...",
-    "YES_DELETE": "Sim, apagar!",
-    "YES_RESET": "Sim, resetar!",
-    "YOU_SURE": "Tem a certeza?",
-    "YOU_DONT_REVERT_THIS": "Não irá conseguir reverter isso!",
-    "DELETING_TITLE": "Apagando...",
-    "DELETING_MESSAGE": "Apagando dívida...",
-
-    "OTHERS_INFORMATION": "Outras Informações",
-    "CREATED_AT": "Criada em",
-
-    "RECENT_TRANSACTIONS": "Pagamentos Recentes",
-    "DEBT_DETAILS": "Detalhes da Dívida",
-
-    "OVERVIEW": "Visão Geral",
-    "OTHERS": "Outros",
-    "DESCRIPTION": "Descrição",
-    "RESET": "Resetar",
-    "LAST_UPDATE": "Última atualização",
-    "COMPLETE": "Completar",
-    "MISSING_AMOUNT": "Valor em Falta",
-    "DEBT_PROGRESS": "Progresso da dívida",
-    "DEBT_COMPLETED": "Dívida Paga!",
-    "DEBT_COMPLETED_MESSAGE": "Parabéns! Dívida paga com sucesso",
-
-    "MONTHLY_SUMMARY": "Resumo Mensal"
   },
 
   "DEBT_PAYMENTS": {
