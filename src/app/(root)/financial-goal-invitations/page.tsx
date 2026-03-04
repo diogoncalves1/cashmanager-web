@@ -3,12 +3,16 @@ import { useTranslations } from "next-intl";
 
 import { Metadata } from "next";
 import InvitationContainer from "@/components/invitations/InvitationContainer";
+import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Cash Manager | Financial Goals",
-  description: "This is Next.js Home for TailAdmin Dashboard Template",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("FINANCIAL_GOALS");
 
+  return {
+    title: t("META_TITLE"),
+    description: t("META_DESCRIPTION"),
+  };
+}
 export default function InvitationsPage() {
   const t = useTranslations("FINANCIAL_GOALS");
 

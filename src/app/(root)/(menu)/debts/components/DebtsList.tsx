@@ -1,12 +1,5 @@
 "use client";
 
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import { useDebts } from "../hooks/useDebts";
 import { useTranslations } from "next-intl";
@@ -52,9 +45,9 @@ export default function DebtsList({
         <div className="relative flex-1 max-w-sm">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
-            placeholder="Search debts..."
+            placeholder={t("SEARCH_DEBTS")}
             value={filters?.search || ""}
-            onChange={(e) => setFilters((prev: any) => ({ ...prev, search: e.target.value }))}
+            onChange={(e) => setFilters((prev) => ({ ...prev, search: e.target.value }))}
             className="pl-9 bg-white"
           />
         </div>
@@ -69,9 +62,9 @@ export default function DebtsList({
             <button
               key={status.value}
               onClick={() =>
-                setFilters((prev: any) => ({
+                setFilters((prev) => ({
                   ...prev,
-                  status: status.value !== "all" ? status.value : null,
+                  status: status.value !== "all" ? status.value : undefined,
                 }))
               }
               className={cn(
@@ -89,21 +82,21 @@ export default function DebtsList({
             </button>
           ))}
         </div>
-        <div className="sm:ml-auto">
+        {/* <div className="sm:ml-auto">
           <Select
             value={filters?.sort || "remaining"}
-            onValueChange={(v) => setFilters((prev: any) => ({ ...prev, sort: v }))}
+            onValueChange={(v) => setFilters((prev) => ({ ...prev, sort: v }))}
           >
             <SelectTrigger className="w-[180px] bg-card border-border">
               <SelectValue placeholder="Sort by" />
             </SelectTrigger>
             <SelectContent className="bg-card border-border">
-              <SelectItem value="remaining">Remaining Amount</SelectItem>
+              <SelectItem value="remaining">{t("REMAINING_AMOUNT")}</SelectItem>
               <SelectItem value="totalAmount">Total Amount</SelectItem>
               <SelectItem value="interestRate">Interest Rate</SelectItem>
             </SelectContent>
           </Select>
-        </div>
+        </div> */}
       </div>
 
       {!loading && debts.length == 0 ? (
@@ -123,7 +116,7 @@ export default function DebtsList({
                 disabled={isLoadingMore}
                 className="gap-2 bg-transparent"
               >
-                Load More
+                {t("LOAD_MORE")}
                 <span className="text-muted-foreground">({total - debts.length} remaining)</span>
               </Button>
             </div>

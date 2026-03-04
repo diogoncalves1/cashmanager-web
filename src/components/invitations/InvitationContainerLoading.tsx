@@ -1,4 +1,7 @@
+import { useTranslations } from "next-intl";
+
 const InvitationContainerLoading = () => {
+  const t = useTranslations("INVITE_MEMBER");
   return (
     <div className="grid grid-cols-12 p-2 md:p-6 gap-4 md:gap-6">
       <div className="col-span-12">
@@ -8,10 +11,10 @@ const InvitationContainerLoading = () => {
               {/* Page header */}
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                  <h1 className="text-3xl font-bold tracking-tight md:text-4xl">Invitations</h1>
-                  <p className="text-muted-foreground mt-1">
-                    Manage your sent and received invitations.
-                  </p>
+                  <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
+                    {t("INVITATIONS")}
+                  </h1>
+                  <p className="text-muted-foreground mt-1">{t("INVITATIONS_TEXT")}</p>
                 </div>
               </div>
               <div className="space-y-8 animate-pulse">

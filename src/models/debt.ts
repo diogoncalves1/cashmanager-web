@@ -1,5 +1,5 @@
+import { useTranslations } from "next-intl";
 import { SharedRole } from "./sharedRole";
-import { BadgeColor } from "@/components/ui/badge";
 
 export type DebtStatus = "pending" | "paid";
 
@@ -12,7 +12,7 @@ export type DebtActions = {
   createTransactions: boolean;
 };
 
-export const getDebtStatus = (t: any) => [
+export const getDebtStatus = (t: ReturnType<typeof useTranslations>) => [
   {
     value: "completed",
     label: t("COMPLETED"),
@@ -23,7 +23,7 @@ export const getDebtStatus = (t: any) => [
   },
 ];
 
-export const statusColors: Record<DebtStatus, BadgeColor> = {
+export const statusColors: Record<DebtStatus, string> = {
   paid: "success",
   pending: "warning",
 };
