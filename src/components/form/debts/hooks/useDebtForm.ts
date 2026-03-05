@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Currency } from "@/models/currency";
 import { getCurrencies } from "@/services/currencies/currency.service";
 import { Debt } from "@/models/debt";
@@ -56,14 +56,17 @@ export function useDebtForm(id?: string) {
     setDateLimits({ due_date: { min: min, max: "" }, start_date: { min: "", max: max } });
   };
 
-  const fetchDebt = async (id: string) => {
+  const fetchDebt = useCallback(async (id: string) => {
     try {
+      setLoadingDebt(true);
+
       const res = await getDebtById(id);
 
       setDebt(res.data);
 
       if (res.data) {
         const debt = res.data;
+
         setFormData({
           name: debt.name,
           description: debt.description,
@@ -76,10 +79,11 @@ export function useDebtForm(id?: string) {
           months: debt.months.toString(),
         });
 
-        updateDateLimits({ due_date: debt.dueDate, start_date: debt.startDate });
+        updateDateLimits({
+          due_date: debt.dueDate,
+          start_date: debt.startDate,
+        });
       }
-
-      console.log(debt);
     } catch (err: unknown) {
       if (err instanceof Error) {
         console.error(err);
@@ -87,7 +91,7 @@ export function useDebtForm(id?: string) {
     } finally {
       setLoadingDebt(false);
     }
-  };
+  }, []);
 
   const fetchCurrencies = async () => {
     try {
@@ -111,7 +115,7 @@ export function useDebtForm(id?: string) {
     if (id) {
       fetchDebt(id);
     }
-  }, [id]);
+  }, [id, fetchDebt]);
 
   type SubmitResult = {
     success: boolean;
@@ -135,8 +139,11 @@ export function useDebtForm(id?: string) {
       if (!res.ok) throw new Error(result.message);
 
       return { success: true, message: result.message };
-    } catch (err: any) {
-      return { success: false, message: err.message || "Erro ao guardar dívida" };
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        return { success: false, message: err.message || "Erro ao guardar dívida" };
+      }
+      return { success: false, message: String(err) };
     } finally {
       setIsSubmitting(false);
     }

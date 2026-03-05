@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { getAllDebts } from "../services/debt.service";
 import { Debt } from "@/models/debt";
 
@@ -14,32 +14,39 @@ export function useDebts(filters: Filters = {}, pageSize = 4) {
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
   const [isLoadingMore, setLoadingMore] = useState(false);
-  const [stats, setStats] = useState<Record<string, any>>({});
+  const [stats, setStats] = useState<Record<string, string>>({});
   const [error, setError] = useState<string | null>(null);
 
-  const fetchDebts = async (currentPage = 1, append = false) => {
-    try {
-      setLoading(true);
-      const res = await getAllDebts({ ...filters, page: currentPage - 1, pageSize });
+  const fetchDebts = useCallback(
+    async (currentPage = 1, append = false) => {
+      try {
+        setLoading(true);
+        const res = await getAllDebts({
+          ...filters,
+          page: currentPage - 1,
+          pageSize,
+        });
 
-      setTotal(res.recordsFiltered);
-      setStats(res.stats || {});
-      setDebts((prev) => (append ? [...prev, ...res.data] : res.data));
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        setError(err.message || "Failed to fetch financial goals");
-      } else {
-        setError(String(err));
+        setTotal(res.recordsFiltered);
+        setStats(res.stats || {});
+        setDebts((prev) => (append ? [...prev, ...res.data] : res.data));
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError(err.message || "Failed to fetch financial goals");
+        } else {
+          setError(String(err));
+        }
+      } finally {
+        setLoading(false);
       }
-    } finally {
-      setLoading(false);
-    }
-  };
+    },
+    [filters, pageSize]
+  );
 
   useEffect(() => {
     setPage(1);
     fetchDebts(1, false);
-  }, [filters.status, filters.search, filters.sort]);
+  }, [filters.status, filters.search, filters.sort, fetchDebts]);
 
   const loadMore = () => {
     setLoadingMore(true);

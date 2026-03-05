@@ -426,7 +426,8 @@
 
     "MARK_COMPLETED": "Marcar como concluída",
     "MARK_COMPLETED_FINANCIAL_GOAL": "Marcar meta financeira como concluída?",
-    "MARK_COMPLETED_FINANCIAL_GOAL_TEXT": "Tem a certeza que quer marcar a meta financeira como concluída?"
+    "MARK_COMPLETED_FINANCIAL_GOAL_TEXT": "Tem a certeza que quer marcar a meta financeira como concluída?",
+    "COMPLETE_GOAL": "Completar meta"
   },
 
   "BUTTONS": {
@@ -522,9 +523,18 @@
     "META_DESCRIPTION": "Gire os seus pagamentos das dívidas de forma eficiente com o Cash Manager. Acompanhe os seus pagamentos e mantenha suas finanças organizadas.",
 
     "ADD_DEBT": "Adicionar dívida",
+    "ADD": "Adicionar",
     "EDIT": "Editar",
     "DELETE": "Apagar Dívida",
     "DETAILS": "Detalhes",
+    "SUMMARY": "Sumário",
+    "TIMELINE": "Linha do tempo",
+    "TIMELINE_TEXT": "Defina as datas de início e fim desta dívida.",
+    "FINANCIAL_DETAILS": "Detalhes financeiros",
+    "FINANCIAL_DETAILS_TEXT": "Defina os valores e a estrutura de pagamento.",
+    "TOTAL_MONTHS_PLACEHOLDER": "Número de meses...",
+    "SAVE": "Guardar",
+    "SAVING": "A guardar...",
 
     "TOTAL_DEBT": "Total devido",
     "ACROSS": "Em relação a",
@@ -551,6 +561,11 @@
     "MONTH": "mês",
     "APR": "TPA",
     "REMAINING": "Restante",
+
+    "CREATE_DEBT": "Criar dívida",
+    "TOTAL_MONTHS": "Número de meses",
+    "MONTHLY_PAYMENT": "Pagamento mensal",
+    "DEBT_NAME": "Nome da dívida",
 
     "SEARCH_DEBTS": "Procure pela dívida...",
     "PROGRESS": "Progresso",
@@ -613,8 +628,26 @@
     "DEBT_PROGRESS": "Progresso da dívida",
     "DEBT_COMPLETED": "Dívida Paga!",
     "DEBT_COMPLETED_MESSAGE": "Parabéns! Dívida paga com sucesso",
+    "CREATE_NEW_DEBT": "Criar nova dívida",
+    "CREATE_NEW_DEBT_TEXT": "Adicione uma nova dívida para acompanhar suas obrigações financeiras.",
+    "EDIT_DEBT": "Editar dívida",
+    "EDIT_DEBT_TEXT": "Edite as informações da dívida conforme necessário.",
+    "DESCRIPTION_TEXT": "Opcional. Adicione notas ou contexto sobre esta dívida.",
+    "DESCRIPTION_PLACEHOLDER": "Adicione quaisquer detalhes adicionais sobre esta dívida...",
 
-    "MONTHLY_SUMMARY": "Resumo Mensal"
+    "MONTHLY_SUMMARY": "Resumo Mensal",
+    "BASIC_INFORMATION": "Informações Básicas",
+    "BASIC_INFORMATION_TEXT": "Insira o nome e a descrição da sua dívida.",
+    "DEBT_NAME_PLACEHOLDER": "Ex., Hipoteca Residencial, Empréstimo do Carro",
+
+    "CHOOSE_A_CURRENCY": "Escolha a moeda",
+    "ANNUAL_INTEREST_RATE": "Taxa de juros anual",
+    "ANNUAL_INTEREST_RATE_TEXT": "Opcional. Caso não seja preenchido, o valor será automaticamente definido como 0.",
+    "BASED_ON": "Baseado em",
+    "ESTIMATED_PAYOFF": "Pagamento estimado",
+    "SUMMARY_TEXT": "Valores calculados com base no formulário.",
+    "PLEASE_FILL_REQUIRED_FIELDS_EDIT": "Preencha todos os campos obrigatórios para editar a sua dívida.",
+    "PLEASE_FILL_REQUIRED_FIELDS_CREATE": "Preencha todos os campos obrigatórios para criar a dívida."
   },
 
   "HOME": {
