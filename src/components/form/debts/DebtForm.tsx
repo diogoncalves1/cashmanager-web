@@ -17,10 +17,9 @@ import { Calculator, Calendar, DollarSign, FileText, Percent, TrendingUp } from 
 import { Button } from "@/components/ui/button";
 import { AppLink } from "@/components/ui/button/AppLink";
 import { useDebtForm } from "./hooks/useDebtForm";
-import LoadingToast from "@/components/swal/LoadingToast";
 import { useTranslations } from "next-intl";
-import { SwalToast } from "@/components/swal/SwalToast";
-import { DebtDatePicker } from "./DebtDatePicker";
+import { TransactionDatePicker } from "../transactions/TransactionDatePicker";
+import { useToast } from "@/hooks/useToast";
 
 interface FormData {
   name: string;
@@ -40,12 +39,14 @@ interface FormErrors {
   monthly_amount?: string;
   start_date?: string;
   due_date?: string;
+  months?: string;
 }
 type Props = {
   id?: string;
 };
 
 export default function DebtForm({ id }: Props) {
+  const { toast } = useToast();
   const {
     formData,
     setFormData,
@@ -81,11 +82,6 @@ export default function DebtForm({ id }: Props) {
     if (errors[field as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [field]: undefined }));
     }
-  };
-
-  const handleBlur = (field: string) => {
-    setTouched((prev) => ({ ...prev, [field]: true }));
-    validateField(field);
   };
 
   const validateField = (field: string): boolean => {
@@ -125,6 +121,13 @@ export default function DebtForm({ id }: Props) {
           error = "Due date must be after start date";
         }
         break;
+      case "months":
+        if (!formData.months) {
+          error = "Months is required";
+        } else if (formData.months && parseInt(formData.months) < 1) {
+          error = "O número de meses tem que ser válido";
+        }
+        break;
     }
 
     setErrors((prev) => ({ ...prev, [field]: error }));
@@ -132,7 +135,7 @@ export default function DebtForm({ id }: Props) {
   };
 
   const validateForm = (): boolean => {
-    const fields = ["name", "totalAmount", "monthlyAmount", "startDate", "dueDate"];
+    const fields = ["name", "totalAmount", "monthlyAmount", "startDate", "dueDate", "months"];
     let isValid = true;
 
     fields.forEach((field) => {
@@ -153,17 +156,9 @@ export default function DebtForm({ id }: Props) {
       return;
     }
 
-    LoadingToast({
-      title: t("CREATING"),
-      message: "A criar a sua transação...",
-    });
-
     const res = await handleSubmit();
 
-    SwalToast({
-      message: res.message,
-      icon: res.success ? "success" : "error",
-    });
+    toast({ description: res.message });
   };
 
   const isFormValid = useMemo(() => {
@@ -174,7 +169,9 @@ export default function DebtForm({ id }: Props) {
       formData.currency_id !== "" &&
       formData.start_date &&
       formData.due_date &&
-      formData.due_date >= formData.start_date
+      formData.due_date >= formData.start_date &&
+      formData.months &&
+      parseInt(formData.months) > 0
     );
   }, [formData]);
 
@@ -196,21 +193,20 @@ export default function DebtForm({ id }: Props) {
             <CardHeader>
               <div className="flex items-center gap-2">
                 <FileText className="size-5 text-muted-foreground" />
-                <CardTitle className="text-lg">Basic Information</CardTitle>
+                <CardTitle className="text-lg">{t("BASIC_INFORMATION")}</CardTitle>
               </div>
-              <CardDescription>Enter the name and description of your debt</CardDescription>
+              <CardDescription>{t("BASIC_INFORMATION_TEXT")}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="name">
-                  Debt Name <span className="text-destructive">*</span>
+                  {t("DEBT_NAME")} <span className="text-destructive">*</span>
                 </Label>
                 <Input
                   id="name"
-                  placeholder="e.g., Home Mortgage, Car Loan, Student Loan"
+                  placeholder={t("DEBT_NAME_PLACEHOLDER")}
                   value={formData.name}
                   onChange={(e) => updateField("name", e.target.value)}
-                  onBlur={() => handleBlur("name")}
                   className={cn(
                     touched.name &&
                       errors.name &&
@@ -223,24 +219,22 @@ export default function DebtForm({ id }: Props) {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="description">Description</Label>
+                <Label htmlFor="description">{t("DESCRIPTION")}</Label>
                 <Textarea
                   id="description"
-                  placeholder="Add any additional details about this debt..."
+                  placeholder={t("DESCRIPTION_PLACEHOLDER")}
                   value={formData.description}
                   onChange={(e) => updateField("description", e.target.value)}
                   rows={3}
                   className="resize-none"
                 />
-                <p className="text-xs text-muted-foreground">
-                  Optional. Add notes or context about this debt.
-                </p>
+                <p className="text-xs text-muted-foreground">{t("DESCRIPTION_TEXT")}</p>
               </div>
 
               <div className="grid gap-4 grid-cols-4">
                 <div className="space-y-2">
                   <Label htmlFor="currency">
-                    Currency <span className="text-destructive">*</span>
+                    {t("CURRENCY")} <span className="text-destructive">*</span>
                   </Label>
                   {!loadingCurrencies ? (
                     <Select
@@ -250,7 +244,7 @@ export default function DebtForm({ id }: Props) {
                       }}
                     >
                       <SelectTrigger className="h-14 bg-input border-border text-foreground">
-                        <SelectValue placeholder="Choose a currency" />
+                        <SelectValue placeholder={t("CHOOSE_A_CURRENCY")} />
                       </SelectTrigger>
                       <SelectContent className="bg-card border-border">
                         {!loadingCurrencies &&
@@ -285,17 +279,17 @@ export default function DebtForm({ id }: Props) {
             <CardHeader>
               <div className="flex items-center gap-2">
                 <Calendar className="size-5 text-muted-foreground" />
-                <CardTitle className="text-lg">Timeline</CardTitle>
+                <CardTitle className="text-lg">{t("TIMELINE")}</CardTitle>
               </div>
-              <CardDescription>Set the start and due dates for this debt</CardDescription>
+              <CardDescription>{t("TIMELINE_TEXT")}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="startDate">
-                    Start Date <span className="text-destructive">*</span>
+                    {t("START_DATE")} <span className="text-destructive">*</span>
                   </Label>
-                  <DebtDatePicker
+                  <TransactionDatePicker
                     date={formData.start_date}
                     onChangeDate={(newDate: string) => {
                       setFormData((p) => ({ ...p, start_date: newDate }));
@@ -311,9 +305,9 @@ export default function DebtForm({ id }: Props) {
 
                 <div className="space-y-2">
                   <Label htmlFor="dueDate">
-                    Due Date <span className="text-destructive">*</span>
+                    {t("DUE_DATE")} <span className="text-destructive">*</span>
                   </Label>
-                  <DebtDatePicker
+                  <TransactionDatePicker
                     date={formData.due_date}
                     onChangeDate={(newDate: string) => {
                       setFormData((p) => ({ ...p, due_date: newDate }));
@@ -334,15 +328,15 @@ export default function DebtForm({ id }: Props) {
             <CardHeader>
               <div className="flex items-center gap-2">
                 <DollarSign className="size-5 text-muted-foreground" />
-                <CardTitle className="text-lg">Financial Details</CardTitle>
+                <CardTitle className="text-lg">{t("FINANCIAL_DETAILS")}</CardTitle>
               </div>
-              <CardDescription>Set the amounts and payment structure</CardDescription>
+              <CardDescription>{t("FINANCIAL_DETAILS_TEXT")}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="totalAmount">
-                    Total Amount <span className="text-destructive">*</span>
+                    {t("TOTAL_AMOUNT")} <span className="text-destructive">*</span>
                   </Label>
                   <div className="relative">
                     <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
@@ -356,7 +350,6 @@ export default function DebtForm({ id }: Props) {
                       step={0.01}
                       value={formData.total_amount}
                       onChange={(e) => updateField("total_amount", e.target.value)}
-                      onBlur={() => handleBlur("total_amount")}
                       className={cn(
                         "pl-8",
                         touched.totalAmount &&
@@ -372,7 +365,7 @@ export default function DebtForm({ id }: Props) {
 
                 <div className="space-y-2">
                   <Label htmlFor="monthlyAmount">
-                    Monthly Payment <span className="text-destructive">*</span>
+                    {t("MONTHLY_PAYMENT")} <span className="text-destructive">*</span>
                   </Label>
                   <div className="relative">
                     <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
@@ -386,7 +379,6 @@ export default function DebtForm({ id }: Props) {
                       step={0.01}
                       value={formData.monthly_amount}
                       onChange={(e) => updateField("monthly_amount", e.target.value)}
-                      onBlur={() => handleBlur("monthly_amount")}
                       className={cn(
                         "pl-8",
                         touched.monthlyAmount &&
@@ -403,22 +395,23 @@ export default function DebtForm({ id }: Props) {
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="months">Total Months</Label>
+                  <Label htmlFor="months">
+                    {t("TOTAL_MONTHS")} <span className="text-destructive">*</span>
+                  </Label>
                   <Input
                     id="months"
                     type="number"
-                    placeholder="Auto-calculated or enter manually"
-                    min={0}
+                    placeholder={t("TOTAL_MONTHS_PLACEHOLDER")}
                     value={formData.months}
                     onChange={(e) => updateField("months", e.target.value)}
                   />
-                  <p className="text-xs text-muted-foreground">
-                    Optional. Total duration in months.
-                  </p>
+                  {touched.months && errors.months && (
+                    <p className="text-sm text-destructive">{errors.months}</p>
+                  )}
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="interestRate">Annual Interest Rate</Label>
+                  <Label htmlFor="interestRate">{t("ANNUAL_INTEREST_RATE")}</Label>
                   <div className="relative">
                     <Input
                       id="interestRate"
@@ -433,7 +426,7 @@ export default function DebtForm({ id }: Props) {
                     />
                     <Percent className="absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
                   </div>
-                  <p className="text-xs text-muted-foreground">Optional. Annual interest rate.</p>
+                  <p className="text-xs text-muted-foreground">{t("ANNUAL_INTEREST_RATE_TEXT")}</p>
                 </div>
               </div>
             </CardContent>
@@ -447,28 +440,27 @@ export default function DebtForm({ id }: Props) {
             <CardHeader>
               <div className="flex items-center gap-2">
                 <Calculator className="size-5 text-muted-foreground" />
-                <CardTitle className="text-lg">Summary</CardTitle>
+                <CardTitle className="text-lg">{t("SUMMARY")}</CardTitle>
               </div>
-              <CardDescription>Calculated values based on your input</CardDescription>
+              <CardDescription>{t("SUMMARY_TEXT")}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               {/* Calculated Values */}
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">Total Amount</span>
+                  <span className="text-sm text-muted-foreground">{t("TOTAL_AMOUNT")}</span>
                   <span className="font-semibold">
-                    {formatCurrency(parseFloat(formData.total_amount) || 0)}
+                    {formatCurrency(
+                      parseFloat(formData.total_amount) +
+                        parseFloat(formData.total_amount) *
+                          (parseFloat(formData.interest_rate == "" ? "0" : formData.interest_rate) /
+                            100) *
+                          (parseFloat(formData.months == "" ? "0" : formData.months) / 12) || 0
+                    )}
                   </span>
                 </div>
 
                 <div className="h-px bg-border" />
-
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">Remaining Balance</span>
-                  <span className="text-lg font-bold">
-                    {formatCurrency(calculations.remaining)}
-                  </span>
-                </div>
               </div>
 
               {/* Estimated Time */}
@@ -476,16 +468,17 @@ export default function DebtForm({ id }: Props) {
                 <div className="rounded-lg border border-primary/20 bg-primary/5 p-4">
                   <div className="flex items-center gap-2">
                     <TrendingUp className="size-4 text-primary" />
-                    <span className="text-sm font-medium">Estimated Payoff</span>
+                    <span className="text-sm font-medium">{t("ESTIMATED_PAYOFF")}</span>
                   </div>
                   <p className="mt-1 text-2xl font-bold text-primary">
                     {calculations.estimatedMonths}{" "}
                     <span className="text-sm font-normal text-muted-foreground">
-                      {calculations.estimatedMonths === 1 ? "month" : "months"}
+                      {calculations.estimatedMonths === 1 ? t("MONTH") : t("MONTHS")}
                     </span>
                   </p>
                   <p className="mt-1 text-xs text-muted-foreground">
-                    Based on {formatCurrency(parseFloat(formData.monthly_amount) || 0)}/month
+                    {t("BASED_ON")} {formatCurrency(parseFloat(formData.monthly_amount) || 0)}/
+                    {t("MONTH")}
                   </p>
                 </div>
               )}
@@ -493,7 +486,13 @@ export default function DebtForm({ id }: Props) {
               {/* Actions */}
               <div className="space-y-3 pt-2">
                 <Button type="submit" className="w-full" disabled={!isFormValid || isSubmitting}>
-                  {isSubmitting ? "Creating..." : "Create Debt"}
+                  {id
+                    ? isSubmitting
+                      ? t("SAVING")
+                      : t("SAVE")
+                    : isSubmitting
+                      ? t("CREATING")
+                      : t("CREATE_DEBT")}
                 </Button>
 
                 <AppLink
@@ -502,13 +501,15 @@ export default function DebtForm({ id }: Props) {
                   variant="outline"
                   className="w-full bg-transparent"
                 >
-                  Cancel
+                  {t("CANCEL")}
                 </AppLink>
               </div>
 
               {!isFormValid && (
                 <p className="text-center text-xs text-muted-foreground">
-                  Please fill in all required fields to create the debt.
+                  {id
+                    ? t("PLEASE_FILL_REQUIRED_FIELDS_EDIT")
+                    : t("PLEASE_FILL_REQUIRED_FIELDS_CREATE")}
                 </p>
               )}
             </CardContent>

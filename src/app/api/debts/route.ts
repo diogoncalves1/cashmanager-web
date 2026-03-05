@@ -56,20 +56,22 @@ function parseColumns(searchParams: URLSearchParams) {
   return columns.filter(Boolean);
 }
 
-function addColumnsToParams(columns: any[], searchParams: URLSearchParams) {
+function addColumnsToParams(columns: Column[], searchParams: URLSearchParams) {
   columns.forEach((col, index) => {
-    for (const key in col) {
+    (Object.keys(col) as Array<keyof Column>).forEach((key) => {
       const value = col[key];
 
-      if (key === "search" && typeof value === "object") {
-        // Trata search[value], search[regex] etc
-        for (const searchKey in value) {
-          searchParams.append(`columns[${index}][search][${searchKey}]`, value[searchKey]);
-        }
+      if (key === "search" && typeof value === "object" && value !== null) {
+        (Object.keys(value) as Array<keyof typeof value>).forEach((searchKey) => {
+          searchParams.append(
+            `columns[${index}][search][${String(searchKey)}]`,
+            String(value[searchKey])
+          );
+        });
       } else {
-        searchParams.append(`columns[${index}][${key}]`, value);
+        searchParams.append(`columns[${index}][${String(key)}]`, String(value));
       }
-    }
+    });
   });
 
   return searchParams;

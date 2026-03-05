@@ -1,11 +1,19 @@
 import React from "react";
-import Link from "next/link";
-import { ArrowLeft, CreditCard } from "lucide-react";
-import { Button } from "@/components/ui/button";
-
+import { CreditCard } from "lucide-react";
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import { useTranslations } from "next-intl";
 import DebtForm from "@/components/form/debts/DebtForm";
+import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("DEBTS");
+
+  return {
+    title: t("META_TITLE"),
+    description: t("META_DESCRIPTION"),
+  };
+}
 
 type Props = {
   params: { id: string };
@@ -17,33 +25,19 @@ export default function NewDebtPage({ params }: Props) {
   return (
     <>
       <PageBreadcrumb
-        pageTitle={t("DEBT")}
+        pageTitle={t("DEBTS")}
         breadcrumb={[{ title: t("DEBTS"), path: "/debts" }, { title: t("EDIT") }]}
       />
       <div className="max-w-6xl mx-auto px-6 py-6">
         {/* Page Header */}
         <div className="mb-8">
-          <Button
-            variant="secondary"
-            size="sm"
-            asChild
-            className="mb-4 -ml-2 gap-2 text-muted-foreground hover:text-foreground"
-          >
-            <Link href="/debts">
-              <ArrowLeft className="size-4" />
-              Back to Debts
-            </Link>
-          </Button>
-
           <div className="flex items-center gap-3 mb-3">
             <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10">
               <CreditCard className="size-6 text-primary" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold tracking-tight">Create New Debt</h1>
-              <p className="text-muted-foreground">
-                Add a new debt to track your financial obligations
-              </p>
+              <h1 className="text-2xl font-bold tracking-tight">{t("EDIT_DEBT")}</h1>
+              <p className="text-muted-foreground">{t("EDIT_DEBT_TEXT")}</p>
             </div>
           </div>
           <DebtForm id={id} />

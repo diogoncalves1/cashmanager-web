@@ -36,7 +36,7 @@ import ActivityTimeline from "@/components/ui/timeline/ActivityTimeline";
 import UsersTable from "./UsersTable";
 import { useAuth } from "@/context/AuthContext";
 import LeaveSubjectDialog from "@/components/invitations/LeaveSubjectDialog";
-import { GoalTransactionDataTable } from "@/components/goal-transactions/GoalTransactionDataTable";
+import TableContainer from "@/components/goal-transactions/TableContainer";
 
 type FinancialGoalDetailsProps = {
   id: string;
@@ -306,8 +306,8 @@ export default function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) 
 
           {/* Transactions Tab */}
           <TabsContent value="transactions">
-            <div className="rounded-2xl bg-card border border-border shadow-sm overflow-hidden">
-              <GoalTransactionDataTable financialGoalId={id} enableFilters={false} />
+            <div className="rounded-2xl overflow-hidden">
+              <TableContainer financialGoalId={id} load={loading} />
             </div>
           </TabsContent>
 

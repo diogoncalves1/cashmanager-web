@@ -426,7 +426,8 @@
 
     "MARK_COMPLETED": "Mark as completed",
     "MARK_COMPLETED_FINANCIAL_GOAL": "Mark financial goal as completed?",
-    "MARK_COMPLETED_FINANCIAL_GOAL_TEXT": "Are you sure you want to mark this financial goal as completed?"
+    "MARK_COMPLETED_FINANCIAL_GOAL_TEXT": "Are you sure you want to mark this financial goal as completed?",
+    "COMPLETE_GOAL": "Complete goal"
   },
 
   "BUTTONS": {
@@ -521,17 +522,26 @@
     "META_TITLE": "Cash Manager | Debts",
     "META_DESCRIPTION": "Manage your debt payments efficiently with Cash Manager. Track your payments and keep your finances organized.",
 
-    "ADD_DEBT": "Add Debt",
+    "ADD_DEBT": "Add debt",
+    "ADD": "Add",
     "EDIT": "Edit",
     "DELETE": "Delete Debt",
     "DETAILS": "Details",
+    "SUMMARY": "Summary",
+    "TIMELINE": "Timeline",
+    "TIMELINE_TEXT": "Set the start and end dates for this debt.",
+    "FINANCIAL_DETAILS": "Financial details",
+    "FINANCIAL_DETAILS_TEXT": "Define the amounts and payment structure.",
+    "TOTAL_MONTHS_PLACEHOLDER": "Number of months...",
+    "SAVE": "Save",
+    "SAVING": "Saving...",
 
-    "TOTAL_DEBT": "Total Owed",
+    "TOTAL_DEBT": "Total debt",
     "ACROSS": "Across",
-    "TOTAL_PAID": "Total Paid",
+    "TOTAL_PAID": "Total paid",
     "OF_TOTAL": "of total",
-    "ACTIVE_DEBTS": "Active Debts",
-    "MONTHLY_PAYMENTS": "Monthly Payments",
+    "ACTIVE_DEBTS": "Active debts",
+    "MONTHLY_PAYMENTS": "Monthly payments",
 
     "DEBT": "Debt",
     "DEBTS": "Debts",
@@ -540,11 +550,11 @@
     "TRANSACTIONS": "Payments",
     "ADD_TRANSACTION": "New Payment",
 
-    "ALL_TRANSACTIONS": "All Payments",
+    "ALL_TRANSACTIONS": "All payments",
 
     "COMPLETED": "Completed",
     "COMPLETED_PLURAL": "Completed",
-    "ACTIVE_DEBTS_ONLY": "Active Debts Only",
+    "ACTIVE_DEBTS_ONLY": "Active debts only",
     "PENDING": "Pending",
 
     "MONTHS": "months",
@@ -552,20 +562,25 @@
     "APR": "APR",
     "REMAINING": "Remaining",
 
+    "CREATE_DEBT": "Create debt",
+    "TOTAL_MONTHS": "Number of months",
+    "MONTHLY_PAYMENT": "Monthly payment",
+    "DEBT_NAME": "Debt name",
+
     "SEARCH_DEBTS": "Search for a debt...",
     "PROGRESS": "Progress",
     "TOTAL": "Total",
     "MONTH_ABR": "mo",
 
     "NAME": "Name",
-    "TOTAL_AMOUNT": "Total Amount",
-    "PAID_AMOUNT": "Paid Amount",
+    "TOTAL_AMOUNT": "Total amount",
+    "PAID_AMOUNT": "Paid amount",
     "PAID": "Paid",
     "ALL": "All",
     "USERS": "Users",
     "CURRENCY": "Currency",
-    "DUE_DATE": "Due Date",
-    "START_DATE": "Start Date",
+    "DUE_DATE": "Due date",
+    "START_DATE": "Start date",
     "STATUS": "Status",
     "ACTIONS": "Actions",
 
@@ -578,7 +593,7 @@
     "PREVIOUS": "Previous",
     "FIRST": "First",
     "LAST": "Last",
-    "NO_RESULTS": "No Results",
+    "NO_RESULTS": "No results",
     "LOADING": "Loading",
 
     "CANCEL": "Cancel",
@@ -593,12 +608,12 @@
     "YES_DELETE": "Yes, delete!",
     "YES_RESET": "Yes, reset!",
     "YOU_SURE": "Are you sure?",
-    "YOU_DONT_REVERT_THIS": "You won't be able to revert this!",
+    "YOU_DONT_REVERT_THIS": "You won’t be able to revert this!",
     "DELETING_TITLE": "Deleting...",
     "DELETING_MESSAGE": "Deleting debt...",
 
     "OTHERS_INFORMATION": "Other Information",
-    "CREATED_AT": "Created At",
+    "CREATED_AT": "Created at",
 
     "RECENT_TRANSACTIONS": "Recent Payments",
     "DEBT_DETAILS": "Debt Details",
@@ -607,14 +622,32 @@
     "OTHERS": "Others",
     "DESCRIPTION": "Description",
     "RESET": "Reset",
-    "LAST_UPDATE": "Last Update",
+    "LAST_UPDATE": "Last update",
     "COMPLETE": "Complete",
-    "MISSING_AMOUNT": "Remaining Amount",
-    "DEBT_PROGRESS": "Debt Progress",
+    "MISSING_AMOUNT": "Remaining amount",
+    "DEBT_PROGRESS": "Debt progress",
     "DEBT_COMPLETED": "Debt Paid!",
-    "DEBT_COMPLETED_MESSAGE": "Congratulations! Debt successfully paid",
+    "DEBT_COMPLETED_MESSAGE": "Congratulations! Debt successfully paid.",
+    "CREATE_NEW_DEBT": "Create new debt",
+    "CREATE_NEW_DEBT_TEXT": "Add a new debt to track your financial obligations.",
+    "EDIT_DEBT": "Edit debt",
+    "EDIT_DEBT_TEXT": "Edit the debt information as needed.",
+    "DESCRIPTION_TEXT": "Optional. Add notes or context about this debt.",
+    "DESCRIPTION_PLACEHOLDER": "Add any additional details about this debt...",
 
-    "MONTHLY_SUMMARY": "Monthly Summary"
+    "MONTHLY_SUMMARY": "Monthly Summary",
+    "BASIC_INFORMATION": "Basic Information",
+    "BASIC_INFORMATION_TEXT": "Enter the name and description of your debt.",
+    "DEBT_NAME_PLACEHOLDER": "E.g., Home Mortgage, Car Loan",
+
+    "CHOOSE_A_CURRENCY": "Choose a currency",
+    "ANNUAL_INTEREST_RATE": "Annual interest rate",
+    "ANNUAL_INTEREST_RATE_TEXT": "Optional. If not filled in, the value will automatically be set to 0.",
+    "BASED_ON": "Based on",
+    "ESTIMATED_PAYOFF": "Estimated payoff",
+    "SUMMARY_TEXT": "Values calculated based on the form.",
+    "PLEASE_FILL_REQUIRED_FIELDS_EDIT": "Please fill in all required fields to edit your debt.",
+    "PLEASE_FILL_REQUIRED_FIELDS_CREATE": "Please fill in all required fields to create the debt."
   },
 
   "HOME": {
