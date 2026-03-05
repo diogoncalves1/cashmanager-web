@@ -30,6 +30,7 @@ export function PendingRequestCard({
     .split(" ")
     .map((n) => n[0])
     .join("");
+  const t = useTranslations("FRIENDS");
   const monthsT = useTranslations("MONTHS");
 
   return (
@@ -43,9 +44,9 @@ export function PendingRequestCard({
         <div>
           <div className="flex items-center gap-2">
             <p className="font-semibold leading-none">{user.name}</p>
-            <Badge variant="light" className="bg-warning/10 text-warning border-warning/20 text-xs">
+            <Badge className="bg-warning/10 text-warning border-warning/20 text-xs">
               <Clock className="mr-1 size-3" />
-              Pending
+              {t("PENDING")}
             </Badge>
           </div>
           <p className="mt-1 text-sm text-muted-foreground">@{user.username}</p>
@@ -65,7 +66,7 @@ export function PendingRequestCard({
               className="gap-1.5"
             >
               <Check className="size-3.5" />
-              Accept
+              {t("ACCEPT")}
             </Button>
             <Button
               size="sm"
@@ -75,7 +76,7 @@ export function PendingRequestCard({
               className="gap-1.5 bg-transparent"
             >
               <X className="size-3.5" />
-              Reject
+              {t("REJECT")}
             </Button>
           </>
         ) : (
@@ -87,7 +88,7 @@ export function PendingRequestCard({
             className="gap-1.5 text-destructive hover:text-destructive bg-transparent hover:bg-destructive/10"
           >
             <X className="size-3.5" />
-            Cancel
+            {t("CANCEL")}
           </Button>
         )}
       </div>

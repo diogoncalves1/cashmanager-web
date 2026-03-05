@@ -650,6 +650,109 @@
     "PLEASE_FILL_REQUIRED_FIELDS_CREATE": "Preencha todos os campos obrigatórios para criar a dívida."
   },
 
+  "FRIENDS": {
+    "META_TITLE": "Cash Manager | Amizades",
+    "META_DESCRIPTION": "Faça a gestão das suas conexões e solicitações de amizade. Acompanhe os seus pagamentos e mantenha suas finanças organizadas.",
+
+    "FRIENDS": "Amizades",
+    "PENDING": "Pendente",
+    "FRIENDS_TEXT": "Faça a gestão das suas conexões e solicitações de amizade.",
+    "FRIEND": "Amigo",
+    "FRIEND_REQUESTS": "Pedidos de Amizade",
+    "SEARCH": "Procurar",
+    "SEND": "Enviar",
+    "ACTIONS": "Ações",
+    "REMOVE_FRIEND": "Remover amigo",
+    "BLOCK_USER": "Bloquear utilizador",
+    "NO_RESULTS": "Sem Resultados",
+    "NO_RESULTS_TEXT": "Nenhum amigo corresponde a \"{username}\". Tente uma pesquisa diferente.",
+    "NO_BLOCKED_RESULTS_TEXT": "Nenhum utilizador bloqueado corresponde a \"{username}\". Tente uma pesquisa diferente.",
+    "NO_RECEIVED_RESULTS_TEXT": "Nenhum pedido recebido corresponde a \"{username}\". Tente uma pesquisa diferente.",
+    "NO_SENT_RESULTS_TEXT": "Nenhum pedido enviado corresponde a \"{username}\". Tente uma pesquisa diferente.",
+    "NO_RECEIVED_REQUESTS": "Sem pedidos recebidos",
+    "NO_SENT_REQUESTS": "Sem pedidos enviados",
+    "NO_SENT_REQUESTS_TEXT": "Ainda não enviou nenhum pedido de amizade.",
+    "NO_RECEIVED_REQUESTS_TEXT": "Ainda não recebeu nenhum pedido de amizade.",
+    "NO_FRIENDS_YET": "Ainda sem amigos.",
+    "NO_FRIENDS_YET_TEXT": "Use a ferramenta de pesquisa acima para encontrar pessoas e enviar solicitações de amizade.",
+    "NO_BLOCKED_USERS_TEXT": "Não bloqueou ninguém. Utilizadores bloqueados não podem interagir contigo.",
+    "ALL_FRIENDS": "Todos os Amigos",
+    "BLOCKED_USERS": "Utilizadores Bloqueados",
+    "NO_FRIENDS": "Sem Amigos",
+    "NO_BLOCKED_USERS": "Sem Utilizadores Bloqueados",
+    "LOADING": "Carregando",
+
+    "SEARCH_BY_USER": "Procure o utilizador...",
+    "ADD_FRIEND": "Adicionar amigo",
+    "SEARCH_USERS": "Procure o utilizador...",
+    "TRY_AGAIN": "Tentar novamente",
+    "LOADING_MORE_BLOCKED_USERS": "A carregar mais utilizadores bloqueados...",
+    "LOADING_BLOCKED_USERS": "A carregar utilizadores bloqueados...",
+    "WITHOUT_BLOCKED_USERS": "Não tens utilizadores bloqueados.",
+    "SCROLL_TO_SEE_MORE": "Scroll para baixo para ver mais",
+
+    "NO_USERS_FOUND_MATCHING": "Nenhum utilizador encontrado que corresponda a \"{username}\"",
+
+    "RECEIVED": "Recebidos",
+    "SENT": "Enviados",
+    "BLOCKED": "Bloqueados",
+    "SEARCH_BY_USERNAME": "Procure por nome de utilizador",
+
+    "REMOVE": "Remover",
+    "HAVENT_ADDED_FRIENDS": "Ainda não tens amigos adicionados.",
+
+    "SEARCH_FRIEND": "Procurar amigo",
+
+    "LOADING_REQUESTS": "A carregar pedidos...",
+    "BLOCK": "Bloquear",
+
+    "LOADING_FRIENDS": "A carregar amigos...",
+
+    "LOADING_MORE_FRIENDS": "A carregar mais amigos...",
+
+    "HAVE_NO_REQUESTS": "Não tens pedidos.",
+
+    "SENT_REQUESTS": "Pedidos enviados",
+
+    "ADD_BY_ID": "Adicionar amigo pelo ID",
+
+    "LOADING_MORE_REQUESTS": "A carregar mais pedidos...",
+
+    "ACCEPT": "Aceitar",
+    "DECLINE": "Recusar",
+    "CANCEL_REQUEST": "Cancelar Pedido",
+    "YES_UNLBOCK": "Sim, desbloquear",
+    "UNBLOCK": "Desbloquear",
+
+    "BLOCK_USER_MESSAGE": "Bloquear utilizador?",
+    "BLOCKING_USER_TITLE": "A bloquear...",
+    "BLOCKING_USER_MESSAGE": "A bloquear utilizador...",
+
+    "REMOVE_FRIEND_MESSAGE": "Remover amigo?",
+    "REMOVING_FRIEND_TITLE": "A remover...",
+    "REMOVING_FRIEND_MESSAGE": "A remover amigo...",
+
+    "SENDING_FRIEND_REQUEST_TITLE": "A enviar...",
+    "SENDING_FRIEND_REQUEST_MESSAGE": "A enviar pedido de amizade...",
+
+    "ACCEPT_REQUEST_TITLE": "A aceitar...",
+    "ACCEPT_REQUEST_MESSAGE": "A aceitar pedido de amizade...",
+
+    "DECLINE_REQUEST_TITLE": "A recusar...",
+    "DECLINE_REQUEST_MESSAGE": "A recusar pedido de amizade...",
+
+    "CANCEL_REQUEST_TITLE": "A cancelar...",
+    "CANCEL_REQUEST_MESSAGE": "A cancelar pedido de amizade...",
+
+    "UNBLOCK_USER_MESSAGE": "Desbloquear utilizador?",
+    "UNBLOCKING_USER_TITLE": "A desbloquear...",
+    "UNBLOCKING_USER_MESSAGE": "A desbloquear utilizador...",
+
+    "YES_BLOCK": "Sim, bloquear!",
+    "YES_REMOVE": "Sim, remover!",
+    "CANCEL": "Cancelar"
+  },
+
   "HOME": {
     "HOME": "Início",
     "MONTHLY_BALANCE": "Saldo Mensal",
@@ -718,80 +821,6 @@
     "OCT": "Out",
     "NOV": "Nov",
     "DEC": "Dez"
-  },
-
-  "FRIENDS": {
-    "FRIENDS": "Amizades",
-    "FRIEND": "AMIZADES",
-    "FRIEND_REQUESTS": "Pedidos de Amizade",
-    "SEARCH": "Procurar",
-    "SEND": "Enviar",
-    "ALL_FRIENDS": "Todos os Amigos",
-    "BLOCKED_USERS": "Utilizadores Bloqueados",
-    "NO_FRIENDS": "Sem Amigos",
-    "NO_BLOCKED_USERS": "Sem Utilizadores Bloqueados",
-    "LOADING": "Carregando",
-
-    "SEARCH_BY_USER": "Buscar por utilizador...",
-    "TRY_AGAIN": "Tentar novamente",
-    "LOADING_MORE_BLOCKED_USERS": "A carregar mais utilizadores bloqueados...",
-    "LOADING_BLOCKED_USERS": "A carregar utilizadores bloqueados...",
-    "WITHOUT_BLOCKED_USERS": "Não tens utilizadores bloqueados.",
-    "SCROLL_TO_SEE_MORE": "Scroll para baixo para ver mais",
-
-    "REMOVE": "Remover",
-    "HAVENT_ADDED_FRIENDS": "Ainda não tens amigos adicionados.",
-
-    "SEARCH_FRIEND": "Procurar amigo",
-
-    "LOADING_REQUESTS": "A carregar pedidos...",
-    "BLOCK": "Bloquear",
-
-    "LOADING_FRIENDS": "A carregar amigos...",
-
-    "LOADING_MORE_FRIENDS": "A carregar mais amigos...",
-
-    "HAVE_NO_REQUESTS": "Não tens pedidos.",
-
-    "SENT_REQUESTS": "Pedidos enviados",
-
-    "ADD_BY_ID": "Adicionar amigo pelo ID",
-
-    "LOADING_MORE_REQUESTS": "A carregar mais pedidos...",
-
-    "ACCEPT": "Aceitar",
-    "DECLINE": "Recusar",
-    "CANCEL_REQUEST": "Cancelar Pedido",
-    "YES_UNLBOCK": "Sim, desbloquear",
-    "UNBLOCK": "Desbloquear",
-
-    "BLOCK_USER_MESSAGE": "Bloquear utilizador?",
-    "BLOCKING_USER_TITLE": "A bloquear...",
-    "BLOCKING_USER_MESSAGE": "A bloquear utilizador...",
-
-    "REMOVE_FRIEND_MESSAGE": "Remover amigo?",
-    "REMOVING_FRIEND_TITLE": "A remover...",
-    "REMOVING_FRIEND_MESSAGE": "A remover amigo...",
-
-    "SENDING_FRIEND_REQUEST_TITLE": "A enviar...",
-    "SENDING_FRIEND_REQUEST_MESSAGE": "A enviar pedido de amizade...",
-
-    "ACCEPT_REQUEST_TITLE": "A aceitar...",
-    "ACCEPT_REQUEST_MESSAGE": "A aceitar pedido de amizade...",
-
-    "DECLINE_REQUEST_TITLE": "A recusar...",
-    "DECLINE_REQUEST_MESSAGE": "A recusar pedido de amizade...",
-
-    "CANCEL_REQUEST_TITLE": "A cancelar...",
-    "CANCEL_REQUEST_MESSAGE": "A cancelar pedido de amizade...",
-
-    "UNBLOCK_USER_MESSAGE": "Desbloquear utilizador?",
-    "UNBLOCKING_USER_TITLE": "A desbloquear...",
-    "UNBLOCKING_USER_MESSAGE": "A desbloquear utilizador...",
-
-    "YES_BLOCK": "Sim, bloquear!",
-    "YES_REMOVE": "Sim, remover!",
-    "CANCEL": "Cancelar"
   },
 
   "DEBT_PAYMENTS": {

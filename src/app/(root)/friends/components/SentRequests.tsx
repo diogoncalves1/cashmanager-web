@@ -1,10 +1,10 @@
 "use client";
 
-import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
 import { Friendship } from "@/models/friendship";
-import { Clock, X } from "lucide-react";
+import { Clock } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { onCancelRequest } from "@/services/friend-requests/service";
 import { FriendsEmptyState } from "./FriendsEmptyState";
@@ -14,14 +14,13 @@ import { useFriendsContext } from "../context/FriendsContext";
 
 type Page = { data: Friendship[]; nextPage: number | null };
 
-const fetchFriends = async ({
-  pageParam = 1,
-  queryKey,
-}: {
-  pageParam?: number;
-  queryKey: any[];
-}): Promise<Page> => {
-  const searchTerm = queryKey[1] || ""; // segundo item da queryKey
+type FetchFriendsParams = {
+  pageParam?: number | unknown;
+  search?: string;
+};
+
+const fetchRequests = async ({ pageParam = 1, search }: FetchFriendsParams): Promise<Page> => {
+  const searchTerm = search ?? "";
   const response = await fetch(
     `/api/friend-requests/sent?page=${pageParam}&size=10&search=${searchTerm}`,
     {
@@ -49,25 +48,17 @@ export default function SentRequests() {
     rootMargin: "5px",
   });
 
-  const {
-    data,
-    error,
-    fetchNextPage,
-    refetch,
-    hasNextPage,
-    isFetchingNextPage,
-    isLoading,
-    isError,
-  } = useInfiniteQuery<Page, Error>({
-    queryKey: ["sentRequests", debouncedSearch],
-    queryFn: fetchFriends,
-    initialPageParam: 1,
-    getNextPageParam: (lastPage) => {
-      return lastPage.nextPage ?? undefined;
-    },
-    staleTime: 1000 * 60 * 5,
-  });
-  const queryClient = useQueryClient();
+  const { data, fetchNextPage, refetch, hasNextPage, isFetchingNextPage, isLoading, isError } =
+    useInfiniteQuery<Page, Error>({
+      queryKey: ["sentRequests", debouncedSearch],
+      queryFn: ({ pageParam = 1 }) =>
+        fetchRequests({ pageParam: pageParam, search: debouncedSearch }),
+      initialPageParam: 1,
+      getNextPageParam: (lastPage) => {
+        return lastPage.nextPage ?? undefined;
+      },
+      staleTime: 1000 * 60 * 5,
+    });
 
   useEffect(() => {
     if (inView && hasNextPage && !isFetchingNextPage) {
@@ -85,12 +76,11 @@ export default function SentRequests() {
 
   useEffect(() => {
     refetch();
-  }, [loadCounter]);
+  }, [loadCounter, refetch]);
 
   if (isError) {
     return (
       <div className="text-center py-12 text-red-600">
-        Error: {error.message}
         <button onClick={() => window.location.reload()} className="ml-3 underline">
           {t("TRY_AGAIN")}
         </button>
@@ -98,7 +88,7 @@ export default function SentRequests() {
     );
   }
 
-  const allRequests = data?.pages.flatMap((page: any) => page.data) ?? [];
+  const allRequests = data?.pages.flatMap((page) => page.data) ?? [];
 
   return (
     <div className="space-y-4">
@@ -123,16 +113,21 @@ export default function SentRequests() {
               await onCancelRequest(f.user.id, t);
               setLoadCounter((prev) => prev + 1);
 
-              queryClient.invalidateQueries(["sentRequests", debouncedSearch]);
               refetch();
             }}
           />
         ))
+      ) : allRequests.length == 0 && debouncedSearch.trim() ? (
+        <FriendsEmptyState
+          icon={Clock}
+          title={t("NO_RESULTS")}
+          description={t("NO_SENT_RESULTS_TEXT", { username: debouncedSearch })}
+        />
       ) : (
         <FriendsEmptyState
           icon={Clock}
-          title="No sent requests"
-          description="You haven't sent any friend requests yet. Search for users above."
+          title={t("NO_SENT_REQUESTS")}
+          description={t("NO_SENT_REQUESTS_TEXT")}
         />
       )}
 

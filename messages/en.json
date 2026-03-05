@@ -650,6 +650,109 @@
     "PLEASE_FILL_REQUIRED_FIELDS_CREATE": "Please fill in all required fields to create the debt."
   },
 
+  "FRIENDS": {
+    "META_TITLE": "Cash Manager | Friends",
+    "META_DESCRIPTION": "Manage your connections and friend requests. Track your payments and keep your finances organized.",
+
+    "FRIENDS": "Friends",
+    "PENDING": "Pending",
+    "FRIENDS_TEXT": "Manage your connections and friend requests.",
+    "FRIEND": "Friend",
+    "FRIEND_REQUESTS": "Friend Requests",
+    "SEARCH": "Search",
+    "SEND": "Send",
+    "ACTIONS": "Actions",
+    "REMOVE_FRIEND": "Remove friend",
+    "BLOCK_USER": "Block user",
+    "NO_RESULTS": "No Results",
+    "NO_RESULTS_TEXT": "No friend matches \"{username}\". Try a different search.",
+    "NO_BLOCKED_RESULTS_TEXT": "No blocked user matches \"{username}\". Try a different search.",
+    "NO_RECEIVED_RESULTS_TEXT": "No received request matches \"{username}\". Try a different search.",
+    "NO_SENT_RESULTS_TEXT": "No sent request matches \"{username}\". Try a different search.",
+    "NO_RECEIVED_REQUESTS": "No received requests",
+    "NO_SENT_REQUESTS": "No sent requests",
+    "NO_SENT_REQUESTS_TEXT": "You haven't sent any friend requests yet.",
+    "NO_RECEIVED_REQUESTS_TEXT": "You haven't received any friend requests yet.",
+    "NO_FRIENDS_YET": "No friends yet.",
+    "NO_FRIENDS_YET_TEXT": "Use the search tool above to find people and send friend requests.",
+    "NO_BLOCKED_USERS_TEXT": "You haven't blocked anyone. Blocked users cannot interact with you.",
+    "ALL_FRIENDS": "All Friends",
+    "BLOCKED_USERS": "Blocked Users",
+    "NO_FRIENDS": "No Friends",
+    "NO_BLOCKED_USERS": "No Blocked Users",
+    "LOADING": "Loading",
+
+    "SEARCH_BY_USER": "Search for user...",
+    "ADD_FRIEND": "Add friend",
+    "SEARCH_USERS": "Search for user...",
+    "TRY_AGAIN": "Try again",
+    "LOADING_MORE_BLOCKED_USERS": "Loading more blocked users...",
+    "LOADING_BLOCKED_USERS": "Loading blocked users...",
+    "WITHOUT_BLOCKED_USERS": "You don't have any blocked users.",
+    "SCROLL_TO_SEE_MORE": "Scroll down to see more",
+
+    "NO_USERS_FOUND_MATCHING": "No users found matching \"{username}\"",
+
+    "RECEIVED": "Received",
+    "SENT": "Sent",
+    "BLOCKED": "Blocked",
+    "SEARCH_BY_USERNAME": "Search by username",
+
+    "REMOVE": "Remove",
+    "HAVENT_ADDED_FRIENDS": "You haven't added any friends yet.",
+
+    "SEARCH_FRIEND": "Search friend",
+
+    "LOADING_REQUESTS": "Loading requests...",
+    "BLOCK": "Block",
+
+    "LOADING_FRIENDS": "Loading friends...",
+
+    "LOADING_MORE_FRIENDS": "Loading more friends...",
+
+    "HAVE_NO_REQUESTS": "You have no requests.",
+
+    "SENT_REQUESTS": "Sent requests",
+
+    "ADD_BY_ID": "Add friend by ID",
+
+    "LOADING_MORE_REQUESTS": "Loading more requests...",
+
+    "ACCEPT": "Accept",
+    "DECLINE": "Decline",
+    "CANCEL_REQUEST": "Cancel Request",
+    "YES_UNLBOCK": "Yes, unblock",
+    "UNBLOCK": "Unblock",
+
+    "BLOCK_USER_MESSAGE": "Block user?",
+    "BLOCKING_USER_TITLE": "Blocking...",
+    "BLOCKING_USER_MESSAGE": "Blocking user...",
+
+    "REMOVE_FRIEND_MESSAGE": "Remove friend?",
+    "REMOVING_FRIEND_TITLE": "Removing...",
+    "REMOVING_FRIEND_MESSAGE": "Removing friend...",
+
+    "SENDING_FRIEND_REQUEST_TITLE": "Sending...",
+    "SENDING_FRIEND_REQUEST_MESSAGE": "Sending friend request...",
+
+    "ACCEPT_REQUEST_TITLE": "Accepting...",
+    "ACCEPT_REQUEST_MESSAGE": "Accepting friend request...",
+
+    "DECLINE_REQUEST_TITLE": "Declining...",
+    "DECLINE_REQUEST_MESSAGE": "Declining friend request...",
+
+    "CANCEL_REQUEST_TITLE": "Canceling...",
+    "CANCEL_REQUEST_MESSAGE": "Canceling friend request...",
+
+    "UNBLOCK_USER_MESSAGE": "Unblock user?",
+    "UNBLOCKING_USER_TITLE": "Unblocking...",
+    "UNBLOCKING_USER_MESSAGE": "Unblocking user...",
+
+    "YES_BLOCK": "Yes, block!",
+    "YES_REMOVE": "Yes, remove!",
+    "CANCEL": "Cancel"
+  },
+
   "HOME": {
     "HOME": "Home",
     "MONTHLY_BALANCE": "Monthly Balance",
@@ -724,78 +827,5 @@
     "OCT": "Oct",
     "NOV": "Nov",
     "DEC": "Dec"
-  },
-
-  "FRIENDS": {
-    "FRIENDS": "Friends",
-    "FRIEND": "FRIENDS",
-    "FRIEND_REQUESTS": "Friend Requests",
-    "SEARCH": "Search",
-    "SEND": "Send",
-    "ALL_FRIENDS": "All Friends",
-    "BLOCKED_USERS": "Blocked Users",
-    "NO_FRIENDS": "No Friends",
-    "NO_BLOCKED_USERS": "No Blocked Users",
-    "LOADING": "Loading",
-
-    "SEARCH_BY_USER": "Search by user...",
-    "TRY_AGAIN": "Try again",
-    "LOADING_MORE_BLOCKED_USERS": "Loading more blocked users...",
-    "LOADING_BLOCKED_USERS": "Loading blocked users...",
-    "WITHOUT_BLOCKED_USERS": "You have no blocked users.",
-    "SCROLL_TO_SEE_MORE": "Scroll down to see more",
-
-    "REMOVE": "Remove",
-    "HAVENT_ADDED_FRIENDS": "You haven't added any friends yet.",
-
-    "SEARCH_FRIEND": "Search friend",
-
-    "LOADING_REQUESTS": "Loading requests...",
-    "BLOCK": "Block",
-
-    "LOADING_FRIENDS": "Loading friends...",
-    "LOADING_MORE_FRIENDS": "Loading more friends...",
-
-    "HAVE_NO_REQUESTS": "You have no requests.",
-
-    "SENT_REQUESTS": "Sent requests",
-
-    "ADD_BY_ID": "Add friend by ID",
-
-    "LOADING_MORE_REQUESTS": "Loading more requests...",
-
-    "ACCEPT": "Accept",
-    "DECLINE": "Decline",
-    "CANCEL_REQUEST": "Cancel Request",
-    "YES_UNLBOCK": "Yes, unblock",
-    "UNBLOCK": "Unblock",
-
-    "BLOCK_USER_MESSAGE": "Block user?",
-    "BLOCKING_USER_TITLE": "Blocking...",
-    "BLOCKING_USER_MESSAGE": "Blocking user...",
-
-    "REMOVE_FRIEND_MESSAGE": "Remove friend?",
-    "REMOVING_FRIEND_TITLE": "Removing...",
-    "REMOVING_FRIEND_MESSAGE": "Removing friend...",
-
-    "SENDING_FRIEND_REQUEST_TITLE": "Sending...",
-    "SENDING_FRIEND_REQUEST_MESSAGE": "Sending friend request...",
-
-    "ACCEPT_REQUEST_TITLE": "Accepting...",
-    "ACCEPT_REQUEST_MESSAGE": "Accepting friend request...",
-
-    "DECLINE_REQUEST_TITLE": "Declining...",
-    "DECLINE_REQUEST_MESSAGE": "Declining friend request...",
-
-    "CANCEL_REQUEST_TITLE": "Cancelling...",
-    "CANCEL_REQUEST_MESSAGE": "Cancelling friend request...",
-
-    "UNBLOCK_USER_MESSAGE": "Unblock user?",
-    "UNBLOCKING_USER_TITLE": "Unblocking...",
-    "UNBLOCKING_USER_MESSAGE": "Unblocking user...",
-
-    "YES_BLOCK": "Yes, block!",
-    "YES_REMOVE": "Yes, remove!",
-    "CANCEL": "Cancel"
   }
 }

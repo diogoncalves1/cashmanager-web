@@ -4,6 +4,7 @@ import { ShieldCheck } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Friendship } from "@/models/friendship";
+import { useTranslations } from "next-intl";
 
 interface BlockedUserCardProps {
   friendship: Friendship;
@@ -11,6 +12,7 @@ interface BlockedUserCardProps {
 }
 
 export function BlockedUserCard({ friendship, onUnblock }: BlockedUserCardProps) {
+  const t = useTranslations("FRIENDS");
   const { user } = friendship;
   const initials = user.name
     .split(" ")
@@ -38,7 +40,7 @@ export function BlockedUserCard({ friendship, onUnblock }: BlockedUserCardProps)
         className="gap-1.5 bg-transparent"
       >
         <ShieldCheck className="size-3.5" />
-        Unblock
+        {t("UNBLOCK")}
       </Button>
     </div>
   );
