@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -39,73 +39,76 @@ const AppSidebar: React.FC = () => {
   const router = useRouter();
   const t = useTranslations("LAYOUTS");
 
-  const navItems: NavItem[] = [
-    {
-      icon: <LayoutDashboard size={18} strokeWidth={2} />,
-      name: t("SIDEBAR_HOME"),
-      path: "/dashboard",
-    },
-    {
-      icon: <Wallet size={18} strokeWidth={2} />,
-      name: t("SIDEBAR_ACCOUNTS"),
-      subItems: [
-        { name: t("SIDEBAR_ACCOUNTS"), path: "/accounts", pro: false },
-        {
-          name: t("SIDEBAR_TRANSACTIONS"),
-          path: "/transactions",
-          pro: false,
-        },
-        {
-          name: t("SIDEBAR_INVITES"),
-          path: "/account-invitations",
-        },
-      ],
-    },
-    {
-      icon: <Target size={18} strokeWidth={2} />,
-      name: t("SIDEBAR_FINANCIAL_GOALS"),
-      subItems: [
-        { name: t("SIDEBAR_FINANCIAL_GOALS"), path: "/financial-goals", pro: false },
-        {
-          name: t("SIDEBAR_TRANSACTIONS"),
-          path: "/financial-goal-transactions",
-          pro: false,
-        },
-        {
-          name: t("SIDEBAR_INVITES"),
-          path: "/financial-goal-invitations",
-        },
-      ],
-    },
-    {
-      icon: <TrendingDown size={18} strokeWidth={2} />,
-      name: t("SIDEBAR_DEBTS"),
-      subItems: [
-        { name: t("SIDEBAR_DEBTS"), path: "/debts", pro: false },
-        { name: t("SIDEBAR_DEBT_PAYMENTS"), path: "/debt-payments", pro: false },
-        {
-          name: t("SIDEBAR_INVITES"),
-          path: "/debt-invitations",
-        },
-      ],
-    },
-    {
-      icon: <Briefcase size={18} strokeWidth={2} />,
-      name: t("SIDEBAR_PORTFOLIOS"),
-      disable: true,
-      path: "/portfolio",
-    },
-    {
-      icon: <TrendingUp size={18} strokeWidth={2} />,
-      name: t("SIDEBAR_STOCKS"),
-      disable: true,
-      subItems: [
-        { name: t("SIDEBAR_STOCKS"), path: "/stocks", pro: false },
-        { name: t("SIDEBAR_STOCKS_SEARCH"), path: "/stocks/search", pro: false },
-        { name: t("SIDEBAR_STOCKS_WATCHLIST"), path: "/stocks/watchlist", pro: false },
-      ],
-    },
-  ];
+  const navItems: NavItem[] = useMemo(
+    () => [
+      {
+        icon: <LayoutDashboard size={18} strokeWidth={2} />,
+        name: t("SIDEBAR_HOME"),
+        path: "/dashboard",
+      },
+      {
+        icon: <Wallet size={18} strokeWidth={2} />,
+        name: t("SIDEBAR_ACCOUNTS"),
+        subItems: [
+          { name: t("SIDEBAR_ACCOUNTS"), path: "/accounts", pro: false },
+          {
+            name: t("SIDEBAR_TRANSACTIONS"),
+            path: "/transactions",
+            pro: false,
+          },
+          {
+            name: t("SIDEBAR_INVITES"),
+            path: "/account-invitations",
+          },
+        ],
+      },
+      {
+        icon: <Target size={18} strokeWidth={2} />,
+        name: t("SIDEBAR_FINANCIAL_GOALS"),
+        subItems: [
+          { name: t("SIDEBAR_FINANCIAL_GOALS"), path: "/financial-goals", pro: false },
+          {
+            name: t("SIDEBAR_TRANSACTIONS"),
+            path: "/financial-goal-transactions",
+            pro: false,
+          },
+          {
+            name: t("SIDEBAR_INVITES"),
+            path: "/financial-goal-invitations",
+          },
+        ],
+      },
+      {
+        icon: <TrendingDown size={18} strokeWidth={2} />,
+        name: t("SIDEBAR_DEBTS"),
+        subItems: [
+          { name: t("SIDEBAR_DEBTS"), path: "/debts", pro: false },
+          { name: t("SIDEBAR_DEBT_PAYMENTS"), path: "/debt-payments", pro: false },
+          {
+            name: t("SIDEBAR_INVITES"),
+            path: "/debt-invitations",
+          },
+        ],
+      },
+      {
+        icon: <Briefcase size={18} strokeWidth={2} />,
+        name: t("SIDEBAR_PORTFOLIOS"),
+        disable: true,
+        path: "/portfolio",
+      },
+      {
+        icon: <TrendingUp size={18} strokeWidth={2} />,
+        name: t("SIDEBAR_STOCKS"),
+        disable: true,
+        subItems: [
+          { name: t("SIDEBAR_STOCKS"), path: "/stocks", pro: false },
+          { name: t("SIDEBAR_STOCKS_SEARCH"), path: "/stocks/search", pro: false },
+          { name: t("SIDEBAR_STOCKS_WATCHLIST"), path: "/stocks/watchlist", pro: false },
+        ],
+      },
+    ],
+    [t]
+  );
 
   const socialItems: NavItem[] = [
     {
@@ -314,7 +317,7 @@ const AppSidebar: React.FC = () => {
     if (!submenuMatched) {
       setOpenSubmenu(null);
     }
-  }, [pathname, isActive]);
+  }, [pathname, isActive, navItems]);
 
   useEffect(() => {
     // Set the height of the submenu items when the submenu is opened
