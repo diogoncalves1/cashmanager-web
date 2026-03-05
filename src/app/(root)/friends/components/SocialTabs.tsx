@@ -1,7 +1,6 @@
 "use client";
 
 import { Users, UserPlus, Inbox, ShieldOff } from "lucide-react";
-
 import { useTranslations } from "next-intl";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useFriendStats } from "../hooks/useFriends";
@@ -14,7 +13,18 @@ import BlockedUsers from "./BlockedUsers";
 export default function SocialTabs() {
   const t = useTranslations("FRIENDS");
 
-  const { loading, error, stats } = useFriendStats();
+  const { error, stats } = useFriendStats();
+
+  if (error) {
+    return (
+      <div className="flex flex-col items-center justify-center py-16 text-center">
+        <p className="text-destructive font-medium">{t("ERROR_LOADING_STATS")}</p>
+        <button onClick={() => window.location.reload()} className="mt-4 text-sm underline">
+          {t("TRY_AGAIN")}
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-8">
@@ -26,7 +36,7 @@ export default function SocialTabs() {
         <TabsList>
           <TabsTrigger value="friends" className="gap-2">
             <Users className="size-4" />
-            Friends
+            {t("FRIENDS")}
             {stats.friends > 0 && (
               <span className="ml-1 flex size-5 items-center justify-center rounded-full bg-primary/10 text-xs text-primary">
                 {stats.friends}
@@ -35,7 +45,7 @@ export default function SocialTabs() {
           </TabsTrigger>
           <TabsTrigger value="received" className="gap-2">
             <Inbox className="size-4" />
-            Received
+            {t("RECEIVED")}
             {stats.received > 0 && (
               <span className="ml-1 flex size-5 items-center justify-center rounded-full bg-warning/10 text-xs text-warning">
                 {stats.received}
@@ -44,7 +54,7 @@ export default function SocialTabs() {
           </TabsTrigger>
           <TabsTrigger value="sent" className="gap-2">
             <UserPlus className="size-4" />
-            Sent
+            {t("SENT")}
             {stats.sent > 0 && (
               <span className="ml-1 flex size-5 items-center justify-center rounded-full bg-muted text-xs text-muted-foreground">
                 {stats.sent}
@@ -53,7 +63,7 @@ export default function SocialTabs() {
           </TabsTrigger>
           <TabsTrigger value="blocked" className="gap-2">
             <ShieldOff className="size-4" />
-            Blocked
+            {t("BLOCKED")}
             {stats.blocked > 0 && (
               <span className="ml-1 flex size-5 items-center justify-center rounded-full bg-destructive/10 text-xs text-destructive">
                 {stats.blocked}

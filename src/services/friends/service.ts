@@ -1,8 +1,9 @@
 import LoadingToast from "@/components/swal/LoadingToast";
 import { SwalToast } from "@/components/swal/SwalToast";
+import { useTranslations } from "next-intl";
 import Swal from "sweetalert2";
 
-export async function onBlockUser(id: string, t: any) {
+export async function onBlockUser(id: string, t: ReturnType<typeof useTranslations>) {
   const result = await Swal.fire({
     title: t("BLOCK_USER_MESSAGE"),
     icon: "warning",
@@ -40,7 +41,7 @@ export async function onBlockUser(id: string, t: any) {
   return 0;
 }
 
-export async function onRemoveFriend(id: string, t: any) {
+export async function onRemoveFriend(id: string, t: ReturnType<typeof useTranslations>) {
   const result = await Swal.fire({
     title: t("REMOVE_FRIEND_MESSAGE"),
     icon: "warning",
@@ -81,7 +82,7 @@ export async function onRemoveFriend(id: string, t: any) {
   return 0;
 }
 
-export async function onSendRequest(id: string, t: any) {
+export async function onSendRequest(id: string, t: ReturnType<typeof useTranslations>) {
   LoadingToast({
     title: t("SENDING_FRIEND_REQUEST_TITLE"),
     message: t("SENDING_FRIEND_REQUEST_MESSAGE"),
@@ -111,7 +112,7 @@ export async function onSendRequest(id: string, t: any) {
   return 0;
 }
 
-export async function onUnblockUser(id: string, t: any) {
+export async function onUnblockUser(id: string, t: ReturnType<typeof useTranslations>) {
   const result = await Swal.fire({
     title: t("UNBLOCK_USER_MESSAGE"),
     icon: "warning",

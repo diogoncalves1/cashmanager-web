@@ -1,7 +1,8 @@
 import LoadingToast from "@/components/swal/LoadingToast";
 import { SwalToast } from "@/components/swal/SwalToast";
+import { useTranslations } from "next-intl";
 
-export async function onAcceptRequest(id: string, t: any) {
+export async function onAcceptRequest(id: string, t: ReturnType<typeof useTranslations>) {
   LoadingToast({ title: t("ACCEPT_REQUEST_TITLE"), message: t("ACCEPT_REQUEST_MESSAGE") });
   try {
     const res = await fetch(`/api/friend-requests/${id}/accept`, {
@@ -27,7 +28,7 @@ export async function onAcceptRequest(id: string, t: any) {
   }
 }
 
-export async function onDeclineRequest(id: string, t: any) {
+export async function onDeclineRequest(id: string, t: ReturnType<typeof useTranslations>) {
   LoadingToast({
     title: t("DECLINING_REQUEST_TITLE"),
     message: t("DECLINING_REQUEST_MESSAGE"),
@@ -56,7 +57,11 @@ export async function onDeclineRequest(id: string, t: any) {
   }
 }
 
-export async function onCancelRequest(id: string, t: any) {
+export async function onCancelRequest(id: string, t: ReturnType<typeof useTranslations>) {
+  LoadingToast({
+    title: t("CANCELING_REQUEST_TITLE"),
+    message: t("CANCELING_REQUEST_MESSAGE"),
+  });
   try {
     const res = await fetch(`/api/friend-requests/${id}/cancel`, {
       method: "DELETE",

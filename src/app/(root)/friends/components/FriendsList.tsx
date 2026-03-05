@@ -1,13 +1,12 @@
 "use client";
 
-import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
 import { Friendship } from "@/models/friendship";
 import { Search, Users } from "lucide-react";
 import { onBlockUser, onRemoveFriend } from "@/services/friends/service";
 import { useTranslations } from "next-intl";
-import { Input } from "@/components/ui/input";
 import { FriendsEmptyState } from "./FriendsEmptyState";
 import { FriendCard } from "./FriendCard";
 import LoadingList from "@/components/ui/loading/LoadingList";
@@ -15,14 +14,13 @@ import { useFriendsContext } from "../context/FriendsContext";
 
 type Page = { data: Friendship[]; nextPage: number | null };
 
-const fetchFriends = async ({
-  pageParam = 1,
-  queryKey,
-}: {
-  pageParam?: number;
-  queryKey: any[];
-}): Promise<Page> => {
-  const searchTerm = queryKey[1] || ""; // segundo item da queryKey
+type FetchFriendsParams = {
+  pageParam?: number | unknown;
+  search?: string;
+};
+
+const fetchFriends = async ({ pageParam = 1, search }: FetchFriendsParams): Promise<Page> => {
+  const searchTerm = search ?? "";
   const response = await fetch(`/api/friends?page=${pageParam}&size=10&search=${searchTerm}`, {
     method: "GET",
     credentials: "include",
@@ -58,14 +56,13 @@ export default function FriendsList() {
     isError,
   } = useInfiniteQuery<Page, Error>({
     queryKey: ["friends", debouncedSearch],
-    queryFn: fetchFriends,
+    queryFn: ({ pageParam = 1 }) => fetchFriends({ pageParam: pageParam, search: debouncedSearch }),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {
       return lastPage.nextPage ?? undefined;
     },
     staleTime: 1000 * 60 * 5,
   });
-  const queryClient = useQueryClient();
 
   useEffect(() => {
     if (inView && hasNextPage && !isFetchingNextPage) {
@@ -83,7 +80,7 @@ export default function FriendsList() {
 
   useEffect(() => {
     refetch();
-  }, [loadCounter]);
+  }, [loadCounter, refetch]);
 
   if (isError) {
     return (
@@ -96,7 +93,7 @@ export default function FriendsList() {
     );
   }
 
-  const allFriends = data?.pages.flatMap((page: any) => page.data) ?? [];
+  const allFriends = data?.pages.flatMap((page) => page.data) ?? [];
   return (
     <div className="space-y-4 w-full">
       <div className="mb-4">
@@ -131,17 +128,17 @@ export default function FriendsList() {
             />
           ))}
         </div>
-      ) : allFriends.length > 0 && debouncedSearch.trim() ? (
+      ) : allFriends.length == 0 && debouncedSearch.trim() ? (
         <FriendsEmptyState
           icon={Search}
-          title="No results"
-          description={`No friends match "${debouncedSearch}". Try a different search.`}
+          title={t("NO_RESULTS")}
+          description={t("NO_RESULTS_TEXT", { username: debouncedSearch })}
         />
       ) : (
         <FriendsEmptyState
           icon={Users}
-          title="No friends yet"
-          description="Use the search above to find people and send friend requests."
+          title={t("NO_FRIENDS_YET")}
+          description={t("NO_FRIENDS_YET_TEXT")}
         />
       )}
 

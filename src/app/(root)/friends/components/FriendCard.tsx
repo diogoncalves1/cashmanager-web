@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Friendship } from "@/models/friendship";
+import { useTranslations } from "next-intl";
 
 interface FriendCardProps {
   friendship: Friendship;
@@ -19,6 +20,7 @@ interface FriendCardProps {
 }
 
 export function FriendCard({ friendship, onRemove, onBlock }: FriendCardProps) {
+  const t = useTranslations("FRIENDS");
   const { user } = friendship;
   const initials = user.name
     .split(" ")
@@ -49,7 +51,7 @@ export function FriendCard({ friendship, onRemove, onBlock }: FriendCardProps) {
             className="size-8 opacity-0 group-hover:opacity-100 transition-opacity"
           >
             <MoreHorizontal className="size-4" />
-            <span className="sr-only">Actions</span>
+            <span className="sr-only">{t("ACTIONS")}</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
@@ -58,15 +60,12 @@ export function FriendCard({ friendship, onRemove, onBlock }: FriendCardProps) {
             className="text-destructive focus:text-destructive"
           >
             <UserMinus className="mr-2 size-4" />
-            Remove Friend
+            {t("REMOVE_FRIEND")}
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem
-            onClick={() => onBlock(friendship.id)}
-            className="text-destructive focus:text-destructive"
-          >
+          <DropdownMenuItem onClick={() => onBlock(friendship.id)} className="focus:text-black">
             <ShieldOff className="mr-2 size-4" />
-            Block User
+            {t("BLOCK_USER")}
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

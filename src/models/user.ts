@@ -14,3 +14,10 @@ export interface User {
   preferences?: UserPreferences;
   sharedRole?: SharedRole;
 }
+
+export interface UserSearch {
+  id: string;
+  username: string;
+  name: string;
+  status: "pending" | "blocked" | "friend" | "blocked";
+}

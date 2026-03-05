@@ -2,28 +2,28 @@
 
 import { useTranslations } from "next-intl";
 import { onSendRequest } from "@/services/friends/service";
-import { useState, useEffect, SetStateAction, Dispatch } from "react";
+import { useState, useEffect } from "react";
 import { Search, UserPlus, Check, Clock, Loader2 } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { User } from "@/models/user";
+import { User, UserSearch } from "@/models/user";
 import { useAuth } from "@/context/AuthContext";
 import { useInView } from "react-intersection-observer";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useFriendsContext } from "../context/FriendsContext";
 
-type Page = { data: User[]; nextPage: number | null };
+type Page = { data: UserSearch[]; nextPage: number | null };
 
-const fetchUsers = async ({
-  pageParam = 1,
-  queryKey,
-}: {
-  pageParam?: number;
-  queryKey: any[];
-}): Promise<Page> => {
-  const searchTerm = queryKey[1] || "";
+type FetchFriendsParams = {
+  pageParam?: number | unknown;
+  search?: string;
+};
+
+const fetchUsers = async ({ pageParam = 1, search }: FetchFriendsParams): Promise<Page> => {
+  console.log(search);
+  const searchTerm = search ?? "";
   if (searchTerm.trim().length < 2)
     return {
       nextPage: null,
@@ -54,24 +54,16 @@ export default function AddFriend() {
     rootMargin: "5px",
   });
 
-  const {
-    data,
-    error,
-    fetchNextPage,
-    refetch,
-    hasNextPage,
-    isFetchingNextPage,
-    isLoading,
-    isError,
-  } = useInfiniteQuery<Page, Error>({
-    queryKey: ["search-users", debouncedSearch],
-    queryFn: fetchUsers,
-    initialPageParam: 1,
-    getNextPageParam: (lastPage) => {
-      return lastPage.nextPage ?? undefined;
-    },
-    staleTime: 1000 * 60 * 5,
-  });
+  const { data, fetchNextPage, refetch, hasNextPage, isFetchingNextPage, isLoading, isError } =
+    useInfiniteQuery<Page, Error>({
+      queryKey: ["search-users", debouncedSearch],
+      queryFn: ({ pageParam = 1 }) => fetchUsers({ pageParam: pageParam, search: debouncedSearch }),
+      initialPageParam: 1,
+      getNextPageParam: (lastPage) => {
+        return lastPage.nextPage ?? undefined;
+      },
+      staleTime: 1000 * 60 * 5,
+    });
 
   useEffect(() => {
     if (inView && hasNextPage && !isFetchingNextPage) {
@@ -99,27 +91,30 @@ export default function AddFriend() {
 
   useEffect(() => {
     refetch();
-  }, [loadCounter]);
+  }, [loadCounter, refetch]);
 
-  const allUsers = data?.pages.flatMap((page: any) => page.data) ?? [];
+  const allUsers = data?.pages.flatMap((page) => page.data) ?? [];
 
   // TODO: ADICIONAR A ATUALIZACAO DOS PEDIDOS ENVIADOS AO ENVIAR PEDIDO + TRADUÇÕES
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-lg">Add Friend</CardTitle>
-        <CardDescription>Search by username - @{user.username}</CardDescription>
+        <CardTitle className="text-lg">{t("ADD_FRIEND")}</CardTitle>
+        <CardDescription>
+          {t("SEARCH_BY_USERNAME")} - @{user.username}
+        </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
           <Input
-            placeholder="Search users..."
+            placeholder={t("SEARCH_USERS")}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             className="pl-10"
           />
         </div>
+
         {isLoading && (
           <div className="flex justify-center space-x-2 py-4">
             <span className="w-3 h-3 bg-gray-500 rounded-full animate-bounce"></span>
@@ -130,7 +125,6 @@ export default function AddFriend() {
 
         {isError && (
           <div className="text-center py-5 text-red-600">
-            Error: {error.message}
             <button onClick={() => window.location.reload()} className="ml-3 underline">
               {t("TRY_AGAIN")}
             </button>
@@ -141,7 +135,7 @@ export default function AddFriend() {
           <div className="space-y-2">
             {allUsers.length === 0 ? (
               <p className="py-6 text-center text-sm text-muted-foreground">
-                No users found matching &quot;{debouncedSearch}&quot;
+                {t("NO_USERS_FOUND_MATCHING", { username: debouncedSearch })}
               </p>
             ) : (
               allUsers.map((user) => {
@@ -176,7 +170,7 @@ export default function AddFriend() {
                         className="gap-1.5 bg-transparent"
                       >
                         <Check className="size-3.5 text-success" />
-                        Friends
+                        {t("FRIEND")}
                       </Button>
                     ) : user.status === "pending" ? (
                       <Button
@@ -186,7 +180,7 @@ export default function AddFriend() {
                         className="gap-1.5 bg-transparent"
                       >
                         <Clock className="size-3.5 text-warning" />
-                        Pending
+                        {t("PENDING")}
                       </Button>
                     ) : user.status === "blocked" ? (
                       <Button
@@ -195,7 +189,7 @@ export default function AddFriend() {
                         disabled
                         className="gap-1.5 bg-transparent"
                       >
-                        Blocked
+                        {t("BLOCKED")}
                       </Button>
                     ) : (
                       <Button
@@ -209,7 +203,7 @@ export default function AddFriend() {
                         ) : (
                           <UserPlus className="size-3.5" />
                         )}
-                        Add Friend
+                        {t("ADD_FRIEND")}
                       </Button>
                     )}
                   </div>
