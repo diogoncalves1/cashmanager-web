@@ -753,6 +753,43 @@
     "CANCEL": "Cancelar"
   },
 
+  "SETTINGS": {
+    "META_TITLE": "Cash Manager | Definições",
+    "META_DESCRIPTION": "Faça a gestão das definições da sua conta. Acompanhe os seus pagamentos e mantenha suas finanças organizadas.",
+
+    "SETTINGS": "Definições",
+    "YOU_HAVE_UNSAVED_CHANGES": "Tem alterações não salvas.",
+    "PROFILE_INFORMATION": "Informações do perfil",
+    "PROFILE_INFORMATION_TEXT": "Atualize seus dados pessoais",
+    "ACCOUNT_SETTINGS": "Definições da conta",
+    "ACCOUNT_SETTINGS_TEXT": "Faça a gestão do seu perfil e preferências.",
+    "RESET": "Resetar",
+    "DISCARD": "Descartar",
+    "SAVE_CHANGES": "Guardar alterações",
+    "SAVING": "A guardar...",
+    "USERNAME": "Nome de utilizador",
+    "FIRST_NAME": "Primeiro nome",
+    "FIRST_NAME_PLACEHOLDER": "João",
+    "LAST_NAME": "Último nome",
+    "LAST_NAME_PLACEHOLDER": "Rodrigues",
+    "EMAIL_ADDRESS": "Endereço de e-mail",
+    "EMAIL_ADDRESS_PLACEHOLDER": "teste@teste.com",
+    "CANCEL": "Cancelar",
+    "CONTINUE": "Continuar",
+    "PASSWORD": "Palavra-passe",
+    "CHANGE_PASSWORD": "Mudar palavra-passe",
+    "CHANGE_PASSWORD_TEXT": "Você será redirecionado para a página de alteração de senha. Quaisquer alterações não salvas nesta página serão perdidas.",
+    "PASSORD_TEXT": "Faça a gestão da segurança da sua conta",
+
+    "SELECT_CURRENCY": "Selecione a moeda",
+    "SELECT_LANGUAGE": "Selecione o idioma",
+    "PREFERENCES_TEXT": "Personalize sua experiência",
+    "LANGUAGE": "Idioma",
+
+    "PREFERENCES": "Preferências",
+    "CURRENCY": "Moeda"
+  },
+
   "HOME": {
     "HOME": "Início",
     "MONTHLY_BALANCE": "Saldo Mensal",
@@ -802,10 +839,6 @@
   "SIGNIN": {
     "SIGNIN": "Entrando…",
     "SIGNIN_WAIT": "Aguarde enquanto verificamos suas credenciais"
-  },
-
-  "SETTINGS": {
-    "SETTINGS": "Definições"
   },
 
   "MONTHS": {

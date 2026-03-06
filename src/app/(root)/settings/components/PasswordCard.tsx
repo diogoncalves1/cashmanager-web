@@ -15,10 +15,13 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { useTranslations } from "next-intl";
 
 export function PasswordCard() {
   const router = useRouter();
   const [showConfirm, setShowConfirm] = useState(false);
+
+  const t = useTranslations("SETTINGS");
 
   return (
     <>
@@ -29,20 +32,16 @@ export function PasswordCard() {
               <Lock className="size-5 text-primary" />
             </div>
             <div>
-              <CardTitle className="text-lg">Password</CardTitle>
-              <CardDescription>Manage your account security</CardDescription>
+              <CardTitle className="text-lg">{t("PASSWORD")}</CardTitle>
+              <CardDescription>{t("PASSORD_TEXT")}</CardDescription>
             </div>
           </div>
         </CardHeader>
         <CardContent>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="space-y-1">
-              <p className="text-sm text-foreground">Password last changed</p>
-              <p className="text-sm text-muted-foreground">30 days ago</p>
-            </div>
             <Button variant="outline" onClick={() => setShowConfirm(true)} className="gap-2">
               <ExternalLink className="size-4" />
-              Change Password
+              {t("CHANGE_PASSWORD")}
             </Button>
           </div>
         </CardContent>
@@ -51,16 +50,13 @@ export function PasswordCard() {
       <AlertDialog open={showConfirm} onOpenChange={setShowConfirm}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Change Password</AlertDialogTitle>
-            <AlertDialogDescription>
-              You will be redirected to the Change Password page. Any unsaved changes on this page
-              will be lost.
-            </AlertDialogDescription>
+            <AlertDialogTitle>{t("CHANGE_PASSWORD")}</AlertDialogTitle>
+            <AlertDialogDescription>{t("CHANGE_PASSWORD_TEXT")}</AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel>{t("CANCEL")}</AlertDialogCancel>
             <AlertDialogAction onClick={() => router.push("/settings/change-password")}>
-              Continue
+              {t("CONTINUE")}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

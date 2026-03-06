@@ -1,15 +1,15 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { Save, RotateCcw, Settings } from "lucide-react";
 import { ProfileInfoCard } from "../components/ProfileInfoCard";
 import { PasswordCard } from "../components/PasswordCard";
 import { PreferencesCard } from "../components/PreferencesCard";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
-import { SwalToast } from "@/components/swal/SwalToast";
 import { useSettingsForm } from "../hooks/useSettingsForm";
 import { useRouter } from "next/navigation";
+import { useToast } from "@/hooks/useToast";
 
 type FormData = {
   id: string;
@@ -23,7 +23,7 @@ type FormData = {
 type FormErrors = Partial<Record<keyof FormData, string>>;
 
 const SettingsForm = () => {
-  const toast = SwalToast;
+  const { toast } = useToast();
   const router = useRouter();
   const t = useTranslations("SETTINGS");
   const [isSaving, setIsSaving] = useState(false);
@@ -42,18 +42,19 @@ const SettingsForm = () => {
     setInitialData,
   } = useSettingsForm();
 
-  if (!user) return <></>;
-
   const hasChanges = JSON.stringify(formData) !== JSON.stringify(initialData);
 
-  const handleChange = useCallback((field: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-    setErrors((prev) => {
-      const next = { ...prev };
-      delete next[field as keyof FormData];
-      return next;
-    });
-  }, []);
+  const handleChange = useCallback(
+    (field: string, value: string) => {
+      setFormData((prev) => ({ ...prev, [field]: value }));
+      setErrors((prev) => {
+        const next = { ...prev };
+        delete next[field as keyof FormData];
+        return next;
+      });
+    },
+    [setFormData]
+  );
 
   const validate = useCallback((): boolean => {
     const newErrors: FormErrors = {};
@@ -80,40 +81,36 @@ const SettingsForm = () => {
   const handleSave = useCallback(async () => {
     if (!validate()) {
       toast({
-        message: "Please fix the highlighted fields before saving.",
-        icon: "error",
+        description: "Please fix the highlighted fields before saving.",
       });
       return;
     }
 
     setIsSaving(true);
 
-    // Simulate API call
     const res = await handleSubmit();
 
     if (res.success) {
       setInitialData(formData);
 
       toast({
-        //   title: "Settings saved",
-        message: res.message ?? "Your account settings have been updated successfully.",
-        icon: "success",
+        description: res.message,
       });
       router.refresh();
     } else {
       toast({
-        //   title: "Settings saved",
-        message: "Your account settings have been updated successfully.",
-        icon: "error",
+        description: res.message,
       });
     }
     setIsSaving(false);
-  }, [formData, validate, toast]);
+  }, [formData, validate, toast, handleSubmit, router, setInitialData]);
 
   const handleReset = useCallback(() => {
     setFormData(initialData);
     setErrors({});
-  }, [initialData]);
+  }, [initialData, setFormData]);
+
+  if (!user) return <></>;
 
   return (
     <div className="space-y-8">
@@ -124,8 +121,10 @@ const SettingsForm = () => {
             <Settings className="size-6 text-primary" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold tracking-tight text-balance">Account Settings</h1>
-            <p className="text-sm text-muted-foreground">Manage your profile and preferences</p>
+            <h1 className="text-2xl font-bold tracking-tight text-balance">
+              {t("ACCOUNT_SETTINGS")}
+            </h1>
+            <p className="text-sm text-muted-foreground">{t("ACCOUNT_SETTINGS_TEXT")}</p>
           </div>
         </div>
         <div className="flex items-center gap-2">
@@ -137,7 +136,7 @@ const SettingsForm = () => {
             className="gap-2 bg-transparent"
           >
             <RotateCcw className="size-4" />
-            Reset
+            {t("RESET")}
           </Button>
           <Button
             size="sm"
@@ -150,7 +149,7 @@ const SettingsForm = () => {
             ) : (
               <Save className="size-4" />
             )}
-            {isSaving ? "Saving..." : "Save Changes"}
+            {isSaving ? t("SAVING") : t("SAVE_CHANGES")}
           </Button>
         </div>
       </div>
@@ -181,10 +180,10 @@ const SettingsForm = () => {
       {hasChanges && (
         <div className="fixed inset-x-0 bottom-0 z-40 border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
           <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-            <p className="text-sm text-muted-foreground">You have unsaved changes</p>
+            <p className="text-sm text-muted-foreground">{t("YOU_HAVE_UNSAVED_CHANGES")}</p>
             <div className="flex items-center gap-2">
               <Button variant="ghost" size="sm" onClick={handleReset} disabled={isSaving}>
-                Discard
+                {t("DISCARD")}
               </Button>
               <Button size="sm" onClick={handleSave} disabled={isSaving} className="gap-2">
                 {isSaving ? (
@@ -192,7 +191,7 @@ const SettingsForm = () => {
                 ) : (
                   <Save className="size-4" />
                 )}
-                {isSaving ? "Saving..." : "Save Changes"}
+                {isSaving ? t("SAVING") : t("SAVE_CHANGES")}
               </Button>
             </div>
           </div>

@@ -30,7 +30,6 @@ export function useFriendStats() {
       setStats(res.data);
     } catch (err: unknown) {
       if (err instanceof Error) {
-        console.error(err);
         setError(err.message || "Failed to fetch friends stats");
       } else {
         setError(String(err));
