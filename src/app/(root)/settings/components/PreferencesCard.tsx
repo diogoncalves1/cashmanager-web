@@ -3,7 +3,7 @@
 import { Globe } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import Skeleton from "@/components/ui/skeleton/Skeleton";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   Select,
   SelectContent,
@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/select";
 import { Language } from "@/models/language";
 import { Currency } from "@/models/currency";
+import { useTranslations } from "next-intl";
 
 interface PreferencesCardProps {
   language?: string;
@@ -35,6 +36,7 @@ export function PreferencesCard({
   loadingLanguages,
   loadingCurrencies,
 }: PreferencesCardProps) {
+  const t = useTranslations("SETTINGS");
   return (
     <Card>
       <CardHeader>
@@ -43,24 +45,24 @@ export function PreferencesCard({
             <Globe className="size-5 text-primary" />
           </div>
           <div>
-            <CardTitle className="text-lg">Preferences</CardTitle>
-            <CardDescription>Customize your experience</CardDescription>
+            <CardTitle className="text-lg">{t("PREFERENCES")}</CardTitle>
+            <CardDescription>{t("PREFERENCES_TEXT")}</CardDescription>
           </div>
         </div>
       </CardHeader>
       <CardContent className="space-y-5">
         <div className="grid gap-5 sm:grid-cols-2">
           <div className="space-y-2">
-            <Label htmlFor="language">Language</Label>
+            <Label htmlFor="language">{t("LANGUAGE")}</Label>
             {isLoading || loadingLanguages ? (
               <Skeleton className="h-9 w-full" />
             ) : (
               <Select value={language} onValueChange={(val) => onChange("lang", val)}>
                 <SelectTrigger id="lang" className="w-full">
-                  <SelectValue placeholder="Select language" />
+                  <SelectValue placeholder={t("SELECT_LANGUAGE")} />
                 </SelectTrigger>
                 <SelectContent>
-                  {languages.map((lang) => (
+                  {languages?.map((lang) => (
                     <SelectItem key={lang.code} value={lang.code}>
                       {lang.name}
                     </SelectItem>
@@ -70,13 +72,13 @@ export function PreferencesCard({
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="currency">Currency</Label>
+            <Label htmlFor="currency">{t("CURRENCY")}</Label>
             {isLoading || loadingCurrencies ? (
               <Skeleton className="h-9 w-full" />
             ) : (
               <Select value={currency} onValueChange={(val) => onChange("currency_id", val)}>
                 <SelectTrigger id="currency_id" className="w-full">
-                  <SelectValue placeholder="Select currency" />
+                  <SelectValue placeholder={t("SELECT_CURRENCY")} />
                 </SelectTrigger>
                 <SelectContent>
                   {currencies.map((cur) => (

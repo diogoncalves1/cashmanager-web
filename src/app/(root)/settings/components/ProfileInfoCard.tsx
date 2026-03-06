@@ -4,7 +4,8 @@ import { User } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import Skeleton from "@/components/ui/skeleton/Skeleton";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useTranslations } from "next-intl";
 
 interface ProfileInfoCardProps {
   firstName: string;
@@ -25,6 +26,7 @@ export function ProfileInfoCard({
   isLoading,
   onChange,
 }: ProfileInfoCardProps) {
+  const t = useTranslations("SETTINGS");
   return (
     <Card>
       <CardHeader>
@@ -33,15 +35,15 @@ export function ProfileInfoCard({
             <User className="size-5 text-primary" />
           </div>
           <div>
-            <CardTitle className="text-lg">Profile Information</CardTitle>
-            <CardDescription>Update your personal details</CardDescription>
+            <CardTitle className="text-lg">{t("PROFILE_INFORMATION")}</CardTitle>
+            <CardDescription>{t("PROFILE_INFORMATION_TEXT")}</CardDescription>
           </div>
         </div>
       </CardHeader>
       <CardContent className="space-y-5">
         <div className="space-y-2">
           <Label htmlFor="email">
-            Username <span className="text-destructive">*</span>
+            {t("USERNAME")} <span className="text-destructive">*</span>
           </Label>
           {isLoading ? (
             <Skeleton className="h-9 w-full" />
@@ -52,7 +54,7 @@ export function ProfileInfoCard({
                 type="text"
                 value={username}
                 onChange={(e) => onChange("username", e.target.value)}
-                placeholder="Username"
+                placeholder={t("USERNAME")}
                 aria-invalid={!!errors.username}
                 className={
                   errors.username ? "border-destructive focus-visible:ring-destructive/50" : ""
@@ -65,7 +67,7 @@ export function ProfileInfoCard({
         <div className="grid gap-5 sm:grid-cols-2">
           <div className="space-y-2">
             <Label htmlFor="firstName">
-              First Name <span className="text-destructive">*</span>
+              {t("FIRST_NAME")} <span className="text-destructive">*</span>
             </Label>
             {isLoading ? (
               <Skeleton className="h-9 w-full" />
@@ -75,7 +77,7 @@ export function ProfileInfoCard({
                   id="firstName"
                   value={firstName}
                   onChange={(e) => onChange("firstName", e.target.value)}
-                  placeholder="John"
+                  placeholder={t("FIRST_NAME_PLACEHOLDER")}
                   aria-invalid={!!errors.firstName}
                   className={
                     errors.firstName ? "border-destructive focus-visible:ring-destructive/50" : ""
@@ -87,7 +89,7 @@ export function ProfileInfoCard({
           </div>
           <div className="space-y-2">
             <Label htmlFor="lastName">
-              Last Name <span className="text-destructive">*</span>
+              {t("LAST_NAME")} <span className="text-destructive">*</span>
             </Label>
             {isLoading ? (
               <Skeleton className="h-9 w-full" />
@@ -97,7 +99,7 @@ export function ProfileInfoCard({
                   id="lastName"
                   value={lastName}
                   onChange={(e) => onChange("lastName", e.target.value)}
-                  placeholder="Doe"
+                  placeholder={t("LAST_NAME_PLACEHOLDER")}
                   aria-invalid={!!errors.lastName}
                   className={
                     errors.lastName ? "border-destructive focus-visible:ring-destructive/50" : ""
@@ -110,7 +112,7 @@ export function ProfileInfoCard({
         </div>
         <div className="space-y-2">
           <Label htmlFor="email">
-            Email Address <span className="text-destructive">*</span>
+            {t("EMAIL_ADDRESS")} <span className="text-destructive">*</span>
           </Label>
           {isLoading ? (
             <Skeleton className="h-9 w-full" />
@@ -121,7 +123,7 @@ export function ProfileInfoCard({
                 type="email"
                 value={email}
                 onChange={(e) => onChange("email", e.target.value)}
-                placeholder="john.doe@example.com"
+                placeholder={t("EMAIL_ADDRESS_PLACEHOLDER")}
                 aria-invalid={!!errors.email}
                 className={
                   errors.email ? "border-destructive focus-visible:ring-destructive/50" : ""

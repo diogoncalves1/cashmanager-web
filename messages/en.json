@@ -753,6 +753,43 @@
     "CANCEL": "Cancel"
   },
 
+  "SETTINGS": {
+    "META_TITLE": "Cash Manager | Settings",
+    "META_DESCRIPTION": "Manage your account settings. Track your payments and keep your finances organized.",
+
+    "SETTINGS": "Settings",
+    "YOU_HAVE_UNSAVED_CHANGES": "You have unsaved changes.",
+    "PROFILE_INFORMATION": "Profile Information",
+    "PROFILE_INFORMATION_TEXT": "Update your personal information",
+    "ACCOUNT_SETTINGS": "Account Settings",
+    "ACCOUNT_SETTINGS_TEXT": "Manage your profile and preferences.",
+    "RESET": "Reset",
+    "DISCARD": "Discard",
+    "SAVE_CHANGES": "Save changes",
+    "SAVING": "Saving...",
+    "USERNAME": "Username",
+    "FIRST_NAME": "First name",
+    "FIRST_NAME_PLACEHOLDER": "John",
+    "LAST_NAME": "Last name",
+    "LAST_NAME_PLACEHOLDER": "Rodrigues",
+    "EMAIL_ADDRESS": "Email address",
+    "EMAIL_ADDRESS_PLACEHOLDER": "test@test.com",
+    "CANCEL": "Cancel",
+    "CONTINUE": "Continue",
+    "PASSWORD": "Password",
+    "CHANGE_PASSWORD": "Change password",
+    "CHANGE_PASSWORD_TEXT": "You will be redirected to the password change page. Any unsaved changes on this page will be lost.",
+    "PASSORD_TEXT": "Manage your account security",
+
+    "SELECT_CURRENCY": "Select currency",
+    "SELECT_LANGUAGE": "Select language",
+    "PREFERENCES_TEXT": "Customize your experience",
+    "LANGUAGE": "Language",
+
+    "PREFERENCES": "Preferences",
+    "CURRENCY": "Currency"
+  },
+
   "HOME": {
     "HOME": "Home",
     "MONTHLY_BALANCE": "Monthly Balance",
@@ -808,10 +845,6 @@
     "LOADING_INVITES": "Loading Invites",
     "LOADING_MORE": "Loading more",
     "SCROLL_TO_SEE_MORE": "Scroll down to see more"
-  },
-
-  "SETTINGS": {
-    "SETTINGS": "Settings"
   },
 
   "MONTHS": {

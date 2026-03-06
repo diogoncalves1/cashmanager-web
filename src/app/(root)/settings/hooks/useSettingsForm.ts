@@ -15,7 +15,7 @@ type FormData = {
   currency_id?: string;
 };
 
-export function useSettingsForm(id?: string) {
+export function useSettingsForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { user } = useAuth();
   const [isLoading, setIsLoading] = useState(true);
@@ -62,7 +62,7 @@ export function useSettingsForm(id?: string) {
       setIsLoading(false);
     }, 800);
     return () => clearTimeout(timer);
-  }, []);
+  }, [user]);
 
   const [currencies, setCurrencies] = useState<Currency[]>([]);
   const [loadingCurrencies, setLoadingCurrencies] = useState(true);
@@ -125,8 +125,12 @@ export function useSettingsForm(id?: string) {
       if (!res.ok) throw new Error(result.message);
 
       return { success: true, message: result.message };
-    } catch (err: any) {
-      return { success: false, message: err.message || "Erro ao guardar dívida" };
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        return { success: false, message: err.message || "Erro ao guardar dívida" };
+      } else {
+        return { success: false, message: String(err) || "Erro ao guardar dívida" };
+      }
     } finally {
       setIsSubmitting(false);
     }
