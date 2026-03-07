@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Dialog,
   DialogContent,
@@ -7,28 +9,33 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { onConfirmFinancialGoalTransaction } from "@/services/financial-goal-transactions/service";
 import { onConfirmDebtPayment } from "@/services/debt-payments/service";
+import { useTranslations } from "next-intl";
+import { useToast } from "@/hooks/useToast";
+import { useState } from "react";
 
 type Props = {
   isConfirmDialogOpen: boolean;
-  setIsConfirmOpen: any;
+  setIsConfirmOpen: React.Dispatch<React.SetStateAction<boolean>>;
   mutate?: () => void;
   selectedId: string;
 };
 
-export default function ConfirmDebtPaymentDialog({
+export default function ConfirmPaymentDialog({
   isConfirmDialogOpen,
   setIsConfirmOpen,
   mutate,
   selectedId,
 }: Props) {
+  const t = useTranslations("DEBT_PAYMENTS");
+  const [isSubmiting, setIsSubmiting] = useState(false);
+  const { toast } = useToast();
   return (
     <Dialog open={isConfirmDialogOpen} onOpenChange={setIsConfirmOpen}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Confirm Payment</DialogTitle>
-          <DialogDescription>Are you sure you want to confirm this transaction?</DialogDescription>
+          <DialogTitle>{t("CONFIRM_PAYMENT")}</DialogTitle>
+          <DialogDescription>{t("CONFIRM_PAYMENT_TEXT")}</DialogDescription>
         </DialogHeader>
         {/* <div className="py-4">
           <div className="p-4 rounded-xl bg-success-500/10 border border-success-500/20">
@@ -43,20 +50,23 @@ export default function ConfirmDebtPaymentDialog({
             onClick={() => setIsConfirmOpen(false)}
             className="bg-transparent"
           >
-            Cancel
+            {t("CANCEL")}
           </Button>
           <Button
-            variant="success"
+            variant="outline"
+            color="success"
             onClick={async () => {
-              try {
-                setIsConfirmOpen(false);
-                onConfirmDebtPayment(selectedId, mutate);
-              } catch (err) {
-                console.error(err);
-              }
+              setIsSubmiting(true);
+              const result = await onConfirmDebtPayment(selectedId, mutate);
+              setIsSubmiting(false);
+              if (mutate) mutate();
+              toast({
+                description: result.message,
+              });
+              setIsConfirmOpen(false);
             }}
           >
-            Confirm Payment
+            {isSubmiting ? t("CONFIRMING_PAYMENT") : t("CONFIRM_PAYMENT")}
           </Button>
         </DialogFooter>
       </DialogContent>

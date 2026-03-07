@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
-import { TransactionStatus } from "@/models/transaction";
+import { DebtPaymentStatus } from "@/models/debtPayment";
 import { getAllAccounts } from "@/services/accounts/account.service";
 import { AccountBasic } from "@/models/account";
 import { DebtBasic } from "@/models/debt";
-import { DebtPaymentStatus } from "@/models/debtPayment";
 import { getAllDebts } from "@/services/debts/debt.service";
+import useSWR from "swr";
+import { fetcher } from "@/lib/fetcher";
+import { useRouter } from "next/navigation";
 
 export function useDebtPaymentForm(id?: string) {
+  const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [formData, setFormData] = useState<{
@@ -15,7 +18,7 @@ export function useDebtPaymentForm(id?: string) {
     amount?: string;
     date?: string;
     status?: DebtPaymentStatus;
-    interest_rate: string;
+    interest_rate?: string;
     description?: string;
     is_monthly_payment: boolean;
   }>({
@@ -24,6 +27,12 @@ export function useDebtPaymentForm(id?: string) {
     is_monthly_payment: true,
     date: new Date().toISOString().split("T")[0],
   });
+
+  const {
+    data: paymentData,
+    error: paymentError,
+    isLoading: isLoadingPayment,
+  } = useSWR(id ? [`/debt-payments/${id}`, { method: "GET" }] : null, fetcher);
 
   const [debts, setDebts] = useState<DebtBasic[]>([]);
   const [loadingDebts, setLoadingDebts] = useState(true);
@@ -67,7 +76,25 @@ export function useDebtPaymentForm(id?: string) {
     fetchAccounts();
   }, []);
 
-  const updateDateLimits = (status: TransactionStatus) => {
+  useEffect(() => {
+    if (paymentError) router.push("/debt-payments");
+
+    if (paymentData?.data) {
+      const tx = paymentData.data;
+      setFormData({
+        account_id: tx.accountId,
+        debt_id: tx.debtId,
+        interest_rate: tx.interestRate || "",
+        amount: tx.amount,
+        is_monthly_payment: tx.isMonthlyPayment,
+        date: tx.date,
+        status: tx.status,
+        description: tx.description || "",
+      });
+    }
+  }, [paymentData, paymentError, router]);
+
+  const updateDateLimits = (status: DebtPaymentStatus) => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
@@ -109,8 +136,11 @@ export function useDebtPaymentForm(id?: string) {
       if (!res.ok) throw new Error(result.message);
 
       return { success: true, message: result.message };
-    } catch (err: any) {
-      return { success: false, message: err.message || "Erro ao guardar transação" };
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        return { success: false, message: err.message || "Erro ao guardar pagamento" };
+      }
+      return { success: false, message: String(err) };
     } finally {
       setIsSubmitting(false);
     }
@@ -123,6 +153,7 @@ export function useDebtPaymentForm(id?: string) {
     updateDateLimits,
     isSubmitting,
     handleSubmit,
+    isLoadingPayment,
     loadingDebts,
     debts,
     loadingAccouts,

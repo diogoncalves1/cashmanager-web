@@ -12,7 +12,7 @@ interface ApiResponse<T> {
   recordsFiltered: number;
   page: number;
   pageSize: number;
-  stats: Record<string, string>;
+  stats: Record<string, number>;
 }
 
 export async function getAllDebts(filters: DebtsFilters): Promise<ApiResponse<Debt>> {

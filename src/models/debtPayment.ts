@@ -1,3 +1,5 @@
+import { useTranslations } from "next-intl";
+
 type Actions = {
   view: boolean;
   edit: boolean;
@@ -7,6 +9,17 @@ type Actions = {
 
 export type DebtPaymentStatus = "pending" | "completed";
 
+export const debtPaymentStatus = (t: ReturnType<typeof useTranslations>) => [
+  {
+    value: "completed",
+    label: t("COMPLETED"),
+  },
+  {
+    value: "pending",
+    label: t("PENDING"),
+  },
+];
+
 export interface DebtPayment {
   id: string;
   debtName: string;
@@ -14,6 +27,8 @@ export interface DebtPayment {
 
   amount: string;
   amountFormated: string;
+
+  debtId: string;
 
   status: DebtPaymentStatus;
   statusTranslated: string;

@@ -19,7 +19,7 @@ export default async function DebtDetailsPage({ params }: DebtDetailsPageParams)
   return (
     <>
       <PageBreadcrumb
-        pageTitle={t("DEBT")}
+        pageTitle={t("DEBTS")}
         breadcrumb={[{ title: t("DEBTS"), path: "/debts" }, { title: t("DETAILS") }]}
       />
       <DebtDetails id={id} />

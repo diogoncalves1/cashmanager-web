@@ -14,15 +14,17 @@ export function useDebts(filters: Filters = {}, pageSize = 4) {
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
   const [isLoadingMore, setLoadingMore] = useState(false);
-  const [stats, setStats] = useState<Record<string, string>>({});
+  const [stats, setStats] = useState<Record<string, number>>({});
   const [error, setError] = useState<string | null>(null);
 
   const fetchDebts = useCallback(
     async (currentPage = 1, append = false) => {
       try {
         setLoading(true);
+
         const res = await getAllDebts({
-          ...filters,
+          search: filters.search,
+          status: filters.status,
           page: currentPage - 1,
           pageSize,
         });
@@ -32,7 +34,7 @@ export function useDebts(filters: Filters = {}, pageSize = 4) {
         setDebts((prev) => (append ? [...prev, ...res.data] : res.data));
       } catch (err: unknown) {
         if (err instanceof Error) {
-          setError(err.message || "Failed to fetch financial goals");
+          setError(err.message || "Failed to fetch debts");
         } else {
           setError(String(err));
         }
@@ -40,13 +42,13 @@ export function useDebts(filters: Filters = {}, pageSize = 4) {
         setLoading(false);
       }
     },
-    [filters, pageSize]
+    [filters.search, filters.status, pageSize]
   );
 
   useEffect(() => {
     setPage(1);
     fetchDebts(1, false);
-  }, [filters.status, filters.search, filters.sort, fetchDebts]);
+  }, [fetchDebts]);
 
   const loadMore = () => {
     setLoadingMore(true);

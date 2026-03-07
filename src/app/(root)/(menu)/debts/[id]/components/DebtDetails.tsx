@@ -1,9 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   DropdownMenu,
@@ -11,23 +8,16 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { cn, formatDate } from "@/lib/utils";
+import { formatDate } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 // import { useRouter } from "next/router";
 import { useDebt } from "../hooks/useDebt";
 import { AppLink } from "@/components/ui/button/AppLink";
-import { DebtPaymentsDataTable } from "../../../debt-payments/data-table";
+import TableContainer from "@/components/debt-payments/TableContainer";
 import Link from "next/link";
 import UsersTab from "./UsersTab";
-import DeleteDebtButton from "./DeleteDebtButton";
 import StatusBadge from "@/components/debts/StatusBadge";
 import ActivityTimeline from "@/components/ui/timeline/ActivityTimeline";
-
-const statusColors: Record<string, string> = {
-  active: "bg-accent/15 text-accent border-accent/30",
-  paused: "bg-yellow-500/15 text-yellow-600 dark:text-yellow-400 border-yellow-500/30",
-  completed: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30",
-};
 
 function formatCurrency(amount: number, currency: string) {
   return new Intl.NumberFormat("en-US", {
@@ -53,7 +43,6 @@ export default function DebtDetails({ id }: DebtDetailsProps) {
 
   const totalWithInterest = debt.monthlyAmount * debt.months;
   const totalInterest = totalWithInterest - debt.totalAmount;
-  const interestPaid = (debt.paidAmount / debt.totalAmount) * totalInterest;
 
   return (
     <>
@@ -321,7 +310,7 @@ export default function DebtDetails({ id }: DebtDetailsProps) {
 
           {/* Transactions Tab */}
           <TabsContent value="transactions" className="space-y-4">
-            <DebtPaymentsDataTable debtId={id} />
+            <TableContainer debtId={id} />
           </TabsContent>
 
           {/* Overview Tab */}

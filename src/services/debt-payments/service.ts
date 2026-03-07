@@ -1,8 +1,13 @@
-import LoadingToast from "@/components/swal/LoadingToast";
-import { SwalToast } from "@/components/swal/SwalToast";
+import { MyPagination } from "@/components/transactions/TableContainer";
+import { DebtPayment } from "@/models/debtPayment";
+import { Table } from "@tanstack/react-table";
 
-export async function onDeleteDebtPayment(id: string, table?: any, pagination?: any, mutate?: any) {
-  LoadingToast({ title: "Excluindo...", message: "Removendo transação..." });
+export async function onDeleteDebtPayment(
+  id: string,
+  table?: Table<DebtPayment>,
+  pagination?: MyPagination,
+  mutate?: () => void
+) {
   try {
     const res = await fetch(`/api/debt-payments/${id}`, {
       method: "DELETE",
@@ -17,23 +22,19 @@ export async function onDeleteDebtPayment(id: string, table?: any, pagination?: 
 
     if (data.success) {
       if (table) {
-        if (table.getRowCount() == 0) pagination.pageIndex--;
+        if (table.getRowCount() == 0 && pagination) pagination.pageIndex--;
       }
-      SwalToast({ message: data.message, icon: "success" });
-      return 1;
     }
+    return { message: data.message, success: true };
   } catch (err: unknown) {
     if (err instanceof Error) {
-      SwalToast({ message: err.message, icon: "error" });
-    } else {
-      SwalToast({ message: String(err), icon: "error" });
+      return { message: err.message, success: false };
     }
-    return 0;
+    return { message: String(err), success: false };
   }
 }
 
-export async function onConfirmDebtPayment(id: string, mutate?: any) {
-  LoadingToast({ title: "A confirmar...", message: "A confirmar a sua transação..." });
+export async function onConfirmDebtPayment(id: string, mutate?: () => void) {
   try {
     const res = await fetch(`/api/debt-payments/${id}/confirm`, {
       method: "POST",
@@ -46,16 +47,12 @@ export async function onConfirmDebtPayment(id: string, mutate?: any) {
 
     if (mutate) await mutate();
 
-    if (data.success) {
-      SwalToast({ message: data.message, icon: "success" });
-      return 1;
-    }
+    return { message: data.message, success: true };
   } catch (err: unknown) {
     if (err instanceof Error) {
-      SwalToast({ message: err.message, icon: "error" });
+      return { message: err.message, success: false };
     } else {
-      SwalToast({ message: String(err), icon: "error" });
+      return { message: String(err), success: false };
     }
-    return 0;
   }
 }
