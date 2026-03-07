@@ -108,7 +108,7 @@ export async function GET(req: NextRequest) {
       }
     }
 
-    const res = await fetch(`${process.env.API_BACKEND_URL}financial-goals?${params.toString()}`, {
+    const res = await fetch(`${baseUrl}financial-goals?${params.toString()}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     if (!res.ok) throw new Error(`External API error: ${res.status}`);

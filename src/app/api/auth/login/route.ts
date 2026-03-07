@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
+import { baseUrl } from "../../config";
 
 export async function POST(req: Request) {
   const { email, password, remember } = await req.json();
 
-  const res = await fetch(`${process.env.API_BACKEND_URL}login`, {
+  const res = await fetch(`${baseUrl}login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),

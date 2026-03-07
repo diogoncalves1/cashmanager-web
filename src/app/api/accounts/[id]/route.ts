@@ -1,5 +1,5 @@
-// /app/api/accounts/route.ts
 import { NextRequest, NextResponse } from "next/server";
+import { baseUrl } from "../../config";
 
 export async function GET(req: NextRequest, context: { params: Promise<{ id: string }> }) {
   try {
@@ -7,7 +7,7 @@ export async function GET(req: NextRequest, context: { params: Promise<{ id: str
 
     const token = req.cookies.get("token")?.value;
 
-    const urlApi = `${process.env.API_BACKEND_URL}accounts/${id}`;
+    const urlApi = `${baseUrl}accounts/${id}`;
 
     const res = await fetch(urlApi, {
       headers: { Authorization: `Bearer ${token}` },
@@ -30,7 +30,7 @@ export async function PUT(req: NextRequest, context: { params: Promise<{ id: str
 
     const body = await req.json();
 
-    const urlApi = `http://127.0.0.1:8000/api/v1/accounts/${id}`;
+    const urlApi = `${baseUrl}accounts/${id}`;
 
     const res = await fetch(urlApi, {
       headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
@@ -55,7 +55,7 @@ export async function DELETE(req: NextRequest, context: { params: Promise<{ id: 
 
     if (!id) throw new Error("Id invalido");
 
-    const urlApi = "http://127.0.0.1:8000/api/v1/accounts/" + id;
+    const urlApi = `${baseUrl}accounts/${id}`;
     const res = await fetch(urlApi, {
       headers: { Authorization: `Bearer ${token}` },
       method: "DELETE",

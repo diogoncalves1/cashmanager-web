@@ -74,7 +74,7 @@ export async function GET(req: NextRequest) {
       }
     }
 
-    const urlApi = "http://127.0.0.1:8000/api/v1/transactions?" + params.toString();
+    const urlApi = `${baseUrl}transactions?${params.toString()}`;
 
     const res = await fetch(urlApi, {
       headers: { Authorization: `Bearer ${token}` },

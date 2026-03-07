@@ -1,10 +1,11 @@
 import { NextResponse, NextRequest } from "next/server";
+import { baseUrl } from "../config";
 
 export async function GET(req: NextRequest) {
   try {
     const token = req.cookies.get("token")?.value;
 
-    const res = await fetch("http://127.0.0.1:8000/api/v1/currencies", {
+    const res = await fetch(`${baseUrl}currencies`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
