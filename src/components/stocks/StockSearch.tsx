@@ -3,7 +3,7 @@ import { useState } from "react";
 import Input from "../form/input/InputField";
 import { Table, TableBody, TableCell, TableRow } from "../ui/table";
 import Image from "next/image";
-import { AssetSearch } from "@/lib/models/assetSearch";
+import { AssetSearch } from "@/models/assetSearch";
 
 export default function StocksSearch() {
   const [assets, setAssets] = useState<AssetSearch[]>([]);

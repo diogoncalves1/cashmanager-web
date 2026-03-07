@@ -1,12 +1,12 @@
-import { Currency } from "@/lib/models/currency";
+import { Currency } from "@/models/currency";
 import { ApexOptions } from "apexcharts";
 import { useTranslations } from "next-intl";
 import React, { useEffect, useState } from "react";
 
 type MonthlyData = {
   month: Date;
-  revenues: number;
-  expenses: number;
+  revenues: string;
+  expenses: string;
 };
 
 type QuarterlyData = {
@@ -17,8 +17,8 @@ type QuarterlyData = {
 
 type AnnualyData = {
   year: string;
-  revenues: number;
-  expenses: number;
+  revenues: string;
+  expenses: string;
 };
 
 type ChartDataType = {
@@ -38,8 +38,8 @@ type ChartSeries = {
 
 interface ChartTabProps {
   data?: ChartDataType;
-  onChangeSeries?: (series: ChartSeries[]) => void;
-  onChangeOptions?: (prev: ApexOptions) => void;
+  onChangeSeries: (series: ChartSeries[]) => void;
+  onChangeOptions: (prev: ApexOptions) => void;
   currency?: Currency;
   height?: number;
 }
@@ -145,8 +145,7 @@ function ChartTab({ data, onChangeSeries, onChangeOptions, height = 0, currency 
 
           const months: string[] = [];
 
-          data?.data.charts.monthly.forEach((item: any) => {
-            console.log(item.month);
+          data?.data.charts.monthly.forEach((item) => {
             months.push(
               MONTHS[parseInt(String(item.month).split("-")[0]) - 1] +
                 " " +
@@ -162,28 +161,26 @@ function ChartTab({ data, onChangeSeries, onChangeOptions, height = 0, currency 
           setSelected("monthly");
           onChangeSeries(series);
 
-          onChangeOptions(() => {
-            return {
-              ...options,
-              xaxis: {
-                type: "category",
-                categories: months,
-                axisBorder: { show: false },
-                axisTicks: { show: false },
+          onChangeOptions({
+            ...options,
+            xaxis: {
+              type: "category",
+              categories: months,
+              axisBorder: { show: false },
+              axisTicks: { show: false },
+            },
+            tooltip: {
+              enabled: true,
+              shared: true,
+              intersect: false,
+              y: {
+                formatter: (value: number) =>
+                  new Intl.NumberFormat("pt-BR", {
+                    style: "currency",
+                    currency: currency?.code,
+                  }).format(value),
               },
-              tooltip: {
-                enabled: true,
-                shared: true,
-                intersect: false,
-                y: {
-                  formatter: (value: number) =>
-                    new Intl.NumberFormat("pt-BR", {
-                      style: "currency",
-                      currency: currency?.code,
-                    }).format(value),
-                },
-              },
-            };
+            },
           });
         }}
         className={`px-3 py-2 font-medium w-full rounded-md text-theme-sm hover:text-gray-900   dark:hover:text-white ${getButtonClass(
@@ -212,35 +209,33 @@ function ChartTab({ data, onChangeSeries, onChangeOptions, height = 0, currency 
           setSelected("quarterly");
           onChangeSeries([rev, exp]);
 
-          onChangeOptions(() => {
-            return {
-              ...options,
-              plotOptions: {
-                bar: {
-                  horizontal: false, // vertical (colunas)
-                  columnWidth: chartHeight < 380 ? "40%" : "20%", // largura das colunas
-                  borderRadius: 4, // cantos arredondados
-                },
+          onChangeOptions({
+            ...options,
+            plotOptions: {
+              bar: {
+                horizontal: false, // vertical (colunas)
+                columnWidth: chartHeight < 380 ? "40%" : "20%", // largura das colunas
+                borderRadius: 4, // cantos arredondados
               },
-              xaxis: {
-                type: "category",
-                categories: quartsers,
-                axisBorder: { show: false },
-                axisTicks: { show: false },
+            },
+            xaxis: {
+              type: "category",
+              categories: quartsers,
+              axisBorder: { show: false },
+              axisTicks: { show: false },
+            },
+            tooltip: {
+              enabled: true,
+              shared: true,
+              intersect: false,
+              y: {
+                formatter: (value: number) =>
+                  new Intl.NumberFormat("pt-BR", {
+                    style: "currency",
+                    currency: currency?.code,
+                  }).format(value),
               },
-              tooltip: {
-                enabled: true,
-                shared: true,
-                intersect: false,
-                y: {
-                  formatter: (value: number) =>
-                    new Intl.NumberFormat("pt-BR", {
-                      style: "currency",
-                      currency: currency?.code,
-                    }).format(value),
-                },
-              },
-            };
+            },
           });
         }}
         className={`px-3 py-2 font-medium w-full rounded-md text-theme-sm hover:text-gray-900   dark:hover:text-white ${getButtonClass(
@@ -265,38 +260,36 @@ function ChartTab({ data, onChangeSeries, onChangeOptions, height = 0, currency 
           setSelected("annualy");
           onChangeSeries([rev, exp]);
 
-          onChangeOptions(() => {
-            return {
-              ...options,
-              plotOptions: {
-                bar: {
-                  horizontal: false,
-                  columnWidth: chartHeight < 380 ? "15%" : "5%",
-                  borderRadius: 4,
-                },
+          onChangeOptions({
+            ...options,
+            plotOptions: {
+              bar: {
+                horizontal: false,
+                columnWidth: chartHeight < 380 ? "15%" : "5%",
+                borderRadius: 4,
               },
-              xaxis: {
-                type: "category",
-                categories: years,
-                axisBorder: { show: false },
-                axisTicks: { show: false },
+            },
+            xaxis: {
+              type: "category",
+              categories: years,
+              axisBorder: { show: false },
+              axisTicks: { show: false },
+            },
+            tooltip: {
+              enabled: true,
+              shared: true,
+              intersect: false,
+              y: {
+                formatter: (value: number) =>
+                  new Intl.NumberFormat("pt-BR", {
+                    style: "currency",
+                    currency: currency?.code ?? "USD",
+                  }).format(value),
               },
-              tooltip: {
-                enabled: true,
-                shared: true,
-                intersect: false,
-                y: {
-                  formatter: (value: number) =>
-                    new Intl.NumberFormat("pt-BR", {
-                      style: "currency",
-                      currency: currency.code,
-                    }).format(value),
-                },
-              },
-            };
+            },
           });
         }}
-        className={`px-3 py-2 font-medium w-full rounded-md text-theme-sm hover:text-gray-900   dark:hover:text-white ${getButtonClass(
+        className={`px-3 py-2 font-medium w-full rounded-md text-theme-sm hover:text-gray-900 dark:hover:text-white ${getButtonClass(
           "annualy"
         )}`}
       >

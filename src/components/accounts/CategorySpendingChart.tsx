@@ -9,6 +9,7 @@ import {
   Tooltip as RechartsTooltip,
   ResponsiveContainer,
   Cell,
+  YAxisTickContentProps,
 } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -211,10 +212,12 @@ export function CategorySpendingChart({
                 width={120}
                 axisLine={false}
                 tickLine={false}
-                tick={({ x, y, payload }: { x: number; y: number; payload: { value: string } }) => {
-                  const item = allCategories.find((c) => c.category === payload.value);
+                tick={(props: YAxisTickContentProps) => {
+                  const { x, y, payload } = props;
 
+                  const item = allCategories.find((c) => c.category === payload.value);
                   const Icon = iconMap[item?.icon as keyof typeof iconMap] ?? Circle;
+
                   return (
                     <g transform={`translate(${x},${y})`}>
                       <g transform="translate(-120, -8)">

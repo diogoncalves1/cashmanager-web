@@ -100,7 +100,7 @@ const TableContainer = ({ userId, financialGoalId, load }: Props) => {
 
   const extraParams = new URLSearchParams();
   if (userId) extraParams.append("userId", userId);
-  if (financialGoalId) extraParams.append("accountId", financialGoalId);
+  if (financialGoalId) extraParams.append("financialGoalId", financialGoalId);
   if (debouncedSearch) extraParams.append("search", debouncedSearch);
   if (debouncedCategoryFilter !== "all") extraParams.append("categoryId", debouncedCategoryFilter);
   if (debouncedDateFrom) extraParams.append("dateFrom", debouncedDateFrom);

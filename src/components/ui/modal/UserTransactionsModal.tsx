@@ -1,6 +1,6 @@
 "use client";
 
-import { TransactionsDataTable } from "@/app/(admin)/(menu)/transactions/data-table";
+import TableContainer from "@/components/transactions/TableContainer";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
@@ -51,7 +51,9 @@ export function UserTransactionsModal({ userId, accountId, userName, open, onClo
               </div>
 
               {/* Body */}
-              <TransactionsDataTable enableUser={false} userId={userId} accountId={accountId} />
+              <div className="p-4">
+                <TableContainer userId={userId} accountId={accountId} includeSummary={false} />
+              </div>
 
               {/* Footer */}
               <div className="flex justify-end gap-2 border-t px-6 py-4">

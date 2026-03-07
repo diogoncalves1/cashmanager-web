@@ -14,7 +14,10 @@ interface BreadcrumbProps {
 const PageBreadcrumb: React.FC<BreadcrumbProps> = ({ pageTitle, breadcrumb }) => {
   return (
     <div className="flex flex-wrap items-center border-b border-gray-100 bg-gray-50 px-5 py-1.5 justify-between gap-3 dark:border-gray-800 dark:bg-white/[0.02]">
-      <h2 className="text-sm font-semibold text-gray-600 dark:text-white/90" x-text="pageName">
+      <h2
+        className="text-sm font-semibold text-gray-600 dark:text-white/90 uppercase"
+        x-text="pageName"
+      >
         {pageTitle}
       </h2>
       <nav>

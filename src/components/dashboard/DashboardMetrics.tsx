@@ -1,10 +1,9 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { BadgeColor } from "../ui/badge/Badge";
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
-import { Currency } from "@/lib/models/currency";
+import { Currency } from "@/models/currency";
 import UserMonthlyBalanceChart from "@/components/dashboard/UserMonthlyBalanceChart";
 import { IncomeExpensesMetrics } from "@/components/dashboard/IncomeExpensesMetrics";
 
@@ -12,12 +11,12 @@ export type KpiInterface = {
   totalRevenues: string;
   totalExpenses: string;
   totalUser: string;
-  revenuePercentage: number;
-  expensesPercentage: number;
+  revenuePercentage: string;
+  expensesPercentage: string;
   totalPercentage: number;
-  revenuesClasses: BadgeColor;
-  expensesClasses: BadgeColor;
-  totalClasses: BadgeColor;
+  revenuesClasses: "error" | "warning" | "success";
+  expensesClasses: "error" | "warning" | "success";
+  totalClasses: string;
   currency?: Currency;
 };
 
@@ -31,8 +30,8 @@ export default function DashboardMetrics() {
     totalRevenues: "0",
     totalExpenses: "0",
     totalUser: "0",
-    revenuePercentage: 0,
-    expensesPercentage: 0,
+    revenuePercentage: "0",
+    expensesPercentage: "0",
     totalPercentage: 0,
     revenuesClasses: "error",
     expensesClasses: "error",
@@ -47,11 +46,11 @@ export default function DashboardMetrics() {
     const rev = { name: "Revenues", data: Array(currentMonth + 1).fill(0) };
     const exp = { name: "Expenses", data: Array(currentMonth + 1).fill(0) };
 
-    data.data.charts.monthly.forEach((item: any) => {
-      const monthIndex = parseInt(item.month.replace("2025-", "")) - 1;
+    data.data.charts.monthly.forEach((item: { revenues: string; expenses: string }) => {
+      // const monthIndex = parseInt(item.month.split(" ", 1)[0]) - 1;
 
-      rev.data[monthIndex] = parseFloat(item.revenues);
-      exp.data[monthIndex] = parseFloat(item.expenses);
+      rev.data.push(parseFloat(item.revenues));
+      exp.data.push(parseFloat(item.expenses));
     });
 
     setRevenues(rev);

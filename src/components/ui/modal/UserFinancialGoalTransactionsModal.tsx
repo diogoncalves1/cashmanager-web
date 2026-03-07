@@ -1,6 +1,6 @@
 "use client";
 
-import { FinancialGoalTransactionsDataTable } from "@/app/(root)/(menu)/financial-goal-transactions/data-table";
+import TableContainer from "@/components/goal-transactions/TableContainer";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
@@ -57,11 +57,7 @@ export function UserFinancialGoalTransactionsModal({
               </div>
 
               {/* Body */}
-              <FinancialGoalTransactionsDataTable
-                enableUser={false}
-                userId={userId}
-                financialGoalId={financialGoalId}
-              />
+              <TableContainer userId={userId} financialGoalId={financialGoalId} />
 
               {/* Footer */}
               <div className="flex justify-end gap-2 border-t px-6 py-4">

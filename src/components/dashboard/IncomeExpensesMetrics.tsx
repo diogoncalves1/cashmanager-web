@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Badge from "../ui/badge/Badge";
+import { Badge } from "../ui/badge";
 import { ArrowDownIcon, ArrowUpIcon } from "@/icons";
 import LineChartOne from "../charts/line/LineChartOne";
 import { ApexOptions } from "apexcharts";
@@ -43,18 +43,18 @@ export const IncomeExpensesMetrics = ({ revenues, expenses, kpis }: IncomeExpens
     markers: {
       size: 0, // sem pontos
       hover: {
-        size: 0, // sem hover nos pontos
+        size: 0,
       },
     },
     grid: {
-      show: false, // remove linhas de grade
+      show: false,
     },
     dataLabels: {
-      enabled: false, // sem labels nos pontos
+      enabled: false,
     },
     xaxis: {
       labels: {
-        show: false, // remove labels do eixo X
+        show: false,
       },
       axisTicks: {
         show: false,
@@ -106,7 +106,11 @@ export const IncomeExpensesMetrics = ({ revenues, expenses, kpis }: IncomeExpens
               </h4>
             </div>
             <Badge color={kpis.revenuesClasses}>
-              {kpis.revenuePercentage > 0 ? <ArrowUpIcon /> : <ArrowDownIcon />}
+              {Number(kpis.revenuePercentage.replace(",", "")) > 0 ? (
+                <ArrowUpIcon />
+              ) : (
+                <ArrowDownIcon />
+              )}
               {kpis.revenuePercentage}%
             </Badge>
           </div>
@@ -129,7 +133,11 @@ export const IncomeExpensesMetrics = ({ revenues, expenses, kpis }: IncomeExpens
               </h4>
             </div>
             <Badge color={kpis.expensesClasses}>
-              {kpis.revenuePercentage > 0 ? <ArrowUpIcon /> : <ArrowDownIcon />}
+              {Number(kpis.expensesPercentage.replace(",", "")) > 0 ? (
+                <ArrowUpIcon />
+              ) : (
+                <ArrowDownIcon />
+              )}
               {kpis.expensesPercentage}%
             </Badge>
           </div>

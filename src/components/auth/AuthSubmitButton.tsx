@@ -1,5 +1,7 @@
+import { ReactNode } from "react";
+
 type Props = {
-  children: any;
+  children: ReactNode;
 };
 
 export default function AuthSubmitButton(props: Props) {

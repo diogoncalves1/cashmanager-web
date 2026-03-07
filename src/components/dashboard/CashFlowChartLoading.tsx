@@ -1,4 +1,3 @@
-import ChartTab from "@/components/common/ChartTab";
 import LineChartLoading from "../charts/line/LineChartLoading";
 import { useTranslations } from "next-intl";
 
@@ -15,9 +14,7 @@ export default function CashFlowChartLoading({ heigth }: { heigth: number }) {
             {t("CASH_FLOW_CHART_DESCRIPTION")}
           </p>
         </div>
-        <div className="flex items-start w-full gap-3 sm:justify-end">
-          <ChartTab />
-        </div>
+        <div className="flex items-start w-full gap-3 sm:justify-end"></div>
       </div>
       <LineChartLoading height={heigth} />
     </div>
