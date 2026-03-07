@@ -1,12 +1,17 @@
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import { useTranslations } from "next-intl";
-import InvitationContainer from "./components/InvitationContainer";
 import { Metadata } from "next";
+import InvitationContainer from "@/components/invitations/InvitationContainer";
+import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Cash Manager | Debts",
-  description: "This is Next.js Home for TailAdmin Dashboard Template",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("DEBTS");
+
+  return {
+    title: t("META_TITLE"),
+    description: t("META_DESCRIPTION"),
+  };
+}
 
 export default function InvitationsPage() {
   const t = useTranslations("DEBTS");
@@ -18,7 +23,7 @@ export default function InvitationsPage() {
         breadcrumb={[{ title: t("DEBTS"), path: "/debts" }, { title: t("INVITES") }]}
       />
 
-      <InvitationContainer />
+      <InvitationContainer type="debts" />
     </>
   );
 }

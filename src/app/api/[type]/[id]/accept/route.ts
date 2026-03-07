@@ -2,28 +2,42 @@ import { baseUrl } from "@/app/api/config";
 import { NextRequest, NextResponse } from "next/server";
 
 type InviteType = "debts" | "financial-goals" | "accounts";
+
+function isInviteType(value: string): value is InviteType {
+  return ["debts", "financial-goals", "accounts"].includes(value);
+}
+
 export async function POST(
   req: NextRequest,
-  { params }: { params: { id: string; type: InviteType } }
+  context: { params: Promise<{ type: string; id: string }> }
 ) {
   try {
+    const { type, id } = await context.params;
+
     const token = req.cookies.get("token")?.value;
 
-    const id = params.id;
-    const type = params.type;
+    if (!isInviteType(type)) {
+      return NextResponse.json({ message: "Invalid type" }, { status: 400 });
+    }
 
     const urlApi = `${baseUrl}${type}/${id}/accept`;
 
     const res = await fetch(urlApi, {
-      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
       method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
     });
+
     const data = await res.json();
 
-    if (!res.ok) return NextResponse.json({ message: data.message }, { status: res.status });
+    if (!res.ok) {
+      return NextResponse.json({ message: data.message }, { status: res.status });
+    }
 
     return NextResponse.json(data);
   } catch (err) {
-    return NextResponse.json({ error: err }, { status: 500 });
+    return NextResponse.json({ error: "Internal Server Error " + String(err) }, { status: 500 });
   }
 }

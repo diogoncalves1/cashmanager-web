@@ -2,16 +2,23 @@ import { baseUrl } from "@/app/api/config";
 import { NextRequest, NextResponse } from "next/server";
 
 type InviteType = "debts" | "financial-goals" | "accounts";
+
+function isInviteType(value: string): value is InviteType {
+  return ["debts", "financial-goals", "accounts"].includes(value);
+}
+
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { id: string; type: InviteType; userId: string } }
+  context: { params: Promise<{ type: string; id: string; userId: string }> }
 ) {
   try {
     const token = req.cookies.get("token")?.value;
 
-    const id = params.id;
-    const type = params.type;
-    const userId = params.userId;
+    const { type, id, userId } = await context.params;
+
+    if (!isInviteType(type)) {
+      return NextResponse.json({ message: "Invalid type" }, { status: 400 });
+    }
 
     const urlApi = `${baseUrl}${type}/${id}/invite/${userId}`;
 
