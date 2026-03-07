@@ -1,11 +1,11 @@
 import { baseUrl } from "@/app/api/config";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: NextRequest, { params }: { params: { id: string } }) {
+export async function POST(req: NextRequest, context: { params: Promise<{ id: string }> }) {
   try {
     const token = req.cookies.get("token")?.value;
 
-    const id = params.id;
+    const { id } = await context.params;
 
     const urlApi = `${baseUrl}friendship-requests/${id}/send`;
 

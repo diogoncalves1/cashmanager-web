@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import React from "react";
-import StatisticsChart from "@/components/dashboard/StatisticsChart";
 import StockTicker from "@/components/swiper/StockSwiper";
 import DashboardMetrics from "@/components/dashboard/DashboardMetrics";
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
@@ -26,9 +25,9 @@ export default function Ecommerce() {
           </div>
         </div>
 
-        <div className="col-span-12 md:col-span-9">
+        {/* <div className="col-span-12 md:col-span-9">
           <StatisticsChart />
-        </div>
+        </div> */}
 
         <div className="col-span-12 space-y-6 xl:col-span-12">
           <DashboardMetrics />

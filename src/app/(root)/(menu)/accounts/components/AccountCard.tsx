@@ -106,14 +106,16 @@ export function AccountCard({ account }: AccountCardProps) {
                     <AvatarFallback
                       className={cn(
                         "text-[10px] text-secondary-foreground",
-                        getUserColor(user.name)
+                        getUserColor(user?.name)
                       )}
                     >
-                      {user.name
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")
-                        .toUpperCase()}
+                      {user && user.name
+                        ? user.name
+                            .split(" ")
+                            .map((n) => n[0])
+                            .join("")
+                            .toUpperCase()
+                        : "..."}
                     </AvatarFallback>
                   </Avatar>
                 ))}

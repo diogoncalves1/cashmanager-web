@@ -1,11 +1,11 @@
 import { baseUrl } from "@/app/api/config";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(req: NextRequest, context: { params: Promise<{ id: string }> }) {
   try {
     const token = req.cookies.get("token")?.value;
 
-    const id = params.id;
+    const { id } = await context.params;
 
     const urlApi = `${baseUrl}friendships/${id}/remove`;
 
