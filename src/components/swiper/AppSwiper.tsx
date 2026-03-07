@@ -28,7 +28,7 @@ export default function AppSwiper({
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [direction]);
 
   return (
     <Swiper

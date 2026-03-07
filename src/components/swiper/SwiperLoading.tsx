@@ -22,7 +22,7 @@ function StockSkeletonSlide() {
 export default function SwiperLoading({
   direction = "horizontal",
 }: {
-  direction: "vertical" | "horizontal";
+  direction?: "vertical" | "horizontal";
 }) {
   return (
     <AppSwiper speed={0} direction={direction}>

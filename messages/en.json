@@ -1,0 +1,924 @@
+{
+  "TRANSACTIONS": {
+    "TRANSACTIONS": "Transactions",
+    "TRANSACTIONS_DETAILS": "Details",
+
+    "META_TITLE": "Cash Manager | Transactions",
+    "META_DESCRIPTION": "Manage your financial transactions efficiently with Cash Manager. Track your income, expenses, and keep your finances organized.",
+
+    "TRANSACTIONS_PAGE_TEXT": "View and manage all transactions in your accounts.",
+    "NEW_TRANSACTION": "New Transaction",
+    "EDIT_TRANSACTION": "Edit Transaction",
+    "NEW_TRANSACTION_FORM_DIALOG_TEXT": "Record a new income or expense.",
+    "EDIT_TRANSACTION_FORM_DIALOG_TEXT": "Update your transaction details.",
+
+    "ACCOUNT": "Account",
+    "AMOUNT": "Amount",
+    "CATEGORY": "Category",
+    "DATE": "Date",
+    "DESCRIPTION": "Description",
+    "USERS": "Users",
+    "USER": "User",
+    "STATUS": "Status",
+    "PENDING": "Pending",
+    "COMPLETED": "Completed",
+    "TYPE": "Type",
+    "INCOME": "Income",
+    "EXPENSE": "Expense",
+
+    "SELECT_ACCOUNT": "Select an account",
+    "SELECT_CATEGORY": "Select a category",
+    "SELECT_DATE": "Select a date",
+
+    "WHAT_WAS_THIS_FOR": "What was this for?",
+
+    "CANCEL": "Cancel",
+    "SAVE": "Save",
+    "CREATE": "Create",
+
+    "TOTAL_INCOME": "Total Income",
+    "TOTAL_EXPENSE": "Total Expense",
+    "BALANCE": "Balance",
+
+    "SHOWING": "Showing",
+    "OF": "of",
+    "THIS": "transactions",
+    "FIRST": "First",
+    "PREVIOUS": "Previous",
+    "NEXT": "Next",
+    "LAST": "Last",
+
+    "SEARCH_TRANSACTION": "Search transaction",
+    "ALL_STATUS": "All statuses",
+    "ALL_CATEGORIES": "All categories",
+    "ALL_TYPES": "All types",
+    "TO": "to",
+    "CLEAR": "Clear",
+    "NO_ACCOUNTS_AVAILABLE": "No accounts available",
+
+    "VIEW_ACCOUNT": "View account",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "CONFIRM": "Confirm",
+    "ACTIONS": "Actions",
+
+    "CONFIRM_TRANSACTION": "Confirm Transaction?",
+    "CONFIRM_TRANSACTION_TEXT": "Are you sure you want to confirm this transaction?",
+
+    "DELETE_TRANSACTION": "Delete transaction?",
+    "DELETE_TRANSACTION_TEXT": "Are you sure you want to delete? This action cannot be undone."
+  },
+
+  "DATATABLE": {
+    "NO_RESULTS": "No Results"
+  },
+
+  "ACCOUNTS": {
+    "META_TITLE": "Cash Manager | Accounts",
+    "META_DESCRIPTION": "Manage your financial accounts efficiently with Cash Manager. Track your income, expenses, and keep your finances organized.",
+
+    "ACCOUNTS": "Accounts",
+    "ACCOUNTS_TEXT": "Manage your financial accounts and track balances.",
+    "DETAILS": "Details",
+
+    "BALANCE": "Balance",
+    "TOTAL_INCOME": "Total Income",
+    "TOTAL_EXPENSE": "Total Expense",
+    "ACTIVE_ACCOUNTS": "Active Accounts",
+
+    "ALL_TYPES": "All types",
+    "BANK_ACCOUNT": "Bank Account",
+    "CASH": "Cash",
+    "DIGITAL_WALLET": "Digital Wallet",
+    "CREDIT_CARD": "Credit Card",
+
+    "ALL_STATUS": "All statuses",
+
+    "INCOME": "Income",
+    "EXPENSE": "Expense",
+
+    "TRANSACTIONS": "Transactions",
+    "TRANSACTION": "Transaction",
+    "USERS": "Users",
+
+    "EDIT": "Edit",
+    "ADD": "Add",
+
+    "ACTIVE": "Active",
+    "INACTIVE": "Inactive",
+    "STATUS": "Status",
+
+    "DISABLE_ACCOUNT": "Disable Account",
+    "ACTIVATE_ACCOUNT": "Activate Account",
+
+    "NEW_ACCOUNT": "New Account",
+    "SEARCH_ACCOUNT": "Search account",
+    "SORT_BY": "Sort by",
+    "ORDER": "Order",
+    "ASCENDING": "Ascending",
+    "DESCENDING": "Descending",
+
+    "OWED": "Owed",
+
+    "NAME": "Name",
+    "TYPE": "Type",
+
+    "NO_ACCOUNTS_FOUND": "No accounts found",
+    "NO_ACCOUNTS_FOUND_TEXT": "Try adjusting your filters or create a new account.",
+
+    "ACCOUNT_NOT_FOUND": "Account not found",
+    "BACK_TO_ACCOUNTS": "Back to accounts",
+
+    "EDIT_ACCOUNT": "Edit Account",
+    "DELETE_ACCOUNT": "Delete Account",
+
+    "CURRENT_BALANCE": "Current balance",
+    "MONTHLY_INCOME": "Monthly income",
+    "MONTHLY_EXPENSE": "Monthly expense",
+    "VS_LAST_MONTH": "vs last month",
+
+    "OVERVIEW": "Overview",
+    "ACTIVITY": "Activity",
+    "ANALYTICS": "Analytics",
+    "SETTINGS": "Settings",
+
+    "EXPENSES_BY_CATEGORY": "Expenses by category",
+    "NO_DATA_AVAILABLE": "No data recorded.",
+    "MONTHLY_RESUME": "Monthly Summary",
+    "CATEGORIES": "categories",
+    "CATEGORY": "category",
+    "TOTAL": "total",
+    "AMOUNT": "Amount",
+    "SHARE": "Percentage",
+    "BREAKDOWN": "Breakdown",
+    "ACCOUNT_DELETED": "Account deleted",
+    "CANCEL": "Cancel",
+    "DELETE_ACCOUNT_TEXT": "Are you sure you want to delete {name}? All transactions will be permanently removed. This action cannot be undone.",
+
+    "CREATE_NEW_ACCOUNT": "Create new account",
+    "EDIT_ACCOUNT_TEXT": "Update this account's information.",
+    "CREATE_ACCOUNT_TEXT": "Add a new financial account to track your balance and transactions.",
+    "ACCOUNT_NAME": "Account name",
+    "ACCOUNT_NAME_EG": "Ex: Emergency Fund",
+    "ACCOUNT_TYPE": "Account type",
+    "ACTIVE_ACCOUNT": "Active account",
+    "ACTIVE_ACCOUNT_TEXT": "Inactive accounts are hidden from summaries.",
+    "CURRENCY": "Currency",
+    "SAVE_CHANGES": "Save changes",
+    "SAVING": "Saving...",
+
+    "GENERAL_INFORMATION": "General information",
+    "GENERAL_INFORMATION_TEXT": "Update your account details and preferences.",
+
+    "PREFERENCES": "Preferences",
+    "PREFRENCES_TEXT": "Control this account's behavior.",
+
+    "DANGER_ZONE": "Danger zone",
+    "DANGER_ZONE_TEXT": "Irreversible actions that affect your account",
+    "DELETE_THIS_ACCOUNT": "Delete this account",
+    "DELETE_THIS_ACCOUNT_TEXT": "Permanently remove this account and all its transactions.",
+
+    "CHOOSE_A_TYPE": "Choose a type",
+    "CHOOSE_A_CURRENCY": "Choose a currency",
+
+    "CREATE_ACCOUNT": "Create account",
+    "CREATING_ACCOUNT": "Creating account...",
+
+    "BALANCE_OVER_TIME": "Balance over time",
+
+    "7D": "7D",
+    "1M": "1M",
+    "3M": "3M",
+    "1Y": "1Y",
+
+    "USER_MANAGEMENT": "User management",
+    "USER_MANAGEMENT_TEXT": "Manage members associated with this account",
+
+    "INVITES": "Invites",
+    "ACTIVE_USER": "active",
+    "ACTIVE_USERS": "active",
+    "PENDING": "Pending",
+    "PENDING_S": "Pending",
+    "ACTIONS": "Actions",
+
+    "USER": "User",
+    "ROLE": "Role",
+
+    "CHANGE_ROLE": "Change role",
+    "REMOVE_MEMBER": "Remove member",
+    "CANCEL_INVITE": "Cancel invite",
+    "NO_MEMBERS_YET": "No members yet",
+    "NO_MEMBERS_YET_TEXT": "Add members to collaborate on this account.",
+    "YOU": "You"
+  },
+
+  "LISTS": {
+    "REMAINING": "Remaining",
+    "REMAINING_PLURAL": "Remaining"
+  },
+
+  "INVITE_MEMBER": {
+    "INVITE": "Invite",
+    "INVITE_MEMBER": "Invite member",
+    "INVITE_MEMBER_TEXT": "Invite a friend.",
+
+    "SEND_INVITATION": "Send invitation",
+    "SENDING": "Sending...",
+    "FRIEND": "Friend",
+    "CHOOSE_A_FRIEND": "Choose a friend",
+
+    "CANCELING_TITLE": "Canceling...",
+    "CANCELING_MESSAGE": "Canceling invitation...",
+
+    "CANCEL": "Cancel",
+    "LEAVE": "Leave",
+    "LEAVE_TEXT": "Are you sure you want to leave?",
+
+    "REMOVE_MEMBER": "Remove member?",
+    "REMOVE_MEMBER_TEXT": "This action will remove the member from the group.",
+
+    "CHANGE_ROLE": "Change role?",
+    "CHANGE_ROLE_TEXT": "Assign a role to this user.",
+
+    "ROLE": "Role",
+    "CHOOSE_A_ROLE": "Choose a role",
+
+    "CHANGE": "Change",
+    "CHANGING": "Changing...",
+
+    "REMOVE": "Remove",
+    "REMOVING": "Removing...",
+
+    "ACCOUNTS": "Account",
+    "DEBTS": "Debt",
+    "FINANCIAL-GOALS": "Financial Goal",
+
+    "SENT": "Sent",
+    "RECEIVED": "Received",
+    "PENDING_SENT": "Pending sent",
+    "AWAITING_RESPONSE": "Awaiting response",
+
+    "INVITATIONS": "Invitations",
+    "INVITATIONS_TEXT": "Manage your sent and received invitations.",
+
+    "NO_INVITATIONS_SENT": "No invitations sent",
+    "NO_INVITATIONS_RECEIVED": "No invitations received",
+
+    "FILTER_STATUS": "Filter status",
+    "ALL_STATUS": "All statuses",
+    "PENDING": "Pending",
+    "ACCEPTED": "Accepted",
+    "ACCEPT": "Accept",
+    "REJECT": "Reject",
+    "REJECTING": "Rejecting...",
+    "REJECTING_TEXT": "Rejecting invitation...",
+    "ACCEPTING": "Accepting...",
+    "ACCEPTING_TEXT": "Accepting invitation...",
+    "REVOKED": "Revoked",
+    "ERROR": "Error",
+    "TRY_AGAIN": "Try again",
+
+    "NO_INVITATIONS_SENT_TEXT": "You haven't sent any invitations yet. Click \"Invite member\" to invite someone to collaborate.",
+    "NO_INVITATIONS_RECEIVED_TEXT": "You don’t have any invitations at the moment. Please check back later."
+  },
+
+  "ACTIVITY": {
+    "ACTIVITY_TIMELINE": "Activity timeline",
+    "WITHOUT_ACTIVITY": "No activity",
+    "ERROR": "Error",
+    "TRY_AGAIN": "Try again",
+    "BY": "By"
+  },
+
+  "FINANCIAL_GOALS": {
+    "META_TITLE": "Cash Manager | Financial Goals",
+    "META_DESCRIPTION": "Manage your financial goals efficiently with Cash Manager. Track your contributions, withdrawals, and keep your finances organized.",
+
+    "NEW_GOAL": "New goal",
+    "FINANCIAL_GOALS_TEXT": "Track and manage your savings goals in one place.",
+
+    "ADD": "Add",
+    "EDIT": "Edit",
+    "DELETE": "Delete Financial Goal",
+    "DETAILS": "Details",
+    "INVITES": "Invites",
+
+    "FINANCIAL_GOAL": "FINANCIAL GOAL",
+    "FINANCIAL_GOALS": "Financial Goals",
+
+    "TRANSACTIONS": "Transactions",
+    "ADD_TRANSACTION": "New Transaction",
+
+    "ALL_TRANSACTIONS": "All Transactions",
+
+    "COMPLETED": "Completed",
+    "IN_PROGRESS": "In Progress",
+    "CANCELED": "Canceled",
+
+    "TOTAL_GOALS": "Total Goals",
+    "TOTAL_SAVED": "Total Saved",
+    "OVERALL_PROGRESS": "Overall Progress",
+    "ALL": "All",
+
+    "LOW": "Low",
+    "MEDIUM": "Medium",
+    "HIGH": "High",
+
+    "NAME": "Name",
+    "TOTAL_AMOUNT": "Total Amount",
+    "CONTRIBUTED_AMOUNT": "Contributed Amount",
+    "PRIORITY": "Priority",
+    "USERS": "Users",
+    "CURRENCY": "Currency",
+    "DUE_DATE": "Due Date",
+    "START_DATE": "Start Date",
+    "STATUS": "Status",
+    "ACTIONS": "Actions",
+
+    "REMAINING": "Remaining",
+    "REMAINING_PLURAL": "Remaining",
+    "USER": "User",
+
+    "SORT": "Sort",
+    "SEARCH_FINANCIAL_GOALS": "Search financial goal...",
+
+    "SEARCH": "Search",
+    "FILTER_BY": "Filter by",
+    "SHOWING": "Showing",
+    "OF": "of",
+    "THIS": "financial goals",
+    "NEXT": "Next",
+    "PREVIOUS": "Previous",
+    "FIRST": "First",
+    "LAST": "Last",
+    "NO_RESULTS": "No Results",
+    "LOADING": "Loading",
+
+    "CANCELED_FINANCIAL_GOAL_TITLE": "Canceling...",
+    "CANCELED_FINANCIAL_GOAL_MESSAGE": "Canceling financial goal...",
+    "CANCEL_FINANCIAL_GOAL_MESSAGE": "Cancel financial goal?",
+    "YES_CANCEL": "Yes, cancel!",
+    "CANCEL": "Cancel",
+
+    "RESET_FINANCIAL_GOAL_MESSAGE": "Reset financial goal?",
+    "RESETED_FINANCIAL_GOAL_TITLE": "Resetting...",
+    "RESETED_FINANCIAL_GOAL_MESSAGE": "Resetting financial goal...",
+    "YES_RESET": "Yes, reset!",
+
+    "OTHERS_INFORMATION": "Other Information",
+    "CREATED_AT": "Created at",
+
+    "RECENT_TRANSACTIONS": "Recent Transactions",
+    "FINANCIAL_GOAL_DETAILS": "Financial Goal Details",
+    "WITHDRAWALS": "Withdrawals",
+    "CONTRIBUTIONS": "Contributions",
+
+    "OVERVIEW": "Overview",
+    "OTHERS": "Others",
+    "DESCRIPTION": "Description",
+    "RESET": "Reset",
+    "LAST_UPDATE": "Last update",
+    "COMPLETE": "Complete",
+    "P_COMPLETE": "completed",
+    "MISSING_AMOUNT": "Missing Amount",
+    "COLLECTED_AMOUNT": "Collected Amount",
+    "GOAL_PROGRESS": "Goal Progress",
+    "GOAL_COMPLETED": "Goal Achieved!",
+    "GOAL_COMPLETED_MESSAGE": "Congratulations! Goal successfully achieved",
+
+    "MONTHLY_SUMMARY": "Monthly Summary",
+
+    "NEW_FINANCIAL_GOAL": "New Financial Goal",
+    "NEW_FINANCIAL_GOAL_TEXT": "Register your financial goals.",
+    "EDIT_FINANCIAL_GOAL": "Edit Financial Goal",
+    "EDIT_FINANCIAL_GOAL_TEXT": "Update your financial goal.",
+
+    "SAVING": "Saving...",
+    "SAVING_TEXT": "Updating financial goal...",
+    "CREATING": "Creating...",
+    "CREATING_TEXT": "Creating your financial goal...",
+
+    "DESCRIPTION_TEXT": "Add a note about this financial goal...",
+    "OPTIONAL": "Optional",
+    "DATES": "Dates",
+    "STEP": "Step",
+    "START": "Start",
+    "DUE": "Due",
+    "SELECT_CURRENCY": "Select currency",
+    "FORM_HELPER": "All goals are securely processed and recorded instantly.",
+    "NAME_PLACEHOLDER": "Ex: New car",
+
+    "TARGET": "Target",
+    "DAYS_PASSED": "days passed",
+    "DAYS_REMAINING": "days remaining",
+    "CONTRIBUTED": "Contributed",
+    "CONTRIBUTORS": "Contributors",
+    "ACTIVITY": "Activity",
+    "MEMBER": "Member",
+    "ROLE": "Role",
+    "DELETE_GOAL": "Delete goal",
+    "DELETE_GOAL_TEXT": "Are you sure you want to delete this goal? This action cannot be undone and all transaction history will be lost.",
+    "EDIT_GOAL": "Edit goal",
+    "CANCEL_GOAL": "Cancel goal",
+    "DELETING_GOAL": "Deleting",
+    "RESET_GOAL": "Reset goal",
+    "TO_FINISH": "to finish",
+
+    "MARK_COMPLETED": "Mark as completed",
+    "MARK_COMPLETED_FINANCIAL_GOAL": "Mark financial goal as completed?",
+    "MARK_COMPLETED_FINANCIAL_GOAL_TEXT": "Are you sure you want to mark this financial goal as completed?",
+    "COMPLETE_GOAL": "Complete goal"
+  },
+
+  "BUTTONS": {
+    "SUBMIT": "Submit",
+    "PROCESSING": "Processing..."
+  },
+
+  "FINANCIAL_GOAL_TRANSACTIONS": {
+    "META_TITLE": "Cash Manager | Financial Goal Transactions",
+    "META_DESCRIPTION": "Manage your financial goal transactions efficiently with Cash Manager. Track your contributions, withdrawals, and keep your finances organized.",
+
+    "ADD": "Add",
+    "EDIT": "Edit",
+    "DETAILS": "Details",
+    "SAVING": "Saving...",
+    "ACCOUNT": "Account",
+
+    "FINANCIAL_GOAL_TRANSACTION": "FINANCIAL GOAL TRANSACTIONS",
+    "FINANCIAL_GOAL": "Financial Goal",
+    "FINANCIAL_GOALS": "Financial Goals",
+
+    "SELECT_FINANCIAL_GOAL": "Select financial goal",
+
+    "TRANSACTIONS": "Transactions",
+    "ADD_TRANSACTION": "New Transaction",
+
+    "TYPE": "Type",
+    "USER": "User",
+    "DATE": "Date",
+    "ALL": "All",
+
+    "CLEAR": "Clear",
+    "VIEW_FINANCIAL_GOAL": "View financial goal",
+    "ALL_STATUS": "All statuses",
+    "ALL_TYPES": "All types",
+
+    "ALL_TRANSACTIONS": "All Transactions",
+
+    "NEW_TRANSACTION": "New Transaction",
+    "SELECT_ACCOUNT": "Select an account",
+    "WHAT_WAS_THIS_FOR": "What was this for?",
+
+    "CANCEL": "Cancel",
+    "CREATE": "Create",
+
+    "NEW_TRANSACTION_FORM_DIALOG_TEXT": "Record a new contribution or withdrawal.",
+    "CREATING": "Creating...",
+    "DESCRIPTION": "Description",
+    "SAVE": "Save",
+    "EDIT_TRANSACTION": "Edit Transaction",
+    "EDIT_TRANSACTION_FORM_DIALOG_TEXT": "Update your transaction details.",
+
+    "COMPLETED": "Completed",
+    "PENDING": "Pending",
+
+    "CONTRIBUTION": "Contribution",
+    "WITHDRAWAL": "Withdrawal",
+
+    "NAME": "Name",
+    "TOTAL_AMOUNT": "Total Amount",
+    "CONTRIBUTED_AMOUNT": "Contributed Amount",
+    "PRIORITY": "Priority",
+    "USERS": "Users",
+    "CURRENCY": "Currency",
+    "DUE_DATE": "Due Date",
+    "START_DATE": "Start Date",
+    "STATUS": "Status",
+    "ACTIONS": "Actions",
+
+    "TRANSACTION_HISTORY": "Transaction History",
+    "TRANSACTION": "Transaction",
+    "AMOUNT": "Amount",
+
+    "SEARCH": "Search",
+    "FILTER_BY": "Filter by",
+    "SHOWING": "Showing",
+    "OF": "of",
+    "THIS": "transactions",
+    "NEXT": "Next",
+    "PREVIOUS": "Previous",
+    "FIRST": "First",
+    "LAST": "Last",
+    "NO_RESULTS": "No Results",
+    "LOADING": "Loading",
+
+    "DELETE": "Delete",
+    "TO": "to",
+    "SEARCH_TRANSACTION": "Search transaction"
+  },
+
+  "DEBTS": {
+    "META_TITLE": "Cash Manager | Debts",
+    "META_DESCRIPTION": "Manage your debt payments efficiently with Cash Manager. Track your payments and keep your finances organized.",
+
+    "ADD_DEBT": "Add debt",
+    "INVITES": "Invites",
+    "ADD": "Add",
+    "EDIT": "Edit",
+    "DELETE": "Delete Debt",
+    "DETAILS": "Details",
+    "SUMMARY": "Summary",
+    "TIMELINE": "Timeline",
+    "TIMELINE_TEXT": "Set the start and end dates for this debt.",
+    "FINANCIAL_DETAILS": "Financial details",
+    "FINANCIAL_DETAILS_TEXT": "Define the amounts and payment structure.",
+    "TOTAL_MONTHS_PLACEHOLDER": "Number of months...",
+    "SAVE": "Save",
+    "SAVING": "Saving...",
+
+    "TOTAL_DEBT": "Total debt",
+    "ACROSS": "Across",
+    "TOTAL_PAID": "Total paid",
+    "OF_TOTAL": "of total",
+    "ACTIVE_DEBTS": "Active debts",
+    "MONTHLY_PAYMENTS": "Monthly payments",
+
+    "DEBT": "Debt",
+    "DEBTS": "Debts",
+    "DEBTS_TEXT": "Track and manage your debt payments.",
+
+    "TRANSACTIONS": "Payments",
+    "ADD_TRANSACTION": "New Payment",
+
+    "ALL_TRANSACTIONS": "All payments",
+
+    "COMPLETED": "Completed",
+    "COMPLETED_PLURAL": "Completed",
+    "ACTIVE_DEBTS_ONLY": "Active debts only",
+    "PENDING": "Pending",
+
+    "MONTHS": "months",
+    "MONTH": "month",
+    "APR": "APR",
+    "REMAINING": "Remaining",
+
+    "CREATE_DEBT": "Create debt",
+    "TOTAL_MONTHS": "Number of months",
+    "MONTHLY_PAYMENT": "Monthly payment",
+    "DEBT_NAME": "Debt name",
+
+    "SEARCH_DEBTS": "Search for a debt...",
+    "PROGRESS": "Progress",
+    "TOTAL": "Total",
+    "MONTH_ABR": "mo",
+
+    "NAME": "Name",
+    "TOTAL_AMOUNT": "Total amount",
+    "PAID_AMOUNT": "Paid amount",
+    "PAID": "Paid",
+    "ALL": "All",
+    "USERS": "Users",
+    "CURRENCY": "Currency",
+    "DUE_DATE": "Due date",
+    "START_DATE": "Start date",
+    "STATUS": "Status",
+    "ACTIONS": "Actions",
+
+    "SEARCH": "Search",
+    "FILTER_BY": "Filter by",
+    "SHOWING": "Showing",
+    "OF": "of",
+    "THIS": "debts",
+    "NEXT": "Next",
+    "PREVIOUS": "Previous",
+    "FIRST": "First",
+    "LAST": "Last",
+    "NO_RESULTS": "No results",
+    "LOADING": "Loading",
+
+    "CANCEL": "Cancel",
+    "YES_MARK": "Yes, mark",
+    "MARK_DEBT_PAID": "Mark debt as paid?",
+    "MARKING_TITLE": "Marking...",
+    "MARKING_MESSAGE": "Marking debt as paid...",
+
+    "RESET_DEBT_MESSAGE": "Reset debt?",
+    "RESETED_DEBT_TITLE": "Resetting...",
+    "RESETED_DEBT_MESSAGE": "Resetting debt...",
+    "YES_DELETE": "Yes, delete!",
+    "YES_RESET": "Yes, reset!",
+    "YOU_SURE": "Are you sure?",
+    "YOU_DONT_REVERT_THIS": "You won’t be able to revert this!",
+    "DELETING_TITLE": "Deleting...",
+    "DELETING_MESSAGE": "Deleting debt...",
+
+    "OTHERS_INFORMATION": "Other Information",
+    "CREATED_AT": "Created at",
+
+    "RECENT_TRANSACTIONS": "Recent Payments",
+    "DEBT_DETAILS": "Debt Details",
+
+    "OVERVIEW": "Overview",
+    "OTHERS": "Others",
+    "DESCRIPTION": "Description",
+    "RESET": "Reset",
+    "LAST_UPDATE": "Last update",
+    "COMPLETE": "Complete",
+    "MISSING_AMOUNT": "Remaining amount",
+    "DEBT_PROGRESS": "Debt progress",
+    "DEBT_COMPLETED": "Debt Paid!",
+    "DEBT_COMPLETED_MESSAGE": "Congratulations! Debt successfully paid.",
+    "CREATE_NEW_DEBT": "Create new debt",
+    "CREATE_NEW_DEBT_TEXT": "Add a new debt to track your financial obligations.",
+    "EDIT_DEBT": "Edit debt",
+    "EDIT_DEBT_TEXT": "Edit the debt information as needed.",
+    "DESCRIPTION_TEXT": "Optional. Add notes or context about this debt.",
+    "DESCRIPTION_PLACEHOLDER": "Add any additional details about this debt...",
+
+    "MONTHLY_SUMMARY": "Monthly Summary",
+    "BASIC_INFORMATION": "Basic Information",
+    "BASIC_INFORMATION_TEXT": "Enter the name and description of your debt.",
+    "DEBT_NAME_PLACEHOLDER": "E.g., Home Mortgage, Car Loan",
+
+    "CHOOSE_A_CURRENCY": "Choose a currency",
+    "ANNUAL_INTEREST_RATE": "Annual interest rate",
+    "ANNUAL_INTEREST_RATE_TEXT": "Optional. If not filled in, the value will automatically be set to 0.",
+    "BASED_ON": "Based on",
+    "ESTIMATED_PAYOFF": "Estimated payoff",
+    "SUMMARY_TEXT": "Values calculated based on the form.",
+    "PLEASE_FILL_REQUIRED_FIELDS_EDIT": "Please fill in all required fields to edit your debt.",
+    "PLEASE_FILL_REQUIRED_FIELDS_CREATE": "Please fill in all required fields to create the debt."
+  },
+
+  "FRIENDS": {
+    "META_TITLE": "Cash Manager | Friends",
+    "META_DESCRIPTION": "Manage your connections and friend requests. Track your payments and keep your finances organized.",
+
+    "FRIENDS": "Friends",
+    "PENDING": "Pending",
+    "FRIENDS_TEXT": "Manage your connections and friend requests.",
+    "FRIEND": "Friend",
+    "FRIEND_REQUESTS": "Friend Requests",
+    "SEARCH": "Search",
+    "SEND": "Send",
+    "ACTIONS": "Actions",
+    "REMOVE_FRIEND": "Remove friend",
+    "BLOCK_USER": "Block user",
+    "NO_RESULTS": "No Results",
+    "NO_RESULTS_TEXT": "No friend matches \"{username}\". Try a different search.",
+    "NO_BLOCKED_RESULTS_TEXT": "No blocked user matches \"{username}\". Try a different search.",
+    "NO_RECEIVED_RESULTS_TEXT": "No received request matches \"{username}\". Try a different search.",
+    "NO_SENT_RESULTS_TEXT": "No sent request matches \"{username}\". Try a different search.",
+    "NO_RECEIVED_REQUESTS": "No received requests",
+    "NO_SENT_REQUESTS": "No sent requests",
+    "NO_SENT_REQUESTS_TEXT": "You haven't sent any friend requests yet.",
+    "NO_RECEIVED_REQUESTS_TEXT": "You haven't received any friend requests yet.",
+    "NO_FRIENDS_YET": "No friends yet.",
+    "NO_FRIENDS_YET_TEXT": "Use the search tool above to find people and send friend requests.",
+    "NO_BLOCKED_USERS_TEXT": "You haven't blocked anyone. Blocked users cannot interact with you.",
+    "ALL_FRIENDS": "All Friends",
+    "BLOCKED_USERS": "Blocked Users",
+    "NO_FRIENDS": "No Friends",
+    "NO_BLOCKED_USERS": "No Blocked Users",
+    "LOADING": "Loading",
+
+    "SEARCH_BY_USER": "Search for user...",
+    "ADD_FRIEND": "Add friend",
+    "SEARCH_USERS": "Search for user...",
+    "TRY_AGAIN": "Try again",
+    "LOADING_MORE_BLOCKED_USERS": "Loading more blocked users...",
+    "LOADING_BLOCKED_USERS": "Loading blocked users...",
+    "WITHOUT_BLOCKED_USERS": "You don't have any blocked users.",
+    "SCROLL_TO_SEE_MORE": "Scroll down to see more",
+
+    "NO_USERS_FOUND_MATCHING": "No users found matching \"{username}\"",
+
+    "RECEIVED": "Received",
+    "SENT": "Sent",
+    "BLOCKED": "Blocked",
+    "SEARCH_BY_USERNAME": "Search by username",
+
+    "REMOVE": "Remove",
+    "HAVENT_ADDED_FRIENDS": "You haven't added any friends yet.",
+
+    "SEARCH_FRIEND": "Search friend",
+
+    "LOADING_REQUESTS": "Loading requests...",
+    "BLOCK": "Block",
+
+    "LOADING_FRIENDS": "Loading friends...",
+
+    "LOADING_MORE_FRIENDS": "Loading more friends...",
+
+    "HAVE_NO_REQUESTS": "You have no requests.",
+
+    "SENT_REQUESTS": "Sent requests",
+
+    "ADD_BY_ID": "Add friend by ID",
+
+    "LOADING_MORE_REQUESTS": "Loading more requests...",
+
+    "ACCEPT": "Accept",
+    "DECLINE": "Decline",
+    "CANCEL_REQUEST": "Cancel Request",
+    "YES_UNLBOCK": "Yes, unblock",
+    "UNBLOCK": "Unblock",
+
+    "BLOCK_USER_MESSAGE": "Block user?",
+    "BLOCKING_USER_TITLE": "Blocking...",
+    "BLOCKING_USER_MESSAGE": "Blocking user...",
+
+    "REMOVE_FRIEND_MESSAGE": "Remove friend?",
+    "REMOVING_FRIEND_TITLE": "Removing...",
+    "REMOVING_FRIEND_MESSAGE": "Removing friend...",
+
+    "SENDING_FRIEND_REQUEST_TITLE": "Sending...",
+    "SENDING_FRIEND_REQUEST_MESSAGE": "Sending friend request...",
+
+    "ACCEPT_REQUEST_TITLE": "Accepting...",
+    "ACCEPT_REQUEST_MESSAGE": "Accepting friend request...",
+
+    "DECLINE_REQUEST_TITLE": "Declining...",
+    "DECLINE_REQUEST_MESSAGE": "Declining friend request...",
+
+    "CANCEL_REQUEST_TITLE": "Canceling...",
+    "CANCEL_REQUEST_MESSAGE": "Canceling friend request...",
+
+    "UNBLOCK_USER_MESSAGE": "Unblock user?",
+    "UNBLOCKING_USER_TITLE": "Unblocking...",
+    "UNBLOCKING_USER_MESSAGE": "Unblocking user...",
+
+    "YES_BLOCK": "Yes, block!",
+    "YES_REMOVE": "Yes, remove!",
+    "CANCEL": "Cancel"
+  },
+
+  "SETTINGS": {
+    "META_TITLE": "Cash Manager | Settings",
+    "META_DESCRIPTION": "Manage your account settings. Track your payments and keep your finances organized.",
+
+    "SETTINGS": "Settings",
+    "YOU_HAVE_UNSAVED_CHANGES": "You have unsaved changes.",
+    "PROFILE_INFORMATION": "Profile Information",
+    "PROFILE_INFORMATION_TEXT": "Update your personal information",
+    "ACCOUNT_SETTINGS": "Account Settings",
+    "ACCOUNT_SETTINGS_TEXT": "Manage your profile and preferences.",
+    "RESET": "Reset",
+    "DISCARD": "Discard",
+    "SAVE_CHANGES": "Save changes",
+    "SAVING": "Saving...",
+    "USERNAME": "Username",
+    "FIRST_NAME": "First name",
+    "FIRST_NAME_PLACEHOLDER": "John",
+    "LAST_NAME": "Last name",
+    "LAST_NAME_PLACEHOLDER": "Rodrigues",
+    "EMAIL_ADDRESS": "Email address",
+    "EMAIL_ADDRESS_PLACEHOLDER": "test@test.com",
+    "CANCEL": "Cancel",
+    "CONTINUE": "Continue",
+    "PASSWORD": "Password",
+    "CHANGE_PASSWORD": "Change password",
+    "CHANGE_PASSWORD_TEXT": "You will be redirected to the password change page. Any unsaved changes on this page will be lost.",
+    "PASSORD_TEXT": "Manage your account security",
+
+    "SELECT_CURRENCY": "Select currency",
+    "SELECT_LANGUAGE": "Select language",
+    "PREFERENCES_TEXT": "Customize your experience",
+    "LANGUAGE": "Language",
+
+    "PREFERENCES": "Preferences",
+    "CURRENCY": "Currency"
+  },
+
+  "HOME": {
+    "HOME": "Home",
+    "MONTHLY_BALANCE": "Monthly Balance",
+    "REVENUE": "Revenue",
+    "EXPENSE": "Expense",
+    "RESULT": "Result",
+    "BALANCE": "Balance",
+
+    "MONTHLY": "Monthly",
+    "QUARTERLY": "Quarterly",
+    "ANNUALLY": "Annually",
+
+    "CASH_FLOW_CHART_DESCRIPTION": "Track your income and expenses across different periods.",
+    "CASH_FLOW_CHART_TITLE": "Cash Flow Overview"
+  },
+
+  "DEBT_PAYMENTS": {
+    "META_TITLE": "Cash Manager | Debt Payments",
+    "META_DESCRIPTION": "Efficiently manage your debt payments with Cash Manager. Track your payments and keep your finances organized.",
+
+    "ADD_PAYMENT": "Add Payment",
+    "ADD": "Add",
+    "DEBTS": "Debts",
+    "PAYMENTS": "Payments",
+    "PAYMENTS_PAGE_TEXT": "View and manage all your debt payments.",
+    "DEBT": "Debt",
+    "NEXT": "Next",
+    "FIRST": "First",
+    "THIS": "payments",
+    "OF": "of",
+    "PREVIOUS": "Previous",
+    "SHOWING": "Showing",
+    "LAST": "Last",
+    "SEARCH": "Search",
+    "DEBT_PAYMENTS": "PAYMENTS",
+    "PENDING": "Pending",
+    "LOADING": "Loading",
+    "COMPLETED": "Completed",
+
+    "AMOUNT": "Amount",
+    "ACTIONS": "Actions",
+    "DATE": "Date",
+    "SAVING": "Saving...",
+    "NEW_PAYMENT": "New Payment",
+    "NEW_PAYMENT_FORM_DIALOG_TEXT": "Register a new payment.",
+    "EDIT_PAYMENT_FORM_DIALOG_TEXT": "Update your payment details.",
+    "EDIT_PAYMENT": "Edit Payment",
+    "DESCRIPTION": "Description",
+    "STATUS": "Status",
+    "USER": "User",
+    "SEARCH_PAYMENT": "Search for a payment",
+    "DELETE": "Delete",
+    "DELETING": "Deleting...",
+    "EDIT": "Edit",
+    "CONFIRM_PAYMENT": "Confirm Payment",
+    "VIEW_DEBT": "View Debt",
+    "WHAT_WAS_THIS_FOR": "What was this for?",
+    "ACCOUNT": "Account",
+    "SELECT_ACCOUNT": "Select an account",
+    "SELECT_DEBT": "Select the debt",
+    "CREATE": "Create",
+    "CREATING": "Creating...",
+    "SAVE": "Save",
+
+    "DELETE_PAYMENT": "Delete Payment",
+    "DELETE_PAYMENT_TEXT": "Are you sure you want to delete this payment?",
+    "DELETE_PAYMENT_WARNING": "Warning: This action cannot be undone and may affect the amount paid on the debt.",
+
+    "TO": "to",
+    "CANCEL": "Cancel",
+    "ALL_STATUS": "All statuses",
+
+    "CONFIRM_PAYMENT_TEXT": "Are you sure you want to confirm this payment?"
+  },
+
+  "LAYOUTS": {
+    "SIDEBAR_SETTINGS": "Settings",
+    "SIDEBAR_LOGOUT": "Logout",
+    "SIDEBAR_COMPOUND_INTEREST_CALCULATOR": "Comp. Int. Calculator",
+    "SIDEBAR_CURRENCY_CONVERTER": "Currency Converter",
+    "SIDEBAR_TOOLS": "Tools",
+    "SIDEBAR_FRIENDS": "Friends",
+    "SIDEBAR_PROFILE": "Profile",
+    "SIDEBAR_SOCIAL": "Social",
+    "SIDEBAR_STOCKS": "Stocks",
+    "SIDEBAR_STOCKS_WATCHLIST": "Watchlist",
+    "SIDEBAR_STOCKS_SEARCH": "Seach",
+    "SIDEBAR_PORTFOLIOS": "Portfolios",
+    "SIDEBAR_DEBTS": "Debts",
+    "SIDEBAR_DEBT_PAYMENTS": "Payments",
+    "SIDEBAR_FINANCIAL_GOALS": "Financial Goals",
+    "SIDEBAR_FINANCIAL_GOALS_CONTRIBUTIONS": "Contributions",
+    "SIDEBAR_TRANSACTIONS": "Transactions",
+    "SIDEBAR_ACCOUNTS": "Accounts",
+    "SIDEBAR_HOME": "Home",
+    "SIDEBAR_MENU": "Menu",
+    "SIDEBAR_INVITES": "Invites",
+
+    "HEADER_ACCOUNT_DETAILS": "Account Details",
+
+    "LOGOUT": "Logging out…",
+    "LOGOUT_WAIT": "Please wait while we end your session",
+    "LOGOUT_ERROR": "We couldn't end your session. Please try again."
+  },
+
+  "SIGNIN": {
+    "SIGNIN": "Signing in…",
+    "SIGNIN_WAIT": "Please wait while we verify your credentials"
+  },
+
+  "INVITATION": {
+    "LOADING_INVITES": "Loading Invites",
+    "LOADING_MORE": "Loading more",
+    "SCROLL_TO_SEE_MORE": "Scroll down to see more"
+  },
+
+  "MONTHS": {
+    "JAN": "Jan",
+    "FEB": "Feb",
+    "MAR": "Mar",
+    "APR": "Apr",
+    "MAY": "May",
+    "JUN": "Jun",
+    "JUL": "Jul",
+    "AUG": "Aug",
+    "SEP": "Sep",
+    "OCT": "Oct",
+    "NOV": "Nov",
+    "DEC": "Dec"
+  }
+}

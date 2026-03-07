@@ -1,172 +1,158 @@
 "use client";
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useSidebar } from "../context/SidebarContext";
-import { BoxCubeIcon, HorizontaLDots, PageIcon, PlugInIcon } from "../icons/index";
+import { HorizontaLDots } from "../icons/index";
+import { useRouter } from "next/navigation";
 import SidebarWidget from "./SidebarWidget";
 import {
-  PieChartIcon,
-  TableIcon,
   ChevronRight,
   Wallet,
-  CalendarIcon,
-  ArrowLeftRight,
   Target,
   TrendingDown,
   Settings,
   DoorOpen,
   Briefcase,
   TrendingUp,
-  User,
   Users,
   Coins,
   Calculator,
   LayoutDashboard,
 } from "lucide-react";
+import { onLogout } from "@/services/auth/service";
+import { SwalToast } from "@/components/swal/SwalToast";
+import { useTranslations } from "next-intl";
 
 type NavItem = {
   name: string;
   icon: React.ReactNode;
   path?: string;
   disable?: boolean;
+  onClick?: () => void | Promise<void>;
   subItems?: { name: string; path: string; pro?: boolean; new?: boolean }[];
   background?: string;
 };
 
-const navItems: NavItem[] = [
-  {
-    icon: <LayoutDashboard size={18} strokeWidth={2} />,
-    name: "Dashboard",
-    path: "/dashboard",
-  },
-  {
-    icon: <CalendarIcon size={18} strokeWidth={2} />,
-    name: "Calendar",
-    path: "/calendar",
-  },
-  {
-    icon: <Wallet size={18} strokeWidth={2} />,
-    name: "Accounts",
-    path: "/accounts",
-  },
-  {
-    icon: <ArrowLeftRight size={18} strokeWidth={2} />,
-    name: "Transactions",
-    path: "/transactions",
-  },
-  {
-    icon: <Target size={18} strokeWidth={2} />,
-    name: "Financial Goals",
-    disable: true,
-    subItems: [
-      { name: "Financial Goals", path: "/financial-goals", pro: false },
-      { name: "Contributions", path: "/financial-goals/contributions", pro: false },
+const AppSidebar: React.FC = () => {
+  const router = useRouter();
+  const t = useTranslations("LAYOUTS");
+
+  const navItems: NavItem[] = useMemo(
+    () => [
       {
-        name: "Scheduled Contributions",
-        path: "/financial-goals/contributions/scheduled",
-        pro: false,
+        icon: <LayoutDashboard size={18} strokeWidth={2} />,
+        name: t("SIDEBAR_HOME"),
+        path: "/dashboard",
+      },
+      {
+        icon: <Wallet size={18} strokeWidth={2} />,
+        name: t("SIDEBAR_ACCOUNTS"),
+        subItems: [
+          { name: t("SIDEBAR_ACCOUNTS"), path: "/accounts", pro: false },
+          {
+            name: t("SIDEBAR_TRANSACTIONS"),
+            path: "/transactions",
+            pro: false,
+          },
+          {
+            name: t("SIDEBAR_INVITES"),
+            path: "/account-invitations",
+          },
+        ],
+      },
+      {
+        icon: <Target size={18} strokeWidth={2} />,
+        name: t("SIDEBAR_FINANCIAL_GOALS"),
+        subItems: [
+          { name: t("SIDEBAR_FINANCIAL_GOALS"), path: "/financial-goals", pro: false },
+          {
+            name: t("SIDEBAR_TRANSACTIONS"),
+            path: "/financial-goal-transactions",
+            pro: false,
+          },
+          {
+            name: t("SIDEBAR_INVITES"),
+            path: "/financial-goal-invitations",
+          },
+        ],
+      },
+      {
+        icon: <TrendingDown size={18} strokeWidth={2} />,
+        name: t("SIDEBAR_DEBTS"),
+        subItems: [
+          { name: t("SIDEBAR_DEBTS"), path: "/debts", pro: false },
+          { name: t("SIDEBAR_DEBT_PAYMENTS"), path: "/debt-payments", pro: false },
+          {
+            name: t("SIDEBAR_INVITES"),
+            path: "/debt-invitations",
+          },
+        ],
+      },
+      {
+        icon: <Briefcase size={18} strokeWidth={2} />,
+        name: t("SIDEBAR_PORTFOLIOS"),
+        disable: true,
+        path: "/portfolio",
+      },
+      {
+        icon: <TrendingUp size={18} strokeWidth={2} />,
+        name: t("SIDEBAR_STOCKS"),
+        disable: true,
+        subItems: [
+          { name: t("SIDEBAR_STOCKS"), path: "/stocks", pro: false },
+          { name: t("SIDEBAR_STOCKS_SEARCH"), path: "/stocks/search", pro: false },
+          { name: t("SIDEBAR_STOCKS_WATCHLIST"), path: "/stocks/watchlist", pro: false },
+        ],
       },
     ],
-  },
-  {
-    icon: <TrendingDown size={18} strokeWidth={2} />,
-    name: "Debts",
-    disable: true,
-    subItems: [
-      { name: "Debts", path: "/debts", pro: false },
-      { name: "Payments", path: "/debts/payments", pro: false },
-      { name: "Scheduled Payments", path: "/debts/payments/scheduled", pro: false },
-    ],
-  },
-  {
-    icon: <Briefcase size={18} strokeWidth={2} />,
-    name: "Portfolio",
-    disable: true,
-    path: "/portfolio",
-  },
-  {
-    icon: <TrendingUp size={18} strokeWidth={2} />,
-    name: "Stocks",
-    disable: false,
-    subItems: [
-      { name: "Stocks", path: "/stocks", pro: false },
-      { name: "Stocks Search", path: "/stocks/search", pro: false },
-      { name: "Watchlist", path: "/stocks/watchlist", pro: false },
-    ],
-  },
-  // {
-  //   icon: <ListIcon size={18} strokeWidth={2} />,
-  //   name: "Forms",
-  //   subItems: [{ name: "Form Elements", path: "/form-elements", pro: false }],
-  // },
-];
+    [t]
+  );
 
-const othersItems: NavItem[] = [
-  {
-    icon: <PieChartIcon size={18} strokeWidth={2} />,
-    name: "Charts",
-    subItems: [
-      { name: "Line Chart", path: "/line-chart", pro: false },
-      { name: "Bar Chart", path: "/bar-chart", pro: false },
-    ],
-  },
-  {
-    icon: <BoxCubeIcon size={18} strokeWidth={2} />,
-    name: "UI Elements",
-    subItems: [
-      { name: "Alerts", path: "/alerts", pro: false },
-      { name: "Avatar", path: "/avatars", pro: false },
-      { name: "Badge", path: "/badge", pro: false },
-      { name: "Buttons", path: "/buttons", pro: false },
-      { name: "Images", path: "/images", pro: false },
-      { name: "Videos", path: "/videos", pro: false },
-    ],
-  },
-];
+  const socialItems: NavItem[] = [
+    {
+      icon: <Users size={18} strokeWidth={2} />,
+      name: t("SIDEBAR_FRIENDS"),
+      path: "/friends",
+    },
+  ];
 
-const socialItems: NavItem[] = [
-  {
-    icon: <User size={18} strokeWidth={2} />,
-    name: "Profile",
-    path: "/profile",
-  },
-  {
-    icon: <Users size={18} strokeWidth={2} />,
-    name: "Friends",
-    path: "/friends",
-  },
-];
+  const toolsItems: NavItem[] = [
+    {
+      icon: <Coins size={18} strokeWidth={2} />,
+      name: t("SIDEBAR_CURRENCY_CONVERTER"),
+      path: "/tools/currency-converter",
+      disable: true,
+    },
+    {
+      icon: <Calculator size={18} strokeWidth={2} />,
+      name: t("SIDEBAR_COMPOUND_INTEREST_CALCULATOR"),
+      path: "/tools/compound-interest-calculator",
+      disable: true,
+    },
+  ];
+  const settingsItems: NavItem[] = [
+    {
+      icon: <Settings size={18} strokeWidth={2} />,
+      name: t("SIDEBAR_SETTINGS"),
+      path: "/settings",
+    },
+    {
+      icon: <DoorOpen size={18} strokeWidth={2} />,
+      name: t("SIDEBAR_LOGOUT"),
+      path: "#",
+      onClick: async () => {
+        const logout = await onLogout(t);
 
-const toolsItems: NavItem[] = [
-  {
-    icon: <Coins size={18} strokeWidth={2} />,
-    name: "Currency Converter",
-    path: "/tools/currency-converter",
-  },
-  {
-    icon: <Calculator size={18} strokeWidth={2} />,
-    name: "Comp. Int. Calculator",
-    path: "/tools/compound-interest-calculator",
-  },
-];
+        if (!logout) SwalToast({ message: t("LOGOUT_ERROR"), icon: "error" });
 
-const settingsItems: NavItem[] = [
-  {
-    icon: <Settings size={18} strokeWidth={2} />,
-    name: "Settings",
-    path: "/settings",
-  },
-  {
-    icon: <DoorOpen size={18} strokeWidth={2} />,
-    name: "Logout",
-    path: "/logout",
-    // background: "bg-error-500 text-white"
-  },
-];
+        router.push("/signin");
+      },
+      // background: "bg-error-500 text-white"
+    },
+  ];
 
-const AppSidebar: React.FC = () => {
   const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();
   const pathname = usePathname();
 
@@ -176,7 +162,7 @@ const AppSidebar: React.FC = () => {
   ) => (
     <ul className="flex flex-col">
       {navItems.map((nav, index) => (
-        <li key={nav.name}>
+        <li key={nav.name} onClick={nav.onClick}>
           {nav.subItems ? (
             <button
               onClick={() => (nav.disable ? {} : handleSubmenuToggle(index, menuType))}
@@ -310,8 +296,8 @@ const AppSidebar: React.FC = () => {
   useEffect(() => {
     // Check if the current path matches any submenu item
     let submenuMatched = false;
-    ["main", "others"].forEach((menuType) => {
-      const items = menuType === "main" ? navItems : othersItems;
+    ["main"].forEach((menuType) => {
+      const items = navItems;
       items.forEach((nav, index) => {
         if (nav.subItems) {
           nav.subItems.forEach((subItem) => {
@@ -331,7 +317,7 @@ const AppSidebar: React.FC = () => {
     if (!submenuMatched) {
       setOpenSubmenu(null);
     }
-  }, [pathname, isActive]);
+  }, [pathname, isActive, navItems]);
 
   useEffect(() => {
     // Set the height of the submenu items when the submenu is opened
@@ -360,7 +346,8 @@ const AppSidebar: React.FC = () => {
 
   return (
     <aside
-      className={`fixed mt-10 shadow-xl flex flex-col lg:mt-0 top-0 px-5 left-0 bg-white dark:bg-gray-900 dark:border-gray-800 text-gray-900 h-screen transition-all duration-300 ease-in-out z-50 border-r border-gray-200 
+      style={{ zIndex: 50 }}
+      className={`fixed mt-10 shadow-xl flex flex-col lg:mt-0 top-0 px-5 left-0 bg-white dark:bg-gray-900 dark:border-gray-800 text-gray-900 h-screen transition-all duration-300 ease-in-out border-r border-gray-200 
         ${isExpanded || isMobileOpen ? "w-[235px]" : isHovered ? "w-[235px]" : "w-[90px]"}
         ${isMobileOpen ? "translate-x-0" : "-translate-x-full"}
         lg:translate-x-0`}
@@ -404,7 +391,7 @@ const AppSidebar: React.FC = () => {
                   !isExpanded && !isHovered ? "lg:justify-center" : "justify-start"
                 }`}
               >
-                {isExpanded || isHovered || isMobileOpen ? "Menu" : <HorizontaLDots />}
+                {isExpanded || isHovered || isMobileOpen ? t("SIDEBAR_MENU") : <HorizontaLDots />}
               </h2>
               {renderMenuItems(navItems, "main")}
             </div>
@@ -415,18 +402,7 @@ const AppSidebar: React.FC = () => {
                   !isExpanded && !isHovered ? "lg:justify-center" : "justify-start"
                 }`}
               >
-                {isExpanded || isHovered || isMobileOpen ? "Others" : <HorizontaLDots />}
-              </h2>
-              {renderMenuItems(othersItems, "others")}
-            </div>
-
-            <div className="">
-              <h2
-                className={`mb-4 sidebar-cat text-xs uppercase flex leading-[20px] text-gray-400 ${
-                  !isExpanded && !isHovered ? "lg:justify-center" : "justify-start"
-                }`}
-              >
-                {isExpanded || isHovered || isMobileOpen ? "Social" : <HorizontaLDots />}
+                {isExpanded || isHovered || isMobileOpen ? t("SIDEBAR_SOCIAL") : <HorizontaLDots />}
               </h2>
               {renderMenuItems(socialItems, "social")}
             </div>
@@ -437,7 +413,7 @@ const AppSidebar: React.FC = () => {
                   !isExpanded && !isHovered ? "lg:justify-center" : "justify-start"
                 }`}
               >
-                {isExpanded || isHovered || isMobileOpen ? "Tools" : <HorizontaLDots />}
+                {isExpanded || isHovered || isMobileOpen ? t("SIDEBAR_TOOLS") : <HorizontaLDots />}
               </h2>
               {renderMenuItems(toolsItems, "tools")}
             </div>
@@ -448,7 +424,11 @@ const AppSidebar: React.FC = () => {
                   !isExpanded && !isHovered ? "lg:justify-center" : "justify-start"
                 }`}
               >
-                {isExpanded || isHovered || isMobileOpen ? "Settings" : <HorizontaLDots />}
+                {isExpanded || isHovered || isMobileOpen ? (
+                  t("SIDEBAR_SETTINGS")
+                ) : (
+                  <HorizontaLDots />
+                )}
               </h2>
               {renderMenuItems(settingsItems, "settings")}
             </div>

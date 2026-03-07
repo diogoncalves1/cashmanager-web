@@ -6,7 +6,7 @@ import "swiper/css/autoplay";
 
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
-import Badge from "../ui/badge/Badge";
+import { Badge } from "../ui/badge";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import LineChartOne from "../charts/line/LineChartOne";
 import { ApexOptions } from "apexcharts";
@@ -32,7 +32,7 @@ export default function StockSwiper() {
   if (isLoading) return <SwiperLoading />;
   if (error) return <SwiperLoading />;
 
-  const stocks: Stock[] = data.stocks;
+  const stocks: Stock[] = data; //.stocks;
 
   const options: ApexOptions = {
     chart: {
@@ -94,6 +94,8 @@ export default function StockSwiper() {
     },
   };
 
+  console.log(stocks);
+
   return (
     <div className="overflow-hidden">
       <AppSwiper>
@@ -132,7 +134,7 @@ export default function StockSwiper() {
                 <div className="col-span-6">
                   <div className="flex gap-2 items-center">
                     <span className="text-sm">{stock.meta.symbol}</span>
-                    <Badge size={"sm"} color={stock.change >= 0 ? "success" : "error"}>
+                    <Badge color={stock.change >= 0 ? "success" : "error"}>
                       {stock.changeFormated}%
                       {stock.change >= 0 ? <ChevronUp size={17} /> : <ChevronDown size={17} />}
                     </Badge>
