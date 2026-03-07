@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
+import { baseUrl } from "../../config";
 
 export async function GET() {
   const cookieStore = await cookies();
@@ -18,7 +19,7 @@ export async function GET() {
   }
 
   // 2️⃣ fallback para backend
-  const res = await fetch(`${process.env.API_BACKEND_URL}me`, {
+  const res = await fetch(`${baseUrl}me`, {
     headers: { Authorization: `Bearer ${token}` },
     cache: "no-store",
   });
@@ -47,7 +48,7 @@ export async function PUT(req: NextRequest) {
   const { lang, currency_id, name, email, username } = await req.json();
   const token = req.cookies.get("token")?.value;
 
-  const res = await fetch(`${process.env.API_BACKEND_URL}me`, {
+  const res = await fetch(`${baseUrl}me`, {
     headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
     method: "PUT",
     body: JSON.stringify({ email, currency_id, lang, name, username }),
