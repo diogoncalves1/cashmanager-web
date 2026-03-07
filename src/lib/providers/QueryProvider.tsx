@@ -28,7 +28,7 @@ export default function QueryProvider({ children }: { children: React.ReactNode 
     <QueryClientProvider client={queryClient}>
       {children}
       {/* Devtools – muito útil em desenvolvimento (aparece um botão flutuante) */}
-      <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
+      <ReactQueryDevtools initialIsOpen={false} position="bottom" />
     </QueryClientProvider>
   );
 }

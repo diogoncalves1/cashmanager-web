@@ -14,6 +14,7 @@ const outfit = Outfit({
 });
 
 import localFont from "next/font/local";
+import { User } from "@/models/user";
 
 // Importa Geist
 const geist = localFont({
@@ -50,7 +51,7 @@ export default async function RootLayout({
           <HeroUIProvider>
             <ThemeProvider>
               <SidebarProvider>
-                <AuthProvider user={user}>{children}</AuthProvider>
+                <AuthProvider user={user ?? ({} as User)}>{children}</AuthProvider>
               </SidebarProvider>
             </ThemeProvider>
           </HeroUIProvider>

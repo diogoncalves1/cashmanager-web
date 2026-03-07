@@ -18,49 +18,46 @@ type FormData = {
 export function useSettingsForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { user } = useAuth();
-  const [isLoading, setIsLoading] = useState(true);
 
   const [initialData, setInitialData] = useState<FormData>({
-    id: user.id,
-    username: user.username,
-    firstName: user.name.split(" ")[0],
-    lastName: user.name.split(" ")[user.name.split(" ").length - 1],
-    email: user.email,
-    lang: user.preferences?.lang,
-    currency_id: user.preferences?.currency.id,
-  });
-  const [formData, setFormData] = useState<FormData>({
-    id: user.id,
-    username: user.username,
-    firstName: user.name.split(" ")[0],
-    lastName: user.name.split(" ")[user.name.split(" ").length - 1],
-    email: user.email,
-    lang: user.preferences?.lang,
-    currency_id: user.preferences?.currency.id,
+    id: "",
+    username: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    lang: "en",
+    currency_id: "",
   });
 
+  const [formData, setFormData] = useState<FormData>({ ...initialData });
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
+    if (!user) return;
+
     const timer = setTimeout(() => {
+      const nameParts = user.name?.split(" ") || ["", ""];
       setFormData({
         id: user.id,
         username: user.username,
-        firstName: user.name.split(" ")[0],
-        lastName: user.name.split(" ")[user.name.split(" ").length - 1],
+        firstName: nameParts[0],
+        lastName: nameParts[nameParts.length - 1],
         email: user.email,
-        lang: user.preferences?.lang,
-        currency_id: user.preferences?.currency.id,
+        lang: user.preferences?.lang || "en",
+        currency_id: user.preferences?.currency?.id || "",
       });
       setInitialData({
         id: user.id,
         username: user.username,
-        firstName: user.name.split(" ")[0],
-        lastName: user.name.split(" ")[user.name.split(" ").length - 1],
+        firstName: nameParts[0],
+        lastName: nameParts[nameParts.length - 1],
         email: user.email,
-        lang: user.preferences?.lang,
-        currency_id: user.preferences?.currency.id,
+        lang: user.preferences?.lang || "en",
+        currency_id: user.preferences?.currency?.id || "",
       });
       setIsLoading(false);
     }, 800);
+
     return () => clearTimeout(timer);
   }, [user]);
 

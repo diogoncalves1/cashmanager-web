@@ -1,6 +1,15 @@
-// /app/api/accounts/route.ts
-
 import { NextRequest, NextResponse } from "next/server";
+
+type Column = {
+  data?: string;
+  name?: string;
+  searchable?: boolean | string;
+  orderable?: boolean | string;
+  search?: {
+    value?: string;
+    regex?: string;
+  };
+};
 
 function parseColumns(searchParams: URLSearchParams) {
   const defaultColumns = [
@@ -30,7 +39,6 @@ function parseColumns(searchParams: URLSearchParams) {
 
     if (!columns[index]) columns[index] = {};
 
-    // trata search[value] e search[regex]
     if (field.startsWith("search[")) {
       const searchKey = field.match(/search\[(.+)\]/)?.[1] as "value" | "regex";
       columns[index].search ??= {};
@@ -40,36 +48,25 @@ function parseColumns(searchParams: URLSearchParams) {
     }
   }
 
-  // retorna o array filtrando posições vazias (undefined)
   return columns.filter(Boolean);
 }
 
-function addColumnsToParams(
-  columns: {
-    data?: string;
-    name?: string;
-    searchable?: boolean | string;
-    orderable?: boolean | string;
-    search?: {
-      value?: string;
-      regex?: string;
-    };
-  }[],
-  searchParams: URLSearchParams
-) {
+function addColumnsToParams(columns: Column[], searchParams: URLSearchParams) {
   columns.forEach((col, index) => {
-    for (const key in col) {
+    (Object.keys(col) as Array<keyof Column>).forEach((key) => {
       const value = col[key];
 
-      if (key === "search" && typeof value === "object") {
-        // Trata search[value], search[regex] etc
-        for (const searchKey in value) {
-          searchParams.append(`columns[${index}][search][${searchKey}]`, value[searchKey]);
-        }
-      } else {
-        searchParams.append(`columns[${index}][${key}]`, value);
+      if (key === "search" && value && typeof value === "object") {
+        (Object.keys(value) as Array<keyof Column["search"]>).forEach((searchKey) => {
+          const searchValue = value[searchKey];
+          if (searchValue !== undefined) {
+            searchParams.append(`columns[${index}][search][${searchKey}]`, String(searchValue));
+          }
+        });
+      } else if (value !== undefined) {
+        searchParams.append(`columns[${index}][${key}]`, String(value));
       }
-    }
+    });
   });
 
   return searchParams;

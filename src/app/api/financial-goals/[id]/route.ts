@@ -1,11 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+export async function GET(req: NextRequest, context: { params: Promise<{ id: string }> }) {
   try {
     const token = req.cookies.get("token")?.value;
-
-    const { id } = await params;
-
+    const { id } = await context.params;
     const urlApi = `${process.env.API_BACKEND_URL}financial-goals/${id}`;
 
     const res = await fetch(urlApi, {
@@ -21,11 +19,11 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ id: 
   }
 }
 
-export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(req: NextRequest, context: { params: Promise<{ id: string }> }) {
   try {
     const token = req.cookies.get("token")?.value;
 
-    const id = params.id;
+    const { id } = await context.params;
 
     const body = await req.json();
 
@@ -46,11 +44,11 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
   }
 }
 
-export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(req: NextRequest, context: { params: Promise<{ id: string }> }) {
   try {
     const token = req.cookies.get("token")?.value;
 
-    const id = params.id;
+    const { id } = await context.params;
 
     if (!id) throw new Error("Id invalido");
 
