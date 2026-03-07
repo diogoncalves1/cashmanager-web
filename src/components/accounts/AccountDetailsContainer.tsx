@@ -14,7 +14,7 @@ import {
   Trash2,
   DoorOpen,
 } from "lucide-react";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { NewTransactionButton } from "@/components/transactions/NewTransactionButton";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -158,11 +158,6 @@ const AccountDetailsContainer = ({ id }: { id: string }) => {
   const config = accountTypeConfig[account?.type || "bank_account"];
   const Icon = config.icon;
 
-  const monthChange = useMemo(() => {
-    if (!account) return 0;
-    return 0;
-  }, [account]);
-
   if (isLoading) {
     return (
       <div className="space-y-6 max-w-7xl mx-auto py-10 px-4">
@@ -234,7 +229,7 @@ const AccountDetailsContainer = ({ id }: { id: string }) => {
               {account.balanceFormated}
             </p>
             <div className="mt-1 flex items-center gap-1.5 sm:justify-end">
-              {monthChange >= 0 ? (
+              {(pageData.extraData?.balanceVsLastMonth ?? 0) >= 0 ? (
                 <TrendingUp className="size-3.5 text-accent" />
               ) : (
                 <TrendingDown className="size-3.5 text-destructive" />
@@ -247,7 +242,7 @@ const AccountDetailsContainer = ({ id }: { id: string }) => {
                     : "text-destructive"
                 )}
               >
-                {(pageData.extraData?.balanceVsLastMonth ?? 0 >= 0) ? "+" : ""}
+                {(pageData.extraData?.balanceVsLastMonth ?? 0) >= 0 ? "+" : ""}
                 {pageData.extraData?.balanceVsLastMonth.toFixed(1) || 0}%
               </span>
               <span className="text-sm text-muted-foreground">{t("VS_LAST_MONTH")}</span>
@@ -255,7 +250,7 @@ const AccountDetailsContainer = ({ id }: { id: string }) => {
           </div>
           <div className="flex gap-2">
             {account.actions?.createTransactions && (
-              <NewTransactionButton accountId={id} setLoad={mutate} />
+              <NewTransactionButton /*accountId={id}*/ setLoad={mutate} />
             )}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>

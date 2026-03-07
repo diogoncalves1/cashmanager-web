@@ -11,17 +11,14 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
   const { data, isLoading, error } = useSWR(["/auth/me", { method: "GET" }], fetcher);
 
   useEffect(() => {
-    if (error) {
+    // Se houve erro ou não existe data, redireciona
+    if (error || (!isLoading && !data) || (data && !data.token)) {
       router.push("/signin");
     }
-    if (!isLoading && !data) {
-      router.push("/signin");
-    }
-  }, [data, isLoading, router]);
+  }, [data, isLoading, error, router]);
 
-  if (isLoading) return <div></div>;
-
-  if (!data.token) router.push("/signin");
+  // Enquanto carrega, não renderiza o conteúdo protegido
+  if (isLoading || !data) return <div>Loading...</div>;
 
   return <>{children}</>;
 }

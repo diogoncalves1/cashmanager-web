@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { ApexOptions } from "apexcharts";
 import ChartTab from "../common/ChartTab";
 import dynamic from "next/dynamic";
@@ -13,57 +13,60 @@ const ReactApexChart = dynamic(() => import("react-apexcharts"), {
 });
 
 export default function CashFlowChart() {
-  const options: ApexOptions = {
-    chart: {
-      type: "bar",
-      height: 310,
-      fontFamily: "Outfit, sans-serif",
-      toolbar: { show: false },
-    },
-    plotOptions: {
-      bar: {
-        horizontal: false, // vertical (colunas)
-        columnWidth: "20%", // largura das colunas
-        borderRadius: 4, // cantos arredondados
+  const options: ApexOptions = useMemo(
+    () => ({
+      chart: {
+        type: "bar",
+        height: 310,
+        fontFamily: "Outfit, sans-serif",
+        toolbar: { show: false },
       },
-    },
-    colors: ["#12b76a", "#f04438"], // cores das colunas
-    dataLabels: {
-      enabled: false,
-    },
-    stroke: {
-      show: true,
-      width: 2,
-      colors: ["#12b76a", "#f04438"],
-    },
-    xaxis: {
-      type: "category",
-      categories: [],
-      axisBorder: { show: false },
-      axisTicks: { show: false },
-      tooltip: { enabled: false },
-    },
-    yaxis: {
-      show: false,
-    },
-    grid: {
-      padding: {
-        left: 10,
-        right: 10,
+      plotOptions: {
+        bar: {
+          horizontal: false, // vertical (colunas)
+          columnWidth: "20%", // largura das colunas
+          borderRadius: 4, // cantos arredondados
+        },
       },
-      xaxis: { lines: { show: false } },
-      yaxis: { lines: { show: true } },
-    },
-    tooltip: {
-      enabled: true,
-      shared: true,
-      intersect: false,
-    },
-    legend: { show: false },
-    fill: {
-      type: "solid",
-    },
-  };
+      colors: ["#12b76a", "#f04438"], // cores das colunas
+      dataLabels: {
+        enabled: false,
+      },
+      stroke: {
+        show: true,
+        width: 2,
+        colors: ["#12b76a", "#f04438"],
+      },
+      xaxis: {
+        type: "category",
+        categories: [],
+        axisBorder: { show: false },
+        axisTicks: { show: false },
+        tooltip: { enabled: false },
+      },
+      yaxis: {
+        show: false,
+      },
+      grid: {
+        padding: {
+          left: 5,
+          right: 5,
+        },
+        xaxis: { lines: { show: false } },
+        yaxis: { lines: { show: true } },
+      },
+      tooltip: {
+        enabled: true,
+        shared: true,
+        intersect: false,
+      },
+      legend: { show: false },
+      fill: {
+        type: "solid",
+      },
+    }),
+    []
+  );
   const t = useTranslations("HOME");
   const monthsT = useTranslations("MONTHS");
   const chartKey = 0;
@@ -121,21 +124,23 @@ export default function CashFlowChart() {
 
     const months: string[] = [];
 
-    data?.data.charts.monthly.forEach((item: any) => {
-      console.log(item.month);
-      months.push(
-        MONTHS[parseInt(String(item.month).split("-")[0]) - 1] +
-          " " +
-          String(item.month).split(" ")[1]
-      );
+    data?.data.charts.monthly.forEach(
+      (item: { month: string; revenues: string; expenses: string }) => {
+        months.push(
+          MONTHS[parseInt(String(item.month).split("-")[0]) - 1] +
+            " " +
+            String(item.month).split(" ")[1]
+        );
 
-      rev.data.push(parseFloat(item.revenues));
-      exp.data.push(parseFloat(item.expenses));
-    });
+        rev.data.push(parseFloat(item.revenues));
+        exp.data.push(parseFloat(item.expenses));
+      }
+    );
 
     const series = [rev, exp];
 
     setChartSeries(series);
+
     setChartOptions(() => {
       return {
         ...options,
@@ -159,10 +164,15 @@ export default function CashFlowChart() {
         },
       };
     });
-  }, [data]);
+  }, [data, monthsT, options, t]);
+
+  if (!data?.length) return <CashFlowChartLoading heigth={chartHeigth} />;
 
   if (isLoading) return <CashFlowChartLoading heigth={chartHeigth} />;
   if (error) return <CashFlowChartLoading heigth={chartHeigth} />;
+
+  console.log(chartSeries);
+  console.log(chartOptions);
 
   return (
     <div className="rounded-2xl border border-gray-200 bg-white px-5 py-5 dark:border-gray-800 dark:bg-white/[0.03] sm:px-6 sm:pt-6">

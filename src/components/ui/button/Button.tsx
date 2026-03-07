@@ -9,7 +9,7 @@ interface ButtonProps {
   onClick?: () => void; // Click handler
   disabled?: boolean; // Disabled state
   className?: string; // Disabled state
-  color: "primary" | "success" | "danger" | "warning" | "secondary";
+  color?: "primary" | "success" | "danger" | "warning" | "secondary";
 }
 
 const Button: React.FC<ButtonProps> = ({

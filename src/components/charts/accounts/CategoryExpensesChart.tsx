@@ -1,6 +1,7 @@
 import { ApexOptions } from "apexcharts";
 import dynamic from "next/dynamic";
-import { Account } from "@/lib/models/account";
+import { Account } from "@/models/account";
+import { iconMap } from "@/models/category";
 
 export type CategorySummary = {
   data: CategoryExpenses[];
@@ -10,6 +11,7 @@ export type CategorySummary = {
 
 export type CategoryExpenses = {
   category: string;
+  icon: keyof typeof iconMap;
   value: number;
   valueFormated: string;
   valueFormatedWithoutSymbol: string;
@@ -52,7 +54,7 @@ export function CategoryExpensesChart({ data, account }: CategoryExpensesChartPr
     plotOptions: {
       pie: {
         donut: {
-          size: "70%",
+          size: "80%",
           labels: {
             show: true,
             name: { show: false },
@@ -94,5 +96,5 @@ export function CategoryExpensesChart({ data, account }: CategoryExpensesChartPr
 
   const series = data.data.map((i) => i.value);
 
-  return <ReactApexChart options={options} series={series} type="donut" width={300} height={300} />;
+  return <ReactApexChart options={options} series={series} type="donut" width={500} height={500} />;
 }

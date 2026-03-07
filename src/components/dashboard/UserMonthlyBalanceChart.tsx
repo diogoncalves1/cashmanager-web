@@ -3,7 +3,7 @@ import { ApexOptions } from "apexcharts";
 import dynamic from "next/dynamic";
 import MonthlyBalanceChartLoading from "./MonthlyBalanceChartLoading";
 import { useTranslations } from "next-intl";
-import { Currency } from "@/lib/models/currency";
+import { Currency } from "@/models/currency";
 
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,

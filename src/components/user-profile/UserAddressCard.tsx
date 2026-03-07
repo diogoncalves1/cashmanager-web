@@ -45,18 +45,14 @@ export default function UserAddressCard() {
                 <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
                   Postal Code
                 </p>
-                <p className="text-sm font-medium text-gray-800 dark:text-white/90">
-                  ERT 2489
-                </p>
+                <p className="text-sm font-medium text-gray-800 dark:text-white/90">ERT 2489</p>
               </div>
 
               <div>
                 <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
                   TAX ID
                 </p>
-                <p className="text-sm font-medium text-gray-800 dark:text-white/90">
-                  AS4568384
-                </p>
+                <p className="text-sm font-medium text-gray-800 dark:text-white/90">AS4568384</p>
               </div>
             </div>
           </div>
