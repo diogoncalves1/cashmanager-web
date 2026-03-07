@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { baseUrl } from "../config";
 
 type Column = {
   data?: string;
@@ -102,7 +103,7 @@ export async function GET(req: NextRequest) {
       }
     }
 
-    const res = await fetch(`${process.env.API_BACKEND_URL}accounts?${params.toString()}`, {
+    const res = await fetch(`${baseUrl}accounts?${params.toString()}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     if (!res.ok) throw new Error(`External API error: ${res.status}`);
@@ -129,7 +130,7 @@ export async function POST(req: NextRequest) {
 
     const body = await req.json();
 
-    const urlApi = "http://127.0.0.1:8000/api/v1/accounts";
+    const urlApi = `${baseUrl}accounts`;
 
     const res = await fetch(urlApi, {
       headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },

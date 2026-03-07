@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
+import { baseUrl } from "../../config";
 
 export async function GET(req: NextRequest, context: { params: Promise<{ id: string }> }) {
   try {
     const token = req.cookies.get("token")?.value;
     const { id } = await context.params;
-    const urlApi = `${process.env.API_BACKEND_URL}financial-goals/${id}`;
+    const urlApi = `${baseUrl}financial-goals/${id}`;
 
     const res = await fetch(urlApi, {
       headers: { Authorization: `Bearer ${token}` },
@@ -27,7 +28,7 @@ export async function PUT(req: NextRequest, context: { params: Promise<{ id: str
 
     const body = await req.json();
 
-    const urlApi = `${process.env.API_BACKEND_URL}financial-goals/${id}`;
+    const urlApi = `${baseUrl}financial-goals/${id}`;
 
     const res = await fetch(urlApi, {
       headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
@@ -52,7 +53,7 @@ export async function DELETE(req: NextRequest, context: { params: Promise<{ id: 
 
     if (!id) throw new Error("Id invalido");
 
-    const urlApi = `${process.env.API_BACKEND_URL}financial-goals/${id}`;
+    const urlApi = `${baseUrl}financial-goals/${id}`;
     const res = await fetch(urlApi, {
       headers: { Authorization: `Bearer ${token}` },
       method: "DELETE",

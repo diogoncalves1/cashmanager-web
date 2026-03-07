@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
+import { baseUrl } from "../../config";
 
 export async function POST() {
   const cookieStore = await cookies();
@@ -11,7 +12,7 @@ export async function POST() {
 
   if (!token) return Response.json({ user: null });
 
-  const res = await fetch(`${process.env.API_BACKEND_URL}logout`, {
+  const res = await fetch(`${baseUrl}logout`, {
     method: "POST",
     headers: { Authorization: `Bearer ${token}` },
   });
