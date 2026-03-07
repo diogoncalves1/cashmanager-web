@@ -42,7 +42,7 @@
     "framer-motion": "^12.23.25",
     "jquery": "^3.7.1",
     "lucide-react": "^0.553.0",
-    "next": "15.2.3",
+    "next": "15.2.8",
     "react": "^19.2.1",
     "react-apexcharts": "^1.7.0",
     "react-data-table-component": "^7.7.0",
