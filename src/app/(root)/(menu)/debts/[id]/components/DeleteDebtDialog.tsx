@@ -11,7 +11,7 @@ import { Debt } from "@/models/debt";
 
 type Props = {
   showDeleteDialog: boolean;
-  setShowDeleteDialog: () => void;
+  setShowDeleteDialog: (open: boolean) => void;
   debt: Debt;
 };
 

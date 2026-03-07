@@ -1,12 +1,11 @@
-// /app/api/accounts/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { baseUrl } from "../../config";
 
-export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(req: NextRequest, context: { params: Promise<{ id: string }> }) {
   try {
     const token = req.cookies.get("token")?.value;
 
-    const id = params.id;
+    const { id } = await context.params;
 
     const urlApi = `${baseUrl}debt-payments/${id}`;
 
@@ -23,11 +22,11 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
   }
 }
 
-export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(req: NextRequest, context: { params: Promise<{ id: string }> }) {
   try {
     const token = req.cookies.get("token")?.value;
 
-    const id = params.id;
+    const { id } = await context.params;
 
     const body = await req.json();
 
@@ -48,11 +47,11 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
   }
 }
 
-export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(req: NextRequest, context: { params: Promise<{ id: string }> }) {
   try {
     const token = req.cookies.get("token")?.value;
 
-    const id = params.id;
+    const { id } = await context.params;
 
     if (!id) throw new Error("Id invalido");
 

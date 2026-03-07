@@ -9,7 +9,7 @@
     "TRANSACTIONS_PAGE_TEXT": "Visualize e gerencie todas as transações em suas contas.",
     "NEW_TRANSACTION": "Nova Transação",
     "EDIT_TRANSACTION": "Editar Transação",
-    "NEW_TRANSACTION_FORM_DIALOG_TEXT": "Registre uma nova receita ou despesa.",
+    "NEW_TRANSACTION_FORM_DIALOG_TEXT": "Registe uma nova receita ou despesa.",
     "EDIT_TRANSACTION_FORM_DIALOG_TEXT": "Atualize os detalhes da sua transação.",
 
     "ACCOUNT": "Conta",
@@ -473,7 +473,7 @@
     "CANCEL": "Cancelar",
     "CREATE": "Criar",
 
-    "NEW_TRANSACTION_FORM_DIALOG_TEXT": "Registre uma nova contribuíção ou retirada.",
+    "NEW_TRANSACTION_FORM_DIALOG_TEXT": "Registe uma nova contribuíção ou retirada.",
     "CREATING": "A criar...",
     "DESCRIPTION": "Descrição",
     "SAVE": "Guardar",
@@ -790,6 +790,65 @@
     "CURRENCY": "Moeda"
   },
 
+  "DEBT_PAYMENTS": {
+    "META_TITLE": "Cash Manager | Pagamentos Dívidas",
+    "META_DESCRIPTION": "Faça a gestão dos seus pagamentos das suas dívidas de forma eficiente com o Cash Manager. Acompanhe os seus pagamentos e mantenha suas finanças organizadas.",
+
+    "ADD_PAYMENT": "Adicionar Pagamento",
+    "ADD": "Adicionar",
+    "DEBTS": "Dívidas",
+    "PAYMENTS": "Pagamentos",
+    "PAYMENTS_PAGE_TEXT": "Visualize e faça a gestão de todos os pagamentos nas suas dívidas.",
+    "DEBT": "Dívida",
+    "NEXT": "Próximo",
+    "FIRST": "Primeira",
+    "THIS": "pagamentos",
+    "OF": "de",
+    "PREVIOUS": "Anterior",
+    "SHOWING": "A mostrar",
+    "LAST": "Última",
+    "SEARCH": "Procurar",
+    "DEBT_PAYMENTS": "PAGAMENTOS",
+    "PENDING": "Pendente",
+    "LOADING": "Carregando",
+    "COMPLETED": "Completa",
+
+    "AMOUNT": "Valor",
+    "ACTIONS": "Ações",
+    "DATE": "Data",
+    "SAVING": "A guardar...",
+    "NEW_PAYMENT": "Novo pagamento",
+    "NEW_PAYMENT_FORM_DIALOG_TEXT": "Registe um novo pagamento.",
+    "EDIT_PAYMENT_FORM_DIALOG_TEXT": "Atualize os detalhes do seu pagamento.",
+    "EDIT_PAYMENT": "Editar pagamento.",
+    "DESCRIPTION": "Descrição",
+    "STATUS": "Estado",
+    "USER": "Utilizador",
+    "SEARCH_PAYMENT": "Procure pelo pagamento",
+    "DELETE": "Remover",
+    "DELETING": "A remover...",
+    "EDIT": "Editar",
+    "CONFIRM_PAYMENT": "Confirmar pagamento",
+    "VIEW_DEBT": "Ver dívida",
+    "WHAT_WAS_THIS_FOR": "Para que serviu isso?",
+    "ACCOUNT": "Conta",
+    "SELECT_ACCOUNT": "Selecione uma conta",
+    "SELECT_DEBT": "Selecione a dívida",
+    "CREATE": "Criar",
+    "CREATING": "A criar...",
+    "SAVE": "Guardar",
+
+    "DELETE_PAYMENT": "Remover pagamento",
+    "DELETE_PAYMENT_TEXT": "Tem certeza de que deseja remover este pagamento?",
+    "DELETE_PAYMENT_WARNING": "Atenção: Esta ação não pode ser desfeita e poderá afetar o valor pago da dívida.",
+
+    "TO": "até",
+    "CANCEL": "Cancelar",
+    "ALL_STATUS": "Todos os estados",
+
+    "CONFIRM_PAYMENT_TEXT": "Tem certeza de que deseja confirmar este pagamento?"
+  },
+
   "HOME": {
     "HOME": "Início",
     "MONTHLY_BALANCE": "Saldo Mensal",
@@ -854,25 +913,5 @@
     "OCT": "Out",
     "NOV": "Nov",
     "DEC": "Dez"
-  },
-
-  "DEBT_PAYMENTS": {
-    "ADD_PAYMENT": "Adicionar Pagamento",
-    "ADD": "Adicionar",
-    "DEBTS": "Dívidas",
-    "PAYMENTS": "Pagamentos",
-    "DEBT": "Dívida",
-    "NEXT": "Próximo",
-    "FIRST": "Primeira",
-    "THIS": "pagamentos",
-    "OF": "de",
-    "PREVIOUS": "Anterior",
-    "SHOWING": "A mostrar",
-    "LAST": "Última",
-    "SEARCH": "Procurar",
-    "DEBT_PAYMENTS": "PAGAMENTOS",
-    "PENDING": "Pendente",
-    "LOADING": "Carregando",
-    "COMPLETED": "Completa"
   }
 }
