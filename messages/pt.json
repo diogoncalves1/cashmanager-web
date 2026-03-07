@@ -1,0 +1,918 @@
+{
+  "TRANSACTIONS": {
+    "TRANSACTIONS": "Transações",
+    "TRANSACTIONS_DETAILS": "Detalhes",
+
+    "META_TITLE": "Cash Manager | Transações",
+    "META_DESCRIPTION": "Gerencie suas transações financeiras de forma eficiente com o Cash Manager. Acompanhe suas receitas, despesas e mantenha suas finanças organizadas.",
+
+    "TRANSACTIONS_PAGE_TEXT": "Visualize e gerencie todas as transações em suas contas.",
+    "NEW_TRANSACTION": "Nova Transação",
+    "EDIT_TRANSACTION": "Editar Transação",
+    "NEW_TRANSACTION_FORM_DIALOG_TEXT": "Registe uma nova receita ou despesa.",
+    "EDIT_TRANSACTION_FORM_DIALOG_TEXT": "Atualize os detalhes da sua transação.",
+
+    "ACCOUNT": "Conta",
+    "AMOUNT": "Valor",
+    "CATEGORY": "Categoria",
+    "DATE": "Data",
+    "DESCRIPTION": "Descrição",
+    "USERS": "Utilizadores",
+    "USER": "Utilizador",
+    "STATUS": "Estado",
+    "PENDING": "Pendente",
+    "COMPLETED": "Completa",
+    "TYPE": "Tipo",
+    "INCOME": "Receita",
+    "EXPENSE": "Despesa",
+
+    "SELECT_ACCOUNT": "Selecione uma conta",
+    "SELECT_CATEGORY": "Selecione uma categoria",
+    "SELECT_DATE": "Selecione a data",
+
+    "WHAT_WAS_THIS_FOR": "Para que serviu isso?",
+
+    "CANCEL": "Cancelar",
+    "SAVE": "Guardar",
+    "CREATE": "Criar",
+
+    "TOTAL_INCOME": "Receita Total",
+    "TOTAL_EXPENSE": "Despesa Total",
+    "BALANCE": "Saldo",
+
+    "SHOWING": "A mostrar",
+    "OF": "de",
+    "THIS": "transações",
+    "FIRST": "Primeira",
+    "PREVIOUS": "Anterior",
+    "NEXT": "Próxima",
+    "LAST": "Última",
+
+    "SEARCH_TRANSACTION": "Procure pela transação",
+    "ALL_STATUS": "Todos os estados",
+    "ALL_CATEGORIES": "Todas as categorias",
+    "ALL_TYPES": "Todos os tipos",
+    "TO": "até",
+    "CLEAR": "Limpar",
+    "NO_ACCOUNTS_AVAILABLE": "Sem contas disponíveis",
+
+    "VIEW_ACCOUNT": "Ver conta",
+    "EDIT": "Editar",
+    "DELETE": "Apagar",
+    "CONFIRM": "Confirmar",
+    "ACTIONS": "Ações",
+
+    "CONFIRM_TRANSACTION": "Confirmar Transação?",
+    "CONFIRM_TRANSACTION_TEXT": "Tem a certeza que pretende confirmar esta transação?",
+
+    "DELETE_TRANSACTION": "Apagar transação?",
+    "DELETE_TRANSACTION_TEXT": "Tem certeza de que deseja apagar? Esta ação não pode ser desfeita."
+  },
+
+  "DATATABLE": {
+    "NO_RESULTS": "Sem Resultados"
+  },
+
+  "ACCOUNTS": {
+    "META_TITLE": "Cash Manager | Contas",
+    "META_DESCRIPTION": "Gerencie suas contas financeiras de forma eficiente com o Cash Manager. Acompanhe suas receitas, despesas e mantenha suas finanças organizadas.",
+
+    "ACCOUNTS": "Contas",
+    "ACCOUNTS_TEXT": "Gerencie suas contas financeiras e acompanhe os saldos.",
+    "DETAILS": "Detalhes",
+
+    "BALANCE": "Saldo",
+    "TOTAL_INCOME": "Receita Total",
+    "TOTAL_EXPENSE": "Despesa Total",
+    "ACTIVE_ACCOUNTS": "Contas Ativas",
+
+    "ALL_TYPES": "Todos os tipos",
+    "BANK_ACCOUNT": "Conta bancária",
+    "CASH": "Dinheiro",
+    "DIGITAL_WALLET": "Cateira digital",
+    "CREDIT_CARD": "Cartão de crédito",
+
+    "ALL_STATUS": "Todos os estados",
+
+    "INCOME": "Receita",
+    "EXPENSE": "Despesa",
+
+    "TRANSACTIONS": "Transações",
+    "TRANSACTION": "Transação",
+    "USERS": "Utilizadores",
+
+    "EDIT": "Editar",
+    "ADD": "Adicionar",
+
+    "ACTIVE": "Ativa",
+    "INACTIVE": "Inativa",
+    "STATUS": "Estado",
+
+    "DISABLE_ACCOUNT": "Desativar Conta",
+    "ACTIVATE_ACCOUNT": "Ativar Conta",
+
+    "NEW_ACCOUNT": "Nova Conta",
+    "SEARCH_ACCOUNT": "Procurar pela conta",
+    "SORT_BY": "Ordernar por",
+    "ORDER": "Ordem",
+    "ASCENDING": "Crescente",
+    "DESCENDING": "Decrescente",
+
+    "OWED": "Devida",
+
+    "NAME": "Nome",
+    "TYPE": "Tipo",
+
+    "NO_ACCOUNTS_FOUND": "Nenhuma conta encontrada",
+    "NO_ACCOUNTS_FOUND_TEXT": "Tente ajustar seus filtros ou crie uma nova conta.",
+
+    "ACCOUNT_NOT_FOUND": "Conta não encontrada",
+    "BACK_TO_ACCOUNTS": "Voltar para contas",
+
+    "EDIT_ACCOUNT": "Editar Conta",
+    "DELETE_ACCOUNT": "Apagar Conta",
+
+    "CURRENT_BALANCE": "Saldo atual",
+    "MONTHLY_INCOME": "Receita mensal",
+    "MONTHLY_EXPENSE": "Despesa mensal",
+    "VS_LAST_MONTH": "vs último mês",
+
+    "OVERVIEW": "Visão Geral",
+    "ACTIVITY": "Atividade",
+    "ANALYTICS": "Análise",
+    "SETTINGS": "Definições",
+
+    "EXPENSES_BY_CATEGORY": "Despesas por categoria",
+    "NO_DATA_AVAILABLE": "Sem dados registados.",
+    "MONTHLY_RESUME": "Resumo Mensal",
+    "CATEGORIES": "categorias",
+    "CATEGORY": "categoria",
+    "TOTAL": "total",
+    "AMOUNT": "Valor",
+    "SHARE": "Percentagem",
+    "BREAKDOWN": "Detalhamento",
+    "ACCOUNT_DELETED": "Conta apagada",
+    "CANCEL": "Cancelar",
+    "DELETE_ACCOUNT_TEXT": "Tem certeza de que deseja apagar {name}? Todas as transações serão removidas permanentemente. Esta ação não pode ser desfeita.",
+
+    "CREATE_NEW_ACCOUNT": "Criar nova conta",
+    "EDIT_ACCOUNT_TEXT": "Atualize as informações desta conta.",
+    "CREATE_ACCOUNT_TEXT": "Adicione uma nova conta financeira para acompanhar seu saldo e transações.",
+    "ACCOUNT_NAME": "Nome da conta",
+    "ACCOUNT_NAME_EG": "Ex.: Fundo de Emergência",
+    "ACCOUNT_TYPE": "Tipo de conta",
+    "ACTIVE_ACCOUNT": "Conta ativa",
+    "ACTIVE_ACCOUNT_TEXT": "Contas inativas são ocultadas dos resumos.",
+    "CURRENCY": "Moeda",
+    "SAVE_CHANGES": "Guardar alterações",
+    "SAVING": "A guardar...",
+
+    "GENERAL_INFORMATION": "Informações gerais",
+    "GENERAL_INFORMATION_TEXT": "Atualize os detalhes e preferências da sua conta.",
+
+    "PREFERENCES": "Preferências",
+    "PREFRENCES_TEXT": "Controle o comportamento desta conta.",
+
+    "DANGER_ZONE": "Zona de perigo",
+    "DANGER_ZONE_TEXT": "Ações irreversíveis que afetam sua conta",
+    "DELETE_THIS_ACCOUNT": "Apagar esta conta",
+    "DELETE_THIS_ACCOUNT_TEXT": "Remova permanentemente esta conta e todas as suas transações.",
+
+    "CHOOSE_A_TYPE": "Escolha o tipo",
+    "CHOOSE_A_CURRENCY": "Escolha a moeda",
+
+    "CREATE_ACCOUNT": "Criar conta",
+    "CREATING_ACCOUNT": "A criar conta...",
+
+    "BALANCE_OVER_TIME": "Evolução do saldo ao longo do tempo",
+
+    "7D": "7D",
+    "1M": "1M",
+    "3M": "3M",
+    "1Y": "1A",
+
+    "USER_MANAGEMENT": "Gestão de utilizadores",
+    "USER_MANAGEMENT_TEXT": "Gerir membros associados a esta conta",
+
+    "INVITES": "Convites",
+    "ACTIVE_USER": "ativo",
+    "ACTIVE_USERS": "ativos",
+    "PENDING": "Pendente",
+    "PENDING_S": "Pendentes",
+    "ACTIONS": "Ações",
+
+    "USER": "Utilizador",
+    "ROLE": "Papel",
+
+    "CHANGE_ROLE": "Mudar papel",
+    "REMOVE_MEMBER": "Remover membro",
+    "CANCEL_INVITE": "Cancelar convite",
+    "NO_MEMBERS_YET": "Sem membros ainda",
+    "NO_MEMBERS_YET_TEXT": "Adicione membros para colaborar nesta conta.",
+    "YOU": "Tu"
+  },
+
+  "LISTS": {
+    "REMAINING": "Restante",
+    "REMAINING_PLURAL": "Restantes"
+  },
+
+  "INVITE_MEMBER": {
+    "INVITE": "Convidar",
+    "INVITE_MEMBER": "Convidar membro",
+    "INVITE_MEMBER_TEXT": "Convide algum amigo.",
+
+    "SEND_INVITATION": "Enviar convite",
+    "SENDING": "A enviar...",
+    "FRIEND": "Amigo",
+    "CHOOSE_A_FRIEND": "Escolha o amigo",
+
+    "CANCELING_TITLE": "A cancelar...",
+    "CANCELING_MESSAGE": "A cancelar convite...",
+
+    "CANCEL": "Cancelar",
+    "LEAVE": "Sair",
+    "LEAVE_TEXT": "Tem a certeza de que pretende sair?",
+
+    "REMOVE_MEMBER": "Remover membro?",
+    "REMOVE_MEMBER_TEXT": "Esta ação irá remover o membro do grupo.",
+
+    "CHANGE_ROLE": "Mudar papel?",
+    "CHANGE_ROLE_TEXT": "Atribua a função a este utilizador.",
+
+    "ROLE": "Papel",
+    "CHOOSE_A_ROLE": "Escolher papel",
+
+    "CHANGE": "Mudar",
+    "CHANGING": "A mudar...",
+
+    "REMOVE": "Remover",
+    "REMOVING": "A remover...",
+
+    "ACCOUNTS": "Conta",
+    "DEBTS": "Dívida",
+    "FINANCIAL-GOALS": "Meta Financeira",
+
+    "SENT": "Enviados",
+    "RECEIVED": "Recebidos",
+    "PENDING_SENT": "Pendente enviados",
+    "AWAITING_RESPONSE": "Aguardando resposta",
+
+    "INVITATIONS": "Convites",
+    "INVITATIONS_TEXT": "Gira os seus convites enviados e recebidos.",
+
+    "NO_INVITATIONS_SENT": "Sem convites enviados",
+    "NO_INVITATIONS_RECEIVED": "Sem convites recevidos",
+
+    "FILTER_STATUS": "Filtar estado",
+    "ALL_STATUS": "Todos os estados",
+    "PENDING": "Pendente",
+    "ACCEPTED": "Aceite",
+    "ACCEPT": "Aceitar",
+    "REJECT": "Rejeitar",
+    "REJECTING": "A rejeitar...",
+    "REJECTING_TEXT": "A rejeitar convite...",
+    "ACCEPTING": "A aceitar...",
+    "ACCEPTING_TEXT": "A aceitar convite...",
+    "REVOKED": "Rejeitado",
+    "ERROR": "Erro",
+    "TRY_AGAIN": "Tente novamente",
+
+    "NO_INVITATIONS_SENT_TEXT": "Ainda não enviou nenhum convite. Clique em \"Convidar membro\" para convidar alguém para colaborar.",
+    "NO_INVITATIONS_RECEIVED_TEXT": "Não tem nenhum convite recebido no momento. Volte mais tarde."
+  },
+
+  "ACTIVITY": {
+    "ACTIVITY_TIMELINE": "Cronograma de atividades",
+    "WITHOUT_ACTIVITY": "Sem atividade",
+    "ERROR": "Erro",
+    "TRY_AGAIN": "Tente novamente",
+    "BY": "Por"
+  },
+
+  "FINANCIAL_GOALS": {
+    "META_TITLE": "Cash Manager | Metas Financeiras",
+    "META_DESCRIPTION": "Gerencie suas metas financeiras de forma eficiente com o Cash Manager. Acompanhe suas contribuições, retiradas e mantenha suas finanças organizadas.",
+
+    "NEW_GOAL": "Nova meta",
+    "FINANCIAL_GOALS_TEXT": "Acompanha e gere suas metas de poupança em um só lugar.",
+
+    "ADD": "Adicionar",
+    "EDIT": "Editar",
+    "DELETE": "Apagar Meta Financeira",
+    "DETAILS": "Detalhes",
+    "INVITES": "Convites",
+
+    "FINANCIAL_GOAL": "META FINANCEIRA",
+    "FINANCIAL_GOALS": "Metas Financeiras",
+
+    "TRANSACTIONS": "Transações",
+    "ADD_TRANSACTION": "Nova Transação",
+
+    "ALL_TRANSACTIONS": "Todas as Transações",
+
+    "COMPLETED": "Completa",
+    "IN_PROGRESS": "Em Progresso",
+    "CANCELED": "Cancelada",
+
+    "TOTAL_GOALS": "Total de Metas",
+    "TOTAL_SAVED": "Total Economizado",
+    "OVERALL_PROGRESS": "Progresso Geral",
+    "ALL": "Todos",
+
+    "LOW": "Baixa",
+    "MEDIUM": "Média",
+    "HIGH": "Alta",
+
+    "NAME": "Nome",
+    "TOTAL_AMOUNT": "Valor Total",
+    "CONTRIBUTED_AMOUNT": "Valor Contribuído",
+    "PRIORITY": "Prioridade",
+    "USERS": "Utilizadores",
+    "CURRENCY": "Moeda",
+    "DUE_DATE": "Data de Fim",
+    "START_DATE": "Data de Início",
+    "STATUS": "Estado",
+    "ACTIONS": "Ações",
+
+    "REMAINING": "Restante",
+    "REMAINING_PLURAL": "Restantes",
+    "USER": "Utilizador",
+
+    "SORT": "Ordenar",
+    "SEARCH_FINANCIAL_GOALS": "Procurar meta financeira...",
+
+    "SEARCH": "Procura",
+    "FILTER_BY": "Filtra por",
+    "SHOWING": "A mostrar",
+    "OF": "de",
+    "THIS": "metas financeiras",
+    "NEXT": "Próximo",
+    "PREVIOUS": "Anterior",
+    "FIRST": "Primeira",
+    "LAST": "Última",
+    "NO_RESULTS": "Sem Resultados",
+    "LOADING": "Carregando",
+
+    "CANCELED_FINANCIAL_GOAL_TITLE": "A cancelar...",
+    "CANCELED_FINANCIAL_GOAL_MESSAGE": "A cancelar meta financeira ...",
+    "CANCEL_FINANCIAL_GOAL_MESSAGE": "Cancelar meta financeira?",
+    "YES_CANCEL": "Sim, cancelar!",
+    "CANCEL": "Cancelar",
+
+    "RESET_FINANCIAL_GOAL_MESSAGE": "Resetar meta financeira?",
+    "RESETED_FINANCIAL_GOAL_TITLE": "A resetar...",
+    "RESETED_FINANCIAL_GOAL_MESSAGE": "A resetar a meta financeira ...",
+    "YES_RESET": "Sim, resetar!",
+
+    "OTHERS_INFORMATION": "Outras Informações",
+    "CREATED_AT": "Criada em",
+
+    "RECENT_TRANSACTIONS": "Transações Recentes",
+    "FINANCIAL_GOAL_DETAILS": "Detalhes da Meta Financeira",
+    "WITHDRAWALS": "Retiradas",
+    "CONTRIBUTIONS": "Contribuições",
+
+    "OVERVIEW": "Visão Geral",
+    "OTHERS": "Outros",
+    "DESCRIPTION": "Descrição",
+    "RESET": "Resetar",
+    "LAST_UPDATE": "Última atualização",
+    "COMPLETE": "Completar",
+    "P_COMPLETE": "concluído",
+    "MISSING_AMOUNT": "Valor em Falta",
+    "COLLECTED_AMOUNT": "Valor Arrecadado",
+    "GOAL_PROGRESS": "Progresso da Meta",
+    "GOAL_COMPLETED": "Meta Conquistada!",
+    "GOAL_COMPLETED_MESSAGE": "Parabéns! Objetivo alcançado com sucesso",
+
+    "MONTHLY_SUMMARY": "Resumo Mensal",
+
+    "NEW_FINANCIAL_GOAL": "Nova meta financeira",
+    "NEW_FINANCIAL_GOAL_TEXT": "Registe as suas metas financeiras.",
+    "EDIT_FINANCIAL_GOAL": "Editar meta financeira",
+    "EDIT_FINANCIAL_GOAL_TEXT": "Atualize a sua meta financeira.",
+
+    "SAVING": "A guardar...",
+    "SAVING_TEXT": "A atualizar meta financeira...",
+    "CREATING": "A criar...",
+    "CREATING_TEXT": "A criar a sua meta financeira...",
+
+    "DESCRIPTION_TEXT": "Adicione uma nota sobre essa meta financeira...",
+    "OPTIONAL": "Opcional",
+    "DATES": "Datas",
+    "STEP": "Passo",
+    "START": "Início",
+    "DUE": "Fim",
+    "SELECT_CURRENCY": "Selecione a moeda",
+    "FORM_HELPER": "Todas as metas são processadas ​com segurança e registadas instantaneamente.",
+    "NAME_PLACEHOLDER": "Ex: Carro novo",
+
+    "TARGET": "Objetivo",
+    "DAYS_PASSED": "dias passados",
+    "DAYS_REMAINING": "dias restantes",
+    "CONTRIBUTED": "Contribuído",
+    "CONTRIBUTORS": "Contribuídores",
+    "ACTIVITY": "Atividade",
+    "MEMBER": "Membro",
+    "ROLE": "Papel",
+    "DELETE_GOAL": "Apagar meta",
+    "DELETE_GOAL_TEXT": "Tem certeza de que deseja excluir este objetivo? Esta ação não pode ser desfeita e todo o histórico de transações será perdido.",
+    "EDIT_GOAL": "Editar meta",
+    "CANCEL_GOAL": "Cancelar meta",
+    "DELETING_GOAL": "A apagar",
+    "RESET_GOAL": "Resetar meta",
+    "TO_FINISH": "para finalizar",
+
+    "MARK_COMPLETED": "Marcar como concluída",
+    "MARK_COMPLETED_FINANCIAL_GOAL": "Marcar meta financeira como concluída?",
+    "MARK_COMPLETED_FINANCIAL_GOAL_TEXT": "Tem a certeza que quer marcar a meta financeira como concluída?",
+    "COMPLETE_GOAL": "Completar meta"
+  },
+
+  "BUTTONS": {
+    "SUBMIT": "Submeter",
+    "PROCESSING": "A processar..."
+  },
+
+  "FINANCIAL_GOAL_TRANSACTIONS": {
+    "META_TITLE": "Cash Manager | Transações Metas Financeiras",
+    "META_DESCRIPTION": "Gerencie suas transações das metas financeiras de forma eficiente com o Cash Manager. Acompanhe suas contribuições, retiradas e mantenha suas finanças organizadas.",
+
+    "ADD": "Adicionar",
+    "EDIT": "Editar",
+    "DETAILS": "Detalhes",
+    "SAVING": "A guardar...",
+    "ACCOUNT": "Conta",
+
+    "FINANCIAL_GOAL_TRANSACTION": "TRANSAÇÕES META FINANCEIRA",
+    "FINANCIAL_GOAL": "Meta Financeira",
+    "FINANCIAL_GOALS": "Metas Financeiras",
+
+    "SELECT_FINANCIAL_GOAL": "Selecione a meta financeira",
+
+    "TRANSACTIONS": "Transações",
+    "ADD_TRANSACTION": "Nova Transação",
+
+    "TYPE": "Tipo",
+    "USER": "Utilizador",
+    "DATE": "Data",
+    "ALL": "Todos",
+
+    "CLEAR": "Limpar",
+    "VIEW_FINANCIAL_GOAL": "Ver meta financeira",
+    "ALL_STATUS": "Todos os estados",
+    "ALL_TYPES": "Todos os tipos",
+
+    "ALL_TRANSACTIONS": "Todas as Transações",
+
+    "NEW_TRANSACTION": "Nova Transação",
+    "SELECT_ACCOUNT": "Selecione uma conta",
+    "WHAT_WAS_THIS_FOR": "Para que serviu isso?",
+
+    "CANCEL": "Cancelar",
+    "CREATE": "Criar",
+
+    "NEW_TRANSACTION_FORM_DIALOG_TEXT": "Registe uma nova contribuíção ou retirada.",
+    "CREATING": "A criar...",
+    "DESCRIPTION": "Descrição",
+    "SAVE": "Guardar",
+    "EDIT_TRANSACTION": "Editar Transação",
+    "EDIT_TRANSACTION_FORM_DIALOG_TEXT": "Atualize os detalhes da sua transação.",
+
+    "COMPLETED": "Completa",
+    "PENDING": "Pendente",
+
+    "CONTRIBUTION": "Contribuíção",
+    "WITHDRAWAL": "Retirada",
+
+    "NAME": "Nome",
+    "TOTAL_AMOUNT": "Valor Total",
+    "CONTRIBUTED_AMOUNT": "Valor Contribuído",
+    "PRIORITY": "Prioridade",
+    "USERS": "Utilizadores",
+    "CURRENCY": "Moeda",
+    "DUE_DATE": "Data de Fim",
+    "START_DATE": "Data de Início",
+    "STATUS": "Estado",
+    "ACTIONS": "Ações",
+
+    "TRANSACTION_HISTORY": "Histórico de Transações",
+    "TRANSACTION": "Transação",
+    "AMOUNT": "Valor",
+
+    "SEARCH": "Procura",
+    "FILTER_BY": "Filtra por",
+    "SHOWING": "A mostrar",
+    "OF": "de",
+    "THIS": "transações",
+    "NEXT": "Próximo",
+    "PREVIOUS": "Anterior",
+    "FIRST": "Primeira",
+    "LAST": "Última",
+    "NO_RESULTS": "Sem Resultados",
+    "LOADING": "Carregando",
+
+    "DELETE": "Apagar",
+    "TO": "até",
+    "SEARCH_TRANSACTION": "Procure pela transação"
+  },
+
+  "DEBTS": {
+    "META_TITLE": "Cash Manager | Dívidas",
+    "META_DESCRIPTION": "Gire os seus pagamentos das dívidas de forma eficiente com o Cash Manager. Acompanhe os seus pagamentos e mantenha suas finanças organizadas.",
+
+    "ADD_DEBT": "Adicionar dívida",
+    "INVITES": "Convites",
+    "ADD": "Adicionar",
+    "EDIT": "Editar",
+    "DELETE": "Apagar Dívida",
+    "DETAILS": "Detalhes",
+    "SUMMARY": "Sumário",
+    "TIMELINE": "Linha do tempo",
+    "TIMELINE_TEXT": "Defina as datas de início e fim desta dívida.",
+    "FINANCIAL_DETAILS": "Detalhes financeiros",
+    "FINANCIAL_DETAILS_TEXT": "Defina os valores e a estrutura de pagamento.",
+    "TOTAL_MONTHS_PLACEHOLDER": "Número de meses...",
+    "SAVE": "Guardar",
+    "SAVING": "A guardar...",
+
+    "TOTAL_DEBT": "Total devido",
+    "ACROSS": "Em relação a",
+    "TOTAL_PAID": "Total pago",
+    "OF_TOTAL": "do total",
+    "ACTIVE_DEBTS": "Dívidas ativas",
+    "MONTHLY_PAYMENTS": "Pagamentos mensais",
+
+    "DEBT": "Dívida",
+    "DEBTS": "Dívidas",
+    "DEBTS_TEXT": "Acompanhe e faça a gestão dos seus pagamentos de dívidas.",
+
+    "TRANSACTIONS": "Pagamentos",
+    "ADD_TRANSACTION": "Novo Pagamento",
+
+    "ALL_TRANSACTIONS": "Todos os pagamentos",
+
+    "COMPLETED": "Completa",
+    "COMPLETED_PLURAL": "Completas",
+    "ACTIVE_DEBTS_ONLY": "Apenas dívidas ativas",
+    "PENDING": "Pendente",
+
+    "MONTHS": "meses",
+    "MONTH": "mês",
+    "APR": "TPA",
+    "REMAINING": "Restante",
+
+    "CREATE_DEBT": "Criar dívida",
+    "TOTAL_MONTHS": "Número de meses",
+    "MONTHLY_PAYMENT": "Pagamento mensal",
+    "DEBT_NAME": "Nome da dívida",
+
+    "SEARCH_DEBTS": "Procure pela dívida...",
+    "PROGRESS": "Progresso",
+    "TOTAL": "Total",
+    "MONTH_ABR": "mês",
+
+    "NAME": "Nome",
+    "TOTAL_AMOUNT": "Valor Total",
+    "PAID_AMOUNT": "Valor Pago",
+    "PAID": "Paga",
+    "ALL": "Todos",
+    "USERS": "Utilizadores",
+    "CURRENCY": "Moeda",
+    "DUE_DATE": "Data de Fim",
+    "START_DATE": "Data de Início",
+    "STATUS": "Estado",
+    "ACTIONS": "Ações",
+
+    "SEARCH": "Procura",
+    "FILTER_BY": "Filtra por",
+    "SHOWING": "A mostrar",
+    "OF": "de",
+    "THIS": "dívidas",
+    "NEXT": "Próximo",
+    "PREVIOUS": "Anterior",
+    "FIRST": "Primeira",
+    "LAST": "Última",
+    "NO_RESULTS": "Sem Resultados",
+    "LOADING": "Carregando",
+
+    "CANCEL": "Cancelar",
+    "YES_MARK": "Sim, marcar",
+    "MARK_DEBT_PAID": "Marcar dívida paga?",
+    "MARKING_TITLE": "A marcar...",
+    "MARKING_MESSAGE": "A marcar dívida como paga...",
+
+    "RESET_DEBT_MESSAGE": "Resetar dívida?",
+    "RESETED_DEBT_TITLE": "A resetar...",
+    "RESETED_DEBT_MESSAGE": "A resetar a dívida ...",
+    "YES_DELETE": "Sim, apagar!",
+    "YES_RESET": "Sim, resetar!",
+    "YOU_SURE": "Tem a certeza?",
+    "YOU_DONT_REVERT_THIS": "Não irá conseguir reverter isso!",
+    "DELETING_TITLE": "Apagando...",
+    "DELETING_MESSAGE": "Apagando dívida...",
+
+    "OTHERS_INFORMATION": "Outras Informações",
+    "CREATED_AT": "Criada em",
+
+    "RECENT_TRANSACTIONS": "Pagamentos Recentes",
+    "DEBT_DETAILS": "Detalhes da Dívida",
+
+    "OVERVIEW": "Visão Geral",
+    "OTHERS": "Outros",
+    "DESCRIPTION": "Descrição",
+    "RESET": "Resetar",
+    "LAST_UPDATE": "Última atualização",
+    "COMPLETE": "Completar",
+    "MISSING_AMOUNT": "Valor em Falta",
+    "DEBT_PROGRESS": "Progresso da dívida",
+    "DEBT_COMPLETED": "Dívida Paga!",
+    "DEBT_COMPLETED_MESSAGE": "Parabéns! Dívida paga com sucesso",
+    "CREATE_NEW_DEBT": "Criar nova dívida",
+    "CREATE_NEW_DEBT_TEXT": "Adicione uma nova dívida para acompanhar suas obrigações financeiras.",
+    "EDIT_DEBT": "Editar dívida",
+    "EDIT_DEBT_TEXT": "Edite as informações da dívida conforme necessário.",
+    "DESCRIPTION_TEXT": "Opcional. Adicione notas ou contexto sobre esta dívida.",
+    "DESCRIPTION_PLACEHOLDER": "Adicione quaisquer detalhes adicionais sobre esta dívida...",
+
+    "MONTHLY_SUMMARY": "Resumo Mensal",
+    "BASIC_INFORMATION": "Informações Básicas",
+    "BASIC_INFORMATION_TEXT": "Insira o nome e a descrição da sua dívida.",
+    "DEBT_NAME_PLACEHOLDER": "Ex., Hipoteca Residencial, Empréstimo do Carro",
+
+    "CHOOSE_A_CURRENCY": "Escolha a moeda",
+    "ANNUAL_INTEREST_RATE": "Taxa de juros anual",
+    "ANNUAL_INTEREST_RATE_TEXT": "Opcional. Caso não seja preenchido, o valor será automaticamente definido como 0.",
+    "BASED_ON": "Baseado em",
+    "ESTIMATED_PAYOFF": "Pagamento estimado",
+    "SUMMARY_TEXT": "Valores calculados com base no formulário.",
+    "PLEASE_FILL_REQUIRED_FIELDS_EDIT": "Preencha todos os campos obrigatórios para editar a sua dívida.",
+    "PLEASE_FILL_REQUIRED_FIELDS_CREATE": "Preencha todos os campos obrigatórios para criar a dívida."
+  },
+
+  "FRIENDS": {
+    "META_TITLE": "Cash Manager | Amizades",
+    "META_DESCRIPTION": "Faça a gestão das suas conexões e solicitações de amizade. Acompanhe os seus pagamentos e mantenha suas finanças organizadas.",
+
+    "FRIENDS": "Amizades",
+    "PENDING": "Pendente",
+    "FRIENDS_TEXT": "Faça a gestão das suas conexões e solicitações de amizade.",
+    "FRIEND": "Amigo",
+    "FRIEND_REQUESTS": "Pedidos de Amizade",
+    "SEARCH": "Procurar",
+    "SEND": "Enviar",
+    "ACTIONS": "Ações",
+    "REMOVE_FRIEND": "Remover amigo",
+    "BLOCK_USER": "Bloquear utilizador",
+    "NO_RESULTS": "Sem Resultados",
+    "NO_RESULTS_TEXT": "Nenhum amigo corresponde a \"{username}\". Tente uma pesquisa diferente.",
+    "NO_BLOCKED_RESULTS_TEXT": "Nenhum utilizador bloqueado corresponde a \"{username}\". Tente uma pesquisa diferente.",
+    "NO_RECEIVED_RESULTS_TEXT": "Nenhum pedido recebido corresponde a \"{username}\". Tente uma pesquisa diferente.",
+    "NO_SENT_RESULTS_TEXT": "Nenhum pedido enviado corresponde a \"{username}\". Tente uma pesquisa diferente.",
+    "NO_RECEIVED_REQUESTS": "Sem pedidos recebidos",
+    "NO_SENT_REQUESTS": "Sem pedidos enviados",
+    "NO_SENT_REQUESTS_TEXT": "Ainda não enviou nenhum pedido de amizade.",
+    "NO_RECEIVED_REQUESTS_TEXT": "Ainda não recebeu nenhum pedido de amizade.",
+    "NO_FRIENDS_YET": "Ainda sem amigos.",
+    "NO_FRIENDS_YET_TEXT": "Use a ferramenta de pesquisa acima para encontrar pessoas e enviar solicitações de amizade.",
+    "NO_BLOCKED_USERS_TEXT": "Não bloqueou ninguém. Utilizadores bloqueados não podem interagir contigo.",
+    "ALL_FRIENDS": "Todos os Amigos",
+    "BLOCKED_USERS": "Utilizadores Bloqueados",
+    "NO_FRIENDS": "Sem Amigos",
+    "NO_BLOCKED_USERS": "Sem Utilizadores Bloqueados",
+    "LOADING": "Carregando",
+
+    "SEARCH_BY_USER": "Procure o utilizador...",
+    "ADD_FRIEND": "Adicionar amigo",
+    "SEARCH_USERS": "Procure o utilizador...",
+    "TRY_AGAIN": "Tentar novamente",
+    "LOADING_MORE_BLOCKED_USERS": "A carregar mais utilizadores bloqueados...",
+    "LOADING_BLOCKED_USERS": "A carregar utilizadores bloqueados...",
+    "WITHOUT_BLOCKED_USERS": "Não tens utilizadores bloqueados.",
+    "SCROLL_TO_SEE_MORE": "Scroll para baixo para ver mais",
+
+    "NO_USERS_FOUND_MATCHING": "Nenhum utilizador encontrado que corresponda a \"{username}\"",
+
+    "RECEIVED": "Recebidos",
+    "SENT": "Enviados",
+    "BLOCKED": "Bloqueados",
+    "SEARCH_BY_USERNAME": "Procure por nome de utilizador",
+
+    "REMOVE": "Remover",
+    "HAVENT_ADDED_FRIENDS": "Ainda não tens amigos adicionados.",
+
+    "SEARCH_FRIEND": "Procurar amigo",
+
+    "LOADING_REQUESTS": "A carregar pedidos...",
+    "BLOCK": "Bloquear",
+
+    "LOADING_FRIENDS": "A carregar amigos...",
+
+    "LOADING_MORE_FRIENDS": "A carregar mais amigos...",
+
+    "HAVE_NO_REQUESTS": "Não tens pedidos.",
+
+    "SENT_REQUESTS": "Pedidos enviados",
+
+    "ADD_BY_ID": "Adicionar amigo pelo ID",
+
+    "LOADING_MORE_REQUESTS": "A carregar mais pedidos...",
+
+    "ACCEPT": "Aceitar",
+    "DECLINE": "Recusar",
+    "CANCEL_REQUEST": "Cancelar Pedido",
+    "YES_UNLBOCK": "Sim, desbloquear",
+    "UNBLOCK": "Desbloquear",
+
+    "BLOCK_USER_MESSAGE": "Bloquear utilizador?",
+    "BLOCKING_USER_TITLE": "A bloquear...",
+    "BLOCKING_USER_MESSAGE": "A bloquear utilizador...",
+
+    "REMOVE_FRIEND_MESSAGE": "Remover amigo?",
+    "REMOVING_FRIEND_TITLE": "A remover...",
+    "REMOVING_FRIEND_MESSAGE": "A remover amigo...",
+
+    "SENDING_FRIEND_REQUEST_TITLE": "A enviar...",
+    "SENDING_FRIEND_REQUEST_MESSAGE": "A enviar pedido de amizade...",
+
+    "ACCEPT_REQUEST_TITLE": "A aceitar...",
+    "ACCEPT_REQUEST_MESSAGE": "A aceitar pedido de amizade...",
+
+    "DECLINE_REQUEST_TITLE": "A recusar...",
+    "DECLINE_REQUEST_MESSAGE": "A recusar pedido de amizade...",
+
+    "CANCEL_REQUEST_TITLE": "A cancelar...",
+    "CANCEL_REQUEST_MESSAGE": "A cancelar pedido de amizade...",
+
+    "UNBLOCK_USER_MESSAGE": "Desbloquear utilizador?",
+    "UNBLOCKING_USER_TITLE": "A desbloquear...",
+    "UNBLOCKING_USER_MESSAGE": "A desbloquear utilizador...",
+
+    "YES_BLOCK": "Sim, bloquear!",
+    "YES_REMOVE": "Sim, remover!",
+    "CANCEL": "Cancelar"
+  },
+
+  "SETTINGS": {
+    "META_TITLE": "Cash Manager | Definições",
+    "META_DESCRIPTION": "Faça a gestão das definições da sua conta. Acompanhe os seus pagamentos e mantenha suas finanças organizadas.",
+
+    "SETTINGS": "Definições",
+    "YOU_HAVE_UNSAVED_CHANGES": "Tem alterações não salvas.",
+    "PROFILE_INFORMATION": "Informações do perfil",
+    "PROFILE_INFORMATION_TEXT": "Atualize seus dados pessoais",
+    "ACCOUNT_SETTINGS": "Definições da conta",
+    "ACCOUNT_SETTINGS_TEXT": "Faça a gestão do seu perfil e preferências.",
+    "RESET": "Resetar",
+    "DISCARD": "Descartar",
+    "SAVE_CHANGES": "Guardar alterações",
+    "SAVING": "A guardar...",
+    "USERNAME": "Nome de utilizador",
+    "FIRST_NAME": "Primeiro nome",
+    "FIRST_NAME_PLACEHOLDER": "João",
+    "LAST_NAME": "Último nome",
+    "LAST_NAME_PLACEHOLDER": "Rodrigues",
+    "EMAIL_ADDRESS": "Endereço de e-mail",
+    "EMAIL_ADDRESS_PLACEHOLDER": "teste@teste.com",
+    "CANCEL": "Cancelar",
+    "CONTINUE": "Continuar",
+    "PASSWORD": "Palavra-passe",
+    "CHANGE_PASSWORD": "Mudar palavra-passe",
+    "CHANGE_PASSWORD_TEXT": "Você será redirecionado para a página de alteração de senha. Quaisquer alterações não salvas nesta página serão perdidas.",
+    "PASSORD_TEXT": "Faça a gestão da segurança da sua conta",
+
+    "SELECT_CURRENCY": "Selecione a moeda",
+    "SELECT_LANGUAGE": "Selecione o idioma",
+    "PREFERENCES_TEXT": "Personalize sua experiência",
+    "LANGUAGE": "Idioma",
+
+    "PREFERENCES": "Preferências",
+    "CURRENCY": "Moeda"
+  },
+
+  "DEBT_PAYMENTS": {
+    "META_TITLE": "Cash Manager | Pagamentos Dívidas",
+    "META_DESCRIPTION": "Faça a gestão dos seus pagamentos das suas dívidas de forma eficiente com o Cash Manager. Acompanhe os seus pagamentos e mantenha suas finanças organizadas.",
+
+    "ADD_PAYMENT": "Adicionar Pagamento",
+    "ADD": "Adicionar",
+    "DEBTS": "Dívidas",
+    "PAYMENTS": "Pagamentos",
+    "PAYMENTS_PAGE_TEXT": "Visualize e faça a gestão de todos os pagamentos nas suas dívidas.",
+    "DEBT": "Dívida",
+    "NEXT": "Próximo",
+    "FIRST": "Primeira",
+    "THIS": "pagamentos",
+    "OF": "de",
+    "PREVIOUS": "Anterior",
+    "SHOWING": "A mostrar",
+    "LAST": "Última",
+    "SEARCH": "Procurar",
+    "DEBT_PAYMENTS": "PAGAMENTOS",
+    "PENDING": "Pendente",
+    "LOADING": "Carregando",
+    "COMPLETED": "Completa",
+
+    "AMOUNT": "Valor",
+    "ACTIONS": "Ações",
+    "DATE": "Data",
+    "SAVING": "A guardar...",
+    "NEW_PAYMENT": "Novo pagamento",
+    "NEW_PAYMENT_FORM_DIALOG_TEXT": "Registe um novo pagamento.",
+    "EDIT_PAYMENT_FORM_DIALOG_TEXT": "Atualize os detalhes do seu pagamento.",
+    "EDIT_PAYMENT": "Editar pagamento.",
+    "DESCRIPTION": "Descrição",
+    "STATUS": "Estado",
+    "USER": "Utilizador",
+    "SEARCH_PAYMENT": "Procure pelo pagamento",
+    "DELETE": "Remover",
+    "DELETING": "A remover...",
+    "EDIT": "Editar",
+    "CONFIRM_PAYMENT": "Confirmar pagamento",
+    "VIEW_DEBT": "Ver dívida",
+    "WHAT_WAS_THIS_FOR": "Para que serviu isso?",
+    "ACCOUNT": "Conta",
+    "SELECT_ACCOUNT": "Selecione uma conta",
+    "SELECT_DEBT": "Selecione a dívida",
+    "CREATE": "Criar",
+    "CREATING": "A criar...",
+    "SAVE": "Guardar",
+
+    "DELETE_PAYMENT": "Remover pagamento",
+    "DELETE_PAYMENT_TEXT": "Tem certeza de que deseja remover este pagamento?",
+    "DELETE_PAYMENT_WARNING": "Atenção: Esta ação não pode ser desfeita e poderá afetar o valor pago da dívida.",
+
+    "TO": "até",
+    "CANCEL": "Cancelar",
+    "ALL_STATUS": "Todos os estados",
+
+    "CONFIRM_PAYMENT_TEXT": "Tem certeza de que deseja confirmar este pagamento?"
+  },
+
+  "HOME": {
+    "HOME": "Início",
+    "MONTHLY_BALANCE": "Saldo Mensal",
+    "REVENUE": "Receita",
+    "EXPENSE": "Despesa",
+    "RESULT": "Resultado",
+    "BALANCE": "Saldo",
+
+    "MONTHLY": "Mensal",
+    "QUARTERLY": "Trimestral",
+    "ANNUALLY": "Anual",
+
+    "CASH_FLOW_CHART_DESCRIPTION": "Rastreie as suas receitas e despesas em diferentes períodos.",
+    "CASH_FLOW_CHART_TITLE": "Visão Geral do Fluxo de Caixa"
+  },
+
+  "LAYOUTS": {
+    "SIDEBAR_SETTINGS": "Definições",
+    "SIDEBAR_LOGOUT": "Sair",
+    "SIDEBAR_COMPOUND_INTEREST_CALCULATOR": "Calc. Juros Compos.",
+    "SIDEBAR_CURRENCY_CONVERTER": "Conversor de Moeda",
+    "SIDEBAR_TOOLS": "Ferramentas",
+    "SIDEBAR_FRIENDS": "Amizades",
+    "SIDEBAR_PROFILE": "Perfil",
+    "SIDEBAR_SOCIAL": "Social",
+    "SIDEBAR_STOCKS": "Ações",
+    "SIDEBAR_STOCKS_WATCHLIST": "Watchlist",
+    "SIDEBAR_STOCKS_SEARCH": "Procurar",
+    "SIDEBAR_PORTFOLIOS": "Portfolios",
+    "SIDEBAR_DEBTS": "Dívidas",
+    "SIDEBAR_DEBT_PAYMENTS": "Pagamentos",
+    "SIDEBAR_FINANCIAL_GOALS": "Metas Financeiras",
+    "SIDEBAR_FINANCIAL_GOALS_CONTRIBUTIONS": "Contribuíções",
+    "SIDEBAR_TRANSACTIONS": "Transações",
+    "SIDEBAR_ACCOUNTS": "Contas",
+    "SIDEBAR_HOME": "Início",
+    "SIDEBAR_MENU": "Menu",
+    "SIDEBAR_INVITES": "Convites",
+
+    "HEADER_ACCOUNT_DETAILS": "Detalhes da Conta",
+
+    "LOGOUT": "Saindo…",
+    "LOGOUT_WAIT": "Aguarde enquanto encerramos sua sessão",
+    "LOGOUT_ERROR": "Não foi possível encerrar sua sessão. Tente novamente."
+  },
+
+  "SIGNIN": {
+    "SIGNIN": "Entrando…",
+    "SIGNIN_WAIT": "Aguarde enquanto verificamos suas credenciais"
+  },
+
+  "MONTHS": {
+    "JAN": "Jan",
+    "FEB": "Fev",
+    "MAR": "Mar",
+    "APR": "Abr",
+    "MAY": "Mai",
+    "JUN": "Jun",
+    "JUL": "Jul",
+    "AUG": "Ago",
+    "SEP": "Set",
+    "OCT": "Out",
+    "NOV": "Nov",
+    "DEC": "Dez"
+  }
+}

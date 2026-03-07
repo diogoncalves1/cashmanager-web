@@ -1,5 +1,76 @@
-// /app/api/accounts/route.ts
 import { NextRequest, NextResponse } from "next/server";
+
+type Column = {
+  data?: string;
+  name?: string;
+  searchable?: boolean | string;
+  orderable?: boolean | string;
+  search?: {
+    value?: string;
+    regex?: string;
+  };
+};
+
+function parseColumns(searchParams: URLSearchParams) {
+  const defaultColumns = [
+    { data: "name", searchable: true },
+    { data: "status", searchable: true, orderable: true },
+    { data: "type", searchable: true, orderable: true },
+    { data: "balance", searchable: true, orderable: true },
+  ];
+
+  const columns: {
+    data?: string;
+    name?: string;
+    searchable?: boolean | string;
+    orderable?: boolean | string;
+    search?: {
+      value?: string;
+      regex?: string;
+    };
+  }[] = [...defaultColumns];
+
+  for (const [key, value] of searchParams.entries()) {
+    const match = key.match(/^columns\[(\d+)\]\[(.+)\]$/);
+    if (!match) continue;
+
+    const index = Number(match[1]);
+    const field = match[2] as "search" | "name" | "searchable" | "orderable" | "data";
+
+    if (!columns[index]) columns[index] = {};
+
+    if (field.startsWith("search[")) {
+      const searchKey = field.match(/search\[(.+)\]/)?.[1] as "value" | "regex";
+      columns[index].search ??= {};
+      columns[index].search[searchKey!] = value;
+    } else {
+      columns[index][field] = value;
+    }
+  }
+
+  return columns.filter(Boolean);
+}
+
+function addColumnsToParams(columns: Column[], searchParams: URLSearchParams) {
+  columns.forEach((col, index) => {
+    (Object.keys(col) as Array<keyof Column>).forEach((key) => {
+      const value = col[key];
+
+      if (key === "search" && value && typeof value === "object") {
+        (Object.keys(value) as Array<keyof Column["search"]>).forEach((searchKey) => {
+          const searchValue = value[searchKey];
+          if (searchValue !== undefined) {
+            searchParams.append(`columns[${index}][search][${searchKey}]`, String(searchValue));
+          }
+        });
+      } else if (value !== undefined) {
+        searchParams.append(`columns[${index}][${key}]`, String(value));
+      }
+    });
+  });
+
+  return searchParams;
+}
 
 export async function GET(req: NextRequest) {
   try {
@@ -8,36 +79,30 @@ export async function GET(req: NextRequest) {
     const url = new URL(req.url);
 
     const page = Number(url.searchParams.get("page") || 1);
-    const length = Number(url.searchParams.get("size") || 10);
+    const length = Number(url.searchParams.get("pageSize") || 10);
     const start = page * length;
 
     const params = new URLSearchParams(url.search);
+    addColumnsToParams(parseColumns(url.searchParams), params);
     params.set("start", start.toString());
     params.set("length", length.toString());
 
     const sortParam = url.searchParams.get("sort");
+    const sortOrderParam = url.searchParams.get("sortOrder");
+    const searchParam = url.searchParams.get("search");
 
+    if (searchParam) params.set("search[value]", String(searchParam));
+
+    const columns = parseColumns(url.searchParams);
     if (sortParam) {
-      const [columnName, direction] = sortParam.split(":");
-
-      params.set("order[0][column]", "0"); // índice da coluna (precisa estar no mesmo índice do columns[])
-      params.set("order[0][dir]", direction);
-
-      params.set("columns[0][data]", columnName);
+      const columnIndex = columns.findIndex((c) => c.data === sortParam);
+      if (columnIndex >= 0) {
+        params.set("order[0][column]", String(columnIndex));
+        params.set("order[0][dir]", sortOrderParam as "desc" | "asc");
+      }
     }
 
-    // let filterIndex = 0;
-
-    // url.searchParams.forEach((value, key) => {
-    //   if (!["page", "size", "sort"].includes(key)) {
-    //     params.set(`columns[${filterIndex}][data]`, key);
-    //     params.set(`columns[${filterIndex}][search][value]`, value);
-    //     filterIndex++;
-    //   }
-    // });
-
-    const urlApi = "http://127.0.0.1:8000/api/v1/accounts?" + params;
-    const res = await fetch(urlApi, {
+    const res = await fetch(`${process.env.API_BACKEND_URL}accounts?${params.toString()}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     if (!res.ok) throw new Error(`External API error: ${res.status}`);
@@ -50,6 +115,7 @@ export async function GET(req: NextRequest) {
       data: data.data,
       url,
       params,
+      stats: data.stats,
     });
   } catch (err) {
     console.error("API Error:", err);

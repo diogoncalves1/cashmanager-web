@@ -9,8 +9,7 @@ import { fetcher } from "@/lib/fetcher";
 import { ArrowLeftRight, Wallet } from "lucide-react";
 import AppSwiper from "./AppSwiper";
 import SwiperLoading from "./SwiperLoading";
-import { Currency } from "@/lib/models/currency";
-import { Router } from "next/router";
+import { Currency } from "@/models/currency";
 import { useRouter } from "next/navigation";
 
 interface Portfolio {
@@ -39,7 +38,7 @@ export default function PortfolioSwiper() {
     );
   if (error) return <SwiperLoading direction="vertical" />;
 
-  const portfolios: Portfolio[] = data.data;
+  const portfolios: Portfolio[] = data; //.data;
 
   return (
     <AppSwiper direction="vertical">
