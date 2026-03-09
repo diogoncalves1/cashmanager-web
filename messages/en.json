@@ -192,6 +192,103 @@
     "SECTION_16_EMAIL": "Email: geral@cashmanager.pt"
   },
 
+  "PRIVACY": {
+    "HEADING": "Privacy Policy",
+    "META_TITLE": "Cash Manager | Privacy Policy",
+    "META_DESCRIPTION": "Learn how Cash Manager collects, uses, and protects your personal information.",
+    "LAST_UPDATED": "Last updated: March 7, 2026",
+
+    "INTRO": "This Privacy Policy describes how your personal information is collected, used, and shared when you visit or use our services. We are committed to protecting your privacy and ensuring you have a positive experience on our platform.",
+
+    "SECTION_1_TITLE": "1. Information We Collect",
+    "SECTION_1_1_TITLE": "1.1 Information You Provide",
+    "SECTION_1_1_TEXT": "We collect information you provide directly to us, including:",
+    "SECTION_1_1_ITEM_1": "Account Information: Name, email address, password, and profile details when you create an account.",
+    "SECTION_1_1_ITEM_2": "Financial Data: Transaction records, account balances, debt information, and payment history that you choose to enter or connect.",
+    "SECTION_1_1_ITEM_3": "Communications: Information you provide when contacting our support team or participating in surveys.",
+    "SECTION_1_1_ITEM_4": "Payment Information: Billing details and payment method information when subscribing to premium services.",
+
+    "SECTION_1_2_TITLE": "1.2 Information Collected Automatically",
+    "SECTION_1_2_TEXT": "When you access our services, we automatically collect:",
+    "SECTION_1_2_ITEM_1": "Device Information: Browser type, operating system, device identifiers, and IP address.",
+    "SECTION_1_2_ITEM_2": "Usage Data: Pages viewed, features used, time spent on the platform, and interaction patterns.",
+    "SECTION_1_2_ITEM_3": "Cookies and Similar Technologies: Information collected through cookies, web beacons, and similar tracking technologies (see our Cookie Policy for details).",
+
+    "SECTION_2_TITLE": "2. How We Use Your Information",
+    "SECTION_2_TEXT": "We use the information we collect for the following purposes:",
+    "SECTION_2_ITEM_1": "Providing, maintaining, and improving our services",
+    "SECTION_2_ITEM_2": "Processing transactions and sending related information",
+    "SECTION_2_ITEM_3": "Sending technical notices, updates, security alerts, and administrative messages",
+    "SECTION_2_ITEM_4": "Responding to your comments, questions, and customer service requests",
+    "SECTION_2_ITEM_5": "Analyzing usage patterns to enhance user experience",
+    "SECTION_2_ITEM_6": "Detecting, preventing, and addressing technical issues and fraudulent activity",
+    "SECTION_2_ITEM_7": "Complying with legal obligations and protecting our rights",
+
+    "SECTION_3_TITLE": "3. Information Sharing and Disclosure",
+    "SECTION_3_TEXT": "We do not sell your personal information. We may share your information in the following circumstances:",
+    "SECTION_3_ITEM_1": "Service Providers: With third-party vendors who perform services on our behalf, such as payment processing, data analysis, and customer support.",
+    "SECTION_3_ITEM_2": "Business Transfers: In connection with a merger, acquisition, or sale of assets, your information may be transferred as part of that transaction.",
+    "SECTION_3_ITEM_3": "Legal Requirements: When required by law, subpoena, or other legal process, or to protect our rights, privacy, safety, or property.",
+    "SECTION_3_ITEM_4": "With Your Consent: When you have given us explicit permission to share your information.",
+
+    "SECTION_4_TITLE": "4. Data Security",
+    "SECTION_4_TEXT": "We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. These measures include:",
+    "SECTION_4_ITEM_1": "Encryption of data in transit and at rest using industry-standard protocols",
+    "SECTION_4_ITEM_2": "Regular security assessments and penetration testing",
+    "SECTION_4_ITEM_3": "Access controls limiting employee access to personal data",
+    "SECTION_4_ITEM_4": "Secure data centers with physical security measures",
+
+    "SECTION_5_TITLE": "5. Data Retention",
+    "SECTION_5_TEXT": "We retain your personal information for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required or permitted by law. When determining retention periods, we consider the nature of the information, potential risks, and legal requirements.",
+
+    "SECTION_6_TITLE": "6. Your Rights and Choices",
+
+    "SECTION_6_1_TITLE": "6.1 Access and Portability",
+    "SECTION_6_1_TEXT": "You have the right to request access to the personal information we hold about you and to receive a copy of your data in a structured, commonly used format.",
+
+    "SECTION_6_2_TITLE": "6.2 Correction and Deletion",
+    "SECTION_6_2_TEXT": "You may update, correct, or request deletion of your personal information by accessing your account settings or contacting us directly.",
+
+    "SECTION_6_3_TITLE": "6.3 Opt-Out Rights",
+    "SECTION_6_3_TEXT": "You may opt out of receiving promotional communications by following the unsubscribe instructions in those messages or updating your notification preferences.",
+
+    "SECTION_6_4_TITLE": "6.4 GDPR Rights (European Users)",
+    "SECTION_6_4_TEXT": "If you are located in the European Economic Area (EEA), you have additional rights under the General Data Protection Regulation (GDPR), including:",
+    "SECTION_6_4_ITEM_1": "Right to object to processing of your personal data",
+    "SECTION_6_4_ITEM_2": "Right to restrict processing",
+    "SECTION_6_4_ITEM_3": "Right to withdraw consent at any time",
+    "SECTION_6_4_ITEM_4": "Right to lodge a complaint with a supervisory authority",
+
+    "SECTION_6_5_TITLE": "6.5 CCPA Rights (California Residents)",
+    "SECTION_6_5_TEXT": "California residents have specific rights under the California Consumer Privacy Act (CCPA), including:",
+    "SECTION_6_5_ITEM_1": "Right to know what personal information is collected and how it is used",
+    "SECTION_6_5_ITEM_2": "Right to delete personal information",
+    "SECTION_6_5_ITEM_3": "Right to opt-out of the sale of personal information (note: we do not sell personal information)",
+    "SECTION_6_5_ITEM_4": "Right to non-discrimination for exercising your privacy rights",
+
+    "SECTION_7_TITLE": "7. Cookies and Tracking Technologies",
+    "SECTION_7_TEXT": "We use cookies and similar tracking technologies to collect and store information about your interactions with our services. For detailed information about our use of cookies and how to manage your preferences, please see our Cookie Policy.",
+    "COOKIE_POLICY_LINK": "Cookie Policy",
+
+    "SECTION_8_TITLE": "8. Third-Party Services",
+    "SECTION_8_TEXT": "Our services may contain links to third-party websites or integrate with third-party services. This Privacy Policy does not apply to those third parties, and we encourage you to review their privacy policies before providing any personal information.",
+
+    "SECTION_9_TITLE": "9. International Data Transfers",
+    "SECTION_9_TEXT": "Your information may be transferred to and processed in countries other than your country of residence. We ensure appropriate safeguards are in place to protect your information in accordance with this Privacy Policy and applicable data protection laws.",
+
+    "SECTION_10_TITLE": "10. Children's Privacy",
+    "SECTION_10_TEXT": "Our services are not directed to individuals under the age of 16. We do not knowingly collect personal information from children. If we become aware that a child has provided us with personal information, we will take steps to delete such information.",
+
+    "SECTION_11_TITLE": "11. Changes to This Privacy Policy",
+    "SECTION_11_TEXT": "We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. We will notify you of any material changes by posting the new Privacy Policy on this page and updating the \"Last updated\" date.",
+
+    "SECTION_12_TITLE": "12. Contact Us",
+    "SECTION_12_TEXT": "If you have any questions about this Privacy Policy or our privacy practices, please contact us at:",
+    "SECTION_12_TEAM": "Privacy Team",
+    "SECTION_12_EMAIL": "Email: privacy@[yourdomain].com",
+    "SECTION_12_ADDRESS": "Address: [Your Company Address]"
+  },
+
   "ACCOUNTS": {
     "META_TITLE": "Cash Manager | Accounts",
     "META_DESCRIPTION": "Manage your financial accounts efficiently with Cash Manager. Track your income, expenses, and keep your finances organized.",
