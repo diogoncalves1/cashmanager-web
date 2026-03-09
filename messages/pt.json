@@ -73,6 +73,125 @@
     "NO_RESULTS": "Sem Resultados"
   },
 
+  "TERMS": {
+    "HEADING": "Termos de Serviço",
+    "META_TITLE": "Cash Manager | Termos de Serviço",
+    "META_DESCRIPTION": "Leia os termos e condições para usar a plataforma CashManager.",
+    "LAST_UPDATED": "Última atualização: 7 de março de 2026",
+
+    "INTRO": "Por favor, leia estes Termos de Serviço (\"Termos\", \"Termos de Serviço\") com atenção antes de usar nosso site e serviços. Seu acesso e uso do serviço está condicionado à sua aceitação e conformidade com estes Termos.",
+
+    "SECTION_1_TITLE": "1. Aceitação dos Termos",
+    "SECTION_1_TEXT": "Ao acessar ou usar nossos serviços, você concorda em estar vinculado por estes Termos. Se você discordar de qualquer parte dos termos, você não pode acessar o serviço. Estes Termos se aplicam a todos os visitantes, usuários e outros que acessam ou usam o serviço.",
+
+    "SECTION_2_TITLE": "2. Registro de Conta",
+
+    "SECTION_2_1_TITLE": "2.1 Criação de Conta",
+    "SECTION_2_1_TEXT": "Para usar certos recursos de nossos serviços, você deve se registrar para uma conta. Ao se registrar, você concorda em:",
+    "SECTION_2_1_ITEM_1": "Fornecer informações precisas, atuais e completas durante o processo de registro",
+    "SECTION_2_1_ITEM_2": "Manter e atualizar prontamente as informações da sua conta para mantê-las precisas e atuais",
+    "SECTION_2_1_ITEM_3": "Manter a segurança de sua senha e aceitar todos os riscos de acesso não autorizado",
+    "SECTION_2_1_ITEM_4": "Notifique-nos imediatamente se descobrir ou suspeitar de qualquer violação de segurança relacionada à sua conta",
+
+    "SECTION_2_2_TITLE": "2.2 Responsabilidade da Conta",
+    "SECTION_2_2_TEXT": "Você é responsável por todas as atividades que ocorrem em sua conta. Você não pode compartilhar suas credenciais de conta com terceiros. Se você autorizar um terceiro a gerenciar sua conta em seu nome, você o faz por sua conta e risco.",
+
+    "SECTION_3_TITLE": "3. Obrigações do Utilizador",
+    "SECTION_3_TEXT": "Como utilizador do nosso serviço, você concorda em:",
+    "SECTION_3_ITEM_1": "Usar os serviços apenas para fins legais e de acordo com estes Termos",
+    "SECTION_3_ITEM_2": "Não usar os serviços de forma alguma que viole qualquer lei local, estadual, nacional ou internacional aplicável",
+    "SECTION_3_ITEM_3": "Não personificar nenhuma pessoa ou entidade, ou falsamente declarar ou distorcer sua afiliação com uma pessoa ou entidade",
+    "SECTION_3_ITEM_4": "Não interferir ou interromper os serviços ou servidores ou redes conectadas aos serviços",
+    "SECTION_3_ITEM_5": "Não tentar ganhar acesso não autorizado a qualquer parte dos serviços ou quaisquer outros sistemas ou redes",
+
+    "SECTION_4_TITLE": "4. Atividades Proibidas",
+    "SECTION_4_TEXT": "Você concorda em não se envolver em nenhuma das seguintes atividades proibidas:",
+    "SECTION_4_ITEM_1": "Copiar, distribuir ou divulgar qualquer parte dos serviços em qualquer meio",
+    "SECTION_4_ITEM_2": "Usar qualquer sistema automatizado, incluindo robôs, spiders ou raspadores, para acessar os serviços",
+    "SECTION_4_ITEM_3": "Transmitir spam, correntes de cartas ou outras comunicações não solicitadas",
+    "SECTION_4_ITEM_4": "Tentativa de interferir, comprometer ou interromper a integridade ou segurança dos serviços",
+    "SECTION_4_ITEM_5": "Coleta ou coleta de qualquer informação de identificação pessoal dos serviços",
+    "SECTION_4_ITEM_6": "Usar os serviços para qualquer fim ilegal ou não autorizado",
+    "SECTION_4_ITEM_7": "Envolver-se em qualquer conduta que restrinja ou iniba o uso dos serviços por alguém",
+    "SECTION_4_ITEM_8": "Introdução de qualquer vírus, malware ou outro código prejudicial",
+
+    "SECTION_5_TITLE": "5. Direitos de Propriedade Intelectual",
+
+    "SECTION_5_1_TITLE": "5.1 Nossa Propriedade Intelectual",
+    "SECTION_5_1_TEXT": "Os serviços e seu conteúdo, recursos e funcionalidade originais são e permanecerão propriedade exclusiva da empresa e seus licenciadores. Os serviços são protegidos por leis de direitos autorais, marca registrada e outras leis dos Estados Unidos e estrangeiros.",
+
+    "SECTION_5_2_TITLE": "5.2 Seu Conteúdo",
+    "SECTION_5_2_TEXT": "Você mantém a propriedade de qualquer conteúdo que envie, publique ou exiba nos serviços ou através deles. Ao enviar conteúdo, você nos concede uma licença mundial, não exclusiva e livre de royalties para usar, copiar, modificar e exibir esse conteúdo em conexão com a prestação dos serviços.",
+
+    "SECTION_5_3_TITLE": "5.3 Feedback",
+    "SECTION_5_3_TEXT": "Se você nos fornecer qualquer feedback, sugestões ou ideias relacionadas aos serviços, você nos concede o direito de usar tal feedback sem restrição e sem compensação para você.",
+
+    "SECTION_6_TITLE": "6. Termos de Pagamento",
+    "SECTION_6_TEXT": "Se você comprar quaisquer funcionalidades pagas ou assinaturas:",
+    "SECTION_6_ITEM_1": "Você concorda em pagar todas as taxas associadas à sua conta",
+    "SECTION_6_ITEM_2": "As taxas são não reembolsáveis, exceto conforme exigido por lei ou conforme indicado explicitamente nestes Termos",
+    "SECTION_6_ITEM_3": "Podemos alterar nossas taxas com trinta (30) dias de aviso prévio",
+    "SECTION_6_ITEM_4": "Você é responsável por todos os impostos aplicáveis",
+    "SECTION_6_ITEM_5": "O não pagamento pode resultar na suspensão ou rescisão da sua conta",
+
+    "SECTION_7_TITLE": "7. Isenções de Responsabilidade",
+
+    "SECTION_7_1_TITLE": "7.1 Serviço Fornecido \"Como Está\"",
+    "SECTION_7_1_TEXT": "OS SERVIÇOS SÃO FORNECIDOS \"COMO ESTÁ\" E \"CONFORME DISPONÍVEL\", SEM GARANTIAS DE QUALQUER NATUREZA, EXPRESSAS OU IMPLÍCITAS, INCLUINDO MAS NÃO SE LIMITANDO A GARANTIAS IMPLÍCITAS DE COMERCIALIZAÇÃO, APTIDÃO PARA UM FIM ESPECÍFICO, NÃO-VIOLAÇÃO OU CURSO DO DESEMPENHO.",
+
+    "SECTION_7_2_TITLE": "7.2 Sem Conselho Financeiro",
+    "SECTION_7_2_TEXT": "Nossos serviços se destinam exclusivamente a fins informativos e organizacionais. Nada em nossa plataforma constitui conselho financeiro, legal ou fiscal profissional. Você deve consultar profissionais qualificados antes de tomar qualquer decisão financeira.",
+
+    "SECTION_7_3_TITLE": "7.3 Precisão dos Dados",
+    "SECTION_7_3_TEXT": "Embora nos esforcemos para fornecer informações precisas, não garantimos que as informações, cálculos ou análises fornecidas através de nossos serviços sejam precisas, completas ou atuais.",
+
+    "SECTION_8_TITLE": "8. Limitação de Responsabilidade",
+    "SECTION_8_TEXT": "NA MÁXIMA EXTENSÃO PERMITIDA PELA LEI APLICÁVEL, EM NENHUM EVENTO A EMPRESA, SEUS AFILIADOS, DIRETORES, FUNCIONÁRIOS OU AGENTES SERÃO RESPONSÁVEIS POR QUALQUER DANO INDIRETO, PUNITIVO, INCIDENTAL, ESPECIAL, CONSEQUENCIAL OU EXEMPLAR, INCLUINDO SEM LIMITAÇÃO DANOS POR PERDA DE LUCROS, BOA-FÉ, USO, DADOS OU OUTRAS PERDAS INTANGÍVEIS, DECORRENTES DE OU RELACIONADAS AO USO OU INCAPACIDADE DE USAR OS SERVIÇOS.",
+    "SECTION_8_TEXT_2": "EM NENHUM EVENTO NOSSA RESPONSABILIDADE TOTAL PARA COM VOCÊ POR TODOS OS DANOS, PERDAS OU CAUSAS DE AÇÃO EXCEDERÁ O VALOR QUE VOCÊ NOS PAGOU NOS ÚLTIMOS SEIS (6) MESES, OU CEM DÓLARES ($ 100), O QUE FOR MAIOR.",
+
+    "SECTION_9_TITLE": "9. Indenização",
+    "SECTION_9_TEXT": "Você concorda em defender, indenizar e manter inofensiva a empresa e seus afiliados, licenciadores e provedores de serviços de e contra quaisquer reclamações, responsabilidades, danos, sentenças, prêmios, perdas, custos, despesas ou taxas (incluindo taxas razoáveis de advogados) decorrentes de ou relacionadas à sua violação destes Termos ou seu uso dos serviços.",
+
+    "SECTION_10_TITLE": "10. Rescisão",
+
+    "SECTION_10_1_TITLE": "10.1 Rescisão por você",
+    "SECTION_10_1_TEXT": "Você pode rescindir sua conta a qualquer momento seguindo as instruções nas configurações da sua conta ou contatando-nos. Após a rescisão, seu direito de usar os serviços cessará imediatamente.",
+
+    "SECTION_10_2_TITLE": "10.2 Rescisão por nós",
+    "SECTION_10_2_TEXT": "Podemos rescindir ou suspender sua conta imediatamente, sem aviso prévio ou responsabilidade, por qualquer motivo, incluindo, mas não se limitando a violação destes Termos. Após a rescisão, seu direito de usar os serviços cessará imediatamente.",
+
+    "SECTION_10_3_TITLE": "10.3 Efeito da Rescisão",
+    "SECTION_10_3_TEXT": "Todas as disposições dos Termos que por sua natureza devem sobreviverã rescisão sobreviverão à rescisão, incluindo disposições de propriedade, renúncias de garantia, indenização e limitações de responsabilidade.",
+
+    "SECTION_11_TITLE": "11. Lei Aplicável",
+    "SECTION_11_TEXT": "Estes Termos serão regidos e construídos de acordo com as leis de [Sua Jurisdição], sem considerar suas disposições de conflito de leis. Nossa falha em executar qualquer direito ou disposição destes Termos não será considerada uma renúncia a esses direitos.",
+
+    "SECTION_12_TITLE": "12. Resolução de Disputas",
+
+    "SECTION_12_1_TITLE": "12.1 Resolução Informal",
+    "SECTION_12_1_TEXT": "Antes de apresentar uma reclamação contra nós, você concorda em tentar resolver a disputa informalmente contatando-nos. Tentaremos resolver a disputa informalmente contatando você por e-mail. Se uma disputa não for resolvida em trinta (30) dias do envio, você ou nós podemos iniciar um procedimento formal.",
+
+    "SECTION_12_2_TITLE": "12.2 Arbitragem",
+    "SECTION_12_2_TEXT": "Qualquer disputa decorrente de ou relacionada a estes Termos ou aos serviços será finalmente resolvida por arbitragem vinculante. A arbitragem será conduzida em [Sua Localização] de acordo com as regras de [Organização de Arbitragem]. A decisão do árbitro será final e vinculante.",
+
+    "SECTION_12_3_TITLE": "12.3 Renúncia de Ação Coletiva",
+    "SECTION_12_3_TEXT": "Você concorda que qualquer arbitragem ou procedimento será limitado à disputa entre nós individualmente. Você renuncia a qualquer direito de participar em uma ação judicial coletiva ou arbitragem em âmbito coletivo.",
+
+    "SECTION_13_TITLE": "13. Alterações nos Termos",
+    "SECTION_13_TEXT": "Nos reservamos o direito de modificar ou substituir estes Termos a qualquer momento ao nosso exclusivo critério. Se uma revisão for material, forneceremos pelo menos trinta (30) dias de aviso antes de qualquer novo termo entrar em vigor. O que constitui uma mudança material será determinado ao nosso exclusivo critério.",
+
+    "SECTION_14_TITLE": "14. Divisibilidade",
+    "SECTION_14_TEXT": "Se qualquer disposição destes Termos for considerada inválida ou inaplicável por um tribunal, as disposições restantes destes Termos permanecerão em vigor. A disposição inválida ou inaplicável será modificada no mínimo necessário para torná-la válida e executável.",
+
+    "SECTION_15_TITLE": "15. Acordo Integral",
+    "SECTION_15_TEXT": "Estes Termos constituem o acordo integral entre você e nós relacionado aos nossos serviços, e supera e substitui quaisquer acordos anteriores que possamos ter tido entre nós relacionados aos serviços.",
+
+    "SECTION_16_TITLE": "16. Entre em contato conosco",
+    "SECTION_16_TEXT": "Se você tiver dúvidas sobre estes Termos, entre em contato conosco em:",
+    "SECTION_16_TEAM": "Equipa Legal",
+    "SECTION_16_EMAIL": "Email: geral@cashmanager.pt"
+  },
+
   "ACCOUNTS": {
     "META_TITLE": "Cash Manager | Contas",
     "META_DESCRIPTION": "Gerencie suas contas financeiras de forma eficiente com o Cash Manager. Acompanhe suas receitas, despesas e mantenha suas finanças organizadas.",
@@ -973,6 +1092,16 @@
     "CTA_SECTION_TITLE": "Comece a gerir as suas finanças hoje mesmo",
     "CTA_SECTION_TEXT": "Junte-se a milhares de utilizadores que já assumiram o controle de sua vida financeira. Gratuito para começar, poderoso o suficiente para crescer consigo."
   },
+
+  "LEGAL": {
+    "BACK_TO_HOME": "Voltar ao Início",
+    "ALL_RIGHTS_RESERVED": "Todos os direitos reservados",
+    "PRIVACY_POLICY": "Políticas de Privacidade",
+    "TERMS_OF_SERVICE": "Termos e Condições",
+    "COOKIE_POLICY": "Políticas de Cookies"
+  },
+
+  "TERMS_OF_SERVICE": {},
 
   "HOME": {
     "HOME": "Início",

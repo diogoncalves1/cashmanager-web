@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronDown, Check, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -22,24 +22,36 @@ interface LanguageOption {
   flag: React.ReactNode;
   nativeLabel: string;
 }
-const languages: LanguageOption[] = [
-  {
-    code: "pt",
-    label: "Português",
-    flag: <PortugalFlag width={24} height={24} />,
-    nativeLabel: "PT",
-  },
-  { code: "en", label: "English", flag: <USFlag width={24} height={24} />, nativeLabel: "EN" },
-  //   { code: "fr", label: "French", flag: <FRFlag width={24} height={24} />, nativeLabel: "FR" },
-];
 
 interface LanguageSwitcherProps {
   variant?: "default" | "minimal" | "compact";
   className?: string;
 }
 
+function getCookie(name: string) {
+  const match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
+  return match ? match[2] : null;
+}
+
 export function LanguageSwitcher({ variant = "default", className }: LanguageSwitcherProps) {
-  const [selected, setSelected] = useState<Language>("pt");
+  const languages: LanguageOption[] = [
+    {
+      code: "pt",
+      label: "Português",
+      flag: <PortugalFlag width={24} height={24} />,
+      nativeLabel: "PT",
+    },
+    { code: "en", label: "English", flag: <USFlag width={24} height={24} />, nativeLabel: "EN" },
+    //   { code: "fr", label: "French", flag: <FRFlag width={24} height={24} />, nativeLabel: "FR" },
+  ];
+
+  const [selected, setSelected] = useState<Language>("pt"); // fallback
+
+  useEffect(() => {
+    const cookieLang = getCookie("NEXT_LOCALE") as Language;
+    if (cookieLang) setSelected(cookieLang);
+  }, []);
+
   const router = useRouter();
 
   const currentLang = languages.find((l) => l.code === selected) || languages[0];
