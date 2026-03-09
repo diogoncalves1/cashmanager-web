@@ -46,6 +46,11 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+        <link rel="icon" href="/images/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
       <body className={`${outfit.className} ${geist.variable} dark:bg-gray-900`}>
         <NextIntlClientProvider messages={messages}>
           <HeroUIProvider>

@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
 
 export function CtaSection() {
+  const t = useTranslations("LANDING");
   return (
     <section className="border-t border-border/40 bg-card/30 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -14,20 +16,19 @@ export function CtaSection() {
 
           <div className="relative mx-auto max-w-2xl text-center">
             <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Start managing your finances today
+              {t("CTA_SECTION_TITLE")}
             </h2>
             <p className="mt-4 text-pretty text-muted-foreground leading-relaxed">
-              Join thousands of users who have already taken control of their financial life. Free
-              to start, powerful enough to grow with you.
+              {t("CTA_SECTION_TEXT")}
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button size="lg" className="gap-2 px-8 text-base" asChild>
-                <Link href="/debts">
-                  Get Started Free
+                <Link href="/signup">
+                  {t("GET_STARTED_FREE")}
                   <ArrowRight className="size-4" />
                 </Link>
               </Button>
-              <p className="text-xs text-muted-foreground">No credit card required</p>
+              <p className="text-xs text-muted-foreground">{t("NO_CREDIT_CARD_REQUIRED")}</p>
             </div>
           </div>
         </div>

@@ -1,36 +1,38 @@
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 
-const linkGroups = [
-  {
-    title: "Product",
-    links: [
-      { label: "Features", href: "#features" },
-      { label: "How It Works", href: "#how-it-works" },
-      { label: "Dashboard", href: "#dashboard" },
-      { label: "Security", href: "#trust" },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { label: "About", href: "#" },
-      { label: "Blog", href: "#" },
-      { label: "Careers", href: "#" },
-      { label: "Contact", href: "#" },
-    ],
-  },
-  {
-    title: "Legal",
-    links: [
-      { label: "Privacy Policy", href: "#" },
-      { label: "Terms of Service", href: "#" },
-      { label: "Cookie Policy", href: "#" },
-    ],
-  },
-];
-
 export function Footer() {
+  const t = useTranslations("LANDING");
+
+  const linkGroups = [
+    {
+      title: t("PRODUCT"),
+      links: [
+        { label: t("FEATURES"), href: "#features" },
+        { label: t("HOW_IT_WORKS"), href: "#how-it-works" },
+        { label: t("SOCIAL"), href: "#social" },
+        { label: t("DASHBOARD"), href: "#dashboard" },
+      ],
+    },
+    // {
+    //   title: "Company",
+    //   links: [
+    //     { label: t("ABOUT"), href: "#" },
+    //     { label: "Careers", href: "#" },
+    //     { label: "Contact", href: "#" },
+    //   ],
+    // },
+    {
+      title: "Legal",
+      links: [
+        { label: t("PRIVACY_POLICY"), href: "/privacy" },
+        { label: t("TERMS_OF_SERVICE"), href: "/terms" },
+        { label: t("COOKIE_POLICY"), href: "/cookies" },
+      ],
+    },
+  ];
+
   return (
     <footer className="border-t border-border/40 bg-background py-12 sm:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -51,11 +53,10 @@ export function Footer() {
               </span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Take full control of your financial life with powerful tools for tracking, managing,
-              and collaborating on your finances.
+              {t("FOOTER_TEXT")}
             </p>
             {/* Social icons */}
-            <div className="mt-6 flex gap-4">
+            {/* <div className="mt-6 flex gap-4">
               {["X", "GH", "LI"].map((s) => (
                 <a
                   key={s}
@@ -65,7 +66,7 @@ export function Footer() {
                   {s}
                 </a>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Link groups */}
@@ -90,7 +91,7 @@ export function Footer() {
 
         <div className="mt-12 border-t border-border/40 pt-8 text-center">
           <p className="text-xs text-muted-foreground">
-            {new Date().getFullYear() + " Cash Manager. All rights reserved."}
+            {`${new Date().getFullYear()} Cash Manager. ${t("ALL_RIGHTS_RESERVED")}.`}
           </p>
         </div>
       </div>
