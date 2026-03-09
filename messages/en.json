@@ -1121,22 +1121,6 @@
     "CURRENCY": "Currency"
   },
 
-  "HOME": {
-    "HOME": "Home",
-    "MONTHLY_BALANCE": "Monthly Balance",
-    "REVENUE": "Revenue",
-    "EXPENSE": "Expense",
-    "RESULT": "Result",
-    "BALANCE": "Balance",
-
-    "MONTHLY": "Monthly",
-    "QUARTERLY": "Quarterly",
-    "ANNUALLY": "Annually",
-
-    "CASH_FLOW_CHART_DESCRIPTION": "Track your income and expenses across different periods.",
-    "CASH_FLOW_CHART_TITLE": "Cash Flow Overview"
-  },
-
   "DEBT_PAYMENTS": {
     "META_TITLE": "Cash Manager | Debt Payments",
     "META_DESCRIPTION": "Efficiently manage your debt payments with Cash Manager. Track your payments and keep your finances organized.",
@@ -1326,6 +1310,55 @@
     "PRIVACY_POLICY": "Privacy Policy",
     "TERMS_OF_SERVICE": "Terms of Service",
     "COOKIE_POLICY": "Cookie Policy"
+  },
+
+  "AUTH": {
+    "SLOGAN": "Cash Manager — The Best Financial Manager"
+  },
+
+  "SIGN_UP": {
+    "META_TITLE": "Cash Manager | Sign Up",
+    "META_DESCRIPTION": "Create your Cash Manager account to start organizing your finances.",
+
+    "SIGN_UP": "Sign Up",
+    "SIGN_UP_TEXT": "Enter your email and password to sign up!",
+    "USERNAME": "Username",
+    "USERNAME_PLACEHOLDER": "Enter your username",
+    "USERNAME_ALREADY_REGISTED": "Username already in use",
+    "FIRST_NAME": "First name",
+    "FIRST_NAME_PLACEHOLDER": "First name",
+    "LAST_NAME": "Last name",
+    "LAST_NAME_PLACEHOLDER": "Last name",
+    "PASSWORD": "Password",
+    "PASSWORD_PLACEHOLDER": "Enter a password",
+    "EMAIL_PLACEHOLDER": "Enter your email",
+
+    "BY_CREATING_ACCOUNT": "By creating an account, you agree to the",
+    "AND_OUR": "and our",
+
+    "TERMS_AND_CONDITIONS": "Terms and Conditions",
+    "PRIVACY_POLICY": "Privacy Policy",
+
+    "ALREADY_HAVE_AN_ACCOUNT": "Already have an account?",
+    "ACCEPT_TERMS": "You must accept the terms and conditions to sign up.",
+
+    "SIGN_IN": "Sign In"
+  },
+
+  "HOME": {
+    "HOME": "Home",
+    "MONTHLY_BALANCE": "Monthly Balance",
+    "REVENUE": "Revenue",
+    "EXPENSE": "Expense",
+    "RESULT": "Result",
+    "BALANCE": "Balance",
+
+    "MONTHLY": "Monthly",
+    "QUARTERLY": "Quarterly",
+    "ANNUALLY": "Annually",
+
+    "CASH_FLOW_CHART_DESCRIPTION": "Track your income and expenses across different periods.",
+    "CASH_FLOW_CHART_TITLE": "Cash Flow Overview"
   },
 
   "LAYOUTS": {

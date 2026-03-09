@@ -5,8 +5,6 @@ import { baseUrl } from "../../config";
 export async function POST(req: Request) {
   const { email, password, remember } = await req.json();
 
-  console.log("Base URL usada:", baseUrl); // ✅ verificar se está correto
-
   if (!baseUrl) {
     return NextResponse.json(
       { error: "API_BACKEND_URL não definido no ambiente" },

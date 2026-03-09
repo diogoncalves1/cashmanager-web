@@ -84,11 +84,11 @@
     "SECTION_1_TITLE": "1. Aceitação dos Termos",
     "SECTION_1_TEXT": "Ao acessar ou usar nossos serviços, você concorda em estar vinculado por estes Termos. Se você discordar de qualquer parte dos termos, você não pode acessar o serviço. Estes Termos se aplicam a todos os visitantes, usuários e outros que acessam ou usam o serviço.",
 
-    "SECTION_2_TITLE": "2. Registro de Conta",
+    "SECTION_2_TITLE": "2. Registo de Conta",
 
     "SECTION_2_1_TITLE": "2.1 Criação de Conta",
     "SECTION_2_1_TEXT": "Para usar certos recursos de nossos serviços, você deve se registrar para uma conta. Ao se registrar, você concorda em:",
-    "SECTION_2_1_ITEM_1": "Fornecer informações precisas, atuais e completas durante o processo de registro",
+    "SECTION_2_1_ITEM_1": "Fornecer informações precisas, atuais e completas durante o processo de registo",
     "SECTION_2_1_ITEM_2": "Manter e atualizar prontamente as informações da sua conta para mantê-las precisas e atuais",
     "SECTION_2_1_ITEM_3": "Manter a segurança de sua senha e aceitar todos os riscos de acesso não autorizado",
     "SECTION_2_1_ITEM_4": "Notifique-nos imediatamente se descobrir ou suspeitar de qualquer violação de segurança relacionada à sua conta",
@@ -1312,7 +1312,38 @@
     "COOKIE_POLICY": "Políticas de Cookies"
   },
 
-  "TERMS_OF_SERVICE": {},
+  "AUTH": {
+    "SLOGAN": "Cash Manager — O Melhor Gestor Financeiro"
+  },
+
+  "SIGN_UP": {
+    "META_TITLE": "Cash Manager | Registar",
+    "META_DESCRIPTION": "Faça o seu registo no Cash Manager para começar a organizar as suas finanças.",
+
+    "SIGN_UP": "Registar",
+    "SIGN_UP_TEXT": "Introduza o seu e-mail e a sua palavra-passe para se registar!",
+    "USERNAME": "Nome de utilizador",
+    "USERNAME_PLACEHOLDER": "Introduza o seu nome de utilizador",
+    "USERNAME_ALREADY_REGISTED": "Nome de utilizador já utilizado",
+    "FIRST_NAME": "Primeiro nome",
+    "FIRST_NAME_PLACEHOLDER": "Primeiro nome",
+    "LAST_NAME": "Último nome",
+    "LAST_NAME_PLACEHOLDER": "Último nome",
+    "PASSWORD": "Palavra-passe",
+    "PASSWORD_PLACEHOLDER": "Introduza uma palavra-passe",
+    "EMAIL_PLACEHOLDER": "Introduza o seu email",
+
+    "BY_CREATING_ACCOUNT": "Ao criar uma conta, concorda com os",
+    "AND_OUR": "e as nossas",
+
+    "TERMS_AND_CONDITIONS": "Termos e Condições",
+    "PRIVACY_POLICY": "Políticas de Privacidade",
+
+    "ALREADY_HAVE_AN_ACCOUNT": "Já tem uma conta?",
+    "ACCEPT_TERMS": "Tem de aceitar os termos e condições para se registar.",
+
+    "SIGN_IN": "Entrar"
+  },
 
   "HOME": {
     "HOME": "Início",

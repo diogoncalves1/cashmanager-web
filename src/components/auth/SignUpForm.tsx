@@ -22,7 +22,7 @@ export default function SignUpForm() {
   const [error, setError] = useState("");
   const [errorUsername, setErrorUsername] = useState("");
   const router = useRouter();
-  const t = useTranslations("SIGNIN");
+  const t = useTranslations("SIGN_UP");
 
   useEffect(() => {
     if (!username) return;
@@ -37,8 +37,8 @@ export default function SignUpForm() {
       try {
         const res = await fetch(`/api/auth/check-username?username=${username}`);
         const data = await res.json();
-        console.log(data);
-        setErrorUsername(data.data.exists ? "Username já registado" : "");
+
+        setErrorUsername(data.data.exists ? t("USERNAME_ALREADY_REGISTED") : "");
       } catch (err) {
         console.error(err);
       }
@@ -91,11 +91,9 @@ export default function SignUpForm() {
         <div>
           <div className="mb-5 sm:mb-8">
             <h1 className="mb-2 font-semibold text-gray-800 text-title-sm dark:text-white/90 sm:text-title-md">
-              Sign Up
+              {t("SIGN_UP")}
             </h1>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Enter your email and password to sign up!
-            </p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">{t("SIGN_UP_TEXT")}</p>
           </div>
           <div>
             <form onSubmit={handleSubmit}>
@@ -103,7 +101,8 @@ export default function SignUpForm() {
                 {/* <!-- Username --> */}
                 <div>
                   <Label>
-                    Username<span className="text-error-500">*</span>
+                    {t("USERNAME")}
+                    <span className="text-error-500">*</span>
                   </Label>
                   <Input
                     type="text"
@@ -111,8 +110,7 @@ export default function SignUpForm() {
                     onChange={(e) => {
                       setUsername(e.target.value.toLowerCase());
                     }}
-                    className="lowercase placeholder:capitalize"
-                    placeholder="Enter your username"
+                    placeholder={t("USERNAME_PLACEHOLDER")}
                     hint={errorUsername}
                     error={errorUsername != ""}
                   />
@@ -121,7 +119,8 @@ export default function SignUpForm() {
                   {/* <!-- First Name --> */}
                   <div className="sm:col-span-1">
                     <Label>
-                      First Name<span className="text-error-500">*</span>
+                      {t("FIRST_NAME")}
+                      <span className="text-error-500">*</span>
                     </Label>
                     <Input
                       type="text"
@@ -129,13 +128,14 @@ export default function SignUpForm() {
                       onChange={(e) => {
                         setFName(e.target.value);
                       }}
-                      placeholder="Enter your first name"
+                      placeholder={t("FIRST_NAME_PLACEHOLDER")}
                     />
                   </div>
                   {/* <!-- Last Name --> */}
                   <div className="sm:col-span-1">
                     <Label>
-                      Last Name<span className="text-error-500">*</span>
+                      {t("LAST_NAME")}
+                      <span className="text-error-500">*</span>
                     </Label>
                     <Input
                       type="text"
@@ -143,7 +143,7 @@ export default function SignUpForm() {
                       onChange={(e) => {
                         setLName(e.target.value);
                       }}
-                      placeholder="Enter your last name"
+                      placeholder={t("LAST_NAME_PLACEHOLDER")}
                     />
                   </div>
                 </div>
@@ -158,17 +158,18 @@ export default function SignUpForm() {
                     onChange={(e) => {
                       setEmail(e.target.value);
                     }}
-                    placeholder="Enter your email"
+                    placeholder={t("EMAIL_PLACEHOLDER")}
                   />
                 </div>
                 {/* <!-- Password --> */}
                 <div>
                   <Label>
-                    Password<span className="text-error-500">*</span>
+                    {t("PASSWORD")}
+                    <span className="text-error-500">*</span>
                   </Label>
                   <div className="relative">
                     <Input
-                      placeholder="Enter your password"
+                      placeholder={t("PASSWORD_PLACEHOLDER")}
                       onChange={(e) => {
                         setPassword(e.target.value);
                       }}
@@ -191,15 +192,20 @@ export default function SignUpForm() {
                 <div className="flex items-center gap-3">
                   <Checkbox className="w-5 h-5" checked={isChecked} onChange={setIsChecked} />
                   <p className="inline-block font-normal text-gray-500 dark:text-gray-400">
-                    By creating an account means you agree to the{" "}
-                    <span className="text-gray-800 dark:text-white/90">Terms and Conditions,</span>{" "}
-                    and our <span className="text-gray-800 dark:text-white">Privacy Policy</span>
+                    {t("BY_CREATING_ACCOUNT") + " "}
+                    <Link href={"/terms"} className="text-gray-800 dark:text-white/90">
+                      {t("TERMS_AND_CONDITIONS")},
+                    </Link>{" "}
+                    {t("AND_OUR")}{" "}
+                    <Link href={"/privacy"} className="text-gray-800 dark:text-white">
+                      {t("PRIVACY_POLICY")}
+                    </Link>
                   </p>
                 </div>
                 <p className="text-xs text-error-500">{checkError}</p>
                 {/* <!-- Button --> */}
                 <div>
-                  <AuthSubmitButton>Sign Up</AuthSubmitButton>
+                  <AuthSubmitButton>{t("SIGN_UP")}</AuthSubmitButton>
                 </div>
               </div>
               <p className="text-xs text-error-500 mt-4">{error}</p>
@@ -207,12 +213,12 @@ export default function SignUpForm() {
 
             <div className="mt-5">
               <p className="text-sm font-normal text-center text-gray-700 dark:text-gray-400 sm:text-start">
-                Already have an account?
+                {t("ALREADY_HAVE_AN_ACCOUNT")}
                 <Link
                   href="/signin"
                   className="text-brand-500 hover:text-brand-600 dark:text-brand-400"
                 >
-                  Sign In
+                  {" " + t("SIGN_IN")}
                 </Link>
               </p>
             </div>

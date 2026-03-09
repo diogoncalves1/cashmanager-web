@@ -84,7 +84,7 @@ export function LanguageSwitcher({ variant = "default", className }: LanguageSwi
             <DropdownMenuItem
               key={lang.code}
               onClick={() => handleSelect(lang.code)}
-              className="flex items-center justify-between gap-3"
+              className="flex items-center justify-between gap-3 hover:text-black"
             >
               <div className="flex items-center gap-2">
                 {lang.flag}
@@ -116,7 +116,7 @@ export function LanguageSwitcher({ variant = "default", className }: LanguageSwi
             <DropdownMenuItem
               key={lang.code}
               onClick={() => handleSelect(lang.code)}
-              className="flex items-center justify-between gap-3"
+              className="flex items-center justify-between gap-3 hover:text-black"
             >
               <div className="flex items-center gap-2.5">
                 <span className="text-base leading-none">{lang.flag}</span>
@@ -154,7 +154,7 @@ export function LanguageSwitcher({ variant = "default", className }: LanguageSwi
           <DropdownMenuItem
             key={lang.code}
             onClick={() => handleSelect(lang.code)}
-            className="flex items-center justify-between gap-4 py-2"
+            className="flex items-center justify-between gap-4 py-2 hover:text-black"
           >
             <div className="flex items-center gap-3">
               <span className="text-lg leading-none">{lang.flag}</span>
