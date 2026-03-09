@@ -1,34 +1,32 @@
 import { Shield, UserCheck, Share2, Lock } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-
-const capabilities = [
-  {
-    icon: UserCheck,
-    title: "Friendship System",
-    description:
-      "Add trusted contacts and manage your financial circle with a familiar, social-media-style friend system.",
-  },
-  {
-    icon: Lock,
-    title: "Permission-Based Access",
-    description:
-      "Control exactly what each person can see or do. Grant view-only or participant access per account, debt, or goal.",
-  },
-  {
-    icon: Share2,
-    title: "Secure Sharing",
-    description:
-      "Share accounts, debts, goals, and portfolios with end-to-end encrypted connections. Your data never leaves your control.",
-  },
-  {
-    icon: Shield,
-    title: "Collaborative Tracking",
-    description:
-      "Work together on shared expenses, joint debts, or family savings goals with real-time updates for everyone.",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export function SocialSection() {
+  const t = useTranslations("LANDING");
+
+  const capabilities = [
+    {
+      icon: UserCheck,
+      title: t("FRIENDSHIP_SYSTEM"),
+      description: t("FRIENDSHIP_SYSTEM_TEXT"),
+    },
+    {
+      icon: Lock,
+      title: t("PERMISSION_BASED_ACCESS"),
+      description: t("PERMISSION_BASED_ACCESS_TEXT"),
+    },
+    {
+      icon: Share2,
+      title: t("SECURE_SHARING"),
+      description: t("SECURE_SHARING_TEXT"),
+    },
+    {
+      icon: Shield,
+      title: t("COLLABORATIVE_TRACKING"),
+      description: t("COLLABORATIVE_TRACKING_TEXT"),
+    },
+  ];
   return (
     <section id="social" className="py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -36,14 +34,13 @@ export function SocialSection() {
           {/* Left - Content */}
           <div>
             <p className="text-sm font-semibold uppercase tracking-widest text-accent">
-              Social Finance
+              {t("SOCIAL_FINANCE")}
             </p>
             <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Manage money together, not alone
+              {t("SOCIAL_FINANCE_TITLE")}
             </h2>
             <p className="mt-4 text-pretty leading-relaxed text-muted-foreground">
-              Financial management is better when shared. Invite friends, family, or partners to
-              collaborate on shared goals, track joint expenses, and hold each other accountable.
+              {t("SOCIAL_FINANCE_SECTION_TEXT")}
             </p>
 
             <div className="mt-10 grid gap-6 sm:grid-cols-2">
@@ -65,25 +62,25 @@ export function SocialSection() {
 
           {/* Right - Mock UI */}
           <div className="rounded-xl border border-border/50 bg-card/80 p-6 shadow-xl shadow-accent/5">
-            <p className="text-sm font-medium text-muted-foreground">Shared Account</p>
-            <h3 className="mt-1 text-lg font-semibold text-foreground">Family Savings</h3>
+            <p className="text-sm font-medium text-muted-foreground">{t("SHARED_GOAL")}</p>
+            <h3 className="mt-1 text-lg font-semibold text-foreground">{t("FAMILY_SAVINGS")}</h3>
             <div className="mt-4 flex items-center gap-2">
               <Badge
                 // variant="outline"
                 className="border-success/30 bg-success/10 text-success text-xs"
               >
-                Shared
+                {t("SHARED")}
               </Badge>
               <Badge color="success" className="text-xs bg-black/30">
-                3 members
+                3 {t("MEMBERS")}
               </Badge>
             </div>
 
             <div className="mt-6 space-y-3">
               {[
-                { name: "Alex J.", role: "Owner", initials: "AJ", color: "bg-accent" },
-                { name: "Sam W.", role: "Participant", initials: "SW", color: "bg-chart-2" },
-                { name: "Jordan L.", role: "View Only", initials: "JL", color: "bg-chart-3" },
+                { name: "Alex J.", role: t("CREATOR"), initials: "AJ", color: "bg-accent" },
+                { name: "Sam W.", role: t("ADMINISTRATOR"), initials: "SW", color: "bg-chart-2" },
+                { name: "Jordan L.", role: t("VIEWER"), initials: "JL", color: "bg-chart-3" },
               ].map((member) => (
                 <div
                   key={member.name}
@@ -104,13 +101,17 @@ export function SocialSection() {
 
             <div className="mt-6 rounded-lg border border-accent/20 bg-accent/5 px-4 py-3">
               <div className="flex items-center justify-between">
-                <span className="text-xs text-muted-foreground">Combined Balance</span>
-                <span className="text-lg font-bold text-foreground">$45,230.00</span>
+                <span className="text-xs text-muted-foreground">{t("COMBINED_BALANCE")}</span>
+                <span className="text-lg font-bold text-foreground">
+                  {t("COMBINED_BALANCE_AMOUNT")}
+                </span>
               </div>
               <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-muted">
                 <div className="h-full w-[82%] rounded-full bg-accent" />
               </div>
-              <p className="mt-1 text-xs text-muted-foreground">82% of $55,000 goal</p>
+              <p className="mt-1 text-xs text-muted-foreground">
+                82% {t("COMBINED_BALANCE_TOTAL")}
+              </p>
             </div>
           </div>
         </div>

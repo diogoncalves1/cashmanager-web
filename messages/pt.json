@@ -850,6 +850,130 @@
     "CONFIRM_PAYMENT_TEXT": "Tem certeza de que deseja confirmar este pagamento?"
   },
 
+  "LANDING": {
+    "META_TITLE": "Cash Manager",
+    "META_DESCRIPTION": "Faça a gestão financeira de forma eficiente com o Cash Manager. Acompanhe as suas transações e mantenha as suas finanças organizadas.",
+
+    "PRODUCT": "Produto",
+
+    "FEATURES": "Funcionalidades",
+    "HOW_IT_WORKS": "Como Funciona",
+    "SOCIAL": "Social",
+    "DASHBOARD": "Painel",
+    "LOG_IN": "Entrar",
+    "GET_STARTED_FREE": "Comece gratuitamente",
+
+    "NOW_IN_OPEN_BETA": "Agora em Beta Aberto",
+    "TAKE_FULL_CONTROL_FINANCIAL_LIFE": "Assuma o controle total da sua vida financeira.",
+
+    "TOTAL_BALANCE": "Saldo Total",
+    "TOTAL_BALANCE_AMOUNT": "142.850,75 €",
+
+    "ABOUT": "Sobre",
+    "PRIVACY_POLICY": "Políticas de Privacidade",
+    "TERMS_OF_SERVICE": "Termos e Condições",
+    "COOKIE_POLICY": "Políticas de Cookies",
+
+    "DASHBOARD_SECTION_TITLE": "Tudo de relance",
+    "DASHBOARD_SECTION_TEXT": "Um painel de controle poderoso que coloca todos os seus dados financeiros em destaque com visualizações intuitivas.",
+
+    "THIS_MONTH": "Este mês",
+    "ACTIVE_ACCOUNTS": "Contas Ativas",
+    "ACTIVE_USERS": "Utilizadores Ativos",
+    "LANGUAGES": "Idiomas",
+    "UPTIME": "Tenpo de atividade",
+    "MULTI_CURRENCY": "Multimoeda",
+    "MULTI_CURRENCY_TEXT": "Faça a gestão de contas, metas e dívidas em várias moedas com conversão automática e acompanhamento de câmbio em tempo real.",
+
+    "INSIGHTS_ANALYTICS": "Análise & Estatísticas",
+    "INSIGHTS_ANALYTICS_TEXT": "Painéis visuais com desagregação de receitas vs. despesas, evolução do saldo e análises de desempenho para o ajudar a tomar decisões financeiras mais informadas.",
+
+    "SALARY_DEPOSIT": "Depósito do salário",
+    "SALARY_DEPOSIT_AMOUNT": "+3.500,00 €",
+
+    "MORTGAGE_PAYMENT": "Prestação do crédito habitação",
+    "MORTGAGE_PAYMENT_AMOUNT": "-1.250,00 €",
+
+    "INVESTMENT_RETURN": "Retorno do investimento",
+    "INVESTMENT_RETURN_AMOUNT": "+420,50 €",
+
+    "ACTIVE_DEBTS": "Dívidas ativas",
+    "ACTIVE_DEBTS_AMOUNT": "18.240,00 €",
+    "GOALS_PROGRESS": "Progresso das Metas",
+
+    "SOCIAL_FINANCE_TITLE": "Gerir o dinheiro em conjunto, não sozinho",
+    "SOCIAL_FINANCE_SECTION_TEXT": "A gestão financeira é melhor quando partilhada. Convide amigos, familiares ou parceiros para colaborar em objetivos comuns, acompanhar despesas conjuntas e responsabilizar-se mutuamente.",
+
+    "SHARED_GOAL": "Meta Partilhada",
+    "FAMILY_SAVINGS": "Poupança familiar",
+    "CREATOR": "Criador",
+    "SHARED": "Partilhada",
+    "MEMBERS": "Membros",
+    "ADMINISTRATOR": "Administrador",
+    "VIEWER": "Visualizador",
+    "COMBINED_BALANCE": "Saldo combinado",
+    "COMBINED_BALANCE_AMOUNT": "45.230,00 €",
+    "COMBINED_BALANCE_TOTAL": "do objetivo de 55.000,00 €",
+
+    "FRIENDSHIP_SYSTEM": "Sistema de amizades",
+    "FRIENDSHIP_SYSTEM_TEXT": "Adicione contactos de confiança e gere o seu círculo financeiro com um sistema de amigos familiar, ao estilo das redes sociais.",
+    "PERMISSION_BASED_ACCESS": "Acesso baseado em permissões",
+    "PERMISSION_BASED_ACCESS_TEXT": "Controle exatamente o que cada pessoa pode ver ou fazer. Conceda acesso apenas para visualização ou como participante, por conta, dívida ou objetivo.",
+    "SECURE_SHARING": "Partilha segura",
+    "SECURE_SHARING_TEXT": "Partilhe contas, dívidas, objetivos e contas com ligações encriptadas de ponta a ponta. Os seus dados nunca saem do seu controlo.",
+    "COLLABORATIVE_TRACKING": "Acompanhamento colaborativo",
+    "COLLABORATIVE_TRACKING_TEXT": "Trabalhem juntos em despesas partilhadas, dívidas conjuntas ou objetivos de poupança familiar, com atualizações em tempo real para todos.",
+
+    "FOOTER_TEXT": "Assuma o controlo total da sua vida financeira com ferramentas poderosas para acompanhar, gerir e colaborar nas suas finanças.",
+
+    "AVAILABLE_CURRENCIES": "Moedas disponíveis",
+
+    "ACCOUNTS_TRANSACTIONS": "Contas & Transações",
+    "ACCOUNTS_TRANSACTIONS_TEXT": "Acompanhe várias contas e todas as transações relacionadas em um só lugar. Tenha uma visão clara do seu fluxo de caixa em bancos, poupanças e cartões de crédito.",
+    "DEBT_MANAGEMENT": "Gestão de Dívidas",
+    "DEBT_MANAGEMENT_TEXT": "Monitore as suas dívidas e o histórico de pagamentos com um rastreamento detalhado das transações. Visualize seu progresso na quitação e mantenha-se dentro do cronograma.",
+    "FINANCIAL_GOALS": "Metas Financeiras",
+    "FINANCIAL_GOALS_TEXT": "Crie metas de poupança e acompanhe suas contribuições com total visibilidade. Defina marcos e veja seu progresso crescer ao longo do tempo.",
+    "SOCIAL_FINANCE": "Finanças Sociais",
+    "SOCIAL_FINANCE_TEXT": "Compartilhe contas, dívidas e objetivos com amigos de confiança ou familiares utilizando um sistema de permissões baseado em amizade.",
+    "FEATURES_SECTION_TITLE": "Tudo o que precisa para gerir as suas finanças.",
+    "FEATURES_SECTION_TEXT": "Um conjunto abrangente de ferramentas projetado para lhe dar total visibilidade e controle sobre todos os aspectos da sua vida financeira.",
+
+    "HOW_IT_WORKS_TITLE": "Comece em três passos simples",
+    "HOW_IT_WORKS_STEP_ONE_TITLE": "Crie as suas contas, metas e dívidas",
+    "HOW_IT_WORKS_STEP_ONE_TEXT": "Configure as suas contas financeiras, defina as suas metas de poupança e organize as suas dívidas. Tudo começa com uma visão clara da sua situação atual.",
+    "HOW_IT_WORKS_STEP_TWO_TITLE": "Acompanhe as transações e as dívidas",
+    "HOW_IT_WORKS_STEP_TWO_TEXT": "Registe transações, monitore pagamentos de dívidas e veja os seus saldos a serem atualizados em tempo real. Visibilidade total de cada cêntimo.",
+    "HOW_IT_WORKS_STEP_THREE_TITLE": "Colabore e cresça com os amigos",
+    "HOW_IT_WORKS_STEP_THREE_TEXT": "Convide amigos e familiares para compartilhar contas ou objetivos. Trabalhem juntos para quitar dívidas em comum e comemorem conquistas financeiras.",
+
+    "EMERGENCY_FUND": "Fundo de Emergência",
+    "VACATION": "Férias",
+    "NEW_CAR": "Carro Novo",
+    "MAIN_CHECKING": "Conta Principal",
+    "CREDIT_CARD": "Cartão de crédito",
+    "SAVINGS": "Poupanças",
+    "ACTIVE": "Ativa",
+
+    "DEBTS": "Dívidas",
+    "HOUSE": "Casa",
+    "CAR_LOAN": "Empréstimo do Carro",
+    "PHONE": "Telemóvel",
+
+    "ACCOUNTS": "Contas",
+    "TRANSACTIONS": "Transações",
+    "GOALS": "Metas",
+    "IN_PROGRESS": "Em progresso",
+
+    "HERO_SECTION_TEXT": "Acompanhe contas, faça a gestão de dívidas e defina metas. Colabore com amigos e familiares por meio de uma partilha segura e baseada em permissões.",
+    "SEE_HOW_IT_WORKS": "Veja como funciona",
+
+    "ALL_RIGHTS_RESERVED": "Todos os direitos reservados",
+    "NO_CREDIT_CARD_REQUIRED": "Não é necessário cartão de crédito",
+    "CTA_SECTION_TITLE": "Comece a gerir as suas finanças hoje mesmo",
+    "CTA_SECTION_TEXT": "Junte-se a milhares de utilizadores que já assumiram o controle de sua vida financeira. Gratuito para começar, poderoso o suficiente para crescer consigo."
+  },
+
   "HOME": {
     "HOME": "Início",
     "MONTHLY_BALANCE": "Saldo Mensal",
