@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect, useMemo, useState } from "react";
 import { ApexOptions } from "apexcharts";
 import ChartTab from "../common/ChartTab";
@@ -102,40 +103,38 @@ export default function CashFlowChart() {
   }, []);
 
   useEffect(() => {
-    if (!data) return;
-
     const rev = { name: t("REVENUE"), data: [] as number[] };
     const exp = { name: t("EXPENSE"), data: [] as number[] };
-
-    const MONTHS: { [key: number]: string } = {
-      0: monthsT("JAN"),
-      1: monthsT("FEB"),
-      2: monthsT("MAR"),
-      3: monthsT("APR"),
-      4: monthsT("MAY"),
-      5: monthsT("JUN"),
-      6: monthsT("JUL"),
-      7: monthsT("AUG"),
-      8: monthsT("SEP"),
-      9: monthsT("OCT"),
-      10: monthsT("NOV"),
-      11: monthsT("DEC"),
-    };
-
     const months: string[] = [];
+    if (data) {
+      const MONTHS: { [key: number]: string } = {
+        0: monthsT("JAN"),
+        1: monthsT("FEB"),
+        2: monthsT("MAR"),
+        3: monthsT("APR"),
+        4: monthsT("MAY"),
+        5: monthsT("JUN"),
+        6: monthsT("JUL"),
+        7: monthsT("AUG"),
+        8: monthsT("SEP"),
+        9: monthsT("OCT"),
+        10: monthsT("NOV"),
+        11: monthsT("DEC"),
+      };
 
-    data?.data.charts.monthly.forEach(
-      (item: { month: string; revenues: string; expenses: string }) => {
-        months.push(
-          MONTHS[parseInt(String(item.month).split("-")[0]) - 1] +
-            " " +
-            String(item.month).split(" ")[1]
-        );
+      data?.data.charts.monthly.forEach(
+        (item: { month: string; revenues: string; expenses: string }) => {
+          months.push(
+            MONTHS[parseInt(String(item.month).split("-")[0]) - 1] +
+              " " +
+              String(item.month).split(" ")[1]
+          );
 
-        rev.data.push(parseFloat(item.revenues));
-        exp.data.push(parseFloat(item.expenses));
-      }
-    );
+          rev.data.push(parseFloat(item.revenues));
+          exp.data.push(parseFloat(item.expenses));
+        }
+      );
+    }
 
     const series = [rev, exp];
 
@@ -165,8 +164,6 @@ export default function CashFlowChart() {
       };
     });
   }, [data, monthsT, options, t]);
-
-  if (!data?.length) return <CashFlowChartLoading heigth={chartHeigth} />;
 
   if (isLoading) return <CashFlowChartLoading heigth={chartHeigth} />;
   if (error) return <CashFlowChartLoading heigth={chartHeigth} />;

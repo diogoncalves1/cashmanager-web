@@ -48,6 +48,8 @@ export interface Debt {
   status: DebtStatus;
   statusTranslated: string;
 
+  remainingAmount: string;
+
   monthsPaid: number;
   months: number;
   interestRate: number;

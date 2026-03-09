@@ -14,11 +14,7 @@ import {
   TrendingDown,
   Settings,
   DoorOpen,
-  Briefcase,
-  TrendingUp,
   Users,
-  Coins,
-  Calculator,
   LayoutDashboard,
 } from "lucide-react";
 import { onLogout } from "@/services/auth/service";
@@ -90,22 +86,22 @@ const AppSidebar: React.FC = () => {
           },
         ],
       },
-      {
-        icon: <Briefcase size={18} strokeWidth={2} />,
-        name: t("SIDEBAR_PORTFOLIOS"),
-        disable: true,
-        path: "/portfolio",
-      },
-      {
-        icon: <TrendingUp size={18} strokeWidth={2} />,
-        name: t("SIDEBAR_STOCKS"),
-        disable: true,
-        subItems: [
-          { name: t("SIDEBAR_STOCKS"), path: "/stocks", pro: false },
-          { name: t("SIDEBAR_STOCKS_SEARCH"), path: "/stocks/search", pro: false },
-          { name: t("SIDEBAR_STOCKS_WATCHLIST"), path: "/stocks/watchlist", pro: false },
-        ],
-      },
+      // {
+      //   icon: <Briefcase size={18} strokeWidth={2} />,
+      //   name: t("SIDEBAR_PORTFOLIOS"),
+      //   disable: true,
+      //   path: "/portfolio",
+      // },
+      // {
+      //   icon: <TrendingUp size={18} strokeWidth={2} />,
+      //   name: t("SIDEBAR_STOCKS"),
+      //   disable: true,
+      //   subItems: [
+      //     { name: t("SIDEBAR_STOCKS"), path: "/stocks", pro: false },
+      //     { name: t("SIDEBAR_STOCKS_SEARCH"), path: "/stocks/search", pro: false },
+      //     { name: t("SIDEBAR_STOCKS_WATCHLIST"), path: "/stocks/watchlist", pro: false },
+      //   ],
+      // },
     ],
     [t]
   );
@@ -118,20 +114,20 @@ const AppSidebar: React.FC = () => {
     },
   ];
 
-  const toolsItems: NavItem[] = [
-    {
-      icon: <Coins size={18} strokeWidth={2} />,
-      name: t("SIDEBAR_CURRENCY_CONVERTER"),
-      path: "/tools/currency-converter",
-      disable: true,
-    },
-    {
-      icon: <Calculator size={18} strokeWidth={2} />,
-      name: t("SIDEBAR_COMPOUND_INTEREST_CALCULATOR"),
-      path: "/tools/compound-interest-calculator",
-      disable: true,
-    },
-  ];
+  // const toolsItems: NavItem[] = [
+  //   // {
+  //   //   icon: <Coins size={18} strokeWidth={2} />,
+  //   //   name: t("SIDEBAR_CURRENCY_CONVERTER"),
+  //   //   path: "/tools/currency-converter",
+  //   //   disable: true,
+  //   // },
+  //   // {
+  //   //   icon: <Calculator size={18} strokeWidth={2} />,
+  //   //   name: t("SIDEBAR_COMPOUND_INTEREST_CALCULATOR"),
+  //   //   path: "/tools/compound-interest-calculator",
+  //   //   disable: true,
+  //   // },
+  // ];
   const settingsItems: NavItem[] = [
     {
       icon: <Settings size={18} strokeWidth={2} />,
@@ -407,7 +403,7 @@ const AppSidebar: React.FC = () => {
               {renderMenuItems(socialItems, "social")}
             </div>
 
-            <div className="">
+            {/* <div className="">
               <h2
                 className={`mb-4 sidebar-cat text-xs uppercase flex leading-[20px] text-gray-400 ${
                   !isExpanded && !isHovered ? "lg:justify-center" : "justify-start"
@@ -416,7 +412,7 @@ const AppSidebar: React.FC = () => {
                 {isExpanded || isHovered || isMobileOpen ? t("SIDEBAR_TOOLS") : <HorizontaLDots />}
               </h2>
               {renderMenuItems(toolsItems, "tools")}
-            </div>
+            </div> */}
 
             <div className="">
               <h2

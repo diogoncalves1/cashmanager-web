@@ -4,10 +4,14 @@ import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import DebtDetails from "./components/DebtDetails";
 import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Cash Manager | Debts",
-  description: "This is Next.js Home for TailAdmin Dashboard Template",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("DEBTS");
+
+  return {
+    title: t("META_TITLE"),
+    description: t("META_DESCRIPTION"),
+  };
+}
 
 type DebtDetailsPageParams = {
   params: Promise<{ id: string }>;

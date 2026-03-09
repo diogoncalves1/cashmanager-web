@@ -1,59 +1,26 @@
 import LoadingToast from "@/components/swal/LoadingToast";
 import { SwalToast } from "@/components/swal/SwalToast";
-import { MyPagination } from "@/components/transactions/TableContainer";
-import { Debt } from "@/models/debt";
-import { Table } from "@tanstack/react-table";
 import { useTranslations } from "next-intl";
 import Swal from "sweetalert2";
 
-export async function onDeleteDebt(
-  id: string,
-  t: ReturnType<typeof useTranslations>,
-  table?: Table<Debt>,
-  pagination?: MyPagination,
-  mutate?: () => void
-) {
-  const result = await Swal.fire({
-    title: t("YOU_SURE"),
-    text: t("YOU_DONT_REVERT_THIS"),
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: t("YES_DELETE"),
-    cancelButtonText: t("CANCEL"),
-  });
-  if (result.isConfirmed) {
-    LoadingToast({ title: t("DELETING_TITLE"), message: t("DELETING_MESSAGE") });
-    try {
-      const res = await fetch(`/api/debts/${id}`, {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-      });
+export async function onDeleteDebt(id: string) {
+  try {
+    const res = await fetch(`/api/debts/${id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    });
 
-      const data = await res.json();
+    const data = await res.json();
 
-      if (!res.ok) throw new Error(data.message);
+    if (!res.ok) throw new Error(data.message);
 
-      if (mutate) await mutate();
-
-      if (data.success) {
-        if (table) {
-          if (table.getRowCount() == 0 && pagination) pagination.pageIndex--;
-        }
-        SwalToast({ message: data.message, icon: "success" });
-        return 1;
-      }
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        SwalToast({ message: err.message, icon: "error" });
-      } else {
-        SwalToast({ message: String(err), icon: "error" });
-      }
-      return 0;
+    return { message: data.message, success: true };
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      return { message: err.message, success: false };
     }
+    return { message: String(err), success: false };
   }
-  return 0;
 }
 
 export async function onResetDebt(id: string, t: ReturnType<typeof useTranslations>) {

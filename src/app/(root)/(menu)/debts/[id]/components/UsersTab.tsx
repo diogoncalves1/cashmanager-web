@@ -19,13 +19,25 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import InviteMemberButton from "@/components/ui/button/InviteMemberButton";
+import { useTranslations } from "next-intl";
+import ChangeMemberRoleDialog from "@/components/invitations/ChangeMemberRoleDialog";
+import RemoveMemberDialog from "@/components/invitations/RemoveMemberDialog";
+import { useState } from "react";
+import { useDebtDetailsContext } from "../context/DebtDetailsContext";
 
 export default function UsersTab({ debt }: { debt: Debt }) {
+  const t = useTranslations("DEBTS");
+  const { setLoadCounter } = useDebtDetailsContext();
+
+  const [removeMember, setRemoveMember] = useState(false);
+  const [changeRole, setChageRole] = useState(false);
+  const [selectedId, setSelectedId] = useState<string>("");
+
   return (
     <div>
       <TabsContent value="users" className="space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-foreground">Associated Users</h2>
+          <h2 className="text-lg font-semibold text-foreground">{t("ASSOCIATED_USERS")}</h2>
           <InviteMemberButton type="debts" id={debt.id} />
         </div>
 
@@ -33,9 +45,11 @@ export default function UsersTab({ debt }: { debt: Debt }) {
           <Table>
             <TableHeader>
               <TableRow className="hover:bg-transparent border-border">
-                <TableHead className="text-muted-foreground font-medium">User</TableHead>
-                <TableHead className="text-muted-foreground font-medium">Role</TableHead>
-                <TableHead className="text-muted-foreground font-medium">Contribution</TableHead>
+                <TableHead className="text-muted-foreground font-medium">{t("USER")}</TableHead>
+                <TableHead className="text-muted-foreground font-medium">{t("ROLE")}</TableHead>
+                <TableHead className="text-muted-foreground font-medium">
+                  {t("CONTRIBUTION")}
+                </TableHead>
                 <TableHead className="w-[50px]"></TableHead>
               </TableRow>
             </TableHeader>
@@ -93,12 +107,22 @@ export default function UsersTab({ debt }: { debt: Debt }) {
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end" className="w-40 bg-card border-border">
-                          <DropdownMenuItem className="cursor-pointer">
-                            Change Role
+                          <DropdownMenuItem
+                            onClick={() => {
+                              setSelectedId(user.id);
+                            }}
+                            className="cursor-pointer"
+                          >
+                            {t("CHANGE_ROLE")}
                           </DropdownMenuItem>
                           <DropdownMenuSeparator />
-                          <DropdownMenuItem className="cursor-pointer text-destructive focus:text-destructive">
-                            Remove User
+                          <DropdownMenuItem
+                            onClick={() => {
+                              setSelectedId(user.id);
+                            }}
+                            className="cursor-pointer text-destructive focus:text-destructive"
+                          >
+                            {t("REMOVE_USER")}
                           </DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
@@ -110,6 +134,24 @@ export default function UsersTab({ debt }: { debt: Debt }) {
           </Table>
         </div>
       </TabsContent>
+
+      <ChangeMemberRoleDialog
+        id={debt?.id}
+        type="debts"
+        userId={selectedId}
+        isOpen={changeRole}
+        setIsOpen={setChageRole}
+        mutate={() => setLoadCounter((prev) => prev + 1)}
+      />
+
+      <RemoveMemberDialog
+        id={debt.id}
+        type="debts"
+        userId={selectedId}
+        isOpen={removeMember}
+        setIsOpen={setRemoveMember}
+        mutate={() => setLoadCounter((prev) => prev + 1)}
+      />
     </div>
   );
 }
