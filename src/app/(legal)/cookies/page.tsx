@@ -210,7 +210,7 @@ export default function CookiePolicyPage() {
           </table>
         </div>
 
-        <h3 className="text-lg font-medium text-foreground mt-6 mb-3">{t("SECTION_2_4_TITLE")}</h3>
+        {/* <h3 className="text-lg font-medium text-foreground mt-6 mb-3">{t("SECTION_2_4_TITLE")}</h3>
         <p className="text-muted-foreground leading-relaxed">{t("SECTION_2_4_TEXT")}</p>
         <div className="mt-4 overflow-x-auto">
           <table className="min-w-full border border-border rounded-lg">
@@ -253,7 +253,7 @@ export default function CookiePolicyPage() {
               </tr>
             </tbody>
           </table>
-        </div>
+        </div> */}
 
         <h2 className="text-xl font-semibold text-foreground mt-10 mb-4">3. Third-Party Cookies</h2>
         <p className="text-muted-foreground leading-relaxed">
