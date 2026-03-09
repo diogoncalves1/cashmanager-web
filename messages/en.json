@@ -1318,17 +1318,17 @@
 
   "SIGN_UP": {
     "META_TITLE": "Cash Manager | Sign Up",
-    "META_DESCRIPTION": "Create your Cash Manager account to start organizing your finances.",
+    "META_DESCRIPTION": "Sign up for Cash Manager to start organizing your finances.",
 
     "SIGN_UP": "Sign Up",
     "SIGN_UP_TEXT": "Enter your email and password to sign up!",
     "USERNAME": "Username",
     "USERNAME_PLACEHOLDER": "Enter your username",
     "USERNAME_ALREADY_REGISTED": "Username already in use",
-    "FIRST_NAME": "First name",
-    "FIRST_NAME_PLACEHOLDER": "First name",
-    "LAST_NAME": "Last name",
-    "LAST_NAME_PLACEHOLDER": "Last name",
+    "FIRST_NAME": "First Name",
+    "FIRST_NAME_PLACEHOLDER": "First Name",
+    "LAST_NAME": "Last Name",
+    "LAST_NAME_PLACEHOLDER": "Last Name",
     "PASSWORD": "Password",
     "PASSWORD_PLACEHOLDER": "Enter a password",
     "EMAIL_PLACEHOLDER": "Enter your email",
@@ -1342,7 +1342,31 @@
     "ALREADY_HAVE_AN_ACCOUNT": "Already have an account?",
     "ACCEPT_TERMS": "You must accept the terms and conditions to sign up.",
 
-    "SIGN_IN": "Sign In"
+    "SIGN_IN": "Sign In",
+
+    "ERROR_ON_SIGNUP": "Error signing up",
+    "SIGN_UP_TITLE": "Signing Up",
+    "SIGN_UP_WAIT": "Please wait while we create your account"
+  },
+
+  "SIGN_IN": {
+    "META_TITLE": "Cash Manager | Sign In",
+    "META_DESCRIPTION": "Sign in to your Cash Manager account to get back to managing your finances.",
+
+    "SIGN_IN": "Sign In",
+    "SIGN_IN_TEXT": "Enter your email and password to sign in!",
+    "SIGN_UP": "Sign Up",
+
+    "KEEP_ME_LOGGED_IN": "Keep me logged in",
+    "FORGOT_PASSWORD": "Forgot your password?",
+    "DONT_HAVE_AN_ACCOUNT": "Don't have an account?",
+
+    "ERROR_ON_SIGN_IN": "Error signing in",
+    "PASSWORD": "Password",
+    "EMAIL_PLACEHOLDER": "Enter your email",
+    "PASSWORD_PLACEHOLDER": "Enter a password",
+    "SIGN_IN_TITLE": "Signing In",
+    "SIGN_IN_WAIT": "Please wait while we verify your credentials"
   },
 
   "HOME": {
@@ -1389,11 +1413,6 @@
     "LOGOUT": "Logging out…",
     "LOGOUT_WAIT": "Please wait while we end your session",
     "LOGOUT_ERROR": "We couldn't end your session. Please try again."
-  },
-
-  "SIGNIN": {
-    "SIGNIN": "Signing in…",
-    "SIGNIN_WAIT": "Please wait while we verify your credentials"
   },
 
   "INVITATION": {

@@ -17,14 +17,14 @@ export default function SignInForm() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
-  const t = useTranslations("SIGNIN");
+  const t = useTranslations("SIGN_IN");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
     try {
-      const toast = LoadingToast({ title: t("SIGNIN"), message: t("SIGNIN_WAIT") });
+      const toast = LoadingToast({ title: t("SIGN_IN_TITLE"), message: t("SIGN_IN_WAIT") });
 
       const res = await fetch("/api/auth/login", {
         method: "POST",
@@ -38,7 +38,7 @@ export default function SignInForm() {
 
       toast.close();
       if (!res.ok) {
-        setError("Credenciais inválidas");
+        setError(t("ERROR_ON_SIGN_IN"));
         return;
       }
 
@@ -46,7 +46,7 @@ export default function SignInForm() {
       router.refresh();
     } catch (err) {
       console.error(err);
-      setError("Credenciais inválidas");
+      setError(t("ERROR_ON_SIGN_IN"));
     }
   };
 
@@ -56,11 +56,9 @@ export default function SignInForm() {
         <div>
           <div className="mb-5 sm:mb-8">
             <h1 className="mb-2 font-semibold text-gray-800 text-title-sm dark:text-white/90 sm:text-title-md">
-              Sign In
+              {t("SIGN_IN")}
             </h1>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Enter your email and password to sign in!
-            </p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">{t("SIGN_IN_TEXT")}</p>
           </div>
           <div>
             <form onSubmit={handleSubmit}>
@@ -70,7 +68,7 @@ export default function SignInForm() {
                     Email <span className="text-error-500">*</span>{" "}
                   </Label>
                   <Input
-                    placeholder="info@gmail.com"
+                    placeholder={t("EMAIL_PLACEHOLDER")}
                     type="email"
                     defaultValue={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -78,14 +76,14 @@ export default function SignInForm() {
                 </div>
                 <div>
                   <Label>
-                    Password <span className="text-error-500">*</span>{" "}
+                    {t("PASSWORD")} <span className="text-error-500">*</span>{" "}
                   </Label>
                   <div className="relative">
                     <Input
                       type={showPassword ? "text" : "password"}
                       defaultValue={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      placeholder="Enter your password"
+                      placeholder={t("PASSWORD_PLACEHOLDER")}
                     />
                     <span
                       onClick={() => setShowPassword(!showPassword)}
@@ -103,33 +101,33 @@ export default function SignInForm() {
                   <div className="flex items-center gap-3">
                     <Checkbox checked={isChecked} onChange={setIsChecked} />
                     <span className="block font-normal text-gray-700 text-theme-sm dark:text-gray-400">
-                      Keep me logged in
+                      {t("KEEP_ME_LOGGED_IN")}
                     </span>
                   </div>
                   <Link
                     href="/reset-password"
                     className="text-sm text-brand-500 hover:text-brand-600 dark:text-brand-400"
                   >
-                    Forgot password?
+                    {t("FORGOT_PASSWORD")}
                   </Link>
                 </div>
 
                 {error && <p className="text-error-500">{error}</p>}
 
                 <div>
-                  <AuthSubmitButton>Sign In</AuthSubmitButton>
+                  <AuthSubmitButton>{t("SIGN_IN")}</AuthSubmitButton>
                 </div>
               </div>
             </form>
 
             <div className="mt-5">
               <p className="text-sm font-normal text-center text-gray-700 dark:text-gray-400 sm:text-start">
-                Don&apos;t have an account? {""}
+                {t("DONT_HAVE_AN_ACCOUNT")} {""}
                 <Link
                   href="/signup"
                   className="text-brand-500 hover:text-brand-600 dark:text-brand-400"
                 >
-                  Sign Up
+                  {t("SIGN_UP")}
                 </Link>
               </p>
             </div>

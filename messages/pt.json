@@ -1342,7 +1342,31 @@
     "ALREADY_HAVE_AN_ACCOUNT": "Já tem uma conta?",
     "ACCEPT_TERMS": "Tem de aceitar os termos e condições para se registar.",
 
-    "SIGN_IN": "Entrar"
+    "SIGN_IN": "Entrar",
+
+    "ERROR_ON_SIGNUP": "Erro ao registar conta",
+    "SIGN_UP_TITLE": "A registar",
+    "SIGN_UP_WAIT": "Aguarde enquanto registamos a sua conta"
+  },
+
+  "SIGN_IN": {
+    "META_TITLE": "Cash Manager | Entrar",
+    "META_DESCRIPTION": "Entre novamente na sua conta no Cash Manager para voltar a organizar as suas finanças.",
+
+    "SIGN_IN": "Entrar",
+    "SIGN_IN_TEXT": "Introduza o seu e-mail e palavra-passe para iniciar sessão!",
+    "SIGN_UP": "Registar",
+
+    "KEEP_ME_LOGGED_IN": "Manter sessão iniciada",
+    "FORGOT_PASSWORD": "Esqueceu a palavra-passe?",
+    "DONT_HAVE_AN_ACCOUNT": "Ainda não tem conta?",
+
+    "ERROR_ON_SIGN_IN": "Erro ao registar conta",
+    "PASSWORD": "Palavra-passe",
+    "EMAIL_PLACEHOLDER": "Introduza o seu email",
+    "PASSWORD_PLACEHOLDER": "Introduza uma palavra-passe",
+    "SIGN_IN_TITLE": "A entrar",
+    "SIGN_IN_WAIT": "Aguarde enquanto verificamos as suas credenciais"
   },
 
   "HOME": {
@@ -1389,11 +1413,6 @@
     "LOGOUT": "Saindo…",
     "LOGOUT_WAIT": "Aguarde enquanto encerramos sua sessão",
     "LOGOUT_ERROR": "Não foi possível encerrar sua sessão. Tente novamente."
-  },
-
-  "SIGNIN": {
-    "SIGNIN": "Entrando…",
-    "SIGNIN_WAIT": "Aguarde enquanto verificamos suas credenciais"
   },
 
   "MONTHS": {

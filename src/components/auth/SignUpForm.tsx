@@ -54,7 +54,7 @@ export default function SignUpForm() {
         return;
       }
 
-      const toast = LoadingToast({ title: t("SIGNUP"), message: t("SIGNUP_WAIT") });
+      const toast = LoadingToast({ title: t("SIGN_UP_TITLE"), message: t("SIGN_UP_WAIT") });
 
       const res = await fetch("/api/auth/register", {
         method: "POST",
