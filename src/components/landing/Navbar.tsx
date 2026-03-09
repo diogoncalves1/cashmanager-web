@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { LanguageSwitcher } from "../ui/LanguageSwitcher";
 
 export function LandingNavbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -41,6 +42,7 @@ export function LandingNavbar() {
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
+          <LanguageSwitcher variant="compact" />
           <Button variant="ghost" size="sm" asChild>
             <Link href="/signin">{t("LOG_IN")}</Link>
           </Button>
