@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Terms of Service - DebtFlow",
-  description: "Read the terms and conditions for using the DebtFlow platform.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("TERMS");
+
+  return {
+    title: t("META_TITLE"),
+    description: t("META_DESCRIPTION"),
+  };
+}
 
 export default function TermsOfServicePage() {
   const t = useTranslations("TERMS");
