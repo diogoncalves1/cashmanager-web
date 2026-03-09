@@ -23,6 +23,8 @@ export function Footer() {
     //     { label: "Contact", href: "#" },
     //   ],
     // },
+  ];
+  const legalGroups = [
     {
       title: "Legal",
       links: [
@@ -82,6 +84,23 @@ export function Footer() {
                     >
                       {link.label}
                     </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+          {legalGroups.map((group) => (
+            <div key={group.title}>
+              <p className="text-sm font-semibold text-foreground">{group.title}</p>
+              <ul className="mt-4 space-y-3">
+                {group.links.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      {link.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
