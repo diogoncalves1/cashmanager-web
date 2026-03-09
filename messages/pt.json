@@ -192,6 +192,103 @@
     "SECTION_16_EMAIL": "Email: geral@cashmanager.pt"
   },
 
+  "PRIVACY": {
+    "HEADING": "Política de Privacidade",
+    "META_TITLE": "Cash Manager | Política de Privacidade",
+    "META_DESCRIPTION": "Saiba como o Cash Manager recolhe, utiliza e protege as suas informações pessoais.",
+    "LAST_UPDATED": "Última atualização: 7 de março de 2026",
+
+    "INTRO": "Esta Política de Privacidade descreve como as suas informações pessoais são recolhidas, utilizadas e compartilhadas quando você visita ou utiliza os nossos serviços. Estamos comprometidos em proteger a sua privacidade e garantir que tenha uma experiência positiva na nossa plataforma.",
+
+    "SECTION_1_TITLE": "1. Informações que Recolhemos",
+    "SECTION_1_1_TITLE": "1.1 Informações que Você Fornece",
+    "SECTION_1_1_TEXT": "Recolhemos informações que você fornece diretamente, incluindo:",
+    "SECTION_1_1_ITEM_1": "Informações da Conta: Nome, endereço de e-mail, senha e detalhes do perfil quando cria uma conta.",
+    "SECTION_1_1_ITEM_2": "Dados Financeiros: Registos de transações, saldos de contas, informações de dívida e histórico de pagamentos que você escolhe introduzir ou conectar.",
+    "SECTION_1_1_ITEM_3": "Comunicações: Informações que você fornece ao contactar a nossa equipa de suporte ou participar em pesquisas.",
+    "SECTION_1_1_ITEM_4": "Informações de Pagamento: Detalhes de faturação e informações de método de pagamento ao subscrever serviços premium.",
+
+    "SECTION_1_2_TITLE": "1.2 Informações Recolhidas Automaticamente",
+    "SECTION_1_2_TEXT": "Quando acessa os nossos serviços, recolhemos automaticamente:",
+    "SECTION_1_2_ITEM_1": "Informações do Dispositivo: Tipo de navegador, sistema operativo, identificadores de dispositivo e endereço IP.",
+    "SECTION_1_2_ITEM_2": "Dados de Utilização: Páginas visualizadas, recursos utilizados, tempo gasto na plataforma e padrões de interação.",
+    "SECTION_1_2_ITEM_3": "Cookies e Tecnologias Similares: Informações recolhidas através de cookies, web beacons e tecnologias de rastreamento similares (consulte a nossa Política de Cookies para mais detalhes).",
+
+    "SECTION_2_TITLE": "2. Como Utilizamos as Suas Informações",
+    "SECTION_2_TEXT": "Utilizamos as informações recolhidas para os seguintes fins:",
+    "SECTION_2_ITEM_1": "Fornecer, manter e melhorar os nossos serviços",
+    "SECTION_2_ITEM_2": "Processar transações e enviar informações relacionadas",
+    "SECTION_2_ITEM_3": "Enviar avisos técnicos, atualizações, alertas de segurança e mensagens administrativas",
+    "SECTION_2_ITEM_4": "Responder aos seus comentários, perguntas e pedidos de serviço ao cliente",
+    "SECTION_2_ITEM_5": "Analisar padrões de utilização para melhorar a experiência do utilizador",
+    "SECTION_2_ITEM_6": "Detetar, prevenir e resolver problemas técnicos e atividades fraudulentas",
+    "SECTION_2_ITEM_7": "Cumprir obrigações legais e proteger os nossos direitos",
+
+    "SECTION_3_TITLE": "3. Partilha e Divulgação de Informações",
+    "SECTION_3_TEXT": "Não vendemos as suas informações pessoais. Podemos partilhar as suas informações nas seguintes circunstâncias:",
+    "SECTION_3_ITEM_1": "Prestadores de Serviços: Com terceiros que realizam serviços em nosso nome, como processamento de pagamentos, análise de dados e suporte ao cliente.",
+    "SECTION_3_ITEM_2": "Transferências de Negócios: Em conexão com uma fusão, aquisição ou venda de ativos, as suas informações podem ser transferidas como parte dessa transação.",
+    "SECTION_3_ITEM_3": "Requisitos Legais: Quando obrigado por lei, intimação ou outro processo legal, ou para proteger os nossos direitos, privacidade, segurança ou propriedade.",
+    "SECTION_3_ITEM_4": "Com o Seu Consentimento: Quando concedeu permissão explícita para partilhar as suas informações.",
+
+    "SECTION_4_TITLE": "4. Segurança de Dados",
+    "SECTION_4_TEXT": "Implementamos medidas técnicas e organizacionais apropriadas para proteger as suas informações pessoais contra acesso não autorizado, alteração, divulgação ou destruição. Estas medidas incluem:",
+    "SECTION_4_ITEM_1": "Encriptação de dados em trânsito e em repouso usando protocolos de padrão industrial",
+    "SECTION_4_ITEM_2": "Avaliações de segurança regulares e testes de penetração",
+    "SECTION_4_ITEM_3": "Controlos de acesso que limitam o acesso dos colaboradores aos dados pessoais",
+    "SECTION_4_ITEM_4": "Centros de dados seguros com medidas de segurança física",
+
+    "SECTION_5_TITLE": "5. Retenção de Dados",
+    "SECTION_5_TEXT": "Retemos as suas informações pessoais pelo tempo necessário para cumprir os fins descritos nesta Política de Privacidade, a menos que um período de retenção mais longo seja exigido ou permitido por lei. Ao determinar períodos de retenção, consideramos a natureza das informações, riscos potenciais e requisitos legais.",
+
+    "SECTION_6_TITLE": "6. Os Seus Direitos e Opções",
+
+    "SECTION_6_1_TITLE": "6.1 Acesso e Portabilidade",
+    "SECTION_6_1_TEXT": "Tem o direito de solicitar acesso às informações pessoais que temos sobre si e de receber uma cópia dos seus dados num formato estruturado e comumente utilizado.",
+
+    "SECTION_6_2_TITLE": "6.2 Correção e Eliminação",
+    "SECTION_6_2_TEXT": "Pode atualizar, corrigir ou solicitar a eliminação das suas informações pessoais acedendo às definições da sua conta ou contactando-nos diretamente.",
+
+    "SECTION_6_3_TITLE": "6.3 Direitos de Exclusão",
+    "SECTION_6_3_TEXT": "Pode recusar receber comunicações promocionais seguindo as instruções de cancelamento nessas mensagens ou atualizando as suas preferências de notificação.",
+
+    "SECTION_6_4_TITLE": "6.4 Direitos RGPD (Utilizadores Europeus)",
+    "SECTION_6_4_TEXT": "Se estiver localizado no Espaço Económico Europeu (EEE), tem direitos adicionais sob o Regulamento Geral de Proteção de Dados (RGPD), incluindo:",
+    "SECTION_6_4_ITEM_1": "Direito de se opor ao processamento dos seus dados pessoais",
+    "SECTION_6_4_ITEM_2": "Direito de restringir o processamento",
+    "SECTION_6_4_ITEM_3": "Direito de retirar o consentimento a qualquer momento",
+    "SECTION_6_4_ITEM_4": "Direito de apresentar uma reclamação junto de uma autoridade supervisora",
+
+    "SECTION_6_5_TITLE": "6.5 Direitos CCPA (Residentes da Califórnia)",
+    "SECTION_6_5_TEXT": "Os residentes da Califórnia têm direitos específicos sob a Lei de Privacidade do Consumidor da Califórnia (CCPA), incluindo:",
+    "SECTION_6_5_ITEM_1": "Direito de saber que informações pessoais são recolhidas e como são utilizadas",
+    "SECTION_6_5_ITEM_2": "Direito de eliminar informações pessoais",
+    "SECTION_6_5_ITEM_3": "Direito de optar por não participar na venda de informações pessoais (nota: não vendemos informações pessoais)",
+    "SECTION_6_5_ITEM_4": "Direito de não sofrer discriminação pelo exercício dos seus direitos de privacidade",
+
+    "SECTION_7_TITLE": "7. Cookies e Tecnologias de Rastreamento",
+    "SECTION_7_TEXT": "Utilizamos cookies e tecnologias de rastreamento similares para recolher e armazenar informações sobre as suas interações com os nossos serviços. Para informações detalhadas sobre o nosso uso de cookies e como gerir as suas preferências, consulte a nossa Política de Cookies.",
+    "COOKIE_POLICY_LINK": "Política de Cookies",
+
+    "SECTION_8_TITLE": "8. Serviços de Terceiros",
+    "SECTION_8_TEXT": "Os nossos serviços podem conter links para sites de terceiros ou integrar com serviços de terceiros. Esta Política de Privacidade não se aplica a esses terceiros, e encorajamo-lo a rever as suas políticas de privacidade antes de fornecer informações pessoais.",
+
+    "SECTION_9_TITLE": "9. Transferências Internacionais de Dados",
+    "SECTION_9_TEXT": "As suas informações podem ser transferidas e processadas em países diferentes do seu país de residência. Garantimos que as salvaguardas apropriadas estão em vigor para proteger as suas informações de acordo com esta Política de Privacidade e as leis de proteção de dados aplicáveis.",
+
+    "SECTION_10_TITLE": "10. Privacidade de Menores",
+    "SECTION_10_TEXT": "Os nossos serviços não são direcionados a indivíduos menores de 16 anos. Não recolhemos intencionalmente informações pessoais de menores. Se tomarmos conhecimento de que um menor forneceu informações pessoais, tomaremos medidas para eliminar essas informações.",
+
+    "SECTION_11_TITLE": "11. Alterações a Esta Política de Privacidade",
+    "SECTION_11_TEXT": "Podemos atualizar esta Política de Privacidade periodicamente para refletir alterações nas nossas práticas ou por outras razões operacionais, legais ou regulatórias. Notificaremos de quaisquer alterações materiais publicando a nova Política de Privacidade nesta página e atualizando a data de \"Última atualização\".",
+
+    "SECTION_12_TITLE": "12. Contacte-nos",
+    "SECTION_12_TEXT": "Se tiver alguma dúvida sobre esta Política de Privacidade ou sobre as nossas práticas de privacidade, contacte-nos em:",
+    "SECTION_12_TEAM": "Equipa de Privacidade",
+    "SECTION_12_EMAIL": "Email: privacy@[yourdomain].com",
+    "SECTION_12_ADDRESS": "Endereço: [O Seu Endereço de Empresa]"
+  },
+
   "ACCOUNTS": {
     "META_TITLE": "Cash Manager | Contas",
     "META_DESCRIPTION": "Gerencie suas contas financeiras de forma eficiente com o Cash Manager. Acompanhe suas receitas, despesas e mantenha suas finanças organizadas.",
