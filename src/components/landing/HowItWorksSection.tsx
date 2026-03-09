@@ -1,39 +1,38 @@
 import { UserPlus, ArrowRightLeft, TrendingUp } from "lucide-react";
-
-const steps = [
-  {
-    step: "01",
-    icon: UserPlus,
-    title: "Create your accounts and goals",
-    description:
-      "Set up your financial accounts, define your savings goals, and organize your debts. Everything starts with a clear picture of where you stand.",
-  },
-  {
-    step: "02",
-    icon: ArrowRightLeft,
-    title: "Track transactions and debts",
-    description:
-      "Log transactions, monitor debt payments, and watch your balances update in real time. Full visibility into every dollar.",
-  },
-  {
-    step: "03",
-    icon: TrendingUp,
-    title: "Collaborate and grow with friends",
-    description:
-      "Invite friends and family to share accounts or goals. Work together on shared debts and celebrate financial milestones.",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export function HowItWorksSection() {
+  const t = useTranslations("LANDING");
+
+  const steps = [
+    {
+      step: "01",
+      icon: UserPlus,
+      title: t("HOW_IT_WORKS_STEP_ONE_TITLE"),
+      description: t("HOW_IT_WORKS_STEP_ONE_TEXT"),
+    },
+    {
+      step: "02",
+      icon: ArrowRightLeft,
+      title: t("HOW_IT_WORKS_STEP_TWO_TITLE"),
+      description: t("HOW_IT_WORKS_STEP_TWO_TEXT"),
+    },
+    {
+      step: "03",
+      icon: TrendingUp,
+      title: t("HOW_IT_WORKS_STEP_THREE_TITLE"),
+      description: t("HOW_IT_WORKS_STEP_THREE_TEXT"),
+    },
+  ];
   return (
     <section id="how-it-works" className="border-y border-border/40 bg-card/30 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-accent">
-            How It Works
+            {t("HOW_IT_WORKS")}
           </p>
           <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Get started in three simple steps
+            {t("HOW_IT_WORKS_TITLE")}
           </h2>
         </div>
 

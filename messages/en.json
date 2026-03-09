@@ -866,6 +866,130 @@
     "CONFIRM_PAYMENT_TEXT": "Are you sure you want to confirm this payment?"
   },
 
+  "LANDING": {
+    "META_TITLE": "Cash Manager",
+    "META_DESCRIPTION": "Manage your finances efficiently with Cash Manager. Track your transactions and keep your finances organized.",
+
+    "PRODUCT": "Product",
+
+    "FEATURES": "Features",
+    "HOW_IT_WORKS": "How It Works",
+    "SOCIAL": "Social",
+    "DASHBOARD": "Dashboard",
+    "LOG_IN": "Log In",
+    "GET_STARTED_FREE": "Get Started Free",
+
+    "NOW_IN_OPEN_BETA": "Now in Open Beta",
+    "TAKE_FULL_CONTROL_FINANCIAL_LIFE": "Take full control of your financial life.",
+
+    "TOTAL_BALANCE": "Total Balance",
+    "TOTAL_BALANCE_AMOUNT": "€142,850.75",
+
+    "ABOUT": "About",
+    "PRIVACY_POLICY": "Privacy Policy",
+    "TERMS_OF_SERVICE": "Terms of Service",
+    "COOKIE_POLICY": "Cookie Policy",
+
+    "DASHBOARD_SECTION_TITLE": "Everything at a Glance",
+    "DASHBOARD_SECTION_TEXT": "A powerful control panel that highlights all your financial data with intuitive visualizations.",
+
+    "THIS_MONTH": "This Month",
+    "ACTIVE_ACCOUNTS": "Active Accounts",
+    "ACTIVE_USERS": "Active Users",
+    "LANGUAGES": "Languages",
+    "UPTIME": "Uptime",
+    "MULTI_CURRENCY": "Multi-Currency",
+    "MULTI_CURRENCY_TEXT": "Manage accounts, goals, and debts in multiple currencies with automatic conversion and real-time exchange tracking.",
+
+    "INSIGHTS_ANALYTICS": "Insights & Analytics",
+    "INSIGHTS_ANALYTICS_TEXT": "Visual dashboards with income vs expense breakdowns, balance evolution, and performance insights to help you make smarter financial decisions.",
+
+    "SALARY_DEPOSIT": "Salary Deposit",
+    "SALARY_DEPOSIT_AMOUNT": "+€3,500.00",
+
+    "MORTGAGE_PAYMENT": "Mortgage Payment",
+    "MORTGAGE_PAYMENT_AMOUNT": "-€1,250.00",
+
+    "INVESTMENT_RETURN": "Investment Return",
+    "INVESTMENT_RETURN_AMOUNT": "+€420.50",
+
+    "ACTIVE_DEBTS": "Active Debts",
+    "ACTIVE_DEBTS_AMOUNT": "€18,240.00",
+    "GOALS_PROGRESS": "Goals Progress",
+
+    "SOCIAL_FINANCE_TITLE": "Manage Money Together, Not Alone",
+    "SOCIAL_FINANCE_SECTION_TEXT": "Financial management is better when shared. Invite friends, family, or partners to collaborate on shared goals, track joint expenses, and hold each other accountable.",
+
+    "SHARED_GOAL": "Shared Goal",
+    "FAMILY_SAVINGS": "Family Savings",
+    "CREATOR": "Creator",
+    "SHARED": "Shared",
+    "MEMBERS": "Members",
+    "ADMINISTRATOR": "Administrator",
+    "VIEWER": "Viewer",
+    "COMBINED_BALANCE": "Combined Balance",
+    "COMBINED_BALANCE_AMOUNT": "€45,230.00",
+    "COMBINED_BALANCE_TOTAL": "of $55,000 goal",
+
+    "FRIENDSHIP_SYSTEM": "Friendship System",
+    "FRIENDSHIP_SYSTEM_TEXT": "Add trusted contacts and manage your financial circle with a familiar, social-media-style friend system.",
+    "PERMISSION_BASED_ACCESS": "Permission-Based Access",
+    "PERMISSION_BASED_ACCESS_TEXT": "Control exactly what each person can see or do. Grant view-only or participant access per account, debt, or goal.",
+    "SECURE_SHARING": "Secure Sharing",
+    "SECURE_SHARING_TEXT": "Share accounts, debts, goals, and portfolios with end-to-end encrypted connections. Your data never leaves your control.",
+    "COLLABORATIVE_TRACKING": "Collaborative Tracking",
+    "COLLABORATIVE_TRACKING_TEXT": "Work together on shared expenses, joint debts, or family savings goals with real-time updates for everyone.",
+
+    "FOOTER_TEXT": "Take full control of your financial life with powerful tools for tracking, managing, and collaborating on your finances.",
+
+    "AVAILABLE_CURRENCIES": "Available Currencies",
+
+    "ACCOUNTS_TRANSACTIONS": "Accounts & Transactions",
+    "ACCOUNTS_TRANSACTIONS_TEXT": "Track multiple accounts and all related transactions in one place. Get a clear view of your cash flow across banks, savings, and credit cards.",
+    "DEBT_MANAGEMENT": "Debt Management",
+    "DEBT_MANAGEMENT_TEXT": "Monitor your debts and payment history with detailed transaction tracking. Visualize your progress toward payoff and stay on schedule.",
+    "FINANCIAL_GOALS": "Financial Goals",
+    "FINANCIAL_GOALS_TEXT": "Create savings goals and track contributions with full visibility. Set milestones and watch your progress grow over time.",
+    "SOCIAL_FINANCE": "Social Finance",
+    "SOCIAL_FINANCE_TEXT": "Share accounts, debts, and goals with trusted friends or family using a friendship-based permission system.",
+    "FEATURES_SECTION_TITLE": "Everything You Need to Manage Your Finances.",
+    "FEATURES_SECTION_TEXT": "A comprehensive set of tools designed to give you full visibility and control over all aspects of your financial life.",
+
+    "HOW_IT_WORKS_TITLE": "Get Started in Three Simple Steps",
+    "HOW_IT_WORKS_STEP_ONE_TITLE": "Create Your Accounts, Goals, and Debts",
+    "HOW_IT_WORKS_STEP_ONE_TEXT": "Set up your financial accounts, define your savings goals, and organize your debts. Everything starts with a clear view of your current situation.",
+    "HOW_IT_WORKS_STEP_TWO_TITLE": "Track Transactions and Debts",
+    "HOW_IT_WORKS_STEP_TWO_TEXT": "Record transactions, monitor debt payments, and see your balances update in real time. Full visibility of every cent.",
+    "HOW_IT_WORKS_STEP_THREE_TITLE": "Collaborate and Grow with Friends",
+    "HOW_IT_WORKS_STEP_THREE_TEXT": "Invite friends and family to share accounts or goals. Work together to pay off joint debts and celebrate financial achievements.",
+
+    "EMERGENCY_FUND": "Emergency Fund",
+    "VACATION": "Vacation",
+    "NEW_CAR": "New Car",
+    "MAIN_CHECKING": "Main Checking",
+    "CREDIT_CARD": "Credit Card",
+    "SAVINGS": "Savings",
+    "ACTIVE": "Active",
+
+    "DEBTS": "Debts",
+    "HOUSE": "House",
+    "CAR_LOAN": "Car Loan",
+    "PHONE": "Phone",
+
+    "ACCOUNTS": "Accounts",
+    "TRANSACTIONS": "Transactions",
+    "GOALS": "Goals",
+    "IN_PROGRESS": "In Progress",
+
+    "HERO_SECTION_TEXT": "Track accounts, manage debts, and set goals. Collaborate with friends and family through secure, permission-based sharing.",
+    "SEE_HOW_IT_WORKS": "See How It Works",
+
+    "ALL_RIGHTS_RESERVED": "All Rights Reserved",
+    "NO_CREDIT_CARD_REQUIRED": "No Credit Card Required",
+    "CTA_SECTION_TITLE": "Start Managing Your Finances Today",
+    "CTA_SECTION_TEXT": "Join thousands of users who have already taken control of their financial lives. Free to start, powerful enough to grow with you."
+  },
+
   "LAYOUTS": {
     "SIDEBAR_SETTINGS": "Settings",
     "SIDEBAR_LOGOUT": "Logout",

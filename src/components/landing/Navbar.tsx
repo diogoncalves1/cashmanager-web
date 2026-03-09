@@ -5,15 +5,17 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 export function LandingNavbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const t = useTranslations("LANDING");
 
   const links = [
-    { href: "#features", label: "Features" },
-    { href: "#how-it-works", label: "How It Works" },
-    { href: "#social", label: "Social" },
-    { href: "#dashboard", label: "Dashboard" },
+    { href: "#features", label: t("FEATURES") },
+    { href: "#how-it-works", label: t("HOW_IT_WORKS") },
+    { href: "#social", label: t("SOCIAL") },
+    { href: "#dashboard", label: t("DASHBOARD") },
   ];
 
   return (
@@ -40,10 +42,10 @@ export function LandingNavbar() {
 
         <div className="hidden items-center gap-3 md:flex">
           <Button variant="ghost" size="sm" asChild>
-            <Link href="/signin">Log In</Link>
+            <Link href="/signin">{t("LOG_IN")}</Link>
           </Button>
           <Button size="sm" asChild>
-            <Link href="/signup">Get Started Free</Link>
+            <Link href="/signup">{t("GET_STARTED_FREE")}</Link>
           </Button>
         </div>
 
@@ -72,10 +74,10 @@ export function LandingNavbar() {
             ))}
             <div className="mt-3 flex flex-col gap-2">
               <Button variant="outline" size="sm" asChild>
-                <Link href="/debts">Log In</Link>
+                <Link href="/signin">{t("LOG_IN")}</Link>
               </Button>
               <Button size="sm" asChild>
-                <Link href="/debts">Get Started Free</Link>
+                <Link href="/signup">{t("GET_STARTED_FREE")}</Link>
               </Button>
             </div>
           </nav>
