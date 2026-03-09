@@ -16,7 +16,7 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
     }
   }, [data, isLoading, error, router]);
 
-  // if (isLoading || !data) return <div>Loading...</div>;
+  if (isLoading || !data) return <div></div>;
 
   return <>{children}</>;
 }
