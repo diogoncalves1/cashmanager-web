@@ -6,6 +6,7 @@ export function useDebt(id: string) {
   const [debt, setDebt] = useState<Debt>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [load, setLoad] = useState(false);
 
   const fetchDebt = async (id: string) => {
     try {
@@ -26,11 +27,14 @@ export function useDebt(id: string) {
 
   useEffect(() => {
     fetchDebt(id);
-  }, [id]);
+  }, [id, load]);
 
   return {
     debt,
     loading,
     error,
+    mutate: () => {
+      setLoad(true);
+    },
   };
 }
