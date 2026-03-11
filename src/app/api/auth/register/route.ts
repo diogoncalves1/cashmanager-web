@@ -14,10 +14,13 @@ export async function POST(req: Request) {
   const data = await res.json();
 
   if (!res.ok) {
-    return NextResponse.json({ error: data.message || "Login failed" }, { status: 401 });
+    return NextResponse.json(
+      { error: data.message || "Login failed", success: false },
+      { status: 401 }
+    );
   }
 
-  const response = NextResponse.json({ ok: true });
+  const response = NextResponse.json({ success: false });
 
   const cookieStore = await cookies();
 
