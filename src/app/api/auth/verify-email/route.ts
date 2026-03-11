@@ -2,24 +2,24 @@ import { NextResponse } from "next/server";
 import { baseUrl } from "../../config";
 
 export async function POST(req: Request) {
-  const { email, password, name, username } = await req.json();
+  const response = NextResponse.json({ success: true });
 
-  const res = await fetch(`${baseUrl}register`, {
+  const { token } = await req.json();
+
+  if (!token) return Response.json({ success: false });
+
+  const res = await fetch(`${baseUrl}verify-email`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password, name, username }),
+    headers: { Authorization: `Bearer ${token}` },
   });
 
   const data = await res.json();
 
-  if (!res.ok || !data.success) {
+  if (!res.ok)
     return NextResponse.json(
       { error: data.message || "Login failed", success: false },
       { status: 401 }
     );
-  }
-
-  const response = NextResponse.json({ success: true });
 
   return response;
 }

@@ -1,4 +1,5 @@
 "use client";
+
 import Checkbox from "@/components/form/input/Checkbox";
 import Input from "@/components/form/input/InputField";
 import Label from "@/components/form/Label";
@@ -7,13 +8,14 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import LoadingToast from "../swal/LoadingToast";
 import AuthSubmitButton from "./AuthSubmitButton";
+import { useToast } from "@/hooks/useToast";
 
 export default function SignUpForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [email, setEmail] = useState("");
+  const [isRegisting, setIsRegisting] = useState(false);
   const [fname, setFName] = useState("");
   const [lname, setLName] = useState("");
   const [username, setUsername] = useState("");
@@ -23,6 +25,7 @@ export default function SignUpForm() {
   const [errorUsername, setErrorUsername] = useState("");
   const router = useRouter();
   const t = useTranslations("SIGN_UP");
+  const { toast } = useToast();
 
   useEffect(() => {
     if (!username) return;
@@ -43,7 +46,7 @@ export default function SignUpForm() {
         console.error(err);
       }
     }
-  }, [username]);
+  }, [username, t]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -54,7 +57,7 @@ export default function SignUpForm() {
         return;
       }
 
-      const toast = LoadingToast({ title: t("SIGN_UP_TITLE"), message: t("SIGN_UP_WAIT") });
+      setIsRegisting(true);
 
       const res = await fetch("/api/auth/register", {
         method: "POST",
@@ -67,17 +70,21 @@ export default function SignUpForm() {
         }),
       });
 
-      toast.close();
+      const data = await res.json();
 
-      if (!res.ok) {
+      if (!res.ok || !data.success) {
         setError(t("ERROR_ON_SIGNUP"));
         return;
       }
 
-      await router.push("/dashboard");
+      toast({ description: "" });
+
+      await router.push("/signin");
       router.refresh();
     } catch (err) {
       console.error(err);
+    } finally {
+      setIsRegisting(false);
     }
   };
 
@@ -205,7 +212,17 @@ export default function SignUpForm() {
                 <p className="text-xs text-error-500">{checkError}</p>
                 {/* <!-- Button --> */}
                 <div>
-                  <AuthSubmitButton>{t("SIGN_UP")}</AuthSubmitButton>
+                  <AuthSubmitButton>
+                    {isRegisting ? (
+                      <div className="flex justify-center space-x-2">
+                        <span className="size-2 bg-gray-500 rounded-full animate-bounce"></span>
+                        <span className="size-2 bg-gray-500 rounded-full animate-bounce delay-150"></span>
+                        <span className="size-2 bg-gray-500 rounded-full animate-bounce delay-300"></span>
+                      </div>
+                    ) : (
+                      t("SIGN_UP")
+                    )}
+                  </AuthSubmitButton>
                 </div>
               </div>
               <p className="text-xs text-error-500 mt-4">{error}</p>
