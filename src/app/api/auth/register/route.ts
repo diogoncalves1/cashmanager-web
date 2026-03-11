@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { cookies } from "next/headers";
 import { baseUrl } from "../../config";
 
 export async function POST(req: Request) {
@@ -13,36 +12,14 @@ export async function POST(req: Request) {
 
   const data = await res.json();
 
-  if (!res.ok) {
+  if (!res.ok || !data.success) {
     return NextResponse.json(
       { error: data.message || "Login failed", success: false },
       { status: 401 }
     );
   }
 
-  const response = NextResponse.json({ success: false });
-
-  const cookieStore = await cookies();
-
-  cookieStore.set("NEXT_LOCALE", data.user.preferences.lang);
-
-  cookieStore.set({
-    name: "token",
-    value: data.token,
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    path: "/",
-    maxAge: 60 * 60 * 24 * 365,
-  });
-
-  response.cookies.set("user", JSON.stringify(data.user), {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    path: "/",
-    maxAge: 60 * 60 * 24 * 365,
-  });
+  const response = NextResponse.json({ success: true });
 
   return response;
 }

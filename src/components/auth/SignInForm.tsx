@@ -37,8 +37,11 @@ export default function SignInForm() {
       });
 
       toast.close();
-      if (!res.ok) {
-        setError(t("ERROR_ON_SIGN_IN"));
+
+      const data = await res.json();
+
+      if (!res.ok || data.success) {
+        setError(res.status == 403 ? t("EMAIL_NOT_VERIFIED") : t("ERROR_ON_SIGN_IN"));
         return;
       }
 
