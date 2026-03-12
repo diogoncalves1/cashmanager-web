@@ -32,6 +32,7 @@ export default function EmailVerified() {
 
       setEmailVerified(true);
     } catch (err) {
+      console.log(err);
       setEmailVerified(false);
     } finally {
       setIsLoading(false);

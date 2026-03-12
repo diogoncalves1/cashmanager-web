@@ -1377,6 +1377,39 @@
     "SIGN_UP_WAIT": "Aguarde enquanto registamos a sua conta"
   },
 
+  "EMAIL_VERIFIED": {
+    "META_TITLE": "Cash Manager | Verificar Email",
+    "META_DESCRIPTION": "Verifique o seu email no Cash Manager para começar a organizar as suas finanças.",
+
+    "VERIFY_EMAIL": "Verificar Email",
+    "VERIFY_EMAIL_TEXT": "Estamos a verificar o seu email",
+    "ALREADY_HAVE_AN_ACCOUNT": "Já tem uma conta?",
+    "SIGN_IN": "Iniciar sessão",
+    "VERIFYING_EMAIL": "A verificar o seu e-mail",
+    "EMAIL_VERIFIED_SUCCESS": "O seu e-mail foi verificado com sucesso!",
+    "EMAIL_VERIFIED_ERROR": "Ocorreu um erro ao verificar o seu e-mail.",
+    "GO_TO_LOGIN": "Ir para o início de sessão"
+  },
+
+  "RESET_PASSWORD": {
+    "META_TITLE": "Cash Manager | Esqueceu a Palavra-Passe",
+    "META_DESCRIPTION": "Entre novamente na sua conta no Cash Manager para voltar a organizar as suas finanças.",
+
+    "RESET_PASSWORD": "Esqueceu a sua Palavra-Passe?",
+    "RESET_PASSWORD_TEXT": "Insira o seu e-mail para alterar a sua palavra-passe",
+    "SIGN_UP": "Registar",
+
+    "SEND_EMAIL": "Enviar Email",
+    "DONT_HAVE_AN_ACCOUNT": "Ainda não tem conta?",
+
+    "ERROR_ON_SIGN_IN": "Erro ao registar conta",
+    "PASSWORD": "Palavra-passe",
+    "EMAIL_PLACEHOLDER": "Introduza o seu email",
+    "PASSWORD_PLACEHOLDER": "Introduza uma palavra-passe",
+    "SIGN_IN_TITLE": "A entrar",
+    "SIGN_IN_WAIT": "Aguarde enquanto verificamos as suas credenciais"
+  },
+
   "SIGN_IN": {
     "META_TITLE": "Cash Manager | Entrar",
     "META_DESCRIPTION": "Entre novamente na sua conta no Cash Manager para voltar a organizar as suas finanças.",
@@ -1388,6 +1421,7 @@
     "KEEP_ME_LOGGED_IN": "Manter sessão iniciada",
     "FORGOT_PASSWORD": "Esqueceu a palavra-passe?",
     "DONT_HAVE_AN_ACCOUNT": "Ainda não tem conta?",
+    "EMAIL_NOT_VERIFIED": "O seu email não foi verificado",
 
     "ERROR_ON_SIGN_IN": "Erro ao registar conta",
     "PASSWORD": "Palavra-passe",
