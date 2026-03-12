@@ -77,7 +77,7 @@ export default function SignUpForm() {
         return;
       }
 
-      toast({ description: "" });
+      toast({ description: t("SIGN_IN_SUCCESS") });
 
       await router.push("/signin");
       router.refresh();
