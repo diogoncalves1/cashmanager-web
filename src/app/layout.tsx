@@ -15,6 +15,7 @@ const outfit = Outfit({
 
 import localFont from "next/font/local";
 import { User } from "@/models/user";
+import { Toaster } from "@/components/ui/toaster";
 
 // Importa Geist
 const geist = localFont({
@@ -56,7 +57,7 @@ export default async function RootLayout({
           <HeroUIProvider>
             <ThemeProvider>
               <SidebarProvider>
-                <AuthProvider user={user ?? ({} as User)}>{children}</AuthProvider>
+                <AuthProvider user={user ?? ({} as User)}>{children}</AuthProvider> <Toaster />
               </SidebarProvider>
             </ThemeProvider>
           </HeroUIProvider>

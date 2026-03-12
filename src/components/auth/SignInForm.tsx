@@ -40,7 +40,7 @@ export default function SignInForm() {
 
       const data = await res.json();
 
-      if (!res.ok || data.success) {
+      if (!res.ok || !data.success) {
         setError(res.status == 403 ? t("EMAIL_NOT_VERIFIED") : t("ERROR_ON_SIGN_IN"));
         return;
       }

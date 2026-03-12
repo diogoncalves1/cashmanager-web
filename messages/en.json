@@ -1428,7 +1428,9 @@
     "EMAIL_PLACEHOLDER": "Enter your email",
     "PASSWORD_PLACEHOLDER": "Enter a password",
     "SIGN_IN_TITLE": "Signing in",
-    "SIGN_IN_WAIT": "Please wait while we verify your credentials"
+    "SIGN_IN_WAIT": "Please wait while we verify your credentials",
+
+    "SIGN_IN_SUCCESS": "Registration completed successfully. Please check your email to log in to your account."
   },
 
   "HOME": {
