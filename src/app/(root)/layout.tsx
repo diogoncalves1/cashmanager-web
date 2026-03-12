@@ -7,7 +7,6 @@ import AppSidebar from "@/layout/AppSidebar";
 import Backdrop from "@/layout/Backdrop";
 import React from "react";
 import QueryProvider from "@/lib/providers/QueryProvider";
-import { Toaster } from "@/components/ui/toaster";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const { isExpanded, isHovered, isMobileOpen } = useSidebar();
@@ -36,7 +35,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <div className=" mx-auto max-w-(--breakpoint-4xl)">{children}</div>
           </div>
         </div>
-        <Toaster />
       </QueryProvider>
     </ProtectedRoute>
   );
