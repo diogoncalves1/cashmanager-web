@@ -30,9 +30,7 @@ export async function POST(req: Request) {
 
   cookieStore.set("NEXT_LOCALE", data.user.preferences.lang);
 
-  cookieStore.set({
-    name: "token",
-    value: data.token,
+  cookieStore.set("token", data.token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
