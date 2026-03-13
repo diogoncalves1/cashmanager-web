@@ -636,6 +636,9 @@
     "FINANCIAL_GOAL": "FINANCIAL GOAL",
     "FINANCIAL_GOALS": "Financial Goals",
 
+    "CHANGE_ROLE": "Change role",
+    "REMOVE_MEMBER": "Remove member",
+
     "TRANSACTIONS": "Transactions",
     "ADD_TRANSACTION": "New Transaction",
 
@@ -803,6 +806,12 @@
     "CANCEL": "Cancel",
     "CREATE": "Create",
 
+    "CONFIRM_TRANSACTION": "Confirm Transaction",
+    "CONFIRM_TRANSACTION_TEXT": "Are you sure you want to confirm this transaction?",
+
+    "DELETE_TRANSACTION": "Delete transaction?",
+    "DELETE_TRANSACTION_TEXT": "Are you sure you want to delete this transaction? This action cannot be undone and will affect the goal balance.",
+    "DELETE_TRANSACTION_WARNING": "Warning: Deleting this transaction will remove the amount from the goal balance.",
     "NEW_TRANSACTION_FORM_DIALOG_TEXT": "Record a new contribution or withdrawal.",
     "CREATING": "Creating...",
     "DESCRIPTION": "Description",
@@ -914,6 +923,16 @@
     "COMPLETED": "Completed",
     "COMPLETED_PLURAL": "Completed",
     "ACTIVE_DEBTS_ONLY": "Active debts only",
+
+    "CHANGE_ROLE": "Change role",
+    "REMOVE_USER": "Remove user",
+
+    "MARK_PAID": "Mark paid",
+    "LEAVE_DEBT": "Leave debt",
+    "BACK_TO_DEBTS": "Back to debts",
+    "DEBT_NOT_FOUND": "Debt not found",
+
+    "CREATING": "Creating...",
     "PENDING": "Pending",
 
     "MONTHS": "months",
@@ -1014,6 +1033,7 @@
     "META_DESCRIPTION": "Manage your connections and friend requests. Track payments and keep your finances organized.",
 
     "FRIENDS": "Friends",
+    "REJECT": "Reject",
     "PENDING": "Pending",
     "FRIENDS_TEXT": "Manage your connections and friend requests.",
     "FRIEND": "Friend",
@@ -1149,6 +1169,39 @@
     "CURRENCY": "Currency"
   },
 
+  "CHANGE_PASSWORD": {
+    "META_TITLE": "Cash Manager | Change password",
+    "META_DESCRIPTION": "Update your password to keep your account secure.",
+
+    "SETTINGS": "Settings",
+    "CHANGE_PASSWORD": "Change password",
+
+    "ERROR_TRYING_UPDATE_PASSWORD": "An error occurred while trying to update the password. Please try again.",
+
+    "CURRENT_PASSWORD": "Current password",
+    "NEW_PASSWORD": "New password",
+    "CONFIRM_NEW_PASSWORD": "Confirm new password",
+    "PASSWORD": "Password",
+    "SHOW": "Show",
+    "HIDE": "Hide",
+
+    "CURRENT_PASSWORD_REQUIRED": "Current password is required",
+    "NEW_PASSWORD_IS_REQUIRED": "New password is required",
+    "NEW_PASSWORD_MIN_LENGTH": "Password must be at least 8 characters",
+    "CONFIRM_PASSWORD_REQUIRED": "Please confirm your new password",
+    "PASSWORDS_DO_NOT_MATCH": "Passwords do not match",
+
+    "PASSWORD_UPDATED": "Password updated",
+    "PASSWORD_UPDATED_DESCRIPTION": "Your password has been changed successfully.",
+
+    "PASSWORD_INSTRUCTION": "Enter your current password and choose a new one",
+    "PASSWORD_MIN_LENGTH_HINT": "Must be at least 8 characters",
+
+    "CANCEL": "Cancel",
+    "UPDATE_PASSWORD": "Update Password",
+    "UPDATING": "Updating..."
+  },
+
   "DEBT_PAYMENTS": {
     "META_TITLE": "Cash Manager | Debt Payments",
     "META_DESCRIPTION": "Manage your debt payments efficiently with Cash Manager. Track your payments and keep your finances organized.",
@@ -1171,6 +1224,8 @@
     "PENDING": "Pending",
     "LOADING": "Loading",
     "COMPLETED": "Completed",
+
+    "INTEREST_RATE": "Interest Rate",
 
     "AMOUNT": "Amount",
     "ACTIONS": "Actions",
@@ -1397,13 +1452,35 @@
 
     "RESET_PASSWORD": "Forgot your password?",
     "RESET_PASSWORD_TEXT": "Enter your email to reset your password",
+    "SET_NEW_PASSWORD": "Set a new password",
+    "SET_NEW_PASSWORD_TEXT": "Enter your new password and confirm it to finish resetting.",
+    "RESET_PASSWORD_SENDING": "Sending reset email...",
+    "EMAIL_LABEL": "Email",
     "SIGN_UP": "Sign Up",
 
     "SEND_EMAIL": "Send Email",
+    "RESET": "Reset",
     "DONT_HAVE_AN_ACCOUNT": "Don't have an account yet?",
 
-    "ERROR_ON_SIGN_IN": "Error signing in",
+    "ERROR_ON_SIGN_IN": "Error finding account",
+    "ERROR_ON_RESET_PASSWORD": "Error sending reset email",
+    "ERROR_ON_CHANGE_PASSWORD": "Error updating password",
     "PASSWORD": "Password",
+    "EMAIL_SENT": "Email sent",
+    "SENDING_EMAIL": "Sending email...",
+    "NEW_PASSWORD": "New password",
+    "NEW_PASSWORD_PLACEHOLDER": "Enter your new password",
+    "CONFIRM_NEW_PASSWORD": "Confirm new password",
+    "CONFIRM_NEW_PASSWORD_PLACEHOLDER": "Confirm your new password",
+    "NEW_PASSWORD_REQUIRED": "New password is required",
+    "NEW_PASSWORD_MIN_LENGTH": "Password must be at least 8 characters",
+    "CONFIRM_PASSWORD_REQUIRED": "Please confirm your new password",
+    "PASSWORDS_DO_NOT_MATCH": "Passwords do not match",
+    "PASSWORD_UPDATED": "Password updated",
+    "PASSWORD_UPDATED_DESCRIPTION": "Your password has been updated successfully.",
+    "UPDATE_PASSWORD": "Update password",
+    "UPDATING": "Updating...",
+    "MISSING_TOKEN": "Reset token is missing. Please request a new password reset.",
     "EMAIL_PLACEHOLDER": "Enter your email",
     "PASSWORD_PLACEHOLDER": "Enter a password",
     "SIGN_IN_TITLE": "Signing in",

@@ -592,7 +592,7 @@
     "INVITATIONS_TEXT": "Gira os seus convites enviados e recebidos.",
 
     "NO_INVITATIONS_SENT": "Sem convites enviados",
-    "NO_INVITATIONS_RECEIVED": "Sem convites recevidos",
+    "NO_INVITATIONS_RECEIVED": "Sem convites recebidos",
 
     "FILTER_STATUS": "Filtar estado",
     "ALL_STATUS": "Todos os estados",
@@ -635,6 +635,9 @@
 
     "FINANCIAL_GOAL": "META FINANCEIRA",
     "FINANCIAL_GOALS": "Metas Financeiras",
+
+    "CHANGE_ROLE": "Mudar papel",
+    "REMOVE_MEMBER": "Remover membro",
 
     "TRANSACTIONS": "Transações",
     "ADD_TRANSACTION": "Nova Transação",
@@ -690,7 +693,7 @@
     "YES_CANCEL": "Sim, cancelar!",
     "CANCEL": "Cancelar",
 
-    "RESET_FINANCIAL_GOAL_MESSAGE": "Resetar meta financeira?",
+    "RESET_FINANCIAL_GOAL_MESSAGE": "Repor meta financeira?",
     "RESETED_FINANCIAL_GOAL_TITLE": "A resetar...",
     "RESETED_FINANCIAL_GOAL_MESSAGE": "A resetar a meta financeira ...",
     "YES_RESET": "Sim, resetar!",
@@ -706,7 +709,7 @@
     "OVERVIEW": "Visão Geral",
     "OTHERS": "Outros",
     "DESCRIPTION": "Descrição",
-    "RESET": "Resetar",
+    "RESET": "Repor",
     "LAST_UPDATE": "Última atualização",
     "COMPLETE": "Completar",
     "P_COMPLETE": "concluído",
@@ -751,7 +754,7 @@
     "EDIT_GOAL": "Editar meta",
     "CANCEL_GOAL": "Cancelar meta",
     "DELETING_GOAL": "A apagar",
-    "RESET_GOAL": "Resetar meta",
+    "RESET_GOAL": "Repor meta",
     "TO_FINISH": "para finalizar",
 
     "MARK_COMPLETED": "Marcar como concluída",
@@ -782,6 +785,7 @@
     "SELECT_FINANCIAL_GOAL": "Selecione a meta financeira",
 
     "TRANSACTIONS": "Transações",
+
     "ADD_TRANSACTION": "Nova Transação",
 
     "TYPE": "Tipo",
@@ -789,6 +793,12 @@
     "DATE": "Data",
     "ALL": "Todos",
 
+    "CONFIRM_TRANSACTION": "Confirmar Transação",
+    "CONFIRM_TRANSACTION_TEXT": "Tem a certeza de que pretende confirmar esta transação?",
+
+    "DELETE_TRANSACTION": "Apagar transação?",
+    "DELETE_TRANSACTION_TEXT": "Tem a certeza de que pretende eliminar esta transação? Esta ação não pode ser desfeita e irá afetar o saldo do objetivo.",
+    "DELETE_TRANSACTION_WARNING": "Aviso: Ao eliminar esta transação, o valor será removido do saldo do objetivo.",
     "CLEAR": "Limpar",
     "VIEW_FINANCIAL_GOAL": "Ver meta financeira",
     "ALL_STATUS": "Todos os estados",
@@ -926,8 +936,18 @@
     "MONTHLY_PAYMENT": "Pagamento mensal",
     "DEBT_NAME": "Nome da dívida",
 
+    "CHANGE_ROLE": "Mudar papel",
+    "REMOVE_USER": "Remover utilizador",
+
+    "MARK_PAID": "Marcar como paga",
+    "LEAVE_DEBT": "Sair da dívida",
+    "BACK_TO_DEBTS": "Voltar para dívidas",
+    "DEBT_NOT_FOUND": "Dívida não encontrada",
+
     "SEARCH_DEBTS": "Procure pela dívida...",
     "PROGRESS": "Progresso",
+
+    "CREATING": "A criar...",
     "TOTAL": "Total",
     "MONTH_ABR": "mês",
 
@@ -961,7 +981,7 @@
     "MARKING_TITLE": "A marcar...",
     "MARKING_MESSAGE": "A marcar dívida como paga...",
 
-    "RESET_DEBT_MESSAGE": "Resetar dívida?",
+    "RESET_DEBT_MESSAGE": "Repor dívida?",
     "RESETED_DEBT_TITLE": "A resetar...",
     "RESETED_DEBT_MESSAGE": "A resetar a dívida ...",
     "YES_DELETE": "Sim, apagar!",
@@ -980,7 +1000,7 @@
     "OVERVIEW": "Visão Geral",
     "OTHERS": "Outros",
     "DESCRIPTION": "Descrição",
-    "RESET": "Resetar",
+    "RESET": "Repor",
     "LAST_UPDATE": "Última atualização",
     "COMPLETE": "Completar",
     "MISSING_AMOUNT": "Valor em Falta",
@@ -1015,6 +1035,7 @@
 
     "FRIENDS": "Amizades",
     "PENDING": "Pendente",
+    "REJECT": "Rejeitar",
     "FRIENDS_TEXT": "Faça a gestão das suas conexões e solicitações de amizade.",
     "FRIEND": "Amigo",
     "FRIEND_REQUESTS": "Pedidos de Amizade",
@@ -1122,7 +1143,7 @@
     "PROFILE_INFORMATION_TEXT": "Atualize seus dados pessoais",
     "ACCOUNT_SETTINGS": "Definições da conta",
     "ACCOUNT_SETTINGS_TEXT": "Faça a gestão do seu perfil e preferências.",
-    "RESET": "Resetar",
+    "RESET": "Repor",
     "DISCARD": "Descartar",
     "SAVE_CHANGES": "Guardar alterações",
     "SAVING": "A guardar...",
@@ -1149,6 +1170,39 @@
     "CURRENCY": "Moeda"
   },
 
+  "CHANGE_PASSWORD": {
+    "META_TITLE": "Cash Manager | Mudar palavra-passe",
+    "META_DESCRIPTION": "Atualize a sua palavra-passe para manter a sua conta segura.",
+
+    "SETTINGS": "Definições",
+    "CHANGE_PASSWORD": "Mudar palavra-passe",
+
+    "ERROR_TRYING_UPDATE_PASSWORD": "Ocorreu um erro ao tentar atualizar a palavra-passe. Por favor, tente novamente.",
+
+    "CURRENT_PASSWORD": "Palavra-passe atual",
+    "NEW_PASSWORD": "Nova palavra-passe",
+    "CONFIRM_NEW_PASSWORD": "Confirmar nova palavra-passe",
+    "PASSWORD": "Palavra-passe",
+    "SHOW": "Mostrar",
+    "HIDE": "Ocultar",
+
+    "CURRENT_PASSWORD_REQUIRED": "A palavra-passe atual é obrigatória",
+    "NEW_PASSWORD_IS_REQUIRED": "A nova palavra-passe é obrigatória",
+    "NEW_PASSWORD_MIN_LENGTH": "A palavra-passe deve ter pelo menos 8 caracteres",
+    "CONFIRM_PASSWORD_REQUIRED": "Por favor confirme a sua nova palavra-passe",
+    "PASSWORDS_DO_NOT_MATCH": "As palavras-passe não coincidem",
+
+    "PASSWORD_UPDATED": "Palavra-passe atualizada",
+    "PASSWORD_UPDATED_DESCRIPTION": "A sua palavra-passe foi alterada com sucesso.",
+
+    "PASSWORD_INSTRUCTION": "Introduza a sua palavra-passe atual e escolha uma nova.",
+    "PASSWORD_MIN_LENGTH_HINT": "Deve ter pelo menos 8 caracteres",
+
+    "CANCEL": "Cancelar",
+    "UPDATE_PASSWORD": "Atualizar palavra-passe",
+    "UPDATING": "A atualizar..."
+  },
+
   "DEBT_PAYMENTS": {
     "META_TITLE": "Cash Manager | Pagamentos Dívidas",
     "META_DESCRIPTION": "Faça a gestão dos seus pagamentos das suas dívidas de forma eficiente com o Cash Manager. Acompanhe os seus pagamentos e mantenha suas finanças organizadas.",
@@ -1171,6 +1225,8 @@
     "PENDING": "Pendente",
     "LOADING": "Carregando",
     "COMPLETED": "Completa",
+
+    "INTEREST_RATE": "Taxa de Juro",
 
     "AMOUNT": "Valor",
     "ACTIONS": "Ações",
@@ -1397,13 +1453,35 @@
 
     "RESET_PASSWORD": "Esqueceu a sua Palavra-Passe?",
     "RESET_PASSWORD_TEXT": "Insira o seu e-mail para alterar a sua palavra-passe",
+    "SET_NEW_PASSWORD": "Definir nova palavra-passe",
+    "EMAIL_SENT": "Email enviado",
+    "SENDING_EMAIL": "A enviar email...",
+    "SET_NEW_PASSWORD_TEXT": "Introduza a sua nova palavra-passe e confirme-a para terminar a redefinição.",
+    "RESET_PASSWORD_SENDING": "A enviar email de redefinição...",
+    "EMAIL_LABEL": "Email",
+    "RESET": "Confirmar",
     "SIGN_UP": "Registar",
 
     "SEND_EMAIL": "Enviar Email",
     "DONT_HAVE_AN_ACCOUNT": "Ainda não tem conta?",
 
-    "ERROR_ON_SIGN_IN": "Erro ao registar conta",
+    "ERROR_ON_SIGN_IN": "Erro ao encontrar conta",
+    "ERROR_ON_RESET_PASSWORD": "Erro ao enviar email de redefinição",
+    "ERROR_ON_CHANGE_PASSWORD": "Erro ao alterar palavra-passe",
     "PASSWORD": "Palavra-passe",
+    "NEW_PASSWORD": "Nova palavra-passe",
+    "NEW_PASSWORD_PLACEHOLDER": "Introduza a sua nova palavra-passe",
+    "CONFIRM_NEW_PASSWORD": "Confirmar nova palavra-passe",
+    "CONFIRM_NEW_PASSWORD_PLACEHOLDER": "Confirme a sua nova palavra-passe",
+    "NEW_PASSWORD_REQUIRED": "A nova palavra-passe é obrigatória",
+    "NEW_PASSWORD_MIN_LENGTH": "A palavra-passe deve ter pelo menos 8 caracteres",
+    "CONFIRM_PASSWORD_REQUIRED": "Por favor confirme a sua nova palavra-passe",
+    "PASSWORDS_DO_NOT_MATCH": "As palavras-passe não coincidem",
+    "PASSWORD_UPDATED": "Palavra-passe atualizada",
+    "PASSWORD_UPDATED_DESCRIPTION": "A sua palavra-passe foi atualizada com sucesso.",
+    "UPDATE_PASSWORD": "Atualizar palavra-passe",
+    "UPDATING": "A atualizar...",
+    "MISSING_TOKEN": "O token de redefinição está ausente. Por favor solicite uma nova redefinição de palavra-passe.",
     "EMAIL_PLACEHOLDER": "Introduza o seu email",
     "PASSWORD_PLACEHOLDER": "Introduza uma palavra-passe",
     "SIGN_IN_TITLE": "A entrar",
@@ -1423,7 +1501,7 @@
     "DONT_HAVE_AN_ACCOUNT": "Ainda não tem conta?",
     "EMAIL_NOT_VERIFIED": "O seu email não foi verificado",
 
-    "ERROR_ON_SIGN_IN": "Erro ao registar conta",
+    "ERROR_ON_SIGN_IN": "Erro ao entrar na conta",
     "PASSWORD": "Palavra-passe",
     "EMAIL_PLACEHOLDER": "Introduza o seu email",
     "PASSWORD_PLACEHOLDER": "Introduza uma palavra-passe",
