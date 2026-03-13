@@ -25,7 +25,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
             </div>
           </div>
           <div className="fixed bottom-6 right-6 z-50 block">
-            <LanguageSwitcher className="hover:bg-transparent" />
+            <LanguageSwitcher className="hover:bg-white bg-white" />
           </div>
         </div>
       </ThemeProvider>

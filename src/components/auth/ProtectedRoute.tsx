@@ -11,12 +11,12 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
   const { data, isLoading, error } = useSWR(["/auth/me", { method: "GET" }], fetcher);
 
   useEffect(() => {
-    if (error || (!isLoading && !data) || (data && !data.token)) {
+    if (error || (!isLoading && data == undefined) || (data && !data.token)) {
       router.push("/signin");
     }
   }, [data, isLoading, error, router]);
 
-  if (isLoading || !data) return <div></div>;
+  if (isLoading || data == undefined) return <div></div>;
 
   return <>{children}</>;
 }
