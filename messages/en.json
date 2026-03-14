@@ -1429,7 +1429,8 @@
 
     "ERROR_ON_SIGNUP": "Error signing up account",
     "SIGN_UP_TITLE": "Signing up",
-    "SIGN_UP_WAIT": "Please wait while we register your account"
+    "SIGN_UP_WAIT": "Please wait while we register your account",
+    "SIGN_IN_SUCCESS": "Registration completed successfully. Please check your email to log in to your account."
   },
 
   "EMAIL_VERIFIED": {
@@ -1505,13 +1506,19 @@
     "EMAIL_PLACEHOLDER": "Enter your email",
     "PASSWORD_PLACEHOLDER": "Enter a password",
     "SIGN_IN_TITLE": "Signing in",
-    "SIGN_IN_WAIT": "Please wait while we verify your credentials",
-
-    "SIGN_IN_SUCCESS": "Registration completed successfully. Please check your email to log in to your account."
+    "SIGN_IN_WAIT": "Please wait while we verify your credentials"
   },
 
   "HOME": {
+    "META_TITLE": "Cash Manager | Home",
+    "META_DESCRIPTION": "Use Cash Manager for free.",
+
     "HOME": "Home",
+
+    "DASHBOARD": "Dashboard",
+
+    "NO_DATA_AVAILABLE": "No data recorded.",
+
     "MONTHLY_BALANCE": "Monthly Balance",
     "REVENUE": "Revenue",
     "EXPENSE": "Expense",

@@ -1430,7 +1430,9 @@
 
     "ERROR_ON_SIGNUP": "Erro ao registar conta",
     "SIGN_UP_TITLE": "A registar",
-    "SIGN_UP_WAIT": "Aguarde enquanto registamos a sua conta"
+    "SIGN_UP_WAIT": "Aguarde enquanto registamos a sua conta",
+
+    "SIGN_IN_SUCCESS": "Registo feito com sucesso, verifique o email para entrar na conta."
   },
 
   "EMAIL_VERIFIED": {
@@ -1506,13 +1508,19 @@
     "EMAIL_PLACEHOLDER": "Introduza o seu email",
     "PASSWORD_PLACEHOLDER": "Introduza uma palavra-passe",
     "SIGN_IN_TITLE": "A entrar",
-    "SIGN_IN_WAIT": "Aguarde enquanto verificamos as suas credenciais",
-
-    "SIGN_IN_SUCCESS": "Registo feito com sucesso, verifique o email para entrar na conta."
+    "SIGN_IN_WAIT": "Aguarde enquanto verificamos as suas credenciais"
   },
 
   "HOME": {
+    "META_TITLE": "Cash Manager | Início",
+    "META_DESCRIPTION": "Utilize o Cash Manager de graça",
+
     "HOME": "Início",
+
+    "DASHBOARD": "Painel",
+
+    "NO_DATA_AVAILABLE": "Sem dados registados.",
+
     "MONTHLY_BALANCE": "Saldo Mensal",
     "REVENUE": "Receita",
     "EXPENSE": "Despesa",
