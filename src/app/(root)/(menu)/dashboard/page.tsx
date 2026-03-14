@@ -3,18 +3,25 @@ import React from "react";
 import CashFlowChart from "@/components/dashboard/CashFlowChart";
 import DashboardMetrics from "@/components/dashboard/DashboardMetrics";
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
+import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 // import StockTicker from "@/components/swiper/StockSwiper";
 // import PortfolioSwiper from "@/components/swiper/PortfolioSwiper";
 
-export const metadata: Metadata = {
-  title: "Cash Manager | Dashboard",
-  description: "This is Next.js Home for TailAdmin Dashboard Template",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("HOME");
 
-export default function Ecommerce() {
+  return {
+    title: t("META_TITLE"),
+    description: t("META_DESCRIPTION"),
+  };
+}
+
+export default function Dashboard() {
+  const t = useTranslations("HOME");
   return (
     <>
-      <PageBreadcrumb pageTitle="DASHBOARD" />
+      <PageBreadcrumb pageTitle={t("DASHBOARD")} />
       <div className="p-6 grid grid-cols-12 gap-4 md:gap-6">
         {/* <div className="col-span-12 space-y-6">
           <StockTicker />

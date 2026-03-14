@@ -1,15 +1,18 @@
 "use client";
 import { ApexOptions } from "apexcharts";
 import dynamic from "next/dynamic";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import MonthlyBalanceChartLoading from "./MonthlyBalanceChartLoading";
 import { useTranslations } from "next-intl";
 import { Currency } from "@/models/currency";
+import { BarChart3 } from "lucide-react";
 
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
 
 interface UserMonthlyBalanceChartProps {
+  isLoading: boolean;
   userData?: {
     balance: number;
     monthYear: string;
@@ -18,6 +21,7 @@ interface UserMonthlyBalanceChartProps {
 }
 
 export default function UserMonthlyBalanceChart({
+  isLoading,
   userData,
   currency,
 }: UserMonthlyBalanceChartProps) {
@@ -38,7 +42,22 @@ export default function UserMonthlyBalanceChart({
     11: tMonths("DEC"),
   };
 
-  if (!userData?.length) return <MonthlyBalanceChartLoading />;
+  if (isLoading) return <MonthlyBalanceChartLoading />;
+
+  if (!userData?.length)
+    return (
+      <Card className="col-span-12 xl:col-span-9 rounded-2xl border-0 shadow-sm">
+        <CardHeader>
+          <CardTitle className="text-lg font-semibold">{t("MONTHLY_BALANCE")}</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="flex flex-col items-center justify-center py-16">
+            <BarChart3 className="size-10 text-muted-foreground/40" />
+            <p className="mt-3 text-sm text-muted-foreground">{t("NO_DATA_AVAILABLE")}</p>
+          </div>
+        </CardContent>
+      </Card>
+    );
 
   const options: ApexOptions = {
     colors: ["#465fff"],
