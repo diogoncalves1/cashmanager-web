@@ -28,18 +28,18 @@ import { useTranslations } from "next-intl";
 import { SwalToast } from "@/components/swal/SwalToast";
 
 type TransactionDialogProps = {
-  id?: string;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isOpen: boolean;
+  id?: string;
   mutate?: () => void;
   // accountId?: string;
 };
 
 const FormTransactionDialog = ({
-  id,
-  setIsOpen,
   isOpen,
+  setIsOpen,
   mutate,
+  id,
   // accountId,
 }: TransactionDialogProps) => {
   const t = useTranslations("TRANSACTIONS");
@@ -98,7 +98,8 @@ const FormTransactionDialog = ({
 
   if (!isLoadingAccounts && !id && isOpen && accounts?.data?.length == 0) {
     setIsOpen(false);
-    return SwalToast({ message: t("NO_ACCOUNTS_AVAILABLE"), icon: "warning" });
+    SwalToast({ message: t("NO_ACCOUNTS_AVAILABLE"), icon: "warning" });
+    return <></>;
   }
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
