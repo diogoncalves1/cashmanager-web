@@ -114,7 +114,7 @@ export function FormAccountDialog({
               {errors.name && <p className="text-xs text-destructive">{errors.name}</p>}
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4">
               <div className="grid gap-2">
                 <Label htmlFor="type">{t("ACCOUNT_TYPE")}</Label>
                 {!isLoadingAccount ? (
@@ -149,7 +149,7 @@ export function FormAccountDialog({
               </div>
 
               <div className="grid gap-2">
-                <Label htmlFor="currency">Currency</Label>
+                <Label htmlFor="currency">{t("CURRENCY")}</Label>
                 {!loadingCurrencies ? (
                   <Select
                     value={formData.currency_id}

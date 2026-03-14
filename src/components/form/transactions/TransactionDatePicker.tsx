@@ -48,9 +48,12 @@ export function TransactionDatePicker({
 
       <PopoverContent className="w-auto p-0">
         <Calendar
-          required={true}
+          required
           mode="single"
           locale={locales[lang]}
+          captionLayout="dropdown"
+          fromYear={1900}
+          toYear={2100}
           selected={date ? new Date(date) : undefined}
           disabled={(day: Date) => {
             if (!dateLimits.min && !dateLimits.max) return false;
@@ -58,11 +61,9 @@ export function TransactionDatePicker({
             const min = dateLimits.min ? new Date(dateLimits.min) : null;
             const max = dateLimits.max ? new Date(dateLimits.max) : null;
 
-            let isDisable = false;
+            if ((min && day < min) || (max && day > max)) return true;
 
-            if ((min && day < min) || (max && day > max)) isDisable = true;
-
-            return isDisable;
+            return false;
           }}
           onSelect={(date) => {
             onChangeDate(date ? date.toISOString().split("T")[0] : "");
