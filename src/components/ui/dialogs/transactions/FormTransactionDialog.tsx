@@ -96,10 +96,9 @@ const FormTransactionDialog = ({
     return <div className="h-96 animate-pulse bg-gray-100 rounded" />;
   }
 
-  if (!isLoadingAccounts && !id && accounts?.data?.length == 0) {
-    SwalToast({ message: t("NO_ACCOUNTS_AVAILABLE"), icon: "warning" });
+  if (!isLoadingAccounts && !id && isOpen && accounts?.data?.length == 0) {
     setIsOpen(false);
-    return <></>;
+    return SwalToast({ message: t("NO_ACCOUNTS_AVAILABLE"), icon: "warning" });
   }
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
