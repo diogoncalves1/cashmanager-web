@@ -21,12 +21,26 @@ export default function CashFlowChart() {
         height: 310,
         fontFamily: "Outfit, sans-serif",
         toolbar: { show: false },
+        responsive: [
+          {
+            breakpoint: 1200,
+            options: {
+              chart: { height: 310 },
+            },
+          },
+          {
+            breakpoint: 600,
+            options: {
+              chart: { height: 210 },
+            },
+          },
+        ],
       },
       plotOptions: {
         bar: {
-          horizontal: false, // vertical (colunas)
-          columnWidth: "20%", // largura das colunas
-          borderRadius: 4, // cantos arredondados
+          horizontal: false,
+          columnWidth: "20%",
+          borderRadius: 4,
         },
       },
       colors: ["#12b76a", "#f04438"], // cores das colunas
@@ -43,15 +57,15 @@ export default function CashFlowChart() {
         categories: [],
         axisBorder: { show: false },
         axisTicks: { show: false },
-        tooltip: { enabled: false },
+        tooltip: { enabled: true },
       },
       yaxis: {
         show: false,
       },
       grid: {
         padding: {
-          left: 5,
-          right: 5,
+          left: 10,
+          right: 10,
         },
         xaxis: { lines: { show: false } },
         yaxis: { lines: { show: true } },
@@ -168,9 +182,6 @@ export default function CashFlowChart() {
   if (isLoading) return <CashFlowChartLoading heigth={chartHeigth} />;
   if (error) return <CashFlowChartLoading heigth={chartHeigth} />;
 
-  console.log(chartSeries);
-  console.log(chartOptions);
-
   return (
     <div className="rounded-2xl border border-gray-200 bg-white px-5 py-5 dark:border-gray-800 dark:bg-white/[0.03] sm:px-6 sm:pt-6">
       <div className="flex flex-col gap-5 mb-6 sm:flex-row sm:justify-between">
@@ -194,7 +205,7 @@ export default function CashFlowChart() {
       </div>
 
       <div className="max-w-full overflow-x-auto custom-scrollbar">
-        <div className="min-w-full xl:min-w-full">
+        <div className="max-w-full xl:max-w-full px-5">
           <ReactApexChart
             key={chartKey}
             options={chartOptions}
