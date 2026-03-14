@@ -8,6 +8,8 @@ import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
 import { useTranslations } from "next-intl";
 import CashFlowChartLoading from "./CashFlowChartLoading";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { BarChart3 } from "lucide-react";
 
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
@@ -180,7 +182,27 @@ export default function CashFlowChart() {
   }, [data, monthsT, options, t]);
 
   if (isLoading) return <CashFlowChartLoading heigth={chartHeigth} />;
+
   if (error) return <CashFlowChartLoading heigth={chartHeigth} />;
+  if (!data?.length)
+    return (
+      <Card className="col-span-12 xl:col-span-9 rounded-2xl border-0 shadow-sm">
+        <CardHeader>
+          <CardTitle className="text-lg font-semibold"> {t("CASH_FLOW_CHART_TITLE")}</CardTitle>
+          <CardDescription>
+            <p className="mt-1 text-gray-500 text-theme-sm dark:text-gray-400">
+              {t("CASH_FLOW_CHART_DESCRIPTION")}
+            </p>
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="flex flex-col items-center justify-center py-16">
+            <BarChart3 className="size-10 text-muted-foreground/40" />
+            <p className="mt-3 text-sm text-muted-foreground">{t("NO_DATA_AVAILABLE")}</p>
+          </div>
+        </CardContent>
+      </Card>
+    );
 
   return (
     <div className="rounded-2xl border border-gray-200 bg-white px-5 py-5 dark:border-gray-800 dark:bg-white/[0.03] sm:px-6 sm:pt-6">

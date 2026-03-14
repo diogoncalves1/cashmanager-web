@@ -9,7 +9,7 @@ import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { LucideUserCog } from "lucide-react";
-import { cn, getUserColor } from "@/lib/utils";
+import { cn, getUserColor, getUserInitials } from "@/lib/utils";
 
 type Props = {
   user: User | null;
@@ -37,10 +37,7 @@ export default function UserDropdown({ user }: Props) {
       >
         <Avatar className={cn("size-8 ring-1", getUserColor(user?.name))}>
           <AvatarFallback className={cn("text-xs font-medium", getUserColor(user?.name))}>
-            {user?.name
-              .split(" ")
-              .map((n) => n[0])
-              .join("")}
+            {getUserInitials(user?.name)}
           </AvatarFallback>
         </Avatar>
 

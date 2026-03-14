@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import React from "react";
 
@@ -12,6 +13,7 @@ interface BreadcrumbProps {
 }
 
 const PageBreadcrumb: React.FC<BreadcrumbProps> = ({ pageTitle, breadcrumb }) => {
+  const t = useTranslations("HOME");
   return (
     <div className="flex flex-wrap items-center border-b border-gray-100 bg-gray-50 px-5 py-1.5 justify-between gap-3 dark:border-gray-800 dark:bg-white/[0.02]">
       <h2
@@ -27,7 +29,7 @@ const PageBreadcrumb: React.FC<BreadcrumbProps> = ({ pageTitle, breadcrumb }) =>
               className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-blue-500 dark:text-gray-400"
               href="/dashboard"
             >
-              Dashboard
+              {t("HOME")}
             </Link>
           </li>
           {breadcrumb?.map((item) => (

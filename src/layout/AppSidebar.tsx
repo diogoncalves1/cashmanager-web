@@ -15,7 +15,7 @@ import {
   Settings,
   DoorOpen,
   Users,
-  LayoutDashboard,
+  Home,
 } from "lucide-react";
 import { onLogout } from "@/services/auth/service";
 import { SwalToast } from "@/components/swal/SwalToast";
@@ -38,7 +38,7 @@ const AppSidebar: React.FC = () => {
   const navItems: NavItem[] = useMemo(
     () => [
       {
-        icon: <LayoutDashboard size={18} strokeWidth={2} />,
+        icon: <Home size={18} strokeWidth={2} />,
         name: t("SIDEBAR_HOME"),
         path: "/dashboard",
       },

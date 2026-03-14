@@ -21,7 +21,10 @@ export type KpiInterface = {
 };
 
 export default function DashboardMetrics() {
-  const { data } = useSWR(["/dashboard-overview?min_date=2025-01-01", { method: "GET" }], fetcher);
+  const { data, isLoading } = useSWR(
+    ["/dashboard-overview?min_date=2025-01-01", { method: "GET" }],
+    fetcher
+  );
   const [revenues, setRevenues] = useState({ name: "Revenues", data: [0] });
   const [expenses, setExpenses] = useState({ name: "Expenses", data: [0] });
   const [userData, setUserData] = useState<{ balance: number; monthYear: string }[]>();
@@ -72,7 +75,7 @@ export default function DashboardMetrics() {
 
   return (
     <div className="grid grid-cols-12 gap-6">
-      <UserMonthlyBalanceChart userData={userData} currency={kpis.currency} />
+      <UserMonthlyBalanceChart isLoading={isLoading} userData={userData} currency={kpis.currency} />
 
       <IncomeExpensesMetrics revenues={revenues} expenses={expenses} kpis={kpis} />
     </div>
