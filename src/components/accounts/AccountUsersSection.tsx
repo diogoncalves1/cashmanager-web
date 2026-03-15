@@ -152,11 +152,10 @@ export function AccountUsersSection({ isLoading, account }: AccountUsersSectionP
                     <TableHead className="w-[260px]">{t("USER")}</TableHead>
                     <TableHead className="hidden sm:table-cell">{t("ROLE")}</TableHead>
                     <TableHead className="hidden md:table-cell">{t("STATUS")}</TableHead>
-                    {account.actions?.manage && (
-                      <TableHead className="w-[60px]">
-                        <span className="sr-only">{t("ACTIONS")}</span>
-                      </TableHead>
-                    )}
+
+                    <TableHead className="w-[60px]">
+                      {account.actions?.manage && <span className="sr-only">{t("ACTIONS")}</span>}
+                    </TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
