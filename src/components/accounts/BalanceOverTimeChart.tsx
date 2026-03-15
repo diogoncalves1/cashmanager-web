@@ -99,7 +99,8 @@ export function BalanceOverTimeChart({
         chartsData[type].unshift({
           date: dateStr,
           amount: lastData?.amount || 0,
-          amountFormated: lastData?.amountFormated || "$0",
+          amountFormated:
+            `${formatCurrency(lastData?.amount, balanceFormated ?? "$ 0", false, 2)}` || "$0",
           transactionAmount: 0,
         });
       }
