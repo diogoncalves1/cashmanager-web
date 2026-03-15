@@ -459,6 +459,8 @@
     "ACCOUNT_NOT_FOUND": "Account not found",
     "BACK_TO_ACCOUNTS": "Back to accounts",
 
+    "ACCOUNT": "Account",
+
     "EDIT_ACCOUNT": "Edit Account",
     "DELETE_ACCOUNT": "Delete Account",
 
@@ -1576,5 +1578,13 @@
     "OCT": "Oct",
     "NOV": "Nov",
     "DEC": "Dec"
+  },
+
+  "ERROR_404": {
+    "META_TITLE": "Page not found | Cash Manager",
+    "META_DESCRIPTION": "The page you are looking for cannot be found.",
+    "ERROR": "404 - Page not found",
+    "DESCRIPTION": "We can’t seem to find the page you are looking for!",
+    "BACK_TO_HOME": "Back to Home Page"
   }
 }

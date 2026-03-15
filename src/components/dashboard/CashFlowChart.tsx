@@ -184,7 +184,8 @@ export default function CashFlowChart() {
   if (isLoading) return <CashFlowChartLoading heigth={chartHeigth} />;
 
   if (error) return <CashFlowChartLoading heigth={chartHeigth} />;
-  if (!data?.length)
+
+  if (!data?.data.charts.annualy.length)
     return (
       <Card className="col-span-12 xl:col-span-9 rounded-2xl border-0 shadow-sm">
         <CardHeader>
