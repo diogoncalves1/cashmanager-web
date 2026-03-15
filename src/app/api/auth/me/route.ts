@@ -8,9 +8,10 @@ export async function GET() {
   const token = cookieStore.get("token")?.value;
   if (!token) return Response.json({ user: null });
 
-  // 1️⃣ tenta pegar do cookie
   const cachedUser = cookieStore.get("user")?.value;
+
   if (cachedUser) {
+    cookieStore.set("NEXT_LOCALE", JSON.parse(cachedUser).preferences.lang);
     return Response.json({
       token,
       user: cachedUser,
@@ -18,7 +19,6 @@ export async function GET() {
     });
   }
 
-  // 2️⃣ fallback para backend
   const res = await fetch(`${baseUrl}me`, {
     headers: { Authorization: `Bearer ${token}` },
     cache: "no-store",
@@ -37,7 +37,7 @@ export async function GET() {
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
     path: "/",
-    maxAge: 60 * 5, // 5 minutos
+    maxAge: 60 * 5,
   });
 
   return Response.json({ token, user, cached: false });
