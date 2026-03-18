@@ -38,6 +38,8 @@ export interface DebtPayment {
   interestRate: number;
 
   isMonthlyPayment: boolean;
+  interestPaidFormated: string;
+  interestPaid: number;
 
   description: string;
 }

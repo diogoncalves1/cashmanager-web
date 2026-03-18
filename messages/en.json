@@ -1210,6 +1210,8 @@
 
     "ADD_PAYMENT": "Add Payment",
     "ADD": "Add",
+    "INTEREST_PAID": "Interest Paid",
+    "NO_ACCOUNTS_AVAILABLE": "No accounts available",
     "DEBTS": "Debts",
     "PAYMENTS": "Payments",
     "PAYMENTS_PAGE_TEXT": "View and manage all payments across your debts.",

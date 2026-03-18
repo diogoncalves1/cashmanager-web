@@ -8,10 +8,10 @@ import FormPaymentDialog from "../ui/dialogs/debt-payments/FormPaymentDialog";
 
 type Props = {
   setLoad?: Dispatch<SetStateAction<boolean>>;
-  // financialGoalId?: string;
+  debtId?: string;
 };
 
-export function NewDebtPaymentsButton({ setLoad /*, financialGoalId*/ }: Props) {
+export function NewDebtPaymentsButton({ setLoad, debtId }: Props) {
   const t = useTranslations("DEBT_PAYMENTS");
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -23,7 +23,7 @@ export function NewDebtPaymentsButton({ setLoad /*, financialGoalId*/ }: Props) 
       <FormPaymentDialog
         isOpen={isOpen}
         setIsOpen={setIsOpen}
-        // financialGoalId={financialGoalId}
+        debtId={debtId}
         mutate={() => {
           if (setLoad) setLoad((prev) => !prev);
         }}

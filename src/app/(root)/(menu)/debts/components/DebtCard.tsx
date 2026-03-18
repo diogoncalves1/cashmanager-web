@@ -3,6 +3,7 @@ import Link from "next/link";
 import { cn, formatCurrency } from "@/lib/utils";
 import StatusBadge from "@/components/debts/StatusBadge";
 import { useTranslations } from "next-intl";
+import { Calendar } from "lucide-react";
 
 type Props = {
   debt: Debt;
@@ -63,7 +64,7 @@ export default function DebtCard({ debt }: Props) {
         <div>
           <div className="text-xs text-muted-foreground mb-1">{t("REMAINING")}</div>
           <div className="font-semibold text-foreground text-sm">
-            {formatCurrency(remaining, debt.totalAmountFormated)}
+            {formatCurrency(remaining, debt.totalAmountFormatedWithoutSymbol)}
           </div>
         </div>
       </div>
@@ -83,14 +84,7 @@ export default function DebtCard({ debt }: Props) {
             {debt.interestRate}% {t("APR")}
           </span>
           <span className="flex items-center gap-1">
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-              />
-            </svg>
+            <Calendar className="size-3.5" />
             {debt.monthsPaid}/{debt.months} {debt.months > 1 ? t("MONTHS") : t("MONTH")}
           </span>
           <span className="flex items-center gap-1">
