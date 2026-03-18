@@ -9,7 +9,7 @@ export default function StatusBadge({
 }) {
   const getStatusInfo = (status: string) => {
     switch (status) {
-      case "completed":
+      case "paid":
         return {
           color: "success",
         };

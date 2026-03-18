@@ -66,16 +66,36 @@ export default function DebtForm({ id }: Props) {
   const currencySymbol = currencies.find((c) => c.id === formData.currency_id)?.symbol || "$";
 
   const calculations = useMemo(() => {
+    if (formData.interest_rate == "")
+      return {
+        remaining: 0,
+        estimatedMonths: 0,
+        monthly: 0,
+        estimatedTotal: 0,
+      };
+
     const total = parseFloat(formData.total_amount) || 0;
-    const monthly = parseFloat(formData.monthly_amount) || 0;
-    const remaining = Math.max(0, total);
+
+    const monthlyInterestRate =
+      parseFloat(formData.interest_rate == "" ? "0" : formData.interest_rate) / 12 / 100;
+    const months = parseInt(formData.months);
+
+    const factor = Math.pow(1 + monthlyInterestRate, months);
+
+    const monthly = total * ((monthlyInterestRate * factor) / (factor - 1));
+
+    const estimatedTotal = monthly * months;
+    const remaining = Math.max(0, estimatedTotal);
+
     const estimatedMonths = monthly > 0 ? Math.ceil(remaining / monthly) : 0;
 
     return {
       remaining,
       estimatedMonths,
+      monthly,
+      estimatedTotal,
     };
-  }, [formData.total_amount, formData.monthly_amount]);
+  }, [formData.total_amount, formData.interest_rate, formData.months]);
 
   const updateField = <K extends keyof FormData>(field: K, value: FormData[K]) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -450,13 +470,7 @@ export default function DebtForm({ id }: Props) {
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-muted-foreground">{t("TOTAL_AMOUNT")}</span>
                   <span className="font-semibold">
-                    {formatCurrency(
-                      parseFloat(formData.total_amount) +
-                        parseFloat(formData.total_amount) *
-                          (parseFloat(formData.interest_rate == "" ? "0" : formData.interest_rate) /
-                            100) *
-                          (parseFloat(formData.months == "" ? "0" : formData.months) / 12) || 0
-                    )}
+                    {formatCurrency(calculations.estimatedTotal)}
                   </span>
                 </div>
 
@@ -477,8 +491,7 @@ export default function DebtForm({ id }: Props) {
                     </span>
                   </p>
                   <p className="mt-1 text-xs text-muted-foreground">
-                    {t("BASED_ON")} {formatCurrency(parseFloat(formData.monthly_amount) || 0)}/
-                    {t("MONTH")}
+                    {t("BASED_ON")} {formatCurrency(calculations.monthly || 0)}/{t("MONTH")}
                   </p>
                 </div>
               )}

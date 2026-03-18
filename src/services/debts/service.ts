@@ -69,41 +69,26 @@ export async function onMarkPaidDebt(
   t: ReturnType<typeof useTranslations>,
   mutate?: () => void
 ) {
-  const result = await Swal.fire({
-    title: t("MARK_DEBT_PAID"),
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: t("YES_MARK"),
-    cancelButtonText: t("CANCEL"),
-  });
-  if (result.isConfirmed) {
-    LoadingToast({ title: t("MARKING_TITLE"), message: t("MARKING_MESSAGE") });
-    try {
-      const res = await fetch(`/api/debts/${id}/mark-paid`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-      });
+  const toast = LoadingToast({ title: t("MARKING_TITLE"), message: t("MARKING_MESSAGE") });
+  try {
+    const res = await fetch(`/api/debts/${id}/mark-paid`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    });
 
-      const data = await res.json();
+    const data = await res.json();
 
-      if (!res.ok) throw new Error(data.message);
+    toast.close();
 
-      if (mutate) await mutate();
+    if (!res.ok) throw new Error(data.message);
 
-      if (data.success) {
-        SwalToast({ message: data.message, icon: "success" });
-        return 1;
-      }
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        SwalToast({ message: err.message, icon: "error" });
-      } else {
-        SwalToast({ message: String(err), icon: "error" });
-      }
-      return 0;
+    if (mutate) await mutate();
+
+    return { message: data.message, success: true };
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      return { message: err.message, success: false };
     }
+    return { message: String(err), success: false };
   }
-  return 0;
 }

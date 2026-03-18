@@ -12,18 +12,24 @@ import {
 import { formatDate } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 // import { useRouter } from "next/router";
-import { useDebt } from "../hooks/useDebt";
 import TableContainer from "@/components/debt-payments/TableContainer";
 import Link from "next/link";
 import UsersTab from "./UsersTab";
 import StatusBadge from "@/components/debts/StatusBadge";
 import ActivityTimeline from "@/components/ui/timeline/ActivityTimeline";
 import { NewDebtPaymentsButton } from "@/components/debt-payments/NewDebtPaymentsButton";
-import { Calendar, Check, Clock4Icon, Edit, Trash } from "lucide-react";
+import { Calendar, Check, Clock4Icon, DoorOpen, Edit, Trash } from "lucide-react";
 import { useDebtDetailsContext } from "../context/DebtDetailsContext";
 import { useEffect, useState } from "react";
-import { onMarkPaidDebt } from "@/services/debts/service";
 import DeleteDebtDialog from "./DeleteDebtDialog";
+import { useAuth } from "@/context/AuthContext";
+import LeaveSubjectDialog from "@/components/invitations/LeaveSubjectDialog";
+import MarkDebtPaidDialog from "@/components/ui/dialogs/debts/MarkDebtPaidDialog";
+import { Debt } from "@/models/debt";
+import useSWR from "swr";
+import { fetcher } from "@/lib/fetcher";
+import { useRouter } from "next/navigation";
+import { Skeleton } from "@/components/ui/skeleton";
 
 function formatCurrency(amount: number, currency: string) {
   return new Intl.NumberFormat("en-US", {
@@ -39,16 +45,72 @@ type DebtDetailsProps = {
 export default function DebtDetails({ id }: DebtDetailsProps) {
   const monthsT = useTranslations("MONTHS");
   const t = useTranslations("DEBTS");
+  const { user } = useAuth();
   const { loadCounter, setLoadCounter } = useDebtDetailsContext();
+  const [debt, setDebt] = useState<Debt | undefined>();
+  const router = useRouter();
 
-  const { debt, mutate, loading } = useDebt(id);
-  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  const {
+    data,
+    error,
+    isLoading: loading,
+    mutate,
+  } = useSWR(id ? [`/debts/${id}`, { method: "GET" }] : null, fetcher);
+
+  useEffect(() => {
+    if (data) {
+      setDebt(data.data);
+    }
+
+    if (error) {
+      router.push("/debts");
+    }
+  }, [data, error, router]);
+
+  const [isDeleteOpen, setIsDeleteOpen] = useState<boolean>(false);
+  const [isMarkPaidOpen, setIsMarkPaidOpen] = useState<boolean>(false);
 
   useEffect(() => {
     mutate();
   }, [loadCounter, mutate]);
+  const [leaveSubject, setLeaveSubject] = useState(false);
 
-  if (!debt) return null;
+  if (loading) {
+    return (
+      <div className="space-y-6 max-w-7xl mx-auto py-10 px-4">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+          <div className="flex items-start gap-4">
+            <Skeleton className="size-14 rounded-2xl" />
+            <div>
+              <Skeleton className="h-6 w-40 mb-2" />
+              <Skeleton className="h-8 w-28" />
+            </div>
+          </div>
+          <div className="flex flex-col items-start gap-3 sm:items-end">
+            <Skeleton className="h-8 w-32" />
+            <div className="flex items-center gap-2">
+              <Skeleton className="h-5 w-16" />
+              <Skeleton className="h-5 w-24" />
+            </div>
+          </div>
+        </div>
+
+        <Skeleton className="h-10 w-48" />
+        <Skeleton className="h-[300px] w-full rounded-xl" />
+      </div>
+    );
+  }
+
+  if (!debt) {
+    return (
+      <div className="flex flex-col items-center justify-center py-16">
+        <p className="text-xl font-semibold">{t("DEBT_NOT_FOUND")}</p>
+        <Button asChild className="mt-4">
+          <Link href="/debts">{t("BACK_TO_DEBTS")}</Link>
+        </Button>
+      </div>
+    );
+  }
 
   const progress = Math.round((debt.paidAmount / debt.totalAmount) * 100);
   const monthsRemaining = Math.max(debt.months - debt.monthsPaid, 0);
@@ -71,7 +133,10 @@ export default function DebtDetails({ id }: DebtDetailsProps) {
 
           <div className="flex items-center gap-3">
             {debt.actions.createTransactions && (
-              <NewDebtPaymentsButton setLoad={() => setLoadCounter((prev) => prev + 1)} />
+              <NewDebtPaymentsButton
+                debtId={id}
+                setLoad={() => setLoadCounter((prev) => prev + 1)}
+              />
             )}
 
             <DropdownMenu>
@@ -92,13 +157,14 @@ export default function DebtDetails({ id }: DebtDetailsProps) {
                 {debt.actions.markPaid && (
                   <DropdownMenuItem
                     onClick={() => {
-                      onMarkPaidDebt(debt.id, t, () => setLoadCounter((prev) => prev + 1));
+                      setIsMarkPaidOpen(true);
                     }}
                   >
-                    <Edit className="size-4 mr-2" />
-                    {t("EDIT_DEBT")}
+                    <Check className="size-4 mr-2" />
+                    {t("MARK_PAID")}
                   </DropdownMenuItem>
                 )}
+
                 {debt.actions.edit && (
                   <Link href={`${id}/edit`}>
                     <DropdownMenuItem>
@@ -107,19 +173,30 @@ export default function DebtDetails({ id }: DebtDetailsProps) {
                     </DropdownMenuItem>
                   </Link>
                 )}
+                {debt.actions?.destroy ||
+                  (debt.users?.find((userShare) => userShare.id == user?.id)?.sharedRole?.code !=
+                    "creator" && <DropdownMenuSeparator />)}
+                {debt.users?.find((userShare) => userShare.id == user?.id)?.sharedRole?.code !=
+                  "creator" && (
+                  <DropdownMenuItem
+                    onClick={async () => {
+                      setLeaveSubject(true);
+                    }}
+                  >
+                    <DoorOpen className="size-4" />
+                    {t("LEAVE_DEBT")}
+                  </DropdownMenuItem>
+                )}
                 {debt.actions.destroy && (
-                  <>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem
-                      onClick={() => {
-                        setIsDeleteOpen(true);
-                      }}
-                      className="text-destructive focus:text-destructive"
-                    >
-                      <Trash className="size-4 mr-2" />
-                      {t("DELETE_DEBT")}
-                    </DropdownMenuItem>
-                  </>
+                  <DropdownMenuItem
+                    onClick={() => {
+                      setIsDeleteOpen(true);
+                    }}
+                    className="text-destructive focus:text-destructive"
+                  >
+                    <Trash className="size-4 mr-2" />
+                    {t("DELETE_DEBT")}
+                  </DropdownMenuItem>
                 )}
               </DropdownMenuContent>
             </DropdownMenu>
@@ -370,6 +447,20 @@ export default function DebtDetails({ id }: DebtDetailsProps) {
           showDeleteDialog={isDeleteOpen}
           setShowDeleteDialog={setIsDeleteOpen}
           debt={debt}
+          goBack={true}
+        />
+        <MarkDebtPaidDialog
+          isMarkPaidDialogOpen={isMarkPaidOpen}
+          setIsMarkPaidOpen={setIsMarkPaidOpen}
+          selectedId={debt.id}
+          mutate={mutate}
+        />
+
+        <LeaveSubjectDialog
+          isOpen={leaveSubject}
+          type="debts"
+          id={id}
+          setIsOpen={setLeaveSubject}
           goBack={true}
         />
       </div>

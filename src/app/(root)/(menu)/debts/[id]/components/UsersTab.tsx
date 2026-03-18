@@ -24,10 +24,12 @@ import ChangeMemberRoleDialog from "@/components/invitations/ChangeMemberRoleDia
 import RemoveMemberDialog from "@/components/invitations/RemoveMemberDialog";
 import { useState } from "react";
 import { useDebtDetailsContext } from "../context/DebtDetailsContext";
+import { useAuth } from "@/context/AuthContext";
 
 export default function UsersTab({ debt }: { debt: Debt }) {
   const t = useTranslations("DEBTS");
   const { setLoadCounter } = useDebtDetailsContext();
+  const { user: userSelf } = useAuth();
 
   const [removeMember, setRemoveMember] = useState(false);
   const [changeRole, setChageRole] = useState(false);
@@ -87,7 +89,7 @@ export default function UsersTab({ debt }: { debt: Debt }) {
                   </TableCell>
                   <TableCell className="font-medium text-foreground">{user.paid}</TableCell>
                   <TableCell>
-                    {user.sharedRole?.code !== "creator" && (
+                    {user.sharedRole?.code !== "creator" && user.id != userSelf?.id && (
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                           <Button variant="ghost" size="icon" className="h-8 w-8">

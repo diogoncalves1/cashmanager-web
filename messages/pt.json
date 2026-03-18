@@ -1213,6 +1213,8 @@
     "ADD": "Adicionar",
     "DEBTS": "Dívidas",
     "PAYMENTS": "Pagamentos",
+    "INTEREST_PAID": "Juros pagos",
+    "NO_ACCOUNTS_AVAILABLE": "Sem contas disponíveis",
     "PAYMENTS_PAGE_TEXT": "Visualize e faça a gestão de todos os pagamentos nas suas dívidas.",
     "DEBT": "Dívida",
     "NEXT": "Próximo",

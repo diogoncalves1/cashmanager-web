@@ -53,7 +53,6 @@ export default function ConfirmPaymentDialog({
             {t("CANCEL")}
           </Button>
           <Button
-            variant="outline"
             color="success"
             onClick={async () => {
               setIsSubmiting(true);

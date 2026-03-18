@@ -8,9 +8,8 @@ import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
 import { useRouter } from "next/navigation";
 
-export function useDebtPaymentForm(id?: string) {
+export function useDebtPaymentForm(id?: string, debtId?: string, isOpen?: boolean) {
   const router = useRouter();
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [formData, setFormData] = useState<{
     account_id?: string;
@@ -26,73 +25,13 @@ export function useDebtPaymentForm(id?: string) {
     interest_rate: "0",
     is_monthly_payment: true,
     date: new Date().toISOString().split("T")[0],
+    debt_id: debtId,
   });
-
-  const {
-    data: paymentData,
-    error: paymentError,
-    isLoading: isLoadingPayment,
-  } = useSWR(id ? [`/debt-payments/${id}`, { method: "GET" }] : null, fetcher);
-
-  const [debts, setDebts] = useState<DebtBasic[]>([]);
-  const [loadingDebts, setLoadingDebts] = useState(true);
-  const [accounts, setAccounts] = useState<AccountBasic[]>([]);
-  const [loadingAccouts, setLoadingAccount] = useState(true);
 
   const [dateLimits, setDateLimits] = useState({
     min: "",
     max: new Date().toISOString().split("T")[0],
   });
-
-  const fetchDebts = async () => {
-    try {
-      const res = await getAllDebts();
-
-      setDebts(res.data);
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        console.error(err);
-      }
-    } finally {
-      setLoadingDebts(false);
-    }
-  };
-  const fetchAccounts = async () => {
-    try {
-      const res = await getAllAccounts();
-
-      setAccounts(res.data);
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        console.error(err);
-      }
-    } finally {
-      setLoadingAccount(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchDebts();
-    fetchAccounts();
-  }, []);
-
-  useEffect(() => {
-    if (paymentError) router.push("/debt-payments");
-
-    if (paymentData?.data) {
-      const tx = paymentData.data;
-      setFormData({
-        account_id: tx.accountId,
-        debt_id: tx.debtId,
-        interest_rate: tx.interestRate || "",
-        amount: tx.amount,
-        is_monthly_payment: tx.isMonthlyPayment,
-        date: tx.date,
-        status: tx.status,
-        description: tx.description || "",
-      });
-    }
-  }, [paymentData, paymentError, router]);
 
   const updateDateLimits = (status: DebtPaymentStatus) => {
     const today = new Date();
@@ -114,10 +53,7 @@ export function useDebtPaymentForm(id?: string) {
     setDateLimits({ min, max });
   };
 
-  type SubmitResult = {
-    success: boolean;
-    message: string;
-  };
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (): Promise<SubmitResult> => {
     setIsSubmitting(true);
@@ -144,6 +80,76 @@ export function useDebtPaymentForm(id?: string) {
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const {
+    data: paymentData,
+    error: paymentError,
+    isLoading: isLoadingPayment,
+  } = useSWR(isOpen ? (id ? [`/debt-payments/${id}`, { method: "GET" }] : null) : null, fetcher);
+
+  const [debts, setDebts] = useState<DebtBasic[]>([]);
+  const [loadingDebts, setLoadingDebts] = useState(true);
+  const [accounts, setAccounts] = useState<AccountBasic[]>([]);
+  const [loadingAccouts, setLoadingAccount] = useState(true);
+
+  const fetchDebts = async () => {
+    try {
+      setLoadingDebts(true);
+      const res = await getAllDebts();
+
+      setDebts(res.data);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        console.error(err);
+      }
+    } finally {
+      setLoadingDebts(false);
+    }
+  };
+  const fetchAccounts = async () => {
+    try {
+      setLoadingAccount(true);
+      const res = await getAllAccounts();
+
+      setAccounts(res.data);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        console.error(err);
+      }
+    } finally {
+      setLoadingAccount(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      fetchDebts();
+      fetchAccounts();
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (paymentError) router.push("/debt-payments");
+
+    if (paymentData?.data) {
+      const tx = paymentData.data;
+      setFormData({
+        account_id: tx.accountId,
+        debt_id: tx.debtId,
+        interest_rate: tx.interestRate || "",
+        amount: tx.amount,
+        is_monthly_payment: tx.isMonthlyPayment,
+        date: tx.date,
+        status: tx.status,
+        description: tx.description || "",
+      });
+    }
+  }, [paymentData, paymentError, router]);
+
+  type SubmitResult = {
+    success: boolean;
+    message: string;
   };
 
   return {

@@ -37,7 +37,7 @@ export default function DebtsContainer() {
           </div>
           <div className="text-2xl font-semibold text-accent">{stats.totalPaidFormated}</div>
           <div className="text-xs text-muted-foreground mt-2">
-            {stats.totalAmounDebt == 0
+            {(!stats.totalAmounDebt && !stats.totalPaid) || stats.totalAmounDebt == 0
               ? 0
               : Math.round((stats.totalPaid / stats.totalAmounDebt) * 100)}
             % {t("OF_TOTAL")}
@@ -49,7 +49,7 @@ export default function DebtsContainer() {
           </div>
           <div className="text-2xl font-semibold text-foreground">{stats.activeDebts}</div>
           <div className="text-xs text-muted-foreground mt-2 lowercase">
-            {stats.paidDebts} {stats.paidDebts == 1 ? t("COMPELTED") : t("COMPLETED_PLURAL")}
+            {stats.paidDebts} {stats.paidDebts == 1 ? t("COMPLETED") : t("COMPLETED_PLURAL")}
           </div>
         </div>
         <div className="p-5 rounded-xl bg-card border border-border shadow-sm">
