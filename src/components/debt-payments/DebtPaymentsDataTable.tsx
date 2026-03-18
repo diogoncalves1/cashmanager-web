@@ -127,6 +127,27 @@ export function DebtPaymentsDataTable({
         },
       },
       {
+        accessorKey: "interestPaid",
+        header: ({ column }) => (
+          <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            {t("INTEREST_PAID")} <ArrowUpDown className="ml-2 h-4 w-4" />
+          </Button>
+        ),
+        cell: ({ row }) => {
+          const t = row.original;
+          return (
+            <div className="flex items-center gap-3">
+              <div className="flex flex-col">
+                <span className={`font-medium`}>{t.interestPaidFormated}</span>
+              </div>
+            </div>
+          );
+        },
+      },
+      {
         accessorKey: "date",
         header: ({ column }) => (
           <Button
@@ -206,7 +227,7 @@ export function DebtPaymentsDataTable({
                         setIsConfirmOpen(true);
                       }}
                     >
-                      {t("CONFIRM_TRANSACTION")}
+                      {t("CONFIRM_PAYMENT")}
                     </DropdownMenuItem>
                   )}
                   {payment.actions?.view && (
@@ -224,17 +245,19 @@ export function DebtPaymentsDataTable({
                       {t("EDIT")}
                     </DropdownMenuItem>
                   )}
-                  <DropdownMenuSeparator />
                   {payment.actions?.destroy && (
-                    <DropdownMenuItem
-                      onClick={async () => {
-                        setSelectedId(payment.id);
-                        setIsDeleteGoalOpen(true);
-                      }}
-                      variant="destructive"
-                    >
-                      {t("DELETE")}
-                    </DropdownMenuItem>
+                    <>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem
+                        onClick={async () => {
+                          setSelectedId(payment.id);
+                          setIsDeleteGoalOpen(true);
+                        }}
+                        variant="destructive"
+                      >
+                        {t("DELETE")}
+                      </DropdownMenuItem>
+                    </>
                   )}
                 </DropdownMenuContent>
               </DropdownMenu>

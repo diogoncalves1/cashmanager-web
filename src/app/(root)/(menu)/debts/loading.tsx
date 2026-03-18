@@ -1,5 +1,6 @@
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import { AppLink } from "@/components/ui/button/AppLink";
+import { Plus } from "lucide-react";
 import { useTranslations } from "next-intl";
 import React from "react";
 
@@ -9,23 +10,16 @@ const Loading = () => {
   return (
     <>
       <PageBreadcrumb pageTitle={t("DEBT")} breadcrumb={[{ title: t("DEBTS") }]} />
-      <div className="max-w-6xl mx-auto px-6 py-10">
+      <div className="max-w-7xl mx-auto px-6 py-10">
         {/* Page Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <div>
-            <h1 className="text-2xl font-semibold text-foreground tracking-tight">Debts</h1>
-            <p className="text-muted-foreground mt-1">Track and manage your debt payments</p>
+            <h1 className="text-2xl font-semibold text-foreground tracking-tight">{t("DEBTS")}</h1>
+            <p className="text-muted-foreground mt-1">{t("DEBTS_TEXT")}</p>
           </div>
           <AppLink path="/debts/create" className=" px-5">
-            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 4v16m8-8H4"
-              />
-            </svg>
-            Add Debt
+            <Plus className="w-4 h-4 mr-2" />
+            {t("ADD_DEBT")}
           </AppLink>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">

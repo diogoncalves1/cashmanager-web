@@ -25,22 +25,17 @@ import { useTranslations } from "next-intl";
 import { SwalToast } from "@/components/swal/SwalToast";
 import { useDebtPaymentForm } from "@/components/form/debt-payments/hooks/useDebtPaymentForm";
 import Checkbox from "@/components/form/input/Checkbox";
+import { useEffect } from "react";
 
 type FormPaymentDialogProps = {
   id?: string;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isOpen: boolean;
   mutate?: () => void;
-  // debtId?: string;
+  debtId?: string;
 };
 
-const FormPaymentDialog = ({
-  id,
-  setIsOpen,
-  isOpen,
-  mutate,
-  // debtId,
-}: FormPaymentDialogProps) => {
+const FormPaymentDialog = ({ id, setIsOpen, isOpen, mutate, debtId }: FormPaymentDialogProps) => {
   const t = useTranslations("DEBT_PAYMENTS");
   const {
     formData,
@@ -54,7 +49,7 @@ const FormPaymentDialog = ({
     accounts,
     debts,
     loadingDebts,
-  } = useDebtPaymentForm(id);
+  } = useDebtPaymentForm(id, debtId, isOpen);
   const { toast } = useToast();
 
   function reset() {
@@ -68,6 +63,17 @@ const FormPaymentDialog = ({
       description: "",
     });
   }
+
+  useEffect(() => {
+    if (loadingDebts) return;
+    const debt = debts.find((debt) => debt.id == formData.debt_id);
+    setFormData((prev) => ({
+      ...prev,
+      interest_rate: String(((debt?.interestRate ?? 0) / 12).toFixed(4)),
+      amount: String(debt?.monthlyAmount),
+      ...(debtId ? { debt_id: debtId } : {}),
+    }));
+  }, [formData.debt_id, debts, setFormData, debtId, loadingDebts]);
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -91,7 +97,7 @@ const FormPaymentDialog = ({
   };
 
   if (isLoadingPayment) {
-    return <div className="h-96 animate-pulse bg-gray-100 rounded" />;
+    return <div className="" />;
   }
 
   if (!loadingAccouts && !id && accounts?.length == 0 && isOpen) {
@@ -137,7 +143,7 @@ const FormPaymentDialog = ({
                 )}
               </div>
             )}
-            {!id && (
+            {!id && !debtId && (
               <div className="grid gap-1.5">
                 <Label htmlFor="tx-debt">{t("DEBT")}</Label>
                 {!loadingDebts ? (
@@ -185,7 +191,7 @@ const FormPaymentDialog = ({
               </div>
               <div className="grid gap-1.5">
                 <Label htmlFor="interest_rate" className="text-sm text-muted-foreground">
-                  Interest Rate
+                  {t("INTEREST_RATE")}
                 </Label>
                 <div className="relative">
                   <span className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground text-lg">

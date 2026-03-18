@@ -49,6 +49,7 @@ export interface Debt {
   statusTranslated: string;
 
   remainingAmount: string;
+  totalAmountFormatedWithoutSymbol: string;
 
   monthsPaid: number;
   months: number;
