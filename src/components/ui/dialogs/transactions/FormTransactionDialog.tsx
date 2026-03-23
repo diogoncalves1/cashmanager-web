@@ -20,7 +20,7 @@ import {
 import { TransactionStatus, TransactionType } from "@/models/transaction";
 import { useToast } from "@/hooks/useToast";
 import { useTransactionForm } from "@/components/form/transactions/hooks/useTransactionForm";
-import { Account, AccountBasic } from "@/models/account";
+import { AccountBasic } from "@/models/account";
 import { Category, iconMap } from "@/models/category";
 import { TransactionDatePicker } from "@/components/form/transactions/TransactionDatePicker";
 import { Textarea } from "@/components/ui/textarea";
