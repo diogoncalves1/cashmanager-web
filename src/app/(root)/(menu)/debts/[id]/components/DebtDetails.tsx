@@ -31,13 +31,6 @@ import { fetcher } from "@/lib/fetcher";
 import { useRouter } from "next/navigation";
 import { Skeleton } from "@/components/ui/skeleton";
 
-function formatCurrency(amount: number, currency: string) {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: currency,
-  }).format(amount);
-}
-
 type DebtDetailsProps = {
   id: string;
 };
@@ -114,9 +107,6 @@ export default function DebtDetails({ id }: DebtDetailsProps) {
 
   const progress = Math.round((debt.paidAmount / debt.totalAmount) * 100);
   const monthsRemaining = Math.max(debt.months - debt.monthsPaid, 0);
-
-  const totalWithInterest = debt.monthlyAmount * debt.months;
-  const totalInterest = totalWithInterest - debt.totalAmount;
 
   return (
     <>

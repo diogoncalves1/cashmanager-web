@@ -14,7 +14,6 @@ import {
 import { formatDate } from "@/lib/utils";
 import { useFinancialGoal } from "../hooks/useFinancialGoal";
 import { useTranslations } from "next-intl";
-import { AppLink } from "@/components/ui/button/AppLink";
 import Link from "next/link";
 import PriorityInfo from "@/components/financial-goals/PriorityInfo";
 import DeleteFinancialGoalDialog from "@/components/ui/dialogs/FinancialGoals/DeleteFinancialGoalDialog";
@@ -28,7 +27,6 @@ import {
   EllipsisVertical,
   PauseCircle,
   PlayCircle,
-  Plus,
   Trash2Icon,
 } from "lucide-react";
 import InviteMemberButton from "@/components/ui/button/InviteMemberButton";
