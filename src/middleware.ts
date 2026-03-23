@@ -7,7 +7,7 @@ export function middleware(request: NextRequest) {
 
   if (
     !token &&
-    ["/signup", "/verify-email", "/change-password", "/reset-password", "/signin"].includes(
+    !["/signup", "/verify-email", "/change-password", "/reset-password", "/signin"].includes(
       pathname
     )
   ) {
