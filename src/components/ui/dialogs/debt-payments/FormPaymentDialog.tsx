@@ -73,7 +73,7 @@ const FormPaymentDialog = ({ id, setIsOpen, isOpen, mutate, debtId }: FormPaymen
       amount: String(debt?.monthlyAmount),
       ...(debtId ? { debt_id: debtId } : {}),
     }));
-  }, [formData.debt_id, debts, setFormData, debtId, loadingDebts]);
+  }, [formData.debt_id, debts, setFormData, debtId, loadingDebts, id]);
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
