@@ -774,6 +774,8 @@
     "META_TITLE": "Cash Manager | Financial Goal Transactions",
     "META_DESCRIPTION": "Manage your financial goal transactions efficiently with Cash Manager. Track your contributions, withdrawals and keep your finances organized.",
 
+    "NO_ACCOUNTS_AVAILABLE": "No accounts available",
+
     "ADD": "Add",
     "EDIT": "Edit",
     "DETAILS": "Details",

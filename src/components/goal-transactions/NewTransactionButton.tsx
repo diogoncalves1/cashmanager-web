@@ -8,10 +8,10 @@ import { useTranslations } from "next-intl";
 
 type Props = {
   setLoad?: Dispatch<SetStateAction<boolean>>;
-  // financialGoalId?: string;
+  financialGoalId?: string;
 };
 
-export function NewTransactionButton({ setLoad /*, financialGoalId*/ }: Props) {
+export function NewTransactionButton({ setLoad, financialGoalId }: Props) {
   const t = useTranslations("TRANSACTIONS");
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -23,7 +23,7 @@ export function NewTransactionButton({ setLoad /*, financialGoalId*/ }: Props) {
       <FormTransactionDialog
         isOpen={isOpen}
         setIsOpen={setIsOpen}
-        // financialGoalId={financialGoalId}
+        financialGoalId={financialGoalId}
         mutate={() => {
           if (setLoad) setLoad((prev) => !prev);
         }}

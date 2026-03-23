@@ -8,6 +8,11 @@ import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
 import { useRouter } from "next/navigation";
 
+type SubmitResult = {
+  success: boolean;
+  message: string;
+};
+
 export function useDebtPaymentForm(id?: string, debtId?: string, isOpen?: boolean) {
   const router = useRouter();
 
@@ -146,11 +151,6 @@ export function useDebtPaymentForm(id?: string, debtId?: string, isOpen?: boolea
       });
     }
   }, [paymentData, paymentError, router]);
-
-  type SubmitResult = {
-    success: boolean;
-    message: string;
-  };
 
   return {
     formData,

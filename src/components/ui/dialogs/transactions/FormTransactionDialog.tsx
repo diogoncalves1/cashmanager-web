@@ -20,19 +20,20 @@ import {
 import { TransactionStatus, TransactionType } from "@/models/transaction";
 import { useToast } from "@/hooks/useToast";
 import { useTransactionForm } from "@/components/form/transactions/hooks/useTransactionForm";
-import { Account } from "@/models/account";
+import { Account, AccountBasic } from "@/models/account";
 import { Category, iconMap } from "@/models/category";
 import { TransactionDatePicker } from "@/components/form/transactions/TransactionDatePicker";
 import { Textarea } from "@/components/ui/textarea";
 import { useTranslations } from "next-intl";
 import { SwalToast } from "@/components/swal/SwalToast";
+import { useEffect } from "react";
 
 type TransactionDialogProps = {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isOpen: boolean;
   id?: string;
   mutate?: () => void;
-  // accountId?: string;
+  accountId?: string;
 };
 
 const FormTransactionDialog = ({
@@ -40,7 +41,7 @@ const FormTransactionDialog = ({
   setIsOpen,
   mutate,
   id,
-  // accountId,
+  accountId,
 }: TransactionDialogProps) => {
   const t = useTranslations("TRANSACTIONS");
   const {
@@ -55,8 +56,16 @@ const FormTransactionDialog = ({
     isLoadingAccounts,
     categories,
     accounts,
-  } = useTransactionForm(id);
+  } = useTransactionForm(id, accountId, isOpen);
   const { toast } = useToast();
+
+  useEffect(() => {
+    if (isLoadingAccounts && !id) return;
+    setFormData((prev) => ({
+      ...prev,
+      ...(accountId ? { account_id: accountId } : {}),
+    }));
+  }, [formData.account_id, setFormData, accountId, isLoadingAccounts, id]);
 
   function reset() {
     setFormData({
@@ -96,7 +105,7 @@ const FormTransactionDialog = ({
     return <div className="h-96 animate-pulse bg-gray-100 rounded" />;
   }
 
-  if (!isLoadingAccounts && !id && isOpen && accounts?.data?.length == 0) {
+  if (!isLoadingAccounts && !id && isOpen && accounts?.length == 0) {
     setIsOpen(false);
     SwalToast({ message: t("NO_ACCOUNTS_AVAILABLE"), icon: "warning" });
     return <></>;
@@ -113,7 +122,7 @@ const FormTransactionDialog = ({
           </DialogHeader>
 
           <div className="mt-4 grid gap-4">
-            {!id && (
+            {!id && !accountId && (
               <div className="grid gap-1.5">
                 <Label htmlFor="tx-account">{t("ACCOUNT")}</Label>
                 {!isLoadingAccounts ? (
@@ -125,7 +134,7 @@ const FormTransactionDialog = ({
                       <SelectValue placeholder={t("SELECT_ACCOUNT")} />
                     </SelectTrigger>
                     <SelectContent>
-                      {accounts?.data.map((a: Account) => (
+                      {accounts?.map((a: AccountBasic) => (
                         <SelectItem key={a.id} value={a.id}>
                           {a.name}
                         </SelectItem>
