@@ -5,10 +5,14 @@ export function middleware(request: NextRequest) {
   const token = request.cookies.get("token");
   const { pathname } = request.nextUrl;
 
-  if (!token && pathname !== "/signin") {
+  if (
+    !token &&
+    ["/signup", "/verify-email", "/change-password", "/reset-password", "/signin"].includes(
+      pathname
+    )
+  ) {
     return NextResponse.redirect(new URL("/signin", request.url));
   }
-
   if (token && pathname === "/signin") {
     const from = request.nextUrl.searchParams.get("from");
     if (from) {
