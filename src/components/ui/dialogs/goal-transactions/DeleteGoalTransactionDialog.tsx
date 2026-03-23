@@ -11,6 +11,7 @@ import { onDeleteFinancialGoalTransaction } from "@/services/financial-goal-tran
 import { useRouter } from "next/navigation";
 import { Table } from "@tanstack/react-table";
 import { FinancialGoalTransaction } from "@/models/financialGoalTransactions";
+import { useTranslations } from "next-intl";
 
 type PaginationState = {
   pageIndex: number;
@@ -37,21 +38,19 @@ export default function DeleteGoalTransactionDialog({
   goBack = false,
 }: Props) {
   const router = useRouter();
+  const t = useTranslations("FINANCIAL_GOAL_TRANSACTIONS");
 
   return (
     <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteOpen}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Delete Transaction</DialogTitle>
-          <DialogDescription>
-            Are you sure you want to delete this transaction? This action cannot be undone and will
-            affect the goal balance.
-          </DialogDescription>
+          <DialogTitle>{t("DELETE_TRANSACTION")}</DialogTitle>
+          <DialogDescription>{t("DELETE_TRANSACTION_TEXT")}</DialogDescription>
         </DialogHeader>
         <div className="py-4">
           <div className="p-4 rounded-xl bg-destructive/10 border border-destructive/20">
             <p className="text-sm text-destructive font-medium">
-              Warning: Deleting this transaction will remove the amount from the goal balance.
+              {t("DELETE_TRANSACTION_WARNING")}
             </p>
           </div>
         </div>
@@ -61,7 +60,7 @@ export default function DeleteGoalTransactionDialog({
             onClick={() => setIsDeleteOpen(false)}
             className="bg-transparent"
           >
-            Cancel
+            {t("CANCEL")}
           </Button>
           <Button
             variant="destructive"
@@ -75,7 +74,7 @@ export default function DeleteGoalTransactionDialog({
               }
             }}
           >
-            Delete Transaction
+            {t("DELETE")}
           </Button>
         </DialogFooter>
       </DialogContent>

@@ -37,6 +37,7 @@ import UsersTable from "./UsersTable";
 import { useAuth } from "@/context/AuthContext";
 import LeaveSubjectDialog from "@/components/invitations/LeaveSubjectDialog";
 import TableContainer from "@/components/goal-transactions/TableContainer";
+import { NewTransactionButton } from "@/components/goal-transactions/NewTransactionButton";
 
 type FinancialGoalDetailsProps = {
   id: string;
@@ -124,7 +125,7 @@ export default function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) 
                 {financialGoal.actions?.edit && (
                   <Link href={`${id}/edit`}>
                     <DropdownMenuItem>
-                      <Edit />
+                      <Edit className="size-4" />
                       {t("EDIT_GOAL")}
                     </DropdownMenuItem>
                   </Link>
@@ -133,7 +134,7 @@ export default function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) 
                   <DropdownMenuItem
                     onClick={() => onCancelFinancialGoal(id, t, () => setUpdate(true))}
                   >
-                    <PauseCircle />
+                    <PauseCircle className="size-4" />
                     {t("CANCEL_GOAL")}
                   </DropdownMenuItem>
                 )}
@@ -141,7 +142,7 @@ export default function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) 
                   <DropdownMenuItem
                     onClick={() => onResetFinancialGoal(id, t, () => setUpdate(true))}
                   >
-                    <PlayCircle className="size-4 mr-2" />
+                    <PlayCircle className="size-4" />
                     {t("RESET_GOAL")}
                   </DropdownMenuItem>
                 )}
@@ -150,27 +151,27 @@ export default function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) 
                   financialGoal.contributedAmount >= financialGoal.totalAmount &&
                   financialGoal.status == "in_progress" && (
                     <DropdownMenuItem onClick={() => setIsConfirmOpen(true)}>
-                      <CheckCircle2 className="size-4 mr-2" />
+                      <CheckCircle2 className="size-4" />
                       {t("COMPLETE_GOAL")}
                     </DropdownMenuItem>
                   )}
-
-                {financialGoal.actions?.edit && <DropdownMenuSeparator />}
-
-                {financialGoal?.users?.find((userShare) => userShare.id == user?.id)?.sharedRole
+                {financialGoal.actions?.destroy ||
+                  (financialGoal.users?.find((userShare) => userShare.id == user?.id)?.sharedRole
+                    ?.code != "creator" && <DropdownMenuSeparator />)}
+                {financialGoal.users?.find((userShare) => userShare.id == user?.id)?.sharedRole
                   ?.code != "creator" && (
                   <DropdownMenuItem
                     onClick={async () => {
                       setLeaveSubject(true);
                     }}
                   >
-                    <DoorOpen className="size-4 mr-2" />
+                    <DoorOpen className="size-4" />
                     {t("LEAVE_GOAL")}
                   </DropdownMenuItem>
                 )}
                 {financialGoal.actions?.destroy && (
                   <DropdownMenuItem variant="destructive" onClick={() => setIsDeleteOpen(true)}>
-                    <Trash2Icon className="size-4 mr-2" />
+                    <Trash2Icon className="size-4" />
                     {t("DELETE_GOAL")}
                   </DropdownMenuItem>
                 )}
@@ -181,10 +182,7 @@ export default function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) 
             )}
 
             {financialGoal.actions?.createTransactions && (
-              <AppLink path="/financial-goal-transactions/create" size="sm">
-                <Plus className="w-4 h-4 sm:mr-2" />
-                <span className="hidden sm:inline">{t("ADD_TRANSACTION")}</span>
-              </AppLink>
+              <NewTransactionButton setLoad={() => setUpdate(true)} />
             )}
           </div>
         </div>

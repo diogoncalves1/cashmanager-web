@@ -28,8 +28,8 @@ export default function ConfirmGoalTransactionDialog({
     <Dialog open={isConfirmDialogOpen} onOpenChange={setIsConfirmOpen}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Confirm Transaction</DialogTitle>
-          <DialogDescription>Are you sure you want to confirm this transaction?</DialogDescription>
+          <DialogTitle>{t("CONFIRM_TRANSACTION")}</DialogTitle>
+          <DialogDescription>{t("CONFIRM_TRANSACTION_TEXT")}</DialogDescription>
         </DialogHeader>
         {/* <div className="py-4">
           <div className="p-4 rounded-xl bg-success-500/10 border border-success-500/20">
@@ -57,7 +57,7 @@ export default function ConfirmGoalTransactionDialog({
               }
             }}
           >
-            Confirm Transaction
+            {t("CONFIRM_TRANSACTION")}
           </Button>
         </DialogFooter>
       </DialogContent>

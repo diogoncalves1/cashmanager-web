@@ -1213,6 +1213,7 @@
     "INTEREST_PAID": "Interest Paid",
     "NO_ACCOUNTS_AVAILABLE": "No accounts available",
     "DEBTS": "Debts",
+    "CONFIRMING_PAYMENT": "Confirming payment...",
     "PAYMENTS": "Payments",
     "PAYMENTS_PAGE_TEXT": "View and manage all payments across your debts.",
     "DEBT": "Debt",
