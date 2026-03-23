@@ -780,6 +780,8 @@
     "SAVING": "A guardar...",
     "ACCOUNT": "Conta",
 
+    "NO_ACCOUNTS_AVAILABLE": "Sem contas disponíveis",
+
     "FINANCIAL_GOAL_TRANSACTION": "TRANSAÇÕES META FINANCEIRA",
     "FINANCIAL_GOAL": "Meta Financeira",
     "FINANCIAL_GOALS": "Metas Financeiras",

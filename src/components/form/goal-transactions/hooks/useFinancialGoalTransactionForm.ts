@@ -11,10 +11,17 @@ import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
 
-export function useFinancialGoalTransactionForm(id?: string) {
-  const router = useRouter();
+type SubmitResult = {
+  success: boolean;
+  message: string;
+};
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
+export function useFinancialGoalTransactionForm(
+  id?: string,
+  financialGoalId?: string,
+  isOpen?: boolean
+) {
+  const router = useRouter();
 
   const [formData, setFormData] = useState<{
     account_id?: string;
@@ -28,50 +35,13 @@ export function useFinancialGoalTransactionForm(id?: string) {
     type: "contribution",
     status: "completed",
     date: new Date().toISOString().split("T")[0],
+    financial_goal_id: financialGoalId,
   });
 
   const [dateLimits, setDateLimits] = useState({
     min: "",
     max: new Date().toISOString().split("T")[0],
   });
-
-  const {
-    data: transactionData,
-    error: transactionError,
-    isLoading: isLoadingTransaction,
-  } = useSWR(id ? [`/financial-goal-transactions/${id}`, { method: "GET" }] : null, fetcher);
-
-  const [financialGoals, setGoals] = useState<FinancialGoalBasic[]>([]);
-  const [loadingGoals, setLoadingGoals] = useState(true);
-  const [accounts, setAccounts] = useState<AccountBasic[]>([]);
-  const [loadingAccouts, setLoadingAccount] = useState(true);
-
-  const fetchGoals = async () => {
-    try {
-      const res = await getAllFinancialGoals();
-
-      setGoals(res.data);
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        console.error(err);
-      }
-    } finally {
-      setLoadingAccount(false);
-    }
-  };
-  const fetchAccounts = async () => {
-    try {
-      const res = await getAllAccounts();
-
-      setAccounts(res.data);
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        console.error(err);
-      }
-    } finally {
-      setLoadingGoals(false);
-    }
-  };
 
   const updateDateLimits = useCallback(
     (status: FinancialGoalTransactionStatus) => {
@@ -102,38 +72,7 @@ export function useFinancialGoalTransactionForm(id?: string) {
     [formData.date]
   );
 
-  useEffect(() => {
-    if (!id) {
-      fetchGoals();
-      fetchAccounts();
-    }
-  }, [id]);
-
-  useEffect(() => {
-    if (transactionError) router.push("/financial-goal-transactions");
-
-    if (transactionData?.data) {
-      const tx = transactionData.data;
-      setFormData({
-        account_id: tx.accountId,
-        financial_goal_id: tx.financialGoalId || "",
-        amount: tx.amount,
-        type: tx.type,
-        date: tx.date,
-        status: tx.status,
-        description: tx.description || "",
-      });
-    }
-  }, [transactionData, transactionError, router]);
-
-  useEffect(() => {
-    updateDateLimits(formData.status);
-  }, [formData.status, updateDateLimits]);
-
-  type SubmitResult = {
-    success: boolean;
-    message: string;
-  };
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (): Promise<SubmitResult> => {
     setIsSubmitting(true);
@@ -163,6 +102,79 @@ export function useFinancialGoalTransactionForm(id?: string) {
       setIsSubmitting(false);
     }
   };
+
+  const {
+    data: transactionData,
+    error: transactionError,
+    isLoading: isLoadingTransaction,
+  } = useSWR(
+    isOpen ? (id ? [`/financial-goal-transactions/${id}`, { method: "GET" }] : null) : null,
+    fetcher
+  );
+
+  const [financialGoals, setGoals] = useState<FinancialGoalBasic[]>([]);
+  const [loadingGoals, setLoadingGoals] = useState(true);
+  const [accounts, setAccounts] = useState<AccountBasic[]>([]);
+  const [loadingAccouts, setLoadingAccount] = useState(true);
+
+  const fetchGoals = async () => {
+    try {
+      setLoadingGoals(true);
+
+      const res = await getAllFinancialGoals();
+
+      setGoals(res.data);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        console.error(err);
+      }
+    } finally {
+      setLoadingGoals(false);
+    }
+  };
+  const fetchAccounts = async () => {
+    try {
+      setLoadingAccount(true);
+
+      const res = await getAllAccounts();
+
+      setAccounts(res.data);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        console.error(err);
+      }
+    } finally {
+      setLoadingAccount(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      fetchGoals();
+      fetchAccounts();
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (transactionError) router.push("/financial-goal-transactions");
+
+    if (transactionData?.data) {
+      const tx = transactionData.data;
+      setFormData({
+        account_id: tx.accountId,
+        financial_goal_id: tx.financialGoalId || "",
+        amount: tx.amount,
+        type: tx.type,
+        date: tx.date,
+        status: tx.status,
+        description: tx.description || "",
+      });
+    }
+  }, [transactionData, transactionError, router]);
+
+  useEffect(() => {
+    updateDateLimits(formData.status);
+  }, [formData.status, updateDateLimits]);
 
   return {
     formData,

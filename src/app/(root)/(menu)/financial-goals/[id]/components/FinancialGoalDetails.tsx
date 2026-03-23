@@ -180,7 +180,7 @@ export default function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) 
             )}
 
             {financialGoal.actions?.createTransactions && (
-              <NewTransactionButton setLoad={() => setUpdate(true)} />
+              <NewTransactionButton setLoad={() => setUpdate(true)} financialGoalId={id} />
             )}
           </div>
         </div>

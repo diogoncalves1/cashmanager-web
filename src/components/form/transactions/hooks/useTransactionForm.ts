@@ -3,11 +3,15 @@ import useSWR from "swr";
 import { useRouter } from "next/navigation";
 import { fetcher } from "@/lib/fetcher";
 import { TransactionStatus, TransactionType } from "@/models/transaction";
+import { AccountBasic } from "@/models/account";
+import { getAllAccounts } from "@/services/accounts/account.service";
 
-export function useTransactionForm(id?: string) {
+export function useTransactionForm(id?: string, accountId?: string, isOpen?: boolean) {
   const router = useRouter();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [accounts, setAccounts] = useState<AccountBasic[]>([]);
+  const [isLoadingAccounts, setLoadingAccount] = useState(true);
 
   const [formData, setFormData] = useState<{
     account_id?: string;
@@ -21,6 +25,7 @@ export function useTransactionForm(id?: string) {
     type: "revenue",
     status: "completed",
     date: new Date().toISOString().split("T")[0],
+    account_id: accountId,
   });
 
   const [dateLimits, setDateLimits] = useState<{ min: string; max: string }>({
@@ -32,17 +37,33 @@ export function useTransactionForm(id?: string) {
     data: transactionData,
     error: transactionError,
     isLoading: isLoadingTransaction,
-  } = useSWR(id ? [`/transactions/${id}`, { method: "GET" }] : null, fetcher);
+  } = useSWR(isOpen ? (id ? [`/transactions/${id}`, { method: "GET" }] : null) : null, fetcher);
 
   const { data: categories, isLoading: isLoadingCategories } = useSWR(
     [`/categories?type=${formData.type}`, { method: "GET" }],
     fetcher
   );
 
-  const { data: accounts, isLoading: isLoadingAccounts } = useSWR(
-    id ? null : ["/accounts/all", { method: "GET" }],
-    fetcher
-  );
+  const fetchAccounts = async () => {
+    try {
+      setLoadingAccount(true);
+      const res = await getAllAccounts();
+
+      setAccounts(res.data);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        console.error(err);
+      }
+    } finally {
+      setLoadingAccount(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      fetchAccounts();
+    }
+  }, [isOpen]);
 
   const updateDateLimits = useCallback(
     (status: TransactionStatus) => {
