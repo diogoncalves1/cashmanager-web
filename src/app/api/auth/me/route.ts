@@ -11,7 +11,8 @@ export async function GET() {
   const cachedUser = cookieStore.get("user")?.value;
 
   if (cachedUser) {
-    cookieStore.set("NEXT_LOCALE", JSON.parse(cachedUser).preferences.lang);
+    if (!cookieStore.get("NEXT_LOCALE"))
+      cookieStore.set("NEXT_LOCALE", JSON.parse(cachedUser).preferences.lang);
     return Response.json({
       token,
       user: cachedUser,
