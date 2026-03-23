@@ -15,7 +15,7 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
     if (error || (!isLoading && data == undefined) || (data && !data.token)) {
       router.push(`/signin?from=${pathname}`);
     }
-  }, [data, isLoading, error, router]);
+  }, [data, isLoading, error, router, pathname]);
 
   if (isLoading || data == undefined) return <div></div>;
 
