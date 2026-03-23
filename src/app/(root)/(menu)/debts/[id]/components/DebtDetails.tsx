@@ -226,7 +226,9 @@ export default function DebtDetails({ id }: DebtDetailsProps) {
                 </svg>
               </div>
             </div>
-            <div className="text-2xl font-semibold text-foreground">{debt.totalAmountFormated}</div>
+            <div className="text-2xl font-semibold text-foreground">
+              {debt.totalAmountFormatedWithoutSymbol}
+            </div>
           </div>
 
           <div className="p-5 rounded-xl bg-card border border-border shadow-sm">
@@ -238,7 +240,9 @@ export default function DebtDetails({ id }: DebtDetailsProps) {
                 <Check className="size-4 text-accent" />
               </div>
             </div>
-            <div className="text-2xl font-semibold text-accent">{debt.paidAmountFormated}</div>
+            <div className="text-2xl font-semibold text-accent">
+              {debt.paidAmountFormatedWithoutSymbol}
+            </div>
             <div className="text-xs text-muted-foreground mt-1">
               {progress}% {t("OF_TOTAL")}
             </div>
@@ -386,7 +390,9 @@ export default function DebtDetails({ id }: DebtDetailsProps) {
                 <div className="space-y-4">
                   <div className="flex justify-between py-3 border-b border-border">
                     <span className="text-muted-foreground">{t("ORIGINAL_AMOUNT")}</span>
-                    <span className="font-medium text-foreground">{debt.totalAmountFormated}</span>
+                    <span className="font-medium text-foreground">
+                      {debt.totalAmountFormatedWithoutSymbol}
+                    </span>
                   </div>
                   <div className="flex justify-between py-3 border-b border-border">
                     <span className="text-muted-foreground">{t("INTEREST_RATE")}</span>
@@ -409,14 +415,14 @@ export default function DebtDetails({ id }: DebtDetailsProps) {
                 <div className="space-y-4">
                   <div className="flex justify-between py-3 border-b border-border">
                     <span className="text-muted-foreground">{t("TOTAL_INTEREST")}</span>
-                    <span className="font-medium text-foreground">
-                      {formatCurrency(totalInterest, debt.currencyCode)}
-                    </span>
+                    <span className="font-medium text-foreground">{debt.interestPaidFormated}</span>
                   </div>
 
                   <div className="flex justify-between py-3 border-b border-border">
                     <span className="text-muted-foreground">{t("AMOUNT_PAID")}</span>
-                    <span className="font-medium text-accent">{debt.paidAmountFormated}</span>
+                    <span className="font-medium text-accent">
+                      {debt.paidAmountFormatedWithoutSymbol}
+                    </span>
                   </div>
                   <div className="flex justify-between py-3">
                     <span className="text-muted-foreground">{t("REMAINING_AMOUNT")}</span>

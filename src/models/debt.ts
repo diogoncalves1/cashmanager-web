@@ -50,6 +50,7 @@ export interface Debt {
 
   remainingAmount: string;
   totalAmountFormatedWithoutSymbol: string;
+  paidAmountFormatedWithoutSymbol: string;
 
   monthsPaid: number;
   months: number;

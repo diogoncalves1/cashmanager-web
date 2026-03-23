@@ -45,6 +45,8 @@ export function formatCurrency(
   const [number, symbol] = example.split(" ");
   let unit = "";
 
+  if (amount == undefined) return `$0.00 ${unit} ${symbol} `;
+
   if (addSymbol) {
     if (amount >= 1000) {
       amount = amount / 1000;

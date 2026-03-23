@@ -65,7 +65,7 @@ const FormPaymentDialog = ({ id, setIsOpen, isOpen, mutate, debtId }: FormPaymen
   }
 
   useEffect(() => {
-    if (loadingDebts) return;
+    if (loadingDebts && !id) return;
     const debt = debts.find((debt) => debt.id == formData.debt_id);
     setFormData((prev) => ({
       ...prev,
