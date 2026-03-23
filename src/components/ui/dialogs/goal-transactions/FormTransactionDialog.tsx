@@ -25,13 +25,14 @@ import { useTranslations } from "next-intl";
 import { SwalToast } from "@/components/swal/SwalToast";
 import { useFinancialGoalTransactionForm } from "@/components/form/goal-transactions/hooks/useFinancialGoalTransactionForm";
 import { FinancialGoalTransactionType } from "@/models/financialGoalTransactions";
+import { useEffect } from "react";
 
 type TransactionDialogProps = {
   id?: string;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isOpen: boolean;
   mutate?: () => void;
-  // financialGoalId?: string;
+  financialGoalId?: string;
 };
 
 const FormTransactionDialog = ({
@@ -39,7 +40,7 @@ const FormTransactionDialog = ({
   setIsOpen,
   isOpen,
   mutate,
-  // financialGoalId,
+  financialGoalId,
 }: TransactionDialogProps) => {
   const t = useTranslations("FINANCIAL_GOAL_TRANSACTIONS");
   const {
@@ -54,7 +55,7 @@ const FormTransactionDialog = ({
     accounts,
     financialGoals,
     loadingGoals,
-  } = useFinancialGoalTransactionForm(id);
+  } = useFinancialGoalTransactionForm(id, financialGoalId, isOpen);
   const { toast } = useToast();
 
   function reset() {
@@ -68,6 +69,14 @@ const FormTransactionDialog = ({
       description: "",
     });
   }
+
+  useEffect(() => {
+    if (loadingGoals && !id) return;
+    setFormData((prev) => ({
+      ...prev,
+      ...(financialGoalId ? { financial_goal_id: financialGoalId } : {}),
+    }));
+  }, [formData.financial_goal_id, setFormData, financialGoalId, loadingGoals, id]);
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -92,7 +101,7 @@ const FormTransactionDialog = ({
   };
 
   if (isLoadingTransaction) {
-    return <div className="h-96 animate-pulse bg-gray-100 rounded" />;
+    return <div className="" />;
   }
 
   if (!loadingAccouts && !id && accounts?.length == 0 && isOpen) {
@@ -100,6 +109,7 @@ const FormTransactionDialog = ({
     setIsOpen(false);
     return <></>;
   }
+
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent className="sm:max-w-lg">
@@ -138,7 +148,7 @@ const FormTransactionDialog = ({
                 )}
               </div>
             )}
-            {!id && (
+            {!id && !financialGoalId && (
               <div className="grid gap-1.5">
                 <Label htmlFor="tx-goal">{t("FINANCIAL_GOAL")}</Label>
                 {!loadingGoals ? (

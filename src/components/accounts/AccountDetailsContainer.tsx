@@ -250,7 +250,7 @@ const AccountDetailsContainer = ({ id }: { id: string }) => {
           </div>
           <div className="flex gap-2">
             {account.actions?.createTransactions && (
-              <NewTransactionButton /*accountId={id}*/ setLoad={mutate} />
+              <NewTransactionButton accountId={id} setLoad={mutate} />
             )}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
