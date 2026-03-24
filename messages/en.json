@@ -556,6 +556,10 @@
     "INVITE_MEMBER": "Invite member",
     "INVITE_MEMBER_TEXT": "Invite a friend.",
 
+    "CHOOSE_DEBTS": "Choose debt",
+    "CHOOSE_FINANCIAL-GOALS": "Choose financial goal",
+    "CHOOSE_ACCOUNTS": "Choose account",
+
     "SEND_INVITATION": "Send invitation",
     "SENDING": "Sending...",
     "FRIEND": "Friend",

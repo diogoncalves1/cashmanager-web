@@ -555,6 +555,10 @@
     "INVITE_MEMBER": "Convidar membro",
     "INVITE_MEMBER_TEXT": "Convide algum amigo.",
 
+    "CHOOSE_DEBTS": "Escolha a dívida",
+    "CHOOSE_FINANCIAL-GOALS": "Escolha a meta financeira",
+    "CHOOSE_ACCOUNTS": "Escolha a conta",
+
     "SEND_INVITATION": "Enviar convite",
     "SENDING": "A enviar...",
     "FRIEND": "Amigo",
