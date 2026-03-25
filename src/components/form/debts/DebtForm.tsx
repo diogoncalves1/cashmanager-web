@@ -66,7 +66,7 @@ export default function DebtForm({ id }: Props) {
   const currencySymbol = currencies.find((c) => c.id === formData.currency_id)?.symbol || "$";
 
   const calculations = useMemo(() => {
-    if (formData.interest_rate == "")
+    if (formData.total_amount == "")
       return {
         remaining: 0,
         estimatedMonths: 0,
@@ -76,17 +76,23 @@ export default function DebtForm({ id }: Props) {
 
     const total = parseFloat(formData.total_amount) || 0;
 
-    const monthlyInterestRate =
-      parseFloat(formData.interest_rate == "" ? "0" : formData.interest_rate) / 12 / 100;
-    const months = parseInt(formData.months);
+    const interestRate = formData.interest_rate;
 
-    const factor = Math.pow(1 + monthlyInterestRate, months);
+    const months = parseInt(formData.months == "" ? "1" : formData.months);
+    let monthly = 0;
 
-    const monthly = total * ((monthlyInterestRate * factor) / (factor - 1));
+    if (interestRate == "" || interestRate == "0") {
+      monthly = total / months;
+    } else {
+      const monthlyInterestRate = parseFloat(interestRate) / 12 / 100;
+
+      const factor = Math.pow(1 + monthlyInterestRate, months);
+
+      monthly = total * ((monthlyInterestRate * factor) / (factor - 1));
+    }
 
     const estimatedTotal = monthly * months;
     const remaining = Math.max(0, estimatedTotal);
-
     const estimatedMonths = monthly > 0 ? Math.ceil(remaining / monthly) : 0;
 
     return {
