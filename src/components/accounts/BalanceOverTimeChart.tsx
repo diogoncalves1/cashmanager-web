@@ -74,6 +74,8 @@ export function BalanceOverTimeChart({
     const start = new Date(now);
     start.setDate(start.getDate() - rangeDays);
 
+    console.log(balanceFormated);
+
     let transactionsSum = 0;
     for (let d = new Date(now); d >= start; d.setDate(d.getDate() - 1)) {
       const dateStr = d.toISOString().split("T")[0];
@@ -162,11 +164,11 @@ export function BalanceOverTimeChart({
           config={{ balance: { label: "Balance", color: TEAL_500 } }}
           className="h-[300px] w-full"
         >
-          <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={data} margin={{ top: 5, right: 10, left: 10, bottom: 5 }}>
+          <ResponsiveContainer width="90%" height="100%">
+            <AreaChart data={data} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
               <defs>
                 <linearGradient id="balanceGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor={TEAL_500} stopOpacity={0.3} />
+                  <stop offset="0%" stopColor={TEAL_500} stopOpacity={0.4} />
                   <stop offset="100%" stopColor={TEAL_500} stopOpacity={0} />
                 </linearGradient>
               </defs>
@@ -181,6 +183,7 @@ export function BalanceOverTimeChart({
               />
               <YAxis
                 tick={{ fontSize: 12 }}
+                width={75}
                 tickFormatter={(v) => formatCurrency(v, balanceFormated, true, 1)}
                 className="fill-muted-foreground"
                 tickLine={false}
