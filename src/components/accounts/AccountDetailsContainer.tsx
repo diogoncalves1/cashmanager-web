@@ -273,7 +273,7 @@ const AccountDetailsContainer = ({ id }: { id: string }) => {
                     }}
                   >
                     <DoorOpen className="size-4 mr-2" />
-                    Leave Goal
+                    {t("LEAVE_ACCOUNT")}
                   </DropdownMenuItem>
                 )}
 

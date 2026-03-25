@@ -48,15 +48,15 @@ export function formatCurrency(
   if (amount == undefined) return `$0.00 ${unit} ${symbol} `;
 
   if (addSymbol) {
-    if (amount >= 1000) {
+    if (amount >= 1000 || amount <= -1000) {
       amount = amount / 1000;
       unit = "k";
     }
-    if (amount >= 1000) {
+    if (amount >= 1000 || amount <= -1000) {
       amount = amount / 10000;
       unit = "M";
     }
-    if (amount >= 1000) {
+    if (amount >= 1000 || amount <= -1000) {
       amount = amount / 1000;
       unit = "B";
     }

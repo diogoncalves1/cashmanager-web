@@ -92,7 +92,7 @@ export default function InviteMemberDialog({
                     }}
                   >
                     <SelectTrigger className="h-14 bg-input border-border text-foreground">
-                      <SelectValue placeholder="Choose a subject" />
+                      <SelectValue placeholder={t(`CHOOSE_${type.toUpperCase()}`)} />
                     </SelectTrigger>
                     <SelectContent>
                       {!loading &&
