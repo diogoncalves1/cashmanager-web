@@ -16,7 +16,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { CategorySummary } from "@/components/charts/accounts/CategoryExpensesChart";
 import { Badge } from "@/components/ui/badge";
 import { ChevronDown, ChevronUp, BarChart3, Circle } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, formatCurrency } from "@/lib/utils";
 import { iconMap } from "@/models/category";
 import { useTranslations } from "next-intl";
 
@@ -125,13 +125,6 @@ export function CategorySpendingChart({
         otherCount: restCount,
       };
     }, [categoriesData]);
-
-  const fmt = (v: number) =>
-    new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency,
-      maximumFractionDigits: 0,
-    }).format(v);
 
   if (isLoading) {
     return (
@@ -334,7 +327,7 @@ export function CategorySpendingChart({
               >
                 <span className="block size-3 shrink-0 rounded-full bg-gray-500" />
                 <span className="min-w-0 flex-1 text-sm font-medium text-foreground">
-                  {t("OTHER")}
+                  {(otherCategories.length ?? 0) > 1 ? t("OTHERS") : t("OTHER")}
                   <span className="ml-1.5 text-xs font-normal text-muted-foreground">
                     ({otherCategories.length}{" "}
                     {otherCategories.length > 1 ? t("CATEGORIES") : t("CATEGORY")})
@@ -345,7 +338,8 @@ export function CategorySpendingChart({
                   color="default"
                   className="shrink-0 rounded-md bg-muted px-2 py-0.5 text-xs font-medium text-muted-foreground"
                 >
-                  {otherCount} {(otherCount ?? 0) > 1 ? t("TRANSACTIONS") : t("TRANSACTION")}
+                  {otherCategories.length}{" "}
+                  {(otherCategories.length ?? 0) > 1 ? t("TRANSACTIONS") : t("TRANSACTION")}
                 </Badge>
                 <div className="flex items-center gap-3">
                   <div className="hidden w-24 sm:block">
@@ -363,7 +357,7 @@ export function CategorySpendingChart({
                     {((otherTotal / grandTotal) * 100).toFixed(0)}%
                   </span>
                   <span className="w-24 text-right text-sm font-bold tabular-nums text-foreground">
-                    {fmt(otherTotal)}
+                    {formatCurrency(otherTotal, categoriesData.totalFormated)}
                   </span>
                 </div>
                 {showOther ? (
