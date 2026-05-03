@@ -21,6 +21,7 @@ export default function NotificationDropdown() {
     toggleDropdown();
     setNotifying(false);
   };
+
   return (
     <div className="relative">
       <button
