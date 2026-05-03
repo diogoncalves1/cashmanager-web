@@ -46,7 +46,7 @@ export function useDebtPaymentForm(id?: string, debtId?: string, isOpen?: boolea
     let max = "";
 
     if (status === "completed") {
-      max = today.toISOString().split("T")[0];
+      max = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
 
       if ((formData.date as string) > max) setFormData({ ...formData, date: "" });
     } else if (status === "pending") {
