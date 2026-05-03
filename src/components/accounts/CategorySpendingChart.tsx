@@ -71,60 +71,52 @@ function CustomTooltip({
   );
 }
 
-export function CategorySpendingChart({
-  categoriesData,
-  currency,
-  isLoading,
-}: CategorySpendingChartProps) {
+export function CategorySpendingChart({ categoriesData, isLoading }: CategorySpendingChartProps) {
   const t = useTranslations("ACCOUNTS");
 
   const [showOther, setShowOther] = useState(false);
   // const [dateRange, setDateRange] = useState<DateRange>("all");
   const [hoveredBar, setHoveredBar] = useState<string | null>(null);
 
-  const { topCategories, allCategories, otherCategories, otherTotal, grandTotal, otherCount } =
-    useMemo(() => {
-      const total = categoriesData.total;
-      if (total === 0)
-        return {
-          topCategories: [] as CategoryItem[],
-          allCategories: [] as CategoryItem[],
-          otherCategories: [] as CategoryItem[],
-          otherTotal: 0,
-          grandTotal: 0,
-          otherCount: 0,
-        };
-
-      const top: CategoryItem[] = categoriesData.data.slice(0, TOP_COUNT).map((c) => ({
-        ...c,
-        percentage: (c.value / total) * 100,
-        color: c.color,
-      }));
-
-      const all: CategoryItem[] = categoriesData.data.map((c) => ({
-        ...c,
-        percentage: (c.value / total) * 100,
-        color: c.color,
-      }));
-
-      const rest: CategoryItem[] = categoriesData.data.slice(TOP_COUNT).map((c) => ({
-        ...c,
-        percentage: (c.value / total) * 100,
-        color: c.color,
-      }));
-
-      const restTotal = rest.reduce((s, c) => s + c.value, 0);
-      const restCount = rest.reduce((s, c) => s + c.value, 0);
-
+  const { topCategories, allCategories, otherCategories, otherTotal, grandTotal } = useMemo(() => {
+    const total = categoriesData.total;
+    if (total === 0)
       return {
-        topCategories: top,
-        allCategories: all,
-        otherCategories: rest,
-        otherTotal: restTotal,
-        grandTotal: total,
-        otherCount: restCount,
+        topCategories: [] as CategoryItem[],
+        allCategories: [] as CategoryItem[],
+        otherCategories: [] as CategoryItem[],
+        otherTotal: 0,
+        grandTotal: 0,
       };
-    }, [categoriesData]);
+
+    const top: CategoryItem[] = categoriesData.data.slice(0, TOP_COUNT).map((c) => ({
+      ...c,
+      percentage: (c.value / total) * 100,
+      color: c.color,
+    }));
+
+    const all: CategoryItem[] = categoriesData.data.map((c) => ({
+      ...c,
+      percentage: (c.value / total) * 100,
+      color: c.color,
+    }));
+
+    const rest: CategoryItem[] = categoriesData.data.slice(TOP_COUNT).map((c) => ({
+      ...c,
+      percentage: (c.value / total) * 100,
+      color: c.color,
+    }));
+
+    const restTotal = rest.reduce((s, c) => s + c.value, 0);
+
+    return {
+      topCategories: top,
+      allCategories: all,
+      otherCategories: rest,
+      otherTotal: restTotal,
+      grandTotal: total,
+    };
+  }, [categoriesData]);
 
   if (isLoading) {
     return (
