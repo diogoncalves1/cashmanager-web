@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { CategorySpendingChart } from "./CategorySpendingChart";
 import AccountMonthlySummary from "@/components/accounts/AccountMonthlySummary";
-import { Account } from "@/models/account";
+import { Account } from "@/types/account";
 import { CategorySummary } from "../charts/accounts/CategoryExpensesChart";
 import { MonthlySummary } from "../charts/accounts/MonthlySummaryChart";
 

@@ -3,7 +3,7 @@
 import { Input } from "@/components/ui/input";
 import Label from "../Label";
 
-import { Currency } from "@/models/currency";
+import { Currency } from "@/types/currency";
 import {
   Select,
   SelectContent,

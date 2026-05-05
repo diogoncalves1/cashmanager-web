@@ -1,4 +1,4 @@
-import { Currency } from "@/models/currency";
+import { Currency } from "@/types/currency";
 
 interface ApiResponse<T> {
   data: T[];
