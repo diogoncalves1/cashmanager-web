@@ -15,8 +15,8 @@ import {
   getTransactionTypes,
   TransactionStatus,
   TransactionType,
-} from "@/models/transaction";
-import { Category } from "@/models/category";
+} from "@/types/transaction";
+import { Category } from "@/types/category";
 import { useTranslations } from "next-intl";
 import { TransactionDatePicker } from "../form/transactions/TransactionDatePicker";
 

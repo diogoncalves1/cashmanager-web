@@ -1,5 +1,5 @@
 import { SwalToast } from "@/components/swal/SwalToast";
-import { Transaction } from "@/models/transaction";
+import { Transaction } from "@/types/transaction";
 import { Table } from "@tanstack/react-table";
 
 type PaginationState = {
@@ -18,8 +18,6 @@ export async function onDeleteTransaction(
   });
 
   const data = await res.json();
-
-  if (!res.ok) throw new Error(data.message);
 
   if (data.success) {
     if (table) {

@@ -9,7 +9,7 @@ async function getToken() {
 export const serverApiClient = {
   get: async <T>(endpoint: string, options?: Pick<FetcherOptions, "revalidate">) =>
     request<T>(endpoint, await getToken(), options),
-  post: async <T>(endpoint: string, body: unknown) =>
+  post: async <T>(endpoint: string, body?: unknown) =>
     request<T>(endpoint, await getToken(), { method: "POST", body: JSON.stringify(body) }),
   put: async <T>(endpoint: string, body: unknown) =>
     request<T>(endpoint, await getToken(), { method: "PUT", body: JSON.stringify(body) }),

@@ -5,7 +5,7 @@ import { ColumnFiltersState, SortingState } from "@tanstack/react-table";
 import React, { useCallback, useEffect, useState } from "react";
 import useSWR from "swr";
 import { TransactionsDataTable } from "@/components/transactions/TransactionsDataTable";
-import { TransactionStatus, TransactionType } from "@/models/transaction";
+import { TransactionStatus, TransactionType } from "@/types/transaction";
 import { TransactionsFilters } from "./TransactionFilters";
 import { TransactionsSummary } from "./TransactionsSummary";
 

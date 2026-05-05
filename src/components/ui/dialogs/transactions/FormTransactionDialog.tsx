@@ -17,11 +17,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { TransactionStatus, TransactionType } from "@/models/transaction";
+import { TransactionStatus, TransactionType } from "@/types/transaction";
 import { useToast } from "@/hooks/useToast";
 import { useTransactionForm } from "@/components/form/transactions/hooks/useTransactionForm";
 import { AccountBasic } from "@/types/account";
-import { Category, iconMap } from "@/models/category";
+import { Category, iconMap } from "@/types/category";
 import { TransactionDatePicker } from "@/components/form/transactions/TransactionDatePicker";
 import { Textarea } from "@/components/ui/textarea";
 import { useTranslations } from "next-intl";
