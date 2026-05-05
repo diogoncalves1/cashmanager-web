@@ -11,7 +11,7 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { useToast } from "@/hooks/useToast";
-import { onConfirmTransaction } from "@/services/transactions/service";
+import { onConfirmTransaction } from "@/services/transaction";
 import { useTranslations } from "next-intl";
 
 interface ConfirmTransactionDialogProps {

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { getAllDebts } from "../services/debt.service";
-import { Debt } from "@/models/debt";
+import { Debt } from "@/types/debt";
 
 interface Filters {
   search?: string;

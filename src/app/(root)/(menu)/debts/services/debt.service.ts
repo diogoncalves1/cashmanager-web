@@ -1,4 +1,4 @@
-import { Debt } from "@/models/debt";
+import { Debt } from "@/types/debt";
 
 interface DebtsFilters {
   search?: string;

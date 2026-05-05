@@ -9,7 +9,7 @@ import {
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { Debt } from "@/models/debt";
+import { Debt } from "@/types/debt";
 import {
   DropdownMenu,
   DropdownMenuContent,

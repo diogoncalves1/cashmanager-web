@@ -17,7 +17,7 @@ import { CategorySummary } from "@/components/charts/accounts/CategoryExpensesCh
 import { Badge } from "@/components/ui/badge";
 import { ChevronDown, ChevronUp, BarChart3, Circle } from "lucide-react";
 import { cn, formatCurrency } from "@/lib/utils";
-import { iconMap } from "@/models/category";
+import { iconMap } from "@/types/category";
 import { useTranslations } from "next-intl";
 
 interface CategorySpendingChartProps {

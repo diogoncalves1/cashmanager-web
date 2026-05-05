@@ -39,8 +39,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Transaction } from "@/models/transaction";
-import { iconMap } from "@/models/category";
+import { Transaction } from "@/types/transaction";
+import { iconMap } from "@/types/category";
 import { MyPagination } from "@/components/transactions/TableContainer";
 import FormTransactionDialog from "@/components/ui/dialogs/transactions/FormTransactionDialog";
 import Link from "next/link";

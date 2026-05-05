@@ -11,8 +11,8 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { useToast } from "@/hooks/useToast";
-import { Transaction } from "@/models/transaction";
-import { onDeleteTransaction } from "@/services/transactions/service";
+import { Transaction } from "@/types/transaction";
+import { onDeleteTransaction } from "@/services/transaction";
 import { useTranslations } from "next-intl";
 import { Table as ReactTable } from "@tanstack/react-table";
 

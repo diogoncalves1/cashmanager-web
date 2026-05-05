@@ -25,7 +25,7 @@ import DeleteDebtDialog from "./DeleteDebtDialog";
 import { useAuth } from "@/context/AuthContext";
 import LeaveSubjectDialog from "@/components/invitations/LeaveSubjectDialog";
 import MarkDebtPaidDialog from "@/components/ui/dialogs/debts/MarkDebtPaidDialog";
-import { Debt } from "@/models/debt";
+import { Debt } from "@/types/debt";
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
 import { useRouter } from "next/navigation";
