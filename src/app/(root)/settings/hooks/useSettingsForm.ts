@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Currency } from "@/models/currency";
+import { Currency } from "@/types/currency";
 import { getCurrencies } from "@/services/currencies/currency.service";
 import { Language } from "@/models/language";
 import { getLanguages } from "@/services/languages/languages.service";

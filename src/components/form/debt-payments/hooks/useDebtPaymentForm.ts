@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { DebtPaymentStatus } from "@/models/debtPayment";
-import { getAllAccounts } from "@/services/accounts/account.service";
-import { AccountBasic } from "@/models/account";
+import { getAllAccounts } from "@/services/account";
+import { AccountBasic } from "@/types/account";
 import { DebtBasic } from "@/models/debt";
 import { getAllDebts } from "@/services/debts/debt.service";
 import useSWR from "swr";

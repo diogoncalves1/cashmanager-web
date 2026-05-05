@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
-import { Currency } from "./currency";
-import { User } from "./user";
+import { Currency } from "@/types/currency";
+import { User } from "@/types/user";
 
 export type AccountType = "bank_account" | "cash" | "credit_card" | "digital_wallet";
 

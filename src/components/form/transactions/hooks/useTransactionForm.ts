@@ -3,8 +3,8 @@ import useSWR from "swr";
 import { useRouter } from "next/navigation";
 import { fetcher } from "@/lib/fetcher";
 import { TransactionStatus, TransactionType } from "@/models/transaction";
-import { AccountBasic } from "@/models/account";
-import { getAllAccounts } from "@/services/accounts/account.service";
+import { AccountBasic } from "@/types/account";
+import { getAllAccounts } from "@/services/account";
 
 export function useTransactionForm(id?: string, accountId?: string, isOpen?: boolean) {
   const router = useRouter();

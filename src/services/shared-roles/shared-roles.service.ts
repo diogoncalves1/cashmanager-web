@@ -1,8 +1,8 @@
-import { SharedRole } from "@/models/sharedRole";
+import { SharedRole } from "@/types/sharedRole";
 
 interface ApiResponse<T> {
   data: T;
-  additionals: number;
+  meta: number;
 }
 
 export async function getSharedRoles(): Promise<ApiResponse<SharedRole[]>> {

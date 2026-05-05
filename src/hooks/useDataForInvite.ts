@@ -1,5 +1,5 @@
 import { Friendship } from "@/models/friendship";
-import { SharedRole } from "@/models/sharedRole";
+import { SharedRole } from "@/types/sharedRole";
 import { useEffect, useState } from "react";
 
 type InviteType = "debts" | "financial-goals" | "accounts";

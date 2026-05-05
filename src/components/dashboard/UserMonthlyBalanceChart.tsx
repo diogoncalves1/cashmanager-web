@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import MonthlyBalanceChartLoading from "./MonthlyBalanceChartLoading";
 import { useTranslations } from "next-intl";
-import { Currency } from "@/models/currency";
+import { Currency } from "@/types/currency";
 import { BarChart3 } from "lucide-react";
 
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {

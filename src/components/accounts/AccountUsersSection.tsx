@@ -22,9 +22,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn, getUserColor, getUserInitials } from "@/lib/utils";
-import { User } from "@/models/user";
+import { User } from "@/types/user";
 import InviteMemberButton from "../ui/button/InviteMemberButton";
-import { Account } from "@/models/account";
+import { Account } from "@/types/account";
 import { useAuth } from "@/context/AuthContext";
 import ChangeMemberRoleDialog from "../invitations/ChangeMemberRoleDialog";
 import RemoveMemberDialog from "../invitations/RemoveMemberDialog";

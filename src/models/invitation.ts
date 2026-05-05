@@ -1,8 +1,8 @@
-import { Account } from "./account";
+import { Account } from "@/types/account";
 import { Debt } from "./debt";
 import { FinancialGoal } from "./financialGoal";
-import { SharedRole } from "./sharedRole";
-import { User } from "./user";
+import { SharedRole } from "@/types/sharedRole";
+import { User } from "@/types/user";
 
 // Invitation types
 export type InvitationStatus = "pending" | "accepted" | "revoked";

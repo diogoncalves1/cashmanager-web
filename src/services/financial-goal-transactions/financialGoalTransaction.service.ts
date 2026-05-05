@@ -2,7 +2,7 @@ import { FinancialGoalTransaction } from "@/models/financialGoalTransactions";
 
 interface ApiResponse<T> {
   data: T;
-  additionals: number;
+  meta: number;
 }
 
 export async function getFinancialGoalTransactionById(

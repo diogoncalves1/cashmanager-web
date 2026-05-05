@@ -1,7 +1,7 @@
 "use client";
 
-import { AccountType } from "@/models/account";
-import { Currency } from "@/models/currency";
+import { AccountType } from "@/types/account";
+import { Currency } from "@/types/currency";
 import { useEffect, useState } from "react";
 import { AccountSummaryCards } from "./AccountSummaryCards";
 import { AccountFilters } from "./AccountFilters";

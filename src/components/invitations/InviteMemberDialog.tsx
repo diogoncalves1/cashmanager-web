@@ -19,7 +19,7 @@ import { useState } from "react";
 import { useDataForInvite } from "@/hooks/useDataForInvite";
 import { useTranslations } from "next-intl";
 import { SwalToast } from "@/components/swal/SwalToast";
-import { Account } from "@/models/account";
+import { Account } from "@/types/account";
 import { Debt } from "@/models/debt";
 import { FinancialGoal } from "@/models/financialGoal";
 import { toast } from "@/hooks/useToast";

@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import { SharedRole } from "./sharedRole";
+import { SharedRole } from "@/types/sharedRole";
 
 export type DebtStatus = "pending" | "paid";
 

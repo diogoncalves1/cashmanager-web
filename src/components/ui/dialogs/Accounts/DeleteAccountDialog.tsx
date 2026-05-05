@@ -9,8 +9,8 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { useToast } from "@/hooks/useToast";
-import { Account } from "@/models/account";
-import { onDeleteAccount } from "@/services/accounts/service";
+import { Account } from "@/types/account";
+import { onDeleteAccount } from "@/services/account";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 

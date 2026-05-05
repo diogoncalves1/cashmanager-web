@@ -23,10 +23,10 @@ import {
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import type { AccountFormData } from "@/lib/types";
-import { Account, getAccountTypes } from "@/models/account";
+import { Account, getAccountTypes } from "@/types/account";
 import { useAccountForm } from "@/components/form/accounts/hooks/useAccountForm";
 import { toast } from "@/hooks/useToast";
-import { Currency } from "@/models/currency";
+import { Currency } from "@/types/currency";
 import { useTranslations } from "next-intl";
 
 interface FormAccountDialogProps {

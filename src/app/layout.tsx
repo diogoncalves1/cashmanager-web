@@ -14,7 +14,7 @@ const outfit = Outfit({
 });
 
 import localFont from "next/font/local";
-import { User } from "@/models/user";
+import { User } from "@/types/user";
 import { Toaster } from "@/components/ui/toaster";
 
 // Importa Geist

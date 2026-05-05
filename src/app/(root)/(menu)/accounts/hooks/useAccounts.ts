@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { getAllAccounts } from "../services/account.service";
-import { Account } from "@/models/account";
+import { Account } from "@/types/account";
 
 interface Filters {
   search?: string;
