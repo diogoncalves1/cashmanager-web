@@ -2,25 +2,17 @@ import LoadingToast from "@/components/swal/LoadingToast";
 import { SwalToast } from "@/components/swal/SwalToast";
 import { useTranslations } from "next-intl";
 import Swal from "sweetalert2";
+import { DebtBasic } from "@/types/debt";
 
-export async function onDeleteDebt(id: string) {
-  try {
-    const res = await fetch(`/api/debts/${id}`, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-    });
+export async function onDeleteDebt(id: string): Promise<{ success: boolean; message: string }> {
+  const res = await fetch(`/api/debts/${id}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+  });
 
-    const data = await res.json();
+  const data = await res.json();
 
-    if (!res.ok) throw new Error(data.message);
-
-    return { message: data.message, success: true };
-  } catch (err: unknown) {
-    if (err instanceof Error) {
-      return { message: err.message, success: false };
-    }
-    return { message: String(err), success: false };
-  }
+  return data;
 }
 
 export async function onResetDebt(id: string, t: ReturnType<typeof useTranslations>) {
@@ -91,4 +83,45 @@ export async function onMarkPaidDebt(
     }
     return { message: String(err), success: false };
   }
+}
+
+interface ApiResponse<T> {
+  data: T;
+}
+
+export async function getAllDebts(): Promise<ApiResponse<DebtBasic[]>> {
+  const res = await fetch(`/api/debts/all`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (!res.ok) throw new Error("Failed to fetch debts");
+
+  const response = await res.json();
+  return response;
+}
+
+type Summary = {
+  sentInvites: number;
+  receivedInvites: number;
+  pendingInvites: number;
+  awaitingInvites: number;
+};
+
+interface ApiResponseInvitationStats {
+  data: Summary;
+  success: number;
+  message: number;
+}
+
+export async function getInvitationStats(): Promise<ApiResponseInvitationStats> {
+  const res = await fetch(`/api/debts/invitations-stats`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (!res.ok) throw new Error("Failed to fetch debts stats");
+
+  const response = await res.json();
+  return response;
 }

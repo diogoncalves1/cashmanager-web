@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { cn, getUserColor } from "@/lib/utils";
-import { Account, AccountType } from "@/models/account";
+import { Account, AccountType } from "@/types/account";
 import { useTranslations } from "next-intl";
 
 const accountTypeConfig: Record<AccountType, { icon: typeof Building2; className: string }> = {

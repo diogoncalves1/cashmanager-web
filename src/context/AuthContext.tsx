@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext } from "react";
-import { User } from "@/models/user";
+import { User } from "@/types/user";
 
 interface AuthContextType {
   user: User;

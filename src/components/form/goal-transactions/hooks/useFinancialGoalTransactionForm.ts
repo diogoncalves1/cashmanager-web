@@ -5,8 +5,8 @@ import {
 } from "@/models/financialGoalTransactions";
 import { getAllFinancialGoals } from "@/services/financial-goals/financialGoal.service";
 import { FinancialGoalBasic } from "@/models/financialGoal";
-import { getAllAccounts } from "@/services/accounts/account.service";
-import { AccountBasic } from "@/models/account";
+import { getAllAccounts } from "@/services/account";
+import { AccountBasic } from "@/types/account";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";

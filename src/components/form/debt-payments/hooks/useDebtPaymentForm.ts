@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { DebtPaymentStatus } from "@/models/debtPayment";
-import { getAllAccounts } from "@/services/accounts/account.service";
-import { AccountBasic } from "@/models/account";
-import { DebtBasic } from "@/models/debt";
-import { getAllDebts } from "@/services/debts/debt.service";
+import { getAllAccounts } from "@/services/account";
+import { AccountBasic } from "@/types/account";
+import { DebtBasic } from "@/types/debt";
+import { getAllDebts } from "@/services/debt";
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
 import { useRouter } from "next/navigation";

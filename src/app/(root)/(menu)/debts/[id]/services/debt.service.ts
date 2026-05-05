@@ -1,8 +1,8 @@
-import { Debt } from "@/models/debt";
+import { Debt } from "@/types/debt";
 
 interface ApiResponse<T> {
   data: T;
-  additionals: number;
+  meta: number;
 }
 
 export async function getDebtById(id: string): Promise<ApiResponse<Debt>> {

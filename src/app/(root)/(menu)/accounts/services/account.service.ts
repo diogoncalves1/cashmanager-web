@@ -1,4 +1,4 @@
-import { Account } from "@/models/account";
+import { Account } from "@/types/account";
 
 interface GoalsFilters {
   search?: string;

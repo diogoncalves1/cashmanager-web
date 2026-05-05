@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
-import { AccountType } from "./account";
-import { Category, IconName } from "./category";
-import { User } from "./user";
+import { AccountType } from "@/types/account";
+import { Category, IconName } from "@/types/category";
+import { User } from "@/types/user";
 
 export type TransactionType = "revenue" | "expense";
 

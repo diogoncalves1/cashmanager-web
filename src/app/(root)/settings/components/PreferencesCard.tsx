@@ -12,7 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Language } from "@/models/language";
-import { Currency } from "@/models/currency";
+import { Currency } from "@/types/currency";
 import { useTranslations } from "next-intl";
 
 interface PreferencesCardProps {

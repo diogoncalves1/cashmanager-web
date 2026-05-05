@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
-import { Currency } from "@/models/currency";
+import { Currency } from "@/types/currency";
 import UserMonthlyBalanceChart from "@/components/dashboard/UserMonthlyBalanceChart";
 import { IncomeExpensesMetrics } from "@/components/dashboard/IncomeExpensesMetrics";
 

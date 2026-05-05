@@ -3,7 +3,7 @@
 import { useState } from "react";
 import DeleteDebtDialog from "./DeleteDebtDialog";
 import { Button } from "@/components/ui/button";
-import { Debt } from "@/models/debt";
+import { Debt } from "@/types/debt";
 
 export default function DeleteDebtButton({ debt }: { debt: Debt }) {
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);

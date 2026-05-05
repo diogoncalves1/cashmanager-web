@@ -9,7 +9,7 @@ import { fetcher } from "@/lib/fetcher";
 import { ArrowLeftRight, Wallet } from "lucide-react";
 import AppSwiper from "./AppSwiper";
 import SwiperLoading from "./SwiperLoading";
-import { Currency } from "@/models/currency";
+import { Currency } from "@/types/currency";
 import { useRouter } from "next/navigation";
 
 interface Portfolio {

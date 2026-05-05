@@ -16,9 +16,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { TransactionStatus } from "@/models/transaction";
+import { TransactionStatus } from "@/types/transaction";
 import { useToast } from "@/hooks/useToast";
-import { AccountBasic } from "@/models/account";
+import { AccountBasic } from "@/types/account";
 import { TransactionDatePicker } from "@/components/form/transactions/TransactionDatePicker";
 import { Textarea } from "@/components/ui/textarea";
 import { useTranslations } from "next-intl";

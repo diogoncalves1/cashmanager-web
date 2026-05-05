@@ -1,72 +1,24 @@
 import { NextRequest, NextResponse } from "next/server";
-import { baseUrl } from "../../config";
+import { serverApiClient } from "@/lib/api/api-client.server";
+import { Account } from "@/types/account";
 
-export async function GET(req: NextRequest, context: { params: Promise<{ id: string }> }) {
-  try {
-    const { id } = await context.params;
+type Params = Promise<{ id: string }>;
 
-    const token = req.cookies.get("token")?.value;
-
-    const urlApi = `${baseUrl}accounts/${id}`;
-
-    const res = await fetch(urlApi, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-
-    if (!res.ok) throw new Error("");
-
-    const data = await res.json();
-    return NextResponse.json(data);
-  } catch (err) {
-    return NextResponse.json({ error: err }, { status: 500 });
-  }
+export async function GET(req: NextRequest, { params }: { params: Params }) {
+  const { id } = await params;
+  const data = await serverApiClient.get<Account>(`accounts/${id}`);
+  return NextResponse.json(data);
 }
 
-export async function PUT(req: NextRequest, context: { params: Promise<{ id: string }> }) {
-  try {
-    const token = req.cookies.get("token")?.value;
-
-    const { id } = await context.params;
-
-    const body = await req.json();
-
-    const urlApi = `${baseUrl}accounts/${id}`;
-
-    const res = await fetch(urlApi, {
-      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-      method: "PUT",
-      body: JSON.stringify(body),
-    });
-    const data = await res.json();
-
-    if (!res.ok) return NextResponse.json({ message: data.message }, { status: res.status });
-
-    return NextResponse.json(data);
-  } catch (err) {
-    return NextResponse.json({ error: err }, { status: 500 });
-  }
+export async function PUT(req: NextRequest, { params }: { params: Params }) {
+  const { id } = await params;
+  const body = await req.json();
+  const data = await serverApiClient.put<Account>(`accounts/${id}`, body);
+  return NextResponse.json(data);
 }
 
-export async function DELETE(req: NextRequest, context: { params: Promise<{ id: string }> }) {
-  try {
-    const token = req.cookies.get("token")?.value;
-
-    const { id } = await context.params;
-
-    if (!id) throw new Error("Id invalido");
-
-    const urlApi = `${baseUrl}accounts/${id}`;
-    const res = await fetch(urlApi, {
-      headers: { Authorization: `Bearer ${token}` },
-      method: "DELETE",
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) return NextResponse.json({ message: data.message }, { status: res.status });
-
-    return NextResponse.json(data);
-  } catch (err) {
-    console.error("API Error:", err);
-  }
+export async function DELETE(req: Request, { params }: { params: Params }) {
+  const { id } = await params;
+  const data = await serverApiClient.delete<Account>(`accounts/${id}`);
+  return NextResponse.json(data);
 }

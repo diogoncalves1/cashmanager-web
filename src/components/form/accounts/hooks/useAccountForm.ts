@@ -3,8 +3,8 @@ import { useRouter } from "next/navigation";
 import { fetcher } from "@/lib/fetcher";
 import { useEffect, useState } from "react";
 import { getCurrencies } from "@/services/currencies/currency.service";
-import { Currency } from "@/models/currency";
-import { Account, AccountType } from "@/models/account";
+import { Currency } from "@/types/currency";
+import { Account, AccountType } from "@/types/account";
 
 interface AccountFormData {
   name: string;

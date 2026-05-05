@@ -37,7 +37,7 @@ import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
 import TableContainer from "@/components/transactions/TableContainer";
 import { useRouter } from "next/navigation";
-import { Account, AccountType } from "@/models/account";
+import { Account, AccountType } from "@/types/account";
 import DeleteAccountDialog from "@/components/ui/dialogs/Accounts/DeleteAccountDialog";
 import { StatusBadge } from "./StatusBadge";
 import { useAccountDetailsContext } from "@/app/(root)/(menu)/accounts/[id]/context/AccountDetailsContext";
@@ -134,10 +134,10 @@ const AccountDetailsContainer = ({ id }: { id: string }) => {
     if (data) {
       setPageData({
         account: data.data,
-        monthlySummary: data.additionals.monthlyResume,
-        categorySummary: data.additionals.categorySummary,
-        balanceChart: data.additionals.balanceChart,
-        extraData: data.additionals.extraData,
+        monthlySummary: data.meta.monthlyResume,
+        categorySummary: data.meta.categorySummary,
+        balanceChart: data.meta.balanceChart,
+        extraData: data.meta.extraData,
       });
       setAccount(data.data);
     }
