@@ -1,4 +1,4 @@
-import { Debt } from "@/models/debt";
+import { Debt } from "@/types/debt";
 import Link from "next/link";
 import { cn, formatCurrency } from "@/lib/utils";
 import StatusBadge from "@/components/debts/StatusBadge";

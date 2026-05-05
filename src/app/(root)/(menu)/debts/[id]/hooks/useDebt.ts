@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Debt } from "@/models/debt";
+import { Debt } from "@/types/debt";
 import { getDebtById } from "../services/debt.service";
 
 export function useDebt(id: string) {

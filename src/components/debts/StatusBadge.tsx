@@ -1,4 +1,4 @@
-import { DebtStatus } from "@/models/debt";
+import { DebtStatus } from "@/types/debt";
 
 export default function StatusBadge({
   status,
