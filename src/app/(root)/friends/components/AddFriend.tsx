@@ -22,7 +22,6 @@ type FetchFriendsParams = {
 };
 
 const fetchUsers = async ({ pageParam = 1, search }: FetchFriendsParams): Promise<Page> => {
-  console.log(search);
   const searchTerm = search ?? "";
   if (searchTerm.trim().length < 2)
     return {

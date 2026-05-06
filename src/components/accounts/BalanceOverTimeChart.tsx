@@ -74,8 +74,6 @@ export function BalanceOverTimeChart({
     const start = new Date(now);
     start.setDate(start.getDate() - rangeDays);
 
-    console.log(balanceFormated);
-
     let transactionsSum = 0;
     for (let d = new Date(now); d >= start; d.setDate(d.getDate() - 1)) {
       const dateStr = d.toISOString().split("T")[0];
@@ -93,8 +91,6 @@ export function BalanceOverTimeChart({
 
         currentData.amountFormated =
           `${formatCurrency(currentData.amount, balanceFormated ?? "$ 0", false, 2)}` || "$0";
-
-        console.log(lastChartData);
 
         lastData = lastChartData
           ? lastChartData
@@ -114,7 +110,6 @@ export function BalanceOverTimeChart({
 
       chartsData[type].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
     }
-    console.log(chartsData[type]);
 
     return chartsData[type].map((d) => ({
       date: d.date,

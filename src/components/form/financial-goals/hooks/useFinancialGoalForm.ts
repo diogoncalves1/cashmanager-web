@@ -71,7 +71,7 @@ export function useFinancialGoalForm(id?: string) {
 
     if (financialGoalData?.data) {
       const fg = financialGoalData.data;
-      console.log(fg);
+
       setFormData({
         name: fg.name,
         total_amount: fg.totalAmount,
