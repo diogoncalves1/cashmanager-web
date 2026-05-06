@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { FinancialGoal } from "@/models/financialGoal";
+import { FinancialGoal } from "@/types/financialGoal";
 import StatusBadge from "@/components/financial-goals/StatusBadge";
 import PriorityInfo from "@/components/financial-goals/PriorityInfo";
 import { useTranslations } from "next-intl";

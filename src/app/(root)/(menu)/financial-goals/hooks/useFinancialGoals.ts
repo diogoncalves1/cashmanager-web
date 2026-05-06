@@ -1,4 +1,4 @@
-import { FinancialGoal } from "@/models/financialGoal";
+import { FinancialGoal } from "@/types/financialGoal";
 import { useCallback, useEffect, useState } from "react";
 import { getAllFinancialGoals } from "../services/financialGoal.service";
 

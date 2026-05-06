@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { FinancialGoalPriority } from "@/models/financialGoal";
+import { FinancialGoalPriority } from "@/types/financialGoal";
 
 export default function PriorityInfo({
   priority,

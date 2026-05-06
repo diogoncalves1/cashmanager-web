@@ -1,4 +1,4 @@
-import { FinancialGoal } from "@/models/financialGoal";
+import { FinancialGoal } from "@/types/financialGoal";
 
 interface ApiResponse<T> {
   data: T;
