@@ -1,24 +1,11 @@
-import { baseUrl } from "@/app/api/config";
+import { serverApiClient } from "@/lib/api/api-client.server";
+import { FinancialGoal } from "@/types/financialGoal";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: NextRequest, context: { params: Promise<{ id: string }> }) {
-  try {
-    const token = req.cookies.get("token")?.value;
+type Params = Promise<{ id: string }>;
 
-    const { id } = await context.params;
-
-    const urlApi = `${baseUrl}financial-goals/${id}/complete`;
-
-    const res = await fetch(urlApi, {
-      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-      method: "POST",
-    });
-    const data = await res.json();
-
-    if (!res.ok) return NextResponse.json({ message: data.message }, { status: res.status });
-
-    return NextResponse.json(data);
-  } catch (err) {
-    return NextResponse.json({ error: err }, { status: 500 });
-  }
+export async function POST(req: NextRequest, { params }: { params: Params }) {
+  const { id } = await params;
+  const data = await serverApiClient.post<FinancialGoal>(`financial-goals/${id}/complete`);
+  return NextResponse.json(data);
 }

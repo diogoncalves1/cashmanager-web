@@ -7,7 +7,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { onMarkPaidFinancialGoal } from "@/services/financial-goals/service";
+import { onMarkPaidFinancialGoal } from "@/services/financialGoal";
 import { useTranslations } from "next-intl";
 
 type Props = {

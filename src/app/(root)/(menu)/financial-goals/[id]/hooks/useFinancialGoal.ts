@@ -1,4 +1,4 @@
-import { FinancialGoal } from "@/models/financialGoal";
+import { FinancialGoal } from "@/types/financialGoal";
 import { useEffect, useState } from "react";
 import { getFinancialGoalById } from "../services/financialGoal.service";
 

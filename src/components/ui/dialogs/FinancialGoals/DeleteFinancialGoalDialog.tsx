@@ -9,7 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { onDeleteFinancialGoal } from "@/services/financial-goals/service";
+import { onDeleteFinancialGoal } from "@/services/financialGoal";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
 import { useToast } from "@/hooks/useToast";
