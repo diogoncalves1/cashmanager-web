@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { DebtPaymentStatus } from "@/models/debtPayment";
+import { DebtPaymentStatus } from "@/types/debtPayment";
 import { getAllAccounts } from "@/services/account";
 import { AccountBasic } from "@/types/account";
 import { DebtBasic } from "@/types/debt";

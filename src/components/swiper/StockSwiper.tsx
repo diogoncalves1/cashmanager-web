@@ -94,8 +94,6 @@ export default function StockSwiper() {
     },
   };
 
-  console.log(stocks);
-
   return (
     <div className="overflow-hidden">
       <AppSwiper>

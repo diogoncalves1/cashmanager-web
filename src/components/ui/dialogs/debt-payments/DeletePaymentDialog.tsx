@@ -9,9 +9,9 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { onDeleteDebtPayment } from "@/services/debt-payments/service";
+import { onDeleteDebtPayment } from "@/services/debtPayment";
 import { useTranslations } from "next-intl";
-import { DebtPayment } from "@/models/debtPayment";
+import { DebtPayment } from "@/types/debtPayment";
 import { Table as ReactTable } from "@tanstack/react-table";
 import { MyPagination } from "@/components/transactions/TableContainer";
 import { useState } from "react";

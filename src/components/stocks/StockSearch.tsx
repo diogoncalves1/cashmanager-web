@@ -34,12 +34,7 @@ export default function StocksSearch() {
 
           const data = await res.json();
 
-          console.log(res);
-          console.log(data);
-          console.log(data.data);
           setAssets(data.data);
-
-          console.log(e.target.value);
         }}
         defaultValue=""
       />
