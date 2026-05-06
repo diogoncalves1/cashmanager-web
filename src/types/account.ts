@@ -12,6 +12,13 @@ export type ActionsType = {
   createTransactions?: boolean;
 };
 
+export interface AccountFormData {
+  name: string;
+  type: AccountType;
+  currency: Currency;
+  isActive: boolean;
+}
+
 export const getAccountTypes = (t: ReturnType<typeof useTranslations>) => [
   {
     value: "bank_account",
