@@ -10,7 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Friendship } from "@/models/friendship";
+import { Friendship } from "@/types/friendship";
 import { useTranslations } from "next-intl";
 
 interface FriendCardProps {

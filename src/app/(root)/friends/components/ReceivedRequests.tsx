@@ -3,10 +3,10 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
-import { Friendship } from "@/models/friendship";
+import { Friendship } from "@/types/friendship";
 import { Clock } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { onAcceptRequest, onDeclineRequest } from "@/services/friend-requests/service";
+import { onAcceptRequest, onDeclineRequest } from "@/services/friendRequest";
 import { FriendsEmptyState } from "./FriendsEmptyState";
 import { PendingRequestCard } from "./PendingRequestCard";
 import LoadingList from "@/components/ui/loading/LoadingList";
