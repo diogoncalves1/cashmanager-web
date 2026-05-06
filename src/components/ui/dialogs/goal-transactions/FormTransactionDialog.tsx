@@ -24,7 +24,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useTranslations } from "next-intl";
 import { SwalToast } from "@/components/swal/SwalToast";
 import { useFinancialGoalTransactionForm } from "@/components/form/goal-transactions/hooks/useFinancialGoalTransactionForm";
-import { FinancialGoalTransactionType } from "@/models/financialGoalTransactions";
+import { FinancialGoalTransactionType } from "@/types/financialGoalTransaction";
 import { useEffect } from "react";
 
 type TransactionDialogProps = {

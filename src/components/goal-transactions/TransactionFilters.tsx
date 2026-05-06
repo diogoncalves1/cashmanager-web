@@ -16,7 +16,7 @@ import { TransactionDatePicker } from "../form/transactions/TransactionDatePicke
 import {
   financialGoalTransactionStatus,
   financialGoalTransactionTypes,
-} from "@/models/financialGoalTransactions";
+} from "@/types/financialGoalTransaction";
 
 interface TransactionsFiltersProps {
   search: string;
