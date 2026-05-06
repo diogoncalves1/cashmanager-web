@@ -9,7 +9,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { onConfirmDebtPayment } from "@/services/debt-payments/service";
+import { onConfirmDebtPayment } from "@/services/debtPayment";
 import { useTranslations } from "next-intl";
 import { useToast } from "@/hooks/useToast";
 import { useState } from "react";

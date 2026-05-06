@@ -2,7 +2,6 @@ import PlusIcon from "./plus.svg";
 import CloseIcon from "./close.svg";
 import BoxIcon from "./box.svg";
 import CheckCircleIcon from "./check-circle.svg";
-import AlertIcon from "./alert.svg";
 import InfoIcon from "./info.svg";
 import ErrorIcon from "./info-hexa.svg";
 import BoltIcon from "./bolt.svg";
@@ -14,14 +13,11 @@ import AudioIcon from "./audio.svg";
 import GridIcon from "./grid.svg";
 import FileIcon from "./file.svg";
 import DownloadIcon from "./download.svg";
-import ArrowRightIcon from "./arrow-right.svg";
 import GroupIcon from "./group.svg";
 import BoxIconLine from "./box-line.svg";
 import ShootingStarIcon from "./shooting-star.svg";
 import DollarLineIcon from "./dollar-line.svg";
 import TrashBinIcon from "./trash.svg";
-import AngleUpIcon from "./angle-up.svg";
-import AngleDownIcon from "./angle-down.svg";
 import PencilIcon from "./pencil.svg";
 import CheckLineIcon from "./check-line.svg";
 import CloseLineIcon from "./close-line.svg";
@@ -65,20 +61,16 @@ export {
   BoxIcon,
   CloseIcon,
   CheckCircleIcon,
-  AlertIcon,
   InfoIcon,
   ErrorIcon,
   ArrowUpIcon,
   FolderIcon,
   ArrowDownIcon,
-  ArrowRightIcon,
   GroupIcon,
   BoxIconLine,
   ShootingStarIcon,
   DollarLineIcon,
   TrashBinIcon,
-  AngleUpIcon,
-  AngleDownIcon,
   PencilIcon,
   CheckLineIcon,
   CloseLineIcon,

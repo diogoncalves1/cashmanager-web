@@ -1,21 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
-import { baseUrl } from "../../config";
+import { NextResponse } from "next/server";
+import { serverApiClient } from "@/lib/api/api-client.server";
+import { FinancialGoalBasic } from "@/types/financialGoal";
 
-export async function GET(req: NextRequest) {
-  try {
-    const token = req.cookies.get("token")?.value;
-
-    const urlApi = `${baseUrl}financial-goals/all`;
-
-    const res = await fetch(urlApi, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-
-    if (!res.ok) throw new Error("");
-
-    const data = await res.json();
-    return NextResponse.json(data);
-  } catch (err) {
-    return NextResponse.json({ error: err }, { status: 500 });
-  }
+export async function GET() {
+  const data = await serverApiClient.get<FinancialGoalBasic[]>(`financial-goals/all`);
+  return NextResponse.json(data);
 }

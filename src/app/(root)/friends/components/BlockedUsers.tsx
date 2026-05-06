@@ -3,14 +3,14 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
-import { Friendship } from "@/models/friendship";
+import { Friendship } from "@/types/friendship";
 import { Clock } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { FriendsEmptyState } from "./FriendsEmptyState";
 import LoadingList from "@/components/ui/loading/LoadingList";
 import { useFriendsContext } from "../context/FriendsContext";
 import { BlockedUserCard } from "./BlockUserCard";
-import { onUnblockUser } from "@/services/friends/service";
+import { onUnblockUser } from "@/services/friend";
 
 type Page = { data: Friendship[]; nextPage: number | null };
 

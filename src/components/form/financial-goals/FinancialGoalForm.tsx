@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/select";
 import { useFinancialGoalForm } from "./hooks/useFinancialGoalForm";
 import LoadingToast from "@/components/swal/LoadingToast";
-import { getFinancialGoalPriorities } from "@/models/financialGoal";
+import { getFinancialGoalPriorities } from "@/types/financialGoal";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";

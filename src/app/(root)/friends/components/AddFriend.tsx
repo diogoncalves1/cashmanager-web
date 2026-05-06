@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { onSendRequest } from "@/services/friends/service";
+import { onSendRequest } from "@/services/friend";
 import { useState, useEffect } from "react";
 import { Search, UserPlus, Check, Clock, Loader2 } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -22,7 +22,6 @@ type FetchFriendsParams = {
 };
 
 const fetchUsers = async ({ pageParam = 1, search }: FetchFriendsParams): Promise<Page> => {
-  console.log(search);
   const searchTerm = search ?? "";
   if (searchTerm.trim().length < 2)
     return {

@@ -3,8 +3,8 @@ import React, { useEffect, useRef, useState, useCallback, useMemo } from "react"
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useSidebar } from "../context/SidebarContext";
-import { HorizontaLDots } from "../icons/index";
+import { useSidebar } from "@/context/SidebarContext";
+import { HorizontaLDots } from "@/icons/index";
 import { useRouter } from "next/navigation";
 import SidebarWidget from "./SidebarWidget";
 import {

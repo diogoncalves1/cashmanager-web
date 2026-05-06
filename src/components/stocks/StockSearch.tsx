@@ -3,7 +3,7 @@ import { useState } from "react";
 import Input from "../form/input/InputField";
 import { Table, TableBody, TableCell, TableRow } from "../ui/table";
 import Image from "next/image";
-import { AssetSearch } from "@/models/assetSearch";
+import { AssetSearch } from "@/types/assetSearch";
 
 export default function StocksSearch() {
   const [assets, setAssets] = useState<AssetSearch[]>([]);
@@ -34,12 +34,7 @@ export default function StocksSearch() {
 
           const data = await res.json();
 
-          console.log(res);
-          console.log(data);
-          console.log(data.data);
           setAssets(data.data);
-
-          console.log(e.target.value);
         }}
         defaultValue=""
       />

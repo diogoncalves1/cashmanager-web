@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import type { Transaction } from "@/lib/types";
+import { Transaction } from "@/types/transaction";
 
 interface MonthlyIncomeExpensesDoughnutsProps {
   transactions: Transaction[];
@@ -106,7 +106,7 @@ export function MonthlyIncomeExpensesDoughnuts({
       });
 
       const income = monthTxns
-        .filter((t) => t.type === "income")
+        .filter((t) => t.type === "revenue")
         .reduce((sum, t) => sum + t.amount, 0);
       const expenses = monthTxns
         .filter((t) => t.type === "expense")

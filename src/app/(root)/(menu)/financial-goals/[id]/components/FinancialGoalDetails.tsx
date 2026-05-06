@@ -19,7 +19,7 @@ import PriorityInfo from "@/components/financial-goals/PriorityInfo";
 import DeleteFinancialGoalDialog from "@/components/ui/dialogs/FinancialGoals/DeleteFinancialGoalDialog";
 import StatusBadge from "@/components/financial-goals/StatusBadge";
 import MarkCompletedGoalTransactionDialog from "@/components/ui/dialogs/FinancialGoals/MarkCompletedGoalTransactionDialog";
-import { onCancelFinancialGoal, onResetFinancialGoal } from "@/services/financial-goals/service";
+import { onCancelFinancialGoal, onResetFinancialGoal } from "@/services/financialGoal";
 import {
   CheckCircle2,
   DoorOpen,

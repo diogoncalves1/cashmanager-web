@@ -197,13 +197,10 @@ function ChartTab({ data, onChangeSeries, onChangeOptions, height = 0, currency 
           const quartsers: string[] = [];
 
           data?.data.charts.quarterly?.forEach((item: QuarterlyData) => {
-            console.log(item);
             quartsers.push(item.quarter);
 
             rev.data.push(item.revenues);
             exp.data.push(item.expenses);
-
-            console.log(rev, exp);
           });
 
           setSelected("quarterly");

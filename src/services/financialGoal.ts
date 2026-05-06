@@ -1,6 +1,8 @@
 import LoadingToast from "@/components/swal/LoadingToast";
 import { SwalToast } from "@/components/swal/SwalToast";
 import { useTranslations } from "next-intl";
+import { FinancialGoalBasic } from "@/types/financialGoal";
+import { ResponseData } from "@/lib/api/api-client";
 
 interface TableInstance {
   reload: () => void;
@@ -18,30 +20,22 @@ export async function onDeleteFinancialGoal(
   pagination?: PaginationState,
   mutate?: () => void
 ) {
-  try {
-    const res = await fetch(`/api/financial-goals/${id}`, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-    });
+  const res = await fetch(`/api/financial-goals/${id}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+  });
 
-    const data = await res.json();
+  const data = await res.json();
 
-    if (!res.ok) throw new Error(data.message);
+  if (mutate) await mutate();
 
-    if (mutate) await mutate();
-
-    if (data.success) {
-      if (table) {
-        if (table.getRowCount() == 0 && pagination) pagination.pageIndex--;
-      }
+  if (data.success) {
+    if (table) {
+      if (table.getRowCount() == 0 && pagination) pagination.pageIndex--;
     }
-    return { message: data.message, success: true };
-  } catch (err: unknown) {
-    if (err instanceof Error) {
-      return { message: err.message, success: false };
-    }
-    return { message: String(err), success: false };
   }
+
+  return data;
 }
 
 export async function onCancelFinancialGoal(
@@ -144,4 +138,15 @@ export async function onMarkPaidFinancialGoal(
     }
     return 0;
   }
+}
+
+export async function getAllFinancialGoals(): Promise<ResponseData<FinancialGoalBasic[]>> {
+  const res = await fetch(`/api/financial-goals/all`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+
+  const response = await res.json();
+
+  return response;
 }

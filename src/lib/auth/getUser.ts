@@ -1,29 +1,12 @@
-import { cookies } from "next/headers";
 import { User } from "@/types/user";
+import { serverApiClient } from "../api/api-client.server";
 
 export async function getUser(): Promise<User | null> {
-  const cookieStore = await cookies();
-  const token = cookieStore.get("token")?.value;
-  if (!token) return null;
+  const res = await serverApiClient.get<User>("me");
 
-  try {
-    const apiUrl = process.env.API_URL;
-    if (!apiUrl) throw new Error("API_URL não definida");
+  if (!res.success) return null;
 
-    const res = await fetch(`${process.env.API_BACKEND_URL}me`, {
-      method: "GET",
-      headers: { Authorization: `Bearer ${token}` },
-    });
+  const user = res.data;
 
-    if (!res.ok) return null;
-
-    const data = await res.json();
-
-    const user = data.data;
-
-    return user;
-  } catch (err: unknown) {
-    console.error(err);
-    return null;
-  }
+  return user;
 }

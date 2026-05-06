@@ -10,7 +10,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { DebtPaymentStatus, debtPaymentStatus } from "@/models/debtPayment";
+import { DebtPaymentStatus, debtPaymentStatus } from "@/types/debtPayment";
 import { useTranslations } from "next-intl";
 import { TransactionDatePicker } from "../form/transactions/TransactionDatePicker";
 

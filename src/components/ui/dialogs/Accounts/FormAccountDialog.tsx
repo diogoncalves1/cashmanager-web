@@ -22,8 +22,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import type { AccountFormData } from "@/lib/types";
-import { Account, getAccountTypes } from "@/types/account";
+import { Account, getAccountTypes, AccountFormData } from "@/types/account";
 import { useAccountForm } from "@/components/form/accounts/hooks/useAccountForm";
 import { toast } from "@/hooks/useToast";
 import { Currency } from "@/types/currency";

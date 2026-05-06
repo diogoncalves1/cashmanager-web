@@ -26,7 +26,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { useTranslations } from "next-intl";
 import { DataTablePagination } from "@/components/tables/DataTablePagination";
-import { FinancialGoalTransaction } from "@/models/financialGoalTransactions";
+import { FinancialGoalTransaction } from "@/types/financialGoalTransaction";
 import { cn, formatDate, getUserColor, getUserInitials } from "@/lib/utils";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import Link from "next/link";
