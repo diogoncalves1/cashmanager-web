@@ -1,25 +1,11 @@
-import { baseUrl } from "../../../config";
+import { serverApiClient } from "@/lib/api/api-client.server";
+import { FriendRequest } from "@/types/friendship";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function DELETE(req: NextRequest, context: { params: Promise<{ id: string }> }) {
-  try {
-    const token = req.cookies.get("token")?.value;
+type Params = Promise<{ id: string }>;
 
-    const { id } = await context.params;
-
-    if (!id) throw new Error("Id invalido");
-
-    const urlApi = `${baseUrl}friendship-requests/${id}/cancel`;
-    const res = await fetch(urlApi, {
-      headers: { Authorization: `Bearer ${token}` },
-      method: "DELETE",
-    });
-    const data = await res.json();
-
-    if (!res.ok) return NextResponse.json({ message: data.message }, { status: res.status });
-
-    return NextResponse.json(data);
-  } catch (err) {
-    return NextResponse.json({ error: err }, { status: 500 });
-  }
+export async function DELETE(req: NextRequest, { params }: { params: Params }) {
+  const { id } = await params;
+  const data = await serverApiClient.delete<FriendRequest>(`friendship-requests/${id}/cancel`);
+  return NextResponse.json(data);
 }

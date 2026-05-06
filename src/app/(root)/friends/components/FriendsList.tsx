@@ -3,9 +3,9 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
-import { Friendship } from "@/models/friendship";
+import { Friendship } from "@/types/friendship";
 import { Search, Users } from "lucide-react";
-import { onBlockUser, onRemoveFriend } from "@/services/friends/service";
+import { onBlockUser, onRemoveFriend } from "@/services/friend";
 import { useTranslations } from "next-intl";
 import { FriendsEmptyState } from "./FriendsEmptyState";
 import { FriendCard } from "./FriendCard";

@@ -1,4 +1,4 @@
-import { Friendship } from "@/models/friendship";
+import { Friendship } from "@/types/friendship";
 import { SharedRole } from "@/types/sharedRole";
 import { useEffect, useState } from "react";
 
