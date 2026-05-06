@@ -8,30 +8,21 @@ export async function onDeleteDebtPayment(
   pagination?: MyPagination,
   mutate?: () => void
 ) {
-  try {
-    const res = await fetch(`/api/debt-payments/${id}`, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-    });
+  const res = await fetch(`/api/debt-payments/${id}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+  });
 
-    const data = await res.json();
+  const data = await res.json();
 
-    if (!res.ok) throw new Error(data.message);
+  if (mutate) await mutate();
 
-    if (mutate) await mutate();
-
-    if (data.success) {
-      if (table) {
-        if (table.getRowCount() == 0 && pagination) pagination.pageIndex--;
-      }
+  if (data.success) {
+    if (table) {
+      if (table.getRowCount() == 0 && pagination) pagination.pageIndex--;
     }
-    return { message: data.message, success: true };
-  } catch (err: unknown) {
-    if (err instanceof Error) {
-      return { message: err.message, success: false };
-    }
-    return { message: String(err), success: false };
   }
+  return data;
 }
 
 export async function onConfirmDebtPayment(id: string, mutate?: () => void) {
