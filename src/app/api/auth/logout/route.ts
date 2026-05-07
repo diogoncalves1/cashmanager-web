@@ -14,7 +14,8 @@ export async function POST() {
     cookieStore.delete("token");
 
     return response;
-  } catch (err) {
+  } catch (err: unknown) {
+    console.error(err);
     return NextResponse.json({ error: "Login failed" }, { status: 401 });
   }
 }

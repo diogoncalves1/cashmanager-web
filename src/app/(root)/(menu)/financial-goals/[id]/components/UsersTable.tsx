@@ -21,9 +21,9 @@ import { Button } from "@/components/ui/button";
 import { UserContribution } from "@/types/financialGoal";
 import { useState } from "react";
 import { EllipsisVertical } from "lucide-react";
-import ChangeMemberRoleDialog from "@/components/invitations/ChangeMemberRoleDialog";
-import RemoveMemberDialog from "@/components/invitations/RemoveMemberDialog";
-import InviteMemberButton from "@/components/ui/button/InviteMemberButton";
+import ChangeMemberRoleDialog from "@/features/invitations/components/dialogs/ChangeMemberRoleDialog";
+import RemoveMemberDialog from "@/features/invitations/components/dialogs/RemoveMemberDialog";
+import InviteMemberButton from "@/features/invitations/components/actions/InviteMemberButton";
 import { useAuth } from "@/context/AuthContext";
 import { useTranslations } from "next-intl";
 

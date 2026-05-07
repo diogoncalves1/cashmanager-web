@@ -18,10 +18,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
-import InviteMemberButton from "@/components/ui/button/InviteMemberButton";
+import InviteMemberButton from "@/features/invitations/components/actions/InviteMemberButton";
 import { useTranslations } from "next-intl";
-import ChangeMemberRoleDialog from "@/components/invitations/ChangeMemberRoleDialog";
-import RemoveMemberDialog from "@/components/invitations/RemoveMemberDialog";
+import ChangeMemberRoleDialog from "@/features/invitations/components/dialogs/ChangeMemberRoleDialog";
+import RemoveMemberDialog from "@/features/invitations/components/dialogs/RemoveMemberDialog";
 import { useState } from "react";
 import { useDebtDetailsContext } from "../context/DebtDetailsContext";
 import { useAuth } from "@/context/AuthContext";

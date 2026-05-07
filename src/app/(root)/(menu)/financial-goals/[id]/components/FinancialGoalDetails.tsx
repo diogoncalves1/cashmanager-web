@@ -29,11 +29,11 @@ import {
   PlayCircle,
   Trash2Icon,
 } from "lucide-react";
-import InviteMemberButton from "@/components/ui/button/InviteMemberButton";
+import InviteMemberButton from "@/features/invitations/components/actions/InviteMemberButton";
 import ActivityTimeline from "@/components/ui/timeline/ActivityTimeline";
 import UsersTable from "./UsersTable";
 import { useAuth } from "@/context/AuthContext";
-import LeaveSubjectDialog from "@/components/invitations/LeaveSubjectDialog";
+import LeaveSubjectDialog from "@/features/invitations/components/dialogs//LeaveSubjectDialog";
 import TableContainer from "@/components/goal-transactions/TableContainer";
 import { NewTransactionButton } from "@/components/goal-transactions/NewTransactionButton";
 
