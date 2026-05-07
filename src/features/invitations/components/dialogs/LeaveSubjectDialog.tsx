@@ -9,7 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { onLeaveSuject } from "@/services/invitation";
+import { onLeaveSuject } from "@/features/invitations/api/invitation.api";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/useToast";
 

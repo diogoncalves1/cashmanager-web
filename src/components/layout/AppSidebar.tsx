@@ -54,7 +54,7 @@ const AppSidebar: React.FC = () => {
           },
           {
             name: t("SIDEBAR_INVITES"),
-            path: "/account-invitations",
+            path: "/invitations/accounts",
           },
         ],
       },
@@ -70,7 +70,7 @@ const AppSidebar: React.FC = () => {
           },
           {
             name: t("SIDEBAR_INVITES"),
-            path: "/financial-goal-invitations",
+            path: "/invitations/financial-goals",
           },
         ],
       },
@@ -82,7 +82,7 @@ const AppSidebar: React.FC = () => {
           { name: t("SIDEBAR_DEBT_PAYMENTS"), path: "/debt-payments", pro: false },
           {
             name: t("SIDEBAR_INVITES"),
-            path: "/debt-invitations",
+            path: "/invitations/debts",
           },
         ],
       },
