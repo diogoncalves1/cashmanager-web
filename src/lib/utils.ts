@@ -1,14 +1,9 @@
-import { InvitationType } from "@/types/invitation";
 import { clsx, type ClassValue } from "clsx";
 import { useTranslations } from "next-intl";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
-}
-
-export function isInviteType(value: string): value is InvitationType {
-  return ["debts", "financial-goals", "accounts"].includes(value);
 }
 
 export function formatDate(dateString: string, t: ReturnType<typeof useTranslations>): string {
