@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import { AccountType } from "@/types/account";
+import { AccountType } from "@/features/accounts/types/index";
 import { Category, IconName } from "@/types/category";
 import { User } from "@/types/user";
 

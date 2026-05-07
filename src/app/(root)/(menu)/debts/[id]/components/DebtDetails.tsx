@@ -23,7 +23,7 @@ import { useDebtDetailsContext } from "../context/DebtDetailsContext";
 import { useEffect, useState } from "react";
 import DeleteDebtDialog from "./DeleteDebtDialog";
 import { useAuth } from "@/context/AuthContext";
-import LeaveSubjectDialog from "@/components/invitations/LeaveSubjectDialog";
+import LeaveSubjectDialog from "@/features/invitations/components/dialogs/LeaveSubjectDialog";
 import MarkDebtPaidDialog from "@/components/ui/dialogs/debts/MarkDebtPaidDialog";
 import { Debt } from "@/types/debt";
 import useSWR from "swr";
