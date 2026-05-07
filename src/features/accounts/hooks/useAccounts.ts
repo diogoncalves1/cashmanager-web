@@ -1,22 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
-import { getAllAccounts } from "../services/account.service";
-import { Account } from "@/types/account";
+import { getAllAccounts } from "@/features/accounts/api/account.api";
+import { Account, AccountFilters, Stats } from "@/features/accounts/types/index";
 
-interface Filters {
-  search?: string;
-  status?: string;
-  priority?: string;
-  sort?: string;
-}
-
-type Stats = {
-  activeAccounts?: number;
-  netWorth?: string;
-  totalRevenues?: string;
-  totalExpenses?: string;
-};
-
-export function useAccounts(filters: Filters = {}, pageSize = 9) {
+export function useAccounts(filters: AccountFilters = {}, pageSize = 9) {
   const [accounts, setAccounts] = useState<Account[]>([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);

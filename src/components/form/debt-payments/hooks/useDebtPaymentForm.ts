@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { DebtPaymentStatus } from "@/types/debtPayment";
-import { getAllAccounts } from "@/services/account";
-import { AccountBasic } from "@/types/account";
+import { getAccountsBasic } from "@/features/accounts/api/account.api";
+import { AccountBasic } from "@/features/accounts/types/index";
 import { DebtBasic } from "@/types/debt";
 import { getAllDebts } from "@/services/debt";
 import useSWR from "swr";
@@ -115,7 +115,7 @@ export function useDebtPaymentForm(id?: string, debtId?: string, isOpen?: boolea
   const fetchAccounts = async () => {
     try {
       setLoadingAccount(true);
-      const res = await getAllAccounts();
+      const res = await getAccountsBasic();
 
       setAccounts(res.data);
     } catch (err: unknown) {
