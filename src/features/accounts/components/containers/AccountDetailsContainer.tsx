@@ -37,7 +37,7 @@ import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
 import TableContainer from "@/components/transactions/TableContainer";
 import { useRouter } from "next/navigation";
-import { Account, AccountType } from "@/features/accounts/types/index";
+import { Account, AccountType } from "@/features/accounts/types";
 import DeleteAccountDialog from "@/features/accounts/components/dialogs/DeleteAccountDialog";
 import { FormAccountDialog } from "@/features/accounts/components/dialogs/FormAccountDialog";
 import { StatusBadge } from "@/features/accounts/components/ui/StatusBadge";
