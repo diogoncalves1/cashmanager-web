@@ -88,7 +88,7 @@ interface ApiResponseInvitationStats {
 }
 
 export async function getInvitationStats(
-  type: "accounts" | "debts" | "financial-goals"
+  type: InvitationType
 ): Promise<ApiResponseInvitationStats> {
   const res = await fetch(`/api/${type}/invitations-stats`, {
     method: "GET",
