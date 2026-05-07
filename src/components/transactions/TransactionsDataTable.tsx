@@ -49,7 +49,7 @@ import { cn, formatDate, getUserColor, getUserInitials } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { useMemo } from "react";
-import { AccountType } from "@/types/account";
+import { AccountType } from "@/features/accounts/types/index";
 import DataTable from "@/components/tables/DataTable";
 import { DataTablePagination } from "@/components/tables/DataTablePagination";
 import { ConfirmTransactionDialog } from "@/components/ui/dialogs/transactions/ConfirmTransactionDialog";
