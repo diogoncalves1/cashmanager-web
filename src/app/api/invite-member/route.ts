@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { serverApiClient } from "@/lib/api/api-client.server";
-import { Invitation } from "@/types/invitation";
+import { Invitation } from "@/features/invitations/types";
 
 export async function POST(req: NextRequest) {
   const body = await req.json();

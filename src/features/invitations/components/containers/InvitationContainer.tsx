@@ -3,10 +3,10 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Send, Mail, Clock, Timer } from "lucide-react";
-import { useInvitationStats } from "@/hooks/useInvitationStats";
+import { useInvitationStats } from "@/features/invitations/hooks/useInvitationStats";
 import InvitationContainerLoading from "./InvitationContainerLoading";
-import InvitesList from "./InvitesList";
-import ReceivedInvitesList from "./ReceivedInvitesList";
+import InvitesList from "@/features/invitations/components/lists/InvitesList";
+import ReceivedInvitesList from "@/features/invitations/components/lists/ReceivedInvitesList";
 import InviteMemberButton from "@/features/invitations/components/actions/InviteMemberButton";
 import { useTranslations } from "next-intl";
 

@@ -4,7 +4,7 @@ import { fetcher } from "@/lib/fetcher";
 import { useEffect, useState } from "react";
 import { getCurrencies } from "@/services/currency";
 import { Currency } from "@/types/currency";
-import { Account, AccountType } from "@/features/accounts/types/index";
+import { Account, AccountType } from "@/features/accounts/types";
 
 interface AccountFormData {
   name: string;

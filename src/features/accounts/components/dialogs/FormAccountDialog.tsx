@@ -22,7 +22,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { Account, getAccountTypes, AccountFormData } from "@/features/accounts/types/index";
+import { Account, getAccountTypes, AccountFormData } from "@/features/accounts/types";
 import { useAccountForm } from "@/features/accounts/hooks/useAccountForm";
 import { toast } from "@/hooks/useToast";
 import { Currency } from "@/types/currency";

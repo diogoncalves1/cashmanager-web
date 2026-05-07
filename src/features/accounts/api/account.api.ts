@@ -1,5 +1,5 @@
-import { Account, ApiResponse, AccountFilters } from "@/features/accounts/types/index";
-import { AccountBasic } from "@/features/accounts/types/index";
+import { Account, ApiResponse, AccountFilters } from "@/features/accounts/types";
+import { AccountBasic } from "@/features/accounts/types";
 import { ResponseData } from "@/lib/api/api-client";
 import { buildUrl } from "@/lib/utils";
 

@@ -1,6 +1,6 @@
 import { ApexOptions } from "apexcharts";
 import dynamic from "next/dynamic";
-import { Account } from "@/features/accounts/types/index";
+import { Account } from "@/features/accounts/types";
 import { iconMap } from "@/types/category";
 
 export type CategorySummary = {

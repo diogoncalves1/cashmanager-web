@@ -1,4 +1,4 @@
-import { Account } from "@/features/accounts/types/index";
+import { Account } from "@/features/accounts/types";
 import { Debt } from "@/types/debt";
 import { FinancialGoal } from "@/types/financialGoal";
 import { SharedRole } from "@/types/sharedRole";
@@ -30,3 +30,10 @@ export interface InvitationFormData {
   role: InvitationRole;
   sharedRole: InvitationRole;
 }
+
+export type InvitationSummary = {
+  sentInvites: number;
+  receivedInvites: number;
+  pendingInvites: number;
+  awaitingInvites: number;
+};

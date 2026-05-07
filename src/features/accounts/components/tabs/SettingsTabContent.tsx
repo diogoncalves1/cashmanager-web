@@ -16,7 +16,7 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import { Save, Trash2, AlertTriangle } from "lucide-react";
 import { useToast } from "@/hooks/useToast";
-import { Account, getAccountTypes } from "@/features/accounts/types/index";
+import { Account, getAccountTypes } from "@/features/accounts/types";
 import DeleteAccountDialog from "@/features/accounts/components/dialogs/DeleteAccountDialog";
 import { useAccountForm } from "@/features/accounts/hooks/useAccountForm";
 import { Currency } from "@/types/currency";

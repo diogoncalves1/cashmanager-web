@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import InviteMemberDialog from "@/components/invitations/InviteMemberDialog";
+import InviteMemberDialog from "@/features/invitations/components/dialogs/InviteMemberDialog";
 import { Button } from "@/components/ui/button";
 import { LucideUserPlus2 } from "lucide-react";
 import { useTranslations } from "next-intl";
