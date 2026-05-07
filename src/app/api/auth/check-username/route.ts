@@ -1,17 +1,12 @@
 import { NextResponse, NextRequest } from "next/server";
-import { baseUrl } from "../../config";
+import { clientApiClient } from "@/lib/api/api-client.client";
 
 export async function GET(req: NextRequest) {
-  try {
-    const url = new URL(req.url);
+  const url = new URL(req.url);
 
-    const username = url.searchParams.get("username");
+  const username = url.searchParams.get("username");
 
-    const res = await fetch(`${baseUrl}check-username?username=${username}`);
+  const res = await clientApiClient.get(`check-username?username=${username}`);
 
-    const data = await res.json();
-    return NextResponse.json(data);
-  } catch (err) {
-    return NextResponse.json({ error: err }, { status: 500 });
-  }
+  return NextResponse.json(res);
 }
