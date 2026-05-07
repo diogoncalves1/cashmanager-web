@@ -7,7 +7,7 @@ import { useInvitationStats } from "@/hooks/useInvitationStats";
 import InvitationContainerLoading from "./InvitationContainerLoading";
 import InvitesList from "./InvitesList";
 import ReceivedInvitesList from "./ReceivedInvitesList";
-import InviteMemberButton from "@/components/ui/button/InviteMemberButton";
+import InviteMemberButton from "@/features/invitations/components/actions/InviteMemberButton";
 import { useTranslations } from "next-intl";
 
 const InvitationContainer = ({ type }: { type: "accounts" | "debts" | "financial-goals" }) => {

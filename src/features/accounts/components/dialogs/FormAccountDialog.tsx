@@ -22,8 +22,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { Account, getAccountTypes, AccountFormData } from "@/types/account";
-import { useAccountForm } from "@/components/form/accounts/hooks/useAccountForm";
+import { Account, getAccountTypes, AccountFormData } from "@/features/accounts/types/index";
+import { useAccountForm } from "@/features/accounts/hooks/useAccountForm";
 import { toast } from "@/hooks/useToast";
 import { Currency } from "@/types/currency";
 import { useTranslations } from "next-intl";
