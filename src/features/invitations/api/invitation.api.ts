@@ -1,4 +1,5 @@
-import { InvitationType } from "@/types/invitation";
+import { InvitationSummary, InvitationType } from "@/features/invitations/types";
+import { ResponseData } from "@/lib/api/api-client";
 
 export async function onCancelInvite(
   id: string,
@@ -74,22 +75,9 @@ export async function onLeaveSuject(id: string, type: InvitationType, mutate?: (
   return data;
 }
 
-type Summary = {
-  sentInvites: number;
-  receivedInvites: number;
-  pendingInvites: number;
-  awaitingInvites: number;
-};
-
-interface ApiResponseInvitationStats {
-  data: Summary;
-  success: number;
-  message: number;
-}
-
 export async function getInvitationStats(
   type: InvitationType
-): Promise<ApiResponseInvitationStats> {
+): Promise<ResponseData<InvitationSummary>> {
   const res = await fetch(`/api/${type}/invitations-stats`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },

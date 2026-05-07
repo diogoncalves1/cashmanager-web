@@ -6,7 +6,7 @@ import {
 import { getAllFinancialGoals } from "@/services/financialGoal";
 import { FinancialGoalBasic } from "@/types/financialGoal";
 import { getAccountsBasic } from "@/features/accounts/api/account.api";
-import { AccountBasic } from "@/features/accounts/types/index";
+import { AccountBasic } from "@/features/accounts/types";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";

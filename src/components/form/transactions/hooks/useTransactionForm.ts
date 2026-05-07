@@ -3,7 +3,7 @@ import useSWR from "swr";
 import { useRouter } from "next/navigation";
 import { fetcher } from "@/lib/fetcher";
 import { TransactionStatus, TransactionType } from "@/types/transaction";
-import { AccountBasic } from "@/features/accounts/types/index";
+import { AccountBasic } from "@/features/accounts/types";
 import { getAccountsBasic } from "@/features/accounts/api/account.api";
 
 export function useTransactionForm(id?: string, accountId?: string, isOpen?: boolean) {

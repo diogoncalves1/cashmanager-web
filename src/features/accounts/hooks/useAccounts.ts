@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { getAllAccounts } from "@/features/accounts/api/account.api";
-import { Account, AccountFilters, Stats } from "@/features/accounts/types/index";
+import { Account, AccountFilters, Stats } from "@/features/accounts/types";
 
 export function useAccounts(filters: AccountFilters = {}, pageSize = 9) {
   const [accounts, setAccounts] = useState<Account[]>([]);
