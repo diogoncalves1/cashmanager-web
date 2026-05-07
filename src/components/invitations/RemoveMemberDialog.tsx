@@ -9,7 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { onRemoveMember } from "@/services/invitations/invitations.service";
+import { onRemoveMember } from "@/services/invitation";
 
 type InviteType = "debts" | "financial-goals" | "accounts";
 

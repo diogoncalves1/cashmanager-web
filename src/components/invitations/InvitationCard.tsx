@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import type { Invitation, InvitationDirection } from "@/models/invitation";
+import type { Invitation, InvitationDirection } from "@/types/invitation";
 import { cn, formatDate } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 

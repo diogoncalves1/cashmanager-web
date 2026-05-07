@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Invitation, InvitationStatus, InvitationType } from "@/models/invitation";
+import { Invitation, InvitationStatus, InvitationType } from "@/types/invitation";
 import { useInView } from "react-intersection-observer";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
 import { InvitationCard } from "@/components/invitations/InvitationCard";
 import { InvitationEmpty } from "@/components/invitations/InvitationEmpty";
-import { onAcceptInvite, onRevokeInvite } from "@/services/invitations/invitations.service";
+import { onAcceptInvite, onRevokeInvite } from "@/services/invitation";
 import {
   Select,
   SelectContent,

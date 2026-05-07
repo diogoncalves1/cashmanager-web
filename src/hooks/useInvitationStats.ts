@@ -1,4 +1,4 @@
-import { getInvitationStats } from "@/services/invitations/invitations.service";
+import { getInvitationStats } from "@/services/invitation";
 import { useState, useEffect, useCallback } from "react";
 
 type Summary = {
