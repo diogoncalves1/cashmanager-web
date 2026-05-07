@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { Invitation, InvitationStatus, InvitationType } from "@/models/invitation";
+import { Invitation, InvitationStatus, InvitationType } from "@/types/invitation";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { InvitationCard } from "@/components/invitations/InvitationCard";
-import { onCancelInvite } from "@/services/invitations/invitations.service";
+import { onCancelInvite } from "@/services/invitation";
 import { InvitationEmpty } from "@/components/invitations/InvitationEmpty";
 import { useTranslations } from "next-intl";
 import { useInView } from "react-intersection-observer";
@@ -89,7 +89,7 @@ const InvitesList = ({ setLoad, load, type }: Props) => {
       title: t("CANCELING_TITLE"),
       message: t("CANCELING_MESSAGE"),
     });
-    const res = await onCancelInvite(id, userId, type, t, () => {
+    const res = await onCancelInvite(id, userId, type, () => {
       refetch();
       setLoad(true);
     });

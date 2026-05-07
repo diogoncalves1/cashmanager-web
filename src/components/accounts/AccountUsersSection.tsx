@@ -30,7 +30,7 @@ import ChangeMemberRoleDialog from "../invitations/ChangeMemberRoleDialog";
 import RemoveMemberDialog from "../invitations/RemoveMemberDialog";
 import { useTranslations } from "next-intl";
 import { useAccountDetailsContext } from "@/app/(root)/(menu)/accounts/[id]/context/AccountDetailsContext";
-import { onCancelInvite } from "@/services/invitations/invitations.service";
+import { onCancelInvite } from "@/services/invitation";
 import { useToast } from "@/hooks/useToast";
 
 interface AccountUsersSectionProps {
@@ -40,7 +40,6 @@ interface AccountUsersSectionProps {
 
 export function AccountUsersSection({ isLoading, account }: AccountUsersSectionProps) {
   const t = useTranslations("ACCOUNTS");
-  const tInvite = useTranslations("INVITE_MEMBER");
   const { toast } = useToast();
   const { user } = useAuth();
   const users: User[] = account?.users ?? [];
@@ -59,7 +58,7 @@ export function AccountUsersSection({ isLoading, account }: AccountUsersSectionP
   const [selectedId, setSelectedId] = useState<string>("");
 
   const handleCancel = async (id: string, userId: string) => {
-    return await onCancelInvite(id, userId, "accounts", tInvite, () => {
+    return await onCancelInvite(id, userId, "accounts", () => {
       setLoadCounter((prev) => prev + 1);
     });
   };
