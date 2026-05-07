@@ -1,25 +1,21 @@
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
-import { baseUrl } from "../../config";
+import { serverApiClient } from "@/lib/api/api-client.server";
 
 export async function POST() {
-  const cookieStore = await cookies();
-  const response = NextResponse.json({ ok: true });
+  try {
+    const cookieStore = await cookies();
 
-  const token = cookieStore.get("token")?.value;
-  cookieStore.delete("user");
-  cookieStore.delete("token");
+    await serverApiClient.post("logout");
 
-  if (!token) return Response.json({ user: null });
+    const response = NextResponse.json({ ok: true });
 
-  const res = await fetch(`${baseUrl}logout`, {
-    method: "POST",
-    headers: { Authorization: `Bearer ${token}` },
-  });
+    cookieStore.delete("user");
+    cookieStore.delete("token");
 
-  const data = await res.json();
-
-  if (!res.ok) return NextResponse.json({ error: data.message || "Login failed" }, { status: 401 });
-
-  return response;
+    return response;
+  } catch (err: unknown) {
+    console.error(err);
+    return NextResponse.json({ error: "Login failed" }, { status: 401 });
+  }
 }

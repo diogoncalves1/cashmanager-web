@@ -1,14 +1,9 @@
-import { InvitationType } from "@/types/invitation";
 import { clsx, type ClassValue } from "clsx";
 import { useTranslations } from "next-intl";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
-}
-
-export function isInviteType(value: string): value is InvitationType {
-  return ["debts", "financial-goals", "accounts"].includes(value);
 }
 
 export function formatDate(dateString: string, t: ReturnType<typeof useTranslations>): string {
@@ -88,4 +83,17 @@ export function getUserColor(name?: string): string {
     hash = name.charCodeAt(i) + ((hash << 5) - hash);
   }
   return userColors[Math.abs(hash) % userColors.length];
+}
+
+export function buildUrl(
+  endpoint: string,
+  params?: Record<string, string | number | boolean | undefined>
+) {
+  if (!params) return endpoint;
+  const query = new URLSearchParams(
+    Object.entries(params)
+      .filter(([, v]) => v !== undefined)
+      .map(([k, v]) => [k, String(v)])
+  ).toString();
+  return query ? `${endpoint}?${query}` : endpoint;
 }

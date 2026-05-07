@@ -1,7 +1,7 @@
-import { isInviteType } from "@/lib/utils";
 import { NextRequest, NextResponse } from "next/server";
 import { serverApiClient } from "@/lib/api/api-client.server";
-import { Invitation, InvitationType } from "@/types/invitation";
+import { Invitation, InvitationType } from "@/features/invitations/types";
+import { isInviteType } from "@/features/invitations/utils/invitation.helpers";
 
 type Params = Promise<{
   id: string;

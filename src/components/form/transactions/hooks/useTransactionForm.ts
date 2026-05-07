@@ -3,8 +3,8 @@ import useSWR from "swr";
 import { useRouter } from "next/navigation";
 import { fetcher } from "@/lib/fetcher";
 import { TransactionStatus, TransactionType } from "@/types/transaction";
-import { AccountBasic } from "@/types/account";
-import { getAllAccounts } from "@/services/account";
+import { AccountBasic } from "@/features/accounts/types";
+import { getAccountsBasic } from "@/features/accounts/api/account.api";
 
 export function useTransactionForm(id?: string, accountId?: string, isOpen?: boolean) {
   const router = useRouter();
@@ -47,7 +47,7 @@ export function useTransactionForm(id?: string, accountId?: string, isOpen?: boo
   const fetchAccounts = async () => {
     try {
       setLoadingAccount(true);
-      const res = await getAllAccounts();
+      const res = await getAccountsBasic();
 
       setAccounts(res.data);
     } catch (err: unknown) {

@@ -1,17 +1,8 @@
-import { NextResponse, NextRequest } from "next/server";
-import { baseUrl } from "../config";
+import { NextResponse } from "next/server";
+import { Currency } from "@/types/currency";
+import { serverApiClient } from "@/lib/api/api-client.server";
 
-export async function GET(req: NextRequest) {
-  try {
-    const token = req.cookies.get("token")?.value;
-
-    const res = await fetch(`${baseUrl}currencies`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-
-    const data = await res.json();
-    return NextResponse.json(data);
-  } catch (err) {
-    return NextResponse.json({ error: err }, { status: 500 });
-  }
+export async function GET() {
+  const data = await serverApiClient.get<Currency[]>(`currencies`);
+  return NextResponse.json(data);
 }

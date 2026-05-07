@@ -5,8 +5,8 @@ import {
 } from "@/types/financialGoalTransaction";
 import { getAllFinancialGoals } from "@/services/financialGoal";
 import { FinancialGoalBasic } from "@/types/financialGoal";
-import { getAllAccounts } from "@/services/account";
-import { AccountBasic } from "@/types/account";
+import { getAccountsBasic } from "@/features/accounts/api/account.api";
+import { AccountBasic } from "@/features/accounts/types";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
@@ -136,7 +136,7 @@ export function useFinancialGoalTransactionForm(
     try {
       setLoadingAccount(true);
 
-      const res = await getAllAccounts();
+      const res = await getAccountsBasic();
 
       setAccounts(res.data);
     } catch (err: unknown) {

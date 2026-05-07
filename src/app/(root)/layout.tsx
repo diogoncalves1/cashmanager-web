@@ -1,41 +1,15 @@
-"use client";
-
-import ProtectedRoute from "@/components/auth/ProtectedRoute";
-import { useSidebar } from "@/context/SidebarContext";
-import AppHeader from "@/components/layout/AppHeader";
-import AppSidebar from "@/components/layout/AppSidebar";
-import Backdrop from "@/components/layout/Backdrop";
 import React from "react";
-import QueryProvider from "@/lib/providers/QueryProvider";
+import AdminLayoutClient from "@/components/layout/AdminLayoutClient";
+import { AuthProvider } from "@/context/AuthContext";
+import { User } from "@/types/user";
+import { getUser } from "@/lib/auth/getUser";
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  const { isExpanded, isHovered, isMobileOpen } = useSidebar();
-
-  // Dynamic class for main content margin based on sidebar state
-  const mainContentMargin = isMobileOpen
-    ? "ml-0"
-    : isExpanded || isHovered
-      ? "lg:ml-[235px]"
-      : "lg:ml-[90px]";
+export default async function AdminLayout({ children }: { children: React.ReactNode }) {
+  const user = await getUser();
 
   return (
-    <ProtectedRoute>
-      <QueryProvider>
-        <div className="flex">
-          {/* Sidebar and Backdrop */}
-          <AppSidebar />
-          <Backdrop />
-          {/* Main Content Area */}
-          <div
-            className={`flex-1 min-h-dvh transition-all bg-gray-100 dark:bg-gray-900  duration-300 ease-in-out ${mainContentMargin}`}
-          >
-            <AppHeader />
-            {/* Header */}
-            {/* Page Content */}
-            <div className=" mx-auto max-w-(--breakpoint-4xl)">{children}</div>
-          </div>
-        </div>
-      </QueryProvider>
-    </ProtectedRoute>
+    <AuthProvider user={user ?? ({} as User)}>
+      <AdminLayoutClient>{children}</AdminLayoutClient>
+    </AuthProvider>
   );
 }
