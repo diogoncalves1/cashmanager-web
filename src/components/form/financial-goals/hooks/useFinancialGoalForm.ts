@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { fetcher } from "@/lib/fetcher";
 import { useEffect, useState } from "react";
 import { FinancialGoalPriority } from "@/types/financialGoal";
-import { getCurrencies } from "@/services/currencies/currency.service";
+import { getCurrencies } from "@/services/currency";
 import { Currency } from "@/types/currency";
 
 interface FinancialGoalFormData {
