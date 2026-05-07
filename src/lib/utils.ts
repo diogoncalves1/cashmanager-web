@@ -89,3 +89,16 @@ export function getUserColor(name?: string): string {
   }
   return userColors[Math.abs(hash) % userColors.length];
 }
+
+export function buildUrl(
+  endpoint: string,
+  params?: Record<string, string | number | boolean | undefined>
+) {
+  if (!params) return endpoint;
+  const query = new URLSearchParams(
+    Object.entries(params)
+      .filter(([, v]) => v !== undefined)
+      .map(([k, v]) => [k, String(v)])
+  ).toString();
+  return query ? `${endpoint}?${query}` : endpoint;
+}

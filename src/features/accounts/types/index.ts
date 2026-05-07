@@ -1,3 +1,25 @@
+export interface AccountFilters {
+  search?: string;
+  status?: string;
+  page?: number;
+  pageSize?: number;
+}
+
+export type Stats = {
+  activeAccounts?: number;
+  netWorth?: string;
+  totalRevenues?: string;
+  totalExpenses?: string;
+};
+
+export interface ApiResponse<T> {
+  data: T[];
+  recordsFiltered: number;
+  page: number;
+  pageSize: number;
+  stats: Stats;
+}
+
 import { useTranslations } from "next-intl";
 import { Currency } from "@/types/currency";
 import { User } from "@/types/user";

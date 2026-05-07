@@ -1,5 +1,5 @@
 import { User } from "@/types/user";
-import { Account } from "./account";
+import { Account } from "@/features/accounts/types/index";
 import { Debt } from "./debt";
 import { FinancialGoal } from "./financialGoal";
 
