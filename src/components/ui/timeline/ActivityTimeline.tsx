@@ -6,7 +6,7 @@ import { useInView } from "react-intersection-observer";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
 import LoadingList from "../loading/LoadingList";
-import { Activity } from "@/models/activity";
+import { Activity } from "@/types/activity";
 
 type ActivityType = "debts" | "financial-goals" | "accounts";
 
