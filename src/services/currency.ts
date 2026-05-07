@@ -1,11 +1,7 @@
+import { ResponseData } from "@/lib/api/api-client";
 import { Currency } from "@/types/currency";
 
-interface ApiResponse<T> {
-  data: T[];
-  success: boolean;
-}
-
-export async function getCurrencies(): Promise<ApiResponse<Currency>> {
+export async function getCurrencies(): Promise<ResponseData<Currency[]>> {
   const res = await fetch(`/api/currencies`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
