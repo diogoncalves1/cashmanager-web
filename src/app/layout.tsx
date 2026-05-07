@@ -3,19 +3,15 @@ import "./globals.css";
 
 import { SidebarProvider } from "@/context/SidebarContext";
 import { ThemeProvider } from "@/context/ThemeContext";
-import { AuthProvider } from "@/context/AuthContext";
 import { HeroUIProvider } from "@heroui/system";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
-import { getUser } from "@/lib/auth/getUser";
+import localFont from "next/font/local";
+import { Toaster } from "@/components/ui/toaster";
 
 const outfit = Outfit({
   subsets: ["latin"],
 });
-
-import localFont from "next/font/local";
-import { User } from "@/types/user";
-import { Toaster } from "@/components/ui/toaster";
 
 // Importa Geist
 const geist = localFont({
@@ -43,8 +39,6 @@ export default async function RootLayout({
 }>) {
   const messages = await getMessages();
 
-  const user = await getUser();
-
   return (
     <html lang="en">
       <head>
@@ -57,7 +51,7 @@ export default async function RootLayout({
           <HeroUIProvider>
             <ThemeProvider>
               <SidebarProvider>
-                <AuthProvider user={user ?? ({} as User)}>{children}</AuthProvider> <Toaster />
+                {children} <Toaster />
               </SidebarProvider>
             </ThemeProvider>
           </HeroUIProvider>
