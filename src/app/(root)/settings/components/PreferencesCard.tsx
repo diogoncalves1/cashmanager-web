@@ -11,7 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Language } from "@/models/language";
+import { Language } from "@/types/language";
 import { Currency } from "@/types/currency";
 import { useTranslations } from "next-intl";
 

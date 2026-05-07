@@ -1,5 +1,5 @@
 import { Mail, Send } from "lucide-react";
-import type { InvitationDirection } from "@/models/invitation";
+import type { InvitationDirection } from "@/types/invitation";
 import { useTranslations } from "next-intl";
 
 interface InvitationEmptyProps {

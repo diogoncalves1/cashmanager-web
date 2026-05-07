@@ -1,37 +1,21 @@
-import { baseUrl } from "@/app/api/config";
+import { isInviteType } from "@/lib/utils";
 import { NextRequest, NextResponse } from "next/server";
+import { serverApiClient } from "@/lib/api/api-client.server";
+import { Invitation, InvitationType } from "@/types/invitation";
 
-type InviteType = "debts" | "financial-goals" | "accounts";
+type Params = Promise<{
+  id: string;
+  type: InvitationType;
+}>;
 
-function isInviteType(value: string): value is InviteType {
-  return ["debts", "financial-goals", "accounts"].includes(value);
-}
+export async function DELETE(req: NextRequest, { params }: { params: Params }) {
+  const { id, type } = await params;
 
-export async function DELETE(
-  req: NextRequest,
-  context: { params: Promise<{ type: string; id: string }> }
-) {
-  try {
-    const token = req.cookies.get("token")?.value;
-
-    const { type, id } = await context.params;
-
-    if (!isInviteType(type)) {
-      return NextResponse.json({ message: "Invalid type" }, { status: 400 });
-    }
-
-    const urlApi = `${baseUrl}${type}/${id}/leave`;
-
-    const res = await fetch(urlApi, {
-      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-      method: "DELETE",
-    });
-    const data = await res.json();
-
-    if (!res.ok) return NextResponse.json({ message: data.message }, { status: res.status });
-
-    return NextResponse.json(data);
-  } catch (err) {
-    return NextResponse.json({ error: err }, { status: 500 });
+  if (!isInviteType(type)) {
+    return NextResponse.json({ message: "Invalid type" }, { status: 400 });
   }
+
+  const data = await serverApiClient.delete<Invitation>(`${type}/${id}/leave`);
+
+  return NextResponse.json(data);
 }
