@@ -18,7 +18,7 @@ import { Button } from "@/components/ui/button";
 import { AppLink } from "@/components/ui/button/AppLink";
 import { useDebtForm } from "./hooks/useDebtForm";
 import { useTranslations } from "next-intl";
-import { TransactionDatePicker } from "../transactions/TransactionDatePicker";
+import { DatePicker } from "@/shared/ui/date-picker";
 import { useToast } from "@/hooks/useToast";
 
 interface FormData {
@@ -315,7 +315,7 @@ export default function DebtForm({ id }: Props) {
                   <Label htmlFor="startDate">
                     {t("START_DATE")} <span className="text-destructive">*</span>
                   </Label>
-                  <TransactionDatePicker
+                  <DatePicker
                     date={formData.start_date}
                     onChangeDate={(newDate: string) => {
                       setFormData((p) => ({ ...p, start_date: newDate }));
@@ -333,7 +333,7 @@ export default function DebtForm({ id }: Props) {
                   <Label htmlFor="dueDate">
                     {t("DUE_DATE")} <span className="text-destructive">*</span>
                   </Label>
-                  <TransactionDatePicker
+                  <DatePicker
                     date={formData.due_date}
                     onChangeDate={(newDate: string) => {
                       setFormData((p) => ({ ...p, due_date: newDate }));

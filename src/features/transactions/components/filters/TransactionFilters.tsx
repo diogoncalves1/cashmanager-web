@@ -15,10 +15,10 @@ import {
   getTransactionTypes,
   TransactionStatus,
   TransactionType,
-} from "@/types/transaction";
+} from "@/features/transactions/types";
 import { Category } from "@/types/category";
 import { useTranslations } from "next-intl";
-import { TransactionDatePicker } from "../form/transactions/TransactionDatePicker";
+import { DatePicker } from "@/shared/ui/date-picker";
 
 interface TransactionsFiltersProps {
   search: string;
@@ -133,14 +133,14 @@ export function TransactionsFilters({
           </Select>
         )}
 
-        <TransactionDatePicker
+        <DatePicker
           date={dateFrom}
           dateLimits={{ max: dateTo }}
           className="w-min bg-white"
           onChangeDate={(newDate: string) => onDateFromChange(newDate)}
         />
         <span className="text-xs text-muted-foreground">{t("TO")}</span>
-        <TransactionDatePicker
+        <DatePicker
           date={dateTo}
           dateLimits={{ min: dateFrom }}
           className="w-min bg-white"

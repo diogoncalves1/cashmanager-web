@@ -1,16 +1,11 @@
 import { SwalToast } from "@/components/swal/SwalToast";
-import { Transaction } from "@/types/transaction";
 import { Table } from "@tanstack/react-table";
-
-type PaginationState = {
-  pageIndex: number;
-  pageSize: number;
-};
+import { MyPagination, Transaction } from "@/features/transactions/types";
 
 export async function onDeleteTransaction(
   id: string,
   table?: Table<Transaction>,
-  pagination?: PaginationState
+  pagination?: MyPagination
 ) {
   const res = await fetch(`/api/transactions/${id}`, {
     method: "DELETE",

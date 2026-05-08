@@ -19,7 +19,7 @@ import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
 import SubmitFormButton from "@/components/ui/button/SubmitFormButton";
 import { useToast } from "@/hooks/useToast";
-import { TransactionDatePicker } from "../transactions/TransactionDatePicker";
+import { DatePicker } from "@/shared/ui/date-picker";
 
 type Props = {
   id?: string;
@@ -166,7 +166,7 @@ export function FinancialGoalForm({ id }: Props) {
             <Label htmlFor="date" className="text-sm text-muted-foreground">
               {t("START")}
             </Label>
-            <TransactionDatePicker
+            <DatePicker
               date={formData.start_date}
               onChangeDate={(newDate: string) => {
                 setFormData((p) => ({ ...p, start_date: newDate }));
@@ -179,7 +179,7 @@ export function FinancialGoalForm({ id }: Props) {
             <Label htmlFor="date" className="text-sm text-muted-foreground">
               {t("DUE")}
             </Label>
-            <TransactionDatePicker
+            <DatePicker
               date={formData.due_date}
               onChangeDate={(newDate: string) => {
                 setFormData((p) => ({ ...p, due_date: newDate }));

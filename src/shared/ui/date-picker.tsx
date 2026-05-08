@@ -8,7 +8,7 @@ import { enUS, pt } from "date-fns/locale";
 import { useAuth } from "@/context/AuthContext";
 import { useTranslations } from "next-intl";
 
-export function TransactionDatePicker({
+export function DatePicker({
   date,
   dateLimits,
   onChangeDate,

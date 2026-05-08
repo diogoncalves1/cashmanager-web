@@ -4,15 +4,10 @@ import { fetcher } from "@/lib/fetcher";
 import { ColumnFiltersState, SortingState } from "@tanstack/react-table";
 import React, { useCallback, useEffect, useState } from "react";
 import useSWR from "swr";
-import { TransactionsDataTable } from "@/components/transactions/TransactionsDataTable";
-import { TransactionStatus, TransactionType } from "@/types/transaction";
-import { TransactionsFilters } from "./TransactionFilters";
-import { TransactionsSummary } from "./TransactionsSummary";
-
-export type MyPagination = {
-  pageIndex: number;
-  pageSize: number;
-};
+import { TransactionsDataTable } from "@/features/transactions/components/data-table/TransactionsDataTable";
+import { MyPagination, TransactionStatus, TransactionType } from "@/features/transactions/types";
+import { TransactionsFilters } from "@/features/transactions/components/filters/TransactionFilters";
+import { TransactionsSummary } from "@/features/transactions/components/summary/TransactionsSummary";
 
 type Props = {
   userId?: string;

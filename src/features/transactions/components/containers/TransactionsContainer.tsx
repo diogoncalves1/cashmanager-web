@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import TableContainer from "./TableContainer";
-import { NewTransactionButton } from "@/components/transactions/NewTransactionButton";
+import { NewTransactionButton } from "@/features/transactions/components/actions/NewTransactionButton";
 import { useTranslations } from "next-intl";
 
 const TransactionsContainer = () => {

@@ -17,12 +17,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { TransactionStatus, TransactionType } from "@/types/transaction";
+import { TransactionStatus, TransactionType } from "@/features/transactions/types";
 import { useToast } from "@/hooks/useToast";
-import { useTransactionForm } from "@/components/form/transactions/hooks/useTransactionForm";
+import { useTransactionForm } from "@/features/transactions/hooks/useTransactionForm";
 import { AccountBasic } from "@/features/accounts/types";
 import { Category, iconMap } from "@/types/category";
-import { TransactionDatePicker } from "@/components/form/transactions/TransactionDatePicker";
+import { DatePicker } from "@/shared/ui/date-picker";
 import { Textarea } from "@/components/ui/textarea";
 import { useTranslations } from "next-intl";
 import { SwalToast } from "@/components/swal/SwalToast";
@@ -252,7 +252,7 @@ const FormTransactionDialog = ({
 
             <div className="grid gap-1.5">
               <Label htmlFor="tx-date">{t("DATE")}</Label>
-              <TransactionDatePicker
+              <DatePicker
                 dateLimits={dateLimits}
                 date={formData.date}
                 onChangeDate={(newDate) => setFormData((p) => ({ ...p, date: newDate }))}

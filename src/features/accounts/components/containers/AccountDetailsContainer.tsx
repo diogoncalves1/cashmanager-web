@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { NewTransactionButton } from "@/components/transactions/NewTransactionButton";
+import { NewTransactionButton } from "@/features/transactions/components/actions/NewTransactionButton";
 import { Skeleton } from "@/components/ui/skeleton";
 import { BalanceOverTimeChart } from "@/features/accounts/components/charts/BalanceOverTimeChart";
 import { MonthlySummary } from "@/features/accounts/components/charts/MonthlySummaryChart";
@@ -35,7 +35,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
-import TableContainer from "@/components/transactions/TableContainer";
+import TableContainer from "@/features/transactions/components/containers/TableContainer";
 import { useRouter } from "next/navigation";
 import { Account, AccountType } from "@/features/accounts/types";
 import DeleteAccountDialog from "@/features/accounts/components/dialogs/DeleteAccountDialog";

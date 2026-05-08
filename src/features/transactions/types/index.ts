@@ -3,6 +3,11 @@ import { AccountType } from "@/features/accounts/types";
 import { Category, IconName } from "@/types/category";
 import { User } from "@/types/user";
 
+export type MyPagination = {
+  pageIndex: number;
+  pageSize: number;
+};
+
 export type TransactionType = "revenue" | "expense";
 
 export const getTransactionTypes = (t: ReturnType<typeof useTranslations>) => [

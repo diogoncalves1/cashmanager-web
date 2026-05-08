@@ -2,7 +2,7 @@
 
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import FormTransactionDialog from "@/components/ui/dialogs/transactions/FormTransactionDialog";
+import FormTransactionDialog from "@/features/transactions/components/dialogs/FormTransactionDialog";
 import { Dispatch, SetStateAction, useState } from "react";
 import { useTranslations } from "next-intl";
 
