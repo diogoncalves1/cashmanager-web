@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { DebtBasic } from "@/types/debt";
+import { DebtBasic } from "@/features/debts/types";
 import { serverApiClient } from "@/lib/api/api-client.server";
 
 export async function GET() {

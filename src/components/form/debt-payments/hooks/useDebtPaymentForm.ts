@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { DebtPaymentStatus } from "@/types/debtPayment";
 import { getAccountsBasic } from "@/features/accounts/api/account.api";
 import { AccountBasic } from "@/features/accounts/types";
-import { DebtBasic } from "@/types/debt";
-import { getAllDebts } from "@/services/debt";
+import { DebtBasic } from "@/features/debts/types";
+import { getAllDebtsBasic } from "@/features/debts/api/debt.api";
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
 import { useRouter } from "next/navigation";
@@ -101,7 +101,7 @@ export function useDebtPaymentForm(id?: string, debtId?: string, isOpen?: boolea
   const fetchDebts = async () => {
     try {
       setLoadingDebts(true);
-      const res = await getAllDebts();
+      const res = await getAllDebtsBasic();
 
       setDebts(res.data);
     } catch (err: unknown) {
