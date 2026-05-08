@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 import { Calculator, Calendar, DollarSign, FileText, Percent, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AppLink } from "@/components/ui/button/AppLink";
-import { useDebtForm } from "./hooks/useDebtForm";
+import { useDebtForm } from "@/features/debts/hooks/useDebtForm";
 import { useTranslations } from "next-intl";
 import { DatePicker } from "@/shared/ui/date-picker";
 import { useToast } from "@/hooks/useToast";
@@ -41,6 +41,7 @@ interface FormErrors {
   due_date?: string;
   months?: string;
 }
+
 type Props = {
   id?: string;
 };

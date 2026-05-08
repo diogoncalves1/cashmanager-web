@@ -1,7 +1,7 @@
-import { Debt } from "@/types/debt";
+import { Debt } from "@/features/debts/types";
 import Link from "next/link";
 import { cn, formatCurrency } from "@/lib/utils";
-import StatusBadge from "@/components/debts/StatusBadge";
+import StatusBadge from "@/features/debts/components/cards/StatusBadge";
 import { useTranslations } from "next-intl";
 import { Calendar } from "lucide-react";
 

@@ -2,7 +2,7 @@ import LoadingToast from "@/components/swal/LoadingToast";
 import { SwalToast } from "@/components/swal/SwalToast";
 import { useTranslations } from "next-intl";
 import Swal from "sweetalert2";
-import { DebtBasic } from "@/types/debt";
+import { DebtBasic, Debt, DebtsFilters, ApiResponse } from "@/features/debts/types";
 import { ResponseData } from "@/lib/api/api-client";
 
 export async function onDeleteDebt(id: string): Promise<{ success: boolean; message: string }> {
@@ -86,11 +86,39 @@ export async function onMarkPaidDebt(
   }
 }
 
-export async function getAllDebts(): Promise<ResponseData<DebtBasic[]>> {
+export async function getAllDebtsBasic(): Promise<ResponseData<DebtBasic[]>> {
   const res = await fetch(`/api/debts/all`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   });
+
+  const response = await res.json();
+  return response;
+}
+
+export async function getAllDebts(filters: DebtsFilters): Promise<ApiResponse<Debt>> {
+  const params = new URLSearchParams(
+    Object.entries(filters).filter(([, v]) => v !== null && v !== undefined) as [string, string][]
+  );
+
+  const res = await fetch(`/api/debts?${params.toString()}`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (!res.ok) throw new Error("Failed to fetch debts");
+
+  const response = await res.json();
+  return response;
+}
+
+export async function getDebtById(id: string): Promise<ResponseData<Debt>> {
+  const res = await fetch(`/api/debts/${id}`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (!res.ok) throw new Error("Failed to fetch debt");
 
   const response = await res.json();
   return response;

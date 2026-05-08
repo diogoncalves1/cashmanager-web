@@ -1,14 +1,14 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { useDebts } from "../hooks/useDebts";
+import { useDebts } from "@/features/debts/hooks/useDebts";
 import { useTranslations } from "next-intl";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import DebtCard from "./DebtCard";
+import DebtCard from "@/features/debts/components/cards/DebtCard";
 import DebtListFail from "./DebtListFail";
-import DebtCardLoading from "./DebtCardLoading";
+import DebtCardLoading from "@/features/debts/components/cards/DebtCardLoading";
 
 interface Filters {
   search?: string;

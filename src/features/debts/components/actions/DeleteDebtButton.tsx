@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import DeleteDebtDialog from "./DeleteDebtDialog";
+import DeleteDebtDialog from "@/features/debts/components/dialogs/DeleteDebtDialog";
 import { Button } from "@/components/ui/button";
-import { Debt } from "@/types/debt";
+import { Debt } from "@/features/debts/types";
 
 export default function DeleteDebtButton({ debt }: { debt: Debt }) {
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);

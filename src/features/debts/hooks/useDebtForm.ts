@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 import { Currency } from "@/types/currency";
 import { getCurrencies } from "@/services/currency";
-import { Debt } from "@/types/debt";
-import { getDebtById } from "@/app/(root)/(menu)/debts/[id]/services/debt.service";
+import { Debt } from "@/features/debts/types";
+import { getDebtById } from "@/features/debts/api/debt.api";
 
 interface FormData {
   name: string;

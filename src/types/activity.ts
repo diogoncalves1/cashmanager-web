@@ -1,6 +1,6 @@
 import { User } from "@/types/user";
 import { Account } from "@/features/accounts/types";
-import { Debt } from "./debt";
+import { Debt } from "@/features/debts/types";
 import { FinancialGoal } from "./financialGoal";
 
 export type ActivityTypeTypes = Account | Debt | FinancialGoal;

@@ -20,7 +20,7 @@ import { useDataForInvite } from "@/features/invitations/hooks/useDataForInvite"
 import { useTranslations } from "next-intl";
 import { SwalToast } from "@/components/swal/SwalToast";
 import { Account } from "@/features/accounts/types";
-import { Debt } from "@/types/debt";
+import { Debt } from "@/features/debts/types";
 import { FinancialGoal } from "@/types/financialGoal";
 import { toast } from "@/hooks/useToast";
 

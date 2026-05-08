@@ -81,3 +81,18 @@ export interface DebtBasic {
   currencySymbol: string;
   interestRate: number;
 }
+
+export interface DebtsFilters {
+  search?: string;
+  status?: string;
+  page?: number;
+  pageSize?: number;
+}
+
+export interface ApiResponse<T> {
+  data: T[];
+  recordsFiltered: number;
+  page: number;
+  pageSize: number;
+  stats: Record<string, number>;
+}

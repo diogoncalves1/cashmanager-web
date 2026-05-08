@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
-import { onMarkPaidDebt } from "@/services/debt";
+import { onMarkPaidDebt } from "@/features/debts/api/debt.api";
 import { useToast } from "@/hooks/useToast";
 
 type Props = {

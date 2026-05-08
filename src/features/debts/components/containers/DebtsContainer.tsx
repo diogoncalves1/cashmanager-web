@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { useDebts } from "../hooks/useDebts";
-import DebtsList from "./DebtsList";
+import { useDebts } from "@/features/debts/hooks/useDebts";
+import DebtsList from "@/features/debts/components/lists/DebtsList";
 import { useTranslations } from "next-intl";
 
 interface Filters {

@@ -7,10 +7,10 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Debt } from "@/types/debt";
+import { Debt } from "@/features/debts/types";
 import { TriangleAlert } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { onDeleteDebt } from "@/services/debt";
+import { onDeleteDebt } from "@/features/debts/api/debt.api";
 import { useToast } from "@/hooks/useToast";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
