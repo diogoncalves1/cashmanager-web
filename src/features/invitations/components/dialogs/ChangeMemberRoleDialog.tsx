@@ -16,7 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useState } from "react";
-import { useDataForChangeRole } from "@/hooks/useDataForInvite";
+import { useDataForChangeRole } from "@/features/invitations/hooks/useDataForInvite";
 import { useTranslations } from "next-intl";
 import { useToast } from "@/hooks/useToast";
 

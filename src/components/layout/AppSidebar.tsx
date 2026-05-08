@@ -16,6 +16,7 @@ import {
   DoorOpen,
   Users,
   Home,
+  Coins,
 } from "lucide-react";
 import { onLogout } from "@/services/auth";
 import { SwalToast } from "@/components/swal/SwalToast";
@@ -26,6 +27,8 @@ type NavItem = {
   icon: React.ReactNode;
   path?: string;
   disable?: boolean;
+  new?: boolean;
+  pro?: boolean;
   onClick?: () => void | Promise<void>;
   subItems?: { name: string; path: string; pro?: boolean; new?: boolean }[];
   background?: string;
@@ -91,15 +94,16 @@ const AppSidebar: React.FC = () => {
       //   name: t("SIDEBAR_PORTFOLIOS"),
       //   disable: true,
       //   path: "/portfolio",
+      //   new: true,
       // },
       // {
       //   icon: <TrendingUp size={18} strokeWidth={2} />,
       //   name: t("SIDEBAR_STOCKS"),
       //   disable: true,
       //   subItems: [
-      //     { name: t("SIDEBAR_STOCKS"), path: "/stocks", pro: false },
-      //     { name: t("SIDEBAR_STOCKS_SEARCH"), path: "/stocks/search", pro: false },
-      //     { name: t("SIDEBAR_STOCKS_WATCHLIST"), path: "/stocks/watchlist", pro: false },
+      //     { name: t("SIDEBAR_STOCKS"), path: "/stocks", new: true },
+      //     { name: t("SIDEBAR_STOCKS_SEARCH"), path: "/stocks/search", new: true },
+      //     { name: t("SIDEBAR_STOCKS_WATCHLIST"), path: "/stocks/watchlist", new: true },
       //   ],
       // },
     ],
@@ -114,20 +118,22 @@ const AppSidebar: React.FC = () => {
     },
   ];
 
-  // const toolsItems: NavItem[] = [
-  //   // {
-  //   //   icon: <Coins size={18} strokeWidth={2} />,
-  //   //   name: t("SIDEBAR_CURRENCY_CONVERTER"),
-  //   //   path: "/tools/currency-converter",
-  //   //   disable: true,
-  //   // },
-  //   // {
-  //   //   icon: <Calculator size={18} strokeWidth={2} />,
-  //   //   name: t("SIDEBAR_COMPOUND_INTEREST_CALCULATOR"),
-  //   //   path: "/tools/compound-interest-calculator",
-  //   //   disable: true,
-  //   // },
-  // ];
+  const toolsItems: NavItem[] = [
+    {
+      icon: <Coins size={18} strokeWidth={2} />,
+      name: t("SIDEBAR_CURRENCY_CONVERTER"),
+      path: "/tools/currency-converter",
+      disable: true,
+      new: true,
+    },
+    // {
+    //   icon: <Calculator size={18} strokeWidth={2} />,
+    //   name: t("SIDEBAR_COMPOUND_INTEREST_CALCULATOR"),
+    //   path: "/tools/compound-interest-calculator",
+    //   disable: true,
+    // new: true
+    // },
+  ];
   const settingsItems: NavItem[] = [
     {
       icon: <Settings size={18} strokeWidth={2} />,
@@ -145,7 +151,8 @@ const AppSidebar: React.FC = () => {
 
         router.push("/signin");
       },
-      // background: "bg-error-500 text-white"
+      background:
+        "bg-error-500 text-white hover:bg-error-400 hover:text-white group-hover:text-white group-hover:bg-error-400 transition-all duration-300",
     },
   ];
 
@@ -162,7 +169,7 @@ const AppSidebar: React.FC = () => {
           {nav.subItems ? (
             <button
               onClick={() => (nav.disable ? {} : handleSubmenuToggle(index, menuType))}
-              className={`menu-item group items-center ${nav.disable ? "disabled" : ""} ${
+              className={`menu-item group items-center ${nav.background} ${nav.disable ? "disabled" : ""} ${
                 openSubmenu?.type === menuType && openSubmenu?.index === index
                   ? "menu-item-active"
                   : `menu-item-inactive ${
@@ -214,7 +221,33 @@ const AppSidebar: React.FC = () => {
                   {nav.icon}
                 </span>
                 {(isExpanded || isHovered || isMobileOpen) && (
-                  <span className={`menu-item-text`}>{nav.name}</span>
+                  <div className="flex gap-2">
+                    {nav.name}
+                    <span className="flex items-center gap-1 ml-auto">
+                      {nav.new && (
+                        <span
+                          className={`ml-auto ${
+                            isActive(nav.path)
+                              ? "menu-dropdown-badge-active"
+                              : "menu-dropdown-badge-inactive"
+                          } menu-dropdown-badge `}
+                        >
+                          new
+                        </span>
+                      )}
+                      {nav.pro && (
+                        <span
+                          className={`ml-auto ${
+                            isActive(nav.path)
+                              ? "menu-dropdown-badge-active"
+                              : "menu-dropdown-badge-inactive"
+                          } menu-dropdown-badge `}
+                        >
+                          pro
+                        </span>
+                      )}
+                    </span>
+                  </div>
                 )}
               </Link>
             )
@@ -238,7 +271,7 @@ const AppSidebar: React.FC = () => {
                     <Link
                       href={subItem.path}
                       className={`menu-dropdown-item pl-9 ${
-                        isActive(subItem.path)
+                        subItem.path == pathname
                           ? "menu-dropdown-item-active"
                           : "menu-dropdown-item-inactive"
                       }`}
@@ -401,6 +434,17 @@ const AppSidebar: React.FC = () => {
                 {isExpanded || isHovered || isMobileOpen ? t("SIDEBAR_SOCIAL") : <HorizontaLDots />}
               </h2>
               {renderMenuItems(socialItems, "social")}
+            </div>
+
+            <div className="">
+              <h2
+                className={`mb-4 sidebar-cat text-xs uppercase flex leading-[20px] text-gray-400 ${
+                  !isExpanded && !isHovered ? "lg:justify-center" : "justify-start"
+                }`}
+              >
+                {isExpanded || isHovered || isMobileOpen ? t("SIDEBAR_SOCIAL") : <HorizontaLDots />}
+              </h2>
+              {renderMenuItems(toolsItems, "tools")}
             </div>
 
             {/* <div className="">

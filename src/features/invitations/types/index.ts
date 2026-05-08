@@ -1,5 +1,5 @@
 import { Account } from "@/features/accounts/types";
-import { Debt } from "@/types/debt";
+import { Debt } from "@/features/debts/types";
 import { FinancialGoal } from "@/types/financialGoal";
 import { SharedRole } from "@/types/sharedRole";
 import { User } from "@/types/user";

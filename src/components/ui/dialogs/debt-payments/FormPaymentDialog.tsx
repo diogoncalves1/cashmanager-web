@@ -16,10 +16,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { TransactionStatus } from "@/types/transaction";
+import { TransactionStatus } from "@/features/transactions/types";
 import { useToast } from "@/hooks/useToast";
 import { AccountBasic } from "@/features/accounts/types";
-import { TransactionDatePicker } from "@/components/form/transactions/TransactionDatePicker";
+import { DatePicker } from "@/shared/ui/date-picker";
 import { Textarea } from "@/components/ui/textarea";
 import { useTranslations } from "next-intl";
 import { SwalToast } from "@/components/swal/SwalToast";
@@ -238,7 +238,7 @@ const FormPaymentDialog = ({ id, setIsOpen, isOpen, mutate, debtId }: FormPaymen
 
             <div className="grid gap-1.5">
               <Label htmlFor="tx-date">{t("DATE")}</Label>
-              <TransactionDatePicker
+              <DatePicker
                 dateLimits={dateLimits}
                 date={formData.date}
                 onChangeDate={(newDate) => setFormData((p) => ({ ...p, date: newDate }))}
