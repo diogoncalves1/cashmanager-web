@@ -1,6 +1,6 @@
 "use client";
 
-import TableContainer from "@/components/transactions/TableContainer";
+import TableContainer from "@/features/transactions/components/containers/TableContainer";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 

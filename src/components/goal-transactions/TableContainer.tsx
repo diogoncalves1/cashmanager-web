@@ -4,7 +4,7 @@ import { fetcher } from "@/lib/fetcher";
 import { ColumnFiltersState, SortingState } from "@tanstack/react-table";
 import React, { useCallback, useEffect, useState } from "react";
 import useSWR from "swr";
-import { TransactionStatus, TransactionType } from "@/types/transaction";
+import { TransactionStatus, TransactionType } from "@/features/transactions/types";
 import { TransactionsFilters } from "./TransactionFilters";
 import { GoalTransactionDataTable } from "./GoalTransactionDataTable";
 

@@ -10,9 +10,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { TransactionStatus, TransactionType } from "@/types/transaction";
+import { TransactionStatus, TransactionType } from "@/features/transactions/types";
 import { useTranslations } from "next-intl";
-import { TransactionDatePicker } from "../form/transactions/TransactionDatePicker";
+import { DatePicker } from "@/shared/ui/date-picker";
 import {
   financialGoalTransactionStatus,
   financialGoalTransactionTypes,
@@ -109,14 +109,14 @@ export function TransactionsFilters({
           </Select>
         )}
 
-        <TransactionDatePicker
+        <DatePicker
           date={dateFrom}
           dateLimits={{ max: dateTo }}
           className="w-min bg-white"
           onChangeDate={(newDate: string) => onDateFromChange(newDate)}
         />
         <span className="text-xs text-muted-foreground">{t("TO")}</span>
-        <TransactionDatePicker
+        <DatePicker
           date={dateTo}
           dateLimits={{ min: dateFrom }}
           className="w-min bg-white"

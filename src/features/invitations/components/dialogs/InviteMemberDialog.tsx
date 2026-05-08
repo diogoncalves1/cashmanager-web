@@ -16,7 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useState } from "react";
-import { useDataForInvite } from "@/hooks/useDataForInvite";
+import { useDataForInvite } from "@/features/invitations/hooks/useDataForInvite";
 import { useTranslations } from "next-intl";
 import { SwalToast } from "@/components/swal/SwalToast";
 import { Account } from "@/features/accounts/types";

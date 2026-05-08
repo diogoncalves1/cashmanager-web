@@ -11,47 +11,37 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { useToast } from "@/hooks/useToast";
-import { Transaction } from "@/types/transaction";
-import { onDeleteTransaction } from "@/services/transaction";
+import { onConfirmTransaction } from "@/features/transactions/api/transaction.api";
 import { useTranslations } from "next-intl";
-import { Table as ReactTable } from "@tanstack/react-table";
 
-type PaginationState = {
-  pageIndex: number;
-  pageSize: number;
-};
-
-interface DeleteTransactionDialogProps {
+interface ConfirmTransactionDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   id: string;
-  table: ReactTable<Transaction>;
-  pagination: PaginationState;
   mutate: () => void;
 }
 
-export function DeleteTransactionDialog({
+export function ConfirmTransactionDialog({
   open,
   onOpenChange,
   id,
-  table,
-  pagination,
   mutate,
-}: DeleteTransactionDialogProps) {
-  const t = useTranslations("TRANSACTIONS");
+}: ConfirmTransactionDialogProps) {
   const { toast } = useToast();
+  const t = useTranslations("TRANSACTIONS");
+
   return (
     <AlertDialog open={open} onOpenChange={onOpenChange}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>{t("DELETE_TRANSACTION")}</AlertDialogTitle>
-          <AlertDialogDescription>{t("DELETE_TRANSACTION_TEXT")}</AlertDialogDescription>
+          <AlertDialogTitle>{t("CONFIRM_TRANSACTION")}</AlertDialogTitle>
+          <AlertDialogDescription>{t("CONFIRM_TRANSACTION_TEXT")}</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>{t("CANCEL")}</AlertDialogCancel>
           <AlertDialogAction
             onClick={async () => {
-              const result = await onDeleteTransaction(id, table, pagination);
+              const result = await onConfirmTransaction(id, mutate);
               if (mutate) mutate();
               toast({
                 description: result.message,
@@ -60,7 +50,7 @@ export function DeleteTransactionDialog({
             }}
             className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
           >
-            {t("DELETE")}
+            {t("CONFIRM")}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
