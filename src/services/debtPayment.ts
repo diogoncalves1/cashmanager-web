@@ -1,4 +1,4 @@
-import { MyPagination } from "@/components/transactions/TableContainer";
+import { MyPagination } from "@/features/transactions/types";
 import { DebtPayment } from "@/types/debtPayment";
 import { Table } from "@tanstack/react-table";
 
