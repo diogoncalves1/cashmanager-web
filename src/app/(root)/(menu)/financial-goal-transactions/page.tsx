@@ -3,7 +3,7 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import { getTranslations } from "next-intl/server";
-import TransactionsContainer from "@/components/goal-transactions/TransactionsContainer";
+import TransactionsContainer from "@/features/financial-goal-transactions/components/containers/TransactionsContainer";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("FINANCIAL_GOAL_TRANSACTIONS");
