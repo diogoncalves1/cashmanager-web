@@ -1,7 +1,7 @@
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { GoalCardLoading } from "./components/GoalCardLoading";
+import { GoalCardLoading } from "@/features/financial-goals/components/ui/GoalCardLoading";
 import { Plus } from "lucide-react";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";

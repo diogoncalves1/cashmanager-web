@@ -3,8 +3,8 @@ import {
   FinancialGoalTransactionStatus,
   FinancialGoalTransactionType,
 } from "@/types/financialGoalTransaction";
-import { getAllFinancialGoals } from "@/services/financialGoal";
-import { FinancialGoalBasic } from "@/types/financialGoal";
+import { getAllFinancialGoalsBasic } from "@/features/financial-goals/api/financial-goal.api";
+import { FinancialGoalBasic } from "@/features/financial-goals/types";
 import { getAccountsBasic } from "@/features/accounts/api/account.api";
 import { AccountBasic } from "@/features/accounts/types";
 import { useRouter } from "next/navigation";
@@ -121,7 +121,7 @@ export function useFinancialGoalTransactionForm(
     try {
       setLoadingGoals(true);
 
-      const res = await getAllFinancialGoals();
+      const res = await getAllFinancialGoalsBasic();
 
       setGoals(res.data);
     } catch (err: unknown) {
