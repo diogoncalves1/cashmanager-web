@@ -5,8 +5,8 @@ import { ColumnFiltersState, SortingState } from "@tanstack/react-table";
 import React, { useCallback, useEffect, useState } from "react";
 import useSWR from "swr";
 import { TransactionStatus } from "@/features/transactions/types";
-import { PaymentsFilters } from "./DebtPaymentsFilters";
-import { DebtPaymentsDataTable } from "./DebtPaymentsDataTable";
+import { PaymentsFilters } from "@/features/debt-payments/components/filters/DebtPaymentsFilters";
+import { DebtPaymentsDataTable } from "@/features/debt-payments/components/table/DebtPaymentsDataTable";
 
 export type MyPagination = {
   pageIndex: number;

@@ -23,7 +23,7 @@ import { DatePicker } from "@/shared/ui/date-picker";
 import { Textarea } from "@/components/ui/textarea";
 import { useTranslations } from "next-intl";
 import { SwalToast } from "@/components/swal/SwalToast";
-import { useDebtPaymentForm } from "@/components/form/debt-payments/hooks/useDebtPaymentForm";
+import { useDebtPaymentForm } from "@/features/debt-payments/hooks/useDebtPaymentForm";
 import Checkbox from "@/components/form/input/Checkbox";
 import { useEffect } from "react";
 

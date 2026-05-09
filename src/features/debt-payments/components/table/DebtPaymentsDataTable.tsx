@@ -30,11 +30,11 @@ import { cn, formatDate, getUserColor, getUserInitials } from "@/lib/utils";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import Link from "next/link";
 import DataTable from "@/components/tables/DataTable";
-import { MyPagination } from "./TableContainer";
-import { DebtPayment } from "@/types/debtPayment";
-import ConfirmPaymentDialog from "../ui/dialogs/debt-payments/ConfirmPaymentDialog";
-import DeletePaymentDialog from "../ui/dialogs/debt-payments/DeletePaymentDialog";
-import FormPaymentDialog from "../ui/dialogs/debt-payments/FormPaymentDialog";
+import { MyPagination } from "@/features/debt-payments/components/containers/TableContainer";
+import { DebtPayment } from "@/features/debt-payments/types/index";
+import ConfirmPaymentDialog from "@/features/debt-payments/components/dialogs/ConfirmPaymentDialog";
+import DeletePaymentDialog from "@/features/debt-payments/components/dialogs/DeletePaymentDialog";
+import FormPaymentDialog from "@/features/debt-payments/components/dialogs/FormPaymentDialog";
 
 type DataTableProps = {
   debtId?: string;

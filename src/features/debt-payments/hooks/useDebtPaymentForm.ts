@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { DebtPaymentStatus } from "@/types/debtPayment";
+import { DebtPaymentStatus } from "@/features/debt-payments/types/index";
 import { getAccountsBasic } from "@/features/accounts/api/account.api";
 import { AccountBasic } from "@/features/accounts/types";
 import { DebtBasic } from "@/features/debts/types";
