@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import React from "react";
-import CashFlowChart from "@/components/dashboard/CashFlowChart";
+// import CashFlowChart from "@/components/dashboard/CashFlowChart";
 import DashboardMetrics from "@/components/dashboard/DashboardMetrics";
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import { getTranslations } from "next-intl/server";
@@ -22,7 +22,7 @@ export default function Dashboard() {
   return (
     <>
       <PageBreadcrumb pageTitle={t("DASHBOARD")} />
-      <div className="p-6 grid grid-cols-12 gap-4 md:gap-6">
+      <div className="p-6 grid grid-cols-12 gap-5 md:gap-6">
         {/* <div className="col-span-12 space-y-6">
           <StockTicker />
         </div>
@@ -33,14 +33,13 @@ export default function Dashboard() {
           </div>
         </div> */}
 
-        {/*md:col-span-9*/}
-        <div className="col-span-12 ">
-          <CashFlowChart />
-        </div>
-
         <div className="col-span-12 space-y-6 xl:col-span-12">
           <DashboardMetrics />
         </div>
+        {/*md:col-span-9*/}
+        {/* <div className="col-span-12 ">
+          <CashFlowChart />
+        </div> */}
 
         {/* <div className="col-span-12 xl:col-span-0">
           <MonthlyTarget />

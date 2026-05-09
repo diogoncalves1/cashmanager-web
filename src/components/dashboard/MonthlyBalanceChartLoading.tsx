@@ -15,7 +15,7 @@ export default function MonthlyBalanceChartLoading() {
 
         <div className="max-w-full overflow-x-auto custom-scrollbar">
           <div className="min-w-full xl:min-w-full pl-2">
-            <LineChartLoading height={317} />
+            <LineChartLoading height={485} />
           </div>
         </div>
       </div>

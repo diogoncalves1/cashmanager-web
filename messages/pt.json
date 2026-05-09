@@ -1532,6 +1532,12 @@
 
     "HOME": "Início",
 
+    "NET_BALANCE": "Saldo líquido",
+    "EXPENSE_RATIO": "Despesa / Receita",
+    "BEST_MONTH": "Melhor mês",
+    "MONTHLY_AVG": "Média mensal",
+    "WORST_MONTH": "Pior mês",
+
     "DASHBOARD": "Painel",
 
     "NO_DATA_AVAILABLE": "Sem dados registados.",
