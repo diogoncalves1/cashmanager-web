@@ -11,13 +11,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { formatDate } from "@/lib/utils";
 import { useTranslations } from "next-intl";
-// import { useRouter } from "next/router";
-import TableContainer from "@/components/debt-payments/TableContainer";
+import TableContainer from "@/features/debt-payments/components/containers/TableContainer";
 import Link from "next/link";
 import UsersTab from "./UsersTab";
 import StatusBadge from "@/features/debts/components/cards/StatusBadge";
 import ActivityTimeline from "@/components/ui/timeline/ActivityTimeline";
-import { NewDebtPaymentsButton } from "@/components/debt-payments/NewDebtPaymentsButton";
+import { NewDebtPaymentsButton } from "@/features/debt-payments/components/actions/NewDebtPaymentsButton";
 import { Calendar, Check, Clock4Icon, DoorOpen, Edit, Trash } from "lucide-react";
 import { useDebtDetailsContext } from "@/features/debts/state/debt-details.context";
 import { useEffect, useState } from "react";

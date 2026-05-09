@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import React from "react";
 import { useTranslations } from "next-intl";
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
-import PaymentsContainer from "@/components/debt-payments/DebtPaymentsContainer";
+import PaymentsContainer from "@/features/debt-payments/components/containers/DebtPaymentsContainer";
 import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata(): Promise<Metadata> {
