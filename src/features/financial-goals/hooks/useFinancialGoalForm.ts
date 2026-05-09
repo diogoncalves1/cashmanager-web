@@ -2,7 +2,7 @@ import useSWR from "swr";
 import { useRouter } from "next/navigation";
 import { fetcher } from "@/lib/fetcher";
 import { useEffect, useState } from "react";
-import { FinancialGoalPriority } from "@/types/financialGoal";
+import { FinancialGoalPriority } from "@/features/financial-goals/types";
 import { getCurrencies } from "@/services/currency";
 import { Currency } from "@/types/currency";
 

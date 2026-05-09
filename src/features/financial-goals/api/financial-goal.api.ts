@@ -1,7 +1,12 @@
 import LoadingToast from "@/components/swal/LoadingToast";
 import { SwalToast } from "@/components/swal/SwalToast";
 import { useTranslations } from "next-intl";
-import { FinancialGoalBasic } from "@/types/financialGoal";
+import {
+  ApiResponse,
+  FinancialGoal,
+  FinancialGoalBasic,
+  GoalsFilters,
+} from "@/features/financial-goals/types";
 import { ResponseData } from "@/lib/api/api-client";
 
 interface TableInstance {
@@ -140,7 +145,7 @@ export async function onMarkPaidFinancialGoal(
   }
 }
 
-export async function getAllFinancialGoals(): Promise<ResponseData<FinancialGoalBasic[]>> {
+export async function getAllFinancialGoalsBasic(): Promise<ResponseData<FinancialGoalBasic[]>> {
   const res = await fetch(`/api/financial-goals/all`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
@@ -148,5 +153,35 @@ export async function getAllFinancialGoals(): Promise<ResponseData<FinancialGoal
 
   const response = await res.json();
 
+  return response;
+}
+
+export async function getAllFinancialGoals(
+  filters: GoalsFilters
+): Promise<ApiResponse<FinancialGoal>> {
+  const params = new URLSearchParams(
+    Object.entries(filters).filter(([, v]) => v !== null) as [string, string][]
+  );
+
+  const res = await fetch(`/api/financial-goals?${params.toString()}`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (!res.ok) throw new Error("Failed to fetch financial goals");
+
+  const response = await res.json();
+  return response;
+}
+
+export async function getFinancialGoalById(id: string): Promise<ResponseData<FinancialGoal>> {
+  const res = await fetch(`/api/financial-goals/${id}`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (!res.ok) throw new Error("Failed to fetch financial goal");
+
+  const response = await res.json();
   return response;
 }

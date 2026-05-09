@@ -121,3 +121,27 @@ export interface FinancialGoalBasic {
   targetFormated: string;
   currencySymbol: string;
 }
+
+export interface GoalsFilters {
+  search?: string;
+  status?: string;
+  priority?: string;
+  page?: number;
+  pageSize?: number;
+}
+
+type Stats = {
+  totalGoals?: number;
+  activeGoals?: number;
+  totalTarget?: number;
+  totalSavedFormated?: string;
+  totalSaved?: number;
+};
+
+export interface ApiResponse<T> {
+  data: T[];
+  recordsFiltered: number;
+  page: number;
+  pageSize: number;
+  stats: Stats;
+}

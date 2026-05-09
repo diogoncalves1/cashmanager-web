@@ -12,14 +12,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { formatDate } from "@/lib/utils";
-import { useFinancialGoal } from "../hooks/useFinancialGoal";
+import { useFinancialGoal } from "@/features/financial-goals/hooks/useFinancialGoal";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import PriorityInfo from "@/components/financial-goals/PriorityInfo";
-import DeleteFinancialGoalDialog from "@/components/ui/dialogs/FinancialGoals/DeleteFinancialGoalDialog";
-import StatusBadge from "@/components/financial-goals/StatusBadge";
-import MarkCompletedGoalTransactionDialog from "@/components/ui/dialogs/FinancialGoals/MarkCompletedGoalTransactionDialog";
-import { onCancelFinancialGoal, onResetFinancialGoal } from "@/services/financialGoal";
+import PriorityInfo from "@/features/financial-goals/components/ui/PriorityInfo";
+import StatusBadge from "@/features/financial-goals/components/ui/StatusBadge";
+import DeleteFinancialGoalDialog from "@/features/financial-goals/components/dialogs/DeleteFinancialGoalDialog";
+import MarkCompletedGoalTransactionDialog from "@/features/financial-goals/components/dialogs/MarkCompletedGoalTransactionDialog";
+import {
+  onCancelFinancialGoal,
+  onResetFinancialGoal,
+} from "@/features/financial-goals/api/financial-goal.api";
 import {
   CheckCircle2,
   DoorOpen,
@@ -31,7 +34,7 @@ import {
 } from "lucide-react";
 import InviteMemberButton from "@/features/invitations/components/actions/InviteMemberButton";
 import ActivityTimeline from "@/components/ui/timeline/ActivityTimeline";
-import UsersTable from "./UsersTable";
+import UsersTable from "@/features/financial-goals/components/users/UsersTable";
 import { useAuth } from "@/context/AuthContext";
 import LeaveSubjectDialog from "@/features/invitations/components/dialogs//LeaveSubjectDialog";
 import TableContainer from "@/components/goal-transactions/TableContainer";

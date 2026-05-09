@@ -1,7 +1,6 @@
 "use client";
 
 import { Input } from "@/components/ui/input";
-import Label from "../Label";
 
 import { Currency } from "@/types/currency";
 import {
@@ -11,15 +10,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useFinancialGoalForm } from "./hooks/useFinancialGoalForm";
+import { useFinancialGoalForm } from "@/features/financial-goals/hooks/useFinancialGoalForm";
 import LoadingToast from "@/components/swal/LoadingToast";
-import { getFinancialGoalPriorities } from "@/types/financialGoal";
+import { getFinancialGoalPriorities } from "@/features/financial-goals/types";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
 import SubmitFormButton from "@/components/ui/button/SubmitFormButton";
 import { useToast } from "@/hooks/useToast";
 import { DatePicker } from "@/shared/ui/date-picker";
+import { Label } from "@/components/ui/label";
 
 type Props = {
   id?: string;

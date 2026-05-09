@@ -18,7 +18,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { UserContribution } from "@/types/financialGoal";
+import { UserContribution } from "@/features/financial-goals/types";
 import { useState } from "react";
 import { EllipsisVertical } from "lucide-react";
 import ChangeMemberRoleDialog from "@/features/invitations/components/dialogs/ChangeMemberRoleDialog";

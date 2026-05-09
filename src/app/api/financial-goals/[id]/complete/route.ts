@@ -1,5 +1,5 @@
 import { serverApiClient } from "@/lib/api/api-client.server";
-import { FinancialGoal } from "@/types/financialGoal";
+import { FinancialGoal } from "@/features/financial-goals/types";
 import { NextRequest, NextResponse } from "next/server";
 
 type Params = Promise<{ id: string }>;

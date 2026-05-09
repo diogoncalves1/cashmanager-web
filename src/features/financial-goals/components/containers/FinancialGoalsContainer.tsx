@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 
-import GoalsList from "../components/GoalsList";
-import { useFinancialGoals } from "../hooks/useFinancialGoals";
+import GoalsList from "@/features/financial-goals/components/list/GoalsList";
+import { useFinancialGoals } from "@/features/financial-goals/hooks/useFinancialGoals";
 import { useTranslations } from "next-intl";
 
 interface Filters {

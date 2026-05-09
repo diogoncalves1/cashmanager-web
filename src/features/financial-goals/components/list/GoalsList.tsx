@@ -1,6 +1,6 @@
 "use client";
 
-import GoalCard from "../components/GoalCard";
+import GoalCard from "@/features/financial-goals/components/list/GoalCard";
 import {
   Select,
   SelectContent,
@@ -9,13 +9,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
-import { useFinancialGoals } from "../hooks/useFinancialGoals";
+import { useFinancialGoals } from "@/features/financial-goals/hooks/useFinancialGoals";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
 import GoalsListFail from "./GoalsListFail";
-import { GoalCardLoading } from "./GoalCardLoading";
+import { GoalCardLoading } from "@/features/financial-goals/components/ui/GoalCardLoading";
 
 interface Filters {
   search?: string;

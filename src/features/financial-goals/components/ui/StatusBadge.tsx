@@ -1,4 +1,4 @@
-import { FinancialGoalStatus } from "@/types/financialGoal";
+import { FinancialGoalStatus } from "@/features/financial-goals/types";
 
 export default function StatusBadge({
   status,

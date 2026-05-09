@@ -3,9 +3,9 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { FinancialGoal } from "@/types/financialGoal";
-import StatusBadge from "@/components/financial-goals/StatusBadge";
-import PriorityInfo from "@/components/financial-goals/PriorityInfo";
+import { FinancialGoal } from "@/features/financial-goals/types";
+import StatusBadge from "@/features/financial-goals/components/ui/StatusBadge";
+import PriorityInfo from "@/features/financial-goals/components/ui/PriorityInfo";
 import { useTranslations } from "next-intl";
 
 interface GoalCardProps {
