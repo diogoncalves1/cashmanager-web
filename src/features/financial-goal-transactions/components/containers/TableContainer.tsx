@@ -4,14 +4,9 @@ import { fetcher } from "@/lib/fetcher";
 import { ColumnFiltersState, SortingState } from "@tanstack/react-table";
 import React, { useCallback, useEffect, useState } from "react";
 import useSWR from "swr";
-import { TransactionStatus, TransactionType } from "@/features/transactions/types";
-import { TransactionsFilters } from "./TransactionFilters";
-import { GoalTransactionDataTable } from "./GoalTransactionDataTable";
-
-export type MyPagination = {
-  pageIndex: number;
-  pageSize: number;
-};
+import { TransactionStatus, TransactionType, MyPagination } from "@/features/transactions/types";
+import { TransactionsFilters } from "@/features/financial-goal-transactions/components/filters/TransactionFilters";
+import { GoalTransactionDataTable } from "@/features/financial-goal-transactions/components/table/GoalTransactionDataTable";
 
 type Props = {
   userId?: string;

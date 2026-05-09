@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import {
   FinancialGoalTransactionStatus,
   FinancialGoalTransactionType,
-} from "@/types/financialGoalTransaction";
+} from "@/features/financial-goal-transactions/types";
 import { getAllFinancialGoalsBasic } from "@/features/financial-goals/api/financial-goal.api";
 import { FinancialGoalBasic } from "@/features/financial-goals/types";
 import { getAccountsBasic } from "@/features/accounts/api/account.api";

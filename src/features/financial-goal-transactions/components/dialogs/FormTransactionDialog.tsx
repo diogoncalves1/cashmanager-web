@@ -23,8 +23,8 @@ import { DatePicker } from "@/shared/ui/date-picker";
 import { Textarea } from "@/components/ui/textarea";
 import { useTranslations } from "next-intl";
 import { SwalToast } from "@/components/swal/SwalToast";
-import { useFinancialGoalTransactionForm } from "@/components/form/goal-transactions/hooks/useFinancialGoalTransactionForm";
-import { FinancialGoalTransactionType } from "@/types/financialGoalTransaction";
+import { useFinancialGoalTransactionForm } from "@/features/financial-goal-transactions/hooks/useFinancialGoalTransactionForm";
+import { FinancialGoalTransactionType } from "@/features/financial-goal-transactions/types";
 import { useEffect } from "react";
 
 type TransactionDialogProps = {

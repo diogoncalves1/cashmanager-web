@@ -16,7 +16,7 @@ import { DatePicker } from "@/shared/ui/date-picker";
 import {
   financialGoalTransactionStatus,
   financialGoalTransactionTypes,
-} from "@/types/financialGoalTransaction";
+} from "@/features/financial-goal-transactions/types";
 
 interface TransactionsFiltersProps {
   search: string;

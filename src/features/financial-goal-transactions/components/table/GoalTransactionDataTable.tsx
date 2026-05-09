@@ -26,15 +26,17 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { useTranslations } from "next-intl";
 import { DataTablePagination } from "@/components/tables/DataTablePagination";
-import { FinancialGoalTransaction } from "@/types/financialGoalTransaction";
+import {
+  FinancialGoalTransaction,
+  MyPagination,
+} from "@/features/financial-goal-transactions/types";
 import { cn, formatDate, getUserColor, getUserInitials } from "@/lib/utils";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import Link from "next/link";
-import DeleteGoalTransactionDialog from "@/components/ui/dialogs/goal-transactions/DeleteGoalTransactionDialog";
+import DeleteGoalTransactionDialog from "@/features/financial-goal-transactions/components/dialogs/DeleteGoalTransactionDialog";
 import DataTable from "@/components/tables/DataTable";
-import ConfirmGoalTransactionDialog from "@/components/ui/dialogs/goal-transactions/ConfirmGoalTransactionDialog";
-import { MyPagination } from "./TableContainer";
-import FormTransactionDialog from "../ui/dialogs/goal-transactions/FormTransactionDialog";
+import ConfirmGoalTransactionDialog from "@/features/financial-goal-transactions/components/dialogs/ConfirmGoalTransactionDialog";
+import FormTransactionDialog from "@/features/financial-goal-transactions/components/dialogs/FormTransactionDialog";
 
 type DataTableProps = {
   financialGoalId?: string;

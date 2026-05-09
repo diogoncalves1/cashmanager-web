@@ -11,6 +11,11 @@ export const financialGoalTransactionTypes = (t: ReturnType<typeof useTranslatio
   },
 ];
 
+export type MyPagination = {
+  pageIndex: number;
+  pageSize: number;
+};
+
 export type FinancialGoalTransactionType = "contribution" | "withdrawal";
 export type FinancialGoalTransactionStatus = "completed" | "pending";
 

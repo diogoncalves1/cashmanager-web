@@ -7,10 +7,10 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { onDeleteFinancialGoalTransaction } from "@/services/financialGoalTransaction";
+import { onDeleteFinancialGoalTransaction } from "@/features/financial-goal-transactions/api/financial-goal-transaction.api";
 import { useRouter } from "next/navigation";
 import { Table } from "@tanstack/react-table";
-import { FinancialGoalTransaction } from "@/types/financialGoalTransaction";
+import { FinancialGoalTransaction } from "@/features/financial-goal-transactions/types";
 import { useTranslations } from "next-intl";
 
 type PaginationState = {

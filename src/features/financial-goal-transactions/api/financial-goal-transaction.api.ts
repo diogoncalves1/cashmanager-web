@@ -1,17 +1,15 @@
 import LoadingToast from "@/components/swal/LoadingToast";
 import { SwalToast } from "@/components/swal/SwalToast";
-import { FinancialGoalTransaction } from "@/types/financialGoalTransaction";
+import {
+  FinancialGoalTransaction,
+  MyPagination,
+} from "@/features/financial-goal-transactions/types";
 import { Table } from "@tanstack/react-table";
-
-type PaginationState = {
-  pageIndex: number;
-  pageSize: number;
-};
 
 export async function onDeleteFinancialGoalTransaction(
   id: string,
   table?: Table<FinancialGoalTransaction>,
-  pagination?: PaginationState,
+  pagination?: MyPagination,
   mutate?: () => void
 ) {
   LoadingToast({ title: "Excluindo...", message: "Removendo transação..." });
