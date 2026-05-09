@@ -1531,6 +1531,12 @@
 
     "HOME": "Home",
 
+    "NET_BALANCE": "Net balance",
+    "EXPENSE_RATIO": "Expense / Income",
+    "BEST_MONTH": "Best month",
+    "MONTHLY_AVG": "Monthly average",
+    "WORST_MONTH": "Worst month",
+
     "DASHBOARD": "Dashboard",
 
     "NO_DATA_AVAILABLE": "No data recorded.",
