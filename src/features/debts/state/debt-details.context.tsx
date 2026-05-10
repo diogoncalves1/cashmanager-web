@@ -7,7 +7,7 @@ const DebtDetailsContext = createContext<{
   setLoadCounter: React.Dispatch<React.SetStateAction<number>>;
 }>({ loadCounter: 0, setLoadCounter: () => {} });
 
-export const AccountDetailsProvider = ({ children }: { children: React.ReactNode }) => {
+export const DebtDetailsProvider = ({ children }: { children: React.ReactNode }) => {
   const [loadCounter, setLoadCounter] = useState(0);
   return (
     <DebtDetailsContext.Provider value={{ loadCounter, setLoadCounter }}>

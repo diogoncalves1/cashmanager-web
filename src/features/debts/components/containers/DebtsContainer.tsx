@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { useDebts } from "@/features/debts/hooks/useDebts";
-import DebtsList from "@/features/debts/components/lists/DebtsList";
+import { DebtsList } from "@/features/debts";
+import { useDebts } from "@/features/debts/server";
 import { useTranslations } from "next-intl";
 
 interface Filters {
@@ -12,7 +12,7 @@ interface Filters {
   sort?: string;
 }
 
-export default function DebtsContainer() {
+export function DebtsContainer() {
   const t = useTranslations("DEBTS");
   const [filters, setFilters] = useState<Filters>();
 

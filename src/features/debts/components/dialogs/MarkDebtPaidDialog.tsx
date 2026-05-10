@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Dialog,
   DialogContent,
@@ -7,7 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
-import { onMarkPaidDebt } from "@/features/debts/api/debt.api";
+import { onMarkPaidDebt } from "@/features/debts/server";
 import { useToast } from "@/shared/hooks/useToast";
 
 type Props = {
@@ -17,7 +19,7 @@ type Props = {
   selectedId: string;
 };
 
-export default function MarkDebtPaidDialog({
+export function MarkDebtPaidDialog({
   isMarkPaidDialogOpen,
   setIsMarkPaidOpen,
   mutate,

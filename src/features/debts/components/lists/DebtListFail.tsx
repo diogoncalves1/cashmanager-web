@@ -1,6 +1,6 @@
 import React from "react";
 
-const DebtListFail = () => {
+export const DebtListFail = () => {
   return (
     <div className="text-center py-16">
       <div className="w-16 h-16 rounded-full bg-muted mx-auto mb-4 flex items-center justify-center">
@@ -23,5 +23,3 @@ const DebtListFail = () => {
     </div>
   );
 };
-
-export default DebtListFail;

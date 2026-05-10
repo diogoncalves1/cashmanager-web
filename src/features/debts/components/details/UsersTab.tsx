@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Table,
   TableBody,
@@ -9,7 +11,7 @@ import {
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { Debt } from "@/features/debts/types";
+import { Debt, useDebtDetailsContext } from "@/features/debts";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -23,10 +25,9 @@ import { useTranslations } from "next-intl";
 import ChangeMemberRoleDialog from "@/features/invitations/components/dialogs/ChangeMemberRoleDialog";
 import RemoveMemberDialog from "@/features/invitations/components/dialogs/RemoveMemberDialog";
 import { useState } from "react";
-import { useDebtDetailsContext } from "@/features/debts/state/debt-details.context";
 import { useAuth } from "@/features/auth";
 
-export default function UsersTab({ debt }: { debt: Debt }) {
+export function UsersTab({ debt }: { debt: Debt }) {
   const t = useTranslations("DEBTS");
   const { setLoadCounter } = useDebtDetailsContext();
   const { user: userSelf } = useAuth();
