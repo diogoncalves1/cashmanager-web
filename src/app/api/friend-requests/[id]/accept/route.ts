@@ -1,5 +1,5 @@
 import { serverApiClient } from "@/lib/api/api-client.server";
-import { FriendRequest } from "@/types/friendship";
+import { FriendRequest } from "@/features/friends";
 import { NextRequest, NextResponse } from "next/server";
 
 type Params = Promise<{ id: string }>;

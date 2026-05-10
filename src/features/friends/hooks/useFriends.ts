@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getFriendsStats } from "../services/friends.service";
-import { useFriendsContext } from "../context/FriendsContext";
+import { useFriendsContext, getFriendsStats } from "@/features/friends";
 
 interface Stats {
   friends: number;

@@ -3,14 +3,17 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
-import { Friendship } from "@/types/friendship";
+import {
+  Friendship,
+  useFriendsContext,
+  FriendsEmptyState,
+  onDeclineRequest,
+  onAcceptRequest,
+  PendingRequestCard,
+} from "@/features/friends";
 import { Clock } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { onAcceptRequest, onDeclineRequest } from "@/services/friendRequest";
-import { FriendsEmptyState } from "./FriendsEmptyState";
-import { PendingRequestCard } from "./PendingRequestCard";
 import LoadingList from "@/components/ui/loading/LoadingList";
-import { useFriendsContext } from "../context/FriendsContext";
 
 type Page = { data: Friendship[]; nextPage: number | null };
 
@@ -37,7 +40,7 @@ const fetchRequests = async ({ pageParam = 1, search }: FetchFriendsParams): Pro
   return response.json();
 };
 
-export default function ReceivedRequests() {
+export function ReceivedRequests() {
   const t = useTranslations("FRIENDS");
 
   const { loadCounter, setLoadCounter } = useFriendsContext();

@@ -3,7 +3,7 @@
 import { ShieldCheck } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Friendship } from "@/types/friendship";
+import { Friendship } from "@/features/friends";
 import { useTranslations } from "next-intl";
 
 interface BlockedUserCardProps {

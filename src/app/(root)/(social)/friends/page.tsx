@@ -1,8 +1,7 @@
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
-import SocialTabs from "./components/SocialTabs";
 import { Metadata } from "next";
 import { useTranslations } from "next-intl";
-import { FriendsProvider } from "./context/FriendsContext";
+import { FriendsProvider, SocialTabs } from "@/features/friends";
 import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata(): Promise<Metadata> {

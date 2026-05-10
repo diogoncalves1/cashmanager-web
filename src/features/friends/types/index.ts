@@ -14,3 +14,17 @@ export interface Friendship {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface ApiResponse<T> {
+  data: T;
+  recordsFiltered: number;
+  page: number;
+  pageSize: number;
+}
+
+export interface Stats {
+  friends: number;
+  received: number;
+  sent: number;
+  blocked: number;
+}

@@ -4,7 +4,7 @@ import { Check, X, Clock } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Friendship } from "@/types/friendship";
+import { Friendship } from "@/features/friends";
 import { formatDate } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 

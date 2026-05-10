@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { onSendRequest } from "@/services/friend";
+import { onSendRequest, useFriendsContext } from "@/features/friends";
 import { useState, useEffect } from "react";
 import { Search, UserPlus, Check, Clock, Loader2 } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -12,7 +12,6 @@ import { User, UserSearch } from "@/types/user";
 import { useAuth } from "@/context/AuthContext";
 import { useInView } from "react-intersection-observer";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { useFriendsContext } from "../context/FriendsContext";
 
 type Page = { data: UserSearch[]; nextPage: number | null };
 
@@ -41,7 +40,7 @@ const fetchUsers = async ({ pageParam = 1, search }: FetchFriendsParams): Promis
   return response.json();
 };
 
-export default function AddFriend() {
+export function AddFriend() {
   const { loadCounter, setLoadCounter } = useFriendsContext();
   const { user } = useAuth();
   const t = useTranslations("FRIENDS");

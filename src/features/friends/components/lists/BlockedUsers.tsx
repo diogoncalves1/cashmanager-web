@@ -3,14 +3,16 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
-import { Friendship } from "@/types/friendship";
+import {
+  Friendship,
+  onUnblockUser,
+  useFriendsContext,
+  FriendsEmptyState,
+  BlockedUserCard,
+} from "@/features/friends";
 import { Clock } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { onCancelRequest } from "@/services/friendRequest";
-import { FriendsEmptyState } from "./FriendsEmptyState";
-import { PendingRequestCard } from "./PendingRequestCard";
 import LoadingList from "@/components/ui/loading/LoadingList";
-import { useFriendsContext } from "../context/FriendsContext";
 
 type Page = { data: Friendship[]; nextPage: number | null };
 
@@ -19,10 +21,10 @@ type FetchFriendsParams = {
   search?: string;
 };
 
-const fetchRequests = async ({ pageParam = 1, search }: FetchFriendsParams): Promise<Page> => {
+const fetchBlocked = async ({ pageParam = 1, search }: FetchFriendsParams): Promise<Page> => {
   const searchTerm = search ?? "";
   const response = await fetch(
-    `/api/friend-requests/sent?page=${pageParam}&size=10&search=${searchTerm}`,
+    `/api/friends/blocked?page=${pageParam}&size=10&search=${searchTerm}`,
     {
       method: "GET",
       credentials: "include",
@@ -31,13 +33,13 @@ const fetchRequests = async ({ pageParam = 1, search }: FetchFriendsParams): Pro
   );
 
   if (!response.ok) {
-    throw new Error("Erro ao carregar amigos");
+    throw new Error("Erro ao carregar utilizadores bloqueados");
   }
 
   return response.json();
 };
 
-export default function SentRequests() {
+export function BlockedUsers() {
   const t = useTranslations("FRIENDS");
 
   const { loadCounter, setLoadCounter } = useFriendsContext();
@@ -50,9 +52,9 @@ export default function SentRequests() {
 
   const { data, fetchNextPage, refetch, hasNextPage, isFetchingNextPage, isLoading, isError } =
     useInfiniteQuery<Page, Error>({
-      queryKey: ["sentRequests", debouncedSearch],
+      queryKey: ["blockedUsers", debouncedSearch],
       queryFn: ({ pageParam = 1 }) =>
-        fetchRequests({ pageParam: pageParam, search: debouncedSearch }),
+        fetchBlocked({ pageParam: pageParam, search: debouncedSearch }),
       initialPageParam: 1,
       getNextPageParam: (lastPage) => {
         return lastPage.nextPage ?? undefined;
@@ -88,7 +90,7 @@ export default function SentRequests() {
     );
   }
 
-  const allRequests = data?.pages.flatMap((page) => page.data) ?? [];
+  const allBlocks = data?.pages.flatMap((page) => page.data) ?? [];
 
   return (
     <div className="space-y-4">
@@ -103,31 +105,30 @@ export default function SentRequests() {
       </div>
       {isLoading ? (
         <LoadingList />
-      ) : allRequests.length > 0 ? (
-        allRequests.map((f) => (
-          <PendingRequestCard
+      ) : allBlocks.length > 0 ? (
+        allBlocks.map((f) => (
+          <BlockedUserCard
             key={f.id}
             friendship={f}
-            direction="sent"
-            onCancel={async () => {
-              await onCancelRequest(f.user.id, t);
-              setLoadCounter((prev) => prev + 1);
-
-              refetch();
+            onUnblock={async () => {
+              if (await onUnblockUser(f.user.id, t)) {
+                refetch();
+                setLoadCounter((prev) => prev + 1);
+              }
             }}
           />
         ))
-      ) : allRequests.length == 0 && debouncedSearch.trim() ? (
+      ) : allBlocks.length == 0 && debouncedSearch.trim() ? (
         <FriendsEmptyState
           icon={Clock}
           title={t("NO_RESULTS")}
-          description={t("NO_SENT_RESULTS_TEXT", { username: debouncedSearch })}
+          description={t("NO_BLOCKED_RESULTS_TEXT", { username: debouncedSearch })}
         />
       ) : (
         <FriendsEmptyState
           icon={Clock}
-          title={t("NO_SENT_REQUESTS")}
-          description={t("NO_SENT_REQUESTS_TEXT")}
+          title={t("NO_BLOCKED_USERS")}
+          description={t("NO_BLOCKED_USERS_TEXT")}
         />
       )}
 

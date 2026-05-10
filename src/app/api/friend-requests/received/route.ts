@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { FriendRequest } from "@/types/friendship";
+import { FriendRequest } from "@/features/friends";
 import { serverApiClient } from "@/lib/api/api-client.server";
 
 export async function GET(req: NextRequest) {

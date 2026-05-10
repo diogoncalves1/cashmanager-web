@@ -3,14 +3,16 @@
 import { Users, UserPlus, Inbox, ShieldOff } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useFriendStats } from "../hooks/useFriends";
-import FriendsList from "./FriendsList";
-import SentRequests from "./SentRequests";
-import AddFriend from "./AddFriend";
-import ReceivedRequests from "./ReceivedRequests";
-import BlockedUsers from "./BlockedUsers";
+import {
+  useFriendStats,
+  AddFriend,
+  SentRequests,
+  FriendsList,
+  ReceivedRequests,
+  BlockedUsers,
+} from "@/features/friends";
 
-export default function SocialTabs() {
+export function SocialTabs() {
   const t = useTranslations("FRIENDS");
 
   const { error, stats } = useFriendStats();

@@ -2,6 +2,7 @@ import LoadingToast from "@/components/swal/LoadingToast";
 import { SwalToast } from "@/components/swal/SwalToast";
 import { useTranslations } from "next-intl";
 import Swal from "sweetalert2";
+import { ApiResponse, Stats } from "@/features/friends";
 
 export async function onBlockUser(id: string, t: ReturnType<typeof useTranslations>) {
   const result = await Swal.fire({
@@ -151,4 +152,16 @@ export async function onUnblockUser(id: string, t: ReturnType<typeof useTranslat
     }
   }
   return 0;
+}
+
+export async function getFriendsStats(): Promise<ApiResponse<Stats>> {
+  const res = await fetch(`/api/friends/stats`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (!res.ok) throw new Error("Failed to fetch friend stats");
+
+  const response = await res.json();
+  return response;
 }
