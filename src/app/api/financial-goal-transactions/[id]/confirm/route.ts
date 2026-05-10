@@ -1,4 +1,4 @@
-import { serverApiClient } from "@/lib/api/api-client.server";
+import { serverApiClient } from "@/shared/api/api-client.server";
 import { FinancialGoalTransaction } from "@/features/financial-goal-transactions/types";
 import { NextRequest, NextResponse } from "next/server";
 

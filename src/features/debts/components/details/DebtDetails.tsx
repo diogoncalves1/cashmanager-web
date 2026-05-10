@@ -9,7 +9,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { formatDate } from "@/lib/utils";
+import { formatDate } from "@/shared/utils";
 import { useTranslations } from "next-intl";
 import TableContainer from "@/features/debt-payments/components/containers/TableContainer";
 import Link from "next/link";
@@ -26,7 +26,7 @@ import LeaveSubjectDialog from "@/features/invitations/components/dialogs/LeaveS
 import MarkDebtPaidDialog from "@/features/debts/components/dialogs/MarkDebtPaidDialog";
 import { Debt } from "@/features/debts/types";
 import useSWR from "swr";
-import { fetcher } from "@/lib/fetcher";
+import { fetcher } from "@/shared/fetcher";
 import { useRouter } from "next/navigation";
 import { Skeleton } from "@/components/ui/skeleton";
 

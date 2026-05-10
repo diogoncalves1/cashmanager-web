@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/utils";
 import { useTranslations } from "next-intl";
 
 export default function SubmitFormButton({

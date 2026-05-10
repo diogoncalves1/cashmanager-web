@@ -1,5 +1,5 @@
 import { InvitationSummary, InvitationType } from "@/features/invitations/types";
-import { ResponseData } from "@/lib/api/api-client";
+import { ResponseData } from "@/shared/api/api-client";
 
 export async function onCancelInvite(
   id: string,

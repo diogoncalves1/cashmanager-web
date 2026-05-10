@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import useSWR from "swr";
-import { fetcher } from "@/lib/fetcher";
+import { fetcher } from "@/shared/fetcher";
 import { IncomeExpensesMetrics, UserMonthlyBalanceChart } from "@/features/dashboard";
 
 export type KpiInterface = {

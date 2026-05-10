@@ -18,10 +18,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { TransactionStatus, TransactionType } from "@/features/transactions/types";
-import { useToast } from "@/hooks/useToast";
+import { useToast } from "@/shared/hooks/useToast";
 import { useTransactionForm } from "@/features/transactions/hooks/useTransactionForm";
 import { AccountBasic } from "@/features/accounts/types";
-import { Category, iconMap } from "@/types/category";
+import { Category, iconMap } from "@/shared/types/category";
 import { DatePicker } from "@/shared/ui/date-picker";
 import { Textarea } from "@/components/ui/textarea";
 import { useTranslations } from "next-intl";

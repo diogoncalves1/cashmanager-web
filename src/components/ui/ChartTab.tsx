@@ -1,4 +1,4 @@
-import { Currency } from "@/types/currency";
+import { Currency } from "@/shared/types/currency";
 import { ApexOptions } from "apexcharts";
 import { useTranslations } from "next-intl";
 import React, { useEffect, useState } from "react";

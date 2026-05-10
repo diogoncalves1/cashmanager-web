@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { serverApiClient } from "@/lib/api/api-client.server";
+import { serverApiClient } from "@/shared/api/api-client.server";
 
 export async function POST(req: Request) {
   const response = NextResponse.json({ success: true });

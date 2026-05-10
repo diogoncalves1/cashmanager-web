@@ -1,4 +1,4 @@
-import { serverApiClient } from "@/lib/api/api-client.server";
+import { serverApiClient } from "@/shared/api/api-client.server";
 import { Debt } from "@/features/debts/types";
 import { NextRequest, NextResponse } from "next/server";
 

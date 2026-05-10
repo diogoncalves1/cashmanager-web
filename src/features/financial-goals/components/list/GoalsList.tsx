@@ -8,7 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/utils";
 import { useFinancialGoals } from "@/features/financial-goals/hooks/useFinancialGoals";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";

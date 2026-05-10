@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { AuthSubmitButton } from "@/features/auth";
-import { useToast } from "@/hooks/useToast";
+import { useToast } from "@/shared/hooks/useToast";
 
 export function ResetPasswordForm() {
   const [email, setEmail] = useState("");

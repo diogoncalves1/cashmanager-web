@@ -5,7 +5,7 @@ import { Building2, Wallet, CreditCard, Smartphone } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { cn, getUserColor } from "@/lib/utils";
+import { cn, getUserColor } from "@/shared/utils";
 import { Account, AccountType } from "@/features/accounts/types";
 import { useTranslations } from "next-intl";
 

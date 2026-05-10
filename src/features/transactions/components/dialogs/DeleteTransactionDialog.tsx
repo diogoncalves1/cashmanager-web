@@ -10,7 +10,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { useToast } from "@/hooks/useToast";
+import { useToast } from "@/shared/hooks/useToast";
 import { Transaction } from "@/features/transactions/types";
 import { onDeleteTransaction } from "@/features/transactions/api/transaction.api";
 import { useTranslations } from "next-intl";

@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Friendship } from "@/features/friends";
-import { formatDate } from "@/lib/utils";
+import { formatDate } from "@/shared/utils";
 import { useTranslations } from "next-intl";
 
 interface PendingRequestCardProps {

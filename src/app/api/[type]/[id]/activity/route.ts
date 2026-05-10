@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { serverApiClient } from "@/lib/api/api-client.server";
-import { ActivityType, ActivityTypeTypes } from "@/types/activity";
+import { serverApiClient } from "@/shared/api/api-client.server";
+import { ActivityType, ActivityTypeTypes } from "@/shared/types/activity";
 import { isInviteType } from "@/features/invitations/utils/invitation.helpers";
 
 type Params = Promise<{

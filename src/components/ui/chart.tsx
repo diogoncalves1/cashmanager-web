@@ -6,7 +6,7 @@ import { TooltipContentProps } from "recharts";
 import { ValueType, NameType } from "recharts/types/component/DefaultTooltipContent";
 import { LegendPayload } from "recharts";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/utils";
 
 // Format: { THEME_NAME: CSS_SELECTOR }
 const THEMES = { light: "", dark: ".dark" } as const;

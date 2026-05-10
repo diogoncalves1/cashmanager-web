@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/utils";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { FinancialGoal } from "@/features/financial-goals/types";
 import StatusBadge from "@/features/financial-goals/components/ui/StatusBadge";

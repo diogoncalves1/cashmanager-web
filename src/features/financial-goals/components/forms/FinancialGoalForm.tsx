@@ -2,7 +2,7 @@
 
 import { Input } from "@/components/ui/input";
 
-import { Currency } from "@/types/currency";
+import { Currency } from "@/shared/types/currency";
 import {
   Select,
   SelectContent,
@@ -14,10 +14,10 @@ import { useFinancialGoalForm } from "@/features/financial-goals/hooks/useFinanc
 import LoadingToast from "@/components/swal/LoadingToast";
 import { getFinancialGoalPriorities } from "@/features/financial-goals/types";
 import { useTranslations } from "next-intl";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/utils";
 import { Textarea } from "@/components/ui/textarea";
 import SubmitFormButton from "@/components/ui/button/SubmitFormButton";
-import { useToast } from "@/hooks/useToast";
+import { useToast } from "@/shared/hooks/useToast";
 import { DatePicker } from "@/shared/ui/date-picker";
 import { Label } from "@/components/ui/label";
 

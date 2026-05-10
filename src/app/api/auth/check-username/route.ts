@@ -1,5 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
-import { clientApiClient } from "@/lib/api/api-client.client";
+import { clientApiClient } from "@/shared/api/api-client.client";
 
 export async function GET(req: NextRequest) {
   const url = new URL(req.url);

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
-import { formatDate } from "@/lib/utils";
+import { formatDate } from "@/shared/utils";
 
 export function HeroSection() {
   const t = useTranslations("LANDING");

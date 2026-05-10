@@ -1,7 +1,7 @@
 "use client";
 
 import { AccountType } from "@/features/accounts/types";
-import { Currency } from "@/types/currency";
+import { Currency } from "@/shared/types/currency";
 import { useEffect, useState } from "react";
 import { AccountSummaryCards } from "@/features/accounts/components/cards/AccountSummaryCards";
 import { AccountFilters } from "@/features/accounts/components/filters/AccountFilters";

@@ -1,7 +1,7 @@
 import { Account, ApiResponse, AccountFilters } from "@/features/accounts/types";
 import { AccountBasic } from "@/features/accounts/types";
-import { ResponseData } from "@/lib/api/api-client";
-import { buildUrl } from "@/lib/utils";
+import { ResponseData } from "@/shared/api/api-client";
+import { buildUrl } from "@/shared/utils";
 
 export async function getAllAccounts(filters: AccountFilters): Promise<ApiResponse<Account>> {
   const url = buildUrl("/api/accounts", { ...filters });

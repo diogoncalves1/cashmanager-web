@@ -15,7 +15,7 @@ import { DebtPayment } from "@/features/debt-payments/types/index";
 import { Table as ReactTable } from "@tanstack/react-table";
 import { MyPagination } from "@/features/transactions/types";
 import { useState } from "react";
-import { useToast } from "@/hooks/useToast";
+import { useToast } from "@/shared/hooks/useToast";
 
 type Props = {
   isDeleteDialogOpen: boolean;
