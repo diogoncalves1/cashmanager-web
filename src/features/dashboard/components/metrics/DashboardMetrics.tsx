@@ -3,8 +3,7 @@
 import React, { useEffect, useState } from "react";
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
-import UserMonthlyBalanceChart from "@/components/dashboard/UserMonthlyBalanceChart";
-import { IncomeExpensesMetrics } from "@/components/dashboard/IncomeExpensesMetrics";
+import { IncomeExpensesMetrics, UserMonthlyBalanceChart } from "@/features/dashboard";
 
 export type KpiInterface = {
   totalRevenues: number;
@@ -52,7 +51,7 @@ function buildChartSeries(monthly: { revenues: string; expenses: string }[]): {
   return { revenues, expenses };
 }
 
-export default function DashboardMetrics() {
+export function DashboardMetrics() {
   const { data, isLoading } = useSWR(
     [`/dashboard-overview?min_date=2025-01-01`, { method: "GET" }],
     fetcher

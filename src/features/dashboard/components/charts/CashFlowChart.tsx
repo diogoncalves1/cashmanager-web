@@ -2,12 +2,12 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import { ApexOptions } from "apexcharts";
-import ChartTab from "../common/ChartTab";
+import ChartTab from "@/components/common/ChartTab";
 import dynamic from "next/dynamic";
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
 import { useTranslations } from "next-intl";
-import CashFlowChartLoading from "./CashFlowChartLoading";
+import { CashFlowChartLoading } from "@/features/dashboard";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { BarChart3 } from "lucide-react";
 
@@ -15,7 +15,7 @@ const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
 
-export default function CashFlowChart() {
+export function CashFlowChart() {
   const options: ApexOptions = useMemo(
     () => ({
       chart: {

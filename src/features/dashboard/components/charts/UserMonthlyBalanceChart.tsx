@@ -3,7 +3,7 @@
 import { ApexOptions } from "apexcharts";
 import dynamic from "next/dynamic";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import MonthlyBalanceChartLoading from "./MonthlyBalanceChartLoading";
+import { MonthlyBalanceChartLoading } from "@/features/dashboard";
 import { useTranslations } from "next-intl";
 import { BarChart3 } from "lucide-react";
 import { useState, useMemo } from "react";
@@ -156,7 +156,7 @@ function SummaryRow({ data, labels, months, userTotal }: SummaryRowProps) {
 
 // ─── Main component ───────────────────────────────────────────────────────────
 
-export default function UserMonthlyBalanceChart({
+export function UserMonthlyBalanceChart({
   isLoading,
   userData,
   userTotal,

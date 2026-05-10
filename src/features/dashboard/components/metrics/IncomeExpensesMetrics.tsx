@@ -2,7 +2,7 @@
 
 import React from "react";
 import { TrendingUp, ShoppingCart, Wallet } from "lucide-react";
-import LineChartOne from "../charts/line/LineChartOne";
+import LineChartOne from "@/components/charts/line/LineChartOne";
 import { ApexOptions } from "apexcharts";
 import { KpiInterface } from "./DashboardMetrics";
 import { useTranslations } from "next-intl";

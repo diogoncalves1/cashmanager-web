@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
-import LineChartLoading from "../charts/line/LineChartLoading";
+import LineChartLoading from "@/components/charts/line/LineChartLoading";
 
-export default function MonthlyBalanceChartLoading() {
+export function MonthlyBalanceChartLoading() {
   const t = useTranslations("HOME");
 
   return (

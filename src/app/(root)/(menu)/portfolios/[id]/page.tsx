@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import React from "react";
 import StockTicker from "@/components/swiper/StockSwiper";
-import DashboardMetrics from "@/components/dashboard/DashboardMetrics";
+import { DashboardMetrics } from "@/features/dashboard";
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import PortfolioSwiper from "@/components/swiper/PortfolioSwiper";
 
