@@ -18,11 +18,11 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { NewTransactionButton } from "@/features/transactions/components/actions/NewTransactionButton";
 import { Skeleton } from "@/components/ui/skeleton";
-import { BalanceOverTimeChart } from "@/features/accounts/components/charts/BalanceOverTimeChart";
-import { MonthlySummary } from "@/features/accounts/components/charts/MonthlySummaryChart";
-import { CategorySummary } from "@/features/accounts/components/charts/CategoryExpensesChart";
-import { AnalyticsTabContent } from "@/features/accounts/components/tabs/AnalyticsTabContent";
-import { SettingsTabContent } from "@/features/accounts/components/tabs/SettingsTabContent";
+import { BalanceOverTimeChart } from "@/features/accounts";
+import { MonthlySummary } from "@/features/accounts";
+import { CategorySummary } from "@/features/accounts";
+import { AnalyticsTabContent } from "@/features/accounts";
+import { SettingsTabContent } from "@/features/accounts";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -37,13 +37,12 @@ import useSWR from "swr";
 import { fetcher } from "@/shared/fetcher";
 import TableContainer from "@/features/transactions/components/containers/TableContainer";
 import { useRouter } from "next/navigation";
-import { Account, AccountType } from "@/features/accounts/types";
-import DeleteAccountDialog from "@/features/accounts/components/dialogs/DeleteAccountDialog";
-import { FormAccountDialog } from "@/features/accounts/components/dialogs/FormAccountDialog";
-import { StatusBadge } from "@/features/accounts/components/ui/StatusBadge";
-import { useAccountDetailsContext } from "@/features/accounts/state/account-details.context";
+import { Account, AccountType } from "@/features/accounts";
+import { FormAccountDialog, DeleteAccountDialog } from "@/features/accounts";
+import { StatusBadge } from "@/features/accounts";
+import { useAccountDetailsContext } from "@/features/accounts";
 import { useTranslations } from "next-intl";
-import { AccountUsersSection } from "@/features/accounts/components/sections/AccountUsersSection";
+import { AccountUsersSection } from "@/features/accounts";
 import { useAuth } from "@/features/auth";
 import LeaveSubjectDialog from "@/features/invitations/components/dialogs/LeaveSubjectDialog";
 
@@ -63,7 +62,7 @@ const accountTypeConfig: Record<AccountType, { icon: typeof Building2; className
   },
 };
 
-const AccountDetailsContainer = ({ id }: { id: string }) => {
+export const AccountDetailsContainer = ({ id }: { id: string }) => {
   const t = useTranslations("ACCOUNTS");
   const { user } = useAuth();
   const { loadCounter } = useAccountDetailsContext();
@@ -470,5 +469,3 @@ const AccountDetailsContainer = ({ id }: { id: string }) => {
     </div>
   );
 };
-
-export default AccountDetailsContainer;

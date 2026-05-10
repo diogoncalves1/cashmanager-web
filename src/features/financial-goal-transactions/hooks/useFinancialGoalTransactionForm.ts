@@ -5,8 +5,8 @@ import {
 } from "@/features/financial-goal-transactions/types";
 import { getAllFinancialGoalsBasic } from "@/features/financial-goals/api/financial-goal.api";
 import { FinancialGoalBasic } from "@/features/financial-goals/types";
-import { getAccountsBasic } from "@/features/accounts/api/account.api";
-import { AccountBasic } from "@/features/accounts/types";
+import { getAccountsBasic } from "@/features/accounts/server";
+import { AccountBasic } from "@/features/accounts";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { fetcher } from "@/shared/fetcher";

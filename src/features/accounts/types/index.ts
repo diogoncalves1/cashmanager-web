@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 import { Currency } from "@/shared/types/currency";
 import { User } from "@/shared/types/user";
 
-export interface AccountFilters {
+export interface AccountFiltersType {
   search?: string;
   status?: string;
   page?: number;

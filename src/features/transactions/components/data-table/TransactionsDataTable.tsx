@@ -48,7 +48,7 @@ import { cn, formatDate, getUserColor, getUserInitials } from "@/shared/utils";
 import { useTranslations } from "next-intl";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { useMemo } from "react";
-import { AccountType } from "@/features/accounts/types";
+import { AccountType } from "@/features/accounts";
 import DataTable from "@/components/tables/DataTable";
 import { DataTablePagination } from "@/components/tables/DataTablePagination";
 import { ConfirmTransactionDialog } from "@/features/transactions/components/dialogs/ConfirmTransactionDialog";

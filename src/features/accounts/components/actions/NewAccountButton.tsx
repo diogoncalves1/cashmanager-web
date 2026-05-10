@@ -4,7 +4,7 @@ import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dispatch, SetStateAction, useState } from "react";
 import { useTranslations } from "next-intl";
-import { FormAccountDialog } from "@/features/accounts/components/dialogs/FormAccountDialog";
+import { FormAccountDialog } from "@/features/accounts";
 
 type Props = {
   setLoad?: Dispatch<SetStateAction<boolean>>;

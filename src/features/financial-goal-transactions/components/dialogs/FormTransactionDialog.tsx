@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/select";
 import { TransactionStatus } from "@/features/transactions/types";
 import { useToast } from "@/shared/hooks/useToast";
-import { AccountBasic } from "@/features/accounts/types";
+import { AccountBasic } from "@/features/accounts";
 import { DatePicker } from "@/shared/ui/date-picker";
 import { Textarea } from "@/components/ui/textarea";
 import { useTranslations } from "next-intl";

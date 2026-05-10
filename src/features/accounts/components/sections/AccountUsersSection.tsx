@@ -24,11 +24,11 @@ import {
 import { cn, getUserColor, getUserInitials } from "@/shared/utils";
 import { User } from "@/shared/types/user";
 import InviteMemberButton from "@/features/invitations/components/actions/InviteMemberButton";
-import { Account } from "@/features/accounts/types";
+import { Account } from "@/features/accounts";
 import { useAuth } from "@/features/auth";
 import ChangeMemberRoleDialog from "@/features/invitations/components/dialogs/ChangeMemberRoleDialog";
 import RemoveMemberDialog from "@/features/invitations/components/dialogs/RemoveMemberDialog";
-import { useAccountDetailsContext } from "@/features/accounts/state/account-details.context";
+import { useAccountDetailsContext } from "@/features/accounts";
 import { onCancelInvite } from "@/features/invitations/api/invitation.api";
 import { useToast } from "@/shared/hooks/useToast";
 import { useTranslations } from "next-intl";

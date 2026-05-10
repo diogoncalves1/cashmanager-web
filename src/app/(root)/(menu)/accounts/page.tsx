@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 import { useTranslations } from "next-intl";
-import PageBreadcrumb from "@/components/common/PageBreadCrumb";
-import AccountsContainer from "@/features/accounts/components/containers/AccountsContainer";
+import PageBreadcrumb from "@/components/ui/PageBreadCrumb";
+import { AccountsContainer } from "@/features/accounts";
 import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata(): Promise<Metadata> {

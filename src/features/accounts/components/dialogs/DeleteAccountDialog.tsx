@@ -1,3 +1,5 @@
+"use client";
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -9,8 +11,8 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { useToast } from "@/shared/hooks/useToast";
-import { Account } from "@/features/accounts/types";
-import { onDeleteAccount } from "@/features/accounts/api/account.api";
+import { Account } from "@/features/accounts";
+import { onDeleteAccount } from "@/features/accounts/server";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 
@@ -21,7 +23,7 @@ type Props = {
   back?: boolean;
 };
 
-const DeleteAccountDialog = ({ isOpen, setIsDeleteOpen, account, back = false }: Props) => {
+export const DeleteAccountDialog = ({ isOpen, setIsDeleteOpen, account, back = false }: Props) => {
   const t = useTranslations("ACCOUNTS");
   const router = useRouter();
   const { toast } = useToast();
@@ -64,5 +66,3 @@ const DeleteAccountDialog = ({ isOpen, setIsDeleteOpen, account, back = false }:
     </AlertDialog>
   );
 };
-
-export default DeleteAccountDialog;

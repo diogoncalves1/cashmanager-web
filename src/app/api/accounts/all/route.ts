@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { AccountBasic } from "@/features/accounts/types";
+import { AccountBasic } from "@/features/accounts";
 import { serverApiClient } from "@/shared/api/api-client.server";
 
 export async function GET() {
