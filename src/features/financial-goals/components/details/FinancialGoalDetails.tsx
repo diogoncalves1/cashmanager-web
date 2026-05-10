@@ -12,17 +12,19 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { formatDate } from "@/shared/utils";
-import { useFinancialGoal } from "@/features/financial-goals/hooks/useFinancialGoal";
-import { useTranslations } from "next-intl";
-import Link from "next/link";
-import PriorityInfo from "@/features/financial-goals/components/ui/PriorityInfo";
-import StatusBadge from "@/features/financial-goals/components/ui/StatusBadge";
-import DeleteFinancialGoalDialog from "@/features/financial-goals/components/dialogs/DeleteFinancialGoalDialog";
-import MarkCompletedGoalTransactionDialog from "@/features/financial-goals/components/dialogs/MarkCompletedGoalTransactionDialog";
 import {
+  useFinancialGoal,
   onCancelFinancialGoal,
   onResetFinancialGoal,
-} from "@/features/financial-goals/api/financial-goal.api";
+} from "@/features/financial-goals/server";
+import { useTranslations } from "next-intl";
+import Link from "next/link";
+import {
+  MarkCompletedGoalTransactionDialog,
+  DeleteFinancialGoalDialog,
+  StatusBadge,
+  PriorityInfo,
+} from "@/features/financial-goals";
 import {
   CheckCircle2,
   DoorOpen,
@@ -34,7 +36,7 @@ import {
 } from "lucide-react";
 import InviteMemberButton from "@/features/invitations/components/actions/InviteMemberButton";
 import ActivityTimeline from "@/components/ui/timeline/ActivityTimeline";
-import UsersTable from "@/features/financial-goals/components/users/UsersTable";
+import { UsersTable } from "@/features/financial-goals";
 import { useAuth } from "@/features/auth";
 import LeaveSubjectDialog from "@/features/invitations/components/dialogs//LeaveSubjectDialog";
 import { TableContainer, NewTransactionButton } from "@/features/financial-goal-transactions";
@@ -43,7 +45,7 @@ type FinancialGoalDetailsProps = {
   id: string;
 };
 
-export default function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) {
+export function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) {
   const monthsT = useTranslations("MONTHS");
   const t = useTranslations("FINANCIAL_GOALS");
   const { user } = useAuth();

@@ -21,7 +21,7 @@ import { useTranslations } from "next-intl";
 import { SwalToast } from "@/components/swal/SwalToast";
 import { Account } from "@/features/accounts";
 import { Debt } from "@/features/debts";
-import { FinancialGoal } from "@/features/financial-goals/types";
+import { FinancialGoal } from "@/features/financial-goals";
 import { toast } from "@/shared/hooks/useToast";
 
 type InviteType = "debts" | "financial-goals" | "accounts";

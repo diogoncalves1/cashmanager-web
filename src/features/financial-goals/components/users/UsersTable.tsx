@@ -18,7 +18,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { UserContribution } from "@/features/financial-goals/types";
+import { UserContribution } from "@/features/financial-goals";
 import { useState } from "react";
 import { EllipsisVertical } from "lucide-react";
 import ChangeMemberRoleDialog from "@/features/invitations/components/dialogs/ChangeMemberRoleDialog";
@@ -33,7 +33,7 @@ type Props = {
   setLoad: React.Dispatch<boolean>;
 };
 
-const UsersTable = ({ users, id, setLoad }: Props) => {
+export const UsersTable = ({ users, id, setLoad }: Props) => {
   const t = useTranslations("FINANCIAL_GOALS");
   const [removeMember, setRemoveMember] = useState(false);
   const [changeRole, setChageRole] = useState(false);
@@ -147,5 +147,3 @@ const UsersTable = ({ users, id, setLoad }: Props) => {
     </div>
   );
 };
-
-export default UsersTable;

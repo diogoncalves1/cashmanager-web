@@ -3,8 +3,8 @@ import {
   FinancialGoalTransactionStatus,
   FinancialGoalTransactionType,
 } from "@/features/financial-goal-transactions";
-import { getAllFinancialGoalsBasic } from "@/features/financial-goals/api/financial-goal.api";
-import { FinancialGoalBasic } from "@/features/financial-goals/types";
+import { FinancialGoalBasic } from "@/features/financial-goals";
+import { getAllFinancialGoalsBasic } from "@/features/financial-goals/server";
 import { getAccountsBasic } from "@/features/accounts/server";
 import { AccountBasic } from "@/features/accounts";
 import { useRouter } from "next/navigation";
