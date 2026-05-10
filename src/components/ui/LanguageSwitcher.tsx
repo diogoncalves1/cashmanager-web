@@ -9,7 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/utils";
 import PortugalFlag from "../../../public/images/flags/pt.svg";
 import USFlag from "../../../public/images/flags/us.svg";
 import { useRouter } from "next/navigation";

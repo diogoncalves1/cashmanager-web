@@ -4,7 +4,7 @@ import { SwiperSlide } from "swiper/react";
 import "swiper";
 
 import useSWR from "swr";
-import { fetcher } from "@/lib/fetcher";
+import { fetcher } from "@/shared/fetcher";
 import { Badge } from "@/components/ui/badge";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import LineChartOne from "@/components/charts/line/LineChartOne";

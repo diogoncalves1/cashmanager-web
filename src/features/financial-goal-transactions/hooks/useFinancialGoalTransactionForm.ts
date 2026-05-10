@@ -9,7 +9,7 @@ import { getAccountsBasic } from "@/features/accounts/api/account.api";
 import { AccountBasic } from "@/features/accounts/types";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
-import { fetcher } from "@/lib/fetcher";
+import { fetcher } from "@/shared/fetcher";
 
 type SubmitResult = {
   success: boolean;

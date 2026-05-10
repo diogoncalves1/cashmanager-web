@@ -30,7 +30,7 @@ import {
   FinancialGoalTransaction,
   MyPagination,
 } from "@/features/financial-goal-transactions/types";
-import { cn, formatDate, getUserColor, getUserInitials } from "@/lib/utils";
+import { cn, formatDate, getUserColor, getUserInitials } from "@/shared/utils";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import Link from "next/link";
 import DeleteGoalTransactionDialog from "@/features/financial-goal-transactions/components/dialogs/DeleteGoalTransactionDialog";

@@ -1,5 +1,5 @@
-import { ResponseData } from "@/lib/api/api-client";
-import { Currency } from "@/types/currency";
+import { ResponseData } from "@/shared/api/api-client";
+import { Currency } from "@/shared/types/currency";
 
 export async function getCurrencies(): Promise<ResponseData<Currency[]>> {
   const res = await fetch(`/api/currencies`, {

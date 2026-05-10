@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
-import { Currency } from "@/types/currency";
-import { SharedRole } from "@/types/sharedRole";
+import { Currency } from "@/shared/types/currency";
+import { SharedRole } from "@/shared/types/sharedRole";
 
 export const getFinancialGoalStatus = (t: ReturnType<typeof useTranslations>) => [
   {

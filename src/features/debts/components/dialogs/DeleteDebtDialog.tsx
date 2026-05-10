@@ -11,7 +11,7 @@ import { Debt } from "@/features/debts/types";
 import { TriangleAlert } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { onDeleteDebt } from "@/features/debts/api/debt.api";
-import { useToast } from "@/hooks/useToast";
+import { useToast } from "@/shared/hooks/useToast";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 

@@ -11,8 +11,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Language } from "@/types/language";
-import { Currency } from "@/types/currency";
+import { Language } from "@/shared/types/language";
+import { Currency } from "@/shared/types/currency";
 import { useTranslations } from "next-intl";
 
 interface PreferencesCardProps {

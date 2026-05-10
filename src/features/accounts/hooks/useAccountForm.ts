@@ -1,9 +1,9 @@
 import useSWR from "swr";
 import { useRouter } from "next/navigation";
-import { fetcher } from "@/lib/fetcher";
+import { fetcher } from "@/shared/fetcher";
 import { useEffect, useState } from "react";
-import { getCurrencies } from "@/lib/api/currency";
-import { Currency } from "@/types/currency";
+import { getCurrencies } from "@/shared/api/currency";
+import { Currency } from "@/shared/types/currency";
 import { Account, AccountType } from "@/features/accounts/types";
 
 interface AccountFormData {

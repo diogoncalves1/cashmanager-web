@@ -1,4 +1,4 @@
-import { serverApiClient } from "@/lib/api/api-client.server";
+import { serverApiClient } from "@/shared/api/api-client.server";
 import { FriendRequest } from "@/features/friends";
 import { NextRequest, NextResponse } from "next/server";
 

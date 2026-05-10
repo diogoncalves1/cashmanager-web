@@ -2,7 +2,7 @@
 
 import { TrendingUp, TrendingDown, Wallet } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/utils";
 import { useTranslations } from "next-intl";
 
 interface TransactionsSummaryProps {

@@ -21,8 +21,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { cn, getUserColor, getUserInitials } from "@/lib/utils";
-import { User } from "@/types/user";
+import { cn, getUserColor, getUserInitials } from "@/shared/utils";
+import { User } from "@/shared/types/user";
 import InviteMemberButton from "@/features/invitations/components/actions/InviteMemberButton";
 import { Account } from "@/features/accounts/types";
 import { useAuth } from "@/features/auth";
@@ -30,7 +30,7 @@ import ChangeMemberRoleDialog from "@/features/invitations/components/dialogs/Ch
 import RemoveMemberDialog from "@/features/invitations/components/dialogs/RemoveMemberDialog";
 import { useAccountDetailsContext } from "@/features/accounts/state/account-details.context";
 import { onCancelInvite } from "@/features/invitations/api/invitation.api";
-import { useToast } from "@/hooks/useToast";
+import { useToast } from "@/shared/hooks/useToast";
 import { useTranslations } from "next-intl";
 
 interface AccountUsersSectionProps {

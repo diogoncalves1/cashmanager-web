@@ -5,11 +5,11 @@ import "swiper/css";
 import "swiper/css/autoplay";
 
 import useSWR from "swr";
-import { fetcher } from "@/lib/fetcher";
+import { fetcher } from "@/shared/fetcher";
 import { ArrowLeftRight, Wallet } from "lucide-react";
 import AppSwiper from "./AppSwiper";
 import SwiperLoading from "./SwiperLoading";
-import { Currency } from "@/types/currency";
+import { Currency } from "@/shared/types/currency";
 import { useRouter } from "next/navigation";
 
 interface Portfolio {

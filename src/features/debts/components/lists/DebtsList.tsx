@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/utils";
 import { useDebts } from "@/features/debts/hooks/useDebts";
 import { useTranslations } from "next-intl";
 import { Search } from "lucide-react";

@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/utils";
 import { FinancialGoalPriority } from "@/features/financial-goals/types";
 
 export default function PriorityInfo({

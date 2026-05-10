@@ -1,4 +1,4 @@
-import { User } from "@/types/user";
+import { User } from "@/shared/types/user";
 import { Account } from "@/features/accounts/types";
 import { Debt } from "@/features/debts/types";
 import { FinancialGoal } from "@/features/financial-goals/types";

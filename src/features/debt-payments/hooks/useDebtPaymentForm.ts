@@ -5,7 +5,7 @@ import { AccountBasic } from "@/features/accounts/types";
 import { DebtBasic } from "@/features/debts/types";
 import { getAllDebtsBasic } from "@/features/debts/api/debt.api";
 import useSWR from "swr";
-import { fetcher } from "@/lib/fetcher";
+import { fetcher } from "@/shared/fetcher";
 import { useRouter } from "next/navigation";
 
 type SubmitResult = {

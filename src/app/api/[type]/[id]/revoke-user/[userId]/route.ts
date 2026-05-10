@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { serverApiClient } from "@/lib/api/api-client.server";
+import { serverApiClient } from "@/shared/api/api-client.server";
 import { Invitation, InvitationType } from "@/features/invitations/types";
 import { isInviteType } from "@/features/invitations/utils/invitation.helpers";
 

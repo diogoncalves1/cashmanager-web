@@ -7,7 +7,7 @@ import { MonthlyBalanceChartLoading } from "@/features/dashboard";
 import { useTranslations } from "next-intl";
 import { BarChart3 } from "lucide-react";
 import { useState, useMemo } from "react";
-import { cn, formatCurrency } from "@/lib/utils";
+import { cn, formatCurrency } from "@/shared/utils";
 
 const ReactApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
@@ -165,20 +165,23 @@ export function UserMonthlyBalanceChart({
   const tMonths = useTranslations("MONTHS");
   const [period, setPeriod] = useState<Period>("ytd");
 
-  const MONTHS: MonthMap = {
-    0: tMonths("JAN"),
-    1: tMonths("FEB"),
-    2: tMonths("MAR"),
-    3: tMonths("APR"),
-    4: tMonths("MAY"),
-    5: tMonths("JUN"),
-    6: tMonths("JUL"),
-    7: tMonths("AUG"),
-    8: tMonths("SEP"),
-    9: tMonths("OCT"),
-    10: tMonths("NOV"),
-    11: tMonths("DEC"),
-  };
+  const MONTHS: MonthMap = useMemo(
+    () => ({
+      0: tMonths("JAN"),
+      1: tMonths("FEB"),
+      2: tMonths("MAR"),
+      3: tMonths("APR"),
+      4: tMonths("MAY"),
+      5: tMonths("JUN"),
+      6: tMonths("JUL"),
+      7: tMonths("AUG"),
+      8: tMonths("SEP"),
+      9: tMonths("OCT"),
+      10: tMonths("NOV"),
+      11: tMonths("DEC"),
+    }),
+    [tMonths]
+  );
 
   const PERIODS: { value: Period; label: string }[] = [
     { value: "3m", label: "3M" },

@@ -18,7 +18,7 @@ import {
 import { useState } from "react";
 import { useDataForChangeRole } from "@/features/invitations/hooks/useDataForInvite";
 import { useTranslations } from "next-intl";
-import { useToast } from "@/hooks/useToast";
+import { useToast } from "@/shared/hooks/useToast";
 
 type InviteType = "debts" | "financial-goals" | "accounts";
 

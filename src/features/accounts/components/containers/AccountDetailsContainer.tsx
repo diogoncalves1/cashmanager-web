@@ -1,7 +1,7 @@
 "use client";
 
 import ActivityTimeline from "@/components/ui/timeline/ActivityTimeline";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/utils";
 import {
   Building2,
   Wallet,
@@ -34,7 +34,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import useSWR from "swr";
-import { fetcher } from "@/lib/fetcher";
+import { fetcher } from "@/shared/fetcher";
 import TableContainer from "@/features/transactions/components/containers/TableContainer";
 import { useRouter } from "next/navigation";
 import { Account, AccountType } from "@/features/accounts/types";

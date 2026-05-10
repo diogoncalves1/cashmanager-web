@@ -1,7 +1,7 @@
 import React from "react";
 import AdminLayoutClient from "@/components/layout/AdminLayoutClient";
 import { AuthProvider } from "@/features/auth";
-import { User } from "@/types/user";
+import { User } from "@/shared/types/user";
 import { getUser } from "@/features/auth/server";
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {

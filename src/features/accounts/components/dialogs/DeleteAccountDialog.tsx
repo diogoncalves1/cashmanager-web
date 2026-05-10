@@ -8,7 +8,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { useToast } from "@/hooks/useToast";
+import { useToast } from "@/shared/hooks/useToast";
 import { Account } from "@/features/accounts/types";
 import { onDeleteAccount } from "@/features/accounts/api/account.api";
 import { useTranslations } from "next-intl";

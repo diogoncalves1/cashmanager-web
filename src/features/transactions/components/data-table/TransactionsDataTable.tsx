@@ -40,11 +40,11 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Transaction, MyPagination } from "@/features/transactions/types";
-import { iconMap } from "@/types/category";
+import { iconMap } from "@/shared/types/category";
 import FormTransactionDialog from "@/features/transactions/components/dialogs/FormTransactionDialog";
 import Link from "next/link";
 import { DeleteTransactionDialog } from "@/features/transactions/components/dialogs/DeleteTransactionDialog";
-import { cn, formatDate, getUserColor, getUserInitials } from "@/lib/utils";
+import { cn, formatDate, getUserColor, getUserInitials } from "@/shared/utils";
 import { useTranslations } from "next-intl";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { useMemo } from "react";

@@ -16,8 +16,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { CategorySummary } from "@/features/accounts/components/charts//CategoryExpensesChart";
 import { Badge } from "@/components/ui/badge";
 import { ChevronDown, ChevronUp, BarChart3, Circle } from "lucide-react";
-import { cn, formatCurrency } from "@/lib/utils";
-import { iconMap } from "@/types/category";
+import { cn, formatCurrency } from "@/shared/utils";
+import { iconMap } from "@/shared/types/category";
 import { useTranslations } from "next-intl";
 
 interface CategorySpendingChartProps {

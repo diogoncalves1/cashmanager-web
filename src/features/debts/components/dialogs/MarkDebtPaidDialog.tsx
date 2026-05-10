@@ -8,7 +8,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
 import { onMarkPaidDebt } from "@/features/debts/api/debt.api";
-import { useToast } from "@/hooks/useToast";
+import { useToast } from "@/shared/hooks/useToast";
 
 type Props = {
   isMarkPaidDialogOpen: boolean;

@@ -16,7 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import LoadingToast from "@/components/swal/LoadingToast";
-import { useToast } from "@/hooks/useToast";
+import { useToast } from "@/shared/hooks/useToast";
 
 interface Page {
   data: Invitation[];

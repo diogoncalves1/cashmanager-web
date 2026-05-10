@@ -11,7 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { formatDate } from "@/lib/utils";
+import { formatDate } from "@/shared/utils";
 import { useFinancialGoal } from "@/features/financial-goals/hooks/useFinancialGoal";
 import { useTranslations } from "next-intl";
 import Link from "next/link";

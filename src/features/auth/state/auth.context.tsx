@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext } from "react";
-import { User } from "@/types/user";
+import { User } from "@/shared/types/user";
 
 interface AuthContextType {
   user: User;

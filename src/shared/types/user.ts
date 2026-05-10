@@ -1,5 +1,5 @@
-import { Currency } from "@/types/currency";
-import { SharedRole } from "@/types/sharedRole";
+import { Currency } from "@/shared/types/currency";
+import { SharedRole } from "@/shared/types/sharedRole";
 
 export interface UserPreferences {
   lang: "pt" | "en";

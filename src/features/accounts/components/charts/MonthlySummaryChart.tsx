@@ -1,4 +1,4 @@
-import { formatDate } from "@/lib/utils";
+import { formatDate } from "@/shared/utils";
 import { useTranslations } from "next-intl";
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 

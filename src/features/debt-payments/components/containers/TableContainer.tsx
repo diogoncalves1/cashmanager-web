@@ -1,6 +1,6 @@
 "use client";
 
-import { fetcher } from "@/lib/fetcher";
+import { fetcher } from "@/shared/fetcher";
 import { ColumnFiltersState, SortingState } from "@tanstack/react-table";
 import React, { useCallback, useEffect, useState } from "react";
 import useSWR from "swr";

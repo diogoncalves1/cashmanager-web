@@ -11,7 +11,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { onLeaveSuject } from "@/features/invitations/api/invitation.api";
 import { useRouter } from "next/navigation";
-import { useToast } from "@/hooks/useToast";
+import { useToast } from "@/shared/hooks/useToast";
 
 type InviteType = "debts" | "financial-goals" | "accounts";
 
