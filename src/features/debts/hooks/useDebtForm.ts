@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Currency } from "@/types/currency";
-import { getCurrencies } from "@/services/currency";
+import { getCurrencies } from "@/lib/api/currency";
 import { Debt } from "@/features/debts/types";
 import { getDebtById } from "@/features/debts/api/debt.api";
 

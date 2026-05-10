@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import ProtectedRoute from "@/components/auth/ProtectedRoute";
+import { ProtectedRoute } from "@/features/auth";
 import QueryProvider from "@/lib/providers/QueryProvider";
 import { useSidebar } from "@/context/SidebarContext";
 import AppHeader from "@/components/layout/AppHeader";

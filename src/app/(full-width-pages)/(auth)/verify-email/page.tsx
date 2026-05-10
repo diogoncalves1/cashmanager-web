@@ -1,4 +1,4 @@
-import EmailVerified from "@/components/auth/EmailVerified";
+import { EmailVerified } from "@/features/auth";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 

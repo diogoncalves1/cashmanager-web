@@ -6,9 +6,9 @@ import { useToast } from "@/hooks/useToast";
 import { useTranslations } from "next-intl";
 import Input from "@/components/form/input/InputField";
 import Label from "@/components/form/Label";
-import AuthSubmitButton from "@/components/auth/AuthSubmitButton";
+import { AuthSubmitButton } from "@/features/auth";
 
-export default function ResetPasswordChangeForm() {
+export function ResetPasswordChangeForm() {
   const t = useTranslations("RESET_PASSWORD");
   const { toast } = useToast();
   const router = useRouter();

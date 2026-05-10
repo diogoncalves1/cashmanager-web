@@ -24,7 +24,7 @@ import ChangeMemberRoleDialog from "@/features/invitations/components/dialogs/Ch
 import RemoveMemberDialog from "@/features/invitations/components/dialogs/RemoveMemberDialog";
 import { useState } from "react";
 import { useDebtDetailsContext } from "@/features/debts/state/debt-details.context";
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/features/auth";
 
 export default function UsersTab({ debt }: { debt: Debt }) {
   const t = useTranslations("DEBTS");

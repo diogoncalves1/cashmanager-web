@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Dropdown } from "../ui/dropdown/Dropdown";
 import { DropdownItem } from "../ui/dropdown/DropdownItem";
 import { User } from "@/types/user";
-import { onLogout } from "@/services/auth";
+import { onLogout } from "@/features/auth";
 import { SwalToast } from "../swal/SwalToast";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";

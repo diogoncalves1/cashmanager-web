@@ -1,4 +1,4 @@
-import SignInForm from "@/components/auth/SignInForm";
+import { SignInForm } from "@/features/auth";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 

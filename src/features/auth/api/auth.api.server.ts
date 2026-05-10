@@ -1,5 +1,5 @@
+import { serverApiClient } from "@/lib/api/api-client.server";
 import { User } from "@/types/user";
-import { serverApiClient } from "../api/api-client.server";
 
 export async function getUser(): Promise<User | null> {
   try {

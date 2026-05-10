@@ -44,7 +44,7 @@ import { StatusBadge } from "@/features/accounts/components/ui/StatusBadge";
 import { useAccountDetailsContext } from "@/features/accounts/state/account-details.context";
 import { useTranslations } from "next-intl";
 import { AccountUsersSection } from "@/features/accounts/components/sections/AccountUsersSection";
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/features/auth";
 import LeaveSubjectDialog from "@/features/invitations/components/dialogs/LeaveSubjectDialog";
 
 const accountTypeConfig: Record<AccountType, { icon: typeof Building2; className: string }> = {

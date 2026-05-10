@@ -6,11 +6,11 @@ import { EyeCloseIcon, EyeIcon } from "@/icons";
 import Link from "next/link";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import LoadingToast from "../swal/LoadingToast";
+import LoadingToast from "@/components/swal/LoadingToast";
 import { useTranslations } from "next-intl";
-import AuthSubmitButton from "./AuthSubmitButton";
+import { AuthSubmitButton } from "@/features/auth";
 
-export default function SignInForm() {
+export function SignInForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [email, setEmail] = useState("");
