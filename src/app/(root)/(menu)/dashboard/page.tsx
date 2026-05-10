@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import React from "react";
-// import CashFlowChart from "@/components/dashboard/CashFlowChart";
-import DashboardMetrics from "@/components/dashboard/DashboardMetrics";
+import { DashboardMetrics } from "@/features/dashboard";
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import { getTranslations } from "next-intl/server";
 import { useTranslations } from "next-intl";
+// import CashFlowChart from "@/components/dashboard/CashFlowChart";
 // import StockTicker from "@/components/swiper/StockSwiper";
 // import PortfolioSwiper from "@/components/swiper/PortfolioSwiper";
 

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import React from "react";
 
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
-import StocksSearch from "@/components/stocks/StockSearch";
+import { StocksSearch } from "@/features/stocks";
 
 export const metadata: Metadata = {
   title: "Cash Manager | Accounts",
