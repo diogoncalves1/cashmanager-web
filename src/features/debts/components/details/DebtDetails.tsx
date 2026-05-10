@@ -21,7 +21,7 @@ import { Calendar, Check, Clock4Icon, DoorOpen, Edit, Trash } from "lucide-react
 import { useDebtDetailsContext } from "@/features/debts/state/debt-details.context";
 import { useEffect, useState } from "react";
 import DeleteDebtDialog from "@/features/debts/components/dialogs/DeleteDebtDialog";
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/features/auth";
 import LeaveSubjectDialog from "@/features/invitations/components/dialogs/LeaveSubjectDialog";
 import MarkDebtPaidDialog from "@/features/debts/components/dialogs/MarkDebtPaidDialog";
 import { Debt } from "@/features/debts/types";

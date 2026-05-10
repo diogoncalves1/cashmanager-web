@@ -24,7 +24,7 @@ import { EllipsisVertical } from "lucide-react";
 import ChangeMemberRoleDialog from "@/features/invitations/components/dialogs/ChangeMemberRoleDialog";
 import RemoveMemberDialog from "@/features/invitations/components/dialogs/RemoveMemberDialog";
 import InviteMemberButton from "@/features/invitations/components/actions/InviteMemberButton";
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/features/auth";
 import { useTranslations } from "next-intl";
 
 type Props = {

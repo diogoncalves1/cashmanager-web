@@ -25,7 +25,7 @@ import { cn, getUserColor, getUserInitials } from "@/lib/utils";
 import { User } from "@/types/user";
 import InviteMemberButton from "@/features/invitations/components/actions/InviteMemberButton";
 import { Account } from "@/features/accounts/types";
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/features/auth";
 import ChangeMemberRoleDialog from "@/features/invitations/components/dialogs/ChangeMemberRoleDialog";
 import RemoveMemberDialog from "@/features/invitations/components/dialogs/RemoveMemberDialog";
 import { useAccountDetailsContext } from "@/features/accounts/state/account-details.context";

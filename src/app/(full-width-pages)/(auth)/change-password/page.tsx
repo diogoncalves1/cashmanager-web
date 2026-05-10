@@ -1,4 +1,4 @@
-import ResetPasswordChangeForm from "@/components/auth/ResetPasswordChangeForm";
+import { ResetPasswordChangeForm } from "@/features/auth";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 

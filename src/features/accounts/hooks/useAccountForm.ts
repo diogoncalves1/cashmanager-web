@@ -2,7 +2,7 @@ import useSWR from "swr";
 import { useRouter } from "next/navigation";
 import { fetcher } from "@/lib/fetcher";
 import { useEffect, useState } from "react";
-import { getCurrencies } from "@/services/currency";
+import { getCurrencies } from "@/lib/api/currency";
 import { Currency } from "@/types/currency";
 import { Account, AccountType } from "@/features/accounts/types";
 
