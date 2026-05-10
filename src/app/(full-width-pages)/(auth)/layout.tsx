@@ -1,4 +1,4 @@
-import GridShape from "@/components/common/GridShape";
+import GridShape from "@/components/ui/GridShape";
 import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
 
 import { ThemeProvider } from "@/context/ThemeContext";

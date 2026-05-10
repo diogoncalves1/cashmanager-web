@@ -1,4 +1,4 @@
-import PageBreadcrumb from "@/components/common/PageBreadCrumb";
+import PageBreadcrumb from "@/components/ui/PageBreadCrumb";
 import InvitationContainer from "@/features/invitations/components/containers/InvitationContainer";
 import { InvitationType } from "@/features/invitations/types";
 import { Metadata } from "next";

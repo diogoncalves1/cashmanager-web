@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import React from "react";
 import { DashboardMetrics } from "@/features/dashboard";
-import PageBreadcrumb from "@/components/common/PageBreadCrumb";
+import PageBreadcrumb from "@/components/ui/PageBreadCrumb";
 import { getTranslations } from "next-intl/server";
 import { useTranslations } from "next-intl";
 // import CashFlowChart from "@/components/dashboard/CashFlowChart";
