@@ -1,11 +1,11 @@
 "use client";
 import { useState } from "react";
-import Input from "../form/input/InputField";
-import { Table, TableBody, TableCell, TableRow } from "../ui/table";
+import Input from "@/components/form/input/InputField";
+import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import Image from "next/image";
 import { AssetSearch } from "@/types/assetSearch";
 
-export default function StocksSearch() {
+export function StocksSearch() {
   const [assets, setAssets] = useState<AssetSearch[]>([]);
 
   return (

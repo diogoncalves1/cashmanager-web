@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import React from "react";
-import StockTicker from "@/components/swiper/StockSwiper";
+import { StockSwiper } from "@/features/stocks";
 import { DashboardMetrics } from "@/features/dashboard";
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import PortfolioSwiper from "@/components/swiper/PortfolioSwiper";
@@ -16,7 +16,7 @@ export default function Ecommerce() {
       <PageBreadcrumb pageTitle="DASHBOARD" />
       <div className="p-6 grid grid-cols-12 gap-4 md:gap-6">
         <div className="col-span-12 space-y-6">
-          <StockTicker />
+          <StockSwiper />
         </div>
 
         <div className="col-span-12 md:col-span-3 space-y-6">

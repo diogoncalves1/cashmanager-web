@@ -1,17 +1,16 @@
 "use client";
 
 import { SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/autoplay";
+import "swiper";
 
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
-import { Badge } from "../ui/badge";
+import { Badge } from "@/components/ui/badge";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import LineChartOne from "../charts/line/LineChartOne";
+import LineChartOne from "@/components/charts/line/LineChartOne";
 import { ApexOptions } from "apexcharts";
-import AppSwiper from "./AppSwiper";
-import SwiperLoading from "./SwiperLoading";
+import AppSwiper from "@/components/swiper/AppSwiper";
+import SwiperLoading from "@/components/swiper/SwiperLoading";
 
 interface Stock {
   change: number;
@@ -26,7 +25,7 @@ interface Stock {
   };
 }
 
-export default function StockSwiper() {
+export function StockSwiper() {
   const { data, error, isLoading } = useSWR(["/assets", { method: "GET" }], fetcher);
 
   if (isLoading) return <SwiperLoading />;
