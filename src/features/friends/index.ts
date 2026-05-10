@@ -19,16 +19,25 @@ export {
 } from "@/features/friends/api/friend-request.api";
 
 // Components
-export { BlockedUserCard } from "@/features/friends/components/cards/BlockUserCard";
-export { FriendCard } from "@/features/friends/components/cards/FriendCard";
-export { PendingRequestCard } from "@/features/friends/components/cards/PendingRequestCard";
-export { AddFriend } from "@/features/friends/components/forms/AddFriend";
-export { BlockedUsers } from "@/features/friends/components/lists/BlockedUsers";
-export { FriendsList } from "@/features/friends/components/lists/FriendsList";
-export { ReceivedRequests } from "@/features/friends/components/lists/ReceivedRequests";
-export { SentRequests } from "@/features/friends/components/lists/SentRequests";
-export { SocialTabs } from "@/features/friends/components/navigation/SocialTabs";
-export { FriendsEmptyState } from "@/features/friends/components/states/FriendsEmptyState";
+// cards
+export { FriendCard } from "./components/cards/FriendCard";
+export { PendingRequestCard } from "./components/cards/PendingRequestCard";
+export { BlockedUserCard } from "./components/cards/BlockUserCard";
+
+// lists
+export { FriendsList } from "./components/lists/FriendsList";
+export { ReceivedRequests } from "./components/lists/ReceivedRequests";
+export { SentRequests } from "./components/lists/SentRequests";
+export { BlockedUsers } from "./components/lists/BlockedUsers";
+
+// forms
+export { AddFriend } from "./components/forms/AddFriend";
+
+// states
+export { FriendsEmptyState } from "./components/states/FriendsEmptyState";
+
+// navigation
+export { SocialTabs } from "./components/navigation/SocialTabs";
 
 // Hooks
 export { useFriendStats } from "@/features/friends/hooks/useFriends";
