@@ -1,3 +1,5 @@
+"use client";
+
 import {
   DialogContent,
   DialogDescription,
@@ -6,6 +8,7 @@ import {
   DialogTitle,
   Dialog,
 } from "@/components/ui/dialog";
+import { useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -18,14 +21,13 @@ import {
 } from "@/components/ui/select";
 import { TransactionStatus } from "@/features/transactions/types";
 import { useToast } from "@/shared/hooks/useToast";
-import { AccountBasic } from "@/features/accounts/types";
+import { AccountBasic } from "@/features/accounts";
 import { DatePicker } from "@/shared/ui/date-picker";
 import { Textarea } from "@/components/ui/textarea";
 import { useTranslations } from "next-intl";
 import { SwalToast } from "@/components/swal/SwalToast";
-import { useDebtPaymentForm } from "@/features/debt-payments/hooks/useDebtPaymentForm";
+import { useDebtPaymentForm } from "@/features/debt-payments/server";
 import Checkbox from "@/components/form/input/Checkbox";
-import { useEffect } from "react";
 
 type FormPaymentDialogProps = {
   id?: string;
@@ -35,7 +37,13 @@ type FormPaymentDialogProps = {
   debtId?: string;
 };
 
-const FormPaymentDialog = ({ id, setIsOpen, isOpen, mutate, debtId }: FormPaymentDialogProps) => {
+export const FormPaymentDialog = ({
+  id,
+  setIsOpen,
+  isOpen,
+  mutate,
+  debtId,
+}: FormPaymentDialogProps) => {
   const t = useTranslations("DEBT_PAYMENTS");
   const {
     formData,
@@ -293,5 +301,3 @@ const FormPaymentDialog = ({ id, setIsOpen, isOpen, mutate, debtId }: FormPaymen
     </Dialog>
   );
 };
-
-export default FormPaymentDialog;

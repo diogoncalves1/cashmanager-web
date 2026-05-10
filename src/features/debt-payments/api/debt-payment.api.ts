@@ -1,5 +1,5 @@
 import { MyPagination } from "@/features/transactions/types";
-import { DebtPayment } from "@/features/debt-payments/types/index";
+import { DebtPayment } from "@/features/debt-payments";
 import { Table } from "@tanstack/react-table";
 
 export async function onDeleteDebtPayment(

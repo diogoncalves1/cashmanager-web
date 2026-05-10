@@ -9,9 +9,9 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { onDeleteDebtPayment } from "@/features/debt-payments/api/debt-payment.api";
+import { DebtPayment } from "@/features/debt-payments";
+import { onDeleteDebtPayment } from "@/features/debt-payments/server";
 import { useTranslations } from "next-intl";
-import { DebtPayment } from "@/features/debt-payments/types/index";
 import { Table as ReactTable } from "@tanstack/react-table";
 import { MyPagination } from "@/features/transactions/types";
 import { useState } from "react";
@@ -26,7 +26,7 @@ type Props = {
   pagination?: MyPagination;
 };
 
-export default function DeletePaymentDialog({
+export function DeletePaymentDialog({
   isDeleteDialogOpen,
   setIsDeleteOpen,
   mutate,
