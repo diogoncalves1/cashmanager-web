@@ -2,7 +2,7 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import { ApexOptions } from "apexcharts";
-import ChartTab from "@/components/common/ChartTab";
+import ChartTab from "@/components/ui/ChartTab";
 import dynamic from "next/dynamic";
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";

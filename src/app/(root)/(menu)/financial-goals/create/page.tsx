@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import React from "react";
 import { useTranslations } from "next-intl";
-import PageBreadcrumb from "@/components/common/PageBreadCrumb";
+import PageBreadcrumb from "@/components/ui/PageBreadCrumb";
 import { getTranslations } from "next-intl/server";
 import { FinancialGoalForm } from "@/features/financial-goals/components/forms/FinancialGoalForm";
 

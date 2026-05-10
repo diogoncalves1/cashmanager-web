@@ -1,5 +1,5 @@
 import AccountDetailsContainer from "@/features/accounts/components/containers/AccountDetailsContainer";
-import PageBreadcrumb from "@/components/common/PageBreadCrumb";
+import PageBreadcrumb from "@/components/ui/PageBreadCrumb";
 import { AccountDetailsProvider } from "@/features/accounts/state/account-details.context";
 import { getTranslations } from "next-intl/server";
 import { Metadata } from "next";

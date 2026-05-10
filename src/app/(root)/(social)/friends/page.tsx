@@ -1,4 +1,4 @@
-import PageBreadcrumb from "@/components/common/PageBreadCrumb";
+import PageBreadcrumb from "@/components/ui/PageBreadCrumb";
 import { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { FriendsProvider, SocialTabs } from "@/features/friends";

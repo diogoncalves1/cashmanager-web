@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import React from "react";
 import { StockSwiper } from "@/features/stocks";
 import { DashboardMetrics } from "@/features/dashboard";
-import PageBreadcrumb from "@/components/common/PageBreadCrumb";
+import PageBreadcrumb from "@/components/ui/PageBreadCrumb";
 import PortfolioSwiper from "@/components/swiper/PortfolioSwiper";
 
 export const metadata: Metadata = {
