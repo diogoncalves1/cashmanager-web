@@ -37,8 +37,7 @@ import ActivityTimeline from "@/components/ui/timeline/ActivityTimeline";
 import UsersTable from "@/features/financial-goals/components/users/UsersTable";
 import { useAuth } from "@/features/auth";
 import LeaveSubjectDialog from "@/features/invitations/components/dialogs//LeaveSubjectDialog";
-import TableContainer from "@/features/financial-goal-transactions/components/containers/TableContainer";
-import { NewTransactionButton } from "@/features/financial-goal-transactions/components/actions/NewTransactionButton";
+import { TableContainer, NewTransactionButton } from "@/features/financial-goal-transactions";
 
 type FinancialGoalDetailsProps = {
   id: string;

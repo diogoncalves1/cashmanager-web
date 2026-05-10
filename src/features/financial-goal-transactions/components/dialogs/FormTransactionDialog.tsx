@@ -1,3 +1,5 @@
+"use client";
+
 import {
   DialogContent,
   DialogDescription,
@@ -23,8 +25,8 @@ import { DatePicker } from "@/shared/ui/date-picker";
 import { Textarea } from "@/components/ui/textarea";
 import { useTranslations } from "next-intl";
 import { SwalToast } from "@/components/swal/SwalToast";
-import { useFinancialGoalTransactionForm } from "@/features/financial-goal-transactions/hooks/useFinancialGoalTransactionForm";
-import { FinancialGoalTransactionType } from "@/features/financial-goal-transactions/types";
+import { FinancialGoalTransactionType } from "@/features/financial-goal-transactions";
+import { useFinancialGoalTransactionForm } from "@/features/financial-goal-transactions/server";
 import { useEffect } from "react";
 
 type TransactionDialogProps = {
@@ -35,7 +37,7 @@ type TransactionDialogProps = {
   financialGoalId?: string;
 };
 
-const FormTransactionDialog = ({
+export const FormTransactionDialog = ({
   id,
   setIsOpen,
   isOpen,
@@ -294,5 +296,3 @@ const FormTransactionDialog = ({
     </Dialog>
   );
 };
-
-export default FormTransactionDialog;
