@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Transaction } from "@/features/transactions/types";
+import { Transaction } from "@/features/transactions";
 
 interface MonthlyIncomeExpensesDoughnutsProps {
   transactions: Transaction[];

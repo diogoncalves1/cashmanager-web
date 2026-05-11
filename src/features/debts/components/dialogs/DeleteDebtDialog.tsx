@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Dialog,
   DialogContent,
@@ -7,10 +9,10 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Debt } from "@/features/debts/types";
+import { Debt } from "@/features/debts";
 import { TriangleAlert } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { onDeleteDebt } from "@/features/debts/api/debt.api";
+import { onDeleteDebt } from "@/features/debts/server";
 import { useToast } from "@/shared/hooks/useToast";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -22,7 +24,7 @@ type Props = {
   goBack?: boolean;
 };
 
-export default function DeleteDebtDialog({
+export function DeleteDebtDialog({
   showDeleteDialog,
   setShowDeleteDialog,
   debt,

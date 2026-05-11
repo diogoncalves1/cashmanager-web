@@ -1,5 +1,5 @@
 import { serverApiClient } from "@/shared/api/api-client.server";
-import { Transaction } from "@/features/transactions/types";
+import { Transaction } from "@/features/transactions";
 import { NextRequest, NextResponse } from "next/server";
 
 type Params = Promise<{ id: string }>;

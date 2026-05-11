@@ -6,13 +6,7 @@ type StatCardProps = {
   isHighlight?: boolean;
 };
 
-export default function StatCard({
-  icon,
-  color,
-  label,
-  value,
-  isHighlight = false,
-}: StatCardProps) {
+export function StatCard({ icon, color, label, value, isHighlight = false }: StatCardProps) {
   const colors = {
     blue: { bg: "bg-blue-50", text: "text-blue-700", iconBg: "bg-blue-100" },
     amber: { bg: "bg-amber-50", text: "text-amber-700", iconBg: "bg-amber-100" },

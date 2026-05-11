@@ -4,9 +4,13 @@ import { fetcher } from "@/shared/fetcher";
 import { ColumnFiltersState, SortingState } from "@tanstack/react-table";
 import React, { useCallback, useEffect, useState } from "react";
 import useSWR from "swr";
-import { TransactionStatus, TransactionType, MyPagination } from "@/features/transactions/types";
-import { TransactionsFilters } from "@/features/financial-goal-transactions/components/filters/TransactionFilters";
-import { GoalTransactionDataTable } from "@/features/financial-goal-transactions/components/table/GoalTransactionDataTable";
+import {
+  FinancialGoalTransactionStatus,
+  FinancialGoalTransactionType,
+  MyPagination,
+  TransactionsFilters,
+  GoalTransactionDataTable,
+} from "@/features/financial-goal-transactions";
 
 type Props = {
   userId?: string;
@@ -14,13 +18,13 @@ type Props = {
   load?: boolean;
 };
 
-const TableContainer = ({ userId, financialGoalId, load }: Props) => {
+export const TableContainer = ({ userId, financialGoalId, load }: Props) => {
   const [sorting, setSorting] = React.useState<SortingState>([{ id: "date", desc: true }]);
   // Filters
   const [search, setSearch] = useState("");
-  const [statusFilter, setStatusFilter] = useState<TransactionStatus | "all">("all");
+  const [statusFilter, setStatusFilter] = useState<FinancialGoalTransactionStatus | "all">("all");
   const [categoryFilter, setCategoryFilter] = useState("all");
-  const [typeFilter, setTypeFilter] = useState<TransactionType | "all">("all");
+  const [typeFilter, setTypeFilter] = useState<FinancialGoalTransactionType | "all">("all");
   const [dateFrom, setDateFrom] = useState("");
   const [dateTo, setDateTo] = useState("");
 
@@ -151,7 +155,7 @@ const TableContainer = ({ userId, financialGoalId, load }: Props) => {
           });
         }}
         statusFilter={statusFilter}
-        onStatusFilterChange={(v: TransactionStatus) => {
+        onStatusFilterChange={(v: FinancialGoalTransactionStatus) => {
           setStatusFilter(v);
           setPagination({
             pageIndex: 0,
@@ -159,7 +163,7 @@ const TableContainer = ({ userId, financialGoalId, load }: Props) => {
           });
         }}
         typeFilter={typeFilter}
-        onTypeFilterChange={(v: TransactionType | "all") => {
+        onTypeFilterChange={(v: FinancialGoalTransactionType | "all") => {
           setTypeFilter(v);
           setPagination({
             pageIndex: 0,
@@ -202,5 +206,3 @@ const TableContainer = ({ userId, financialGoalId, load }: Props) => {
     </div>
   );
 };
-
-export default TableContainer;

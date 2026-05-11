@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import React from "react";
 import { useTranslations } from "next-intl";
 import PageBreadcrumb from "@/components/ui/PageBreadCrumb";
-import DebtsContainer from "@/features/debts/components/containers/DebtsContainer";
+import { DebtsContainer } from "@/features/debts";
 import { AppLink } from "@/components/ui/button/AppLink";
 import { getTranslations } from "next-intl/server";
 import { Plus } from "lucide-react";

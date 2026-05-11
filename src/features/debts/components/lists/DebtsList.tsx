@@ -1,14 +1,12 @@
 "use client";
 
 import { cn } from "@/shared/utils";
-import { useDebts } from "@/features/debts/hooks/useDebts";
+import { useDebts } from "@/features/debts/server";
 import { useTranslations } from "next-intl";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import DebtCard from "@/features/debts/components/cards/DebtCard";
-import DebtListFail from "./DebtListFail";
-import DebtCardLoading from "@/features/debts/components/cards/DebtCardLoading";
+import { DebtCard, DebtCardLoading, DebtListFail } from "@/features/debts";
 
 interface Filters {
   search?: string;
@@ -27,7 +25,7 @@ type Props = {
   loading: boolean;
 };
 
-export default function DebtsList({
+export function DebtsList({
   debts,
   loadMore,
   hasMore,

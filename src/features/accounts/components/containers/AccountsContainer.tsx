@@ -1,13 +1,12 @@
 "use client";
 
-import { AccountType } from "@/features/accounts/types";
+import { AccountType } from "@/features/accounts";
 import { Currency } from "@/shared/types/currency";
 import { useEffect, useState } from "react";
-import { AccountSummaryCards } from "@/features/accounts/components/cards/AccountSummaryCards";
-import { AccountFilters } from "@/features/accounts/components/filters/AccountFilters";
-import AccountsList from "@/features/accounts/components/lists/AccountsList";
-import { useAccounts } from "@/features/accounts/hooks/useAccounts";
-import { NewAccountButton } from "@/features/accounts/components/actions/NewAccountButton";
+import { AccountSummaryCards } from "@/features/accounts";
+import { AccountFilters, AccountsList, NewAccountButton } from "@/features/accounts";
+import { useAccounts } from "@/features/accounts/server";
+import {} from "@/features/accounts";
 import { useTranslations } from "next-intl";
 
 export interface AccountFormData {
@@ -27,7 +26,7 @@ interface Filters {
   sortOrder: "asc" | "desc";
 }
 
-const AccountsContainer = () => {
+export const AccountsContainer = () => {
   const t = useTranslations("ACCOUNTS");
   const [filters, setFilters] = useState<Filters>({
     active: "all",
@@ -77,5 +76,3 @@ const AccountsContainer = () => {
     </div>
   );
 };
-
-export default AccountsContainer;

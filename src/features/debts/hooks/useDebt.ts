@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Debt } from "@/features/debts/types";
-import { getDebtById } from "@/features/debts/api/debt.api";
+import { Debt } from "@/features/debts";
+import { getDebtById } from "@/features/debts/server";
 
 export function useDebt(id: string) {
   const [debt, setDebt] = useState<Debt>();

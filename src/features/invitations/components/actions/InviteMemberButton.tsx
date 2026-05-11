@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import InviteMemberDialog from "@/features/invitations/components/dialogs/InviteMemberDialog";
+import { InviteMemberDialog } from "@/features/invitations";
 import { Button } from "@/components/ui/button";
 import { LucideUserPlus2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 type InviteType = "debts" | "financial-goals" | "accounts";
 
-const InviteMemberButton = ({
+export const InviteMemberButton = ({
   type,
   id,
   isLigth = false,
@@ -52,5 +52,3 @@ const InviteMemberButton = ({
     </div>
   );
 };
-
-export default InviteMemberButton;

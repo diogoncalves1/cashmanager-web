@@ -1,6 +1,6 @@
 import { SwalToast } from "@/components/swal/SwalToast";
 import { Table } from "@tanstack/react-table";
-import { MyPagination, Transaction } from "@/features/transactions/types";
+import { MyPagination, Transaction } from "@/features/transactions";
 
 export async function onDeleteTransaction(
   id: string,

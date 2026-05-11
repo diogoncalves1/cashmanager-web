@@ -1,6 +1,6 @@
 import React from "react";
 
-const DebtCardLoading = () => {
+export const DebtCardLoading = () => {
   return (
     <div className="p-5 rounded-2xl bg-card border border-border shadow-sm animate-pulse">
       {/* Header */}
@@ -52,5 +52,3 @@ const DebtCardLoading = () => {
     </div>
   );
 };
-
-export default DebtCardLoading;

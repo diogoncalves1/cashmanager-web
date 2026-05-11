@@ -10,9 +10,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useFinancialGoalForm } from "@/features/financial-goals/hooks/useFinancialGoalForm";
+import { getFinancialGoalPriorities } from "@/features/financial-goals";
+import { useFinancialGoalForm } from "@/features/financial-goals/server";
 import LoadingToast from "@/components/swal/LoadingToast";
-import { getFinancialGoalPriorities } from "@/features/financial-goals/types";
 import { useTranslations } from "next-intl";
 import { cn } from "@/shared/utils";
 import { Textarea } from "@/components/ui/textarea";

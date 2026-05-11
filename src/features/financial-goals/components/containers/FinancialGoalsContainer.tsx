@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-import GoalsList from "@/features/financial-goals/components/list/GoalsList";
-import { useFinancialGoals } from "@/features/financial-goals/hooks/useFinancialGoals";
+import { GoalsList } from "@/features/financial-goals";
+import { useFinancialGoals } from "@/features/financial-goals/server";
 import { useTranslations } from "next-intl";
 
 interface Filters {
@@ -13,7 +12,7 @@ interface Filters {
   sort?: string;
 }
 
-export default function FinancialGoalsContainer() {
+export function FinancialGoalsContainer() {
   const t = useTranslations("FINANCIAL_GOALS");
   const [filters, setFilters] = useState<Filters>({});
   const [debouncedFilters, setDebouncedFilters] = useState<Filters>(filters);

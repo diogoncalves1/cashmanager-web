@@ -1,4 +1,4 @@
-import { InvitationSummary, InvitationType } from "@/features/invitations/types";
+import { InvitationSummary, InvitationType } from "@/features/invitations";
 import { ResponseData } from "@/shared/api/api-client";
 
 export async function onCancelInvite(

@@ -10,21 +10,22 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { TransactionStatus, TransactionType } from "@/features/transactions/types";
-import { useTranslations } from "next-intl";
-import { DatePicker } from "@/shared/ui/date-picker";
 import {
+  FinancialGoalTransactionStatus,
+  FinancialGoalTransactionType,
   financialGoalTransactionStatus,
   financialGoalTransactionTypes,
-} from "@/features/financial-goal-transactions/types";
+} from "@/features/financial-goal-transactions";
+import { useTranslations } from "next-intl";
+import { DatePicker } from "@/shared/ui/date-picker";
 
 interface TransactionsFiltersProps {
   search: string;
   onSearchChange: (v: string) => void;
-  statusFilter: TransactionStatus | "all";
-  onStatusFilterChange: (v: TransactionStatus) => void;
-  typeFilter: TransactionType | "all";
-  onTypeFilterChange: (v: TransactionType | "all") => void;
+  statusFilter: FinancialGoalTransactionStatus | "all";
+  onStatusFilterChange: (v: FinancialGoalTransactionStatus) => void;
+  typeFilter: FinancialGoalTransactionType | "all";
+  onTypeFilterChange: (v: FinancialGoalTransactionType | "all") => void;
   dateFrom: string;
   onDateFromChange: (v: string) => void;
   dateTo: string;
@@ -93,7 +94,7 @@ export function TransactionsFilters({
         {enableTypeFilter && (
           <Select
             value={typeFilter}
-            onValueChange={(v) => onTypeFilterChange(v as TransactionType | "all")}
+            onValueChange={(v) => onTypeFilterChange(v as FinancialGoalTransactionType | "all")}
           >
             <SelectTrigger className="w-[140px] bg-white">
               <SelectValue placeholder={t("TYPE")} />

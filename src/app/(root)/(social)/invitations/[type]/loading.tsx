@@ -1,5 +1,5 @@
 import React from "react";
-import InvitationContainerLoading from "@/features/invitations/components/containers/InvitationContainerLoading";
+import { InvitationContainerLoading } from "@/features/invitations";
 
 const Loading = () => {
   return (

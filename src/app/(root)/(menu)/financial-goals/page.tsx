@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import React from "react";
 import { useTranslations } from "next-intl";
 import PageBreadcrumb from "@/components/ui/PageBreadCrumb";
-import FinancialGoalsContainer from "@/features/financial-goals/components/containers/FinancialGoalsContainer";
+import { FinancialGoalsContainer } from "@/features/financial-goals";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { Plus } from "lucide-react";

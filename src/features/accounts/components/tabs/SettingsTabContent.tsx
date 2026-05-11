@@ -16,11 +16,14 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import { Save, Trash2, AlertTriangle } from "lucide-react";
 import { useToast } from "@/shared/hooks/useToast";
-import { Account, getAccountTypes } from "@/features/accounts/types";
-import DeleteAccountDialog from "@/features/accounts/components/dialogs/DeleteAccountDialog";
-import { useAccountForm } from "@/features/accounts/hooks/useAccountForm";
+import {
+  DeleteAccountDialog,
+  useAccountDetailsContext,
+  Account,
+  getAccountTypes,
+} from "@/features/accounts";
+import { useAccountForm } from "@/features/accounts/server";
 import { Currency } from "@/shared/types/currency";
-import { useAccountDetailsContext } from "@/features/accounts/state/account-details.context";
 import { useTranslations } from "next-intl";
 
 interface SettingsTabContentProps {

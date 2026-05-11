@@ -1,6 +1,5 @@
 "use client";
 
-import GoalCard from "@/features/financial-goals/components/list/GoalCard";
 import {
   Select,
   SelectContent,
@@ -9,13 +8,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/shared/utils";
-import { useFinancialGoals } from "@/features/financial-goals/hooks/useFinancialGoals";
+import { GoalCardLoading, GoalCard, GoalsListFail } from "@/features/financial-goals";
+import { useFinancialGoals } from "@/features/financial-goals/server";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
-import GoalsListFail from "./GoalsListFail";
-import { GoalCardLoading } from "@/features/financial-goals/components/ui/GoalCardLoading";
 
 interface Filters {
   search?: string;
@@ -34,7 +32,7 @@ type Props = {
   loading: boolean;
 };
 
-export default function GoalsList({
+export function GoalsList({
   goals,
   loadMore,
   hasMore,

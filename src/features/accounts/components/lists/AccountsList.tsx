@@ -1,9 +1,7 @@
 "use client";
 
-import AccountsListFail from "./AccountsListFail";
-import { AccountCard } from "@/features/accounts/components/cards/AccountCard";
-import { AccountCardLoading } from "@/features/accounts/components/cards/AccountCardLoading";
-import { useAccounts } from "@/features/accounts/hooks/useAccounts";
+import { AccountCardLoading, AccountCard, AccountsListFail } from "@/features/accounts";
+import { useAccounts } from "@/features/accounts/server";
 import LoadMoreList from "@/components/ui/lists/LoadMoreList";
 
 type Props = {
@@ -14,7 +12,7 @@ type Props = {
   loading: boolean;
 };
 
-export default function AccountsList({ accounts, loadMore, hasMore, total, loading }: Props) {
+export function AccountsList({ accounts, loadMore, hasMore, total, loading }: Props) {
   return (
     <>
       {!loading && accounts.length == 0 ? (

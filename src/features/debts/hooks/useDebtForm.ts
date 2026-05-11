@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { Currency } from "@/shared/types/currency";
 import { getCurrencies } from "@/shared/api/currency";
-import { Debt } from "@/features/debts/types";
+import { Debt } from "@/features/debts";
 import { getDebtById } from "@/features/debts/api/debt.api";
 
 interface FormData {

@@ -1,4 +1,4 @@
-import { getInvitationStats } from "@/features/invitations/api/invitation.api";
+import { getInvitationStats } from "@/features/invitations/server";
 import { useState, useEffect, useCallback } from "react";
 
 type Summary = {

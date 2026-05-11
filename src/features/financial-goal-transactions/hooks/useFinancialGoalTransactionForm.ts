@@ -2,11 +2,11 @@ import { useState, useEffect, useCallback } from "react";
 import {
   FinancialGoalTransactionStatus,
   FinancialGoalTransactionType,
-} from "@/features/financial-goal-transactions/types";
-import { getAllFinancialGoalsBasic } from "@/features/financial-goals/api/financial-goal.api";
-import { FinancialGoalBasic } from "@/features/financial-goals/types";
-import { getAccountsBasic } from "@/features/accounts/api/account.api";
-import { AccountBasic } from "@/features/accounts/types";
+} from "@/features/financial-goal-transactions";
+import { FinancialGoalBasic } from "@/features/financial-goals";
+import { getAllFinancialGoalsBasic } from "@/features/financial-goals/server";
+import { getAccountsBasic } from "@/features/accounts/server";
+import { AccountBasic } from "@/features/accounts";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { fetcher } from "@/shared/fetcher";

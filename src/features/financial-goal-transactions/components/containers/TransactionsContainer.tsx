@@ -1,11 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import TableContainer from "./TableContainer";
-import { NewTransactionButton } from "@/features/financial-goal-transactions/components/actions/NewTransactionButton";
+import { TableContainer, NewTransactionButton } from "@/features/financial-goal-transactions";
 import { useTranslations } from "next-intl";
 
-const TransactionsContainer = () => {
+export const TransactionsContainer = () => {
   const t = useTranslations("TRANSACTIONS");
   const [load, setLoad] = useState(false);
 
@@ -25,5 +24,3 @@ const TransactionsContainer = () => {
     </div>
   );
 };
-
-export default TransactionsContainer;

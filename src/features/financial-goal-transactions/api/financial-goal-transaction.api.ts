@@ -1,9 +1,6 @@
 import LoadingToast from "@/components/swal/LoadingToast";
 import { SwalToast } from "@/components/swal/SwalToast";
-import {
-  FinancialGoalTransaction,
-  MyPagination,
-} from "@/features/financial-goal-transactions/types";
+import { FinancialGoalTransaction, MyPagination } from "@/features/financial-goal-transactions";
 import { Table } from "@tanstack/react-table";
 
 export async function onDeleteFinancialGoalTransaction(

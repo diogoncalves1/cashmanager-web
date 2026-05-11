@@ -4,7 +4,7 @@ import { fetcher } from "@/shared/fetcher";
 import { useEffect, useState } from "react";
 import { getCurrencies } from "@/shared/api/currency";
 import { Currency } from "@/shared/types/currency";
-import { Account, AccountType } from "@/features/accounts/types";
+import { Account, AccountType } from "@/features/accounts";
 
 interface AccountFormData {
   name: string;

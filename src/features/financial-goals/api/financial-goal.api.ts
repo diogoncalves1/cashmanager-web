@@ -6,7 +6,7 @@ import {
   FinancialGoal,
   FinancialGoalBasic,
   GoalsFilters,
-} from "@/features/financial-goals/types";
+} from "@/features/financial-goals";
 import { ResponseData } from "@/shared/api/api-client";
 
 interface TableInstance {
