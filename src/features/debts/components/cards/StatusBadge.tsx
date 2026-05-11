@@ -1,12 +1,6 @@
-import { DebtStatus } from "@/features/debts/types";
+import { DebtStatus } from "@/features/debts";
 
-export default function StatusBadge({
-  status,
-  translate,
-}: {
-  status: DebtStatus;
-  translate?: string;
-}) {
+export function StatusBadge({ status, translate }: { status: DebtStatus; translate?: string }) {
   const getStatusInfo = (status: string) => {
     switch (status) {
       case "paid":

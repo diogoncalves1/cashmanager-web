@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { DebtPaymentStatus } from "@/features/debt-payments/types/index";
-import { getAccountsBasic } from "@/features/accounts/api/account.api";
-import { AccountBasic } from "@/features/accounts/types";
-import { DebtBasic } from "@/features/debts/types";
-import { getAllDebtsBasic } from "@/features/debts/api/debt.api";
+import { DebtPaymentStatus } from "@/features/debt-payments";
+import { getAccountsBasic } from "@/features/accounts/server";
+import { AccountBasic } from "@/features/accounts";
+import { DebtBasic } from "@/features/debts";
+import { getAllDebtsBasic } from "@/features/debts/server";
 import useSWR from "swr";
-import { fetcher } from "@/lib/fetcher";
+import { fetcher } from "@/shared/fetcher";
 import { useRouter } from "next/navigation";
 
 type SubmitResult = {

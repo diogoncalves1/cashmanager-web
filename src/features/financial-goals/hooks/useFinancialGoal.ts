@@ -1,6 +1,6 @@
-import { FinancialGoal } from "@/features/financial-goals/types";
+import { FinancialGoal } from "@/features/financial-goals";
+import { getFinancialGoalById } from "@/features/financial-goals/server";
 import { useEffect, useState } from "react";
-import { getFinancialGoalById } from "@/features/financial-goals/api/financial-goal.api";
 
 interface Props {
   id: string;

@@ -12,14 +12,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/utils";
 import { Calculator, Calendar, DollarSign, FileText, Percent, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AppLink } from "@/components/ui/button/AppLink";
-import { useDebtForm } from "@/features/debts/hooks/useDebtForm";
+import { useDebtForm } from "@/features/debts/server";
 import { useTranslations } from "next-intl";
 import { DatePicker } from "@/shared/ui/date-picker";
-import { useToast } from "@/hooks/useToast";
+import { useToast } from "@/shared/hooks/useToast";
 
 interface FormData {
   name: string;
@@ -46,7 +46,7 @@ type Props = {
   id?: string;
 };
 
-export default function DebtForm({ id }: Props) {
+export function DebtForm({ id }: Props) {
   const { toast } = useToast();
   const {
     formData,

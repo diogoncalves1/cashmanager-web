@@ -1,9 +1,9 @@
 "use client";
 import NotificationDropdown from "@/components/header/NotificationDropdown";
-// import { ThemeToggleButton } from "@/components/common/ThemeToggleButton";
+// import { ThemeToggleButton } from "@/components/ui/ThemeToggleButton";
 // import NotificationDropdown from "@/components/header/NotificationDropdown";
 import UserDropdown from "@/components/header/UserDropdown";
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/features/auth";
 import { useSidebar } from "@/context/SidebarContext";
 import Image from "next/image";
 import Link from "next/link";

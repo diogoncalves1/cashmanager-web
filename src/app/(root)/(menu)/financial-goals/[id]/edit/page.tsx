@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import React from "react";
-import PageBreadcrumb from "@/components/common/PageBreadCrumb";
+import PageBreadcrumb from "@/components/ui/PageBreadCrumb";
 import { getTranslations } from "next-intl/server";
-import { FinancialGoalForm } from "@/features/financial-goals/components/forms/FinancialGoalForm";
+import { FinancialGoalForm } from "@/features/financial-goals";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("FINANCIAL_GOALS");

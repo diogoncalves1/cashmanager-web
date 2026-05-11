@@ -29,15 +29,14 @@ import { DataTablePagination } from "@/components/tables/DataTablePagination";
 import {
   FinancialGoalTransaction,
   MyPagination,
-} from "@/features/financial-goal-transactions/types";
-import { cn, formatDate, getUserColor, getUserInitials } from "@/lib/utils";
+  DeleteGoalTransactionDialog,
+  ConfirmGoalTransactionDialog,
+  FormTransactionDialog,
+} from "@/features/financial-goal-transactions";
+import { cn, formatDate, getUserColor, getUserInitials } from "@/shared/utils";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import Link from "next/link";
-import DeleteGoalTransactionDialog from "@/features/financial-goal-transactions/components/dialogs/DeleteGoalTransactionDialog";
 import DataTable from "@/components/tables/DataTable";
-import ConfirmGoalTransactionDialog from "@/features/financial-goal-transactions/components/dialogs/ConfirmGoalTransactionDialog";
-import FormTransactionDialog from "@/features/financial-goal-transactions/components/dialogs/FormTransactionDialog";
-
 type DataTableProps = {
   financialGoalId?: string;
   enableUser?: boolean;

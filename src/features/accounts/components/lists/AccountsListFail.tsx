@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import React from "react";
 
-const AccountsListFail = () => {
+export const AccountsListFail = () => {
   const t = useTranslations("ACCOUNTS");
   return (
     <div className="flex flex-col items-center justify-center rounded-lg border border-dashed py-16">
@@ -10,5 +10,3 @@ const AccountsListFail = () => {
     </div>
   );
 };
-
-export default AccountsListFail;

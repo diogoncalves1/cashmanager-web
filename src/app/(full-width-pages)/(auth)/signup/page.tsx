@@ -1,4 +1,4 @@
-import SignUpForm from "@/components/auth/SignUpForm";
+import { SignUpForm } from "@/features/auth";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 

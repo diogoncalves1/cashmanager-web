@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  MonthlySummary,
-  MonthlySummaryChart,
-} from "@/features/accounts/components/charts/MonthlySummaryChart";
-import { memo } from "react";
+import { MonthlySummary, MonthlySummaryChart } from "@/features/accounts";
 import { useTranslations } from "next-intl";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BarChart3 } from "lucide-react";
@@ -13,7 +9,7 @@ type AccountMonthlySummaryProps = {
   data: MonthlySummary[];
 };
 
-function AccountMonthlySummary({ data }: AccountMonthlySummaryProps) {
+export function AccountMonthlySummary({ data }: AccountMonthlySummaryProps) {
   const t = useTranslations("ACCOUNTS");
 
   // if (isLoading) {
@@ -62,5 +58,3 @@ function AccountMonthlySummary({ data }: AccountMonthlySummaryProps) {
     </div>
   );
 }
-
-export default memo(AccountMonthlySummary);

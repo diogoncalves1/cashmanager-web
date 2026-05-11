@@ -2,7 +2,7 @@
 
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import FormTransactionDialog from "@/features/financial-goal-transactions/components/dialogs/FormTransactionDialog";
+import { FormTransactionDialog } from "@/features/financial-goal-transactions";
 import { Dispatch, SetStateAction, useState } from "react";
 import { useTranslations } from "next-intl";
 

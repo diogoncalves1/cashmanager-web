@@ -1,10 +1,10 @@
 import React from "react";
 
-import PageBreadcrumb from "@/components/common/PageBreadCrumb";
+import PageBreadcrumb from "@/components/ui/PageBreadCrumb";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { useTranslations } from "next-intl";
-import ChangePassword from "@/components/auth/ChangePassword";
+import { ChangePassword } from "@/features/auth";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("CHANGE_PASSWORD");

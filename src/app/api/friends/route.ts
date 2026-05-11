@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Friendship } from "@/features/friends";
-import { serverApiClient } from "@/lib/api/api-client.server";
+import { serverApiClient } from "@/shared/api/api-client.server";
 
 export async function GET(req: NextRequest) {
   const url = new URL(req.url);

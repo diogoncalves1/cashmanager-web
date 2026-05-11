@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import React from "react";
 
-import PageBreadcrumb from "@/components/common/PageBreadCrumb";
+import PageBreadcrumb from "@/components/ui/PageBreadCrumb";
 import { StocksSearch } from "@/features/stocks";
 
 export const metadata: Metadata = {

@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Dialog,
   DialogContent,
@@ -7,10 +9,10 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { onDeleteFinancialGoalTransaction } from "@/features/financial-goal-transactions/api/financial-goal-transaction.api";
+import { FinancialGoalTransaction } from "@/features/financial-goal-transactions";
+import { onDeleteFinancialGoalTransaction } from "@/features/financial-goal-transactions/server";
 import { useRouter } from "next/navigation";
 import { Table } from "@tanstack/react-table";
-import { FinancialGoalTransaction } from "@/features/financial-goal-transactions/types";
 import { useTranslations } from "next-intl";
 
 type PaginationState = {
@@ -28,7 +30,7 @@ type Props = {
   goBack?: boolean;
 };
 
-export default function DeleteGoalTransactionDialog({
+export function DeleteGoalTransactionDialog({
   isDeleteDialogOpen,
   setIsDeleteOpen,
   mutate,

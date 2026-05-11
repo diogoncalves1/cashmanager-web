@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import ComponentCard from "../../common/ComponentCard";
+import ComponentCard from "../../ui/ComponentCard";
 import TextArea from "../input/TextArea";
 import Label from "../Label";
 
@@ -13,11 +13,7 @@ export default function TextAreaInput() {
         {/* Default TextArea */}
         <div>
           <Label>Description</Label>
-          <TextArea
-            value={message}
-            onChange={(value) => setMessage(value)}
-            rows={6}
-          />
+          <TextArea value={message} onChange={(value) => setMessage(value)} rows={6} />
         </div>
 
         {/* Disabled TextArea */}

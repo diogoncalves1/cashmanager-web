@@ -1,9 +1,8 @@
-import { Account, ApiResponse, AccountFilters } from "@/features/accounts/types";
-import { AccountBasic } from "@/features/accounts/types";
-import { ResponseData } from "@/lib/api/api-client";
-import { buildUrl } from "@/lib/utils";
+import { Account, ApiResponse, AccountFiltersType, AccountBasic } from "@/features/accounts";
+import { ResponseData } from "@/shared/api/api-client";
+import { buildUrl } from "@/shared/utils";
 
-export async function getAllAccounts(filters: AccountFilters): Promise<ApiResponse<Account>> {
+export async function getAllAccounts(filters: AccountFiltersType): Promise<ApiResponse<Account>> {
   const url = buildUrl("/api/accounts", { ...filters });
 
   const res = await fetch(url, {

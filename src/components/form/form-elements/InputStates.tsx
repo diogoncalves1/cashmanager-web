@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import ComponentCard from "../../common/ComponentCard";
+import ComponentCard from "../../ui/ComponentCard";
 import Input from "../input/InputField";
 import Label from "../Label";
 
@@ -10,8 +10,7 @@ export default function InputStates() {
 
   // Simulate a validation check
   const validateEmail = (value: string) => {
-    const isValidEmail =
-      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value);
+    const isValidEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value);
     setError(!isValidEmail);
     return isValidEmail;
   };

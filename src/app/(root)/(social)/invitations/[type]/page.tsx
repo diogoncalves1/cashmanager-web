@@ -1,6 +1,5 @@
-import PageBreadcrumb from "@/components/common/PageBreadCrumb";
-import InvitationContainer from "@/features/invitations/components/containers/InvitationContainer";
-import { InvitationType } from "@/features/invitations/types";
+import PageBreadcrumb from "@/components/ui/PageBreadCrumb";
+import { InvitationType, InvitationContainer } from "@/features/invitations";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 

@@ -1,8 +1,8 @@
 import React from "react";
 import { CreditCard } from "lucide-react";
-import PageBreadcrumb from "@/components/common/PageBreadCrumb";
+import PageBreadcrumb from "@/components/ui/PageBreadCrumb";
 import { useTranslations } from "next-intl";
-import DebtForm from "@/features/debts/components/forms/DebtForm";
+import { DebtForm } from "@/features/debts";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 

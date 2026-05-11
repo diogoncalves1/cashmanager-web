@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-export default function EmailVerified() {
+export function EmailVerified() {
   const t = useTranslations("EMAIL_VERIFIED");
   const [isLoading, setIsLoading] = useState(true);
   const [emailVerified, setEmailVerified] = useState<boolean>(false);

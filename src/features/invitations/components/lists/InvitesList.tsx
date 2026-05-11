@@ -1,11 +1,15 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { Invitation, InvitationStatus, InvitationType } from "@/features/invitations/types";
+import {
+  Invitation,
+  InvitationStatus,
+  InvitationType,
+  InvitationCard,
+  InvitationEmpty,
+} from "@/features/invitations";
+import { onCancelInvite } from "@/features/invitations/server";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { InvitationCard } from "@/features/invitations/components/cards/InvitationCard";
-import { onCancelInvite } from "@/features/invitations/api/invitation.api";
-import { InvitationEmpty } from "@/features/invitations/components/empty/InvitationEmpty";
 import { useTranslations } from "next-intl";
 import { useInView } from "react-intersection-observer";
 import {
@@ -15,7 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useToast } from "@/hooks/useToast";
+import { useToast } from "@/shared/hooks/useToast";
 import LoadingToast from "@/components/swal/LoadingToast";
 
 interface Page {
@@ -34,7 +38,7 @@ type FetchInvitedParams = {
   status?: string;
 };
 
-const InvitesList = ({ setLoad, load, type }: Props) => {
+export const InvitesList = ({ setLoad, load, type }: Props) => {
   const t = useTranslations("INVITE_MEMBER");
   const { toast } = useToast();
   const [sentFilter, setSentFilter] = useState<InvitationStatus | "all">("all");
@@ -167,5 +171,3 @@ const InvitesList = ({ setLoad, load, type }: Props) => {
     </div>
   );
 };
-
-export default InvitesList;

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import ComponentCard from "../../common/ComponentCard";
+import ComponentCard from "../../ui/ComponentCard";
 import { useDropzone } from "react-dropzone";
 
 const DropzoneComponent: React.FC = () => {
@@ -64,9 +64,7 @@ const DropzoneComponent: React.FC = () => {
               Drag and drop your PNG, JPG, WebP, SVG images here or browse
             </span>
 
-            <span className="font-medium underline text-theme-sm text-brand-500">
-              Browse File
-            </span>
+            <span className="font-medium underline text-theme-sm text-brand-500">Browse File</span>
           </div>
         </form>
       </div>

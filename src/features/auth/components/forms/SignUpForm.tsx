@@ -8,10 +8,10 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import AuthSubmitButton from "./AuthSubmitButton";
-import { useToast } from "@/hooks/useToast";
+import { AuthSubmitButton } from "@/features/auth";
+import { useToast } from "@/shared/hooks/useToast";
 
-export default function SignUpForm() {
+export function SignUpForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [email, setEmail] = useState("");

@@ -6,7 +6,7 @@ import LineChartOne from "@/components/charts/line/LineChartOne";
 import { ApexOptions } from "apexcharts";
 import { KpiInterface } from "./DashboardMetrics";
 import { useTranslations } from "next-intl";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/utils";
 
 interface IncomeExpensesMetricsProps {
   revenues: { name: string; data: number[] };

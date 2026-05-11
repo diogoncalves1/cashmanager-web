@@ -1,17 +1,11 @@
 "use client";
 
-import { fetcher } from "@/lib/fetcher";
+import { fetcher } from "@/shared/fetcher";
 import { ColumnFiltersState, SortingState } from "@tanstack/react-table";
 import React, { useCallback, useEffect, useState } from "react";
 import useSWR from "swr";
-import { TransactionStatus } from "@/features/transactions/types";
-import { PaymentsFilters } from "@/features/debt-payments/components/filters/DebtPaymentsFilters";
-import { DebtPaymentsDataTable } from "@/features/debt-payments/components/table/DebtPaymentsDataTable";
-
-export type MyPagination = {
-  pageIndex: number;
-  pageSize: number;
-};
+import { TransactionStatus } from "@/features/transactions";
+import { PaymentsFilters, DebtPaymentsDataTable, MyPagination } from "@/features/debt-payments";
 
 type Props = {
   userId?: string;
@@ -19,7 +13,7 @@ type Props = {
   load?: boolean;
 };
 
-const TableContainer = ({ userId, debtId, load }: Props) => {
+export const TableContainer = ({ userId, debtId, load }: Props) => {
   const [sorting, setSorting] = React.useState<SortingState>([{ id: "date", desc: true }]);
   // Filters
   const [search, setSearch] = useState("");
@@ -185,5 +179,3 @@ const TableContainer = ({ userId, debtId, load }: Props) => {
     </div>
   );
 };
-
-export default TableContainer;

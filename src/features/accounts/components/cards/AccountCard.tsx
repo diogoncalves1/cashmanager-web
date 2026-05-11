@@ -5,8 +5,8 @@ import { Building2, Wallet, CreditCard, Smartphone } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { cn, getUserColor } from "@/lib/utils";
-import { Account, AccountType } from "@/features/accounts/types";
+import { cn, getUserColor } from "@/shared/utils";
+import { Account, AccountType } from "@/features/accounts";
 import { useTranslations } from "next-intl";
 
 const accountTypeConfig: Record<AccountType, { icon: typeof Building2; className: string }> = {

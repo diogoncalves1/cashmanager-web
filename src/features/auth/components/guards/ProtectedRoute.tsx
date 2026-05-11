@@ -1,11 +1,11 @@
 "use client";
 
-import { fetcher } from "@/lib/fetcher";
+import { fetcher } from "@/shared/fetcher";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 import useSWR from "swr";
 
-export default function ProtectedRoute({ children }: { children: React.ReactNode }) {
+export function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
 

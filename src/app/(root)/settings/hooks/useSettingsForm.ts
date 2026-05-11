@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { Currency } from "@/types/currency";
-import { getCurrencies } from "@/services/currency";
-import { Language } from "@/types/language";
-import { getLanguages } from "@/services/language";
-import { useAuth } from "@/context/AuthContext";
+import { Currency } from "@/shared/types/currency";
+import { getCurrencies } from "@/shared/api/currency";
+import { Language } from "@/shared/types/language";
+import { getLanguages } from "@/shared/api/language";
+import { useAuth } from "@/features/auth";
 
 type FormData = {
   id: string;

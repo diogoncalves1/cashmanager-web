@@ -26,15 +26,17 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { useTranslations } from "next-intl";
 import { DataTablePagination } from "@/components/tables/DataTablePagination";
-import { cn, formatDate, getUserColor, getUserInitials } from "@/lib/utils";
+import { cn, formatDate, getUserColor, getUserInitials } from "@/shared/utils";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import Link from "next/link";
 import DataTable from "@/components/tables/DataTable";
-import { MyPagination } from "@/features/debt-payments/components/containers/TableContainer";
-import { DebtPayment } from "@/features/debt-payments/types/index";
-import ConfirmPaymentDialog from "@/features/debt-payments/components/dialogs/ConfirmPaymentDialog";
-import DeletePaymentDialog from "@/features/debt-payments/components/dialogs/DeletePaymentDialog";
-import FormPaymentDialog from "@/features/debt-payments/components/dialogs/FormPaymentDialog";
+import {
+  MyPagination,
+  FormPaymentDialog,
+  DebtPayment,
+  ConfirmPaymentDialog,
+  DeletePaymentDialog,
+} from "@/features/debt-payments";
 
 type DataTableProps = {
   debtId?: string;

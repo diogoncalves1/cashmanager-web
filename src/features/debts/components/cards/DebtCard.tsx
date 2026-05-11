@@ -1,7 +1,6 @@
-import { Debt } from "@/features/debts/types";
+import { Debt, StatusBadge } from "@/features/debts";
 import Link from "next/link";
-import { cn, formatCurrency } from "@/lib/utils";
-import StatusBadge from "@/features/debts/components/cards/StatusBadge";
+import { cn, formatCurrency } from "@/shared/utils";
 import { useTranslations } from "next-intl";
 import { Calendar } from "lucide-react";
 
@@ -9,7 +8,7 @@ type Props = {
   debt: Debt;
 };
 
-export default function DebtCard({ debt }: Props) {
+export function DebtCard({ debt }: Props) {
   const t = useTranslations("DEBTS");
   const progress = Math.round((debt.paidAmount / debt.totalAmount) * 100);
   const remaining = debt.totalAmount - debt.paidAmount;

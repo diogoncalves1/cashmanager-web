@@ -1,7 +1,9 @@
+"use client";
+
 import { ApexOptions } from "apexcharts";
 import dynamic from "next/dynamic";
-import { Account } from "@/features/accounts/types";
-import { iconMap } from "@/types/category";
+import { Account } from "@/features/accounts";
+import { iconMap } from "@/shared/types/category";
 
 export type CategorySummary = {
   data: CategoryExpenses[];

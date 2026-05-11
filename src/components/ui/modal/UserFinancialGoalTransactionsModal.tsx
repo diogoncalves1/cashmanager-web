@@ -1,6 +1,6 @@
 "use client";
 
-import TableContainer from "@/features/financial-goal-transactions/components/containers/TableContainer";
+import { TableContainer } from "@/features/financial-goal-transactions";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 

@@ -2,8 +2,8 @@ import LoadingToast from "@/components/swal/LoadingToast";
 import { SwalToast } from "@/components/swal/SwalToast";
 import { useTranslations } from "next-intl";
 import Swal from "sweetalert2";
-import { DebtBasic, Debt, DebtsFilters, ApiResponse } from "@/features/debts/types";
-import { ResponseData } from "@/lib/api/api-client";
+import { DebtBasic, Debt, DebtsFilters, ApiResponse } from "@/features/debts";
+import { ResponseData } from "@/shared/api/api-client";
 
 export async function onDeleteDebt(id: string): Promise<{ success: boolean; message: string }> {
   const res = await fetch(`/api/debts/${id}`, {

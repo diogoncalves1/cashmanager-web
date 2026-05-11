@@ -5,7 +5,7 @@ type Props = {
   disabled?: boolean;
 };
 
-export default function AuthSubmitButton(props: Props) {
+export function AuthSubmitButton(props: Props) {
   return (
     <button
       disabled={props.disabled}

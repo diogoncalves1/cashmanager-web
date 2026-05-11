@@ -1,5 +1,5 @@
-import { User } from "@/types/user";
-import { serverApiClient } from "../api/api-client.server";
+import { serverApiClient } from "@/shared/api/api-client.server";
+import { User } from "@/shared/types/user";
 
 export async function getUser(): Promise<User | null> {
   try {

@@ -8,10 +8,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useToast } from "@/hooks/useToast";
+import { useToast } from "@/shared/hooks/useToast";
 import { useTranslations } from "next-intl";
 
-const ChangePassword = () => {
+export const ChangePassword = () => {
   const { toast } = useToast();
   const t = useTranslations("CHANGE_PASSWORD");
   const [currentPassword, setCurrentPassword] = useState("");
@@ -221,5 +221,3 @@ const ChangePassword = () => {
     </Card>
   );
 };
-
-export default ChangePassword;

@@ -9,9 +9,9 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { onConfirmDebtPayment } from "@/features/debt-payments/api/debt-payment.api";
+import { onConfirmDebtPayment } from "@/features/debt-payments/server";
 import { useTranslations } from "next-intl";
-import { useToast } from "@/hooks/useToast";
+import { useToast } from "@/shared/hooks/useToast";
 import { useState } from "react";
 
 type Props = {
@@ -21,7 +21,7 @@ type Props = {
   selectedId: string;
 };
 
-export default function ConfirmPaymentDialog({
+export function ConfirmPaymentDialog({
   isConfirmDialogOpen,
   setIsConfirmOpen,
   mutate,

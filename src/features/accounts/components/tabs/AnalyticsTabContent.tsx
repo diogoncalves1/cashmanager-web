@@ -2,11 +2,13 @@
 
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { CategorySpendingChart } from "@/features/accounts/components/charts/CategorySpendingChart";
-import AccountMonthlySummary from "@/features/accounts/components/cards/AccountMonthlySummary";
-import { Account } from "@/features/accounts/types";
-import { CategorySummary } from "@/features/accounts/components/charts/CategoryExpensesChart";
-import { MonthlySummary } from "@/features/accounts/components/charts/MonthlySummaryChart";
+import {
+  Account,
+  AccountMonthlySummary,
+  CategorySummary,
+  CategorySpendingChart,
+  MonthlySummary,
+} from "@/features/accounts";
 
 interface AnalyticsTabContentProps {
   account: Account;

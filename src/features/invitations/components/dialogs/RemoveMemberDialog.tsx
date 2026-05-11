@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Dialog,
   DialogContent,
@@ -9,7 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { onRemoveMember } from "@/features/invitations/api/invitation.api";
+import { onRemoveMember } from "@/features/invitations/server";
 
 type InviteType = "debts" | "financial-goals" | "accounts";
 
@@ -22,7 +24,7 @@ type Props = {
   mutate?: () => void;
 };
 
-export default function RemoveMemberDialog({ isOpen, setIsOpen, type, id, userId, mutate }: Props) {
+export function RemoveMemberDialog({ isOpen, setIsOpen, type, id, userId, mutate }: Props) {
   const t = useTranslations("INVITE_MEMBER");
 
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);

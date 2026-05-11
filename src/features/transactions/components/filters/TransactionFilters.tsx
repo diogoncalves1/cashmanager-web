@@ -15,8 +15,8 @@ import {
   getTransactionTypes,
   TransactionStatus,
   TransactionType,
-} from "@/features/transactions/types";
-import { Category } from "@/types/category";
+} from "@/features/transactions";
+import { Category } from "@/shared/types/category";
 import { useTranslations } from "next-intl";
 import { DatePicker } from "@/shared/ui/date-picker";
 

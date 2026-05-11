@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Dialog,
   DialogContent,
@@ -16,9 +18,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useState } from "react";
-import { useDataForChangeRole } from "@/features/invitations/hooks/useDataForInvite";
+import { useDataForChangeRole } from "@/features/invitations/server";
 import { useTranslations } from "next-intl";
-import { useToast } from "@/hooks/useToast";
+import { useToast } from "@/shared/hooks/useToast";
 
 type InviteType = "debts" | "financial-goals" | "accounts";
 
@@ -31,14 +33,7 @@ type Props = {
   mutate?: () => void;
 };
 
-export default function ChangeMemberRoleDialog({
-  isOpen,
-  setIsOpen,
-  type,
-  id,
-  userId,
-  mutate,
-}: Props) {
+export function ChangeMemberRoleDialog({ isOpen, setIsOpen, type, id, userId, mutate }: Props) {
   const t = useTranslations("INVITE_MEMBER");
   const { toast } = useToast();
   const { roles, loading, handleSubmit, formData, setFormData } = useDataForChangeRole({

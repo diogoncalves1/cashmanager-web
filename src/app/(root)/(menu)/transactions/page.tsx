@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import React from "react";
 
-import PageBreadcrumb from "@/components/common/PageBreadCrumb";
-import TransactionsContainer from "@/features/transactions/components/containers/TransactionsContainer";
+import PageBreadcrumb from "@/components/ui/PageBreadCrumb";
+import { TransactionsContainer } from "@/features/transactions";
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 

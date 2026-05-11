@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Dialog,
   DialogContent,
@@ -7,7 +9,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { onMarkPaidFinancialGoal } from "@/features/financial-goals/api/financial-goal.api";
+import { onMarkPaidFinancialGoal } from "@/features/financial-goals/server";
 import { useTranslations } from "next-intl";
 
 type Props = {
@@ -17,7 +19,7 @@ type Props = {
   selectedId: string;
 };
 
-export default function MarkCompletedGoalTransactionDialog({
+export function MarkCompletedGoalTransactionDialog({
   isConfirmDialogOpen,
   setIsConfirmOpen,
   mutate,

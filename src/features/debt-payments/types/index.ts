@@ -43,3 +43,8 @@ export interface DebtPayment {
 
   description: string;
 }
+
+export type MyPagination = {
+  pageIndex: number;
+  pageSize: number;
+};

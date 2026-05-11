@@ -9,13 +9,13 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { onDeleteDebtPayment } from "@/features/debt-payments/api/debt-payment.api";
+import { DebtPayment } from "@/features/debt-payments";
+import { onDeleteDebtPayment } from "@/features/debt-payments/server";
 import { useTranslations } from "next-intl";
-import { DebtPayment } from "@/features/debt-payments/types/index";
 import { Table as ReactTable } from "@tanstack/react-table";
-import { MyPagination } from "@/features/transactions/types";
+import { MyPagination } from "@/features/transactions";
 import { useState } from "react";
-import { useToast } from "@/hooks/useToast";
+import { useToast } from "@/shared/hooks/useToast";
 
 type Props = {
   isDeleteDialogOpen: boolean;
@@ -26,7 +26,7 @@ type Props = {
   pagination?: MyPagination;
 };
 
-export default function DeletePaymentDialog({
+export function DeletePaymentDialog({
   isDeleteDialogOpen,
   setIsDeleteOpen,
   mutate,

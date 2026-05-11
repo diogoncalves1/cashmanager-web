@@ -18,7 +18,7 @@ import {
   Home,
   Coins,
 } from "lucide-react";
-import { onLogout } from "@/services/auth";
+import { onLogout } from "@/features/auth";
 import { SwalToast } from "@/components/swal/SwalToast";
 import { useTranslations } from "next-intl";
 

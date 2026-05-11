@@ -1,4 +1,4 @@
-export default function GoalsListFail() {
+export function GoalsListFail() {
   return (
     <div className="text-center py-16">
       <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-muted flex items-center justify-center">

@@ -2,10 +2,10 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import { ApexOptions } from "apexcharts";
-import ChartTab from "@/components/common/ChartTab";
+import ChartTab from "@/components/ui/ChartTab";
 import dynamic from "next/dynamic";
 import useSWR from "swr";
-import { fetcher } from "@/lib/fetcher";
+import { fetcher } from "@/shared/fetcher";
 import { useTranslations } from "next-intl";
 import { CashFlowChartLoading } from "@/features/dashboard";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";

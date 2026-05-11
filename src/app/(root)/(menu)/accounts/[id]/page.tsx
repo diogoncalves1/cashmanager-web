@@ -1,6 +1,6 @@
-import AccountDetailsContainer from "@/features/accounts/components/containers/AccountDetailsContainer";
-import PageBreadcrumb from "@/components/common/PageBreadCrumb";
-import { AccountDetailsProvider } from "@/features/accounts/state/account-details.context";
+import { AccountDetailsContainer } from "@/features/accounts";
+import PageBreadcrumb from "@/components/ui/PageBreadCrumb";
+import { AccountDetailsProvider } from "@/features/accounts";
 import { getTranslations } from "next-intl/server";
 import { Metadata } from "next";
 

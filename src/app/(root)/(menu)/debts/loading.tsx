@@ -1,4 +1,4 @@
-import PageBreadcrumb from "@/components/common/PageBreadCrumb";
+import PageBreadcrumb from "@/components/ui/PageBreadCrumb";
 import { AppLink } from "@/components/ui/button/AppLink";
 import { Plus } from "lucide-react";
 import { useTranslations } from "next-intl";

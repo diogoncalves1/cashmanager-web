@@ -2,14 +2,14 @@
 import React, { useState } from "react";
 import { Dropdown } from "../ui/dropdown/Dropdown";
 import { DropdownItem } from "../ui/dropdown/DropdownItem";
-import { User } from "@/types/user";
-import { onLogout } from "@/services/auth";
+import { User } from "@/shared/types/user";
+import { onLogout } from "@/features/auth";
 import { SwalToast } from "../swal/SwalToast";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { LucideUserCog } from "lucide-react";
-import { cn, getUserColor, getUserInitials } from "@/lib/utils";
+import { cn, getUserColor, getUserInitials } from "@/shared/utils";
 
 type Props = {
   user: User | null;

@@ -1,4 +1,4 @@
-import PageBreadcrumb from "@/components/common/PageBreadCrumb";
+import PageBreadcrumb from "@/components/ui/PageBreadCrumb";
 import SettingsForm from "./components/SettingsForm";
 import { useTranslations } from "next-intl";
 

@@ -10,8 +10,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { useToast } from "@/hooks/useToast";
-import { onConfirmTransaction } from "@/features/transactions/api/transaction.api";
+import { useToast } from "@/shared/hooks/useToast";
+import { onConfirmTransaction } from "@/features/transactions/server";
 import { useTranslations } from "next-intl";
 
 interface ConfirmTransactionDialogProps {

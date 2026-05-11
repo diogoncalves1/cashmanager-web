@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Dialog,
   DialogContent,
@@ -16,13 +18,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useState } from "react";
-import { useDataForInvite } from "@/features/invitations/hooks/useDataForInvite";
+import { useDataForInvite } from "@/features/invitations/server";
 import { useTranslations } from "next-intl";
 import { SwalToast } from "@/components/swal/SwalToast";
-import { Account } from "@/features/accounts/types";
-import { Debt } from "@/features/debts/types";
-import { FinancialGoal } from "@/features/financial-goals/types";
-import { toast } from "@/hooks/useToast";
+import { Account } from "@/features/accounts";
+import { Debt } from "@/features/debts";
+import { FinancialGoal } from "@/features/financial-goals";
+import { toast } from "@/shared/hooks/useToast";
 
 type InviteType = "debts" | "financial-goals" | "accounts";
 
@@ -34,13 +36,7 @@ type Props = {
   mutate?: () => void;
 };
 
-export default function InviteMemberDialog({
-  isInviteOpen,
-  setIsInviteOpen,
-  type,
-  id,
-  mutate,
-}: Props) {
+export function InviteMemberDialog({ isInviteOpen, setIsInviteOpen, type, id, mutate }: Props) {
   const t = useTranslations("INVITE_MEMBER");
   const { roles, friends, loading, handleSubmit, formData, setFormData, subjects } =
     useDataForInvite({

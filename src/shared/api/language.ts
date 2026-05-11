@@ -1,5 +1,5 @@
-import { ResponseData } from "@/lib/api/api-client";
-import { Language } from "@/types/language";
+import { ResponseData } from "@/shared/api/api-client";
+import { Language } from "@/shared/types/language";
 
 export async function getLanguages(): Promise<ResponseData<Language[]>> {
   const res = await fetch(`/api/languages`, {

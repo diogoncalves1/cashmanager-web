@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Dialog,
   DialogContent,
@@ -9,9 +11,9 @@ import {
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { onLeaveSuject } from "@/features/invitations/api/invitation.api";
+import { onLeaveSuject } from "@/features/invitations/server";
 import { useRouter } from "next/navigation";
-import { useToast } from "@/hooks/useToast";
+import { useToast } from "@/shared/hooks/useToast";
 
 type InviteType = "debts" | "financial-goals" | "accounts";
 
@@ -24,7 +26,7 @@ type Props = {
   mutate?: () => void;
 };
 
-export default function LeaveSubjectDialog({ isOpen, setIsOpen, type, goBack, id, mutate }: Props) {
+export function LeaveSubjectDialog({ isOpen, setIsOpen, type, goBack, id, mutate }: Props) {
   const t = useTranslations("INVITE_MEMBER");
   const { toast } = useToast();
   const router = useRouter();

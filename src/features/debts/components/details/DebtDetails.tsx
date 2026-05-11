@@ -9,24 +9,25 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { formatDate } from "@/lib/utils";
+import { formatDate } from "@/shared/utils";
 import { useTranslations } from "next-intl";
-import TableContainer from "@/features/debt-payments/components/containers/TableContainer";
 import Link from "next/link";
-import UsersTab from "./UsersTab";
-import StatusBadge from "@/features/debts/components/cards/StatusBadge";
 import ActivityTimeline from "@/components/ui/timeline/ActivityTimeline";
-import { NewDebtPaymentsButton } from "@/features/debt-payments/components/actions/NewDebtPaymentsButton";
+import { NewDebtPaymentsButton, TableContainer } from "@/features/debt-payments";
 import { Calendar, Check, Clock4Icon, DoorOpen, Edit, Trash } from "lucide-react";
-import { useDebtDetailsContext } from "@/features/debts/state/debt-details.context";
 import { useEffect, useState } from "react";
-import DeleteDebtDialog from "@/features/debts/components/dialogs/DeleteDebtDialog";
-import { useAuth } from "@/context/AuthContext";
-import LeaveSubjectDialog from "@/features/invitations/components/dialogs/LeaveSubjectDialog";
-import MarkDebtPaidDialog from "@/features/debts/components/dialogs/MarkDebtPaidDialog";
-import { Debt } from "@/features/debts/types";
+import {
+  DeleteDebtDialog,
+  StatusBadge,
+  MarkDebtPaidDialog,
+  Debt,
+  UsersTab,
+  useDebtDetailsContext,
+} from "@/features/debts";
+import { useAuth } from "@/features/auth";
+import { LeaveSubjectDialog } from "@/features/invitations";
 import useSWR from "swr";
-import { fetcher } from "@/lib/fetcher";
+import { fetcher } from "@/shared/fetcher";
 import { useRouter } from "next/navigation";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -34,7 +35,7 @@ type DebtDetailsProps = {
   id: string;
 };
 
-export default function DebtDetails({ id }: DebtDetailsProps) {
+export function DebtDetails({ id }: DebtDetailsProps) {
   const monthsT = useTranslations("MONTHS");
   const t = useTranslations("DEBTS");
   const { user } = useAuth();

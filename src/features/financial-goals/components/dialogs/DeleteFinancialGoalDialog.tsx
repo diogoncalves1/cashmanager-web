@@ -9,10 +9,10 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { onDeleteFinancialGoal } from "@/features/financial-goals/api/financial-goal.api";
+import { onDeleteFinancialGoal } from "@/features/financial-goals/server";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
-import { useToast } from "@/hooks/useToast";
+import { useToast } from "@/shared/hooks/useToast";
 import { useState } from "react";
 
 type Props = {
@@ -22,7 +22,7 @@ type Props = {
   goBack?: boolean;
 };
 
-const DeleteFinancialGoalDialog = ({
+export const DeleteFinancialGoalDialog = ({
   isDeleteOpen,
   setIsDeleteOpen,
   selectedId,
@@ -70,5 +70,3 @@ const DeleteFinancialGoalDialog = ({
     </Dialog>
   );
 };
-
-export default DeleteFinancialGoalDialog;

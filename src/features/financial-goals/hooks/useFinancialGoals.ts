@@ -1,6 +1,6 @@
-import { FinancialGoal } from "@/features/financial-goals/types";
 import { useCallback, useEffect, useState } from "react";
-import { getAllFinancialGoals } from "@/features/financial-goals/api/financial-goal.api";
+import { FinancialGoal } from "@/features/financial-goals";
+import { getAllFinancialGoals } from "@/features/financial-goals/server";
 
 interface Filters {
   search?: string;

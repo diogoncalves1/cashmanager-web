@@ -22,10 +22,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { Account, getAccountTypes, AccountFormData } from "@/features/accounts/types";
-import { useAccountForm } from "@/features/accounts/hooks/useAccountForm";
-import { toast } from "@/hooks/useToast";
-import { Currency } from "@/types/currency";
+import { Account, getAccountTypes, AccountFormData } from "@/features/accounts";
+import { useAccountForm } from "@/features/accounts/server";
+import { toast } from "@/shared/hooks/useToast";
+import { Currency } from "@/shared/types/currency";
 import { useTranslations } from "next-intl";
 
 interface FormAccountDialogProps {

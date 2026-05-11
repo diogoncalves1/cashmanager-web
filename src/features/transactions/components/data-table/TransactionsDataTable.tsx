@@ -39,19 +39,22 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Transaction, MyPagination } from "@/features/transactions/types";
-import { iconMap } from "@/types/category";
-import FormTransactionDialog from "@/features/transactions/components/dialogs/FormTransactionDialog";
+import {
+  Transaction,
+  MyPagination,
+  FormTransactionDialog,
+  DeleteTransactionDialog,
+  ConfirmTransactionDialog,
+} from "@/features/transactions";
+import { iconMap } from "@/shared/types/category";
 import Link from "next/link";
-import { DeleteTransactionDialog } from "@/features/transactions/components/dialogs/DeleteTransactionDialog";
-import { cn, formatDate, getUserColor, getUserInitials } from "@/lib/utils";
+import { cn, formatDate, getUserColor, getUserInitials } from "@/shared/utils";
 import { useTranslations } from "next-intl";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { useMemo } from "react";
-import { AccountType } from "@/features/accounts/types";
+import { AccountType } from "@/features/accounts";
 import DataTable from "@/components/tables/DataTable";
 import { DataTablePagination } from "@/components/tables/DataTablePagination";
-import { ConfirmTransactionDialog } from "@/features/transactions/components/dialogs/ConfirmTransactionDialog";
 
 type DataTableProps = {
   accountId?: string;
