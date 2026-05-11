@@ -4,7 +4,7 @@ import { fetcher } from "@/shared/fetcher";
 import { ColumnFiltersState, SortingState } from "@tanstack/react-table";
 import React, { useCallback, useEffect, useState } from "react";
 import useSWR from "swr";
-import { TransactionStatus } from "@/features/transactions/types";
+import { TransactionStatus } from "@/features/transactions";
 import { PaymentsFilters, DebtPaymentsDataTable, MyPagination } from "@/features/debt-payments";
 
 type Props = {

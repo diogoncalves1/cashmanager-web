@@ -13,7 +13,7 @@ import { DebtPayment } from "@/features/debt-payments";
 import { onDeleteDebtPayment } from "@/features/debt-payments/server";
 import { useTranslations } from "next-intl";
 import { Table as ReactTable } from "@tanstack/react-table";
-import { MyPagination } from "@/features/transactions/types";
+import { MyPagination } from "@/features/transactions";
 import { useState } from "react";
 import { useToast } from "@/shared/hooks/useToast";
 

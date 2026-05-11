@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import useSWR from "swr";
 import { useRouter } from "next/navigation";
 import { fetcher } from "@/shared/fetcher";
-import { TransactionStatus, TransactionType } from "@/features/transactions/types";
+import { TransactionStatus, TransactionType } from "@/features/transactions";
 import { AccountBasic } from "@/features/accounts";
 import { getAccountsBasic } from "@/features/accounts/server";
 

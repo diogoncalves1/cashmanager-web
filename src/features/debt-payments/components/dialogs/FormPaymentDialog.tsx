@@ -19,7 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { TransactionStatus } from "@/features/transactions/types";
+import { TransactionStatus } from "@/features/transactions";
 import { useToast } from "@/shared/hooks/useToast";
 import { AccountBasic } from "@/features/accounts";
 import { DatePicker } from "@/shared/ui/date-picker";

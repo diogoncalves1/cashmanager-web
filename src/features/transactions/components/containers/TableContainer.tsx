@@ -4,10 +4,14 @@ import { fetcher } from "@/shared/fetcher";
 import { ColumnFiltersState, SortingState } from "@tanstack/react-table";
 import React, { useCallback, useEffect, useState } from "react";
 import useSWR from "swr";
-import { TransactionsDataTable } from "@/features/transactions/components/data-table/TransactionsDataTable";
-import { MyPagination, TransactionStatus, TransactionType } from "@/features/transactions/types";
-import { TransactionsFilters } from "@/features/transactions/components/filters/TransactionFilters";
-import { TransactionsSummary } from "@/features/transactions/components/summary/TransactionsSummary";
+import {
+  TransactionsDataTable,
+  MyPagination,
+  TransactionStatus,
+  TransactionType,
+  TransactionsSummary,
+  TransactionsFilters,
+} from "@/features/transactions";
 
 type Props = {
   userId?: string;
@@ -16,7 +20,7 @@ type Props = {
   includeSummary?: boolean;
 };
 
-const TableContainer = ({ userId, accountId, load, includeSummary = true }: Props) => {
+export const TableContainer = ({ userId, accountId, load, includeSummary = true }: Props) => {
   const [sorting, setSorting] = React.useState<SortingState>([{ id: "date", desc: true }]);
   // Filters
   const [search, setSearch] = useState("");
@@ -220,5 +224,3 @@ const TableContainer = ({ userId, accountId, load, includeSummary = true }: Prop
     </div>
   );
 };
-
-export default TableContainer;
