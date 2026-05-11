@@ -20,10 +20,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/shared/utils";
-import InviteMemberButton from "@/features/invitations/components/actions/InviteMemberButton";
+import {
+  InviteMemberButton,
+  ChangeMemberRoleDialog,
+  RemoveMemberDialog,
+} from "@/features/invitations";
 import { useTranslations } from "next-intl";
-import ChangeMemberRoleDialog from "@/features/invitations/components/dialogs/ChangeMemberRoleDialog";
-import RemoveMemberDialog from "@/features/invitations/components/dialogs/RemoveMemberDialog";
 import { useState } from "react";
 import { useAuth } from "@/features/auth";
 

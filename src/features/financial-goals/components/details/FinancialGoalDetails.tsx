@@ -34,11 +34,10 @@ import {
   PlayCircle,
   Trash2Icon,
 } from "lucide-react";
-import InviteMemberButton from "@/features/invitations/components/actions/InviteMemberButton";
+import { InviteMemberButton, LeaveSubjectDialog } from "@/features/invitations";
 import ActivityTimeline from "@/components/ui/timeline/ActivityTimeline";
 import { UsersTable } from "@/features/financial-goals";
 import { useAuth } from "@/features/auth";
-import LeaveSubjectDialog from "@/features/invitations/components/dialogs//LeaveSubjectDialog";
 import { TableContainer, NewTransactionButton } from "@/features/financial-goal-transactions";
 
 type FinancialGoalDetailsProps = {

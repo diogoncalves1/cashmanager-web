@@ -23,13 +23,15 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn, getUserColor, getUserInitials } from "@/shared/utils";
 import { User } from "@/shared/types/user";
-import InviteMemberButton from "@/features/invitations/components/actions/InviteMemberButton";
 import { Account } from "@/features/accounts";
 import { useAuth } from "@/features/auth";
-import ChangeMemberRoleDialog from "@/features/invitations/components/dialogs/ChangeMemberRoleDialog";
-import RemoveMemberDialog from "@/features/invitations/components/dialogs/RemoveMemberDialog";
 import { useAccountDetailsContext } from "@/features/accounts";
-import { onCancelInvite } from "@/features/invitations/api/invitation.api";
+import {
+  InviteMemberButton,
+  RemoveMemberDialog,
+  ChangeMemberRoleDialog,
+} from "@/features/invitations";
+import { onCancelInvite } from "@/features/invitations/server";
 import { useToast } from "@/shared/hooks/useToast";
 import { useTranslations } from "next-intl";
 

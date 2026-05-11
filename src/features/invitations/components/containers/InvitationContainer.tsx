@@ -3,14 +3,20 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Send, Mail, Clock, Timer } from "lucide-react";
-import { useInvitationStats } from "@/features/invitations/hooks/useInvitationStats";
-import InvitationContainerLoading from "./InvitationContainerLoading";
-import InvitesList from "@/features/invitations/components/lists/InvitesList";
-import ReceivedInvitesList from "@/features/invitations/components/lists/ReceivedInvitesList";
-import InviteMemberButton from "@/features/invitations/components/actions/InviteMemberButton";
+import {
+  InvitationContainerLoading,
+  InvitesList,
+  ReceivedInvitesList,
+  InviteMemberButton,
+} from "@/features/invitations";
+import { useInvitationStats } from "@/features/invitations/server";
 import { useTranslations } from "next-intl";
 
-const InvitationContainer = ({ type }: { type: "accounts" | "debts" | "financial-goals" }) => {
+export const InvitationContainer = ({
+  type,
+}: {
+  type: "accounts" | "debts" | "financial-goals";
+}) => {
   const { stats, loading, setLoad, load } = useInvitationStats(type);
   const t = useTranslations("INVITE_MEMBER");
 
@@ -123,5 +129,3 @@ const InvitationContainer = ({ type }: { type: "accounts" | "debts" | "financial
     </div>
   );
 };
-
-export default InvitationContainer;

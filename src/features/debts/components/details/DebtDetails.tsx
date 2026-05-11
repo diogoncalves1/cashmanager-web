@@ -25,7 +25,7 @@ import {
   useDebtDetailsContext,
 } from "@/features/debts";
 import { useAuth } from "@/features/auth";
-import LeaveSubjectDialog from "@/features/invitations/components/dialogs/LeaveSubjectDialog";
+import { LeaveSubjectDialog } from "@/features/invitations";
 import useSWR from "swr";
 import { fetcher } from "@/shared/fetcher";
 import { useRouter } from "next/navigation";

@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 
-const InvitationContainerLoading = () => {
+export const InvitationContainerLoading = () => {
   const t = useTranslations("INVITE_MEMBER");
   return (
     <div className="grid grid-cols-12 p-2 md:p-6 gap-4 md:gap-6">
@@ -47,5 +47,3 @@ const InvitationContainerLoading = () => {
     </div>
   );
 };
-
-export default InvitationContainerLoading;

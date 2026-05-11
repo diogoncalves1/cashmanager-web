@@ -44,7 +44,7 @@ import { useAccountDetailsContext } from "@/features/accounts";
 import { useTranslations } from "next-intl";
 import { AccountUsersSection } from "@/features/accounts";
 import { useAuth } from "@/features/auth";
-import LeaveSubjectDialog from "@/features/invitations/components/dialogs/LeaveSubjectDialog";
+import { LeaveSubjectDialog } from "@/features/invitations";
 
 const accountTypeConfig: Record<AccountType, { icon: typeof Building2; className: string }> = {
   bank_account: {
