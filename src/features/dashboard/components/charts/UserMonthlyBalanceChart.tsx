@@ -1,108 +1,25 @@
 "use client";
 
-import { ApexOptions } from "apexcharts";
 import dynamic from "next/dynamic";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { MonthlyBalanceChartLoading } from "@/features/dashboard";
-import { useTranslations } from "next-intl";
+import {
+  MonthlyBalanceChartLoading,
+  MonthlyDataItem,
+  MonthMap,
+  useMonthlyBalanceChart,
+  formatMonthLabel,
+} from "@/features/dashboard";
 import { BarChart3 } from "lucide-react";
-import { useState, useMemo } from "react";
 import { cn, formatCurrency } from "@/shared/utils";
 
 const ReactApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-// ─── Types ────────────────────────────────────────────────────────────────────
-
-interface MonthlyDataItem {
-  balance: number;
-  monthYear: string;
-  revenues?: number;
-  expenses?: number;
-}
+// ─── Props ────────────────────────────────────────────────────────────────────
 
 interface UserMonthlyBalanceChartProps {
   isLoading: boolean;
   userData?: MonthlyDataItem[];
   userTotal: string;
-}
-
-type Period = "3m" | "ytd" | "12m" | "all";
-
-type MonthMap = { [key: number]: string };
-
-// ─── Helpers ──────────────────────────────────────────────────────────────────
-
-function formatMonthLabel(raw: string, months: MonthMap): string {
-  const trimmed = raw.trim();
-
-  // Format: "MM YYYY"
-  const mmYyyy = trimmed.split(" ");
-  if (mmYyyy.length === 2) {
-    const monthIndex = Math.max(0, Math.min(11, Number(mmYyyy[0]) - 1));
-    if (!isNaN(monthIndex) && mmYyyy[1]) return `${months[monthIndex]} ${mmYyyy[1]}`;
-  }
-
-  // Fallback: "YYYY-MM" or "YYYY-MM-DD"
-  const parts = trimmed.split("-");
-  if (parts.length >= 2) {
-    const monthIndex = Math.max(0, Math.min(11, Number(parts[1]) - 1));
-    if (!isNaN(monthIndex) && parts[0]) return `${months[monthIndex]} ${parts[0]}`;
-  }
-
-  return trimmed;
-}
-
-function filterByPeriod(data: MonthlyDataItem[], period: Period): MonthlyDataItem[] {
-  if (period == "all") return data;
-
-  const months = period === "3m" ? 3 : period == "12m" ? 12 : new Date().getMonth() + 1;
-  return data.slice(-months);
-}
-
-function buildChartOptions(categories: string[], userTotal: string | undefined): ApexOptions {
-  return {
-    colors: ["#12b76a", "#f04438", "#465fff"],
-    chart: {
-      fontFamily: "Outfit, sans-serif",
-      type: "bar",
-      height: 590,
-      toolbar: { show: false },
-      stacked: false,
-    },
-    plotOptions: {
-      bar: {
-        horizontal: false,
-        columnWidth: "55%",
-        borderRadius: 4,
-        borderRadiusApplication: "end",
-      },
-    },
-    dataLabels: { enabled: false },
-    stroke: { show: true, width: 2, colors: ["transparent"] },
-    xaxis: {
-      categories,
-      axisBorder: { show: false },
-      axisTicks: { show: false },
-      labels: {
-        style: { fontSize: "11px", cssClass: "text-gray-400 dark:text-gray-500" },
-      },
-    },
-    yaxis: { show: false },
-    grid: {
-      yaxis: { lines: { show: true } },
-      borderColor: "rgba(0,0,0,0.06)",
-      strokeDashArray: 3,
-    },
-    fill: { opacity: [0.2, 0.2, 0.85] },
-    legend: { show: false },
-    tooltip: {
-      shared: true,
-      intersect: false,
-      y: {
-        formatter: (val: number) => formatCurrency(val, userTotal, false),
-      },
-    },
-  };
 }
 
 // ─── Summary row ──────────────────────────────────────────────────────────────
@@ -161,72 +78,20 @@ export function UserMonthlyBalanceChart({
   userData,
   userTotal,
 }: UserMonthlyBalanceChartProps) {
-  const t = useTranslations("HOME");
-  const tMonths = useTranslations("MONTHS");
-  const [period, setPeriod] = useState<Period>("ytd");
+  const {
+    t,
+    period,
+    setPeriod,
+    MONTHS,
+    PERIODS,
+    filteredData,
+    options,
+    series,
+    chartContainerRef,
+  } = useMonthlyBalanceChart({ userData, userTotal });
 
-  const MONTHS: MonthMap = useMemo(
-    () => ({
-      0: tMonths("JAN"),
-      1: tMonths("FEB"),
-      2: tMonths("MAR"),
-      3: tMonths("APR"),
-      4: tMonths("MAY"),
-      5: tMonths("JUN"),
-      6: tMonths("JUL"),
-      7: tMonths("AUG"),
-      8: tMonths("SEP"),
-      9: tMonths("OCT"),
-      10: tMonths("NOV"),
-      11: tMonths("DEC"),
-    }),
-    [tMonths]
-  );
-
-  const PERIODS: { value: Period; label: string }[] = [
-    { value: "3m", label: "3M" },
-    { value: "ytd", label: "YTD" },
-    { value: "12m", label: "12M" },
-    { value: "all", label: "ALL" },
-  ];
-
-  const filteredData = useMemo(
-    () => (userData ? filterByPeriod(userData, period) : []),
-    [userData, period]
-  );
-
-  const categories = useMemo(
-    () => filteredData.map((item) => formatMonthLabel(String(item.monthYear ?? ""), MONTHS)),
-    [filteredData, MONTHS]
-  );
-
-  const options = useMemo(() => buildChartOptions(categories, userTotal), [categories, userTotal]);
-
-  const series = useMemo(
-    () => [
-      {
-        name: t("REVENUE"),
-        type: "bar" as const,
-        data: filteredData.map((d) => d.revenues ?? 0),
-      },
-      {
-        name: t("EXPENSE"),
-        type: "bar" as const,
-        data: filteredData.map((d) => d.expenses ?? 0),
-      },
-      {
-        name: t("BALANCE"),
-        type: "bar" as const,
-        data: filteredData.map((d) => d.balance),
-      },
-    ],
-    [filteredData, t]
-  );
-
-  // ── Loading state ──
   if (isLoading) return <MonthlyBalanceChartLoading />;
 
-  // ── Empty state ──
   if (!userData?.length) {
     return (
       <Card className="col-span-12 xl:col-span-9 rounded-2xl border-0 shadow-sm">
@@ -247,7 +112,7 @@ export function UserMonthlyBalanceChart({
     <div className="col-span-12 xl:col-span-9">
       <div className="rounded-2xl border border-gray-200 bg-white px-5 pt-5 pb-5 dark:border-gray-800 dark:bg-white/[0.03] sm:px-6 sm:pt-6 overflow-hidden">
         {/* Header */}
-        <div className="flex items-center justify-between mb-1">
+        <div className="flex gap-2 items-start flex-col mb-1 sm:gap-0 sm:items-center sm:flex-row sm:justify-between">
           <h3 className="text-base font-semibold text-gray-800 dark:text-white/90">
             {t("MONTHLY_BALANCE")}
           </h3>
@@ -289,9 +154,15 @@ export function UserMonthlyBalanceChart({
         </div>
 
         {/* Chart */}
-        <div className="max-w-full overflow-x-auto custom-scrollbar">
+        <div ref={chartContainerRef} className="max-w-full overflow-x-auto custom-scrollbar">
           <div className="min-w-full">
-            <ReactApexChart options={options} series={series} type="bar" height={355} />
+            <ReactApexChart
+              options={options}
+              series={series}
+              type="bar"
+              height={355}
+              width="100%"
+            />
           </div>
         </div>
 
