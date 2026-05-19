@@ -1,6 +1,9 @@
 import { clsx, type ClassValue } from "clsx";
+import { formatDistanceToNow } from "date-fns";
+import { enUS, pt } from "date-fns/locale";
 import { useTranslations } from "next-intl";
 import { twMerge } from "tailwind-merge";
+import { User } from "./types/user";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -28,6 +31,17 @@ export function formatDate(dateString: string, t: ReturnType<typeof useTranslati
   if (month) return `${MONTHS[parseInt(month) - 1]} ${year}`;
   return year;
 }
+
+export function timeAgo(user: User, date: string): string {
+  const locales = {
+    "pt": pt,
+    "en": enUS
+};
+
+  return formatDistanceToNow(new Date(date), { 
+  addSuffix: true,
+  locale: locales[user.preferences?.lang as keyof typeof locales] 
+})}
 
 export function getUserInitials(name?: string): string {
   if (!name) return "?";

@@ -1,13 +1,14 @@
 // lib/api-client.ts
 const API_URL = process.env.NEXT_PUBLIC_API_BACKEND_URL;
 
-export type ResponseData<T> = {
+export type ResponseData<T, M = unknown> = {
   data: T;
   message: string;
   success: boolean;
   errors: unknown;
-  meta?: unknown;
+  meta?: M;
   recordsTotal?: number;
+  recordsFiltered?: number;
 };
 
 export type FetcherOptions = RequestInit & {
