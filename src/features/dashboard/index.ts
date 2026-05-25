@@ -11,3 +11,6 @@ export { IncomeExpensesMetrics } from "./components/metrics/IncomeExpensesMetric
 
 // goals
 export { MonthlyTarget } from "./components/goals/MonthlyTarget";
+
+export * from "./types";
+export * from "./hooks/useMonthlyBalanceChart"

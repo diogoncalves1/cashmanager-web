@@ -1606,5 +1606,10 @@
     "ERROR": "404 - Page not found",
     "DESCRIPTION": "We can’t seem to find the page you are looking for!",
     "BACK_TO_HOME": "Back to Home Page"
+  },
+
+  "NOTIFICATIONS": {
+    "NOTIFICATIONS": "Notifications",
+    "NO_NOTIFICATIONS": "No notifications"
   }
 }
