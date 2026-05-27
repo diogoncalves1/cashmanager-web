@@ -1559,7 +1559,7 @@
     "SIDEBAR_SETTINGS": "Settings",
     "SIDEBAR_LOGOUT": "Log Out",
     "SIDEBAR_COMPOUND_INTEREST_CALCULATOR": "Compound Interest Calc.",
-    "SIDEBAR_CURRENCY_CONVERTER": "Currency Converter",
+    "SIDEBAR_CURRENCY_CONVERTER": "Converter",
     "SIDEBAR_TOOLS": "Tools",
     "SIDEBAR_FRIENDS": "Friends",
     "SIDEBAR_PROFILE": "Profile",
@@ -1611,5 +1611,23 @@
   "NOTIFICATIONS": {
     "NOTIFICATIONS": "Notifications",
     "NO_NOTIFICATIONS": "No notifications"
+  },
+
+  "CONVERTER": {
+    "META_TITLE": "Cash Manager | Currency Converter",
+    "META_DESCRIPTION": "Convert currencies with Cash Manager's built-in currency converter tool.",
+
+    "CURRENCY_CONVERTER": "Currency Converter",
+    "CONVERTER_DESCRIPTION": "Convert between {count} currencies with real-time rates",
+    "FROM": "From",
+    "TO": "To",
+    "AMOUNT": "Amount",
+    "CONVERT": "Convert",
+    "CONVERTING": "Converting...",
+    "RESULT": "Result",
+    "ERROR_CONVERTING": "Error converting currency. Please try again.",
+    "QUICK_CONVERTER": "Quick Converter",
+    "POPULAR_PAIRS": "Popular Pairs",
+    "RECENT_CONVERSIONS": "Recent Conversions"
   }
 }
