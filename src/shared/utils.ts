@@ -34,14 +34,15 @@ export function formatDate(dateString: string, t: ReturnType<typeof useTranslati
 
 export function timeAgo(user: User, date: string): string {
   const locales = {
-    "pt": pt,
-    "en": enUS
-};
+    pt: pt,
+    en: enUS,
+  };
 
-  return formatDistanceToNow(new Date(date), { 
-  addSuffix: true,
-  locale: locales[user.preferences?.lang as keyof typeof locales] 
-})}
+  return formatDistanceToNow(new Date(date), {
+    addSuffix: true,
+    locale: locales[user.preferences?.lang as keyof typeof locales],
+  });
+}
 
 export function getUserInitials(name?: string): string {
   if (!name) return "?";
@@ -82,12 +83,29 @@ export function formatCurrency(
 }
 
 const userColors = [
-  "bg-blue-500/15 text-blue-400 ring-blue-500/20",
-  "bg-accent/15 text-accent-400 ring-accent-500/20",
-  "bg-violet-500/15 text-violet-400 ring-violet-500/20",
+  "bg-slate-500/15 text-slate-400 ring-slate-500/20",
+  "bg-gray-500/15 text-gray-400 ring-gray-500/20",
+  "bg-zinc-500/15 text-zinc-400 ring-zinc-500/20",
+  "bg-neutral-500/15 text-neutral-400 ring-neutral-500/20",
+  "bg-stone-500/15 text-stone-400 ring-stone-500/20",
+  "bg-red-500/15 text-red-400 ring-red-500/20",
+  "bg-orange-500/15 text-orange-400 ring-orange-500/20",
   "bg-amber-500/15 text-amber-400 ring-amber-500/20",
-  "bg-rose-500/15 text-rose-400 ring-rose-500/20",
+  "bg-yellow-500/15 text-yellow-400 ring-yellow-500/20",
+  "bg-lime-500/15 text-lime-400 ring-lime-500/20",
+  "bg-green-500/15 text-green-400 ring-green-500/20",
+  "bg-emerald-500/15 text-emerald-400 ring-emerald-500/20",
+  "bg-teal-500/15 text-teal-400 ring-teal-500/20",
   "bg-cyan-500/15 text-cyan-400 ring-cyan-500/20",
+  "bg-sky-500/15 text-sky-400 ring-sky-500/20",
+  "bg-accent/15 text-accent ring-accent/20",
+  "bg-blue-500/15 text-blue-400 ring-blue-500/20",
+  "bg-indigo-500/15 text-indigo-400 ring-indigo-500/20",
+  "bg-violet-500/15 text-violet-400 ring-violet-500/20",
+  "bg-purple-500/15 text-purple-400 ring-purple-500/20",
+  "bg-fuchsia-500/15 text-fuchsia-400 ring-fuchsia-500/20",
+  "bg-pink-500/15 text-pink-400 ring-pink-500/20",
+  "bg-rose-500/15 text-rose-400 ring-rose-500/20",
 ];
 
 export function getUserColor(name?: string): string {

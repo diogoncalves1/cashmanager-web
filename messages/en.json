@@ -1610,7 +1610,12 @@
 
   "NOTIFICATIONS": {
     "NOTIFICATIONS": "Notifications",
-    "NO_NOTIFICATIONS": "No notifications"
+    "NO_NOTIFICATIONS": "No notifications",
+    "TAB_ALL": "All",
+    "TAB_UNREAD": "Unread",
+    "SEE_ALL": "See All",
+    "MARK_AS_READ": "Mark as read",
+    "NEW": "New"
   },
 
   "CONVERTER": {
