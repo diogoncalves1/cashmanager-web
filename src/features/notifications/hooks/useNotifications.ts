@@ -13,14 +13,14 @@ export function useNotifications() {
   const [hasMore, setHasMore] = useState(true);
   const [isFetchingMore, setIsFetchingMore] = useState(false);
   const [extraNotifications, setExtraNotifications] = useState<Notification[]>([]);
-  const [countNotifications, setCountNotifications] = useState(1);
+  const [unreadCount, setUnreadCount] = useState(0);
 
   const { data: feed = [], isLoading } = useQuery({
     queryKey: ["notifications", "feed"],
     queryFn: async () => {
       const res = await notificationApi.getFeed({ page: 0, limit: PAGE_SIZE });
       setHasMore(res.data.length === PAGE_SIZE);
-      setCountNotifications(res.meta.count);
+      setUnreadCount(res.meta.count);
       return res.data as Notification[];
     },
   });
@@ -51,7 +51,7 @@ export function useNotifications() {
 
   return {
     notifications,
-    countNotifications,
+    unreadCount,
     isLoading,
     isFetchingMore,
     hasMore,

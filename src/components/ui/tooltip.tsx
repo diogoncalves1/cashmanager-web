@@ -1,28 +1,34 @@
-import { useState } from "react";
+"use client";
 
-type TooltipProps = {
-  text: string;
-  children: React.ReactNode;
-};
+import * as TooltipPrimitive from "@radix-ui/react-tooltip";
+import { cn } from "@/shared/utils";
 
-export function Tooltip({ text, children }: TooltipProps) {
-  const [visible, setVisible] = useState(false);
+const TooltipProvider = TooltipPrimitive.Provider;
+const Tooltip = TooltipPrimitive.Root;
+const TooltipTrigger = TooltipPrimitive.Trigger;
 
+function TooltipContent({
+  className,
+  sideOffset = 4,
+  ...props
+}: TooltipPrimitive.TooltipContentProps) {
   return (
-    <div className="relative inline-block">
-      <div
-        onMouseEnter={() => setVisible(true)}
-        onMouseLeave={() => setVisible(false)}
-        className="cursor-pointer"
-      >
-        {children}
-      </div>
-
-      {visible && (
-        <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-2 py-1 text-sm text-white bg-gray-700 rounded shadow-lg z-50 whitespace-nowrap">
-          {text}
-        </div>
-      )}
-    </div>
+    <TooltipPrimitive.Portal>
+      <TooltipPrimitive.Content
+        sideOffset={sideOffset}
+        className={cn(
+          "z-50 overflow-hidden rounded-md border border-gray-100 bg-white px-2.5 py-1.5 text-xs font-medium text-gray-700 shadow-sm",
+          "animate-in fade-in-0 zoom-in-95",
+          "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
+          "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2",
+          "data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+          "dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200",
+          className
+        )}
+        {...props}
+      />
+    </TooltipPrimitive.Portal>
   );
 }
+
+export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider };

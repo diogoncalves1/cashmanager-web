@@ -1611,7 +1611,12 @@
 
   "NOTIFICATIONS": {
     "NOTIFICATIONS": "Notificações",
-    "NO_NOTIFICATIONS": "Sem notificações"
+    "NO_NOTIFICATIONS": "Sem notificações",
+    "TAB_ALL": "Todas",
+    "TAB_UNREAD": "Não lidas",
+    "SEE_ALL": "Ver todas",
+    "MARK_ALL_READ": "Marcar todas como lidas",
+    "NEW": "Nova"
   },
 
   "CONVERTER": {
