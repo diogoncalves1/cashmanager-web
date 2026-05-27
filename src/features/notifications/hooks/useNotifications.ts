@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { notificationApi } from "../api/notification.api";
+import { Notification } from "../types";
 
 const PAGE_SIZE = 20;
 
@@ -11,30 +12,30 @@ export function useNotifications() {
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [isFetchingMore, setIsFetchingMore] = useState(false);
+  const [extraNotifications, setExtraNotifications] = useState<Notification[]>([]);
+  const [unreadCount, setUnreadCount] = useState(0);
 
-  const { data, isLoading } = useQuery({
+  const { data: feed = [], isLoading } = useQuery({
     queryKey: ["notifications", "feed"],
     queryFn: async () => {
       const res = await notificationApi.getFeed({ page: 0, limit: PAGE_SIZE });
       setHasMore(res.data.length === PAGE_SIZE);
-      return res.data;
+      setUnreadCount(res.meta.count);
+      return res.data as Notification[];
     },
   });
 
-  const [extraNotifications, setExtraNotifications] = useState<typeof data>([]);
-
-  const notifications = [...(data ?? []), ...(extraNotifications ?? [])];
-  const countNotifications = notifications.filter((n) => !n.readAt).length;
+  const notifications = [...feed, ...extraNotifications];
 
   const loadMore = useCallback(async () => {
     if (!hasMore || isFetchingMore) return;
 
     setIsFetchingMore(true);
     try {
-      const res = await notificationApi.getFeed({ page: page, limit: PAGE_SIZE });
-      setExtraNotifications((prev) => [...(prev ?? []), ...res.data]);
-      setPage(page + 1);
+      const res = await notificationApi.getFeed({ page, limit: PAGE_SIZE });
+      setExtraNotifications((prev) => [...prev, ...res.data]);
       setHasMore(res.data.length === PAGE_SIZE);
+      setPage((prev) => prev + 1);
     } finally {
       setIsFetchingMore(false);
     }
@@ -50,7 +51,7 @@ export function useNotifications() {
 
   return {
     notifications,
-    countNotifications,
+    unreadCount,
     isLoading,
     isFetchingMore,
     hasMore,

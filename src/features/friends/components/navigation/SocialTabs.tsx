@@ -11,9 +11,12 @@ import {
   ReceivedRequests,
   BlockedUsers,
 } from "@/features/friends";
+import { useSearchParams } from "next/navigation";
 
 export function SocialTabs() {
   const t = useTranslations("FRIENDS");
+  const searchParams = useSearchParams();
+  const initialTab = searchParams.get("tab") || "friends";
 
   const { error, stats } = useFriendStats();
 
@@ -34,7 +37,7 @@ export function SocialTabs() {
       <div className="mb-8">
         <AddFriend />
       </div>
-      <Tabs defaultValue="friends" className="space-y-6">
+      <Tabs defaultValue={initialTab} className="space-y-6">
         <TabsList>
           <TabsTrigger value="friends" className="gap-2">
             <Users className="size-4" />
