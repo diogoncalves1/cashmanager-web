@@ -19,10 +19,10 @@ export default function SocialPage() {
   return (
     <>
       <PageBreadcrumb pageTitle={t("FRIENDS")} breadcrumb={[{ title: t("FRIENDS") }]} />
-      <div className="space-y-8 max-w-6xl mx-auto px-6 py-10">
+      <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
         <div>
           <h1 className="text-3xl font-bold tracking-tight text-balance">{t("FRIENDS")}</h1>
-          <p className="mt-2 text-muted-foreground">{t("FRIENDS_TEXT")}</p>
+          <p className="mt-2 text-muted-foreground max-w-sm md:max-w-7xl">{t("FRIENDS_TEXT")}</p>
         </div>
 
         <FriendsProvider>
