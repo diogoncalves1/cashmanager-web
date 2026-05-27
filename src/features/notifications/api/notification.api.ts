@@ -45,4 +45,17 @@ export const notificationApi = {
     const response = await res.json();
     return response;
   },
+  read: async (id: string): Promise<ResponseData<Notification>> => {
+    const url = buildUrl(`/api/notifications/${id}/read`);
+
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (!res.ok) throw new Error("Failed to fetch notifications");
+
+    const response = await res.json();
+    return response;
+  },
 };
