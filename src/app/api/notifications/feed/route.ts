@@ -27,5 +27,6 @@ export async function GET(req: NextRequest) {
     data: data.data,
     url,
     params,
+    meta: data.meta,
   });
 }

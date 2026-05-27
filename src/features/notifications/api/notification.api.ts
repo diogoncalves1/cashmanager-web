@@ -12,6 +12,9 @@ export interface GetFeedResponse {
   total: number;
   page: number;
   totalPages: number;
+  meta: {
+    count: number;
+  };
 }
 
 export const notificationApi = {

@@ -16,8 +16,6 @@ import { useSearchParams } from "next/navigation";
 export function SocialTabs() {
   const t = useTranslations("FRIENDS");
   const searchParams = useSearchParams();
-  console.log(searchParams.get("tab"));
-  console.log("URL Params:", Object.fromEntries(searchParams.entries()));
   const initialTab = searchParams.get("tab") || "friends";
 
   const { error, stats } = useFriendStats();
