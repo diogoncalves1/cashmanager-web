@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useSidebar } from "@/context/SidebarContext";
-import { HorizontaLDots } from "@/icons/index";
+import { HorizontaLDots } from "@/icons";
 import {
   ChevronRight,
   Wallet,
@@ -16,7 +16,7 @@ import {
   Users,
   Home,
   Coins,
-  MoreVertical,
+  Bell,
 } from "lucide-react";
 import { onLogout, useAuth } from "@/features/auth";
 import { SwalToast } from "@/components/swal/SwalToast";
@@ -198,6 +198,12 @@ const AppSidebar: React.FC = () => {
         icon: <Users size={16} strokeWidth={1.75} />,
         name: t("SIDEBAR_FRIENDS"),
         path: "/friends",
+      },
+      {
+        icon: <Bell size={16} strokeWidth={1.75} />,
+        name: t("SIDEBAR_NOTIFICATIONS"),
+        path: "/notifications",
+        new: true,
       },
     ],
     [t]

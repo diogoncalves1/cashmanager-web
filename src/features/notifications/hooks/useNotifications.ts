@@ -49,6 +49,17 @@ export function useNotifications() {
     setHasMore(true);
   }, [queryClient]);
 
+  const read = useCallback(
+    async (id: string) => {
+      await notificationApi.read(id);
+      queryClient.invalidateQueries({ queryKey: ["notifications"] });
+      setExtraNotifications([]);
+      setPage(1);
+      setHasMore(true);
+    },
+    [queryClient]
+  );
+
   return {
     notifications,
     unreadCount,
@@ -57,5 +68,6 @@ export function useNotifications() {
     hasMore,
     loadMore,
     readAll,
+    read,
   };
 }
