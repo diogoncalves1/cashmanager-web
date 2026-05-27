@@ -81,6 +81,8 @@ export function useCurrencies() {
       const res = await getCurrencies();
 
       setCurrencies(res.data);
+      setFromCurrency(res.data.find((c) => c.code === "USD") || res.data[0]);
+      setToCurrency(res.data.find((c) => c.code === "EUR") || res.data[1]);
     } catch (err: unknown) {
       if (err instanceof Error) {
         console.error(err);

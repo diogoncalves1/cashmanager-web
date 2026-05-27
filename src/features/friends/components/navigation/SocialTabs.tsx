@@ -32,67 +32,76 @@ export function SocialTabs() {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="w-full">
       {/* Add Friend Search Section */}
       <div className="mb-8">
         <AddFriend />
       </div>
+
       <Tabs defaultValue={initialTab} className="space-y-6">
-        <TabsList>
-          <TabsTrigger value="friends" className="gap-2">
-            <Users className="size-4" />
-            {t("FRIENDS")}
+        <TabsList className="flex w-full">
+          <TabsTrigger
+            value="friends"
+            className="flex flex-1 items-center justify-center gap-1 md:gap-2 px-2 md:px-4"
+          >
+            <Users className="size-4 shrink-0" />
+            <span className="hidden sm:inline">{t("FRIENDS")}</span>
             {stats.friends > 0 && (
-              <span className="ml-1 flex size-5 items-center justify-center rounded-full bg-primary/10 text-xs text-primary">
+              <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs text-primary">
                 {stats.friends}
               </span>
             )}
           </TabsTrigger>
-          <TabsTrigger value="received" className="gap-2">
-            <Inbox className="size-4" />
-            {t("RECEIVED")}
+
+          <TabsTrigger
+            value="received"
+            className="flex flex-1 items-center justify-center gap-1 md:gap-2 px-2 md:px-4"
+          >
+            <Inbox className="size-4 shrink-0" />
+            <span className="hidden sm:inline">{t("RECEIVED")}</span>
             {stats.received > 0 && (
-              <span className="ml-1 flex size-5 items-center justify-center rounded-full bg-warning/10 text-xs text-warning">
+              <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-warning/10 text-xs text-warning">
                 {stats.received}
               </span>
             )}
           </TabsTrigger>
-          <TabsTrigger value="sent" className="gap-2">
-            <UserPlus className="size-4" />
-            {t("SENT")}
+
+          <TabsTrigger
+            value="sent"
+            className="flex flex-1 items-center justify-center gap-1 md:gap-2 px-2 md:px-4"
+          >
+            <UserPlus className="size-4 shrink-0" />
+            <span className="hidden sm:inline">{t("SENT")}</span>
             {stats.sent > 0 && (
-              <span className="ml-1 flex size-5 items-center justify-center rounded-full bg-muted text-xs text-muted-foreground">
+              <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-muted text-xs text-muted-foreground">
                 {stats.sent}
               </span>
             )}
           </TabsTrigger>
-          <TabsTrigger value="blocked" className="gap-2">
-            <ShieldOff className="size-4" />
-            {t("BLOCKED")}
+
+          <TabsTrigger
+            value="blocked"
+            className="flex flex-1 items-center justify-center gap-1 md:gap-2 px-2 md:px-4"
+          >
+            <ShieldOff className="size-4 shrink-0" />
+            <span className="hidden sm:inline">{t("BLOCKED")}</span>
             {stats.blocked > 0 && (
-              <span className="ml-1 flex size-5 items-center justify-center rounded-full bg-destructive/10 text-xs text-destructive">
+              <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-destructive/10 text-xs text-destructive">
                 {stats.blocked}
               </span>
             )}
           </TabsTrigger>
         </TabsList>
 
-        {/* Friends Tab */}
         <TabsContent value="friends" className="space-y-4">
           <FriendsList />
         </TabsContent>
-
-        {/* Received Tab */}
         <TabsContent value="received" className="space-y-3">
           <ReceivedRequests />
         </TabsContent>
-
-        {/* Sent Tab */}
         <TabsContent value="sent" className="space-y-3">
           <SentRequests />
         </TabsContent>
-
-        {/* Blocked Tab */}
         <TabsContent value="blocked" className="space-y-3">
           <BlockedUsers />
         </TabsContent>

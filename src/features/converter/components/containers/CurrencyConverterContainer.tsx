@@ -20,7 +20,7 @@ const CurrencyConverterContainer = () => {
 
   useEffect(() => {
     if (result) convert();
-  }, [fromCurrency, toCurrency, convert, result]);
+  }, [fromCurrency, toCurrency]);
 
   return (
     <div className="space-y-8">
