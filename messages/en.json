@@ -1577,6 +1577,7 @@
     "SIDEBAR_HOME": "Home",
     "SIDEBAR_MENU": "Menu",
     "SIDEBAR_INVITES": "Invites",
+    "SIDEBAR_NOTIFICATIONS": "Notifications",
 
     "HEADER_ACCOUNT_DETAILS": "Account Details",
 
@@ -1615,13 +1616,32 @@
     "TAB_UNREAD": "Unread",
     "SEE_ALL": "See All",
     "MARK_AS_READ": "Mark as read",
-    "NEW": "New"
+    "NEW": "New",
+
+    "SELECT_NOTIFICATION": "Select a notification",
+    "SELECT_NOTIFICATION_DESCRIPTION": "Choose a notification from the list to read it here",
+    "EMPTY_ALL": "No notifications",
+    "EMPTY_UNREAD": "No unread notifications",
+    "EMPTY_INVITES": "No invites",
+    "EMPTY_ALERTS": "No alerts",
+    "EMPTY_DESCRIPTION": "When you receive notifications, they will appear here",
+    "UNREAD": "unread",
+    "ALL_CAUGHT_UP": "You're all caught up",
+    "MARK_READ": "Mark as read",
+    "GO_TO_PAGE": "Go to page",
+    "CLOSE": "Close",
+    "SEARCH_PLACEHOLDER": "Search notifications...",
+    "TAB_INVITES": "Invites",
+    "TAB_ALERTS": "Alerts",
+    "NOTIFICATION_DETAILS": "Notification details",
+    "NOTIFICATION_DETAILS_DESCRIPTION": "View notification details"
   },
 
   "CONVERTER": {
     "META_TITLE": "Cash Manager | Currency Converter",
     "META_DESCRIPTION": "Convert currencies with Cash Manager's built-in currency converter tool.",
 
+    "CONVERTER": "Converter",
     "CURRENCY_CONVERTER": "Currency Converter",
     "CONVERTER_DESCRIPTION": "Convert between {count} currencies with real-time rates",
     "FROM": "From",

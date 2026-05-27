@@ -9,44 +9,8 @@ import { useAuth } from "@/features/auth";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { cn } from "@/shared/utils";
-
-// ─── Types ────────────────────────────────────────────────────────────────────
-
-type TabFilter = "all" | "unread";
-
-// ─── Avatar ───────────────────────────────────────────────────────────────────
-
-const AVATAR_COLORS = [
-  "bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-400",
-  "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400",
-  "bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-400",
-  "bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-400",
-  "bg-sky-100 text-sky-700 dark:bg-sky-900/40 dark:text-sky-400",
-];
-
-function getAvatarColor(str: string) {
-  const i = str.split("").reduce((acc, c) => acc + c.charCodeAt(0), 0);
-  return AVATAR_COLORS[i % AVATAR_COLORS.length];
-}
-
-function getInitials(title: string) {
-  return title
-    .split(" ")
-    .slice(0, 2)
-    .map((w) => w[0]?.toUpperCase() ?? "")
-    .join("");
-}
-
-const NotificationAvatar = ({ title }: { title: string }) => (
-  <div
-    className={cn(
-      "flex size-9 min-w-[36px] items-center justify-center rounded-full text-[11px] font-medium",
-      getAvatarColor(title)
-    )}
-  >
-    {getInitials(title)}
-  </div>
-);
+import { NotificationAvatar } from "./ui/NotificationAvatar";
+import { TabFilter } from "../types";
 
 // ─── Empty State ──────────────────────────────────────────────────────────────
 
@@ -67,8 +31,16 @@ export function NotificationDropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<TabFilter>("all");
 
-  const { notifications, unreadCount, isLoading, isFetchingMore, hasMore, loadMore, readAll } =
-    useNotifications();
+  const {
+    notifications,
+    unreadCount,
+    isLoading,
+    isFetchingMore,
+    hasMore,
+    loadMore,
+    readAll,
+    read,
+  } = useNotifications();
 
   // ── Infinite scroll sentinel ──────────────────────────────────────────────
 
@@ -99,8 +71,9 @@ export function NotificationDropdown() {
     toggleDropdown();
   };
 
-  const handleNotificationClick = (pathname: string) => {
+  const handleNotificationClick = (pathname: string, id: string, readAt: string) => {
     router.push(pathname);
+    if (!readAt) read(id);
     closeDropdown();
   };
 
@@ -197,7 +170,13 @@ export function NotificationDropdown() {
               {visibleNotifications.map((notification, key) => (
                 <li
                   key={key}
-                  onClick={() => handleNotificationClick(notification.pathname)}
+                  onClick={() =>
+                    handleNotificationClick(
+                      notification.pathname,
+                      notification.id,
+                      notification.readAt
+                    )
+                  }
                   className={cn(
                     "group relative flex cursor-pointer items-start gap-3 border-b border-gray-50 px-4 py-3 transition-colors last:border-0 hover:bg-gray-50 dark:border-gray-800 dark:hover:bg-white/5",
                     !notification.readAt && "bg-amber-50/50 dark:bg-amber-900/5"

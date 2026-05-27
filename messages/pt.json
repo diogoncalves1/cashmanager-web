@@ -1578,6 +1578,7 @@
     "SIDEBAR_HOME": "Início",
     "SIDEBAR_MENU": "Menu",
     "SIDEBAR_INVITES": "Convites",
+    "SIDEBAR_NOTIFICATIONS": "Notificações",
 
     "HEADER_ACCOUNT_DETAILS": "Detalhes da Conta",
 
@@ -1616,13 +1617,32 @@
     "TAB_UNREAD": "Não lidas",
     "SEE_ALL": "Ver todas",
     "MARK_ALL_READ": "Marcar todas como lidas",
-    "NEW": "Nova"
+    "NEW": "Nova",
+
+    "SELECT_NOTIFICATION": "Seleciona uma notificação",
+    "SELECT_NOTIFICATION_DESCRIPTION": "Escolhe uma notificação da lista para a ler aqui",
+    "EMPTY_ALL": "Sem notificações",
+    "EMPTY_UNREAD": "Sem notificações não lidas",
+    "EMPTY_INVITES": "Sem convites",
+    "EMPTY_ALERTS": "Sem alertas",
+    "EMPTY_DESCRIPTION": "Quando receberes notificações, aparecem aqui",
+    "UNREAD": "não lidas",
+    "ALL_CAUGHT_UP": "Estás a par de tudo",
+    "MARK_READ": "Marcar como lida",
+    "GO_TO_PAGE": "Ir para a página",
+    "CLOSE": "Fechar",
+    "SEARCH_PLACEHOLDER": "Pesquisar notificações...",
+    "TAB_INVITES": "Convites",
+    "TAB_ALERTS": "Alertas",
+    "NOTIFICATION_DETAILS": "Detalhes da notificação",
+    "NOTIFICATION_DETAILS_DESCRIPTION": "Ver detalhes da notificação"
   },
 
   "CONVERTER": {
     "META_TITLE": "Cash Manager | Conversor de Moedas",
     "META_DESCRIPTION": "Converta moedas de forma rápida e fácil com o conversor de moedas do Cash Manager. Acompanhe os seus pagamentos e mantenha suas finanças organizadas.",
 
+    "CONVERTER": "Conversor de Moedas",
     "CURRENCY_CONVERTER": "Conversor de Moedas",
     "CONVERTER_DESCRIPTION": "Converta entre {count} moedas em tempo real",
     "AMOUNT": "Valor",
