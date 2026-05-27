@@ -122,8 +122,7 @@ const AppSidebar: React.FC = () => {
     {
       icon: <Coins size={18} strokeWidth={2} />,
       name: t("SIDEBAR_CURRENCY_CONVERTER"),
-      path: "/tools/currency-converter",
-      disable: true,
+      path: "/converter",
       new: true,
     },
     // {
@@ -442,7 +441,7 @@ const AppSidebar: React.FC = () => {
                   !isExpanded && !isHovered ? "lg:justify-center" : "justify-start"
                 }`}
               >
-                {isExpanded || isHovered || isMobileOpen ? t("SIDEBAR_SOCIAL") : <HorizontaLDots />}
+                {isExpanded || isHovered || isMobileOpen ? t("SIDEBAR_TOOLS") : <HorizontaLDots />}
               </h2>
               {renderMenuItems(toolsItems, "tools")}
             </div>

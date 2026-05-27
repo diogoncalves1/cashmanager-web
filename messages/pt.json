@@ -1560,7 +1560,7 @@
     "SIDEBAR_SETTINGS": "Definições",
     "SIDEBAR_LOGOUT": "Sair",
     "SIDEBAR_COMPOUND_INTEREST_CALCULATOR": "Calc. Juros Compos.",
-    "SIDEBAR_CURRENCY_CONVERTER": "Conversor de Moeda",
+    "SIDEBAR_CURRENCY_CONVERTER": "Conversor",
     "SIDEBAR_TOOLS": "Ferramentas",
     "SIDEBAR_FRIENDS": "Amizades",
     "SIDEBAR_PROFILE": "Perfil",
@@ -1612,5 +1612,23 @@
   "NOTIFICATIONS": {
     "NOTIFICATIONS": "Notificações",
     "NO_NOTIFICATIONS": "Sem notificações"
+  },
+
+  "CONVERTER": {
+    "META_TITLE": "Cash Manager | Conversor de Moedas",
+    "META_DESCRIPTION": "Converta moedas de forma rápida e fácil com o conversor de moedas do Cash Manager. Acompanhe os seus pagamentos e mantenha suas finanças organizadas.",
+
+    "CURRENCY_CONVERTER": "Conversor de Moedas",
+    "CONVERTER_DESCRIPTION": "Converta entre {count} moedas em tempo real",
+    "AMOUNT": "Valor",
+    "FROM": "De",
+    "TO": "Para",
+    "CONVERT": "Converter",
+    "CONVERTING": "A converter...",
+    "RESULT": "Resultado",
+    "ERROR_CONVERTING": "Erro ao converter moedas. Por favor, tente novamente.",
+    "QUICK_CONVERT": "Conversão rápida",
+    "POPULAR_PAIRS": "Pares populares",
+    "RECENT_CONVERSIONS": "Conversões recentes"
   }
 }
