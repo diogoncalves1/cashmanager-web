@@ -1,4 +1,4 @@
-import { ArrowRight, Bell, Check, X } from "lucide-react";
+import { ArrowRight, Bell, Check } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { NotificationAvatar } from "../ui/NotificationAvatar";
 import { Notification } from "../../types";
@@ -66,7 +66,6 @@ export function NotificationDetail({
           onClick={onClose}
           className="flex size-7 items-center justify-center rounded-lg text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-gray-800"
         >
-          <X className="size-4" />
           <span className="sr-only">{t("CLOSE")}</span>
         </button>
       </div>
