@@ -154,7 +154,7 @@ export function CategorySpendingChart({ categoriesData, isLoading }: CategorySpe
   const maxValue = Math.max(...topCategories.map((c) => c.value));
 
   return (
-    <Card className="rounded-2xl border-0 shadow-sm">
+    <Card className="rounded-2xl max-w-100 md:max-w-full border-0 shadow-sm">
       <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between pb-2">
         <div>
           <CardTitle className="text-lg font-semibold">{t("EXPENSES_BY_CATEGORY")}</CardTitle>

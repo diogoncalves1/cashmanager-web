@@ -66,11 +66,10 @@ export function TransactionsFilters({
   const transactionTypes = getTransactionTypes(t);
 
   return (
-    <div className="space-y-3">
-      {/* Search */}
+    <div className="space-y-3 max-w-100 md:max-w-full">
       {enableSearch && (
-        <div className="relative ">
-          <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground " />
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             placeholder={t("SEARCH_TRANSACTION")}
             value={search}
@@ -80,11 +79,10 @@ export function TransactionsFilters({
         </div>
       )}
 
-      {/* Filter row */}
       <div className="flex flex-wrap items-center gap-2">
         {enableStatusFilter && (
           <Select value={statusFilter} onValueChange={onStatusFilterChange}>
-            <SelectTrigger className="w-[160px] bg-white">
+            <SelectTrigger className="w-full sm:w-[160px] bg-white">
               <SelectValue placeholder="Account" />
             </SelectTrigger>
             <SelectContent>
@@ -99,18 +97,16 @@ export function TransactionsFilters({
         )}
 
         <Select value={categoryFilter} onValueChange={onCategoryFilterChange}>
-          <SelectTrigger className="w-[180px] bg-white">
+          <SelectTrigger className="w-full sm:w-[180px] bg-white">
             <SelectValue placeholder="Category" />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">{t("ALL_CATEGORIES")}</SelectItem>
-            {categories?.map((c) => {
-              return (
-                <SelectItem key={c.id} value={c.id}>
-                  {c.name}
-                </SelectItem>
-              );
-            })}
+            {categories?.map((c) => (
+              <SelectItem key={c.id} value={c.id}>
+                {c.name}
+              </SelectItem>
+            ))}
           </SelectContent>
         </Select>
 
@@ -119,7 +115,7 @@ export function TransactionsFilters({
             value={typeFilter}
             onValueChange={(v) => onTypeFilterChange(v as TransactionType | "all")}
           >
-            <SelectTrigger className="w-[140px] bg-white">
+            <SelectTrigger className="w-full sm:w-[140px] bg-white">
               <SelectValue placeholder="Type" />
             </SelectTrigger>
             <SelectContent>
@@ -133,19 +129,21 @@ export function TransactionsFilters({
           </Select>
         )}
 
-        <DatePicker
-          date={dateFrom}
-          dateLimits={{ max: dateTo }}
-          className="w-min bg-white"
-          onChangeDate={(newDate: string) => onDateFromChange(newDate)}
-        />
-        <span className="text-xs text-muted-foreground">{t("TO")}</span>
-        <DatePicker
-          date={dateTo}
-          dateLimits={{ min: dateFrom }}
-          className="w-min bg-white"
-          onChangeDate={(newDate: string) => onDateToChange(newDate)}
-        />
+        <div className="flex w-full sm:w-auto items-center gap-2">
+          <DatePicker
+            date={dateFrom}
+            dateLimits={{ max: dateTo }}
+            className="flex-1 sm:w-min bg-white"
+            onChangeDate={(newDate: string) => onDateFromChange(newDate)}
+          />
+          <span className="text-xs text-muted-foreground shrink-0">{t("TO")}</span>
+          <DatePicker
+            date={dateTo}
+            dateLimits={{ min: dateFrom }}
+            className="flex-1 sm:w-min bg-white"
+            onChangeDate={(newDate: string) => onDateToChange(newDate)}
+          />
+        </div>
 
         {hasActiveFilters && (
           <Button

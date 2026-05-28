@@ -54,16 +54,19 @@ export function DataTablePagination<TData>({
   };
 
   return (
-    <div className="flex p-4 items-center justify-end space-x-2">
-      <div className="text-muted-foreground flex-1 text-sm">
+    <div className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="text-muted-foreground text-sm text-center sm:text-left">
         {t("SHOWING")} {table.getRowCount()} {t("OF")} {total} {t("THIS")}.
       </div>
-      <div className="flex gap-2">
+
+      <div className="flex items-center justify-center gap-1.5">
+        {/* First — só em desktop */}
         <Button
           variant="outline"
           size="sm"
           onClick={() => table.setPageIndex(0)}
           disabled={!table.getCanPreviousPage()}
+          className="hidden sm:inline-flex"
         >
           {t("FIRST")}
         </Button>
@@ -77,7 +80,8 @@ export function DataTablePagination<TData>({
           {t("PREVIOUS")}
         </Button>
 
-        <div className="hidden sm:flex items-center gap-1 mx-2">
+        {/* Números de página — só em desktop */}
+        <div className="hidden sm:flex items-center gap-1 mx-1">
           {getPageNumbers().map((page, index) =>
             typeof page === "number" ? (
               <Button
@@ -97,6 +101,11 @@ export function DataTablePagination<TData>({
           )}
         </div>
 
+        {/* Indicador de página atual — só em mobile */}
+        <span className="sm:hidden text-sm text-muted-foreground px-2">
+          {pagination.pageIndex + 1} / {pageCount}
+        </span>
+
         <Button
           variant="outline"
           size="sm"
@@ -106,11 +115,13 @@ export function DataTablePagination<TData>({
           {t("NEXT")}
         </Button>
 
+        {/* Last — só em desktop */}
         <Button
           variant="outline"
           size="sm"
           onClick={() => table.setPageIndex(pageCount - 1)}
           disabled={!table.getCanNextPage()}
+          className="hidden sm:inline-flex"
         >
           {t("LAST")}
         </Button>

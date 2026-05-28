@@ -146,7 +146,7 @@ export const TableContainer = ({ userId, accountId, load, includeSummary = true 
   }, [load, mutate]);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 max-w-100 md:max-w-full">
       {includeSummary && (
         <TransactionsSummary
           totalIncome={apiData?.stats.income}
