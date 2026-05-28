@@ -13,6 +13,10 @@ import {
   Pencil,
   Trash2,
   DoorOpen,
+  BarChart2,
+  ActivityIcon,
+  Users,
+  Settings,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -294,25 +298,43 @@ export const AccountDetailsContainer = ({ id }: { id: string }) => {
       </div>
       {/* Tabs */}
       <Tabs defaultValue="overview" className="space-y-6">
-        <TabsList className="h-10 w-full justify-start rounded-xl bg-muted p-1 sm:w-auto">
-          <TabsTrigger value="overview" className="rounded-lg px-4">
-            {t("OVERVIEW")}
+        <TabsList className="h-10 w-full overflow-x-auto rounded-xl bg-muted p-1 sm:w-auto flex">
+          <TabsTrigger value="overview" className="rounded-lg px-0 md:px-4 shrink-0">
+            <span className="hidden sm:inline">{t("OVERVIEW")}</span>
+            <span className="sm:hidden">
+              <BarChart2 className="size-4" />
+            </span>
           </TabsTrigger>
-          <TabsTrigger value="transactions" className="rounded-lg px-4">
-            {t("TRANSACTIONS")}
+          <TabsTrigger value="transactions" className="rounded-lg px-0 md:px-4 shrink-0">
+            <span className="hidden sm:inline">{t("TRANSACTIONS")}</span>
+            <span className="sm:hidden">
+              <CreditCard className="size-4" />
+            </span>
           </TabsTrigger>
-          <TabsTrigger value="activity" className="rounded-lg px-4">
-            {t("ACTIVITY")}
+          <TabsTrigger value="activity" className="rounded-lg px-0 md:px-4 shrink-0">
+            <span className="hidden sm:inline">{t("ACTIVITY")}</span>
+            <span className="sm:hidden">
+              <ActivityIcon className="size-4" />
+            </span>
           </TabsTrigger>
-          <TabsTrigger value="analytics" className="rounded-lg px-4">
-            {t("ANALYTICS")}
+          <TabsTrigger value="analytics" className="rounded-lg px-0 md:px-4 shrink-0">
+            <span className="hidden sm:inline">{t("ANALYTICS")}</span>
+            <span className="sm:hidden">
+              <TrendingUp className="size-4" />
+            </span>
           </TabsTrigger>
-          <TabsTrigger value="users" className="rounded-lg px-4">
-            {t("USERS")}
+          <TabsTrigger value="users" className="rounded-lg px-0 md:px-4 shrink-0">
+            <span className="hidden sm:inline">{t("USERS")}</span>
+            <span className="sm:hidden">
+              <Users className="size-4" />
+            </span>
           </TabsTrigger>
           {(account.actions?.edit || account.actions?.destroy) && (
-            <TabsTrigger value="settings" className="rounded-lg px-4">
-              {t("SETTINGS")}
+            <TabsTrigger value="settings" className="rounded-lg px-0 md:px-4 shrink-0">
+              <span className="hidden sm:inline">{t("SETTINGS")}</span>
+              <span className="sm:hidden">
+                <Settings className="size-4" />
+              </span>
             </TabsTrigger>
           )}
         </TabsList>
