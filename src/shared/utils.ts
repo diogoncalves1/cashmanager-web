@@ -78,13 +78,13 @@ export function formatCurrency(
     }
   }
 
-  if (symbolDefault) {
-    return `${amount.toFixed(decimals)} ${unitDefault} ${symbolDefault}`;
+  if (unit == "" && unitDefault) {
+    return `${amount.toFixed(decimals)} ${symbolDefault} ${unit}`;
   }
 
   return Number.isNaN(Number(number.replace(",", "")))
     ? `${number.replace(",", "")} ${unit} ${amount.toFixed(decimals)} `
-    : `${amount.toFixed(decimals)} ${unit} ${unitDefault}`;
+    : `${amount.toFixed(decimals)} ${unit} ${symbolDefault}`;
 }
 
 const userColors = [
