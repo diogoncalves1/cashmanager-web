@@ -57,10 +57,11 @@ export function formatCurrency(
   addSymbol: boolean = true,
   decimals: number = 2
 ): string {
-  const [number, symbol] = example.split(" ");
+  const [number, unitDefault, symbolDefault] = example.split(" ");
+
   let unit = "";
 
-  if (amount == undefined) return `$0.00 ${unit} ${symbol} `;
+  if (amount == undefined) return `$0.00 ${unit} ${unitDefault} `;
 
   if (addSymbol) {
     if (amount >= 1000 || amount <= -1000) {
@@ -77,9 +78,13 @@ export function formatCurrency(
     }
   }
 
+  if (symbolDefault) {
+    return `${amount.toFixed(decimals)} ${unitDefault} ${symbolDefault}`;
+  }
+
   return Number.isNaN(Number(number.replace(",", "")))
     ? `${number.replace(",", "")} ${unit} ${amount.toFixed(decimals)} `
-    : `${amount.toFixed(decimals)} ${unit} ${symbol} `;
+    : `${amount.toFixed(decimals)} ${unit} ${unitDefault}`;
 }
 
 const userColors = [
