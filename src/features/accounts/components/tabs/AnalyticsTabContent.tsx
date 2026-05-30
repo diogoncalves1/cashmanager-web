@@ -49,7 +49,7 @@ export function AnalyticsTabContent({ account, pageData, isLoading }: AnalyticsT
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 max-w-100 md:max-w-full">
       <div className="grid gap-6">
         <CategorySpendingChart
           currency={account.currency?.code || "USD"}

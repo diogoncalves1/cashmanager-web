@@ -38,7 +38,7 @@ export function MonthlySummaryChart({ data }: MonthlySummaryProps) {
 
   return (
     <div className="flex flex-col items-center gap-2">
-      <div className="relative size-28 sm:size-40">
+      <div className="relative size-60 sm:size-40">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
@@ -58,18 +58,18 @@ export function MonthlySummaryChart({ data }: MonthlySummaryProps) {
         </ResponsiveContainer>
 
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-[10px] text-muted-foreground capitalize">{t("TOTAL")}</span>
-          <span className="text-xs font-bold text-foreground sm:text-sm">
+          <span className="text-sm text-muted-foreground capitalize">{t("TOTAL")}</span>
+          <span className="text-md font-bold text-foreground sm:text-sm">
             {data.profitFormated}
           </span>
         </div>
       </div>
       <p className="text-sm font-medium text-foreground">{formatDate(data.month, monthsT)}</p>
       <div className="flex flex-col items-center gap-0.5">
-        <span className="text-[13px]" style={{ color: INCOME_COLOR }}>
+        <span className="text-[15px]" style={{ color: INCOME_COLOR }}>
           {t("INCOME")}: {data.totalRevenueFormated}
         </span>
-        <span className="text-[13px]" style={{ color: EXPENSE_COLOR }}>
+        <span className="text-[15px]" style={{ color: EXPENSE_COLOR }}>
           {t("EXPENSE")}: {data.totalExpenseFormated}
         </span>
       </div>

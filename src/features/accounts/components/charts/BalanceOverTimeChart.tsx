@@ -133,17 +133,17 @@ export function BalanceOverTimeChart({
   }
 
   return (
-    <Card className="rounded-2xl border-0 shadow-sm bg-card">
-      <CardHeader className="flex flex-row items-center justify-between pb-2">
+    <Card className="rounded-2xl max-w-100 md:max-w-full border-0 shadow-sm bg-card">
+      <CardHeader className="flex flex-col gap-3 pb-2 sm:flex-row sm:items-center sm:justify-between">
         <CardTitle className="text-base font-semibold">{t("BALANCE_OVER_TIME")}</CardTitle>
-        <div className="flex gap-1 rounded-lg bg-muted p-1">
+        <div className="flex gap-1 rounded-lg bg-muted p-1 self-start sm:self-auto">
           {RANGES.map((r) => (
             <button
               key={r.label}
               type="button"
               onClick={() => setRangeDays(r.days)}
               className={cn(
-                "rounded-md px-3 py-1 text-xs font-medium transition-colors",
+                "rounded-md px-2.5 py-1 text-xs font-medium transition-colors sm:px-3",
                 rangeDays === r.days
                   ? "bg-background text-foreground shadow-sm"
                   : "text-muted-foreground hover:text-foreground"
@@ -157,10 +157,10 @@ export function BalanceOverTimeChart({
       <CardContent>
         <ChartContainer
           config={{ balance: { label: "Balance", color: TEAL_500 } }}
-          className="h-[300px] w-full"
+          className="h-[250px] w-full sm:h-[300px]"
         >
-          <ResponsiveContainer width="90%" height="100%">
-            <AreaChart data={data} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
+          <ResponsiveContainer width="100%" height="100%">
+            <AreaChart data={data} margin={{ top: 10, right: 0, left: 0, bottom: 0 }}>
               <defs>
                 <linearGradient id="balanceGradient" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stopColor={TEAL_500} stopOpacity={0.4} />
@@ -177,8 +177,8 @@ export function BalanceOverTimeChart({
                 interval="preserveStartEnd"
               />
               <YAxis
-                tick={{ fontSize: 12 }}
-                width={75}
+                tick={{ fontSize: 10 }}
+                width={80}
                 tickFormatter={(v) => formatCurrency(v, balanceFormated, true, 1)}
                 className="fill-muted-foreground"
                 tickLine={false}
