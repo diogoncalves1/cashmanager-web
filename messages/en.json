@@ -546,7 +546,11 @@
     "CANCEL_INVITE": "Cancel invite",
     "NO_MEMBERS_YET": "No members yet",
     "NO_MEMBERS_YET_TEXT": "Add members to collaborate on this account.",
-    "YOU": "You"
+    "YOU": "You",
+
+    "NAME_IS_REQUIRED": "Name is required",
+    "TYPE_IS_REQUIRED": "Type is required",
+    "CURRENCY_IS_REQUIRED": "Currency is required"
   },
 
   "LISTS": {
@@ -1578,6 +1582,10 @@
     "SIDEBAR_MENU": "Menu",
     "SIDEBAR_INVITES": "Invites",
     "SIDEBAR_NOTIFICATIONS": "Notifications",
+    "SIDEBAR_RECURRING": "Recurring",
+
+    "NEW": "New",
+    "PRO": "Pro",
 
     "HEADER_ACCOUNT_DETAILS": "Account Details",
 
@@ -1610,6 +1618,9 @@
   },
 
   "NOTIFICATIONS": {
+    "META_TITLE": "Cash Manager | Notifications",
+    "META_DESCRIPTION": "View and manage your notifications in Cash Manager. Stay updated on your financial activities and interactions.",
+
     "NOTIFICATIONS": "Notifications",
     "NO_NOTIFICATIONS": "No notifications",
     "TAB_ALL": "All",
@@ -1654,5 +1665,17 @@
     "QUICK_CONVERTER": "Quick Converter",
     "POPULAR_PAIRS": "Popular Pairs",
     "RECENT_CONVERSIONS": "Recent Conversions"
+  },
+
+  "RECURRING": {
+    "META_TITLE": "Cash Manager | Recurring Transactions",
+    "META_DESCRIPTION": "Manage your recurring transactions with Cash Manager. Set up and track your regular payments and income.",
+
+    "RECURRING_TRANSACTIONS": "Recurring Transactions",
+
+    "DAILY": "Daily",
+    "WEEKLY": "Weekly",
+    "MONTHLY": "Monthly",
+    "ANNUALLY": "Annually"
   }
 }
