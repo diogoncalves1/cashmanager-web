@@ -545,7 +545,11 @@
     "CANCEL_INVITE": "Cancelar convite",
     "NO_MEMBERS_YET": "Sem membros ainda",
     "NO_MEMBERS_YET_TEXT": "Adicione membros para colaborar nesta conta.",
-    "YOU": "Tu"
+    "YOU": "Tu",
+
+    "NAME_IS_REQUIRED": "O nome é obrigatório",
+    "TYPE_IS_REQUIRED": "O tipo é obrigatório",
+    "CURRENCY_IS_REQUIRED": "A moeda é obrigatória"
   },
 
   "LISTS": {
@@ -1579,6 +1583,10 @@
     "SIDEBAR_MENU": "Menu",
     "SIDEBAR_INVITES": "Convites",
     "SIDEBAR_NOTIFICATIONS": "Notificações",
+    "SIDEBAR_RECURRING": "Recorrentes",
+
+    "NEW": "Novo",
+    "PRO": "Pro",
 
     "HEADER_ACCOUNT_DETAILS": "Detalhes da Conta",
 
@@ -1611,6 +1619,9 @@
   },
 
   "NOTIFICATIONS": {
+    "META_TITLE": "Cash Manager | Notificações",
+    "META_DESCRIPTION": "Veja as suas notificações no Cash Manager para se manter atualizado sobre as suas finanças e atividades relacionadas.",
+
     "NOTIFICATIONS": "Notificações",
     "NO_NOTIFICATIONS": "Sem notificações",
     "TAB_ALL": "Todas",
@@ -1655,5 +1666,12 @@
     "QUICK_CONVERT": "Conversão rápida",
     "POPULAR_PAIRS": "Pares populares",
     "RECENT_CONVERSIONS": "Conversões recentes"
+  },
+
+  "RECURRING": {
+    "META_TITLE": "Cash Manager | Transações Recorrentes",
+    "META_DESCRIPTION": "Gerencie suas transações recorrentes de forma eficiente com o Cash Manager. Acompanhe os seus pagamentos e mantenha suas finanças organizadas.",
+
+    "RECURRING": "Transações Recorrentes"
   }
 }

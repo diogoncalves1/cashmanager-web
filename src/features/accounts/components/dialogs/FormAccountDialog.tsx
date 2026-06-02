@@ -63,7 +63,10 @@ export function FormAccountDialog({
 
   const validate = () => {
     const newErrors: Partial<Record<keyof AccountFormData, string>> = {};
-    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.name.trim()) newErrors.name = t("NAME_IS_REQUIRED");
+    if (!formData.currency_id || !formData.currency_id.trim())
+      newErrors.currency = t("CURRENCY_IS_REQUIRED");
+    if (!formData.type.trim()) newErrors.type = t("TYPE_IS_REQUIRED");
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -145,6 +148,7 @@ export function FormAccountDialog({
                     <div className="h-8 rounded bg-muted animate-pulse" />
                   </div>
                 )}
+                {errors.type && <p className="text-xs text-destructive">{errors.type}</p>}
               </div>
 
               <div className="grid gap-2">
@@ -182,6 +186,7 @@ export function FormAccountDialog({
                     <div className="h-8 rounded bg-muted animate-pulse" />
                   </div>
                 )}
+                {errors.currency && <p className="text-xs text-destructive">{errors.currency}</p>}
               </div>
             </div>
 
@@ -197,6 +202,7 @@ export function FormAccountDialog({
                 checked={formData.active}
                 onCheckedChange={(checked) => setFormData({ ...formData, active: checked })}
               />
+              {errors.isActive && <p className="text-xs text-destructive">{errors.isActive}</p>}
             </div>
           </div>
 
