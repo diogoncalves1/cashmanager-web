@@ -103,7 +103,9 @@ export function FormAccountDialog({
 
           <div className="grid gap-5 py-6">
             <div className="grid gap-2">
-              <Label htmlFor="name">{t("ACCOUNT_NAME")}</Label>
+              <Label htmlFor="name">
+                {t("ACCOUNT_NAME")} <span className="text-error-500">*</span>
+              </Label>
               <Input
                 id="name"
                 placeholder={t("ACCOUNT_NAME_EG")}
@@ -118,7 +120,9 @@ export function FormAccountDialog({
 
             <div className="grid grid-cols-1 gap-4">
               <div className="grid gap-2">
-                <Label htmlFor="type">{t("ACCOUNT_TYPE")}</Label>
+                <Label htmlFor="type">
+                  {t("ACCOUNT_TYPE")} <span className="text-error-500">*</span>
+                </Label>
                 {!isLoadingAccount ? (
                   <Select
                     value={formData.type}
@@ -152,7 +156,9 @@ export function FormAccountDialog({
               </div>
 
               <div className="grid gap-2">
-                <Label htmlFor="currency">{t("CURRENCY")}</Label>
+                <Label htmlFor="currency">
+                  {t("CURRENCY")} <span className="text-error-500">*</span>
+                </Label>
                 {!loadingCurrencies ? (
                   <Select
                     value={formData.currency_id}
@@ -210,7 +216,10 @@ export function FormAccountDialog({
             <Button type="button" variant="outline" onClick={() => setIsOpen(false)}>
               {t("CANCEL")}
             </Button>
-            <Button type="submit" disabled={isSubmitting}>
+            <Button
+              disabled={!formData.currency_id || !formData.name || !formData.type || isSubmitting}
+              type="submit"
+            >
               {id
                 ? isSubmitting
                   ? t("SAVING")
