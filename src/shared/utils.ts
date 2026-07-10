@@ -78,7 +78,6 @@ export function formatCurrency(
     }
   }
 
-  console.log(unitDefault);
   if (unit == "" && unitDefault) {
     return `${amount.toFixed(decimals)} ${symbolDefault || unitDefault} ${unit}`;
   }
