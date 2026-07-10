@@ -79,12 +79,12 @@ export function formatCurrency(
   }
 
   if (unit == "" && unitDefault) {
-    return `${amount.toFixed(decimals)} ${symbolDefault} ${unit}`;
+    return `${amount.toFixed(decimals)} ${symbolDefault || unitDefault} ${unit}`;
   }
 
   return Number.isNaN(Number(number.replace(",", "")))
     ? `${number.replace(",", "")} ${unit} ${amount.toFixed(decimals)} `
-    : `${amount.toFixed(decimals)} ${unit} ${symbolDefault}`;
+    : `${amount.toFixed(decimals)} ${unit} ${symbolDefault ?? unitDefault}`;
 }
 
 const userColors = [
