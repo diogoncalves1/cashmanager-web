@@ -1,148 +1,460 @@
 "use client";
+
+import React, { useEffect, useMemo, useRef, useState, useCallback } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname /*, useRouter*/ } from "next/navigation";
+import { useTranslations } from "next-intl";
+import {
+  ChevronDown,
+  Wallet,
+  Target,
+  TrendingDown,
+  Users,
+  Home,
+  Wrench,
+  RefreshCw,
+  Menu,
+  X,
+} from "lucide-react";
+
 import { NotificationDropdown } from "@/features/notifications";
-// import { ThemeToggleButton } from "@/components/ui/ThemeToggleButton";
 import UserDropdown from "@/components/header/UserDropdown";
 import { useAuth } from "@/features/auth";
 import { useSidebar } from "@/context/SidebarContext";
-import Image from "next/image";
-import Link from "next/link";
-import React, { useState, useEffect, useRef } from "react";
+import { LanguageSwitcher } from "../ui/LanguageSwitcher";
+import { cn } from "@/shared/utils";
+
+// ─── Types ────────────────────────────────────────────────────────────────────
+
+interface SubItem {
+  name: string;
+  path: string;
+  new?: boolean;
+}
+
+interface NavGroup {
+  heading: string;
+  icon: React.ComponentType<{ size?: number; strokeWidth?: number; className?: string }>;
+  items: SubItem[];
+}
+
+interface NavEntry {
+  name: string;
+  icon: React.ComponentType<{ size?: number; strokeWidth?: number; className?: string }>;
+  path?: string;
+  new?: boolean;
+  // Dropdown "mega-menu" com várias colunas/secções (ex: Finanças)
+  groups?: NavGroup[];
+  // Dropdown simples de coluna única (ex: Tools, que vai crescer no futuro)
+  items?: SubItem[];
+}
+
+// ─── Small badge ──────────────────────────────────────────────────────────────
+
+const NewBadge = () => (
+  <span className="ml-1.5 rounded px-1.5 py-0.5 text-[9px] font-medium uppercase tracking-wide bg-emerald-50 text-emerald-600 dark:bg-emerald-900/20 dark:text-emerald-500">
+    Novo
+  </span>
+);
+
+// ─── Main Component ───────────────────────────────────────────────────────────
 
 const AppHeader: React.FC = () => {
   const { user } = useAuth();
+  // const router = useRouter();
+  const pathname = usePathname();
+  const t = useTranslations("LAYOUTS");
 
-  const [isApplicationMenuOpen, setApplicationMenuOpen] = useState(false);
+  // Reaproveita o contexto da sidebar apenas para controlar o menu mobile
+  const { isMobileOpen, toggleMobileSidebar } = useSidebar();
 
-  const { isMobileOpen, toggleSidebar, toggleMobileSidebar } = useSidebar();
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [openMobileGroup, setOpenMobileGroup] = useState<string | null>(null);
+  const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const handleToggle = () => {
-    if (window.innerWidth >= 1024) {
-      toggleSidebar();
-    } else {
-      toggleMobileSidebar();
-    }
-  };
+  const isActive = useCallback((path: string) => pathname.includes(path), [pathname]);
 
-  const toggleApplicationMenu = () => {
-    setApplicationMenuOpen(!isApplicationMenuOpen);
-  };
-  const inputRef = useRef<HTMLInputElement>(null);
+  // ─── Nav Items (equivalente ao antigo AppSidebar) ──────────────────────────
 
+  const navItems = useMemo<NavEntry[]>(
+    () => [
+      {
+        icon: Home,
+        name: t("SIDEBAR_HOME"),
+        path: "/dashboard",
+      },
+      {
+        icon: Wallet,
+        name: t("SIDEBAR_FINANCES"),
+        groups: [
+          {
+            heading: t("SIDEBAR_ACCOUNTS"),
+            icon: Wallet,
+            items: [
+              { name: t("SIDEBAR_ACCOUNTS"), path: "/accounts" },
+              { name: t("SIDEBAR_TRANSACTIONS"), path: "/transactions" },
+              { name: t("SIDEBAR_INVITES"), path: "/invitations/accounts" },
+            ],
+          },
+          {
+            heading: t("SIDEBAR_FINANCIAL_GOALS"),
+            icon: Target,
+            items: [
+              { name: t("SIDEBAR_FINANCIAL_GOALS"), path: "/financial-goals" },
+              { name: t("SIDEBAR_TRANSACTIONS"), path: "/financial-goal-transactions" },
+              { name: t("SIDEBAR_INVITES"), path: "/invitations/financial-goals" },
+            ],
+          },
+          {
+            heading: t("SIDEBAR_DEBTS"),
+            icon: TrendingDown,
+            items: [
+              { name: t("SIDEBAR_DEBTS"), path: "/debts" },
+              { name: t("SIDEBAR_DEBT_PAYMENTS"), path: "/debt-payments" },
+              { name: t("SIDEBAR_INVITES"), path: "/invitations/debts" },
+            ],
+          },
+        ],
+      },
+      {
+        icon: RefreshCw,
+        name: t("SIDEBAR_RECURRING"),
+        path: "/recurring",
+        new: true,
+      },
+      {
+        icon: Users,
+        name: t("SIDEBAR_FRIENDS"),
+        path: "/friends",
+      },
+      {
+        icon: Wrench,
+        name: t("SIDEBAR_TOOLS"),
+        items: [
+          { name: t("SIDEBAR_CURRENCY_CONVERTER"), path: "/converter", new: true },
+          // Futuras tools entram aqui
+        ],
+      },
+    ],
+    [t]
+  );
+
+  // Fecha dropdown ao mudar de rota
   useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if ((event.metaKey || event.ctrlKey) && event.key === "k") {
-        event.preventDefault();
-        inputRef.current?.focus();
-      }
-    };
+    setOpenMenu(null);
+    setOpenMobileGroup(null);
+  }, [pathname]);
 
-    document.addEventListener("keydown", handleKeyDown);
-
+  // Limpa timeout pendente ao desmontar
+  useEffect(() => {
     return () => {
-      document.removeEventListener("keydown", handleKeyDown);
+      if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
     };
   }, []);
+
+  const handleMouseEnter = (name: string) => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setOpenMenu(name);
+  };
+
+  const handleMouseLeave = () => {
+    // pequeno delay para não fechar ao passar entre o botão e o dropdown
+    closeTimeoutRef.current = setTimeout(() => setOpenMenu(null), 120);
+  };
+
+  const handleMobileNavigate = () => {
+    if (isMobileOpen) toggleMobileSidebar();
+  };
+
+  // ─── Render: item de navegação desktop ─────────────────────────────────────
+
+  const renderDesktopItem = (item: NavEntry) => {
+    const hasGroups = !!item.groups?.length;
+    const hasItems = !!item.items?.length;
+    const hasDropdown = hasGroups || hasItems;
+    const hasActiveChild =
+      item.groups?.some((g) => g.items.some((s) => isActive(s.path))) ??
+      item.items?.some((s) => isActive(s.path)) ??
+      false;
+    const active = item.path ? isActive(item.path) : hasActiveChild;
+    const isOpen = openMenu === item.name;
+
+    const triggerClass = cn(
+      "flex items-center gap-2 rounded-md border-gray-200 px-4 py-3 text-[15px] font-ligth transition-colors whitespace-nowrap",
+      active
+        ? "bg-success-50 text-success-700 dark:border-success-800/50 dark:bg-success-900/15 dark:text-success-400"
+        : "border-transparent text-gray-600 hover:border-gray-200 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-300 dark:hover:border-gray-700 dark:hover:bg-gray-800 dark:hover:text-white"
+    );
+
+    if (!hasDropdown && item.path) {
+      return (
+        <Link key={item.name} href={item.path} className={triggerClass}>
+          <item.icon size={14} strokeWidth={1.75} />
+          {item.name}
+          {item.new && <NewBadge />}
+        </Link>
+      );
+    }
+
+    return (
+      <div
+        key={item.name}
+        className="relative"
+        onMouseEnter={() => handleMouseEnter(item.name)}
+        onMouseLeave={handleMouseLeave}
+      >
+        <button type="button" className={triggerClass} aria-expanded={isOpen}>
+          <item.icon size={14} strokeWidth={1.75} />
+          {item.name}
+          <ChevronDown
+            size={12}
+            strokeWidth={2}
+            className={cn("transition-transform duration-150", isOpen && "rotate-180")}
+          />
+        </button>
+
+        {isOpen && (
+          <>
+            {/* ponte invisível para o cursor não "perder" o hover entre o botão e o dropdown */}
+            <div className="absolute left-0 top-full h-1.5 w-full" />
+
+            {/* Mega-menu com colunas/secções */}
+            {hasGroups && (
+              <div className="absolute left-0 top-[calc(100%+6px)] z-50 flex min-w-[560px] gap-6 rounded-xl border border-gray-100 bg-white p-5 shadow-lg dark:border-gray-800 dark:bg-gray-900">
+                {item.groups!.map((group) => (
+                  <div key={group.heading} className="flex-1 min-w-[150px]">
+                    <div className="mb-2 flex items-center gap-1.5 text-[14px] font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-600">
+                      <group.icon size={12} strokeWidth={2} />
+                      {group.heading}
+                    </div>
+                    <div className="flex flex-col gap-0.5">
+                      {group.items.map((sub) => (
+                        <Link
+                          key={sub.path}
+                          href={sub.path}
+                          className={cn(
+                            "flex items-center gap-2 rounded-md px-2 py-1.5 text-[13px] transition-colors",
+                            sub.path === pathname
+                              ? "font-medium text-success-600 dark:text-success-400"
+                              : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white"
+                          )}
+                        >
+                          <span
+                            className={cn(
+                              "size-1 rounded-full bg-current",
+                              sub.path === pathname ? "opacity-100" : "opacity-40"
+                            )}
+                          />
+                          {sub.name}
+                          {sub.new && <NewBadge />}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Dropdown simples de coluna única (ex: Tools) */}
+            {hasItems && !hasGroups && (
+              <div className="absolute left-0 top-[calc(100%+6px)] z-50 min-w-[210px] rounded-lg border border-gray-100 bg-white py-1.5 shadow-lg dark:border-gray-800 dark:bg-gray-900">
+                {item.items!.map((sub) => (
+                  <Link
+                    key={sub.path}
+                    href={sub.path}
+                    className={cn(
+                      "flex items-center gap-2 px-4 py-2 text-[13px] transition-colors",
+                      sub.path === pathname
+                        ? "font-medium text-success-600 dark:text-success-400"
+                        : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white"
+                    )}
+                  >
+                    <span
+                      className={cn(
+                        "size-1 rounded-full bg-current",
+                        sub.path === pathname ? "opacity-100" : "opacity-40"
+                      )}
+                    />
+                    {sub.name}
+                    {sub.new && <NewBadge />}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </>
+        )}
+      </div>
+    );
+  };
+
+  // ─── Render: item de navegação mobile (mantém-se por clique/acordeão) ──────
+
+  const renderMobileItem = (item: NavEntry) => {
+    const hasGroups = !!item.groups?.length;
+    const hasItems = !!item.items?.length;
+    const hasDropdown = hasGroups || hasItems;
+    const hasActiveChild =
+      item.groups?.some((g) => g.items.some((s) => isActive(s.path))) ??
+      item.items?.some((s) => isActive(s.path)) ??
+      false;
+    const active = item.path ? isActive(item.path) : hasActiveChild;
+    const isOpen = openMobileGroup === item.name;
+
+    if (!hasDropdown && item.path) {
+      return (
+        <Link
+          key={item.name}
+          href={item.path}
+          onClick={handleMobileNavigate}
+          className={cn(
+            "flex items-center gap-2.5 rounded-lg border px-3.5 py-2.5 text-sm font-medium",
+            active
+              ? "border-success-200 bg-success-50 text-success-700 dark:border-success-800/50 dark:bg-success-900/15 dark:text-success-400"
+              : "border-transparent text-gray-600 dark:text-gray-300"
+          )}
+        >
+          <item.icon size={16} strokeWidth={1.75} />
+          {item.name}
+          {item.new && <NewBadge />}
+        </Link>
+      );
+    }
+
+    return (
+      <div key={item.name}>
+        <button
+          type="button"
+          onClick={() => setOpenMobileGroup((prev) => (prev === item.name ? null : item.name))}
+          className={cn(
+            "flex w-full items-center gap-2.5 rounded-lg border px-3.5 py-2.5 text-sm font-medium",
+            active
+              ? "border-success-200 bg-success-50 text-success-700 dark:border-success-800/50 dark:bg-success-900/15 dark:text-success-400"
+              : "border-transparent text-gray-600 dark:text-gray-300"
+          )}
+        >
+          <item.icon size={16} strokeWidth={1.75} />
+          <span className="flex-1 text-left">{item.name}</span>
+          <ChevronDown
+            size={14}
+            className={cn("transition-transform duration-150", isOpen && "rotate-180")}
+          />
+        </button>
+        {isOpen && hasGroups && (
+          <div className="ml-8 flex flex-col gap-3 border-l border-gray-100 pl-3 pt-2 dark:border-gray-800">
+            {item.groups!.map((group) => (
+              <div key={group.heading} className="flex flex-col gap-0.5">
+                <p className="px-2 text-[10px] font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-600">
+                  {group.heading}
+                </p>
+                {group.items.map((sub) => (
+                  <Link
+                    key={sub.path}
+                    href={sub.path}
+                    onClick={handleMobileNavigate}
+                    className={cn(
+                      "rounded-md px-2 py-2 text-[13px]",
+                      sub.path === pathname
+                        ? "font-medium text-success-600 dark:text-success-400"
+                        : "text-gray-500 dark:text-gray-400"
+                    )}
+                  >
+                    {sub.name}
+                  </Link>
+                ))}
+              </div>
+            ))}
+          </div>
+        )}
+        {isOpen && hasItems && !hasGroups && (
+          <div className="ml-8 flex flex-col gap-0.5 border-l border-gray-100 pl-3 pt-2 dark:border-gray-800">
+            {item.items!.map((sub) => (
+              <Link
+                key={sub.path}
+                href={sub.path}
+                onClick={handleMobileNavigate}
+                className={cn(
+                  "rounded-md px-2 py-2 text-[13px]",
+                  sub.path === pathname
+                    ? "font-medium text-success-600 dark:text-success-400"
+                    : "text-gray-500 dark:text-gray-400"
+                )}
+              >
+                {sub.name}
+              </Link>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  // ─── JSX ────────────────────────────────────────────────────────────────────
 
   return (
     <header
       style={{ zIndex: 50 }}
-      className="sticky top-0 flex w-full bg-white border-gray-200 dark:border-gray-800 dark:bg-gray-900 shadow-xs"
+      className="sticky top-0 flex h-[85px] w-full flex-col bg-white border-b border-gray-200 dark:border-gray-800 dark:bg-gray-900 shadow-xs"
     >
-      <div className="flex flex-col items-center justify-between grow lg:flex-row lg:px-6">
-        <div className="flex items-center justify-between w-full gap-2 px-3 py-1 border-b border-gray-200 dark:border-gray-800 sm:gap-4 lg:justify-normal lg:border-b-0 lg:px-0 lg:py-2">
-          <button
-            className="items-center justify-center w-10 h-10 text-gray-500 border-gray-200 rounded-lg z-99999 dark:border-gray-800 lg:flex dark:text-gray-400 lg:h-11 lg:w-11 lg:border"
-            onClick={handleToggle}
-            aria-label="Toggle Sidebar"
-          >
-            {isMobileOpen ? (
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M6.21967 7.28131C5.92678 6.98841 5.92678 6.51354 6.21967 6.22065C6.51256 5.92775 6.98744 5.92775 7.28033 6.22065L11.999 10.9393L16.7176 6.22078C17.0105 5.92789 17.4854 5.92788 17.7782 6.22078C18.0711 6.51367 18.0711 6.98855 17.7782 7.28144L13.0597 12L17.7782 16.7186C18.0711 17.0115 18.0711 17.4863 17.7782 17.7792C17.4854 18.0721 17.0105 18.0721 16.7176 17.7792L11.999 13.0607L7.28033 17.7794C6.98744 18.0722 6.51256 18.0722 6.21967 17.7794C5.92678 17.4865 5.92678 17.0116 6.21967 16.7187L10.9384 12L6.21967 7.28131Z"
-                  fill="currentColor"
-                />
-              </svg>
-            ) : (
-              <svg
-                width="16"
-                height="12"
-                viewBox="0 0 16 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M0.583252 1C0.583252 0.585788 0.919038 0.25 1.33325 0.25H14.6666C15.0808 0.25 15.4166 0.585786 15.4166 1C15.4166 1.41421 15.0808 1.75 14.6666 1.75L1.33325 1.75C0.919038 1.75 0.583252 1.41422 0.583252 1ZM0.583252 11C0.583252 10.5858 0.919038 10.25 1.33325 10.25L14.6666 10.25C15.0808 10.25 15.4166 10.5858 15.4166 11C15.4166 11.4142 15.0808 11.75 14.6666 11.75L1.33325 11.75C0.919038 11.75 0.583252 11.4142 0.583252 11ZM1.33325 5.25C0.919038 5.25 0.583252 5.58579 0.583252 6C0.583252 6.41421 0.919038 6.75 1.33325 6.75L7.99992 6.75C8.41413 6.75 8.74992 6.41421 8.74992 6C8.74992 5.58579 8.41413 5.25 7.99992 5.25L1.33325 5.25Z"
-                  fill="currentColor"
-                />
-              </svg>
-            )}
-            {/* Cross Icon */}
-          </button>
+      <div className="mx-auto flex h-full w-full items-center gap-2 px-1 xl:px-60">
+        {/* Logo */}
+        <Link href="/dashboard" className="flex items-center shrink-0">
+          <Image
+            className="dark:hidden"
+            src="/images/logo/logo-transparent.png"
+            alt="Logo"
+            width={60}
+            height={28}
+          />
+          <Image
+            className="hidden dark:block"
+            src="/images/logo/logo-transparent.png"
+            alt="Logo"
+            width={60}
+            height={28}
+          />
+        </Link>
 
-          <Link href="/" className="lg:hidden">
-            <Image
-              className="dark:hidden"
-              src="/images/logo/logo-long.png"
-              alt="Logo"
-              width={154}
-              height={32}
-            />
-            <Image
-              className="hidden dark:block"
-              src="/images/logo/logo-long.png"
-              alt="Logo"
-              width={154}
-              height={32}
-            />
-          </Link>
-
-          <button
-            onClick={toggleApplicationMenu}
-            className="flex items-center justify-center w-10 h-10 text-gray-700 rounded-lg z-99999 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 lg:hidden"
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M5.99902 10.4951C6.82745 10.4951 7.49902 11.1667 7.49902 11.9951V12.0051C7.49902 12.8335 6.82745 13.5051 5.99902 13.5051C5.1706 13.5051 4.49902 12.8335 4.49902 12.0051V11.9951C4.49902 11.1667 5.1706 10.4951 5.99902 10.4951ZM17.999 10.4951C18.8275 10.4951 19.499 11.1667 19.499 11.9951V12.0051C19.499 12.8335 18.8275 13.5051 17.999 13.5051C17.1706 13.5051 16.499 12.8335 16.499 12.0051V11.9951C16.499 11.1667 17.1706 10.4951 17.999 10.4951ZM13.499 11.9951C13.499 11.1667 12.8275 10.4951 11.999 10.4951C11.1706 10.4951 10.499 11.1667 10.499 11.9951V12.0051C10.499 12.8335 11.1706 13.5051 11.999 13.5051C12.8275 13.5051 13.499 12.8335 13.499 12.0051V11.9951Z"
-                fill="currentColor"
-              />
-            </svg>
-          </button>
+        {/* Quick links */}
+        <div className="hidden lg:flex items-center gap-1 ml-8">
+          {navItems.map(renderDesktopItem)}
         </div>
-        <div
-          className={`${
-            isApplicationMenuOpen ? "flex" : "hidden"
-          } items-center justify-between w-full gap-4 px-5 py-4 lg:flex shadow-theme-md lg:justify-end lg:px-0 lg:shadow-none`}
-        >
-          <div className="flex items-center gap-2 2xsm:gap-3">
-            {/* <!-- Dark Mode Toggler --> */}
-            {/* <ThemeToggleButton /> */}
-            {/* <!-- Dark Mode Toggler --> */}
 
+        {/* Espaço vazio entre os quick links e os controlos */}
+        <div className="flex-1" />
+
+        {/* Right side: switch controls */}
+        <div className="flex items-center gap-2 2xsm:gap-3">
+          <div className="hidden sm:flex items-center gap-2 2xsm:gap-3">
+            <LanguageSwitcher variant="minimal" />
             <NotificationDropdown />
-            {/* <!-- Notification Menu Area --> */}
           </div>
-          {/* <!-- User Area --> */}
           <UserDropdown user={user} />
+
+          {/* Mobile menu toggle */}
+          <button
+            onClick={toggleMobileSidebar}
+            className="flex items-center justify-center w-9 h-9 text-gray-600 rounded-lg hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800 lg:hidden"
+            aria-label="Toggle Menu"
+          >
+            {isMobileOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile nav panel */}
+      {isMobileOpen && (
+        <div className="flex flex-col gap-1 border-t border-gray-100 px-3 py-3 lg:hidden dark:border-gray-800 bg-white dark:bg-gray-900">
+          <div className="flex items-center gap-3 px-3 pb-2">
+            <LanguageSwitcher variant="minimal" />
+            <NotificationDropdown />
+          </div>
+          {navItems.map(renderMobileItem)}
+        </div>
+      )}
     </header>
   );
 };

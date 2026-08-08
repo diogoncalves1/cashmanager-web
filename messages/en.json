@@ -1590,6 +1590,7 @@
     "HEADER_ACCOUNT_DETAILS": "Account Details",
 
     "LOGOUT": "Logging out…",
+    "NEW": "New",
     "LOGOUT_WAIT": "Please wait while we log you out",
     "LOGOUT_ERROR": "Could not log out. Please try again."
   },

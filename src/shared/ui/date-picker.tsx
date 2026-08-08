@@ -32,16 +32,19 @@ export function DatePicker({
           type="button"
           variant="outline"
           className={cn(
-            "w-full justify-start text-left font-normal border-input bg-background",
+            "h-12 rounded-md border-0 font-light w-min bg-gray-100 text-base shadow-none transition-colors",
+            "focus:bg-gray-200 focus-visible:ring-0",
+            "hover:bg-gray-200 hover:text-gray-800",
+            "dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-100",
             !date && "text-muted-foreground",
             className
           )}
         >
-          <CalendarIcon className="mr-2 h-4 w-4" />
+          <CalendarIcon className="mr-2 size-5" />
           {date ? (
             format(new Date(date), "PPP", { locale: locales[lang] })
           ) : (
-            <span>{t("SELECT_DATE")}</span>
+            <span className="text-lg font-light text-gray-400">{t("SELECT_DATE")}</span>
           )}
         </Button>
       </PopoverTrigger>

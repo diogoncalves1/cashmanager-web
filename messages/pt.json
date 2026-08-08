@@ -26,12 +26,15 @@
     "INCOME": "Receita",
     "EXPENSE": "Despesa",
 
+    "TRANSACTION_DETAILS": "Detalhes da Transação",
+
     "SELECT_ACCOUNT": "Selecione uma conta",
     "SELECT_CATEGORY": "Selecione uma categoria",
     "SELECT_DATE": "Selecione a data",
 
     "WHAT_WAS_THIS_FOR": "Para que serviu isso?",
 
+    "FINANCIAL_GOAL": "Meta Financeira",
     "CANCEL": "Cancelar",
     "SAVE": "Guardar",
     "CREATE": "Criar",
@@ -1567,6 +1570,7 @@
     "SIDEBAR_CURRENCY_CONVERTER": "Conversor",
     "SIDEBAR_TOOLS": "Ferramentas",
     "SIDEBAR_FRIENDS": "Amizades",
+    "SIDEBAR_FINANCES": "Finanças",
     "SIDEBAR_PROFILE": "Perfil",
     "SIDEBAR_SOCIAL": "Social",
     "SIDEBAR_STOCKS": "Ações",
@@ -1590,6 +1594,7 @@
 
     "HEADER_ACCOUNT_DETAILS": "Detalhes da Conta",
 
+    "NEW": "Novo",
     "LOGOUT": "Saindo…",
     "LOGOUT_WAIT": "Aguarde enquanto encerramos sua sessão",
     "LOGOUT_ERROR": "Não foi possível encerrar sua sessão. Tente novamente."

@@ -51,7 +51,8 @@ export default async function RootLayout({
           <HeroUIProvider>
             <ThemeProvider>
               <SidebarProvider>
-                {children} <Toaster />
+                {children}
+                <Toaster />
               </SidebarProvider>
             </ThemeProvider>
           </HeroUIProvider>
