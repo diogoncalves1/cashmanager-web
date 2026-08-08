@@ -17,6 +17,7 @@ import {
   Home,
   Coins,
   Bell,
+  RefreshCw,
 } from "lucide-react";
 import { onLogout, useAuth } from "@/features/auth";
 import { SwalToast } from "@/components/swal/SwalToast";
@@ -51,22 +52,25 @@ interface NavItem {
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
-const ItemBadge = ({ type, active }: { type: "new" | "pro"; active: boolean }) => (
-  <span
-    className={cn(
-      "ml-auto rounded px-1.5 py-0.5 text-[9px] font-medium uppercase tracking-wide",
-      type === "new"
-        ? active
-          ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400"
-          : "bg-emerald-50 text-emerald-600 dark:bg-emerald-900/20 dark:text-emerald-500"
-        : active
-          ? "bg-success-100 text-success-700 dark:bg-success-900/40 dark:text-success-400"
-          : "bg-success-50 text-success-600 dark:bg-success-900/20 dark:text-success-500"
-    )}
-  >
-    {type}
-  </span>
-);
+const ItemBadge = ({ type, active }: { type: "new" | "pro"; active: boolean }) => {
+  const t = useTranslations("LAYOUTS");
+  return (
+    <span
+      className={cn(
+        "ml-auto rounded px-1.5 py-0.5 text-[9px] font-medium uppercase tracking-wide",
+        type === "new"
+          ? active
+            ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400"
+            : "bg-emerald-50 text-emerald-600 dark:bg-emerald-900/20 dark:text-emerald-500"
+          : active
+            ? "bg-success-100 text-success-700 dark:bg-success-900/40 dark:text-success-400"
+            : "bg-success-50 text-success-600 dark:bg-success-900/20 dark:text-success-500"
+      )}
+    >
+      {t(type.toUpperCase())}
+    </span>
+  );
+};
 
 const ItemBadges = ({
   item,
@@ -187,6 +191,12 @@ const AppSidebar: React.FC = () => {
           { name: t("SIDEBAR_DEBT_PAYMENTS"), path: "/debt-payments" },
           { name: t("SIDEBAR_INVITES"), path: "/invitations/debts" },
         ],
+      },
+      {
+        icon: <RefreshCw size={16} strokeWidth={1.75} />,
+        name: t("SIDEBAR_RECURRING"),
+        path: "/recurring",
+        new: true,
       },
     ],
     [t]

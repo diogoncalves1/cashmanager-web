@@ -3,6 +3,47 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* globals.css */
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: theme("colors.gray.300");
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: theme("colors.gray.400");
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: theme("colors.gray.700");
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: theme("colors.gray.600");
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: theme("colors.gray.300") transparent;
+}
+
+.dark * {
+  scrollbar-color: theme("colors.gray.700") transparent;
+}
+
 @theme {
   --font-*: initial;
   --font-outfit: Outfit, sample-serif;

@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { cn } from "@/shared/utils";
 import { Table as ReactTable } from "@tanstack/react-table";
 import { useTranslations } from "next-intl";
 
@@ -62,20 +63,21 @@ export function DataTablePagination<TData>({
       <div className="flex items-center justify-center gap-1.5">
         {/* First — só em desktop */}
         <Button
-          variant="outline"
+          variant="ghost"
           size="sm"
           onClick={() => table.setPageIndex(0)}
           disabled={!table.getCanPreviousPage()}
-          className="hidden sm:inline-flex"
+          className="hidden sm:inline-flex bg-gray-100"
         >
           {t("FIRST")}
         </Button>
 
         <Button
-          variant="outline"
+          variant="ghost"
           size="sm"
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
+          className="bg-gray-100"
         >
           {t("PREVIOUS")}
         </Button>
@@ -86,9 +88,14 @@ export function DataTablePagination<TData>({
             typeof page === "number" ? (
               <Button
                 key={page}
-                variant={page === pagination.pageIndex + 1 ? "default" : "outline"}
+                variant={page === pagination.pageIndex + 1 ? "default" : "ghost"}
                 size="sm"
-                className="min-w-[36px]"
+                className={cn(
+                  "min-w-[36px] hover:bg-accent hover:text-gray-100",
+                  page === pagination.pageIndex + 1
+                    ? "bg-accent text-gray-100"
+                    : "bg-gray-100 text-gray-400"
+                )}
                 onClick={() => table.setPageIndex(page - 1)}
               >
                 {page}
@@ -107,21 +114,22 @@ export function DataTablePagination<TData>({
         </span>
 
         <Button
-          variant="outline"
+          variant="ghost"
           size="sm"
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
+          className="bg-gray-100"
         >
           {t("NEXT")}
         </Button>
 
         {/* Last — só em desktop */}
         <Button
-          variant="outline"
+          variant="ghost"
           size="sm"
           onClick={() => table.setPageIndex(pageCount - 1)}
           disabled={!table.getCanNextPage()}
-          className="hidden sm:inline-flex"
+          className="hidden sm:inline-flex bg-gray-100"
         >
           {t("LAST")}
         </Button>
