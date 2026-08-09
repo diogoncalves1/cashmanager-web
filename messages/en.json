@@ -4,7 +4,7 @@
     "TRANSACTIONS_DETAILS": "Details",
 
     "META_TITLE": "Cash Manager | Transactions",
-    "META_DESCRIPTION": "Manage your financial transactions efficiently with Cash Manager. Track your income, expenses and keep your finances organized.",
+    "META_DESCRIPTION": "Manage your financial transactions efficiently with Cash Manager. Track your income, expenses, and keep your finances organized.",
 
     "TRANSACTIONS_PAGE_TEXT": "View and manage all transactions across your accounts.",
     "NEW_TRANSACTION": "New Transaction",
@@ -26,12 +26,15 @@
     "INCOME": "Income",
     "EXPENSE": "Expense",
 
+    "TRANSACTION_DETAILS": "Transaction Details",
+
     "SELECT_ACCOUNT": "Select an account",
     "SELECT_CATEGORY": "Select a category",
     "SELECT_DATE": "Select the date",
 
     "WHAT_WAS_THIS_FOR": "What was this for?",
 
+    "FINANCIAL_GOAL": "Financial Goal",
     "CANCEL": "Cancel",
     "SAVE": "Save",
     "CREATE": "Create",
@@ -48,7 +51,7 @@
     "NEXT": "Next",
     "LAST": "Last",
 
-    "SEARCH_TRANSACTION": "Search for transaction",
+    "SEARCH_TRANSACTION": "Search for a transaction",
     "ALL_STATUS": "All statuses",
     "ALL_CATEGORIES": "All categories",
     "ALL_TYPES": "All types",
@@ -66,7 +69,7 @@
     "CONFIRM_TRANSACTION_TEXT": "Are you sure you want to confirm this transaction?",
 
     "DELETE_TRANSACTION": "Delete transaction?",
-    "DELETE_TRANSACTION_TEXT": "Are you sure you want to delete? This action cannot be undone."
+    "DELETE_TRANSACTION_TEXT": "Are you sure you want to delete this? This action cannot be undone."
   },
 
   "DATATABLE": {
@@ -82,13 +85,13 @@
     "INTRO": "Please read these Terms of Service (\"Terms\", \"Terms of Service\") carefully before using our website and services. Your access to and use of the service is conditioned on your acceptance of and compliance with these Terms.",
 
     "SECTION_1_TITLE": "1. Acceptance of Terms",
-    "SECTION_1_TEXT": "By accessing or using our services, you agree to be bound by these Terms. If you disagree with any part of the terms, you may not access the service. These Terms apply to all visitors, users and others who access or use the service.",
+    "SECTION_1_TEXT": "By accessing or using our services, you agree to be bound by these Terms. If you disagree with any part of the terms, you may not access the service. These Terms apply to all visitors, users, and others who access or use the service.",
 
     "SECTION_2_TITLE": "2. Account Registration",
 
     "SECTION_2_1_TITLE": "2.1 Account Creation",
     "SECTION_2_1_TEXT": "To use certain features of our services, you must register for an account. By registering, you agree to:",
-    "SECTION_2_1_ITEM_1": "Provide accurate, current and complete information during the registration process",
+    "SECTION_2_1_ITEM_1": "Provide accurate, current, and complete information during the registration process",
     "SECTION_2_1_ITEM_2": "Maintain and promptly update your account information to keep it accurate and current",
     "SECTION_2_1_ITEM_3": "Maintain the security of your password and accept all risks of unauthorized access",
     "SECTION_2_1_ITEM_4": "Notify us immediately if you discover or suspect any security breach related to your account",
@@ -99,58 +102,58 @@
     "SECTION_3_TITLE": "3. User Obligations",
     "SECTION_3_TEXT": "As a user of our service, you agree to:",
     "SECTION_3_ITEM_1": "Use the services only for lawful purposes and in accordance with these Terms",
-    "SECTION_3_ITEM_2": "Not use the services in any way that violates any applicable local, state, national or international law",
-    "SECTION_3_ITEM_3": "Not impersonate any person or entity, or falsely state or otherwise misrepresent your affiliation with a person or entity",
+    "SECTION_3_ITEM_2": "Not use the services in any way that violates any applicable local, state, national, or international law",
+    "SECTION_3_ITEM_3": "Not impersonate any person or entity, or falsely state or misrepresent your affiliation with a person or entity",
     "SECTION_3_ITEM_4": "Not interfere with or disrupt the services or servers or networks connected to the services",
     "SECTION_3_ITEM_5": "Not attempt to gain unauthorized access to any part of the services or any other systems or networks",
 
     "SECTION_4_TITLE": "4. Prohibited Activities",
     "SECTION_4_TEXT": "You agree not to engage in any of the following prohibited activities:",
-    "SECTION_4_ITEM_1": "Copy, distribute or disclose any part of the services in any medium",
-    "SECTION_4_ITEM_2": "Use any automated system, including robots, spiders or scrapers, to access the services",
-    "SECTION_4_ITEM_3": "Transmit spam, chain letters or other unsolicited communications",
-    "SECTION_4_ITEM_4": "Attempt to interfere with, compromise or disrupt the integrity or security of the services",
-    "SECTION_4_ITEM_5": "Collect or harvest any personally identifiable information from the services",
-    "SECTION_4_ITEM_6": "Use the services for any illegal or unauthorized purpose",
-    "SECTION_4_ITEM_7": "Engage in any conduct that restricts or inhibits anyone’s use of the services",
-    "SECTION_4_ITEM_8": "Introduce any viruses, malware or other harmful code",
+    "SECTION_4_ITEM_1": "Copying, distributing, or disclosing any part of the services in any medium",
+    "SECTION_4_ITEM_2": "Using any automated system, including robots, spiders, or scrapers, to access the services",
+    "SECTION_4_ITEM_3": "Transmitting spam, chain letters, or other unsolicited communications",
+    "SECTION_4_ITEM_4": "Attempting to interfere with, compromise, or disrupt the integrity or security of the services",
+    "SECTION_4_ITEM_5": "Collecting or harvesting any personally identifiable information from the services",
+    "SECTION_4_ITEM_6": "Using the services for any illegal or unauthorized purpose",
+    "SECTION_4_ITEM_7": "Engaging in any conduct that restricts or inhibits anyone's use of the services",
+    "SECTION_4_ITEM_8": "Introducing any virus, malware, or other harmful code",
 
     "SECTION_5_TITLE": "5. Intellectual Property Rights",
 
     "SECTION_5_1_TITLE": "5.1 Our Intellectual Property",
-    "SECTION_5_1_TEXT": "The services and their original content, features and functionality are and will remain the exclusive property of the company and its licensors. The services are protected by copyright, trademark, and other laws of the United States and foreign countries.",
+    "SECTION_5_1_TEXT": "The services and their original content, features, and functionality are and will remain the exclusive property of the company and its licensors. The services are protected by copyright, trademark, and other laws of the United States and foreign countries.",
 
     "SECTION_5_2_TITLE": "5.2 Your Content",
-    "SECTION_5_2_TEXT": "You retain ownership of any content you submit, post or display on or through the services. By submitting content, you grant us a worldwide, non-exclusive, royalty-free license to use, copy, modify and display that content in connection with providing the services.",
+    "SECTION_5_2_TEXT": "You retain ownership of any content you submit, post, or display on or through the services. By submitting content, you grant us a worldwide, non-exclusive, royalty-free license to use, copy, modify, and display that content in connection with providing the services.",
 
     "SECTION_5_3_TITLE": "5.3 Feedback",
-    "SECTION_5_3_TEXT": "If you provide us with any feedback, suggestions or ideas relating to the services, you grant us the right to use such feedback without restriction and without compensation to you.",
+    "SECTION_5_3_TEXT": "If you provide us with any feedback, suggestions, or ideas related to the services, you grant us the right to use such feedback without restriction and without compensation to you.",
 
     "SECTION_6_TITLE": "6. Payment Terms",
     "SECTION_6_TEXT": "If you purchase any paid features or subscriptions:",
     "SECTION_6_ITEM_1": "You agree to pay all fees associated with your account",
-    "SECTION_6_ITEM_2": "Fees are non-refundable except as required by law or as expressly stated in these Terms",
-    "SECTION_6_ITEM_3": "We may change our fees with thirty (30) days’ prior notice",
+    "SECTION_6_ITEM_2": "Fees are non-refundable except as required by law or as explicitly stated in these Terms",
+    "SECTION_6_ITEM_3": "We may change our fees with thirty (30) days' prior notice",
     "SECTION_6_ITEM_4": "You are responsible for all applicable taxes",
     "SECTION_6_ITEM_5": "Non-payment may result in suspension or termination of your account",
 
     "SECTION_7_TITLE": "7. Disclaimers",
 
     "SECTION_7_1_TITLE": "7.1 Service Provided \"As Is\"",
-    "SECTION_7_1_TEXT": "THE SERVICES ARE PROVIDED \"AS IS\" AND \"AS AVAILABLE\", WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT OR COURSE OF PERFORMANCE.",
+    "SECTION_7_1_TEXT": "THE SERVICES ARE PROVIDED \"AS IS\" AND \"AS AVAILABLE\", WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR COURSE OF PERFORMANCE.",
 
     "SECTION_7_2_TITLE": "7.2 No Financial Advice",
-    "SECTION_7_2_TEXT": "Our services are for informational and organizational purposes only. Nothing on our platform constitutes professional financial, legal or tax advice. You should consult qualified professionals before making any financial decisions.",
+    "SECTION_7_2_TEXT": "Our services are intended solely for informational and organizational purposes. Nothing on our platform constitutes professional financial, legal, or tax advice. You should consult qualified professionals before making any financial decisions.",
 
     "SECTION_7_3_TITLE": "7.3 Data Accuracy",
-    "SECTION_7_3_TEXT": "While we strive to provide accurate information, we do not guarantee that the information, calculations or analyses provided through our services are accurate, complete or current.",
+    "SECTION_7_3_TEXT": "While we strive to provide accurate information, we do not guarantee that the information, calculations, or analyses provided through our services are accurate, complete, or current.",
 
     "SECTION_8_TITLE": "8. Limitation of Liability",
-    "SECTION_8_TEXT": "TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL THE COMPANY, ITS AFFILIATES, DIRECTORS, EMPLOYEES OR AGENTS BE LIABLE FOR ANY INDIRECT, PUNITIVE, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR EXEMPLARY DAMAGES, INCLUDING WITHOUT LIMITATION DAMAGES FOR LOSS OF PROFITS, GOODWILL, USE, DATA OR OTHER INTANGIBLE LOSSES, ARISING OUT OF OR RELATING TO THE USE OR INABILITY TO USE THE SERVICES.",
-    "SECTION_8_TEXT_2": "IN NO EVENT SHALL OUR TOTAL LIABILITY TO YOU FOR ALL DAMAGES, LOSSES OR CAUSES OF ACTION EXCEED THE AMOUNT YOU HAVE PAID US IN THE LAST SIX (6) MONTHS, OR ONE HUNDRED DOLLARS ($100), WHICHEVER IS GREATER.",
+    "SECTION_8_TEXT": "TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL THE COMPANY, ITS AFFILIATES, DIRECTORS, EMPLOYEES, OR AGENTS BE LIABLE FOR ANY INDIRECT, PUNITIVE, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR EXEMPLARY DAMAGES, INCLUDING WITHOUT LIMITATION DAMAGES FOR LOSS OF PROFITS, GOODWILL, USE, DATA, OR OTHER INTANGIBLE LOSSES, ARISING OUT OF OR RELATED TO THE USE OR INABILITY TO USE THE SERVICES.",
+    "SECTION_8_TEXT_2": "IN NO EVENT SHALL OUR TOTAL LIABILITY TO YOU FOR ALL DAMAGES, LOSSES, OR CAUSES OF ACTION EXCEED THE AMOUNT YOU PAID US IN THE LAST SIX (6) MONTHS, OR ONE HUNDRED DOLLARS ($100), WHICHEVER IS GREATER.",
 
     "SECTION_9_TITLE": "9. Indemnification",
-    "SECTION_9_TEXT": "You agree to defend, indemnify and hold harmless the company and its affiliates, licensors and service providers from and against any claims, liabilities, damages, judgments, awards, losses, costs, expenses or fees (including reasonable attorneys’ fees) arising out of or relating to your violation of these Terms or your use of the services.",
+    "SECTION_9_TEXT": "You agree to defend, indemnify, and hold harmless the company and its affiliates, licensors, and service providers from and against any claims, liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable attorneys' fees) arising out of or related to your breach of these Terms or your use of the services.",
 
     "SECTION_10_TITLE": "10. Termination",
 
@@ -158,88 +161,88 @@
     "SECTION_10_1_TEXT": "You may terminate your account at any time by following the instructions in your account settings or by contacting us. Upon termination, your right to use the services will cease immediately.",
 
     "SECTION_10_2_TITLE": "10.2 Termination by Us",
-    "SECTION_10_2_TEXT": "We may terminate or suspend your account immediately, without prior notice or liability, for any reason, including without limitation breach of these Terms. Upon termination, your right to use the services will cease immediately.",
+    "SECTION_10_2_TEXT": "We may terminate or suspend your account immediately, without prior notice or liability, for any reason, including but not limited to a breach of these Terms. Upon termination, your right to use the services will cease immediately.",
 
     "SECTION_10_3_TITLE": "10.3 Effect of Termination",
-    "SECTION_10_3_TEXT": "All provisions of the Terms which by their nature should survive termination shall survive termination, including provisions of ownership, warranty disclaimers, indemnification and limitations of liability.",
+    "SECTION_10_3_TEXT": "All provisions of the Terms that by their nature should survive termination shall survive termination, including ownership provisions, warranty disclaimers, indemnification, and limitations of liability.",
 
     "SECTION_11_TITLE": "11. Governing Law",
-    "SECTION_11_TEXT": "These Terms shall be governed and construed in accordance with the laws of [Your Jurisdiction], without regard to its conflict of law provisions. Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights.",
+    "SECTION_11_TEXT": "These Terms shall be governed by and construed in accordance with the laws of [Your Jurisdiction], without regard to its conflict of law provisions. Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights.",
 
     "SECTION_12_TITLE": "12. Dispute Resolution",
 
     "SECTION_12_1_TITLE": "12.1 Informal Resolution",
-    "SECTION_12_1_TEXT": "Before filing a claim against us, you agree to attempt to resolve the dispute informally by contacting us. We will attempt to resolve the dispute informally by contacting you by email. If a dispute is not resolved within thirty (30) days of submission, you or we may commence formal proceedings.",
+    "SECTION_12_1_TEXT": "Before filing a claim against us, you agree to try to resolve the dispute informally by contacting us. We will attempt to resolve the dispute informally by emailing you. If a dispute is not resolved within thirty (30) days of submission, you or we may initiate a formal proceeding.",
 
     "SECTION_12_2_TITLE": "12.2 Arbitration",
-    "SECTION_12_2_TEXT": "Any dispute arising out of or relating to these Terms or the services shall be finally settled by binding arbitration. The arbitration shall be conducted in [Your Location] in accordance with the rules of [Arbitration Organization]. The arbitrator’s decision shall be final and binding.",
+    "SECTION_12_2_TEXT": "Any dispute arising out of or related to these Terms or the services will be finally resolved by binding arbitration. The arbitration will be conducted in [Your Location] in accordance with the rules of [Arbitration Organization]. The arbitrator's decision will be final and binding.",
 
     "SECTION_12_3_TITLE": "12.3 Class Action Waiver",
-    "SECTION_12_3_TEXT": "You agree that any arbitration or proceeding shall be limited to the dispute between us individually. You waive any right to participate in a class action lawsuit or class-wide arbitration.",
+    "SECTION_12_3_TEXT": "You agree that any arbitration or proceeding will be limited to the dispute between us individually. You waive any right to participate in a class action lawsuit or class-wide arbitration.",
 
-    "SECTION_13_TITLE": "13. Changes to Terms",
-    "SECTION_13_TEXT": "We reserve the right to modify or replace these Terms at any time at our sole discretion. If a revision is material, we will provide at least thirty (30) days’ notice before any new terms take effect. What constitutes a material change will be determined at our sole discretion.",
+    "SECTION_13_TITLE": "13. Changes to the Terms",
+    "SECTION_13_TEXT": "We reserve the right to modify or replace these Terms at any time at our sole discretion. If a revision is material, we will provide at least thirty (30) days' notice before any new terms take effect. What constitutes a material change will be determined at our sole discretion.",
 
     "SECTION_14_TITLE": "14. Severability",
-    "SECTION_14_TEXT": "If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect. The invalid or unenforceable provision will be modified to the minimum extent necessary to make it valid and enforceable.",
+    "SECTION_14_TEXT": "If any provision of these Terms is found to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect. The invalid or unenforceable provision will be modified to the minimum extent necessary to make it valid and enforceable.",
 
     "SECTION_15_TITLE": "15. Entire Agreement",
-    "SECTION_15_TEXT": "These Terms constitute the entire agreement between you and us regarding our services and supersede and replace any prior agreements we might have had between us regarding the services.",
+    "SECTION_15_TEXT": "These Terms constitute the entire agreement between you and us regarding our services, and supersede and replace any prior agreements we may have had between us regarding the services.",
 
     "SECTION_16_TITLE": "16. Contact Us",
     "SECTION_16_TEXT": "If you have any questions about these Terms, please contact us at:",
     "SECTION_16_TEAM": "Legal Team",
-    "SECTION_16_EMAIL": "Email: support@cashmanager.com"
+    "SECTION_16_EMAIL": "Email: geral@cashmanager.pt"
   },
 
   "PRIVACY": {
     "HEADING": "Privacy Policy",
     "META_TITLE": "Cash Manager | Privacy Policy",
-    "META_DESCRIPTION": "Learn how Cash Manager collects, uses and protects your personal information.",
+    "META_DESCRIPTION": "Learn how Cash Manager collects, uses, and protects your personal information.",
     "LAST_UPDATED": "Last updated: March 7, 2026",
 
-    "INTRO": "This Privacy Policy describes how your personal information is collected, used and shared when you visit or use our services. We are committed to protecting your privacy and ensuring you have a positive experience on our platform.",
+    "INTRO": "This Privacy Policy describes how your personal information is collected, used, and shared when you visit or use our services. We are committed to protecting your privacy and ensuring you have a positive experience on our platform.",
 
     "SECTION_1_TITLE": "1. Information We Collect",
     "SECTION_1_1_TITLE": "1.1 Information You Provide",
     "SECTION_1_1_TEXT": "We collect information you provide directly, including:",
-    "SECTION_1_1_ITEM_1": "Account Information: Name, email address, password and profile details when you create an account.",
-    "SECTION_1_1_ITEM_2": "Financial Data: Transaction records, account balances, debt information and payment history that you choose to enter or connect.",
+    "SECTION_1_1_ITEM_1": "Account Information: Name, email address, password, and profile details when you create an account.",
+    "SECTION_1_1_ITEM_2": "Financial Data: Transaction records, account balances, debt information, and payment history that you choose to enter or connect.",
     "SECTION_1_1_ITEM_3": "Communications: Information you provide when contacting our support team or participating in surveys.",
-    "SECTION_1_1_ITEM_4": "Payment Information: Billing details and payment method information when you subscribe to premium services.",
+    "SECTION_1_1_ITEM_4": "Payment Information: Billing details and payment method information when subscribing to premium services.",
 
     "SECTION_1_2_TITLE": "1.2 Information Collected Automatically",
     "SECTION_1_2_TEXT": "When you access our services, we automatically collect:",
-    "SECTION_1_2_ITEM_1": "Device Information: Browser type, operating system, device identifiers and IP address.",
-    "SECTION_1_2_ITEM_2": "Usage Data: Pages viewed, features used, time spent on the platform and interaction patterns.",
-    "SECTION_1_2_ITEM_3": "Cookies and Similar Technologies: Information collected through cookies, web beacons and similar tracking technologies (see our Cookie Policy for details).",
+    "SECTION_1_2_ITEM_1": "Device Information: Browser type, operating system, device identifiers, and IP address.",
+    "SECTION_1_2_ITEM_2": "Usage Data: Pages viewed, features used, time spent on the platform, and interaction patterns.",
+    "SECTION_1_2_ITEM_3": "Cookies and Similar Technologies: Information collected through cookies, web beacons, and similar tracking technologies (see our Cookie Policy for more details).",
 
     "SECTION_2_TITLE": "2. How We Use Your Information",
-    "SECTION_2_TEXT": "We use the collected information for the following purposes:",
-    "SECTION_2_ITEM_1": "Provide, maintain and improve our services",
-    "SECTION_2_ITEM_2": "Process transactions and send related information",
-    "SECTION_2_ITEM_3": "Send technical notices, updates, security alerts and administrative messages",
-    "SECTION_2_ITEM_4": "Respond to your comments, questions and customer service requests",
-    "SECTION_2_ITEM_5": "Analyze usage patterns to improve user experience",
-    "SECTION_2_ITEM_6": "Detect, prevent and address technical issues and fraudulent activity",
-    "SECTION_2_ITEM_7": "Comply with legal obligations and protect our rights",
+    "SECTION_2_TEXT": "We use the information collected for the following purposes:",
+    "SECTION_2_ITEM_1": "To provide, maintain, and improve our services",
+    "SECTION_2_ITEM_2": "To process transactions and send related information",
+    "SECTION_2_ITEM_3": "To send technical notices, updates, security alerts, and administrative messages",
+    "SECTION_2_ITEM_4": "To respond to your comments, questions, and customer service requests",
+    "SECTION_2_ITEM_5": "To analyze usage patterns to improve the user experience",
+    "SECTION_2_ITEM_6": "To detect, prevent, and resolve technical issues and fraudulent activity",
+    "SECTION_2_ITEM_7": "To comply with legal obligations and protect our rights",
 
-    "SECTION_3_TITLE": "3. Sharing and Disclosure of Information",
+    "SECTION_3_TITLE": "3. Information Sharing and Disclosure",
     "SECTION_3_TEXT": "We do not sell your personal information. We may share your information in the following circumstances:",
-    "SECTION_3_ITEM_1": "Service Providers: With third parties that perform services on our behalf, such as payment processing, data analysis and customer support.",
-    "SECTION_3_ITEM_2": "Business Transfers: In connection with a merger, acquisition or asset sale, your information may be transferred as part of that transaction.",
-    "SECTION_3_ITEM_3": "Legal Requirements: When required by law, subpoena or other legal process, or to protect our rights, privacy, safety or property.",
-    "SECTION_3_ITEM_4": "With Your Consent: When you have given explicit permission to share your information.",
+    "SECTION_3_ITEM_1": "Service Providers: With third parties who perform services on our behalf, such as payment processing, data analysis, and customer support.",
+    "SECTION_3_ITEM_2": "Business Transfers: In connection with a merger, acquisition, or sale of assets, your information may be transferred as part of that transaction.",
+    "SECTION_3_ITEM_3": "Legal Requirements: When required by law, subpoena, or other legal process, or to protect our rights, privacy, security, or property.",
+    "SECTION_3_ITEM_4": "With Your Consent: When you have granted explicit permission to share your information.",
 
     "SECTION_4_TITLE": "4. Data Security",
-    "SECTION_4_TEXT": "We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure or destruction. These measures include:",
+    "SECTION_4_TEXT": "We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. These measures include:",
     "SECTION_4_ITEM_1": "Encryption of data in transit and at rest using industry-standard protocols",
     "SECTION_4_ITEM_2": "Regular security assessments and penetration testing",
     "SECTION_4_ITEM_3": "Access controls that limit employee access to personal data",
     "SECTION_4_ITEM_4": "Secure data centers with physical security measures",
 
     "SECTION_5_TITLE": "5. Data Retention",
-    "SECTION_5_TEXT": "We retain your personal information for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required or permitted by law. When determining retention periods, we consider the nature of the information, potential risks and legal requirements.",
+    "SECTION_5_TEXT": "We retain your personal information for as long as necessary to fulfill the purposes described in this Privacy Policy, unless a longer retention period is required or permitted by law. When determining retention periods, we consider the nature of the information, potential risks, and legal requirements.",
 
     "SECTION_6_TITLE": "6. Your Rights and Choices",
 
@@ -247,24 +250,24 @@
     "SECTION_6_1_TEXT": "You have the right to request access to the personal information we hold about you and to receive a copy of your data in a structured, commonly used format.",
 
     "SECTION_6_2_TITLE": "6.2 Correction and Deletion",
-    "SECTION_6_2_TEXT": "You can update, correct or request deletion of your personal information by accessing your account settings or contacting us directly.",
+    "SECTION_6_2_TEXT": "You can update, correct, or request deletion of your personal information by accessing your account settings or contacting us directly.",
 
-    "SECTION_6_3_TITLE": "6.3 Opt-out Rights",
-    "SECTION_6_3_TEXT": "You can opt out of receiving promotional communications by following the unsubscribe instructions in those messages or updating your notification preferences.",
+    "SECTION_6_3_TITLE": "6.3 Opt-Out Rights",
+    "SECTION_6_3_TEXT": "You can opt out of receiving promotional communications by following the unsubscribe instructions in those messages or by updating your notification preferences.",
 
     "SECTION_6_4_TITLE": "6.4 GDPR Rights (European Users)",
     "SECTION_6_4_TEXT": "If you are located in the European Economic Area (EEA), you have additional rights under the General Data Protection Regulation (GDPR), including:",
-    "SECTION_6_4_ITEM_1": "Right to object to processing of your personal data",
-    "SECTION_6_4_ITEM_2": "Right to restrict processing",
-    "SECTION_6_4_ITEM_3": "Right to withdraw consent at any time",
-    "SECTION_6_4_ITEM_4": "Right to lodge a complaint with a supervisory authority",
+    "SECTION_6_4_ITEM_1": "The right to object to the processing of your personal data",
+    "SECTION_6_4_ITEM_2": "The right to restrict processing",
+    "SECTION_6_4_ITEM_3": "The right to withdraw consent at any time",
+    "SECTION_6_4_ITEM_4": "The right to lodge a complaint with a supervisory authority",
 
     "SECTION_6_5_TITLE": "6.5 CCPA Rights (California Residents)",
     "SECTION_6_5_TEXT": "California residents have specific rights under the California Consumer Privacy Act (CCPA), including:",
-    "SECTION_6_5_ITEM_1": "Right to know what personal information is collected and how it is used",
-    "SECTION_6_5_ITEM_2": "Right to delete personal information",
-    "SECTION_6_5_ITEM_3": "Right to opt-out of the sale of personal information (note: we do not sell personal information)",
-    "SECTION_6_5_ITEM_4": "Right to non-discrimination for exercising privacy rights",
+    "SECTION_6_5_ITEM_1": "The right to know what personal information is collected and how it is used",
+    "SECTION_6_5_ITEM_2": "The right to delete personal information",
+    "SECTION_6_5_ITEM_3": "The right to opt out of the sale of personal information (note: we do not sell personal information)",
+    "SECTION_6_5_ITEM_4": "The right to not be discriminated against for exercising your privacy rights",
 
     "SECTION_7_TITLE": "7. Cookies and Tracking Technologies",
     "SECTION_7_TEXT": "We use cookies and similar tracking technologies to collect and store information about your interactions with our services. For detailed information about our use of cookies and how to manage your preferences, see our Cookie Policy.",
@@ -276,16 +279,16 @@
     "SECTION_9_TITLE": "9. International Data Transfers",
     "SECTION_9_TEXT": "Your information may be transferred to and processed in countries other than your country of residence. We ensure appropriate safeguards are in place to protect your information in accordance with this Privacy Policy and applicable data protection laws.",
 
-    "SECTION_10_TITLE": "10. Children’s Privacy",
-    "SECTION_10_TEXT": "Our services are not directed to individuals under 16 years of age. We do not knowingly collect personal information from children. If we become aware that a child has provided personal information, we will take steps to delete such information.",
+    "SECTION_10_TITLE": "10. Children's Privacy",
+    "SECTION_10_TEXT": "Our services are not directed at individuals under the age of 16. We do not knowingly collect personal information from children. If we become aware that a minor has provided personal information, we will take steps to delete that information.",
 
     "SECTION_11_TITLE": "11. Changes to This Privacy Policy",
-    "SECTION_11_TEXT": "We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal or regulatory reasons. We will notify you of any material changes by posting the new Privacy Policy on this page and updating the \"Last updated\" date.",
+    "SECTION_11_TEXT": "We may update this Privacy Policy periodically to reflect changes in our practices or for other operational, legal, or regulatory reasons. We will notify you of any material changes by posting the new Privacy Policy on this page and updating the \"Last Updated\" date.",
 
     "SECTION_12_TITLE": "12. Contact Us",
     "SECTION_12_TEXT": "If you have any questions about this Privacy Policy or our privacy practices, please contact us at:",
     "SECTION_12_TEAM": "Privacy Team",
-    "SECTION_12_EMAIL": "Email: privacy@cashmanager.com",
+    "SECTION_12_EMAIL": "Email: privacy@[yourdomain].com",
     "SECTION_12_ADDRESS": "Address: [Your Company Address]"
   },
 
@@ -295,22 +298,22 @@
     "META_DESCRIPTION": "Learn how Cash Manager uses cookies and similar tracking technologies.",
     "LAST_UPDATED": "Last updated: March 7, 2026",
 
-    "INTRO": "This Cookie Policy explains how we use cookies and similar tracking technologies when you visit our website or use our services. It explains what these technologies are, why we use them, and your rights to control our use of them.",
+    "INTRO": "This Cookie Policy explains how we use cookies and similar tracking technologies when you visit our website or use our services. It explains what these technologies are and why we use them, as well as your rights to control our use of them.",
 
     "SECTION_1_TITLE": "1. What Are Cookies?",
     "SECTION_1_TEXT": "Cookies are small text files that are stored on your computer or mobile device when you visit a website. They are widely used to make websites work more efficiently, provide a better user experience, and provide information to website owners.",
     "SECTION_1_TEXT_2": "Cookies can be \"persistent\" or \"session\" cookies. Persistent cookies remain on your device when you go offline, while session cookies are deleted as soon as you close your browser.",
 
     "SECTION_2_TITLE": "2. Types of Cookies We Use",
-    "SECTION_2_TEXT": "We use the following types of cookies in our services:",
+    "SECTION_2_TEXT": "We use the following types of cookies on our services:",
 
     "SECTION_2_1_TITLE": "2.1 Essential Cookies",
-    "SECTION_2_1_TEXT": "These cookies are strictly necessary for the operation of our website. They enable essential functionality such as security, network management, and account access. You cannot disable these cookies as the services would not function properly without them.",
+    "SECTION_2_1_TEXT": "These cookies are strictly necessary for our website to function. They enable essential features such as security, network management, and account access. You cannot disable these cookies, as the services would not work properly without them.",
     "ESSENTIAL_COOKIE_1_NAME": "session_id",
-    "ESSENTIAL_COOKIE_1_PURPOSE": "Maintains user session state",
+    "ESSENTIAL_COOKIE_1_PURPOSE": "Maintains the user's session state",
     "ESSENTIAL_COOKIE_1_DURATION": "Session",
     "ESSENTIAL_COOKIE_2_NAME": "csrf_token",
-    "ESSENTIAL_COOKIE_2_PURPOSE": "Cross-site request forgery protection",
+    "ESSENTIAL_COOKIE_2_PURPOSE": "Security protection against cross-site request forgery",
     "ESSENTIAL_COOKIE_2_DURATION": "Session",
     "ESSENTIAL_COOKIE_3_NAME": "auth_token",
     "ESSENTIAL_COOKIE_3_PURPOSE": "Authentication and authorization",
@@ -334,17 +337,17 @@
     "SECTION_2_3_TITLE": "2.3 Functional Cookies",
     "SECTION_2_3_TEXT": "These cookies enable enhanced functionality and personalization, such as remembering your preferences and settings. They may be set by us or by third-party providers whose services we have added to our pages.",
     "FUNCTIONAL_COOKIE_1_NAME": "theme",
-    "FUNCTIONAL_COOKIE_1_PURPOSE": "Stores the user’s theme preference (light/dark)",
+    "FUNCTIONAL_COOKIE_1_PURPOSE": "Stores the user's theme preference (light/dark)",
     "FUNCTIONAL_COOKIE_1_DURATION": "1 year",
     "FUNCTIONAL_COOKIE_2_NAME": "language",
-    "FUNCTIONAL_COOKIE_2_PURPOSE": "Stores the user’s language preference",
+    "FUNCTIONAL_COOKIE_2_PURPOSE": "Stores the user's language preference",
     "FUNCTIONAL_COOKIE_2_DURATION": "1 year",
     "FUNCTIONAL_COOKIE_3_NAME": "sidebar_state",
-    "FUNCTIONAL_COOKIE_3_PURPOSE": "Remembers sidebar state (collapsed/expanded)",
+    "FUNCTIONAL_COOKIE_3_PURPOSE": "Remembers the sidebar state (collapsed/expanded)",
     "FUNCTIONAL_COOKIE_3_DURATION": "1 year",
 
     "SECTION_2_4_TITLE": "2.4 Marketing Cookies",
-    "SECTION_2_4_TEXT": "These cookies may be set through our site by our advertising partners. They may be used by those companies to build a profile of your interests and show relevant ads on other sites. If you do not allow these cookies, you will experience less targeted advertising.",
+    "SECTION_2_4_TEXT": "These cookies may be set through our website by our advertising partners. They may be used by these companies to build a profile of your interests and show you relevant ads on other sites. If you do not allow these cookies, you will experience less targeted advertising.",
     "MARKETING_COOKIE_1_NAME": "_fbp",
     "MARKETING_COOKIE_1_PROVIDER": "Facebook",
     "MARKETING_COOKIE_1_PURPOSE": "Advertising and retargeting",
@@ -355,47 +358,47 @@
     "MARKETING_COOKIE_2_DURATION": "3 months",
 
     "SECTION_3_TITLE": "3. Third-Party Cookies",
-    "SECTION_3_TEXT": "In addition to our own cookies, we may also use various third-party cookies to report usage statistics of the services and deliver advertisements on the services. These third parties may include:",
-    "SECTION_3_ITEM_1": "Google Analytics: Web analytics service that tracks and reports website traffic",
+    "SECTION_3_TEXT": "In addition to our own cookies, we may also use various third-party cookies to report usage statistics for the services and deliver advertisements on the services. These third parties may include:",
+    "SECTION_3_ITEM_1": "Google Analytics: A web analytics service that tracks and reports website traffic",
     "SECTION_3_ITEM_2": "Vercel Analytics: Performance monitoring and analytics",
     "SECTION_3_ITEM_3": "Stripe: Payment processing (for premium features)",
     "SECTION_3_ITEM_4": "Intercom: Customer support and messaging",
 
     "SECTION_4_TITLE": "4. How to Manage Cookies",
     "SECTION_4_1_TITLE": "4.1 Browser Settings",
-    "SECTION_4_1_TEXT": "Most web browsers allow you to control cookies through their settings preferences. However, limiting a website’s ability to set cookies may impact your overall user experience. Below are links to cookie management instructions for popular browsers:",
+    "SECTION_4_1_TEXT": "Most web browsers allow you to control cookies through their settings preferences. However, if you limit the ability of websites to set cookies, you may impact your overall user experience. Below are links to cookie management instructions for popular browsers:",
     "BROWSER_CHROME": "Google Chrome",
     "BROWSER_FIREFOX": "Mozilla Firefox",
     "BROWSER_SAFARI": "Safari",
     "BROWSER_EDGE": "Microsoft Edge",
 
     "SECTION_4_2_TITLE": "4.2 Cookie Consent Tool",
-    "SECTION_4_2_TEXT": "When you first visit our site, you will see a cookie consent banner that allows you to accept or reject non-essential cookies. You can change your preferences at any time by clicking the \"Cookie Settings\" link in the footer of our site.",
+    "SECTION_4_2_TEXT": "When you first visit our website, you will see a cookie consent banner that allows you to accept or reject non-essential cookies. You can change your preferences at any time by clicking the \"Cookie Settings\" link in our website's footer.",
 
-    "SECTION_4_3_TITLE": "4.3 Opt-out Links",
+    "SECTION_4_3_TITLE": "4.3 Opt-Out Links",
     "SECTION_4_3_TEXT": "You can also disable certain third-party cookies using the following links:",
-    "OPT_OUT_GA": "Google Analytics Opt-out",
-    "OPT_OUT_FACEBOOK": "Facebook Ads Preferences",
-    "OPT_OUT_NAI": "Network Advertising Initiative Opt-out",
-    "OPT_OUT_DAA": "Digital Advertising Alliance Opt-out",
+    "OPT_OUT_GA": "Google Analytics Opt-Out",
+    "OPT_OUT_FACEBOOK": "Facebook Ad Preferences",
+    "OPT_OUT_NAI": "Network Advertising Initiative Opt-Out",
+    "OPT_OUT_DAA": "Digital Advertising Alliance Opt-Out",
 
     "SECTION_5_TITLE": "5. Similar Technologies",
     "SECTION_5_TEXT": "In addition to cookies, we may use other similar technologies:",
     "SECTION_5_ITEM_1": "Web Beacons: Small graphic images (also known as \"pixel tags\") that may be included in our services and emails to measure engagement.",
-    "SECTION_5_ITEM_2": "Local Storage: Technology that allows a website to store and retrieve data on a user’s device, similar to cookies but with greater capacity.",
+    "SECTION_5_ITEM_2": "Local Storage: Technology that allows a website to store and retrieve data on a user's device, similar to cookies but with greater capacity.",
     "SECTION_5_ITEM_3": "Session Storage: Similar to local storage, but the data is cleared when the browser session ends.",
 
     "SECTION_6_TITLE": "6. Do Not Track",
     "SECTION_6_TEXT": "Some browsers have a \"Do Not Track\" feature that signals to websites that you do not want your online activity tracked. Our services currently do not respond to Do Not Track signals. However, you can manage your cookie preferences using the methods described above.",
 
     "SECTION_7_TITLE": "7. Policy Updates",
-    "SECTION_7_TEXT": "We may update this Cookie Policy from time to time to reflect changes in the cookies we use or for other operational, legal or regulatory reasons. Please review this Cookie Policy regularly to stay informed about our use of cookies and related technologies.",
+    "SECTION_7_TEXT": "We may update this Cookie Policy from time to time to reflect changes in the cookies we use or for other operational, legal, or regulatory reasons. Please review this Cookie Policy regularly to stay informed about our use of cookies and related technologies.",
     "SECTION_7_TEXT_2": "The date at the top of this Cookie Policy indicates when it was last updated.",
 
     "SECTION_8_TITLE": "8. Contact Us",
-    "SECTION_8_TEXT": "If you have any questions about our use of cookies or other technologies, please contact us at:",
+    "SECTION_8_TEXT": "If you have questions about our use of cookies or other technologies, please contact us at:",
     "CONTACT_PRIVACY_TEAM": "Privacy Team",
-    "CONTACT_EMAIL": "Email: privacy@cashmanager.com",
+    "CONTACT_EMAIL": "Email: privacy@cashmanager.pt",
 
     "TABLE_COOKIE_NAME": "Cookie Name",
     "TABLE_PURPOSE": "Purpose",
@@ -405,18 +408,17 @@
 
   "ACCOUNTS": {
     "META_TITLE": "Cash Manager | Accounts",
-    "META_DESCRIPTION": "Manage your financial accounts efficiently with Cash Manager. Track your income, expenses and keep your finances organized.",
+    "META_DESCRIPTION": "Manage your financial accounts efficiently with Cash Manager. Track your income, expenses, and keep your finances organized.",
 
     "ACCOUNTS": "Accounts",
     "ACCOUNTS_TEXT": "Manage your financial accounts and track balances.",
     "DETAILS": "Details",
 
-    "LEAVE_ACCOUNT": "Leave account",
-
     "BALANCE": "Balance",
     "TOTAL_INCOME": "Total Income",
     "TOTAL_EXPENSE": "Total Expense",
     "ACTIVE_ACCOUNTS": "Active Accounts",
+    "LEAVE_ACCOUNT": "Leave account",
 
     "ALL_TYPES": "All types",
     "BANK_ACCOUNT": "Bank account",
@@ -444,7 +446,7 @@
     "ACTIVATE_ACCOUNT": "Activate Account",
 
     "NEW_ACCOUNT": "New Account",
-    "SEARCH_ACCOUNT": "Search for account",
+    "SEARCH_ACCOUNT": "Search for an account",
     "SORT_BY": "Sort by",
     "ORDER": "Order",
     "ASCENDING": "Ascending",
@@ -476,6 +478,9 @@
     "ANALYTICS": "Analytics",
     "SETTINGS": "Settings",
 
+    "OTHER": "Other",
+    "OTHERS": "Others",
+
     "EXPENSES_BY_CATEGORY": "Expenses by category",
     "NO_DATA_AVAILABLE": "No data recorded.",
     "MONTHLY_RESUME": "Monthly Summary",
@@ -483,7 +488,7 @@
     "CATEGORY": "category",
     "TOTAL": "total",
     "AMOUNT": "Amount",
-    "SHARE": "Percentage",
+    "SHARE": "Share",
     "BREAKDOWN": "Breakdown",
     "ACCOUNT_DELETED": "Account deleted",
     "CANCEL": "Cancel",
@@ -491,7 +496,7 @@
 
     "CREATE_NEW_ACCOUNT": "Create new account",
     "EDIT_ACCOUNT_TEXT": "Update this account's information.",
-    "CREATE_ACCOUNT_TEXT": "Add a new financial account to track your balance and transactions.",
+    "CREATE_ACCOUNT_TEXT": "Add a new financial account to track its balance and transactions.",
     "ACCOUNT_NAME": "Account name",
     "ACCOUNT_NAME_EG": "E.g.: Emergency Fund",
     "ACCOUNT_TYPE": "Account type",
@@ -502,12 +507,12 @@
     "SAVING": "Saving...",
 
     "GENERAL_INFORMATION": "General information",
-    "GENERAL_INFORMATION_TEXT": "Update account details and preferences.",
+    "GENERAL_INFORMATION_TEXT": "Update your account's details and preferences.",
 
     "PREFERENCES": "Preferences",
     "PREFRENCES_TEXT": "Control this account's behavior.",
 
-    "DANGER_ZONE": "Danger Zone",
+    "DANGER_ZONE": "Danger zone",
     "DANGER_ZONE_TEXT": "Irreversible actions that affect your account",
     "DELETE_THIS_ACCOUNT": "Delete this account",
     "DELETE_THIS_ACCOUNT_TEXT": "Permanently remove this account and all its transactions.",
@@ -520,15 +525,12 @@
 
     "BALANCE_OVER_TIME": "Balance over time",
 
-    "OTHER": "Other",
-    "OTHERS": "Others",
-
     "7D": "7D",
     "1M": "1M",
     "3M": "3M",
     "1Y": "1Y",
 
-    "USER_MANAGEMENT": "User Management",
+    "USER_MANAGEMENT": "User management",
     "USER_MANAGEMENT_TEXT": "Manage members associated with this account",
 
     "INVITES": "Invites",
@@ -563,9 +565,9 @@
     "INVITE_MEMBER": "Invite member",
     "INVITE_MEMBER_TEXT": "Invite a friend.",
 
-    "CHOOSE_DEBTS": "Choose debt",
-    "CHOOSE_FINANCIAL-GOALS": "Choose financial goal",
-    "CHOOSE_ACCOUNTS": "Choose account",
+    "CHOOSE_DEBTS": "Choose the debt",
+    "CHOOSE_FINANCIAL-GOALS": "Choose the financial goal",
+    "CHOOSE_ACCOUNTS": "Choose the account",
 
     "SEND_INVITATION": "Send invitation",
     "SENDING": "Sending...",
@@ -583,10 +585,10 @@
     "REMOVE_MEMBER_TEXT": "This action will remove the member from the group.",
 
     "CHANGE_ROLE": "Change role?",
-    "CHANGE_ROLE_TEXT": "Assign the role to this user.",
+    "CHANGE_ROLE_TEXT": "Assign a role to this user.",
 
     "ROLE": "Role",
-    "CHOOSE_A_ROLE": "Choose role",
+    "CHOOSE_A_ROLE": "Choose a role",
 
     "CHANGE": "Change",
     "CHANGING": "Changing...",
@@ -609,7 +611,7 @@
     "NO_INVITATIONS_SENT": "No invitations sent",
     "NO_INVITATIONS_RECEIVED": "No invitations received",
 
-    "FILTER_STATUS": "Filter status",
+    "FILTER_STATUS": "Filter by status",
     "ALL_STATUS": "All statuses",
     "PENDING": "Pending",
     "ACCEPTED": "Accepted",
@@ -619,12 +621,12 @@
     "REJECTING_TEXT": "Rejecting invitation...",
     "ACCEPTING": "Accepting...",
     "ACCEPTING_TEXT": "Accepting invitation...",
-    "REVOKED": "Revoked",
+    "REVOKED": "Rejected",
     "ERROR": "Error",
     "TRY_AGAIN": "Try again",
 
     "NO_INVITATIONS_SENT_TEXT": "You haven't sent any invitations yet. Click \"Invite member\" to invite someone to collaborate.",
-    "NO_INVITATIONS_RECEIVED_TEXT": "You don't have any received invitations at the moment. Check back later."
+    "NO_INVITATIONS_RECEIVED_TEXT": "You don't have any invitations received at the moment. Check back later."
   },
 
   "ACTIVITY": {
@@ -637,10 +639,10 @@
 
   "FINANCIAL_GOALS": {
     "META_TITLE": "Cash Manager | Financial Goals",
-    "META_DESCRIPTION": "Manage your financial goals efficiently with Cash Manager. Track your contributions, withdrawals and keep your finances organized.",
+    "META_DESCRIPTION": "Manage your financial goals efficiently with Cash Manager. Track your contributions, withdrawals, and keep your finances organized.",
 
     "NEW_GOAL": "New goal",
-    "FINANCIAL_GOALS_TEXT": "Track and manage all your savings goals in one place.",
+    "FINANCIAL_GOALS_TEXT": "Track and manage your savings goals in one place.",
 
     "ADD": "Add",
     "EDIT": "Edit",
@@ -678,7 +680,7 @@
     "PRIORITY": "Priority",
     "USERS": "Users",
     "CURRENCY": "Currency",
-    "DUE_DATE": "Due Date",
+    "DUE_DATE": "End Date",
     "START_DATE": "Start Date",
     "STATUS": "Status",
     "ACTIONS": "Actions",
@@ -710,7 +712,7 @@
 
     "RESET_FINANCIAL_GOAL_MESSAGE": "Reset financial goal?",
     "RESETED_FINANCIAL_GOAL_TITLE": "Resetting...",
-    "RESETED_FINANCIAL_GOAL_MESSAGE": "Resetting financial goal...",
+    "RESETED_FINANCIAL_GOAL_MESSAGE": "Resetting the financial goal...",
     "YES_RESET": "Yes, reset!",
 
     "OTHERS_INFORMATION": "Other Information",
@@ -727,17 +729,17 @@
     "RESET": "Reset",
     "LAST_UPDATE": "Last update",
     "COMPLETE": "Complete",
-    "P_COMPLETE": "completed",
+    "P_COMPLETE": "complete",
     "MISSING_AMOUNT": "Missing Amount",
     "COLLECTED_AMOUNT": "Collected Amount",
     "GOAL_PROGRESS": "Goal Progress",
     "GOAL_COMPLETED": "Goal Achieved!",
-    "GOAL_COMPLETED_MESSAGE": "Congratulations! Goal successfully achieved",
+    "GOAL_COMPLETED_MESSAGE": "Congratulations! Goal achieved successfully",
 
     "MONTHLY_SUMMARY": "Monthly Summary",
 
     "NEW_FINANCIAL_GOAL": "New financial goal",
-    "NEW_FINANCIAL_GOAL_TEXT": "Register your financial goals.",
+    "NEW_FINANCIAL_GOAL_TEXT": "Record your financial goals.",
     "EDIT_FINANCIAL_GOAL": "Edit financial goal",
     "EDIT_FINANCIAL_GOAL_TEXT": "Update your financial goal.",
 
@@ -751,10 +753,10 @@
     "DATES": "Dates",
     "STEP": "Step",
     "START": "Start",
-    "DUE": "Due",
+    "DUE": "End",
     "SELECT_CURRENCY": "Select currency",
-    "FORM_HELPER": "All goals are securely processed and recorded instantly.",
-    "NAME_PLACEHOLDER": "Ex: New Car",
+    "FORM_HELPER": "All goals are processed securely and recorded instantly.",
+    "NAME_PLACEHOLDER": "E.g: New car",
 
     "TARGET": "Target",
     "DAYS_PASSED": "days passed",
@@ -785,9 +787,7 @@
 
   "FINANCIAL_GOAL_TRANSACTIONS": {
     "META_TITLE": "Cash Manager | Financial Goal Transactions",
-    "META_DESCRIPTION": "Manage your financial goal transactions efficiently with Cash Manager. Track your contributions, withdrawals and keep your finances organized.",
-
-    "NO_ACCOUNTS_AVAILABLE": "No accounts available",
+    "META_DESCRIPTION": "Manage your financial goal transactions efficiently with Cash Manager. Track your contributions, withdrawals, and keep your finances organized.",
 
     "ADD": "Add",
     "EDIT": "Edit",
@@ -795,13 +795,16 @@
     "SAVING": "Saving...",
     "ACCOUNT": "Account",
 
+    "NO_ACCOUNTS_AVAILABLE": "No accounts available",
+
     "FINANCIAL_GOAL_TRANSACTION": "FINANCIAL GOAL TRANSACTIONS",
     "FINANCIAL_GOAL": "Financial Goal",
     "FINANCIAL_GOALS": "Financial Goals",
 
-    "SELECT_FINANCIAL_GOAL": "Select financial goal",
+    "SELECT_FINANCIAL_GOAL": "Select the financial goal",
 
     "TRANSACTIONS": "Transactions",
+
     "ADD_TRANSACTION": "New Transaction",
 
     "TYPE": "Type",
@@ -809,6 +812,12 @@
     "DATE": "Date",
     "ALL": "All",
 
+    "CONFIRM_TRANSACTION": "Confirm Transaction",
+    "CONFIRM_TRANSACTION_TEXT": "Are you sure you want to confirm this transaction?",
+
+    "DELETE_TRANSACTION": "Delete transaction?",
+    "DELETE_TRANSACTION_TEXT": "Are you sure you want to delete this transaction? This action cannot be undone and will affect the goal's balance.",
+    "DELETE_TRANSACTION_WARNING": "Warning: Deleting this transaction will remove the amount from the goal's balance.",
     "CLEAR": "Clear",
     "VIEW_FINANCIAL_GOAL": "View financial goal",
     "ALL_STATUS": "All statuses",
@@ -823,12 +832,6 @@
     "CANCEL": "Cancel",
     "CREATE": "Create",
 
-    "CONFIRM_TRANSACTION": "Confirm Transaction",
-    "CONFIRM_TRANSACTION_TEXT": "Are you sure you want to confirm this transaction?",
-
-    "DELETE_TRANSACTION": "Delete transaction?",
-    "DELETE_TRANSACTION_TEXT": "Are you sure you want to delete this transaction? This action cannot be undone and will affect the goal balance.",
-    "DELETE_TRANSACTION_WARNING": "Warning: Deleting this transaction will remove the amount from the goal balance.",
     "NEW_TRANSACTION_FORM_DIALOG_TEXT": "Record a new contribution or withdrawal.",
     "CREATING": "Creating...",
     "DESCRIPTION": "Description",
@@ -848,7 +851,7 @@
     "PRIORITY": "Priority",
     "USERS": "Users",
     "CURRENCY": "Currency",
-    "DUE_DATE": "Due Date",
+    "DUE_DATE": "End Date",
     "START_DATE": "Start Date",
     "STATUS": "Status",
     "ACTIONS": "Actions",
@@ -871,7 +874,7 @@
 
     "DELETE": "Delete",
     "TO": "to",
-    "SEARCH_TRANSACTION": "Search for transaction"
+    "SEARCH_TRANSACTION": "Search for a transaction"
   },
 
   "DEBTS": {
@@ -887,8 +890,8 @@
     "SUMMARY": "Summary",
     "TIMELINE": "Timeline",
     "TIMELINE_TEXT": "Set the start and end dates for this debt.",
-    "FINANCIAL_DETAILS": "Financial Details",
-    "FINANCIAL_DETAILS_TEXT": "Define the amounts and payment structure.",
+    "FINANCIAL_DETAILS": "Financial details",
+    "FINANCIAL_DETAILS_TEXT": "Set the amounts and payment structure.",
     "TOTAL_MONTHS_PLACEHOLDER": "Number of months...",
     "SAVE": "Save",
     "SAVING": "Saving...",
@@ -897,19 +900,19 @@
     "CONTRIBUTION": "Contribution",
     "ACTIVITY": "Activity",
 
-    "MONTH_LEFT": "month remaining",
-    "MONTHS_LEFT": "months remaining",
+    "MONTH_LEFT": "month left",
+    "MONTHS_LEFT": "months left",
 
     "PAYMENT": "payment",
     "PAYMENTS": "payments",
     "INTEREST_RATE": "Interest Rate",
-    "INTEREST_PAID": "Interest Paid",
+    "INTEREST_PAID": "Interest paid",
     "ROLE": "Role",
     "REMAINING_AMOUNT": "Remaining Amount",
     "USER": "User",
     "AMOUNT_PAID": "Amount Paid",
     "TOTAL_INTEREST": "Total Interest",
-    "DEBT_TERM": "Debt Term",
+    "DEBT_TERM": "Debt term",
     "ORIGINAL_AMOUNT": "Original Amount",
     "PAYMENT_BREAKDOWN": "Payment Breakdown",
     "DELETE_DEBT": "Delete Debt",
@@ -919,14 +922,14 @@
     "PAYMENT_RECORDED": " payment recorded",
     "DELETING_DEBT": "Deleting debt",
 
-    "PAYMENT_PROGRESS": "Payment Progress",
+    "PAYMENT_PROGRESS": "Payment progress",
 
-    "TOTAL_DEBT": "Total Debt",
+    "TOTAL_DEBT": "Total owed",
     "ACROSS": "Across",
-    "TOTAL_PAID": "Total Paid",
+    "TOTAL_PAID": "Total paid",
     "OF_TOTAL": "of total",
-    "ACTIVE_DEBTS": "Active Debts",
-    "MONTHLY_PAYMENTS": "Monthly Payments",
+    "ACTIVE_DEBTS": "Active debts",
+    "MONTHLY_PAYMENTS": "Monthly payments",
 
     "DEBT": "Debt",
     "DEBTS": "Debts",
@@ -935,21 +938,11 @@
     "TRANSACTIONS": "Payments",
     "ADD_TRANSACTION": "New Payment",
 
-    "ALL_TRANSACTIONS": "All Payments",
+    "ALL_TRANSACTIONS": "All payments",
 
     "COMPLETED": "Completed",
     "COMPLETED_PLURAL": "Completed",
     "ACTIVE_DEBTS_ONLY": "Active debts only",
-
-    "CHANGE_ROLE": "Change role",
-    "REMOVE_USER": "Remove user",
-
-    "MARK_PAID": "Mark paid",
-    "LEAVE_DEBT": "Leave debt",
-    "BACK_TO_DEBTS": "Back to debts",
-    "DEBT_NOT_FOUND": "Debt not found",
-
-    "CREATING": "Creating...",
     "PENDING": "Pending",
 
     "MONTHS": "months",
@@ -962,8 +955,18 @@
     "MONTHLY_PAYMENT": "Monthly payment",
     "DEBT_NAME": "Debt name",
 
-    "SEARCH_DEBTS": "Search for debt...",
+    "CHANGE_ROLE": "Change role",
+    "REMOVE_USER": "Remove user",
+
+    "MARK_PAID": "Mark as paid",
+    "LEAVE_DEBT": "Leave debt",
+    "BACK_TO_DEBTS": "Back to debts",
+    "DEBT_NOT_FOUND": "Debt not found",
+
+    "SEARCH_DEBTS": "Search for a debt...",
     "PROGRESS": "Progress",
+
+    "CREATING": "Creating...",
     "TOTAL": "Total",
     "MONTH_ABR": "mo",
 
@@ -974,7 +977,7 @@
     "ALL": "All",
     "USERS": "Users",
     "CURRENCY": "Currency",
-    "DUE_DATE": "Due Date",
+    "DUE_DATE": "End Date",
     "START_DATE": "Start Date",
     "STATUS": "Status",
     "ACTIONS": "Actions",
@@ -999,11 +1002,11 @@
 
     "RESET_DEBT_MESSAGE": "Reset debt?",
     "RESETED_DEBT_TITLE": "Resetting...",
-    "RESETED_DEBT_MESSAGE": "Resetting debt...",
+    "RESETED_DEBT_MESSAGE": "Resetting the debt...",
     "YES_DELETE": "Yes, delete!",
     "YES_RESET": "Yes, reset!",
     "YOU_SURE": "Are you sure?",
-    "YOU_DONT_REVERT_THIS": "You won't be able to revert this!",
+    "YOU_DONT_REVERT_THIS": "You won't be able to undo this!",
     "DELETING_TITLE": "Deleting...",
     "DELETING_MESSAGE": "Deleting debt...",
 
@@ -1020,9 +1023,9 @@
     "LAST_UPDATE": "Last update",
     "COMPLETE": "Complete",
     "MISSING_AMOUNT": "Missing Amount",
-    "DEBT_PROGRESS": "Debt Progress",
-    "DEBT_COMPLETED": "Debt Paid!",
-    "DEBT_COMPLETED_MESSAGE": "Congratulations! Debt successfully paid",
+    "DEBT_PROGRESS": "Debt progress",
+    "DEBT_COMPLETED": "Debt Paid Off!",
+    "DEBT_COMPLETED_MESSAGE": "Congratulations! Debt paid off successfully",
     "CREATE_NEW_DEBT": "Create new debt",
     "CREATE_NEW_DEBT_TEXT": "Add a new debt to track your financial obligations.",
     "EDIT_DEBT": "Edit debt",
@@ -1033,9 +1036,9 @@
     "MONTHLY_SUMMARY": "Monthly Summary",
     "BASIC_INFORMATION": "Basic Information",
     "BASIC_INFORMATION_TEXT": "Enter the name and description of your debt.",
-    "DEBT_NAME_PLACEHOLDER": "Ex., Home Mortgage, Car Loan",
+    "DEBT_NAME_PLACEHOLDER": "E.g., Home Mortgage, Car Loan",
 
-    "CHOOSE_A_CURRENCY": "Choose currency",
+    "CHOOSE_A_CURRENCY": "Choose a currency",
     "ANNUAL_INTEREST_RATE": "Annual interest rate",
     "ANNUAL_INTEREST_RATE_TEXT": "Optional. If left blank, the value will automatically be set to 0.",
     "BASED_ON": "Based on",
@@ -1047,11 +1050,11 @@
 
   "FRIENDS": {
     "META_TITLE": "Cash Manager | Friends",
-    "META_DESCRIPTION": "Manage your connections and friend requests. Track payments and keep your finances organized.",
+    "META_DESCRIPTION": "Manage your connections and friend requests. Track your payments and keep your finances organized.",
 
     "FRIENDS": "Friends",
-    "REJECT": "Reject",
     "PENDING": "Pending",
+    "REJECT": "Reject",
     "FRIENDS_TEXT": "Manage your connections and friend requests.",
     "FRIEND": "Friend",
     "FRIEND_REQUESTS": "Friend Requests",
@@ -1061,10 +1064,10 @@
     "REMOVE_FRIEND": "Remove friend",
     "BLOCK_USER": "Block user",
     "NO_RESULTS": "No Results",
-    "NO_RESULTS_TEXT": "No friend matches \"{username}\". Try a different search.",
-    "NO_BLOCKED_RESULTS_TEXT": "No blocked user matches \"{username}\". Try a different search.",
-    "NO_RECEIVED_RESULTS_TEXT": "No received request matches \"{username}\". Try a different search.",
-    "NO_SENT_RESULTS_TEXT": "No sent request matches \"{username}\". Try a different search.",
+    "NO_RESULTS_TEXT": "No friends match \"{username}\". Try a different search.",
+    "NO_BLOCKED_RESULTS_TEXT": "No blocked users match \"{username}\". Try a different search.",
+    "NO_RECEIVED_RESULTS_TEXT": "No received requests match \"{username}\". Try a different search.",
+    "NO_SENT_RESULTS_TEXT": "No sent requests match \"{username}\". Try a different search.",
     "NO_RECEIVED_REQUESTS": "No received requests",
     "NO_SENT_REQUESTS": "No sent requests",
     "NO_SENT_REQUESTS_TEXT": "You haven't sent any friend requests yet.",
@@ -1078,16 +1081,16 @@
     "NO_BLOCKED_USERS": "No Blocked Users",
     "LOADING": "Loading",
 
-    "SEARCH_BY_USER": "Search for user...",
+    "SEARCH_BY_USER": "Search for a user...",
     "ADD_FRIEND": "Add friend",
-    "SEARCH_USERS": "Search users...",
+    "SEARCH_USERS": "Search for a user...",
     "TRY_AGAIN": "Try again",
     "LOADING_MORE_BLOCKED_USERS": "Loading more blocked users...",
     "LOADING_BLOCKED_USERS": "Loading blocked users...",
     "WITHOUT_BLOCKED_USERS": "You have no blocked users.",
     "SCROLL_TO_SEE_MORE": "Scroll down to see more",
 
-    "NO_USERS_FOUND_MATCHING": "No user found matching \"{username}\"",
+    "NO_USERS_FOUND_MATCHING": "No users found matching \"{username}\"",
 
     "RECEIVED": "Received",
     "SENT": "Sent",
@@ -1151,13 +1154,13 @@
 
   "SETTINGS": {
     "META_TITLE": "Cash Manager | Settings",
-    "META_DESCRIPTION": "Manage your account settings. Track payments and keep your finances organized.",
+    "META_DESCRIPTION": "Manage your account settings. Track your payments and keep your finances organized.",
 
     "SETTINGS": "Settings",
     "YOU_HAVE_UNSAVED_CHANGES": "You have unsaved changes.",
-    "PROFILE_INFORMATION": "Profile Information",
+    "PROFILE_INFORMATION": "Profile information",
     "PROFILE_INFORMATION_TEXT": "Update your personal details",
-    "ACCOUNT_SETTINGS": "Account Settings",
+    "ACCOUNT_SETTINGS": "Account settings",
     "ACCOUNT_SETTINGS_TEXT": "Manage your profile and preferences.",
     "RESET": "Reset",
     "DISCARD": "Discard",
@@ -1169,7 +1172,7 @@
     "LAST_NAME": "Last name",
     "LAST_NAME_PLACEHOLDER": "Smith",
     "EMAIL_ADDRESS": "Email address",
-    "EMAIL_ADDRESS_PLACEHOLDER": "test@example.com",
+    "EMAIL_ADDRESS_PLACEHOLDER": "test@test.com",
     "CANCEL": "Cancel",
     "CONTINUE": "Continue",
     "PASSWORD": "Password",
@@ -1204,18 +1207,18 @@
 
     "CURRENT_PASSWORD_REQUIRED": "Current password is required",
     "NEW_PASSWORD_IS_REQUIRED": "New password is required",
-    "NEW_PASSWORD_MIN_LENGTH": "Password must be at least 8 characters",
+    "NEW_PASSWORD_MIN_LENGTH": "Password must be at least 8 characters long",
     "CONFIRM_PASSWORD_REQUIRED": "Please confirm your new password",
     "PASSWORDS_DO_NOT_MATCH": "Passwords do not match",
 
     "PASSWORD_UPDATED": "Password updated",
     "PASSWORD_UPDATED_DESCRIPTION": "Your password has been changed successfully.",
 
-    "PASSWORD_INSTRUCTION": "Enter your current password and choose a new one",
+    "PASSWORD_INSTRUCTION": "Enter your current password and choose a new one.",
     "PASSWORD_MIN_LENGTH_HINT": "Must be at least 8 characters",
 
     "CANCEL": "Cancel",
-    "UPDATE_PASSWORD": "Update Password",
+    "UPDATE_PASSWORD": "Update password",
     "UPDATING": "Updating..."
   },
 
@@ -1225,12 +1228,12 @@
 
     "ADD_PAYMENT": "Add Payment",
     "ADD": "Add",
-    "INTEREST_PAID": "Interest Paid",
-    "NO_ACCOUNTS_AVAILABLE": "No accounts available",
     "DEBTS": "Debts",
-    "CONFIRMING_PAYMENT": "Confirming payment...",
     "PAYMENTS": "Payments",
-    "PAYMENTS_PAGE_TEXT": "View and manage all payments across your debts.",
+    "INTEREST_PAID": "Interest paid",
+    "NO_ACCOUNTS_AVAILABLE": "No accounts available",
+    "CONFIRMING_PAYMENT": "Confirming payment...",
+    "PAYMENTS_PAGE_TEXT": "View and manage all payments on your debts.",
     "DEBT": "Debt",
     "NEXT": "Next",
     "FIRST": "First",
@@ -1254,11 +1257,11 @@
     "NEW_PAYMENT": "New payment",
     "NEW_PAYMENT_FORM_DIALOG_TEXT": "Record a new payment.",
     "EDIT_PAYMENT_FORM_DIALOG_TEXT": "Update your payment details.",
-    "EDIT_PAYMENT": "Edit payment",
+    "EDIT_PAYMENT": "Edit payment.",
     "DESCRIPTION": "Description",
     "STATUS": "Status",
     "USER": "User",
-    "SEARCH_PAYMENT": "Search for payment",
+    "SEARCH_PAYMENT": "Search for a payment",
     "DELETE": "Remove",
     "DELETING": "Removing...",
     "EDIT": "Edit",
@@ -1267,14 +1270,14 @@
     "WHAT_WAS_THIS_FOR": "What was this for?",
     "ACCOUNT": "Account",
     "SELECT_ACCOUNT": "Select an account",
-    "SELECT_DEBT": "Select debt",
+    "SELECT_DEBT": "Select the debt",
     "CREATE": "Create",
     "CREATING": "Creating...",
     "SAVE": "Save",
 
     "DELETE_PAYMENT": "Remove payment",
     "DELETE_PAYMENT_TEXT": "Are you sure you want to remove this payment?",
-    "DELETE_PAYMENT_WARNING": "Warning: This action cannot be undone and may affect the paid amount of the debt.",
+    "DELETE_PAYMENT_WARNING": "Warning: This action cannot be undone and may affect the amount paid on the debt.",
 
     "TO": "to",
     "CANCEL": "Cancel",
@@ -1293,73 +1296,73 @@
     "HOW_IT_WORKS": "How It Works",
     "SOCIAL": "Social",
     "DASHBOARD": "Dashboard",
-    "LOG_IN": "Log In",
-    "GET_STARTED_FREE": "Get Started Free",
+    "LOG_IN": "Log in",
+    "GET_STARTED_FREE": "Get started for free",
 
     "NOW_IN_OPEN_BETA": "Now in Open Beta",
     "TAKE_FULL_CONTROL_FINANCIAL_LIFE": "Take full control of your financial life.",
 
     "TOTAL_BALANCE": "Total Balance",
-    "TOTAL_BALANCE_AMOUNT": "142,850.75 €",
+    "TOTAL_BALANCE_AMOUNT": "€142,850.75",
 
     "ABOUT": "About",
     "PRIVACY_POLICY": "Privacy Policy",
     "TERMS_OF_SERVICE": "Terms of Service",
     "COOKIE_POLICY": "Cookie Policy",
 
-    "DASHBOARD_SECTION_TITLE": "Everything at a Glance",
+    "DASHBOARD_SECTION_TITLE": "Everything at a glance",
     "DASHBOARD_SECTION_TEXT": "A powerful dashboard that puts all your financial data front and center with intuitive visualizations.",
 
-    "THIS_MONTH": "This Month",
+    "THIS_MONTH": "This month",
     "ACTIVE_ACCOUNTS": "Active Accounts",
     "ACTIVE_USERS": "Active Users",
     "LANGUAGES": "Languages",
     "UPTIME": "Uptime",
-    "MULTI_CURRENCY": "Multi-Currency",
-    "MULTI_CURRENCY_TEXT": "Manage accounts, goals, and debts in multiple currencies with automatic conversion and real-time exchange rate tracking.",
+    "MULTI_CURRENCY": "Multi-currency",
+    "MULTI_CURRENCY_TEXT": "Manage accounts, goals, and debts across multiple currencies with automatic conversion and real-time exchange rate tracking.",
 
     "INSIGHTS_ANALYTICS": "Insights & Analytics",
-    "INSIGHTS_ANALYTICS_TEXT": "Visual dashboards with income vs. expense breakdowns, balance trends, and performance analytics to help you make better financial decisions.",
+    "INSIGHTS_ANALYTICS_TEXT": "Visual dashboards with income vs. expense breakdowns, balance evolution, and performance analysis to help you make more informed financial decisions.",
 
-    "SALARY_DEPOSIT": "Salary Deposit",
-    "SALARY_DEPOSIT_AMOUNT": "+3,500.00 €",
+    "SALARY_DEPOSIT": "Salary deposit",
+    "SALARY_DEPOSIT_AMOUNT": "+€3,500.00",
 
-    "MORTGAGE_PAYMENT": "Mortgage Payment",
-    "MORTGAGE_PAYMENT_AMOUNT": "-1,250.00 €",
+    "MORTGAGE_PAYMENT": "Mortgage payment",
+    "MORTGAGE_PAYMENT_AMOUNT": "-€1,250.00",
 
-    "INVESTMENT_RETURN": "Investment Return",
-    "INVESTMENT_RETURN_AMOUNT": "+420.50 €",
+    "INVESTMENT_RETURN": "Investment return",
+    "INVESTMENT_RETURN_AMOUNT": "+€420.50",
 
-    "ACTIVE_DEBTS": "Active Debts",
-    "ACTIVE_DEBTS_AMOUNT": "18,240.00 €",
+    "ACTIVE_DEBTS": "Active debts",
+    "ACTIVE_DEBTS_AMOUNT": "€18,240.00",
     "GOALS_PROGRESS": "Goals Progress",
 
-    "SOCIAL_FINANCE_TITLE": "Manage Money Together, Not Alone",
-    "SOCIAL_FINANCE_SECTION_TEXT": "Financial management is better when shared. Invite friends, family, or partners to collaborate on common goals, track shared expenses, and hold each other accountable.",
+    "SOCIAL_FINANCE_TITLE": "Manage money together, not alone",
+    "SOCIAL_FINANCE_SECTION_TEXT": "Financial management is better when shared. Invite friends, family, or partners to collaborate on shared goals, track joint expenses, and hold each other accountable.",
 
     "SHARED_GOAL": "Shared Goal",
-    "FAMILY_SAVINGS": "Family Savings",
+    "FAMILY_SAVINGS": "Family savings",
     "CREATOR": "Creator",
     "SHARED": "Shared",
     "MEMBERS": "Members",
     "ADMINISTRATOR": "Administrator",
     "VIEWER": "Viewer",
-    "COMBINED_BALANCE": "Combined Balance",
-    "COMBINED_BALANCE_AMOUNT": "45,230.00 €",
-    "COMBINED_BALANCE_TOTAL": "of goal 55,000.00 €",
+    "COMBINED_BALANCE": "Combined balance",
+    "COMBINED_BALANCE_AMOUNT": "€45,230.00",
+    "COMBINED_BALANCE_TOTAL": "of the €55,000.00 goal",
 
-    "FRIENDSHIP_SYSTEM": "Friendship System",
-    "FRIENDSHIP_SYSTEM_TEXT": "Add trusted contacts and manage your financial circle with a familiar, social-network-style friends system.",
-    "PERMISSION_BASED_ACCESS": "Permission-Based Access",
-    "PERMISSION_BASED_ACCESS_TEXT": "Control exactly what each person can see or do. Grant view-only or full participant access per account, debt, or goal.",
-    "SECURE_SHARING": "Secure Sharing",
-    "SECURE_SHARING_TEXT": "Share accounts, debts, goals, and more with end-to-end encrypted links. Your data never leaves your control.",
-    "COLLABORATIVE_TRACKING": "Collaborative Tracking",
-    "COLLABORATIVE_TRACKING_TEXT": "Work together on shared expenses, joint debts, or family savings goals with real-time updates for everyone.",
+    "FRIENDSHIP_SYSTEM": "Friendship system",
+    "FRIENDSHIP_SYSTEM_TEXT": "Add trusted contacts and manage your financial circle with a familiar, social-media-style friend system.",
+    "PERMISSION_BASED_ACCESS": "Permission-based access",
+    "PERMISSION_BASED_ACCESS_TEXT": "Control exactly what each person can see or do. Grant view-only or participant access per account, debt, or goal.",
+    "SECURE_SHARING": "Secure sharing",
+    "SECURE_SHARING_TEXT": "Share accounts, debts, goals, and accounts with end-to-end encrypted links. Your data never leaves your control.",
+    "COLLABORATIVE_TRACKING": "Collaborative tracking",
+    "COLLABORATIVE_TRACKING_TEXT": "Work together on shared expenses, joint debts, or family savings goals, with real-time updates for everyone.",
 
     "FOOTER_TEXT": "Take full control of your financial life with powerful tools to track, manage, and collaborate on your finances.",
 
-    "AVAILABLE_CURRENCIES": "Available Currencies",
+    "AVAILABLE_CURRENCIES": "Available currencies",
 
     "ACCOUNTS_TRANSACTIONS": "Accounts & Transactions",
     "ACCOUNTS_TRANSACTIONS_TEXT": "Track multiple accounts and all related transactions in one place. Get a clear view of your cash flow across banks, savings, and credit cards.",
@@ -1368,23 +1371,23 @@
     "FINANCIAL_GOALS": "Financial Goals",
     "FINANCIAL_GOALS_TEXT": "Create savings goals and track your contributions with full visibility. Set milestones and watch your progress grow over time.",
     "SOCIAL_FINANCE": "Social Finance",
-    "SOCIAL_FINANCE_TEXT": "Share accounts, debts, and goals with trusted friends or family using a permission-based friendship system.",
-    "FEATURES_SECTION_TITLE": "Everything You Need to Manage Your Finances.",
-    "FEATURES_SECTION_TEXT": "A comprehensive set of tools designed to give you total visibility and control over every aspect of your financial life.",
+    "SOCIAL_FINANCE_TEXT": "Share accounts, debts, and goals with trusted friends or family using a friendship-based permission system.",
+    "FEATURES_SECTION_TITLE": "Everything you need to manage your finances.",
+    "FEATURES_SECTION_TEXT": "A comprehensive set of tools designed to give you full visibility and control over every aspect of your financial life.",
 
-    "HOW_IT_WORKS_TITLE": "Get Started in Three Simple Steps",
+    "HOW_IT_WORKS_TITLE": "Get started in three simple steps",
     "HOW_IT_WORKS_STEP_ONE_TITLE": "Create your accounts, goals, and debts",
-    "HOW_IT_WORKS_STEP_ONE_TEXT": "Set up your financial accounts, define savings goals, and organize your debts. It all starts with a clear picture of your current situation.",
-    "HOW_IT_WORKS_STEP_TWO_TITLE": "Track transactions and payments",
-    "HOW_IT_WORKS_STEP_TWO_TEXT": "Record transactions, monitor debt payments, and watch your balances update in real time. Total visibility of every cent.",
+    "HOW_IT_WORKS_STEP_ONE_TEXT": "Set up your financial accounts, define your savings goals, and organize your debts. It all starts with a clear view of your current situation.",
+    "HOW_IT_WORKS_STEP_TWO_TITLE": "Track transactions and debts",
+    "HOW_IT_WORKS_STEP_TWO_TEXT": "Record transactions, monitor debt payments, and watch your balances update in real time. Full visibility into every cent.",
     "HOW_IT_WORKS_STEP_THREE_TITLE": "Collaborate and grow with friends",
-    "HOW_IT_WORKS_STEP_THREE_TEXT": "Invite friends and family to share accounts or goals. Work together to pay off joint debts and celebrate financial wins.",
+    "HOW_IT_WORKS_STEP_THREE_TEXT": "Invite friends and family to share accounts or goals. Work together to pay off shared debts and celebrate financial milestones.",
 
     "EMERGENCY_FUND": "Emergency Fund",
     "VACATION": "Vacation",
     "NEW_CAR": "New Car",
     "MAIN_CHECKING": "Main Checking",
-    "CREDIT_CARD": "Credit Card",
+    "CREDIT_CARD": "Credit card",
     "SAVINGS": "Savings",
     "ACTIVE": "Active",
 
@@ -1399,12 +1402,12 @@
     "IN_PROGRESS": "In progress",
 
     "HERO_SECTION_TEXT": "Track accounts, manage debts, and set goals. Collaborate with friends and family through secure, permission-based sharing.",
-    "SEE_HOW_IT_WORKS": "See How It Works",
+    "SEE_HOW_IT_WORKS": "See how it works",
 
     "ALL_RIGHTS_RESERVED": "All rights reserved",
     "NO_CREDIT_CARD_REQUIRED": "No credit card required",
-    "CTA_SECTION_TITLE": "Start Managing Your Finances Today",
-    "CTA_SECTION_TEXT": "Join thousands of users who have already taken control of their financial life. Free to start, powerful enough to grow with you."
+    "CTA_SECTION_TITLE": "Start managing your finances today",
+    "CTA_SECTION_TEXT": "Join thousands of users who have already taken control of their financial lives. Free to start, powerful enough to grow with you."
   },
 
   "LEGAL": {
@@ -1436,7 +1439,7 @@
     "PASSWORD_PLACEHOLDER": "Enter a password",
     "EMAIL_PLACEHOLDER": "Enter your email",
 
-    "BY_CREATING_ACCOUNT": "By creating an account, you agree to our",
+    "BY_CREATING_ACCOUNT": "By creating an account, you agree to the",
     "AND_OUR": "and our",
 
     "TERMS_AND_CONDITIONS": "Terms and Conditions",
@@ -1447,61 +1450,62 @@
 
     "SIGN_IN": "Sign In",
 
-    "ERROR_ON_SIGNUP": "Error signing up account",
+    "ERROR_ON_SIGNUP": "Error signing up",
     "SIGN_UP_TITLE": "Signing up",
-    "SIGN_UP_WAIT": "Please wait while we register your account",
-    "SIGN_IN_SUCCESS": "Registration completed successfully. Please check your email to log in to your account."
+    "SIGN_UP_WAIT": "Please wait while we create your account",
+
+    "SIGN_IN_SUCCESS": "Successfully signed up, check your email to log in to your account."
   },
 
   "EMAIL_VERIFIED": {
     "META_TITLE": "Cash Manager | Verify Email",
-    "META_DESCRIPTION": "Verify your email in Cash Manager to start organizing your finances.",
+    "META_DESCRIPTION": "Verify your email on Cash Manager to start organizing your finances.",
 
     "VERIFY_EMAIL": "Verify Email",
     "VERIFY_EMAIL_TEXT": "We are verifying your email",
     "ALREADY_HAVE_AN_ACCOUNT": "Already have an account?",
-    "SIGN_IN": "Sign In",
+    "SIGN_IN": "Sign in",
     "VERIFYING_EMAIL": "Verifying your email",
     "EMAIL_VERIFIED_SUCCESS": "Your email has been successfully verified!",
     "EMAIL_VERIFIED_ERROR": "An error occurred while verifying your email.",
-    "GO_TO_LOGIN": "Go to login"
+    "GO_TO_LOGIN": "Go to sign in"
   },
 
   "RESET_PASSWORD": {
     "META_TITLE": "Cash Manager | Forgot Password",
-    "META_DESCRIPTION": "Reset your password in Cash Manager to access your account again.",
+    "META_DESCRIPTION": "Sign back in to your Cash Manager account to get back to organizing your finances.",
 
-    "RESET_PASSWORD": "Forgot your password?",
-    "RESET_PASSWORD_TEXT": "Enter your email to reset your password",
-    "SET_NEW_PASSWORD": "Set a new password",
-    "SET_NEW_PASSWORD_TEXT": "Enter your new password and confirm it to finish resetting.",
+    "RESET_PASSWORD": "Forgot your Password?",
+    "RESET_PASSWORD_TEXT": "Enter your email to change your password",
+    "SET_NEW_PASSWORD": "Set new password",
+    "EMAIL_SENT": "Email sent",
+    "SENDING_EMAIL": "Sending email...",
+    "SET_NEW_PASSWORD_TEXT": "Enter your new password and confirm it to complete the reset.",
     "RESET_PASSWORD_SENDING": "Sending reset email...",
     "EMAIL_LABEL": "Email",
-    "SIGN_UP": "Sign Up",
+    "RESET": "Confirm",
+    "SIGN_UP": "Sign up",
 
     "SEND_EMAIL": "Send Email",
-    "RESET": "Reset",
     "DONT_HAVE_AN_ACCOUNT": "Don't have an account yet?",
 
     "ERROR_ON_SIGN_IN": "Error finding account",
     "ERROR_ON_RESET_PASSWORD": "Error sending reset email",
-    "ERROR_ON_CHANGE_PASSWORD": "Error updating password",
+    "ERROR_ON_CHANGE_PASSWORD": "Error changing password",
     "PASSWORD": "Password",
-    "EMAIL_SENT": "Email sent",
-    "SENDING_EMAIL": "Sending email...",
     "NEW_PASSWORD": "New password",
     "NEW_PASSWORD_PLACEHOLDER": "Enter your new password",
     "CONFIRM_NEW_PASSWORD": "Confirm new password",
     "CONFIRM_NEW_PASSWORD_PLACEHOLDER": "Confirm your new password",
     "NEW_PASSWORD_REQUIRED": "New password is required",
-    "NEW_PASSWORD_MIN_LENGTH": "Password must be at least 8 characters",
+    "NEW_PASSWORD_MIN_LENGTH": "Password must be at least 8 characters long",
     "CONFIRM_PASSWORD_REQUIRED": "Please confirm your new password",
     "PASSWORDS_DO_NOT_MATCH": "Passwords do not match",
     "PASSWORD_UPDATED": "Password updated",
-    "PASSWORD_UPDATED_DESCRIPTION": "Your password has been updated successfully.",
+    "PASSWORD_UPDATED_DESCRIPTION": "Your password has been successfully updated.",
     "UPDATE_PASSWORD": "Update password",
     "UPDATING": "Updating...",
-    "MISSING_TOKEN": "Reset token is missing. Please request a new password reset.",
+    "MISSING_TOKEN": "The reset token is missing. Please request a new password reset.",
     "EMAIL_PLACEHOLDER": "Enter your email",
     "PASSWORD_PLACEHOLDER": "Enter a password",
     "SIGN_IN_TITLE": "Signing in",
@@ -1510,11 +1514,11 @@
 
   "SIGN_IN": {
     "META_TITLE": "Cash Manager | Sign In",
-    "META_DESCRIPTION": "Sign in to your Cash Manager account to manage your finances again.",
+    "META_DESCRIPTION": "Sign back in to your Cash Manager account to get back to organizing your finances.",
 
     "SIGN_IN": "Sign In",
     "SIGN_IN_TEXT": "Enter your email and password to sign in!",
-    "SIGN_UP": "Sign Up",
+    "SIGN_UP": "Sign up",
 
     "KEEP_ME_LOGGED_IN": "Keep me logged in",
     "FORGOT_PASSWORD": "Forgot password?",
@@ -1531,7 +1535,7 @@
 
   "HOME": {
     "META_TITLE": "Cash Manager | Home",
-    "META_DESCRIPTION": "Use Cash Manager for free.",
+    "META_DESCRIPTION": "Use Cash Manager for free",
 
     "HOME": "Home",
 
@@ -1546,7 +1550,7 @@
     "NO_DATA_AVAILABLE": "No data recorded.",
 
     "MONTHLY_BALANCE": "Monthly Balance",
-    "REVENUE": "Revenue",
+    "REVENUE": "Income",
     "EXPENSE": "Expense",
     "RESULT": "Result",
     "BALANCE": "Balance",
@@ -1555,17 +1559,18 @@
     "QUARTERLY": "Quarterly",
     "ANNUALLY": "Annually",
 
-    "CASH_FLOW_CHART_DESCRIPTION": "Track your income and expenses over different periods.",
+    "CASH_FLOW_CHART_DESCRIPTION": "Track your income and expenses across different periods.",
     "CASH_FLOW_CHART_TITLE": "Cash Flow Overview"
   },
 
   "LAYOUTS": {
     "SIDEBAR_SETTINGS": "Settings",
-    "SIDEBAR_LOGOUT": "Log Out",
+    "SIDEBAR_LOGOUT": "Log out",
     "SIDEBAR_COMPOUND_INTEREST_CALCULATOR": "Compound Interest Calc.",
     "SIDEBAR_CURRENCY_CONVERTER": "Converter",
     "SIDEBAR_TOOLS": "Tools",
     "SIDEBAR_FRIENDS": "Friends",
+    "SIDEBAR_FINANCES": "Finances",
     "SIDEBAR_PROFILE": "Profile",
     "SIDEBAR_SOCIAL": "Social",
     "SIDEBAR_STOCKS": "Stocks",
@@ -1590,9 +1595,8 @@
     "HEADER_ACCOUNT_DETAILS": "Account Details",
 
     "LOGOUT": "Logging out…",
-    "NEW": "New",
-    "LOGOUT_WAIT": "Please wait while we log you out",
-    "LOGOUT_ERROR": "Could not log out. Please try again."
+    "LOGOUT_WAIT": "Please wait while we sign you out",
+    "LOGOUT_ERROR": "We couldn't sign you out. Please try again."
   },
 
   "MONTHS": {
@@ -1609,25 +1613,25 @@
     "NOV": "Nov",
     "DEC": "Dec"
   },
-
   "ERROR_404": {
-    "META_TITLE": "Page not found | Cash Manager",
-    "META_DESCRIPTION": "The page you are looking for cannot be found.",
+    "META_TITLE": "Cash Manager | Page not found",
+    "META_DESCRIPTION": "The page you're looking for was not found.",
+
     "ERROR": "404 - Page not found",
-    "DESCRIPTION": "We can’t seem to find the page you are looking for!",
-    "BACK_TO_HOME": "Back to Home Page"
+    "DESCRIPTION": "We couldn't find the page you're looking for!",
+    "BACK_TO_HOME": "Back to home page"
   },
 
   "NOTIFICATIONS": {
     "META_TITLE": "Cash Manager | Notifications",
-    "META_DESCRIPTION": "View and manage your notifications in Cash Manager. Stay updated on your financial activities and interactions.",
+    "META_DESCRIPTION": "View your notifications on Cash Manager to stay up to date on your finances and related activity.",
 
     "NOTIFICATIONS": "Notifications",
     "NO_NOTIFICATIONS": "No notifications",
     "TAB_ALL": "All",
     "TAB_UNREAD": "Unread",
-    "SEE_ALL": "See All",
-    "MARK_AS_READ": "Mark as read",
+    "SEE_ALL": "See all",
+    "MARK_ALL_READ": "Mark all as read",
     "NEW": "New",
 
     "SELECT_NOTIFICATION": "Select a notification",
@@ -1636,7 +1640,7 @@
     "EMPTY_UNREAD": "No unread notifications",
     "EMPTY_INVITES": "No invites",
     "EMPTY_ALERTS": "No alerts",
-    "EMPTY_DESCRIPTION": "When you receive notifications, they will appear here",
+    "EMPTY_DESCRIPTION": "When you receive notifications, they'll appear here",
     "UNREAD": "unread",
     "ALL_CAUGHT_UP": "You're all caught up",
     "MARK_READ": "Mark as read",
@@ -1651,32 +1655,37 @@
 
   "CONVERTER": {
     "META_TITLE": "Cash Manager | Currency Converter",
-    "META_DESCRIPTION": "Convert currencies with Cash Manager's built-in currency converter tool.",
+    "META_DESCRIPTION": "Convert currencies quickly and easily with the Cash Manager currency converter. Track your payments and keep your finances organized.",
 
-    "CONVERTER": "Converter",
+    "CONVERTER": "Currency Converter",
     "CURRENCY_CONVERTER": "Currency Converter",
-    "CONVERTER_DESCRIPTION": "Convert between {count} currencies with real-time rates",
+    "CONVERTER_DESCRIPTION": "Convert between {count} currencies in real time",
+    "AMOUNT": "Amount",
     "FROM": "From",
     "TO": "To",
-    "AMOUNT": "Amount",
     "CONVERT": "Convert",
     "CONVERTING": "Converting...",
     "RESULT": "Result",
-    "ERROR_CONVERTING": "Error converting currency. Please try again.",
-    "QUICK_CONVERTER": "Quick Converter",
-    "POPULAR_PAIRS": "Popular Pairs",
-    "RECENT_CONVERSIONS": "Recent Conversions"
+    "ERROR_CONVERTING": "Error converting currencies. Please try again.",
+    "QUICK_CONVERT": "Quick convert",
+    "POPULAR_PAIRS": "Popular pairs",
+    "RECENT_CONVERSIONS": "Recent conversions"
   },
 
   "RECURRING": {
     "META_TITLE": "Cash Manager | Recurring Transactions",
-    "META_DESCRIPTION": "Manage your recurring transactions with Cash Manager. Set up and track your regular payments and income.",
+    "META_DESCRIPTION": "Manage your recurring transactions efficiently with Cash Manager. Track your payments and keep your finances organized.",
 
-    "RECURRING_TRANSACTIONS": "Recurring Transactions",
+    "RECURRING": "Recurring Transactions"
+  },
 
-    "DAILY": "Daily",
-    "WEEKLY": "Weekly",
-    "MONTHLY": "Monthly",
-    "ANNUALLY": "Annually"
+  "SEARCH_INPUT": {
+    "SEARCH": "Search..."
+  },
+
+  "SORT_DROPDOWN": {
+    "SORT_BY": "Sort by",
+    "ASCENDING": "Ascending",
+    "DESCENDING": "Descending"
   }
 }

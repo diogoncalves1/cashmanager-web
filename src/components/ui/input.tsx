@@ -1,17 +1,55 @@
 import * as React from "react";
-
 import { cn } from "@/shared/utils";
+import { cva, type VariantProps } from "class-variance-authority";
+
+const buttonVariants = cva(
+  "inline-flex items-center w-full justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        destructive:
+          "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
+        outline:
+          "border bg-background shadow-xs hover:bg-muted hover:text-muted-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        ghost: "hover:bg-muted dark:hover:bg-muted/50",
+        link: "text-primary underline-offset-4 hover:underline",
+        app: "border-0 text-black/80 bg-white hover:bg-gray-50 focus:bg-gray-50 text-base shadow-md focus-visible:ring-0 dark:bg-gray-800 transition-colors",
+        app_gray:
+          "border-0 text-black/60 bg-gray-100 hover:bg-gray-200 text-base focus-visible:ring-0 dark:bg-gray-800 transition-colors",
+        app_danger:
+          "border-0 text-black/60 bg-red-200 hover:bg-destructive/90 hover:text-white focus-visible:ring-destructive/20 text-destructive/90 text-base focus-visible:ring-0 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60 transition-colors",
+      },
+      size: {
+        default: "h-9 px-4 py-2 has-[>svg]:px-3",
+        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
+        lg: "h-12 rounded-md px-6 has-[>svg]:px-5 text-md",
+        icon: "size-9",
+        "icon-sm": "size-8",
+        "icon-lg": "size-10",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+);
 
 function Input({
   className,
   type,
+  variant = "app_gray",
+  size = "lg",
   leftIcon,
   containerClassName,
   ...props
-}: React.ComponentProps<"input"> & {
-  leftIcon?: React.ReactNode;
-  containerClassName?: string;
-}) {
+}: Omit<React.ComponentProps<"input">, "size"> &
+  VariantProps<typeof buttonVariants> & {
+    leftIcon?: React.ReactNode;
+    containerClassName?: string;
+  }) {
   if (leftIcon) {
     return (
       <div className={cn("relative w-full", containerClassName)}>
@@ -21,13 +59,7 @@ function Input({
         <input
           type={type}
           data-slot="input"
-          className={cn(
-            "file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input h-9 w-full min-w-0 rounded-md border bg-transparent py-1 pr-3 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
-            "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
-            "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
-            className,
-            "!pl-9"
-          )}
+          className={cn(buttonVariants({ variant, size, className }), "!pl-9")}
           {...props}
         />
       </div>
@@ -38,12 +70,7 @@ function Input({
     <input
       type={type}
       data-slot="input"
-      className={cn(
-        "file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
-        "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
-        "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
-        className
-      )}
+      className={cn(buttonVariants({ variant, size, className }))}
       {...props}
     />
   );

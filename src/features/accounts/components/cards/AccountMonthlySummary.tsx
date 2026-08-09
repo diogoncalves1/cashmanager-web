@@ -31,7 +31,7 @@ export function AccountMonthlySummary({ data }: AccountMonthlySummaryProps) {
 
   if (data.length === 0) {
     return (
-      <Card className="rounded-2xl border-0 shadow-sm">
+      <Card className="rounded-md border-0 shadow-md">
         <CardHeader>
           <CardTitle className="text-lg font-semibold">{t("MONTHLY_RESUME")}</CardTitle>
         </CardHeader>
@@ -46,10 +46,10 @@ export function AccountMonthlySummary({ data }: AccountMonthlySummaryProps) {
   }
 
   return (
-    <div className="rounded-2xl border bg-white p-6 shadow-sm">
+    <div className="rounded-md bg-white p-6 border-none shadow-md">
       <h2 className="text-lg font-semibold mb-4">{t("MONTHLY_RESUME")}</h2>
       <div className="relative">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
           {data.map((monthData, idx) => {
             return <MonthlySummaryChart data={monthData || []} key={idx} />;
           })}

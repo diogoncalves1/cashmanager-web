@@ -18,6 +18,8 @@ const buttonVariants = cva(
         ghost: "hover:bg-muted dark:hover:bg-muted/50",
         link: "text-primary underline-offset-4 hover:underline",
         app: "border-0 text-black/80 bg-white hover:bg-gray-50 focus:bg-gray-50 text-base shadow-md focus-visible:ring-0 dark:bg-gray-800 transition-colors",
+        app_cancel:
+          "border-0 text-black/80 bg-white hover:bg-gray-50 focus:bg-gray-50 text-base focus-visible:ring-0 dark:bg-gray-800 transition-colors",
         app_gray:
           "border-0 text-black/60 bg-gray-100 hover:bg-gray-200 text-base focus-visible:ring-0 dark:bg-gray-800 transition-colors",
         app_danger:

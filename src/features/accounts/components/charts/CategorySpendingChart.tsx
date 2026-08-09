@@ -120,7 +120,7 @@ export function CategorySpendingChart({ categoriesData, isLoading }: CategorySpe
 
   if (isLoading) {
     return (
-      <Card className="rounded-2xl border-0 shadow-sm">
+      <Card className="rounded-md border-0 shadow-md">
         <CardHeader>
           <Skeleton className="h-6 w-56" />
         </CardHeader>
@@ -137,7 +137,7 @@ export function CategorySpendingChart({ categoriesData, isLoading }: CategorySpe
 
   if (grandTotal === 0) {
     return (
-      <Card className="rounded-2xl border-0 shadow-sm">
+      <Card className="rounded-md border-0 shadow-md">
         <CardHeader>
           <CardTitle className="text-lg font-semibold">{t("EXPENSES_BY_CATEGORY")}</CardTitle>
         </CardHeader>
@@ -154,8 +154,8 @@ export function CategorySpendingChart({ categoriesData, isLoading }: CategorySpe
   const maxValue = Math.max(...topCategories.map((c) => c.value));
 
   return (
-    <Card className="rounded-2xl max-w-100 md:max-w-full border-0 shadow-sm">
-      <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between pb-2">
+    <Card className="rounded-md max-w-100 bg-white md:max-w-full border-none shadow-md">
+      <CardHeader className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between pb-2">
         <div>
           <CardTitle className="text-lg font-semibold">{t("EXPENSES_BY_CATEGORY")}</CardTitle>
           <p className="mt-1 text-sm text-muted-foreground">
@@ -180,7 +180,7 @@ export function CategorySpendingChart({ categoriesData, isLoading }: CategorySpe
           </Select>
         </div> */}
       </CardHeader>
-      <CardContent className="space-y-6 pt-4">
+      <CardContent className="space-y-3 pt-4">
         {/* Horizontal Bar Chart */}
         <div style={{ height: Math.max(allCategories.length * 52, 280) }}>
           <ResponsiveContainer width="100%" height="100%">

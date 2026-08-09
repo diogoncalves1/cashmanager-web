@@ -1,6 +1,3 @@
-// Components
-export * from "./components/actions/NewAccountButton";
-
 export * from "./components/cards/AccountCard";
 export * from "./components/cards/AccountCardLoading";
 export * from "./components/cards/AccountMonthlySummary";
@@ -26,7 +23,6 @@ export * from "./components/lists/AccountsListFail";
 export * from "./components/sections/AccountUsersSection";
 
 export * from "./components/tabs/AnalyticsTabContent";
-export * from "./components/tabs/SettingsTabContent";
 
 export * from "./components/ui/StatusBadge";
 

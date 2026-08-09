@@ -18,7 +18,7 @@ const SearchIcon = ({ size = 24 }: { size?: number }) => (
   </svg>
 );
 
-type Props = React.ComponentProps<"input"> & {
+type Props = Omit<React.ComponentProps<"input">, "size"> & {
   onSearchClick?: () => void;
 };
 

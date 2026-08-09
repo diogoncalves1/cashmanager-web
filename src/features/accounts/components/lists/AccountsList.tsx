@@ -13,29 +13,29 @@ type Props = {
 };
 
 export function AccountsList({ accounts, loadMore, hasMore, total, loading }: Props) {
-  return (
-    <>
-      {!loading && accounts.length == 0 ? (
-        <AccountsListFail />
-      ) : !loading ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-          {accounts.map((account) => (
-            <AccountCard account={account} key={account.id} />
-          ))}
+  if (loading) {
+    return (
+      <div className="grid grid-cols-1 gap-4 opacity-80 md:grid-cols-2 xl:grid-cols-3">
+        {Array.from({ length: 9 }).map((_, index) => (
+          <AccountCardLoading key={index} />
+        ))}
+      </div>
+    );
+  }
 
-          {hasMore && (
-            <LoadMoreList loadMore={loadMore} total={total} subjectLength={accounts.length} />
-          )}
-        </div>
-      ) : (
-        loading && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 opacity-80">
-            {Array.from({ length: 9 }).map((_, index) => (
-              <AccountCardLoading key={index} />
-            ))}
-          </div>
-        )
+  if (accounts.length === 0) {
+    return <AccountsListFail />;
+  }
+
+  return (
+    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+      {accounts.map((account) => (
+        <AccountCard account={account} key={account.id} />
+      ))}
+
+      {hasMore && (
+        <LoadMoreList loadMore={loadMore} total={total} subjectLength={accounts.length} />
       )}
-    </>
+    </div>
   );
 }

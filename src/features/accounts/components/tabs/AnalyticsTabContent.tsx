@@ -23,10 +23,10 @@ interface AnalyticsTabContentProps {
 export function AnalyticsTabContent({ account, pageData, isLoading }: AnalyticsTabContentProps) {
   if (isLoading) {
     return (
-      <div className="space-y-6">
-        <div className="grid gap-6 lg:grid-cols-2">
+      <div className="space-y-3">
+        <div className="grid gap-3 lg:grid-cols-2">
           {[1, 2].map((i) => (
-            <Card key={i} className="rounded-2xl border-0 shadow-sm">
+            <Card key={i} className="rounded-md border-0 shadow-md">
               <CardHeader>
                 <Skeleton className="h-6 w-40" />
               </CardHeader>
@@ -36,7 +36,7 @@ export function AnalyticsTabContent({ account, pageData, isLoading }: AnalyticsT
             </Card>
           ))}
         </div>
-        <Card className="rounded-2xl border-0 shadow-sm">
+        <Card className="rounded-md border-0 shadow-md">
           <CardHeader>
             <Skeleton className="h-6 w-40" />
           </CardHeader>
@@ -49,8 +49,8 @@ export function AnalyticsTabContent({ account, pageData, isLoading }: AnalyticsT
   }
 
   return (
-    <div className="space-y-6 max-w-100 md:max-w-full">
-      <div className="grid gap-6">
+    <div className="space-y-3 max-w-100 md:max-w-full">
+      <div className="grid gap-3">
         <CategorySpendingChart
           currency={account.currency?.code || "USD"}
           isLoading={isLoading}

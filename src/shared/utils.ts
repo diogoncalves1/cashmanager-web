@@ -10,7 +10,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function formatDate(dateString: string, t: ReturnType<typeof useTranslations>): string {
-  const [year, month, day] = dateString.split("-");
+  const [year, month, day] = dateString.split(" ")[0].split("-");
 
   const MONTHS: { [key: number]: string } = {
     0: t("JAN"),

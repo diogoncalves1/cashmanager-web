@@ -1,9 +1,22 @@
 import React from "react";
+import { cn } from "@/shared/utils";
 
-export function ContentLayout(params: { children: React.ReactNode }) {
+export function ContentLayout({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <div className="p-2 xl:p-5 bg-white rounded-lg shadow-md gap-3 flex flex-col">
-      {params.children}
+    <div
+      className={cn(
+        "flex flex-col gap-4 rounded-md bg-white p-4 shadow-md xl:p-6",
+        "dark:border-gray-800 dark:bg-gray-900",
+        className
+      )}
+    >
+      {children}
     </div>
   );
 }
