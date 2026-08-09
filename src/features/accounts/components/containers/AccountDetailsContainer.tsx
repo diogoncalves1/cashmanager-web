@@ -3,10 +3,7 @@
 import ActivityTimeline from "@/components/ui/timeline/ActivityTimeline";
 import { cn } from "@/shared/utils";
 import {
-  Building2,
-  Wallet,
   CreditCard,
-  PiggyBank,
   TrendingUp,
   TrendingDown,
   MoreHorizontal,
@@ -16,17 +13,15 @@ import {
   BarChart2,
   ActivityIcon,
   Users,
-  Settings,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { NewTransactionButton, TableContainer } from "@/features/transactions";
+import { FormTransactionDialog, TableContainer } from "@/features/transactions";
 import { Skeleton } from "@/components/ui/skeleton";
-import { BalanceOverTimeChart } from "@/features/accounts";
+import { accountTypeConfig, BalanceOverTimeChart } from "@/features/accounts";
 import { MonthlySummary } from "@/features/accounts";
 import { CategorySummary } from "@/features/accounts";
 import { AnalyticsTabContent } from "@/features/accounts";
-import { SettingsTabContent } from "@/features/accounts";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -40,7 +35,7 @@ import {
 import useSWR from "swr";
 import { fetcher } from "@/shared/fetcher";
 import { useRouter } from "next/navigation";
-import { Account, AccountType } from "@/features/accounts";
+import { Account } from "@/features/accounts";
 import { FormAccountDialog, DeleteAccountDialog } from "@/features/accounts";
 import { StatusBadge } from "@/features/accounts";
 import { useAccountDetailsContext } from "@/features/accounts";
@@ -48,27 +43,14 @@ import { useTranslations } from "next-intl";
 import { AccountUsersSection } from "@/features/accounts";
 import { useAuth } from "@/features/auth";
 import { LeaveSubjectDialog } from "@/features/invitations";
-
-const accountTypeConfig: Record<AccountType, { icon: typeof Building2; className: string }> = {
-  bank_account: {
-    icon: Building2,
-    className: "bg-blue-500/10 text-blue-500",
-  },
-  cash: { icon: Wallet, className: "bg-accent/10 text-accent" },
-  credit_card: {
-    icon: CreditCard,
-    className: "bg-orange-500/10 text-orange-500",
-  },
-  digital_wallet: {
-    icon: PiggyBank,
-    className: "bg-cyan-500/10 text-cyan-500",
-  },
-};
+import CreateButton from "@/shared/ui/create-button";
 
 export const AccountDetailsContainer = ({ id }: { id: string }) => {
+  const tTransactions = useTranslations("TRANSACTIONS");
+  const [isOpen, setIsOpen] = useState(false);
   const t = useTranslations("ACCOUNTS");
   const { user } = useAuth();
-  const { loadCounter } = useAccountDetailsContext();
+  const { loadCounter, setLoadCounter } = useAccountDetailsContext();
   const [account, setAccount] = useState<Account | undefined>();
   const [isLoading, setIsLoading] = useState(true);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
@@ -162,9 +144,9 @@ export const AccountDetailsContainer = ({ id }: { id: string }) => {
 
   if (isLoading) {
     return (
-      <div className="space-y-6 max-w-7xl mx-auto py-10 px-4">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
-          <div className="flex items-start gap-4">
+      <div className="gap-7 mx-auto py-10 px-4">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+          <div className="flex items-start gap-3">
             <Skeleton className="size-14 rounded-2xl" />
             <div>
               <Skeleton className="h-6 w-40 mb-2" />
@@ -200,14 +182,18 @@ export const AccountDetailsContainer = ({ id }: { id: string }) => {
   const isNeg = account.balance < 0;
 
   return (
-    <div className="space-y-6 max-w-7xl mx-auto py-10 px-4">
+    <div className="grid gap-3">
       {/* Premium Header */}
-      <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
-        <div className="flex items-start gap-4">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+        <div className="flex items-start gap-3">
           <div
-            className={cn("flex size-14 items-center justify-center rounded-2xl", config.className)}
+            className={cn(
+              "flex size-14 shrink-0 items-center justify-center rounded-2xl shadow-sm ring-1 transition-transform duration-300 hover:scale-105",
+              config.className,
+              config.ringClassName
+            )}
           >
-            <Icon className="size-7" />
+            <Icon className="size-7" strokeWidth={1.75} />
           </div>
           <div>
             <div className="flex items-center gap-3">
@@ -252,11 +238,13 @@ export const AccountDetailsContainer = ({ id }: { id: string }) => {
           </div>
           <div className="flex gap-2">
             {account.actions?.createTransactions && (
-              <NewTransactionButton accountId={id} setLoad={mutate} />
+              <CreateButton onClick={() => setIsOpen(true)}>
+                {tTransactions("NEW_TRANSACTION")}
+              </CreateButton>
             )}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="icon" className="size-8">
+                <Button variant="app" size="lg">
                   <MoreHorizontal className="size-4" />
                 </Button>
               </DropdownMenuTrigger>
@@ -297,53 +285,54 @@ export const AccountDetailsContainer = ({ id }: { id: string }) => {
         </div>
       </div>
       {/* Tabs */}
-      <Tabs defaultValue="overview" className="space-y-6">
-        <TabsList className="h-10 w-full overflow-x-auto rounded-xl bg-muted p-1 sm:w-auto flex">
-          <TabsTrigger value="overview" className="rounded-lg px-0 md:px-4 shrink-0">
+      <Tabs defaultValue="overview" className="gap-3 grid rounded-md">
+        <TabsList className="flex h-12 w-full items-center gap-1 overflow-x-auto rounded-md shadow-md bg-white p-1.5 dark:border-gray-800 dark:bg-gray-900 sm:w-auto">
+          <TabsTrigger
+            value="overview"
+            className="flex shrink-0 items-center gap-2 rounded-md px-3 text-sm font-medium text-gray-500 transition-all data-[state=active]:bg-gray-100 data-[state=active]:text-gray-900 data-[state=active]:shadow-sm dark:text-gray-400 dark:data-[state=active]:bg-gray-800 dark:data-[state=active]:text-gray-100 md:px-4"
+          >
+            <BarChart2 className="size-4 shrink-0" strokeWidth={1.75} />
             <span className="hidden sm:inline">{t("OVERVIEW")}</span>
-            <span className="sm:hidden">
-              <BarChart2 className="size-4" />
-            </span>
           </TabsTrigger>
-          <TabsTrigger value="transactions" className="rounded-lg px-0 md:px-4 shrink-0">
+
+          <TabsTrigger
+            value="transactions"
+            className="flex shrink-0 items-center gap-2 rounded-md px-3 text-sm font-medium text-gray-500 transition-all data-[state=active]:bg-gray-100 data-[state=active]:text-gray-900 data-[state=active]:shadow-sm dark:text-gray-400 dark:data-[state=active]:bg-gray-800 dark:data-[state=active]:text-gray-100 md:px-4"
+          >
+            <CreditCard className="size-4 shrink-0" strokeWidth={1.75} />
             <span className="hidden sm:inline">{t("TRANSACTIONS")}</span>
-            <span className="sm:hidden">
-              <CreditCard className="size-4" />
-            </span>
           </TabsTrigger>
-          <TabsTrigger value="activity" className="rounded-lg px-0 md:px-4 shrink-0">
+
+          <TabsTrigger
+            value="activity"
+            className="flex shrink-0 items-center gap-2 rounded-md px-3 text-sm font-medium text-gray-500 transition-all data-[state=active]:bg-gray-100 data-[state=active]:text-gray-900 data-[state=active]:shadow-sm dark:text-gray-400 dark:data-[state=active]:bg-gray-800 dark:data-[state=active]:text-gray-100 md:px-4"
+          >
+            <ActivityIcon className="size-4 shrink-0" strokeWidth={1.75} />
             <span className="hidden sm:inline">{t("ACTIVITY")}</span>
-            <span className="sm:hidden">
-              <ActivityIcon className="size-4" />
-            </span>
           </TabsTrigger>
-          <TabsTrigger value="analytics" className="rounded-lg px-0 md:px-4 shrink-0">
+
+          <TabsTrigger
+            value="analytics"
+            className="flex shrink-0 items-center gap-2 rounded-md px-3 text-sm font-medium text-gray-500 transition-all data-[state=active]:bg-gray-100 data-[state=active]:text-gray-900 data-[state=active]:shadow-sm dark:text-gray-400 dark:data-[state=active]:bg-gray-800 dark:data-[state=active]:text-gray-100 md:px-4"
+          >
+            <TrendingUp className="size-4 shrink-0" strokeWidth={1.75} />
             <span className="hidden sm:inline">{t("ANALYTICS")}</span>
-            <span className="sm:hidden">
-              <TrendingUp className="size-4" />
-            </span>
           </TabsTrigger>
-          <TabsTrigger value="users" className="rounded-lg px-0 md:px-4 shrink-0">
+
+          <TabsTrigger
+            value="users"
+            className="flex shrink-0 items-center gap-2 rounded-md px-3 text-sm font-medium text-gray-500 transition-all data-[state=active]:bg-gray-100 data-[state=active]:text-gray-900 data-[state=active]:shadow-sm dark:text-gray-400 dark:data-[state=active]:bg-gray-800 dark:data-[state=active]:text-gray-100 md:px-4"
+          >
+            <Users className="size-4 shrink-0" strokeWidth={1.75} />
             <span className="hidden sm:inline">{t("USERS")}</span>
-            <span className="sm:hidden">
-              <Users className="size-4" />
-            </span>
           </TabsTrigger>
-          {(account.actions?.edit || account.actions?.destroy) && (
-            <TabsTrigger value="settings" className="rounded-lg px-0 md:px-4 shrink-0">
-              <span className="hidden sm:inline">{t("SETTINGS")}</span>
-              <span className="sm:hidden">
-                <Settings className="size-4" />
-              </span>
-            </TabsTrigger>
-          )}
         </TabsList>
 
         {/* Overview Tab */}
-        <TabsContent value="overview" className="space-y-6">
+        <TabsContent value="overview" className="space-y-3">
           {/* Summary Cards */}
           {isLoading ? (
-            <div className="grid gap-4 lg:grid-cols-3">
+            <div className="grid gap-3 lg:grid-cols-3">
               {[1, 2, 3, 4].map((i) => (
                 <Card key={i} className="rounded-2xl border-0 shadow-sm">
                   <CardContent className="p-6">
@@ -354,7 +343,7 @@ export const AccountDetailsContainer = ({ id }: { id: string }) => {
               ))}
             </div>
           ) : (
-            <div className="grid gap-4 lg:grid-cols-3">
+            <div className="grid gap-3 lg:grid-cols-3">
               {[
                 {
                   label: t("CURRENT_BALANCE"),
@@ -381,10 +370,7 @@ export const AccountDetailsContainer = ({ id }: { id: string }) => {
                   trendLabel: t("VS_LAST_MONTH"),
                 },
               ].map((card) => (
-                <Card
-                  key={card.label}
-                  className="rounded-2xl border-0 shadow-sm bg-card transition-shadow hover:shadow-md"
-                >
+                <Card key={card.label} className="border-0 transition-shadow hover:shadow-lg">
                   <CardContent className="px-6">
                     <p className="text-sm text-muted-foreground">{card.label}</p>
                     <p className={cn("mt-2 text-2xl font-bold tracking-tight", card.color)}>
@@ -441,7 +427,7 @@ export const AccountDetailsContainer = ({ id }: { id: string }) => {
 
         {/* Transactions Tab */}
         <TabsContent value="transactions" className="space-y-4">
-          <TableContainer accountId={id} includeSummary={false} />
+          <TableContainer accountId={id} includeSummary={false} loadMore={loadCounter} />
         </TabsContent>
 
         {/* Activity Tab */}
@@ -458,13 +444,6 @@ export const AccountDetailsContainer = ({ id }: { id: string }) => {
         <TabsContent value="users">
           <AccountUsersSection account={account} isLoading={isLoading} />
         </TabsContent>
-
-        {/* Settings Tab */}
-        {(account.actions?.edit || account.actions?.destroy) && (
-          <TabsContent value="settings">
-            <SettingsTabContent account={account} isLoading={isLoading} />
-          </TabsContent>
-        )}
       </Tabs>
 
       <LeaveSubjectDialog
@@ -486,6 +465,15 @@ export const AccountDetailsContainer = ({ id }: { id: string }) => {
         setIsOpen={setIsEditOpen}
         account={account}
         mutate={mutate}
+      />
+
+      <FormTransactionDialog
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        accountId={id}
+        mutate={() => {
+          setLoadCounter((prev) => prev + 1);
+        }}
       />
     </div>
   );

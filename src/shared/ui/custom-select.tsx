@@ -18,14 +18,13 @@ export default function CustomSelect({
 }: {
   value: string;
   placeholder: string;
-  options: { label: string; value: string; icon?: React.ReactNode }[];
+  options: { label: string; value: string; icon?: React.ReactNode; keywords?: string }[];
   open: boolean;
   onToggle: () => void;
   onSelect: (v: string) => void;
   onClear?: () => void;
   disabled?: boolean;
   hasError?: boolean;
-  /** Permite sobrepor a largura por defeito (min/max clamp) quando necessário */
   className?: string;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -54,7 +53,9 @@ export default function CustomSelect({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [open, onToggle]);
 
-  const filtered = safeOptions.filter((o) => o.label.toLowerCase().includes(search.toLowerCase()));
+  const filtered = safeOptions.filter((o) =>
+    `${o.label} ${o.keywords ?? ""}`.toLowerCase().includes(search.toLowerCase())
+  );
 
   useEffect(() => {
     setHighlightedIndex(0);

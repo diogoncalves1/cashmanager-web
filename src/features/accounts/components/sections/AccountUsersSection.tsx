@@ -102,7 +102,7 @@ export function AccountUsersSection({ isLoading, account }: AccountUsersSectionP
 
   return (
     <>
-      <Card className="rounded-2xl border-0 shadow-sm bg-card">
+      <Card className="rounded-md border-0 shadow-md bg-white">
         <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <CardTitle className="text-base font-semibold">{t("USER_MANAGEMENT")}</CardTitle>
@@ -122,6 +122,7 @@ export function AccountUsersSection({ isLoading, account }: AccountUsersSectionP
               mutate={() => setLoadCounter((prev) => prev + 1)}
               type="accounts"
               id={account.id}
+              isLigth={true}
             />
           )}
         </CardHeader>

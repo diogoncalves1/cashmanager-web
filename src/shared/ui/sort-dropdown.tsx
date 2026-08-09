@@ -49,7 +49,7 @@ const SortDropdown = ({
         onClick={() => setOpen((prev) => !prev)}
         aria-expanded={open}
         aria-label={t("SORT_BY")}
-        className="flex size-12 items-center justify-center rounded-lg border-0 bg-gray-100 text-gray-400 transition-colors hover:bg-gray-200 hover:text-gray-800 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-100"
+        className="flex size-12 items-center justify-center rounded-md border-0 bg-gray-100 text-gray-400 transition-colors hover:bg-gray-200 hover:text-gray-800 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-100"
       >
         <OrderIcon size={19} strokeWidth={1.75} />
       </button>

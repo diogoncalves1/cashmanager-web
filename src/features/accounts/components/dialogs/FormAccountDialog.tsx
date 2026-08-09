@@ -14,19 +14,21 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { Account, getAccountTypes, AccountFormData } from "@/features/accounts";
+import {
+  Account,
+  getAccountTypes,
+  AccountFormData,
+  accountTypeConfig,
+  AccountType,
+} from "@/features/accounts";
 import { useAccountForm } from "@/features/accounts/server";
 import { toast } from "@/shared/hooks/useToast";
 import { Currency } from "@/shared/types/currency";
 import { useTranslations } from "next-intl";
+import CustomSelect from "@/shared/ui/custom-select";
+import { cn } from "@/shared/utils";
+import { Power } from "lucide-react";
 
 interface FormAccountDialogProps {
   id?: string;
@@ -60,6 +62,8 @@ export function FormAccountDialog({
   } = useAccountForm(id, account);
 
   const [errors, setErrors] = useState<Partial<Record<keyof AccountFormData, string>>>({});
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const toggle = (key: string) => setOpenDropdown((p) => (p === key ? null : key));
 
   const validate = () => {
     const newErrors: Partial<Record<keyof AccountFormData, string>> = {};
@@ -92,7 +96,7 @@ export function FormAccountDialog({
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="sm:max-w-[500px]">
+      <DialogContent className="sm:min-w-xl bg-white">
         <form onSubmit={onSubmit}>
           <DialogHeader>
             <DialogTitle>{id ? t("EDIT_ACCOUNT") : t("CREATE_NEW_ACCOUNT")}</DialogTitle>
@@ -102,51 +106,52 @@ export function FormAccountDialog({
           </DialogHeader>
 
           <div className="grid gap-5 py-6">
-            <div className="grid gap-2">
-              <Label htmlFor="name">
-                {t("ACCOUNT_NAME")} <span className="text-error-500">*</span>
-              </Label>
-              <Input
-                id="name"
-                placeholder={t("ACCOUNT_NAME_EG")}
-                value={formData.name}
-                onChange={(e) => {
-                  setFormData((prev) => ({ ...prev, name: e.target.value }));
-                }}
-                className={errors.name ? "border-destructive" : ""}
-              />
-              {errors.name && <p className="text-xs text-destructive">{errors.name}</p>}
-            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="grid gap-2 col-span-1">
+                <Label htmlFor="name">
+                  {t("ACCOUNT_NAME")} <span className="text-error-500">*</span>
+                </Label>
+                <Input
+                  id="name"
+                  placeholder={t("ACCOUNT_NAME_EG")}
+                  value={formData.name}
+                  onChange={(e) => {
+                    setFormData((prev) => ({ ...prev, name: e.target.value }));
+                  }}
+                  className={errors.name ? "border-destructive" : ""}
+                />
+                {errors.name && <p className="text-xs text-destructive">{errors.name}</p>}
+              </div>
 
-            <div className="grid grid-cols-1 gap-4">
-              <div className="grid gap-2">
+              <div className="grid gap-2 col-span-1">
                 <Label htmlFor="type">
                   {t("ACCOUNT_TYPE")} <span className="text-error-500">*</span>
                 </Label>
                 {!isLoadingAccount ? (
-                  <Select
+                  <CustomSelect
                     value={formData.type}
-                    onValueChange={(e: string) => {
+                    placeholder={t("CHOOSE_A_TYPE")}
+                    className="w-full"
+                    options={
+                      accountTypes?.map((type) => {
+                        const config = accountTypeConfig[type.value as AccountType];
+                        const Icon = config.icon;
+
+                        return {
+                          label: type.label,
+                          value: type.value,
+                          icon: (
+                            <Icon className={cn("size-5", config.className)} strokeWidth={1.75} />
+                          ),
+                        };
+                      }) ?? []
+                    }
+                    onSelect={(e: string) => {
                       setFormData((prev) => ({ ...prev, type: e }));
                     }}
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder={t("CHOOSE_A_TYPE")} />
-                    </SelectTrigger>
-                    <SelectContent className="bg-card border-border">
-                      {accountTypes?.map((type) => (
-                        <SelectItem
-                          key={type.value}
-                          value={type.value}
-                          className="py-3 cursor-pointer focus:bg-accent"
-                        >
-                          <div className="flex flex-col items-start gap-0.5">
-                            <span className="font-medium">{type.label}</span>
-                          </div>
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                    open={openDropdown === "type"}
+                    onToggle={() => toggle("type")}
+                  />
                 ) : (
                   <div className="p-2 space-y-2">
                     <div className="h-8 rounded bg-muted animate-pulse" />
@@ -154,54 +159,66 @@ export function FormAccountDialog({
                 )}
                 {errors.type && <p className="text-xs text-destructive">{errors.type}</p>}
               </div>
-
-              <div className="grid gap-2">
-                <Label htmlFor="currency">
-                  {t("CURRENCY")} <span className="text-error-500">*</span>
-                </Label>
-                {!loadingCurrencies ? (
-                  <Select
-                    value={formData.currency_id}
-                    onValueChange={(e: string) => {
-                      setFormData((prev) => ({ ...prev, currency_id: e }));
-                    }}
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder={t("CHOOSE_A_CURRENCY")} />
-                    </SelectTrigger>
-                    <SelectContent className="bg-card border-border">
-                      {!loadingCurrencies &&
-                        currencies?.map((currency: Currency) => (
-                          <SelectItem
-                            key={currency.id}
-                            value={currency.id}
-                            className="py-3 cursor-pointer focus:bg-secondary"
-                          >
-                            <div className="flex flex-col items-start gap-0.5">
-                              <span className="font-medium">{currency.name}</span>
-                              <span className="text-xs text-muted-foreground">
-                                {currency.code} {currency.symbol}
-                              </span>
-                            </div>
-                          </SelectItem>
-                        ))}
-                    </SelectContent>
-                  </Select>
-                ) : (
-                  <div className="p-2 space-y-2">
-                    <div className="h-8 rounded bg-muted animate-pulse" />
-                  </div>
-                )}
-                {errors.currency && <p className="text-xs text-destructive">{errors.currency}</p>}
-              </div>
             </div>
 
-            <div className="flex items-center justify-between rounded-lg border p-4">
-              <div className="space-y-0.5">
-                <Label htmlFor="isActive" className="text-sm font-medium">
-                  {t("ACTIVE_ACCOUNT")}
-                </Label>
-                <p className="text-xs text-muted-foreground">{t("ACTIVE_ACCOUNT_TEXT")}</p>
+            <div className="grid gap-2">
+              <Label htmlFor="currency">
+                {t("CURRENCY")} <span className="text-error-500">*</span>
+              </Label>
+              {!loadingCurrencies ? (
+                <CustomSelect
+                  value={formData.currency_id ?? ""}
+                  placeholder={t("CHOOSE_A_CURRENCY")}
+                  className="w-full"
+                  options={
+                    currencies?.map((currency: Currency) => ({
+                      label: currency.name,
+                      value: currency.id,
+                      keywords: `${currency.code} ${currency.symbol}`,
+                      icon: (
+                        <span className="text-xs font-medium text-muted-foreground">
+                          {currency.code} {currency.symbol}
+                        </span>
+                      ),
+                    })) ?? []
+                  }
+                  onSelect={(e: string) => {
+                    setFormData((prev) => ({ ...prev, currency_id: e }));
+                  }}
+                  open={openDropdown === "currency"}
+                  onToggle={() => toggle("currency")}
+                />
+              ) : (
+                <div className="p-2 space-y-2">
+                  <div className="h-8 rounded bg-muted animate-pulse" />
+                </div>
+              )}
+              {errors.currency && <p className="text-xs text-destructive">{errors.currency}</p>}
+            </div>
+
+            <div
+              className={cn(
+                "flex items-center justify-between rounded-md border p-4 transition-colors duration-300",
+                formData.active ? "border-accent/30 bg-accent/5" : "border-border bg-muted/30"
+              )}
+            >
+              <div className="flex items-center gap-3">
+                <div
+                  className={cn(
+                    "flex size-9 shrink-0 items-center justify-center rounded-lg transition-colors duration-300",
+                    formData.active
+                      ? "bg-accent/15 text-accent"
+                      : "bg-gray-200 text-gray-400 dark:bg-gray-800"
+                  )}
+                >
+                  <Power className="size-4" strokeWidth={2} />
+                </div>
+                <div className="space-y-0.5">
+                  <Label htmlFor="isActive" className="text-sm font-medium">
+                    {t("ACTIVE_ACCOUNT")}
+                  </Label>
+                  <p className="text-xs text-muted-foreground">{t("ACTIVE_ACCOUNT_TEXT")}</p>
+                </div>
               </div>
               <Switch
                 id="isActive"
@@ -213,11 +230,13 @@ export function FormAccountDialog({
           </div>
 
           <DialogFooter>
-            <Button type="button" variant="outline" onClick={() => setIsOpen(false)}>
+            <Button type="button" variant="app_cancel" size="lg" onClick={() => setIsOpen(false)}>
               {t("CANCEL")}
             </Button>
             <Button
               disabled={!formData.currency_id || !formData.name || !formData.type || isSubmitting}
+              size="lg"
+              variant="app_gray"
               type="submit"
             >
               {id

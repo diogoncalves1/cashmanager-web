@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Account, AccountFiltersType, Stats } from "@/features/accounts";
 import { getAllAccounts } from "@/features/accounts/server";
 
@@ -11,12 +11,18 @@ export function useAccounts(filters: AccountFiltersType = {}, pageSize = 9) {
   const [error, setError] = useState(false);
   const [load, setLoad] = useState(false);
 
+  // Estabiliza `filters` pelo conteúdo (não pela referência), para não
+  // recriar fetchAccounts/disparar o useEffect a cada render.
+  const filtersKey = JSON.stringify(filters);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const stableFilters = useMemo(() => filters, [filtersKey]);
+
   const fetchAccounts = useCallback(
     async (currentPage = 1, append = false) => {
       try {
         setLoading(true);
 
-        const res = await getAllAccounts({ ...filters, page: currentPage - 1, pageSize });
+        const res = await getAllAccounts({ ...stableFilters, page: currentPage - 1, pageSize });
 
         setTotal(res.recordsFiltered);
         setStats(res.stats);
@@ -30,15 +36,16 @@ export function useAccounts(filters: AccountFiltersType = {}, pageSize = 9) {
         setLoading(false);
       }
     },
-    [filters, pageSize]
+    [stableFilters, pageSize]
   );
 
   useEffect(() => {
     setPage(1);
     fetchAccounts(1, false);
-  }, [filters, fetchAccounts]);
+  }, [stableFilters, fetchAccounts]);
 
   useEffect(() => {
+    if (!load) return;
     fetchAccounts(1);
   }, [load, fetchAccounts]);
 

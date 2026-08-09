@@ -1678,5 +1678,15 @@
     "META_DESCRIPTION": "Gerencie suas transações recorrentes de forma eficiente com o Cash Manager. Acompanhe os seus pagamentos e mantenha suas finanças organizadas.",
 
     "RECURRING": "Transações Recorrentes"
+  },
+
+  "SEARCH_INPUT": {
+    "SEARCH": "Procurar..."
+  },
+
+  "SORT_DROPDOWN": {
+    "SORT_BY": "Ordernar por",
+    "ASCENDING": "Ascendente",
+    "DESCENDING": "Descrescente"
   }
 }

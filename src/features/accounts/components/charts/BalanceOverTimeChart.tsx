@@ -121,7 +121,7 @@ export function BalanceOverTimeChart({
 
   if (isLoading) {
     return (
-      <Card className="rounded-2xl border-0 shadow-sm bg-card">
+      <Card className="rounded-md border-0 shadow-md bg-white">
         <CardHeader>
           <Skeleton className="h-6 w-48" />
         </CardHeader>
@@ -133,7 +133,7 @@ export function BalanceOverTimeChart({
   }
 
   return (
-    <Card className="rounded-2xl max-w-100 md:max-w-full border-0 shadow-sm bg-card">
+    <Card className="rounded-md max-w-100 md:max-w-full border-0 shadow-md bg-white">
       <CardHeader className="flex flex-col gap-3 pb-2 sm:flex-row sm:items-center sm:justify-between">
         <CardTitle className="text-base font-semibold">{t("BALANCE_OVER_TIME")}</CardTitle>
         <div className="flex gap-1 rounded-lg bg-muted p-1 self-start sm:self-auto">
