@@ -22,6 +22,8 @@ const buttonVariants = cva(
           "border-0 text-black/80 bg-white hover:bg-gray-50 focus:bg-gray-50 text-base focus-visible:ring-0 dark:bg-gray-800 transition-colors",
         app_gray:
           "border-0 text-black/60 bg-gray-100 hover:bg-gray-200 text-base focus-visible:ring-0 dark:bg-gray-800 transition-colors",
+        app_submit:
+          "border-0 text-white bg-accent hover:bg-accent/90 text-base focus-visible:ring-0 dark:bg-accent transition-colors",
         app_danger:
           "border-0 text-black/60 bg-red-200 hover:bg-destructive/90 hover:text-white focus-visible:ring-destructive/20 text-destructive/90 text-base focus-visible:ring-0 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60 transition-colors",
       },

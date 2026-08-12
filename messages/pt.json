@@ -69,7 +69,12 @@
     "CONFIRM_TRANSACTION_TEXT": "Tem a certeza que pretende confirmar esta transação?",
 
     "DELETE_TRANSACTION": "Apagar transação?",
-    "DELETE_TRANSACTION_TEXT": "Tem certeza de que deseja apagar? Esta ação não pode ser desfeita."
+    "DELETE_TRANSACTION_TEXT": "Tem certeza de que deseja apagar? Esta ação não pode ser desfeita.",
+
+    "CHOOSE_TYPE": "Escolha o tipo",
+    "CHOOSE_ACCOUNT": "Escolha a conta",
+    "CHOOSE_CATEGORY": "Escolha a categoria",
+    "CHOOSE_STATUS": "Escolha o estado"
   },
 
   "DATATABLE": {

@@ -12,23 +12,18 @@ import { Circle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { TransactionStatus, TransactionType } from "@/features/transactions";
 import { useTransactionForm } from "@/features/transactions/server";
 import { useToast } from "@/shared/hooks/useToast";
-import { AccountBasic } from "@/features/accounts";
+import { AccountBasic, accountTypeConfig } from "@/features/accounts";
 import { Category, iconMap } from "@/shared/types/category";
 import { DatePicker } from "@/shared/ui/date-picker";
 import { Textarea } from "@/components/ui/textarea";
 import { useTranslations } from "next-intl";
 import { SwalToast } from "@/components/swal/SwalToast";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import CustomSelect from "@/shared/ui/custom-select";
+import { cn } from "@/shared/utils";
 
 type TransactionDialogProps = {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -60,6 +55,8 @@ export const FormTransactionDialog = ({
     accounts,
   } = useTransactionForm(id, accountId, isOpen);
   const { toast } = useToast();
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const toggle = (key: string) => setOpenDropdown((p) => (p === key ? null : key));
 
   useEffect(() => {
     if (isLoadingAccounts && !id) return;
@@ -114,7 +111,7 @@ export const FormTransactionDialog = ({
   }
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="sm:max-w-lg">
+      <DialogContent className="sm:max-w-2xl bg-white">
         <form onSubmit={onSubmit}>
           <DialogHeader>
             <DialogTitle>{id ? t("EDIT_TRANSACTION") : t("NEW_TRANSACTION")}</DialogTitle>
@@ -128,24 +125,33 @@ export const FormTransactionDialog = ({
               <div className="grid gap-1.5">
                 <Label htmlFor="tx-account">{t("ACCOUNT")}</Label>
                 {!isLoadingAccounts ? (
-                  <Select
-                    value={formData.account_id}
-                    onValueChange={(id: string) => setFormData((p) => ({ ...p, account_id: id }))}
-                  >
-                    <SelectTrigger id="tx-account">
-                      <SelectValue placeholder={t("SELECT_ACCOUNT")} />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {accounts?.map((a: AccountBasic) => (
-                        <SelectItem key={a.id} value={a.id}>
-                          {a.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <CustomSelect
+                    value={formData.account_id ?? ""}
+                    placeholder={t("CHOOSE_ACCOUNT")}
+                    className="w-full"
+                    options={
+                      accounts?.map((a: AccountBasic) => {
+                        const config = accountTypeConfig[a.typeOrg];
+                        const Icon = config.icon;
+
+                        return {
+                          label: a.name,
+                          value: a.id,
+                          icon: (
+                            <Icon className={cn("size-5", config.className)} strokeWidth={1.75} />
+                          ),
+                        };
+                      }) ?? []
+                    }
+                    onSelect={(v) =>
+                      setFormData((prev) => ({ ...prev, account_id: v || undefined }))
+                    }
+                    open={openDropdown === "account"}
+                    onToggle={() => toggle("account")}
+                  />
                 ) : (
                   <div className="p-2 space-y-2">
-                    <div className="h-8 rounded bg-muted animate-pulse" />
+                    <div className="h-12 rounded bg-muted animate-pulse" />
                   </div>
                 )}
               </div>
@@ -173,81 +179,72 @@ export const FormTransactionDialog = ({
               {!id && (
                 <div className="grid gap-1.5">
                   <Label htmlFor="tx-type">{t("TYPE")}</Label>
-                  <Select
+                  <CustomSelect
+                    placeholder={t("CHOOSE_TYPE")}
                     value={formData.type}
-                    onValueChange={(e) =>
+                    onSelect={(e) =>
                       setFormData((prev) => ({
                         ...prev,
                         type: e as TransactionType,
                         category_id: undefined,
                       }))
                     }
-                    required
-                  >
-                    <SelectTrigger id="tx-type">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="revenue">{t("INCOME")}</SelectItem>
-                      <SelectItem value="expense">{t("EXPENSE")}</SelectItem>
-                    </SelectContent>
-                  </Select>
+                    options={[
+                      { label: t("INCOME"), value: "revenue" },
+                      { label: t("EXPENSE"), value: "expense" },
+                    ]}
+                    open={openDropdown === "type"}
+                    onToggle={() => toggle("type")}
+                    className="w-full"
+                  />
                 </div>
               )}
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
               <div className="grid gap-1.5">
                 <Label htmlFor="tx-category">{t("CATEGORY")}</Label>
                 {!isLoadingCategories ? (
-                  <Select
-                    value={formData.category_id}
-                    onValueChange={(id: string) => setFormData((p) => ({ ...p, category_id: id }))}
-                  >
-                    <SelectTrigger id="tx-category">
-                      <SelectValue placeholder={t("SELECT_CATEGORY")} />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {categories.data.map((c: Category) => {
+                  <CustomSelect
+                    value={formData.category_id ?? ""}
+                    placeholder={t("CHOOSE_CATEGORY")}
+                    className="w-full"
+                    options={
+                      categories.data.map((c: Category) => {
                         const Icon = iconMap[c.icon as keyof typeof iconMap] ?? Circle;
-                        return (
-                          <SelectItem key={c.id} value={c.id}>
-                            <Icon
-                              className="h-5 w-5"
-                              style={{
-                                color: c.color,
-                              }}
-                            />
-                            {c.name}
-                          </SelectItem>
-                        );
-                      })}
-                    </SelectContent>
-                  </Select>
+
+                        return {
+                          label: c.name,
+                          value: c.id,
+                          icon: <Icon className="size-5" style={{ color: c.color }} />,
+                        };
+                      }) ?? []
+                    }
+                    onSelect={(id: string) => setFormData((p) => ({ ...p, category_id: id }))}
+                    open={openDropdown === "category"}
+                    onToggle={() => toggle("category")}
+                  />
                 ) : (
                   <div className="p-2 space-y-2">
-                    <div className="h-8 rounded bg-muted animate-pulse" />
+                    <div className="h-12 rounded bg-muted animate-pulse" />
                   </div>
                 )}
               </div>
               {!id && (
                 <div className="grid gap-1.5">
                   <Label htmlFor="tx-status">{t("STATUS")}</Label>
-                  <Select
+                  <CustomSelect
+                    placeholder={t("CHOOSE_STATUS")}
                     value={formData.status}
-                    onValueChange={(status: TransactionStatus) => {
-                      setFormData((prev) => ({ ...prev, status: status }));
-                      updateDateLimits(status);
+                    onSelect={(status) => {
+                      setFormData((prev) => ({ ...prev, status: status as TransactionStatus }));
+                      updateDateLimits(status as TransactionStatus);
                     }}
-                  >
-                    <SelectTrigger id="tx-status">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="completed">{t("COMPLETED")}</SelectItem>
-                      <SelectItem value="pending">{t("PENDING")}</SelectItem>
-                    </SelectContent>
-                  </Select>
+                    options={[
+                      { label: t("COMPLETED"), value: "completed" },
+                      { label: t("PENDING"), value: "pending" },
+                    ]}
+                    open={openDropdown === "status"}
+                    onToggle={() => toggle("status")}
+                    className="w-full"
+                  />
                 </div>
               )}
             </div>
@@ -255,6 +252,7 @@ export const FormTransactionDialog = ({
             <div className="grid gap-1.5">
               <Label htmlFor="tx-date">{t("DATE")}</Label>
               <DatePicker
+                className="w-full"
                 dateLimits={dateLimits}
                 date={formData.date}
                 onChangeDate={(newDate) => setFormData((p) => ({ ...p, date: newDate }))}
@@ -273,11 +271,13 @@ export const FormTransactionDialog = ({
           </div>
 
           <DialogFooter className="mt-6">
-            <Button type="button" variant="outline" onClick={() => setIsOpen(false)}>
+            <Button type="button" variant="app_cancel" size="lg" onClick={() => setIsOpen(false)}>
               {t("CANCEL")}
             </Button>
             <Button
               type="submit"
+              size="lg"
+              variant="app_submit"
               disabled={
                 !formData.account_id ||
                 !formData.amount ||

@@ -15,6 +15,7 @@ import { Transaction } from "@/features/transactions";
 import { onDeleteTransaction } from "@/features/transactions/server";
 import { useTranslations } from "next-intl";
 import { Table as ReactTable } from "@tanstack/react-table";
+import { Button } from "@/components/ui/button";
 
 type PaginationState = {
   pageIndex: number;
@@ -42,14 +43,16 @@ export function DeleteTransactionDialog({
   const { toast } = useToast();
   return (
     <AlertDialog open={open} onOpenChange={onOpenChange}>
-      <AlertDialogContent>
+      <AlertDialogContent className="bg-white">
         <AlertDialogHeader>
           <AlertDialogTitle>{t("DELETE_TRANSACTION")}</AlertDialogTitle>
           <AlertDialogDescription>{t("DELETE_TRANSACTION_TEXT")}</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>{t("CANCEL")}</AlertDialogCancel>
-          <AlertDialogAction
+          <Button type="button" size="lg" variant="app_cancel" onClick={() => onOpenChange(false)}>
+            {t("CANCEL")}
+          </Button>
+          <Button
             onClick={async () => {
               const result = await onDeleteTransaction(id, table, pagination);
               if (mutate) mutate();
@@ -58,10 +61,12 @@ export function DeleteTransactionDialog({
               });
               onOpenChange(false);
             }}
-            className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            type="submit"
+            size="lg"
+            variant="app_danger"
           >
             {t("DELETE")}
-          </AlertDialogAction>
+          </Button>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

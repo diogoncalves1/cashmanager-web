@@ -236,7 +236,7 @@ export function FormAccountDialog({
             <Button
               disabled={!formData.currency_id || !formData.name || !formData.type || isSubmitting}
               size="lg"
-              variant="app_gray"
+              variant="app_submit"
               type="submit"
             >
               {id

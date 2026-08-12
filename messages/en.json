@@ -69,7 +69,12 @@
     "CONFIRM_TRANSACTION_TEXT": "Are you sure you want to confirm this transaction?",
 
     "DELETE_TRANSACTION": "Delete transaction?",
-    "DELETE_TRANSACTION_TEXT": "Are you sure you want to delete this? This action cannot be undone."
+    "DELETE_TRANSACTION_TEXT": "Are you sure you want to delete this? This action cannot be undone.",
+
+    "CHOOSE_TYPE": "Choose the type",
+    "CHOOSE_ACCOUNT": "Choose the account",
+    "CHOOSE_CATEGORY": "Choose the category",
+    "CHOOSE_STATUS": "Choose the status"
   },
 
   "DATATABLE": {
