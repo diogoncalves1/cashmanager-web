@@ -13,6 +13,7 @@ import {
 import { useToast } from "@/shared/hooks/useToast";
 import { onConfirmTransaction } from "@/features/transactions/server";
 import { useTranslations } from "next-intl";
+import { Button } from "@/components/ui/button";
 
 interface ConfirmTransactionDialogProps {
   open: boolean;
@@ -38,8 +39,10 @@ export function ConfirmTransactionDialog({
           <AlertDialogDescription>{t("CONFIRM_TRANSACTION_TEXT")}</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>{t("CANCEL")}</AlertDialogCancel>
-          <AlertDialogAction
+          <Button type="button" size="lg" variant="app_cancel" onClick={() => onOpenChange(false)}>
+            {t("CANCEL")}
+          </Button>
+          <Button
             onClick={async () => {
               const result = await onConfirmTransaction(id, mutate);
               if (mutate) mutate();
@@ -48,10 +51,12 @@ export function ConfirmTransactionDialog({
               });
               onOpenChange(false);
             }}
-            className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            type="submit"
+            size="lg"
+            variant="app_submit"
           >
             {t("CONFIRM")}
-          </AlertDialogAction>
+          </Button>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

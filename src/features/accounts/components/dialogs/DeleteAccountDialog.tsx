@@ -15,6 +15,7 @@ import { Account } from "@/features/accounts";
 import { onDeleteAccount } from "@/features/accounts/server";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 type Props = {
   isOpen: boolean;
@@ -54,13 +55,17 @@ export const DeleteAccountDialog = ({ isOpen, setIsDeleteOpen, account, back = f
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>{t("CANCEL")}</AlertDialogCancel>
-          <AlertDialogAction
-            onClick={handleDelete}
-            className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+          <Button
+            type="button"
+            size="lg"
+            variant="app_cancel"
+            onClick={() => setIsDeleteOpen(false)}
           >
+            {t("CANCEL")}
+          </Button>
+          <Button onClick={handleDelete} type="submit" size="lg" variant="app_danger">
             {t("DELETE_ACCOUNT")}
-          </AlertDialogAction>
+          </Button>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

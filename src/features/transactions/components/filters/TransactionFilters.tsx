@@ -1,30 +1,31 @@
 "use client";
 
-import { Search, X } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
 import {
   getTransactionStatus,
   getTransactionTypes,
   TransactionStatus,
   TransactionType,
 } from "@/features/transactions";
-import { Category } from "@/shared/types/category";
+import { Category, iconMap } from "@/shared/types/category";
 import { useTranslations } from "next-intl";
 import { DatePicker } from "@/shared/ui/date-picker";
+import SearchInput from "@/shared/ui/search-input";
+import SortDropdown from "@/shared/ui/sort-dropdown";
+import { SortingState, Updater } from "@tanstack/react-table";
+import { FiltersPanel } from "@/shared/ui/filters-panel";
+import CustomSelect from "@/shared/ui/custom-select";
+import { useState } from "react";
+import { Circle } from "lucide-react";
+
+type SortField = "account" | "date" | "amount";
 
 interface TransactionsFiltersProps {
   search: string;
   onSearchChange: (v: string) => void;
+  sorting: SortingState;
+  setSorting: (updater: Updater<SortingState>) => void;
   statusFilter: TransactionStatus | "all";
-  onStatusFilterChange: (v: TransactionStatus) => void;
+  onStatusFilterChange: (v: TransactionStatus | string) => void;
   categoryFilter: string;
   onCategoryFilterChange: (v: string) => void;
   typeFilter: TransactionType | "all";
@@ -44,6 +45,8 @@ interface TransactionsFiltersProps {
 export function TransactionsFilters({
   search,
   onSearchChange,
+  sorting,
+  setSorting,
   statusFilter,
   onStatusFilterChange,
   categoryFilter,
@@ -64,98 +67,102 @@ export function TransactionsFilters({
   const t = useTranslations("TRANSACTIONS");
   const transactionStatus = getTransactionStatus(t);
   const transactionTypes = getTransactionTypes(t);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const toggle = (key: string) => setOpenDropdown((p) => (p === key ? null : key));
+  const activeFilterCount = [typeFilter !== "all", statusFilter !== "all"].filter(Boolean).length;
+
+  const sortField = sorting[0]?.id as SortField | undefined;
+  const sortOrder = sorting[0]?.desc ? "desc" : "asc";
 
   return (
     <div className="space-y-3 max-w-100 md:max-w-full">
-      {enableSearch && (
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-          <Input
-            placeholder={t("SEARCH_TRANSACTION")}
-            value={search}
-            onChange={(e) => onSearchChange(e.target.value)}
-            className="pl-9 bg-white"
-          />
-        </div>
-      )}
-
       <div className="flex flex-wrap items-center gap-2">
-        {enableStatusFilter && (
-          <Select value={statusFilter} onValueChange={onStatusFilterChange}>
-            <SelectTrigger className="w-full sm:w-[160px] bg-white">
-              <SelectValue placeholder="Account" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">{t("ALL_STATUS")}</SelectItem>
-              {transactionStatus.map((status) => (
-                <SelectItem key={status.value} value={status.value}>
-                  {status.label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+        {enableSearch && (
+          <SearchInput value={search} onChange={(e) => onSearchChange(e.target.value)} />
         )}
 
-        <Select value={categoryFilter} onValueChange={onCategoryFilterChange}>
-          <SelectTrigger className="w-full sm:w-[180px] bg-white">
-            <SelectValue placeholder="Category" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">{t("ALL_CATEGORIES")}</SelectItem>
-            {categories?.map((c) => (
-              <SelectItem key={c.id} value={c.id}>
-                {c.name}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        <SortDropdown
+          sort={sortField}
+          sortOrder={sortOrder}
+          options={[
+            { value: "account", label: t("ACCOUNT") },
+            { value: "date", label: t("DATE") },
+            { value: "amount", label: t("AMOUNT") },
+          ]}
+          onSortChange={(value) =>
+            setSorting([{ id: value as SortField, desc: sortOrder === "desc" }])
+          }
+          onOrderToggle={() =>
+            setSorting((prev) =>
+              prev.length ? [{ ...prev[0], desc: !prev[0].desc }] : [{ id: "date", desc: true }]
+            )
+          }
+        />
 
-        {enableTypeFilter && (
-          <Select
-            value={typeFilter}
-            onValueChange={(v) => onTypeFilterChange(v as TransactionType | "all")}
-          >
-            <SelectTrigger className="w-full sm:w-[140px] bg-white">
-              <SelectValue placeholder="Type" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">{t("ALL_TYPES")}</SelectItem>
-              {transactionTypes.map((type) => (
-                <SelectItem key={type.value} value={type.value}>
-                  {type.label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        )}
+        <FiltersPanel
+          activeCount={activeFilterCount}
+          hasActiveFilters={hasActiveFilters}
+          onClearFilters={onClearFilters}
+        >
+          {enableStatusFilter && (
+            <CustomSelect
+              value={statusFilter}
+              onSelect={onStatusFilterChange}
+              placeholder={t("STATUS")}
+              options={transactionStatus}
+              open={openDropdown === "status"}
+              onToggle={() => {
+                toggle("status");
+              }}
+            />
+          )}
 
-        <div className="flex w-full sm:w-auto items-center gap-2">
-          <DatePicker
-            date={dateFrom}
-            dateLimits={{ max: dateTo }}
-            className="flex-1 sm:w-min bg-white"
-            onChangeDate={(newDate: string) => onDateFromChange(newDate)}
+          <CustomSelect
+            value={categoryFilter}
+            placeholder={t("CHOOSE_CATEGORY")}
+            options={
+              categories?.map((c: Category) => {
+                const Icon = iconMap[c.icon as keyof typeof iconMap] ?? Circle;
+
+                return {
+                  label: c.name,
+                  value: c.id,
+                  icon: <Icon className="size-5" style={{ color: c.color }} />,
+                };
+              }) ?? []
+            }
+            onSelect={onCategoryFilterChange}
+            open={openDropdown === "category"}
+            onToggle={() => toggle("category")}
           />
-          <span className="text-xs text-muted-foreground shrink-0">{t("TO")}</span>
-          <DatePicker
-            date={dateTo}
-            dateLimits={{ min: dateFrom }}
-            className="flex-1 sm:w-min bg-white"
-            onChangeDate={(newDate: string) => onDateToChange(newDate)}
-          />
-        </div>
 
-        {hasActiveFilters && (
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={onClearFilters}
-            className="gap-1 text-muted-foreground"
-          >
-            <X className="size-3" />
-            {t("CLEAR")}
-          </Button>
-        )}
+          {enableTypeFilter && (
+            <CustomSelect
+              value={typeFilter}
+              onSelect={(v) => onTypeFilterChange(v as TransactionType | "all")}
+              placeholder={t("CHOOSE_TYPE")}
+              options={transactionTypes}
+              open={openDropdown === "type"}
+              onToggle={() => {
+                toggle("type");
+              }}
+            />
+          )}
+
+          <div className="flex w-full sm:w-auto items-center gap-2">
+            <DatePicker
+              date={dateFrom}
+              dateLimits={{ max: dateTo }}
+              onChangeDate={(newDate: string) => onDateFromChange(newDate)}
+            />
+            <span className="text-xs text-muted-foreground shrink-0">{t("TO")}</span>
+            <DatePicker
+              date={dateTo}
+              dateLimits={{ min: dateFrom }}
+              onChangeDate={(newDate: string) => onDateToChange(newDate)}
+            />
+          </div>
+        </FiltersPanel>
       </div>
     </div>
   );

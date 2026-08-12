@@ -11,17 +11,23 @@ import {
   TransactionType,
   TransactionsSummary,
   TransactionsFilters,
+  FormTransactionDialog,
 } from "@/features/transactions";
+import { ContentLayout } from "@/shared/ui/content-layout";
+import CreateButton from "@/shared/ui/create-button";
+import { useTranslations } from "next-intl";
 
 type Props = {
   userId?: string;
   accountId?: string;
-  load?: boolean;
   includeSummary?: boolean;
+  loadMore?: number;
 };
 
-export const TableContainer = ({ userId, accountId, load, includeSummary = true }: Props) => {
+export const TableContainer = ({ userId, accountId, includeSummary = true, loadMore }: Props) => {
+  const t = useTranslations("TRANSACTIONS");
   const [sorting, setSorting] = React.useState<SortingState>([{ id: "date", desc: true }]);
+
   // Filters
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState<TransactionStatus | "all">("all");
@@ -29,6 +35,8 @@ export const TableContainer = ({ userId, accountId, load, includeSummary = true 
   const [typeFilter, setTypeFilter] = useState<TransactionType | "all">("all");
   const [dateFrom, setDateFrom] = useState("");
   const [dateTo, setDateTo] = useState("");
+  const [load, setLoad] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   function useDebounce<T>(value: T, delay: number) {
     const [debouncedValue, setDebouncedValue] = React.useState(value);
@@ -143,83 +151,103 @@ export const TableContainer = ({ userId, accountId, load, includeSummary = true 
 
   useEffect(() => {
     mutate();
-  }, [load, mutate]);
+  }, [load, mutate, loadMore]);
 
   return (
-    <div className="space-y-6 max-w-100 md:max-w-full">
+    <div className="grid gap-3 mx-auto max-w-full">
       {includeSummary && (
-        <TransactionsSummary
-          totalIncome={apiData?.stats.income}
-          totalExpenses={apiData?.stats.expenses}
-          balance={apiData?.stats.balance}
-        />
-      )}
-      <TransactionsFilters
-        search={search}
-        onSearchChange={(v: string) => {
-          setSearch(v);
-          setPagination({
-            pageIndex: 0,
-            pageSize: 10,
-          });
-        }}
-        statusFilter={statusFilter}
-        onStatusFilterChange={(v: TransactionStatus) => {
-          setStatusFilter(v);
-          setPagination({
-            pageIndex: 0,
-            pageSize: 10,
-          });
-        }}
-        categoryFilter={categoryFilter}
-        onCategoryFilterChange={(v: string) => {
-          setCategoryFilter(v);
-          setPagination({
-            pageIndex: 0,
-            pageSize: 10,
-          });
-        }}
-        typeFilter={typeFilter}
-        onTypeFilterChange={(v: TransactionType | "all") => {
-          setTypeFilter(v);
-          setPagination({
-            pageIndex: 0,
-            pageSize: 10,
-          });
-        }}
-        dateFrom={dateFrom}
-        onDateFromChange={(v: string) => {
-          setDateFrom(v);
-          setPagination({
-            pageIndex: 0,
-            pageSize: 10,
-          });
-        }}
-        dateTo={dateTo}
-        onDateToChange={(v: string) => {
-          setDateTo(v);
-          setPagination({
-            pageIndex: 0,
-            pageSize: 10,
-          });
-        }}
-        categories={apiData?.categories}
-        hasActiveFilters={hasActiveFilters}
-        onClearFilters={clearFilters}
-      />
+        <>
+          <CreateButton onClick={() => setIsOpen(true)} className="ml-auto">
+            {t("NEW_TRANSACTION")}
+          </CreateButton>
 
-      <TransactionsDataTable
-        pagination={pagination}
-        accountId={accountId}
-        userId={userId}
-        data={apiData}
-        isLoading={isLoading}
-        mutate={mutate}
-        setSorting={setSorting}
-        sorting={sorting}
-        columnFilters={columnFilters}
-        setColumnFilters={setColumnFilters}
-        setPagination={setPagination}
+          <TransactionsSummary
+            totalIncome={apiData?.stats.income}
+            totalExpenses={apiData?.stats.expenses}
+            balance={apiData?.stats.balance}
+            isLoading={isLoading}
+          />
+        </>
+      )}
+
+      <ContentLayout>
+        <TransactionsFilters
+          search={search}
+          onSearchChange={(v: string) => {
+            setSearch(v);
+            setPagination({
+              pageIndex: 0,
+              pageSize: 10,
+            });
+          }}
+          statusFilter={statusFilter}
+          onStatusFilterChange={(v: TransactionStatus | string) => {
+            setStatusFilter(v as TransactionStatus);
+            setPagination({
+              pageIndex: 0,
+              pageSize: 10,
+            });
+          }}
+          categoryFilter={categoryFilter}
+          onCategoryFilterChange={(v: string) => {
+            setCategoryFilter(v);
+            setPagination({
+              pageIndex: 0,
+              pageSize: 10,
+            });
+          }}
+          typeFilter={typeFilter}
+          onTypeFilterChange={(v: TransactionType | "all") => {
+            setTypeFilter(v);
+            setPagination({
+              pageIndex: 0,
+              pageSize: 10,
+            });
+          }}
+          dateFrom={dateFrom}
+          onDateFromChange={(v: string) => {
+            setDateFrom(v);
+            setPagination({
+              pageIndex: 0,
+              pageSize: 10,
+            });
+          }}
+          dateTo={dateTo}
+          onDateToChange={(v: string) => {
+            setDateTo(v);
+            setPagination({
+              pageIndex: 0,
+              pageSize: 10,
+            });
+          }}
+          categories={apiData?.categories}
+          hasActiveFilters={hasActiveFilters}
+          onClearFilters={clearFilters}
+          sorting={sorting}
+          setSorting={setSorting}
+        />
+
+        <TransactionsDataTable
+          pagination={pagination}
+          accountId={accountId}
+          userId={userId}
+          data={apiData}
+          isLoading={isLoading}
+          mutate={mutate}
+          setSorting={setSorting}
+          sorting={sorting}
+          columnFilters={columnFilters}
+          setColumnFilters={setColumnFilters}
+          setPagination={setPagination}
+        />
+      </ContentLayout>
+
+      <FormTransactionDialog
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        mutate={() => {
+          if (setLoad) setLoad((prev) => !prev);
+        }}
       />
     </div>
   );
