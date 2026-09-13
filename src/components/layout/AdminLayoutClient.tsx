@@ -36,7 +36,7 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
             <AppHeader />
 
             {/* Page Content */}
-            <div className="mx-auto max-w-(--breakpoint-4xl) py-[25px] px-2 sm:px-6 xl:px-60">
+            <div className="mx-auto max-w-(--breakpoint-7xl) md:max-w-(--breakpoint-6xl) lg:max-w-(--breakpoint-5xl) xl:max-w-(--breakpoint-4xl) py-[25px] px-2 sm:px-6 xl:px-60">
               {children}
             </div>
           </div>

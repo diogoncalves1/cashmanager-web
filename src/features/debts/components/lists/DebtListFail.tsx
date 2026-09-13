@@ -1,25 +1,18 @@
-import React from "react";
+"use client";
+
+import { CreditCard } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export const DebtListFail = () => {
+  const t = useTranslations("DEBTS");
+
   return (
-    <div className="text-center py-16">
-      <div className="w-16 h-16 rounded-full bg-muted mx-auto mb-4 flex items-center justify-center">
-        <svg
-          className="w-8 h-8 text-muted-foreground"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={1.5}
-            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-          />
-        </svg>
+    <div className="flex min-h-[260px] flex-col items-center justify-center rounded-md border border-dashed border-gray-200 bg-gray-50 px-6 py-14 text-center dark:border-gray-800 dark:bg-gray-900/40">
+      <div className="mb-4 flex size-14 items-center justify-center rounded-lg bg-white text-gray-400 shadow-sm dark:bg-gray-800 dark:text-gray-500">
+        <CreditCard className="size-7" strokeWidth={1.75} />
       </div>
-      <h3 className="font-medium text-foreground mb-1">No debts found</h3>
-      <p className="text-sm text-muted-foreground">No debts match your current filters</p>
+      <h3 className="mb-1 font-medium text-gray-900 dark:text-gray-100">{t("NO_DEBTS_FOUND")}</h3>
+      <p className="max-w-sm text-sm text-gray-500 dark:text-gray-400">{t("NO_DEBTS_TEXT")}</p>
     </div>
   );
 };

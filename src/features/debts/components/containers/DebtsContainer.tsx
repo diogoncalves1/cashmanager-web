@@ -1,75 +1,172 @@
 "use client";
 
-import { useState } from "react";
+import { type ElementType, type ReactNode, useEffect, useState } from "react";
 import { DebtsList } from "@/features/debts";
 import { useDebts } from "@/features/debts/server";
 import { useTranslations } from "next-intl";
+import { ContentLayout } from "@/shared/ui/content-layout";
+import DebtsFilters from "../filters/DebtFilters";
+import CreateButton from "@/shared/ui/create-button";
+import { useRouter } from "next/navigation";
+import { CheckCircle2, Clock4, CreditCard, WalletCards } from "lucide-react";
+import { cn } from "@/shared/utils";
 
 interface Filters {
   search?: string;
   status?: string;
-  priority?: string;
   sort?: string;
+  sortOrder?: "asc" | "desc";
+}
+
+type StatCardProps = {
+  label: string;
+  value: ReactNode;
+  subtext?: ReactNode;
+  icon: ElementType;
+  valueClassName?: string;
+  iconClassName?: string;
+};
+
+function StatCard({
+  label,
+  value,
+  subtext,
+  icon: Icon,
+  valueClassName,
+  iconClassName,
+}: StatCardProps) {
+  return (
+    <div className="rounded-lg bg-white px-6 py-6 shadow-md dark:bg-gray-800/60">
+      <div className="flex items-start gap-4">
+        <div
+          className={cn(
+            "flex size-11 shrink-0 items-center justify-center rounded-lg bg-gray-100 text-gray-500 dark:bg-gray-900 dark:text-gray-300",
+            iconClassName
+          )}
+        >
+          <Icon className="size-5" strokeWidth={1.75} />
+        </div>
+        <div className="min-w-0">
+          <p className="text-sm text-gray-500 dark:text-gray-400">{label}</p>
+          <p
+            className={cn(
+              "mt-1 truncate text-2xl font-medium text-gray-900 dark:text-gray-100",
+              valueClassName
+            )}
+          >
+            {value}
+          </p>
+          {subtext && <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">{subtext}</p>}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export function DebtsContainer() {
   const t = useTranslations("DEBTS");
-  const [filters, setFilters] = useState<Filters>();
+  const router = useRouter();
+  const [filters, setFilters] = useState<Filters>({
+    sort: "name",
+    sortOrder: "asc",
+  });
+  const [debouncedFilters, setDebouncedFilters] = useState<Filters>(filters);
 
-  const { debts, loading, loadMore, isLoadingMore, hasMore, total, stats } = useDebts(filters);
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedFilters(filters);
+    }, 300);
+
+    return () => clearTimeout(handler);
+  }, [filters]);
+
+  const { debts, loading, loadMore, isLoadingMore, hasMore, total, stats } =
+    useDebts(debouncedFilters);
+
+  const paidPercentage =
+    !stats.totalAmounDebt || !stats.totalPaid
+      ? 0
+      : Math.round((stats.totalPaid / stats.totalAmounDebt) * 100);
+
+  const statCards: StatCardProps[] = [
+    {
+      label: t("TOTAL_DEBT"),
+      value: stats.totalDebtFormated,
+      subtext: (
+        <>
+          {t("ACROSS")} {stats.activeDebts}{" "}
+          <span className="lowercase">{stats.activeDebts > 1 ? t("DEBTS") : t("DEBT")}</span>
+        </>
+      ),
+      icon: CreditCard,
+      iconClassName: "bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400",
+    },
+    {
+      label: t("TOTAL_PAID"),
+      value: stats.totalPaidFormated,
+      subtext: `${paidPercentage}% ${t("OF_TOTAL")}`,
+      icon: CheckCircle2,
+      valueClassName: "text-success-600 dark:text-success-400",
+      iconClassName: "bg-success-100 text-success-600 dark:bg-success-900/30 dark:text-success-400",
+    },
+    {
+      label: t("ACTIVE_DEBTS"),
+      value: stats.activeDebts,
+      subtext: (
+        <span className="lowercase">
+          {stats.paidDebts} {stats.paidDebts === 1 ? t("COMPLETED") : t("COMPLETED_PLURAL")}
+        </span>
+      ),
+      icon: WalletCards,
+      iconClassName: "bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400",
+    },
+    {
+      label: t("MONTHLY_PAYMENTS"),
+      value: stats.monthlyPayments,
+      subtext: t("ACTIVE_DEBTS_ONLY"),
+      icon: Clock4,
+      iconClassName: "bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400",
+    },
+  ];
 
   return (
-    <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <div className="p-5 rounded-xl bg-card border border-border shadow-sm">
-          <div className="text-xs text-muted-foreground uppercase tracking-wide mb-2">
-            {t("TOTAL_DEBT")}
-          </div>
-          <div className="text-2xl font-semibold text-foreground">{stats.totalDebtFormated}</div>
-          <div className="text-xs text-muted-foreground mt-2">
-            {t("ACROSS")} {stats.activeDebts}{" "}
-            <span className="lowercase">{stats.activeDebts > 1 ? t("DEBTS") : t("DEBT")}</span>
-          </div>
+    <div className="grid gap-3">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h1 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">
+            {t("DEBTS")}
+          </h1>
+          <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{t("DEBTS_TEXT")}</p>
         </div>
-        <div className="p-5 rounded-xl bg-card border border-border shadow-sm">
-          <div className="text-xs text-muted-foreground uppercase tracking-wide mb-2">
-            {t("TOTAL_PAID")}
-          </div>
-          <div className="text-2xl font-semibold text-accent">{stats.totalPaidFormated}</div>
-          <div className="text-xs text-muted-foreground mt-2">
-            {(!stats.totalAmounDebt && !stats.totalPaid) || stats.totalAmounDebt == 0
-              ? 0
-              : Math.round((stats.totalPaid / stats.totalAmounDebt) * 100)}
-            % {t("OF_TOTAL")}
-          </div>
-        </div>
-        <div className="p-5 rounded-xl bg-card border border-border shadow-sm">
-          <div className="text-xs text-muted-foreground uppercase tracking-wide mb-2">
-            {t("ACTIVE_DEBTS")}
-          </div>
-          <div className="text-2xl font-semibold text-foreground">{stats.activeDebts}</div>
-          <div className="text-xs text-muted-foreground mt-2 lowercase">
-            {stats.paidDebts} {stats.paidDebts == 1 ? t("COMPLETED") : t("COMPLETED_PLURAL")}
-          </div>
-        </div>
-        <div className="p-5 rounded-xl bg-card border border-border shadow-sm">
-          <div className="text-xs text-muted-foreground uppercase tracking-wide mb-2">
-            {t("MONTHLY_PAYMENTS")}
-          </div>
-          <div className="text-2xl font-semibold text-foreground">{stats.monthlyPayments}</div>
-          <div className="text-xs text-muted-foreground mt-2">{t("ACTIVE_DEBTS_ONLY")}</div>
-        </div>
+
+        <CreateButton onClick={() => router.push("/debts/create")} className="sm:ml-auto">
+          {t("ADD")}
+        </CreateButton>
       </div>
-      <DebtsList
-        debts={debts}
-        loadMore={loadMore}
-        hasMore={hasMore}
-        total={total}
-        loading={loading}
-        filters={filters}
-        setFilters={setFilters}
-        isLoadingMore={isLoadingMore}
-      />
-    </>
+
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {statCards.map((card) => (
+          <StatCard key={card.label} {...card} />
+        ))}
+      </div>
+
+      <ContentLayout>
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <DebtsFilters filters={filters} setFilters={setFilters} />
+          <p className="shrink-0 text-sm lowercase text-gray-500 dark:text-gray-400">
+            {total} {total !== 1 ? t("DEBTS") : t("DEBT")}
+          </p>
+        </div>
+
+        <DebtsList
+          debts={debts}
+          loadMore={loadMore}
+          hasMore={hasMore}
+          total={total}
+          loading={loading}
+          isLoadingMore={isLoadingMore}
+        />
+      </ContentLayout>
+    </div>
   );
 }

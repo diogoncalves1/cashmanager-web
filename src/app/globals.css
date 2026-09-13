@@ -3,7 +3,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* globals.css */
+html,
+body {
+  font-family: var(--font-jakarta), sans-serif;
+}
 
 /* Chrome, Edge, Safari */
 ::-webkit-scrollbar {
@@ -46,8 +49,6 @@
 
 @theme {
   --font-*: initial;
-  --font-outfit: Outfit, sample-serif;
-  --font-family: Geist, "Geist Fallback";
 
   --breakpoint-*: initial;
   --breakpoint-2xsm: 375px;
@@ -224,14 +225,7 @@
     cursor: pointer;
   }
   body {
-    @apply relative font-normal font-outfit z-1 bg-gray-50;
-
-    font-family: var(--font-geist);
-  }
-  h1,
-  h2,
-  h3 {
-    font-family: var(--font-geist);
+    @apply relative font-normal z-1 bg-gray-50;
   }
 }
 
@@ -941,6 +935,8 @@ span.flatpickr-weekday,
 /*
   ---break---
 */
+
+
 
 @layer base {
   * {

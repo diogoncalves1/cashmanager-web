@@ -6,6 +6,7 @@ interface Filters {
   search?: string;
   status?: string;
   sort?: string;
+  sortOrder?: "asc" | "desc";
 }
 
 export function useDebts(filters: Filters = {}, pageSize = 4) {

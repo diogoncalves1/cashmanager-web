@@ -43,25 +43,38 @@ function Input({
   variant = "app_gray",
   size = "lg",
   leftIcon,
+  rightIcon,
   containerClassName,
   ...props
 }: Omit<React.ComponentProps<"input">, "size"> &
   VariantProps<typeof buttonVariants> & {
     leftIcon?: React.ReactNode;
+    rightIcon?: React.ReactNode;
     containerClassName?: string;
   }) {
-  if (leftIcon) {
+  if (leftIcon || rightIcon) {
     return (
       <div className={cn("relative w-full", containerClassName)}>
-        <span className="pointer-events-none absolute left-3 top-1/2 z-10 flex -translate-y-1/2 items-center text-muted-foreground [&_svg]:shrink-0">
-          {leftIcon}
-        </span>
+        {leftIcon && (
+          <span className="pointer-events-none absolute left-3 top-1/2 z-10 flex -translate-y-1/2 items-center text-muted-foreground [&_svg]:shrink-0">
+            {leftIcon}
+          </span>
+        )}
         <input
           type={type}
           data-slot="input"
-          className={cn(buttonVariants({ variant, size, className }), "!pl-9")}
+          className={cn(
+            buttonVariants({ variant, size, className }),
+            leftIcon && "!pl-10",
+            rightIcon && "!pr-9"
+          )}
           {...props}
         />
+        {rightIcon && (
+          <span className="pointer-events-none absolute right-3 top-1/2 z-10 flex -translate-y-1/2 items-center text-muted-foreground [&_svg]:shrink-0">
+            {rightIcon}
+          </span>
+        )}
       </div>
     );
   }
