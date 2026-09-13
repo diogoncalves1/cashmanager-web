@@ -13,8 +13,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function Loading() {
   return (
-    <div className="p-6 space-y-8">
-      <div className="max-w-6xl mx-auto px-6 py-8 space-y-8">
+    <div className="grid gap-3">
+      <div className="grid gap-3">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
           <div className="space-y-3">
@@ -33,7 +33,7 @@ export default function Loading() {
         </div>
 
         {/* Progress Card */}
-        <div className="rounded-2xl bg-card border border-border p-6 shadow-sm">
+        <div className="rounded-lg bg-white p-6 shadow-md dark:bg-gray-800/60">
           <div className="flex flex-col lg:flex-row gap-6 items-center lg:items-start">
             <Skeleton className="w-32 h-32 rounded-full" />
 
@@ -54,7 +54,7 @@ export default function Loading() {
           {[...Array(4)].map((_, i) => (
             <div
               key={i}
-              className="p-5 rounded-xl bg-card border border-border shadow-sm space-y-2"
+              className="space-y-2 rounded-lg bg-white p-5 shadow-md dark:bg-gray-800/60"
             >
               <Skeleton className="h-3 w-16" />
               <Skeleton className="h-6 w-24" />
@@ -66,7 +66,7 @@ export default function Loading() {
         <div className="space-y-6">
           <Skeleton className="h-10 w-96 rounded-lg" />
 
-          <div className="rounded-2xl bg-card border border-border p-6 shadow-sm space-y-4">
+          <div className="space-y-4 rounded-lg bg-white p-6 shadow-md dark:bg-gray-800/60">
             {[...Array(6)].map((_, i) => (
               <div key={i} className="flex justify-between">
                 <Skeleton className="h-4 w-40" />

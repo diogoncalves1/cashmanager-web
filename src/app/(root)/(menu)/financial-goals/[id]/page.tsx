@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import React from "react";
-import PageBreadcrumb from "@/components/ui/PageBreadCrumb";
 import { getTranslations } from "next-intl/server";
 import { FinancialGoalDetails } from "@/features/financial-goals";
 
@@ -18,18 +17,6 @@ type FinancialGoalPageParams = {
 };
 export default async function FinancialGoalPage({ params }: FinancialGoalPageParams) {
   const { id } = await params;
-  const t = await getTranslations("FINANCIAL_GOALS");
 
-  return (
-    <>
-      <PageBreadcrumb
-        pageTitle={t("FINANCIAL_GOALS")}
-        breadcrumb={[
-          { title: t("FINANCIAL_GOALS"), path: "/financial-goals" },
-          { title: t("DETAILS") },
-        ]}
-      />
-      <FinancialGoalDetails id={id} />
-    </>
-  );
+  return <FinancialGoalDetails id={id} />;
 }

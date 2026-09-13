@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { FinancialGoal } from "@/features/financial-goals";
 import { getAllFinancialGoals } from "@/features/financial-goals/server";
 
@@ -25,12 +25,22 @@ export function useFinancialGoals(filters: Filters = {}, pageSize = 6) {
   const [stats, setStats] = useState<Stats>({});
   const [error, setError] = useState(false);
 
+  // Estabiliza `filters` pelo conteúdo (não pela referência), para não
+  // recriar fetchGoals/disparar o useEffect a cada render.
+  const filtersKey = JSON.stringify(filters);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const stableFilters = useMemo(() => filters, [filtersKey]);
+
   const fetchGoals = useCallback(
     async (currentPage = 1, append = false) => {
       try {
         setLoading(true);
 
-        const res = await getAllFinancialGoals({ ...filters, page: currentPage - 1, pageSize });
+        const res = await getAllFinancialGoals({
+          ...stableFilters,
+          page: currentPage - 1,
+          pageSize,
+        });
 
         setTotal(res.recordsFiltered);
         setStats(res.stats);
@@ -44,13 +54,13 @@ export function useFinancialGoals(filters: Filters = {}, pageSize = 6) {
         setLoading(false);
       }
     },
-    [filters, pageSize]
+    [stableFilters, pageSize]
   );
 
   useEffect(() => {
     setPage(1);
     fetchGoals(1, false);
-  }, [filters, fetchGoals]);
+  }, [stableFilters, fetchGoals]);
 
   const loadMore = () => {
     if (goals.length < total) {

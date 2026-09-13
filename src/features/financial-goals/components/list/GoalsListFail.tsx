@@ -1,23 +1,18 @@
+"use client";
+
+import { Target } from "lucide-react";
+import { useTranslations } from "next-intl";
+
 export function GoalsListFail() {
+  const t = useTranslations("FINANCIAL_GOALS");
+
   return (
-    <div className="text-center py-16">
-      <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-muted flex items-center justify-center">
-        <svg
-          className="w-8 h-8 text-muted-foreground"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={1.5}
-            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-          />
-        </svg>
+    <div className="flex min-h-[260px] flex-col items-center justify-center rounded-md border border-dashed border-gray-200 bg-gray-50 px-6 py-14 text-center dark:border-gray-800 dark:bg-gray-900/40">
+      <div className="mb-4 flex size-14 items-center justify-center rounded-lg bg-white text-gray-400 shadow-sm dark:bg-gray-800 dark:text-gray-500">
+        <Target className="size-7" strokeWidth={1.75} />
       </div>
-      <h3 className="text-lg font-medium text-foreground mb-1">No goals found</h3>
-      <p className="text-muted-foreground">Try adjusting your filters or create a new goal.</p>
+      <h3 className="mb-1 font-medium text-gray-900 dark:text-gray-100">{t("NO_GOALS_FOUND")}</h3>
+      <p className="max-w-sm text-sm text-gray-500 dark:text-gray-400">{t("NO_GOALS_TEXT")}</p>
     </div>
   );
 }

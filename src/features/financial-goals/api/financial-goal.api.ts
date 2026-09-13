@@ -160,7 +160,16 @@ export async function getAllFinancialGoals(
   filters: GoalsFilters
 ): Promise<ApiResponse<FinancialGoal>> {
   const params = new URLSearchParams(
-    Object.entries(filters).filter(([, v]) => v !== null) as [string, string][]
+    Object.entries(filters)
+      .filter(([, value]) => {
+        if (value === null || value === undefined) return false;
+        if (typeof value === "string") {
+          const normalized = value.trim();
+          return normalized !== "" && normalized !== "undefined";
+        }
+        return true;
+      })
+      .map(([key, value]) => [key, String(value)])
   );
 
   const res = await fetch(`/api/financial-goals?${params.toString()}`, {

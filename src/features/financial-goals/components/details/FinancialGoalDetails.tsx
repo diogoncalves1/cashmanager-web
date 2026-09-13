@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -30,15 +30,20 @@ import {
   DoorOpen,
   Edit,
   EllipsisVertical,
+  History,
   PauseCircle,
   PlayCircle,
+  Target,
   Trash2Icon,
+  Users,
 } from "lucide-react";
 import { InviteMemberButton, LeaveSubjectDialog } from "@/features/invitations";
 import ActivityTimeline from "@/components/ui/timeline/ActivityTimeline";
 import { UsersTable } from "@/features/financial-goals";
 import { useAuth } from "@/features/auth";
-import { TableContainer, NewTransactionButton } from "@/features/financial-goal-transactions";
+import { FormTransactionDialog, TableContainer } from "@/features/financial-goal-transactions";
+import CreateButton from "@/shared/ui/create-button";
+import CustomTabList from "@/shared/ui/custom-tab-list";
 
 type FinancialGoalDetailsProps = {
   id: string;
@@ -52,6 +57,7 @@ export function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) {
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [isConfirmDialogOpen, setIsConfirmOpen] = useState(false);
   const [leaveSubject, setLeaveSubject] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const router = useRouter();
 
@@ -65,32 +71,38 @@ export function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) {
 
   if (loading) {
     return (
-      <div className="p-6 space-y-6 animate-pulse">
-        <div className="h-24 rounded-2xl bg-gray-100" />
-        <div className="h-40 rounded-3xl bg-gray-100" />
-        <div className="h-64 rounded-2xl bg-gray-100" />
+      <div className="grid gap-3 animate-pulse">
+        <div className="h-24 rounded-lg bg-white shadow-md dark:bg-gray-800/60" />
+        <div className="h-40 rounded-lg bg-white shadow-md dark:bg-gray-800/60" />
+        <div className="h-64 rounded-lg bg-white shadow-md dark:bg-gray-800/60" />
       </div>
     );
   }
 
   if (!financialGoal) return <></>;
 
-  const progress = Math.min(
-    Math.round((financialGoal.contributedAmount / financialGoal.totalAmount) * 100),
-    100
-  );
+  const progress =
+    financialGoal.totalAmount > 0
+      ? Math.min(
+          Math.round((financialGoal.contributedAmount / financialGoal.totalAmount) * 100),
+          100
+        )
+      : 0;
   const daysRemaining = Math.ceil(
     (new Date(financialGoal.dueDate).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)
   );
+  const currentUserShare = financialGoal.users?.find((userShare) => userShare.id == user?.id);
+  const canLeaveGoal = currentUserShare?.sharedRole?.code != "creator";
+  const hasDangerActions = financialGoal.actions?.destroy || canLeaveGoal;
 
   return (
-    <div className="p-6 space-y-8">
-      <div className="max-w-6xl mx-auto px-6 py-8">
+    <div className="grid gap-3">
+      <div>
         {/* Header Section */}
-        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-8">
+        <div className="mb-3 flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
           <div className="space-y-3">
             <div className="flex items-center gap-3 flex-wrap">
-              <h1 className="text-2xl sm:text-3xl font-bold text-foreground text-balance">
+              <h1 className="text-2xl font-semibold tracking-tight text-foreground">
                 {financialGoal.name}
               </h1>
               <StatusBadge
@@ -115,14 +127,20 @@ export function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) {
           </div>
 
           {/* Actions */}
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-3">
+            {financialGoal.actions?.createTransactions && (
+              <CreateButton className="ml-auto" onClick={() => setIsOpen(true)}>
+                {t("NEW_TRANSACTION")}
+              </CreateButton>
+            )}
+
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="sm" className="bg-transparent">
-                  <EllipsisVertical className="w-4 h-4" />
+                <Button variant="app" size="icon-lg">
+                  <EllipsisVertical className="size-4" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-48">
+              <DropdownMenuContent align="end" className="w-48 bg-card">
                 {financialGoal.actions?.edit && (
                   <Link href={`${id}/edit`}>
                     <DropdownMenuItem>
@@ -156,11 +174,8 @@ export function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) {
                       {t("COMPLETE_GOAL")}
                     </DropdownMenuItem>
                   )}
-                {financialGoal.actions?.destroy ||
-                  (financialGoal.users?.find((userShare) => userShare.id == user?.id)?.sharedRole
-                    ?.code != "creator" && <DropdownMenuSeparator />)}
-                {financialGoal.users?.find((userShare) => userShare.id == user?.id)?.sharedRole
-                  ?.code != "creator" && (
+                {hasDangerActions && <DropdownMenuSeparator />}
+                {canLeaveGoal && (
                   <DropdownMenuItem
                     onClick={async () => {
                       setLeaveSubject(true);
@@ -178,18 +193,11 @@ export function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) {
                 )}
               </DropdownMenuContent>
             </DropdownMenu>
-            {financialGoal.actions?.manage && (
-              <InviteMemberButton isLigth={true} id={id} type="financial-goals" />
-            )}
-
-            {financialGoal.actions?.createTransactions && (
-              <NewTransactionButton setLoad={() => setUpdate(true)} financialGoalId={id} />
-            )}
           </div>
         </div>
 
         {/* Progress Card */}
-        <div className="rounded-2xl bg-card border border-border p-6 shadow-sm mb-8">
+        <div className="mb-3 rounded-lg bg-white p-6 shadow-md dark:bg-gray-800/60">
           <div className="flex flex-col lg:flex-row lg:items-center gap-6">
             {/* Circular Progress */}
             <div className="flex items-center justify-center lg:justify-start">
@@ -258,8 +266,8 @@ export function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) {
         </div>
 
         {/* Metrics Cards */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <div className="p-5 rounded-xl bg-card border border-border shadow-sm">
+        <div className="mb-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="rounded-lg bg-white p-5 shadow-md dark:bg-gray-800/60">
             <div className="text-xs text-muted-foreground uppercase tracking-wide mb-2">
               {t("TARGET")}
             </div>
@@ -267,7 +275,7 @@ export function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) {
               {financialGoal.totalAmountFormated}
             </div>
           </div>
-          <div className="p-5 rounded-xl bg-card border border-border shadow-sm">
+          <div className="rounded-lg bg-white p-5 shadow-md dark:bg-gray-800/60">
             <div className="text-xs text-muted-foreground uppercase tracking-wide mb-2">
               {t("CONTRIBUTED")}
             </div>
@@ -275,13 +283,13 @@ export function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) {
               {financialGoal.contributedAmountFormated}
             </div>
           </div>
-          <div className="p-5 rounded-xl bg-card border border-border shadow-sm">
+          <div className="rounded-lg bg-white p-5 shadow-md dark:bg-gray-800/60">
             <div className="text-xs text-muted-foreground uppercase tracking-wide mb-2">
               {t("CURRENCY")}
             </div>
             <div className="text-xl font-bold text-foreground">{financialGoal.currencyCode}</div>
           </div>
-          <div className="p-5 rounded-xl bg-card border border-border shadow-sm">
+          <div className="rounded-lg bg-white p-5 shadow-md dark:bg-gray-800/60">
             <div className="text-xs text-muted-foreground uppercase tracking-wide mb-2">
               {t("CONTRIBUTORS")}
             </div>
@@ -290,37 +298,44 @@ export function FinancialGoalDetails({ id }: FinancialGoalDetailsProps) {
         </div>
 
         {/* Tabs Section */}
-        <Tabs defaultValue="transactions" className="space-y-6">
-          <TabsList className="bg-secondary/50 p-1">
-            <TabsTrigger value="transactions" className="data-[state=active]:bg-card">
-              {t("TRANSACTIONS")}
-            </TabsTrigger>
-            <TabsTrigger value="contributors" className="data-[state=active]:bg-card">
-              {t("CONTRIBUTORS")}
-            </TabsTrigger>
-            <TabsTrigger value="activity" className="data-[state=active]:bg-card">
-              {t("ACTIVITY")}
-            </TabsTrigger>
-          </TabsList>
+        <Tabs defaultValue="transactions" className="grid gap-3">
+          <CustomTabList
+            tabs={[
+              { icon: Target, label: t("TRANSACTIONS"), value: "transactions" },
+              { icon: Users, label: t("CONTRIBUTORS"), value: "contributors" },
+              { icon: History, label: t("ACTIVITY"), value: "activity" },
+            ]}
+          />
 
           {/* Transactions Tab */}
-          <TabsContent value="transactions">
-            <div className="rounded-2xl overflow-hidden">
-              <TableContainer financialGoalId={id} load={loading} />
-            </div>
+          <TabsContent value="transactions" className="grid gap-3">
+            <TableContainer financialGoalId={id} load={loading} />
           </TabsContent>
 
           {/* Contributors Tab */}
-          <TabsContent value="contributors">
+          <TabsContent value="contributors" className="space-y-4">
+            <div className="flex items-center justify-between">
+              <h2 className="text-lg font-semibold text-foreground">{t("ASSOCIATED_USERS")}</h2>
+              <InviteMemberButton type="financial-goals" id={id} />
+            </div>
             <UsersTable users={financialGoal.users} id={id} setLoad={setUpdate} />
           </TabsContent>
 
           {/* Activity Tab */}
-          <TabsContent value="activity">
+          <TabsContent value="activity" className="grid gap-3">
             <ActivityTimeline type="financial-goals" id={id} />
           </TabsContent>
         </Tabs>
       </div>
+
+      <FormTransactionDialog
+        financialGoalId={id}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        mutate={() => {
+          setUpdate(true);
+        }}
+      />
 
       <MarkCompletedGoalTransactionDialog
         isConfirmDialogOpen={isConfirmDialogOpen}
