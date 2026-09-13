@@ -666,6 +666,8 @@
     "REMOVE_MEMBER": "Remover membro",
 
     "TRANSACTIONS": "Transações",
+    "NEW_TRANSACTION": "Nova transação",
+    "NEW_TRANSACTIONS": "Novas transações",
     "ADD_TRANSACTION": "Nova Transação",
 
     "ALL_TRANSACTIONS": "Todas as Transações",
@@ -677,6 +679,9 @@
     "TOTAL_GOALS": "Total de Metas",
     "TOTAL_SAVED": "Total Economizado",
     "OVERALL_PROGRESS": "Progresso Geral",
+    "ACTIVE_GOALS_TEXT": "Metas atualmente em acompanhamento",
+    "NO_GOALS_FOUND": "Nenhuma meta encontrada",
+    "NO_GOALS_TEXT": "Nenhuma meta financeira corresponde aos filtros atuais.",
     "ALL": "Todos",
 
     "LOW": "Baixa",
@@ -697,6 +702,8 @@
     "REMAINING": "Restante",
     "REMAINING_PLURAL": "Restantes",
     "USER": "Utilizador",
+    "LEAVE_GOAL": "Sair da meta",
+    "LOAD_MORE": "Carregar mais",
 
     "SORT": "Ordenar",
     "SEARCH_FINANCIAL_GOALS": "Procurar meta financeira...",
@@ -751,15 +758,37 @@
     "NEW_FINANCIAL_GOAL_TEXT": "Registe as suas metas financeiras.",
     "EDIT_FINANCIAL_GOAL": "Editar meta financeira",
     "EDIT_FINANCIAL_GOAL_TEXT": "Atualize a sua meta financeira.",
+    "BACK_TO_GOALS": "Voltar às metas",
+    "BACK_TO_GOAL": "Voltar à meta",
+    "PLAN_SAVINGS": "Planeie a poupança",
+    "PLAN_SAVINGS_TEXT": "Defina o valor, prazo e moeda antes de começar.",
+    "TRACK_PROGRESS": "Acompanhe o progresso",
+    "TRACK_PROGRESS_TEXT": "A meta fica pronta para receber contribuições.",
+    "REFINE_TARGET": "Ajuste o objetivo",
+    "REFINE_TARGET_TEXT": "Reveja valor, prioridade e descrição.",
+    "KEEP_TIMELINE": "Mantenha o prazo",
+    "KEEP_TIMELINE_TEXT": "Confirme datas realistas para concluir a meta.",
 
     "SAVING": "A guardar...",
     "SAVING_TEXT": "A atualizar meta financeira...",
+    "SAVE": "Guardar",
     "CREATING": "A criar...",
     "CREATING_TEXT": "A criar a sua meta financeira...",
+    "CREATE": "Criar meta",
 
     "DESCRIPTION_TEXT": "Adicione uma nota sobre essa meta financeira...",
     "OPTIONAL": "Opcional",
     "DATES": "Datas",
+    "GOAL_DETAILS_HELPER": "Dê um nome claro e defina quanto pretende alcançar.",
+    "CURRENCY_HELPER": "Escolha a moeda em que vai acompanhar esta meta.",
+    "DATES_HELPER": "Defina quando começa e quando pretende concluir.",
+    "PRIORITY_HELPER": "Use a prioridade para ordenar o que importa mais.",
+    "GOAL_PREVIEW": "Resumo da meta",
+    "UNTITLED_GOAL": "Meta sem nome",
+    "FORM_COMPLETION": "Preenchimento",
+    "NOT_SELECTED": "Por selecionar",
+    "SMART_SETUP": "Configuração inteligente",
+    "SMART_SETUP_TEXT": "Depois de criada, pode registar contribuições e acompanhar a evolução no detalhe da meta.",
     "STEP": "Passo",
     "START": "Início",
     "DUE": "Fim",
@@ -772,11 +801,13 @@
     "DAYS_REMAINING": "dias restantes",
     "CONTRIBUTED": "Contribuído",
     "CONTRIBUTORS": "Contribuídores",
+    "ASSOCIATED_USERS": "Utilizadores associados",
     "ACTIVITY": "Atividade",
     "MEMBER": "Membro",
     "ROLE": "Papel",
     "DELETE_GOAL": "Apagar meta",
     "DELETE_GOAL_TEXT": "Tem certeza de que deseja excluir este objetivo? Esta ação não pode ser desfeita e todo o histórico de transações será perdido.",
+    "DELETE_GOAL_WARNING": "Todas as contribuições, retiradas e histórico de partilha associados a esta meta serão removidos.",
     "EDIT_GOAL": "Editar meta",
     "CANCEL_GOAL": "Cancelar meta",
     "DELETING_GOAL": "A apagar",
@@ -795,8 +826,8 @@
   },
 
   "FINANCIAL_GOAL_TRANSACTIONS": {
-    "META_TITLE": "Cash Manager | Transações Metas Financeiras",
-    "META_DESCRIPTION": "Gerencie suas transações das metas financeiras de forma eficiente com o Cash Manager. Acompanhe suas contribuições, retiradas e mantenha suas finanças organizadas.",
+    "META_TITLE": "Cash Manager | Transações de Metas Financeiras",
+    "META_DESCRIPTION": "Gira as transações das metas financeiras de forma eficiente com o Cash Manager. Acompanhe contribuições, retiradas e mantenha as suas finanças organizadas.",
 
     "ADD": "Adicionar",
     "EDIT": "Editar",
@@ -806,7 +837,7 @@
 
     "NO_ACCOUNTS_AVAILABLE": "Sem contas disponíveis",
 
-    "FINANCIAL_GOAL_TRANSACTION": "TRANSAÇÕES META FINANCEIRA",
+    "FINANCIAL_GOAL_TRANSACTION": "TRANSAÇÕES DE METAS FINANCEIRAS",
     "FINANCIAL_GOAL": "Meta Financeira",
     "FINANCIAL_GOALS": "Metas Financeiras",
 
@@ -823,6 +854,7 @@
 
     "CONFIRM_TRANSACTION": "Confirmar Transação",
     "CONFIRM_TRANSACTION_TEXT": "Tem a certeza de que pretende confirmar esta transação?",
+    "CONFIRM_TRANSACTION_NOTICE": "Confirmar esta transação vai marcá-la como concluída e atualizar os totais da meta.",
 
     "DELETE_TRANSACTION": "Apagar transação?",
     "DELETE_TRANSACTION_TEXT": "Tem a certeza de que pretende eliminar esta transação? Esta ação não pode ser desfeita e irá afetar o saldo do objetivo.",
@@ -841,7 +873,7 @@
     "CANCEL": "Cancelar",
     "CREATE": "Criar",
 
-    "NEW_TRANSACTION_FORM_DIALOG_TEXT": "Registe uma nova contribuíção ou retirada.",
+    "NEW_TRANSACTION_FORM_DIALOG_TEXT": "Registe uma nova contribuição ou retirada.",
     "CREATING": "A criar...",
     "DESCRIPTION": "Descrição",
     "SAVE": "Guardar",
@@ -851,7 +883,7 @@
     "COMPLETED": "Completa",
     "PENDING": "Pendente",
 
-    "CONTRIBUTION": "Contribuíção",
+    "CONTRIBUTION": "Contribuição",
     "WITHDRAWAL": "Retirada",
 
     "NAME": "Nome",
@@ -867,7 +899,10 @@
 
     "TRANSACTION_HISTORY": "Histórico de Transações",
     "TRANSACTION": "Transação",
+    "TRANSACTION_DETAILS": "Detalhes da transação",
     "AMOUNT": "Valor",
+    "BALANCE_BEFORE": "Saldo anterior",
+    "BALANCE_AFTER": "Saldo após transação",
 
     "SEARCH": "Procura",
     "FILTER_BY": "Filtra por",
@@ -879,7 +914,7 @@
     "FIRST": "Primeira",
     "LAST": "Última",
     "NO_RESULTS": "Sem Resultados",
-    "LOADING": "Carregando",
+    "LOADING": "A carregar",
 
     "DELETE": "Apagar",
     "TO": "até",

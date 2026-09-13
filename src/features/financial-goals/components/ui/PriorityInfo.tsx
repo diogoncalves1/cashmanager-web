@@ -1,5 +1,6 @@
 import { cn } from "@/shared/utils";
 import { FinancialGoalPriority } from "@/features/financial-goals";
+import { useTranslations } from "next-intl";
 
 export function PriorityInfo({
   priority,
@@ -8,6 +9,7 @@ export function PriorityInfo({
   priority: FinancialGoalPriority;
   translate?: string;
 }) {
+  const t = useTranslations("FINANCIAL_GOALS");
   const priorityConfig = {
     low: {
       className: "text-muted-foreground",
@@ -25,9 +27,9 @@ export function PriorityInfo({
 
   return (
     <div className="flex items-center gap-2">
-      <div className={cn("w-2 h-2 rounded-full", priorityConfig[priority].dotColor)} />
+      <div className={cn("size-2 rounded-full", priorityConfig[priority].dotColor)} />
       <span className={cn("text-xs text-muted-foreground", priorityConfig[priority].className)}>
-        Priority: {translate}
+        {t("PRIORITY")}: {translate}
       </span>
     </div>
   );

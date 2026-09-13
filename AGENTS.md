@@ -56,6 +56,20 @@ Este ficheiro deve ser lido no inicio de cada novo pedido neste projeto. O objet
 - `stocks`: componentes e tipos de acoes.
 - `transactions`: transacoes, filtros, tabela, dialogs e resumo.
 
+## Notas recentes sobre Financial Goals
+
+- A listagem de metas financeiras usa `FinancialGoalsContainer`, `GoalsFilters`, `GoalsList` e cards baseados em `SummaryCard`.
+- Filtros de metas devem usar `SearchInput`, `SortDropdown`, `FiltersPanel` e `CustomSelect`, evitando botoes manuais de status/prioridade.
+- Ao montar queries de metas financeiras, omitir filtros vazios/undefined; nunca enviar strings como `"undefined"` para `status` ou `priority`.
+- Formulario de metas (`FinancialGoalForm`) usa `CustomSelect` para moeda, `DatePicker` full-width para datas e inputs no estilo app.
+- Paginas criar/editar metas usam header contextual e `FinancialGoalForm` em duas colunas no desktop: seccoes do formulario a esquerda e preview/CTA sticky a direita.
+- Dialogs de metas (`DeleteFinancialGoalDialog`, `MarkCompletedGoalTransactionDialog`) seguem o padrao visual dos dialogs de dividas: iconografia `lucide-react`, copy traduzida e botoes `app_cancel`/`app_submit` ou `destructive`.
+- A pagina de detalhe usa `CustomTabList` para tabs e cards `rounded-lg bg-white shadow-md dark:bg-gray-800/60` para blocos de resumo/progresso.
+- Movimentos de metas (`financial-goal-transactions`) devem usar `TransactionFilters` com `SearchInput`, `SortDropdown`, `FiltersPanel` e `CustomSelect`; o dialog `FormTransactionDialog` recebe `financialGoalId` quando cria a partir do detalhe da meta, e `id` apenas para edicao de uma transacao.
+- Dialogs de movimentos de metas (`ConfirmGoalTransactionDialog`, `DeleteGoalTransactionDialog`) seguem o mesmo padrao visual dos dialogs de pagamentos: icone lucide, aviso em bloco colorido e botoes `app_cancel`/`app_submit` ou `destructive`.
+- `FormTransactionDialog` em criacao a partir do detalhe da meta deve manter layout 1-2-2-1: conta full-width, valor/data, tipo/estado, descricao full-width.
+- `GoalTransactionDataTable` deve ficar compacta; dados secundarios como conta, utilizador, tipo, saldos e descricao aparecem no dialog de detalhes aberto ao clicar na linha.
+
 ## Cuidados
 
 - Nao reverter alteracoes existentes sem pedido explicito.
