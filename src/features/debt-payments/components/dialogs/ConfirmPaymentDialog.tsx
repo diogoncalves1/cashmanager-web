@@ -13,6 +13,7 @@ import { onConfirmDebtPayment } from "@/features/debt-payments/server";
 import { useTranslations } from "next-intl";
 import { useToast } from "@/shared/hooks/useToast";
 import { useState } from "react";
+import { CheckCircle2 } from "lucide-react";
 
 type Props = {
   isConfirmDialogOpen: boolean;
@@ -30,40 +31,49 @@ export function ConfirmPaymentDialog({
   const t = useTranslations("DEBT_PAYMENTS");
   const [isSubmiting, setIsSubmiting] = useState(false);
   const { toast } = useToast();
+
+  const handleConfirm = async () => {
+    setIsSubmiting(true);
+    const result = await onConfirmDebtPayment(selectedId, mutate);
+    setIsSubmiting(false);
+    if (mutate) mutate();
+    toast({
+      description: result.message,
+    });
+    setIsConfirmOpen(false);
+  };
+
   return (
     <Dialog open={isConfirmDialogOpen} onOpenChange={setIsConfirmOpen}>
       <DialogContent className="sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle>{t("CONFIRM_PAYMENT")}</DialogTitle>
+        <DialogHeader className="pr-8">
+          <div className="mb-2 flex size-12 items-center justify-center rounded-lg bg-success-100 text-success-600 dark:bg-success-900/30 dark:text-success-400">
+            <CheckCircle2 className="size-6" strokeWidth={1.75} />
+          </div>
+          <DialogTitle className="text-xl">{t("CONFIRM_PAYMENT")}</DialogTitle>
           <DialogDescription>{t("CONFIRM_PAYMENT_TEXT")}</DialogDescription>
         </DialogHeader>
-        {/* <div className="py-4">
-          <div className="p-4 rounded-xl bg-success-500/10 border border-success-500/20">
-            <p className="text-sm text-accent font-medium">
-              Warning: Deleting this transaction will remove the amount from the goal balance.
-            </p>
-          </div>
-        </div> */}
-        <DialogFooter>
+
+        <div className="rounded-md border border-success-200 bg-success-50 p-4 text-sm text-success-700 dark:border-success-900/60 dark:bg-success-900/20 dark:text-success-400">
+          {t("CONFIRM_PAYMENT_NOTICE")}
+        </div>
+
+        <DialogFooter className="mt-2">
           <Button
-            variant="outline"
+            type="button"
+            variant="app_cancel"
+            size="lg"
             onClick={() => setIsConfirmOpen(false)}
-            className="bg-transparent"
+            disabled={isSubmiting}
           >
             {t("CANCEL")}
           </Button>
           <Button
-            color="success"
-            onClick={async () => {
-              setIsSubmiting(true);
-              const result = await onConfirmDebtPayment(selectedId, mutate);
-              setIsSubmiting(false);
-              if (mutate) mutate();
-              toast({
-                description: result.message,
-              });
-              setIsConfirmOpen(false);
-            }}
+            type="button"
+            variant="app_submit"
+            size="lg"
+            onClick={handleConfirm}
+            disabled={isSubmiting}
           >
             {isSubmiting ? t("CONFIRMING_PAYMENT") : t("CONFIRM_PAYMENT")}
           </Button>

@@ -9,14 +9,18 @@ export const PaymentsContainer = () => {
   const [load, setLoad] = useState(false);
 
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <div className="grid gap-3">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-foreground">{t("PAYMENTS")}</h1>
-          <p className="text-sm text-muted-foreground">{t("PAYMENTS_PAGE_TEXT")}</p>
+          <h1 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">
+            {t("PAYMENTS")}
+          </h1>
+          <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+            {t("PAYMENTS_PAGE_TEXT")}
+          </p>
         </div>
-        <NewDebtPaymentsButton setLoad={setLoad} />
+
+        <NewDebtPaymentsButton className="sm:ml-auto" setLoad={setLoad} />
       </div>
 
       <TableContainer load={load} />

@@ -69,5 +69,9 @@ Este ficheiro deve ser lido no inicio de cada novo pedido neste projeto. O objet
 - A listagem de dividas usa `DebtsContainer`, `DebtFilters`, `DebtsList` e cards baseados em `SummaryCard`.
 - A pagina de detalhe de divida inclui a tabela de pagamentos atraves de `src/features/debt-payments/components/containers/TableContainer.tsx`.
 - O dialog de adicionar/editar pagamento e `src/features/debt-payments/components/dialogs/FormPaymentDialog.tsx`; manter selects alinhados com `CustomSelect` e grelhas responsivas `sm:grid-cols-2`.
+- A pagina independente de pagamentos de dividas usa `PaymentsContainer` com header principal + `NewDebtPaymentsButton`, e a tabela/filtros vivem em `TableContainer`.
+- `DebtPaymentsDataTable` deve manter a tabela compacta; dados secundarios como juros pagos e descricao ficam no modal de detalhes aberto ao clicar na linha.
+- Dialogs de pagamentos (`ConfirmPaymentDialog`, `DeletePaymentDialog`, `FormPaymentDialog`) devem manter `Dialog`, copy traduzida, iconografia `lucide-react` e botoes consistentes (`app_cancel`, `app_submit`, `destructive`).
+- No `FormPaymentDialog`, o modo editar deve seguir layout 1-2-1: data full-width, valor/juros em duas colunas responsivas, descricao full-width.
 - Dialogs de dividas (`DeleteDebtDialog`, `MarkDebtPaidDialog`) usam o componente `Dialog`, iconografia `lucide-react`, copy traduzida e botoes `app_cancel`/`app_submit` ou `destructive`.
 - Para formularios de dividas, `DebtForm` usa cards da app, `CustomSelect` para moeda, `DatePicker` para datas e uma sidebar de resumo calculado.
