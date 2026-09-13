@@ -46,7 +46,7 @@ export function UsersTab({ debt }: { debt: Debt }) {
           <InviteMemberButton type="debts" id={debt.id} />
         </div>
 
-        <div className="rounded-xl border border-border overflow-hidden bg-card">
+        <div className="rounded-md shadow-md overflow-hidden bg-white">
           <Table>
             <TableHeader>
               <TableRow className="hover:bg-transparent border-border">
@@ -81,7 +81,7 @@ export function UsersTab({ debt }: { debt: Debt }) {
                   <TableCell>
                     <span
                       className={cn(
-                        "px-2.5 py-1 rounded-full text-xs font-medium capitalize",
+                        "px-2.5 py-1 rounded-md text-xs font-medium capitalize",
                         user.sharedRole?.code === "creator"
                           ? "bg-accent/15 text-accent"
                           : "bg-secondary text-secondary-foreground"

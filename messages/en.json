@@ -967,6 +967,8 @@
     "LEAVE_DEBT": "Leave debt",
     "BACK_TO_DEBTS": "Back to debts",
     "DEBT_NOT_FOUND": "Debt not found",
+    "NO_DEBTS_FOUND": "No debts found",
+    "NO_DEBTS_TEXT": "No debts match your current filters.",
 
     "SEARCH_DEBTS": "Search for a debt...",
     "PROGRESS": "Progress",
@@ -1002,6 +1004,8 @@
     "CANCEL": "Cancel",
     "YES_MARK": "Yes, mark",
     "MARK_DEBT_PAID": "Mark debt as paid?",
+    "MARK_DEBT_PAID_TEXT": "This will close the debt and update its status across the app.",
+    "MARK_DEBT_PAID_NOTICE": "Make sure every payment has been recorded before marking this debt as paid.",
     "MARKING_TITLE": "Marking...",
     "MARKING_MESSAGE": "Marking debt as paid...",
 
@@ -1235,6 +1239,7 @@
     "ADD": "Add",
     "DEBTS": "Debts",
     "PAYMENTS": "Payments",
+    "DEBT_PAYMENTS_TEXT": "Review the payments recorded for this debt.",
     "INTEREST_PAID": "Interest paid",
     "NO_ACCOUNTS_AVAILABLE": "No accounts available",
     "CONFIRMING_PAYMENT": "Confirming payment...",
@@ -1276,6 +1281,7 @@
     "ACCOUNT": "Account",
     "SELECT_ACCOUNT": "Select an account",
     "SELECT_DEBT": "Select the debt",
+    "MONTHLY_PAYMENT": "Monthly payment",
     "CREATE": "Create",
     "CREATING": "Creating...",
     "SAVE": "Save",

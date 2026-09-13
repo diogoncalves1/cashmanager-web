@@ -650,6 +650,10 @@
     "FINANCIAL_GOALS_TEXT": "Acompanha e gere suas metas de poupança em um só lugar.",
 
     "ADD": "Adicionar",
+    "TOTAL": "Total",
+    "CLOSEST_TO_GOAL": "Próximo da meta",
+    "PROGRESS": "Progresso",
+    "VIEW_ALL": "Ver todas",
     "EDIT": "Editar",
     "DELETE": "Apagar Meta Financeira",
     "DETAILS": "Detalhes",
@@ -936,6 +940,9 @@
     "ACTIVE_DEBTS": "Dívidas ativas",
     "MONTHLY_PAYMENTS": "Pagamentos mensais",
 
+    "VIEW_ALL": "Ver todas",
+    "DEBTS_DUE_SOON": "Dívidas com vencimento próximo",
+
     "DEBT": "Dívida",
     "DEBTS": "Dívidas",
     "DEBTS_TEXT": "Acompanhe e faça a gestão dos seus pagamentos de dívidas.",
@@ -967,6 +974,8 @@
     "LEAVE_DEBT": "Sair da dívida",
     "BACK_TO_DEBTS": "Voltar para dívidas",
     "DEBT_NOT_FOUND": "Dívida não encontrada",
+    "NO_DEBTS_FOUND": "Nenhuma dívida encontrada",
+    "NO_DEBTS_TEXT": "Nenhuma dívida corresponde aos filtros atuais.",
 
     "SEARCH_DEBTS": "Procure pela dívida...",
     "PROGRESS": "Progresso",
@@ -1002,6 +1011,8 @@
     "CANCEL": "Cancelar",
     "YES_MARK": "Sim, marcar",
     "MARK_DEBT_PAID": "Marcar dívida paga?",
+    "MARK_DEBT_PAID_TEXT": "Isto vai fechar a dívida e atualizar o seu estado em toda a app.",
+    "MARK_DEBT_PAID_NOTICE": "Confirma que todos os pagamentos foram registados antes de marcar esta dívida como paga.",
     "MARKING_TITLE": "A marcar...",
     "MARKING_MESSAGE": "A marcar dívida como paga...",
 
@@ -1235,6 +1246,7 @@
     "ADD": "Adicionar",
     "DEBTS": "Dívidas",
     "PAYMENTS": "Pagamentos",
+    "DEBT_PAYMENTS_TEXT": "Revê os pagamentos registados para esta dívida.",
     "INTEREST_PAID": "Juros pagos",
     "NO_ACCOUNTS_AVAILABLE": "Sem contas disponíveis",
     "CONFIRMING_PAYMENT": "A confirmar pagament...",
@@ -1276,6 +1288,7 @@
     "ACCOUNT": "Conta",
     "SELECT_ACCOUNT": "Selecione uma conta",
     "SELECT_DEBT": "Selecione a dívida",
+    "MONTHLY_PAYMENT": "Pagamento mensal",
     "CREATE": "Criar",
     "CREATING": "A criar...",
     "SAVE": "Guardar",

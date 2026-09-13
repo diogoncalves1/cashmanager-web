@@ -1,16 +1,17 @@
-import React from "react";
-
 export const DebtCardLoading = () => {
   return (
-    <div className="p-5 rounded-2xl bg-card border border-border shadow-sm animate-pulse">
+    <div className="min-h-[280px] rounded-md bg-card p-5 shadow-md animate-pulse">
       {/* Header */}
       <div className="flex items-start justify-between mb-4">
-        <div className="space-y-2">
-          <div className="h-4 w-32 bg-muted rounded" />
-          <div className="h-3 w-48 bg-muted rounded" />
+        <div className="flex items-start gap-3">
+          <div className="size-10 rounded-xl bg-muted" />
+          <div className="space-y-2">
+            <div className="h-4 w-32 bg-muted rounded" />
+            <div className="h-3 w-48 max-w-[45vw] bg-muted rounded" />
+          </div>
         </div>
 
-        <div className="h-6 w-16 bg-muted rounded-full" />
+        <div className="h-6 w-16 bg-muted rounded-md" />
       </div>
 
       {/* Progress */}

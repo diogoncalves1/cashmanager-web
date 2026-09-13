@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Debt } from "@/features/debts";
-import { TriangleAlert } from "lucide-react";
+import { CreditCard, TriangleAlert } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { onDeleteDebt } from "@/features/debts/server";
 import { useToast } from "@/shared/hooks/useToast";
@@ -54,40 +54,51 @@ export function DeleteDebtDialog({
 
   return (
     <Dialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
-      <DialogContent className="bg-card border-border sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle className="text-foreground">{t("DELETE_DEBT")}</DialogTitle>
-          <DialogDescription className="text-muted-foreground">
-            {t("DELETE_DEBT_TEXT")}
-          </DialogDescription>
+      <DialogContent className="sm:max-w-md">
+        <DialogHeader className="pr-8">
+          <div className="mb-2 flex size-12 items-center justify-center rounded-lg bg-destructive/10 text-destructive">
+            <TriangleAlert className="size-6" strokeWidth={1.75} />
+          </div>
+          <DialogTitle className="text-xl text-foreground">{t("DELETE_DEBT")}</DialogTitle>
+          <DialogDescription>{t("DELETE_DEBT_TEXT")}</DialogDescription>
         </DialogHeader>
-        <div className="py-4">
-          <div className="p-4 rounded-lg bg-destructive/10 border border-destructive/20">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-destructive/20 flex items-center justify-center">
-                <TriangleAlert
-                  className="size-5 text-destructive"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                />
+
+        <div className="grid gap-3">
+          <div className="rounded-md bg-gray-50 p-4 dark:bg-gray-900/60">
+            <div className="flex items-start gap-3">
+              <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-white text-muted-foreground shadow-sm dark:bg-gray-800">
+                <CreditCard className="size-5" strokeWidth={1.75} />
               </div>
-              <div>
-                <div className="font-medium text-foreground">{debt.name}</div>
-                <div className="text-sm text-muted-foreground">
+              <div className="min-w-0">
+                <div className="truncate font-medium text-foreground">{debt.name}</div>
+                <div className="mt-1 text-sm text-muted-foreground">
                   {debt.monthsPaid}{" "}
-                  {debt.monthsPaid == 1 ? t("PAYMENT_RECORDED") : t("PAYMENTS_RECORDED")}
+                  {debt.monthsPaid === 1 ? t("PAYMENT_RECORDED") : t("PAYMENTS_RECORDED")}
                 </div>
               </div>
             </div>
           </div>
+
+          <div className="rounded-md border border-destructive/20 bg-destructive/10 p-4 text-sm text-destructive">
+            {t("YOU_DONT_REVERT_THIS")}
+          </div>
         </div>
-        <DialogFooter>
-          <Button variant="outline" onClick={() => setShowDeleteDialog(false)}>
+
+        <DialogFooter className="mt-2">
+          <Button
+            type="button"
+            variant="app_cancel"
+            size="lg"
+            onClick={() => setShowDeleteDialog(false)}
+            disabled={isSubmiting}
+          >
             {t("CANCEL")}
           </Button>
           <Button
+            type="button"
             variant="destructive"
+            size="lg"
+            disabled={isSubmiting}
             onClick={() => {
               handleDelete();
             }}
