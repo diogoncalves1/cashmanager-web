@@ -1239,6 +1239,8 @@
     "ADD": "Add",
     "DEBTS": "Debts",
     "PAYMENTS": "Payments",
+    "ALL_PAYMENTS": "All payments",
+    "PAYMENT_DETAILS": "Payment details",
     "DEBT_PAYMENTS_TEXT": "Review the payments recorded for this debt.",
     "INTEREST_PAID": "Interest paid",
     "NO_ACCOUNTS_AVAILABLE": "No accounts available",
@@ -1294,7 +1296,8 @@
     "CANCEL": "Cancel",
     "ALL_STATUS": "All statuses",
 
-    "CONFIRM_PAYMENT_TEXT": "Are you sure you want to confirm this payment?"
+    "CONFIRM_PAYMENT_TEXT": "Are you sure you want to confirm this payment?",
+    "CONFIRM_PAYMENT_NOTICE": "Confirming the payment will mark it as completed and update the debt totals."
   },
 
   "LANDING": {

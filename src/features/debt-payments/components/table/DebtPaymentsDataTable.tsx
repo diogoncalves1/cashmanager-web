@@ -14,8 +14,14 @@ import {
   useReactTable,
   VisibilityState,
 } from "@tanstack/react-table";
-import { ArrowUpDown, Dot } from "lucide-react";
+import { Check, Dot, Edit, Eye, MoreVertical, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,10 +32,11 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { useTranslations } from "next-intl";
 import { DataTablePagination } from "@/components/tables/DataTablePagination";
+import { SortableColumnHeader } from "@/components/tables/SortableColumnHeader";
 import { cn, formatDate, getUserColor, getUserInitials } from "@/shared/utils";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import Link from "next/link";
-import DataTable from "@/components/tables/DataTable";
+import DataTable, { DataTableMeta } from "@/components/tables/DataTable";
 import {
   MyPagination,
   FormPaymentDialog,
@@ -81,6 +88,7 @@ export function DebtPaymentsDataTable({
   const [isDeleteGoalOpen, setIsDeleteGoalOpen] = React.useState(false);
 
   const [selectedId, setSelectedId] = React.useState<string>();
+  const [detailsPayment, setDetailsPayment] = React.useState<DebtPayment | null>(null);
   const [total, setTotal] = React.useState(0);
 
   React.useEffect(() => {
@@ -96,11 +104,15 @@ export function DebtPaymentsDataTable({
         ? [
             {
               accessorKey: "debt",
-              header: t("DEBT"),
+              header: ({ column }) => (
+                <SortableColumnHeader column={column}>{t("DEBT")}</SortableColumnHeader>
+              ),
               cell: ({ row }) => (
                 <div className="flex items-center gap-3">
                   <div className="flex flex-col">
-                    <span className="font-light text-md capitalize">{row.original.debtName}</span>
+                    <span className="font-medium capitalize text-foreground">
+                      {row.original.debtName}
+                    </span>
                   </div>
                 </div>
               ),
@@ -110,40 +122,16 @@ export function DebtPaymentsDataTable({
       {
         accessorKey: "amount",
         header: ({ column }) => (
-          <Button
-            variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          >
-            {t("AMOUNT")} <ArrowUpDown className="ml-2 h-4 w-4" />
-          </Button>
+          <SortableColumnHeader column={column}>{t("AMOUNT")}</SortableColumnHeader>
         ),
         cell: ({ row }) => {
-          const t = row.original;
+          const payment = row.original;
           return (
             <div className="flex items-center gap-3">
               <div className="flex flex-col">
-                <span className={`font-medium`}>{t.amountFormated}</span>
-              </div>
-            </div>
-          );
-        },
-      },
-      {
-        accessorKey: "interestPaid",
-        header: ({ column }) => (
-          <Button
-            variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          >
-            {t("INTEREST_PAID")} <ArrowUpDown className="ml-2 h-4 w-4" />
-          </Button>
-        ),
-        cell: ({ row }) => {
-          const t = row.original;
-          return (
-            <div className="flex items-center gap-3">
-              <div className="flex flex-col">
-                <span className={`font-medium`}>{t.interestPaidFormated}</span>
+                <span className="font-semibold tabular-nums text-foreground">
+                  {payment.amountFormated}
+                </span>
               </div>
             </div>
           );
@@ -152,21 +140,9 @@ export function DebtPaymentsDataTable({
       {
         accessorKey: "date",
         header: ({ column }) => (
-          <Button
-            variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          >
-            {t("DATE")} <ArrowUpDown className="ml-2 h-4 w-4" />
-          </Button>
+          <SortableColumnHeader column={column}>{t("DATE")}</SortableColumnHeader>
         ),
         cell: ({ row }) => formatDate(row.original.date, monthsT),
-      },
-      {
-        accessorKey: "description",
-        header: t("DESCRIPTION"),
-        cell: ({ row }) => (
-          <div className="max-w-2xs whitespace-normal">{row.getValue("description")}</div>
-        ),
       },
       {
         accessorKey: "status",
@@ -192,6 +168,9 @@ export function DebtPaymentsDataTable({
                       {getUserInitials(row.original.userName)}
                     </AvatarFallback>
                   </Avatar>
+                  <span className="truncate text-sm font-medium text-foreground">
+                    {row.original.userName}
+                  </span>
                 </div>
               ),
             } as ColumnDef<DebtPayment>,
@@ -206,22 +185,15 @@ export function DebtPaymentsDataTable({
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
-                    variant="ghost"
-                    size="sm"
-                    className="h-8 w-8 p-0"
+                    variant="app"
+                    size="icon-sm"
+                    className="shadow-none"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
-                      />
-                    </svg>
+                    <MoreVertical className="size-4" />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
+                <DropdownMenuContent align="end" className="w-44 bg-card">
                   {payment.actions?.confirm && (
                     <DropdownMenuItem
                       onClick={() => {
@@ -229,12 +201,16 @@ export function DebtPaymentsDataTable({
                         setIsConfirmOpen(true);
                       }}
                     >
+                      <Check className="mr-2 size-4" />
                       {t("CONFIRM_PAYMENT")}
                     </DropdownMenuItem>
                   )}
                   {payment.actions?.view && (
                     <Link href={`/debts/${payment.debtId}`}>
-                      <DropdownMenuItem>{t("VIEW_DEBT")}</DropdownMenuItem>
+                      <DropdownMenuItem>
+                        <Eye className="mr-2 size-4" />
+                        {t("VIEW_DEBT")}
+                      </DropdownMenuItem>
                     </Link>
                   )}
                   {payment.actions?.edit && (
@@ -244,6 +220,7 @@ export function DebtPaymentsDataTable({
                         setIsEditGoalOpen(true);
                       }}
                     >
+                      <Edit className="mr-2 size-4" />
                       {t("EDIT")}
                     </DropdownMenuItem>
                   )}
@@ -257,6 +234,7 @@ export function DebtPaymentsDataTable({
                         }}
                         variant="destructive"
                       >
+                        <Trash2 className="mr-2 size-4" />
                         {t("DELETE")}
                       </DropdownMenuItem>
                     </>
@@ -270,6 +248,10 @@ export function DebtPaymentsDataTable({
     ],
     [enableUser, debtId, monthsT, t]
   );
+
+  const tableMeta: DataTableMeta<DebtPayment> = {
+    onRowClick: (payment) => setDetailsPayment(payment),
+  };
 
   const table = useReactTable({
     data: data?.data ?? [],
@@ -286,6 +268,7 @@ export function DebtPaymentsDataTable({
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    meta: tableMeta,
     state: {
       sorting,
       columnFilters,
@@ -297,7 +280,7 @@ export function DebtPaymentsDataTable({
 
   return (
     <div className="flex flex-col gap-5">
-      <div className="w-full bg-white rounded-sm border border-gray-50 dark:border-gray-800 dark:bg-white/[0.03]">
+      <div className="w-full overflow-hidden rounded-md border border-gray-100 bg-white dark:border-gray-800 dark:bg-gray-900">
         <DataTable table={table} columns={columns} isLoading={isLoading} />
       </div>
       <DataTablePagination
@@ -332,6 +315,78 @@ export function DebtPaymentsDataTable({
         mutate={mutate}
         selectedId={selectedId as string}
       />
+
+      <Dialog open={!!detailsPayment} onOpenChange={(open) => !open && setDetailsPayment(null)}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{t("PAYMENT_DETAILS")}</DialogTitle>
+          </DialogHeader>
+
+          {detailsPayment && (
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-muted-foreground">{t("AMOUNT")}</span>
+                <span className="text-sm font-semibold tabular-nums text-foreground">
+                  {detailsPayment.amountFormated}
+                </span>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-muted-foreground">{t("INTEREST_PAID")}</span>
+                <span className="text-sm font-medium tabular-nums text-foreground">
+                  {detailsPayment.interestPaidFormated}
+                </span>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-muted-foreground">{t("DATE")}</span>
+                <span className="text-sm">{formatDate(detailsPayment.date, monthsT)}</span>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-muted-foreground">{t("STATUS")}</span>
+                <Badge color={detailsPayment.status === "pending" ? "warning" : "success"}>
+                  <Dot className="size-4" strokeWidth={6} />
+                  {detailsPayment.statusTranslated}
+                </Badge>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-muted-foreground">{t("DEBT")}</span>
+                <span className="text-sm font-medium text-foreground">
+                  {detailsPayment.debtName}
+                </span>
+              </div>
+
+              {detailsPayment.userName && (
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-muted-foreground">{t("USER")}</span>
+                  <div className="flex items-center gap-2">
+                    <Avatar className={cn("size-6 ring-1", getUserColor(detailsPayment.userName))}>
+                      <AvatarFallback
+                        className={cn(
+                          "text-[10px] font-medium",
+                          getUserColor(detailsPayment.userName)
+                        )}
+                      >
+                        {getUserInitials(detailsPayment.userName)}
+                      </AvatarFallback>
+                    </Avatar>
+                    <span className="text-sm">{detailsPayment.userName}</span>
+                  </div>
+                </div>
+              )}
+
+              <div className="flex flex-col gap-1 border-t pt-4">
+                <span className="text-sm text-muted-foreground">{t("DESCRIPTION")}</span>
+                <p className="whitespace-pre-wrap break-words text-sm text-foreground">
+                  {detailsPayment.description || "-"}
+                </p>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

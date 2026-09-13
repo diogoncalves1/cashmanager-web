@@ -1246,6 +1246,8 @@
     "ADD": "Adicionar",
     "DEBTS": "Dívidas",
     "PAYMENTS": "Pagamentos",
+    "ALL_PAYMENTS": "Todos os pagamentos",
+    "PAYMENT_DETAILS": "Detalhes do pagamento",
     "DEBT_PAYMENTS_TEXT": "Revê os pagamentos registados para esta dívida.",
     "INTEREST_PAID": "Juros pagos",
     "NO_ACCOUNTS_AVAILABLE": "Sem contas disponíveis",
@@ -1301,7 +1303,8 @@
     "CANCEL": "Cancelar",
     "ALL_STATUS": "Todos os estados",
 
-    "CONFIRM_PAYMENT_TEXT": "Tem certeza de que deseja confirmar este pagamento?"
+    "CONFIRM_PAYMENT_TEXT": "Tem certeza de que deseja confirmar este pagamento?",
+    "CONFIRM_PAYMENT_NOTICE": "Confirmar o pagamento vai marcá-lo como concluído e atualizar os totais da dívida."
   },
 
   "LANDING": {

@@ -1,24 +1,24 @@
 "use client";
 
-import { Search, X } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
+import { useState } from "react";
 import { DebtPaymentStatus, debtPaymentStatus } from "@/features/debt-payments";
 import { useTranslations } from "next-intl";
 import { DatePicker } from "@/shared/ui/date-picker";
+import SearchInput from "@/shared/ui/search-input";
+import SortDropdown from "@/shared/ui/sort-dropdown";
+import { SortingState, Updater } from "@tanstack/react-table";
+import { FiltersPanel } from "@/shared/ui/filters-panel";
+import CustomSelect from "@/shared/ui/custom-select";
+
+type SortField = "debt" | "amount" | "interestPaid" | "date";
 
 interface PaymentsFiltersProps {
   search: string;
   onSearchChange: (v: string) => void;
+  sorting: SortingState;
+  setSorting: (updater: Updater<SortingState>) => void;
   statusFilter: DebtPaymentStatus | "all";
-  onStatusFilterChange: (v: DebtPaymentStatus) => void;
+  onStatusFilterChange: (v: DebtPaymentStatus | "all") => void;
   dateFrom: string;
   onDateFromChange: (v: string) => void;
   dateTo: string;
@@ -32,6 +32,8 @@ interface PaymentsFiltersProps {
 export function PaymentsFilters({
   search,
   onSearchChange,
+  sorting,
+  setSorting,
   statusFilter,
   onStatusFilterChange,
   dateFrom,
@@ -45,65 +47,80 @@ export function PaymentsFilters({
 }: PaymentsFiltersProps) {
   const t = useTranslations("DEBT_PAYMENTS");
   const transactionStatus = debtPaymentStatus(t);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const toggle = (key: string) => setOpenDropdown((prev) => (prev === key ? null : key));
+
+  const sortField = sorting[0]?.id as SortField | undefined;
+  const sortOrder = sorting[0]?.desc ? "desc" : "asc";
+  const activeFilterCount = [statusFilter !== "all", Boolean(dateFrom), Boolean(dateTo)].filter(
+    Boolean
+  ).length;
 
   return (
     <div className="space-y-3">
-      {/* Search */}
-      {enableSearch && (
-        <div className="relative ">
-          <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground " />
-          <Input
-            placeholder={t("SEARCH_PAYMENT")}
-            value={search}
-            onChange={(e) => onSearchChange(e.target.value)}
-            className="pl-9 bg-white"
-          />
-        </div>
-      )}
-
-      {/* Filter row */}
-      <div className="flex flex-wrap items-center gap-2">
-        {enableStatusFilter && (
-          <Select value={statusFilter} onValueChange={onStatusFilterChange}>
-            <SelectTrigger className="w-[160px] bg-white">
-              <SelectValue placeholder={t("STATUS")} />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">{t("ALL_STATUS")}</SelectItem>
-              {transactionStatus.map((status) => (
-                <SelectItem key={status.value} value={status.value}>
-                  {status.label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+      <div className="flex flex-wrap items-center gap-3">
+        {/* Search */}
+        {enableSearch && (
+          <SearchInput value={search} onChange={(e) => onSearchChange(e.target.value)} />
         )}
 
-        <DatePicker
-          date={dateFrom}
-          dateLimits={{ max: dateTo }}
-          className="w-min bg-white"
-          onChangeDate={(newDate: string) => onDateFromChange(newDate)}
-        />
-        <span className="text-xs text-muted-foreground">{t("TO")}</span>
-        <DatePicker
-          date={dateTo}
-          dateLimits={{ min: dateFrom }}
-          className="w-min bg-white"
-          onChangeDate={(newDate: string) => onDateToChange(newDate)}
+        <SortDropdown
+          sort={sortField}
+          sortOrder={sortOrder}
+          options={[
+            { value: "debt", label: t("DEBT") },
+            { value: "amount", label: t("AMOUNT") },
+            { value: "interestPaid", label: t("INTEREST_PAID") },
+            { value: "date", label: t("DATE") },
+          ]}
+          onSortChange={(value) =>
+            setSorting([{ id: value as SortField, desc: sortOrder === "desc" }])
+          }
+          onOrderToggle={() =>
+            setSorting((prev) =>
+              prev.length ? [{ ...prev[0], desc: !prev[0].desc }] : [{ id: "date", desc: true }]
+            )
+          }
         />
 
-        {hasActiveFilters && (
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={onClearFilters}
-            className="gap-1 text-muted-foreground"
-          >
-            <X className="size-3" />
-            {t("CLEAR")}
-          </Button>
-        )}
+        <FiltersPanel
+          activeCount={activeFilterCount}
+          hasActiveFilters={hasActiveFilters}
+          onClearFilters={onClearFilters}
+        >
+          {enableStatusFilter && (
+            <CustomSelect
+              value={statusFilter}
+              placeholder={t("STATUS")}
+              className="w-full sm:w-[180px]"
+              options={[
+                { value: "all", label: t("ALL_STATUS") },
+                ...transactionStatus.map((status) => ({
+                  value: status.value,
+                  label: status.label,
+                })),
+              ]}
+              open={openDropdown === "status"}
+              onToggle={() => toggle("status")}
+              onSelect={(value) => onStatusFilterChange(value as DebtPaymentStatus | "all")}
+            />
+          )}
+          <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center">
+            <DatePicker
+              className="w-full sm:w-auto"
+              date={dateFrom}
+              dateLimits={{ max: dateTo }}
+              onChangeDate={(newDate: string) => onDateFromChange(newDate)}
+            />
+            <span className="hidden text-xs text-muted-foreground sm:block">{t("TO")}</span>
+            <DatePicker
+              className="w-full sm:w-auto"
+              date={dateTo}
+              dateLimits={{ min: dateFrom }}
+              onChangeDate={(newDate: string) => onDateToChange(newDate)}
+            />
+          </div>
+        </FiltersPanel>
       </div>
     </div>
   );

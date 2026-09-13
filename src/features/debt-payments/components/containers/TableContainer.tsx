@@ -4,8 +4,14 @@ import { fetcher } from "@/shared/fetcher";
 import { ColumnFiltersState, SortingState } from "@tanstack/react-table";
 import React, { useCallback, useEffect, useState } from "react";
 import useSWR from "swr";
-import { TransactionStatus } from "@/features/transactions";
-import { PaymentsFilters, DebtPaymentsDataTable, MyPagination } from "@/features/debt-payments";
+import {
+  DebtPaymentStatus,
+  PaymentsFilters,
+  DebtPaymentsDataTable,
+  MyPagination,
+} from "@/features/debt-payments";
+import { ContentLayout } from "@/shared/ui/content-layout";
+import { useTranslations } from "next-intl";
 
 type Props = {
   userId?: string;
@@ -14,10 +20,11 @@ type Props = {
 };
 
 export const TableContainer = ({ userId, debtId, load }: Props) => {
+  const t = useTranslations("DEBT_PAYMENTS");
   const [sorting, setSorting] = React.useState<SortingState>([{ id: "date", desc: true }]);
   // Filters
   const [search, setSearch] = useState("");
-  const [statusFilter, setStatusFilter] = useState<TransactionStatus | "all">("all");
+  const [statusFilter, setStatusFilter] = useState<DebtPaymentStatus | "all">("all");
   const [dateFrom, setDateFrom] = useState("");
   const [dateTo, setDateTo] = useState("");
 
@@ -125,7 +132,21 @@ export const TableContainer = ({ userId, debtId, load }: Props) => {
   }, [load, mutate]);
 
   return (
-    <div className="space-y-6">
+    <ContentLayout>
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+            {debtId ? t("PAYMENTS") : t("ALL_PAYMENTS")}
+          </h2>
+          <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+            {debtId ? t("DEBT_PAYMENTS_TEXT") : t("PAYMENTS_PAGE_TEXT")}
+          </p>
+        </div>
+        <p className="shrink-0 text-sm lowercase text-gray-500 dark:text-gray-400">
+          {apiData?.recordsTotal ?? 0} {t("THIS")}
+        </p>
+      </div>
+
       <PaymentsFilters
         search={search}
         onSearchChange={(v: string) => {
@@ -136,7 +157,7 @@ export const TableContainer = ({ userId, debtId, load }: Props) => {
           });
         }}
         statusFilter={statusFilter}
-        onStatusFilterChange={(v: TransactionStatus) => {
+        onStatusFilterChange={(v: DebtPaymentStatus | "all") => {
           setStatusFilter(v);
           setPagination({
             pageIndex: 0,
@@ -161,6 +182,8 @@ export const TableContainer = ({ userId, debtId, load }: Props) => {
         }}
         hasActiveFilters={hasActiveFilters}
         onClearFilters={clearFilters}
+        sorting={sorting}
+        setSorting={setSorting}
       />
 
       <DebtPaymentsDataTable
@@ -176,6 +199,6 @@ export const TableContainer = ({ userId, debtId, load }: Props) => {
         setColumnFilters={setColumnFilters}
         setPagination={setPagination}
       />
-    </div>
+    </ContentLayout>
   );
 };
