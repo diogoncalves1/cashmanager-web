@@ -1,60 +1,29 @@
 import { DebtStatus } from "@/features/debts";
+import { cn } from "@/shared/utils";
 
 export function StatusBadge({ status, translate }: { status: DebtStatus; translate?: string }) {
-  const getStatusInfo = (status: string) => {
-    switch (status) {
-      case "paid":
-        return {
-          color: "success",
-        };
-      case "in_progress":
-        return {
-          color: "warning",
-        };
-      default:
-        return {
-          color: "warning",
-        };
-    }
-  };
-
-  const colorMap: Record<
-    string,
-    {
-      bg: string;
-      text: string;
-      ring: string;
-      bgText: string;
-    }
-  > = {
-    error: {
-      bg: "bg-error-50",
-      text: "text-error-700",
-      ring: "ring-error-200",
-      bgText: "bg-error-500",
+  const colorMap: Record<DebtStatus, { badge: string; dot: string }> = {
+    paid: {
+      badge:
+        "border-success-200 bg-success-50 text-success-700 dark:border-success-900/60 dark:bg-success-900/25 dark:text-success-400",
+      dot: "bg-success-500",
     },
-    success: {
-      bg: "bg-success-50",
-      text: "text-success-700",
-      ring: "ring-success-200",
-      bgText: "bg-success-500",
-    },
-    warning: {
-      bg: "bg-warning-50",
-      text: "text-warning-700",
-      ring: "ring-warning-200",
-      bgText: "bg-warning-500",
+    pending: {
+      badge:
+        "border-warning-200 bg-warning-50 text-warning-700 dark:border-warning-900/60 dark:bg-warning-900/25 dark:text-warning-400",
+      dot: "bg-warning-500",
     },
   };
-
-  const statusInfo = getStatusInfo(status);
-  const colorClasses = colorMap[statusInfo.color] || colorMap["warning"];
+  const colorClasses = colorMap[status];
 
   return (
     <span
-      className={`inline-flex items-center gap-1 rounded-full ${colorClasses.bg} px-3 py-1 text-xs font-medium ${colorClasses.text} ring-1 ${colorClasses.ring}`}
+      className={cn(
+        "inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1 text-xs font-medium",
+        colorClasses.badge
+      )}
     >
-      <span className={`h-1.5 w-1.5 rounded-full ${colorClasses.bgText}`} />
+      <span className={cn("size-1.5 rounded-full", colorClasses.dot)} />
       {translate}
     </span>
   );

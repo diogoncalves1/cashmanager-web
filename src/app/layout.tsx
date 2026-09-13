@@ -1,4 +1,4 @@
-import { Outfit } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
 import { SidebarProvider } from "@/context/SidebarContext";
@@ -6,30 +6,13 @@ import { ThemeProvider } from "@/context/ThemeContext";
 import { HeroUIProvider } from "@heroui/system";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
-import localFont from "next/font/local";
 import { Toaster } from "@/components/ui/toaster";
 
-const outfit = Outfit({
+const font = Plus_Jakarta_Sans({
   subsets: ["latin"],
-});
-
-// Importa Geist
-const geist = localFont({
-  src: [
-    {
-      path: "fonts/Geist-Regular.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "fonts/Geist-Bold.woff2",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-  variable: "--font-geist",
+  variable: "--font-jakarta",
   display: "swap",
-  fallback: ["Geist Fallback", "sans-serif"], // define fallback
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export default async function RootLayout({
@@ -46,7 +29,8 @@ export default async function RootLayout({
         <link rel="icon" href="/images/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body className={`${outfit.className} ${geist.variable} dark:bg-gray-900`}>
+
+      <body className={`${font.variable} dark:bg-gray-900`}>
         <NextIntlClientProvider messages={messages}>
           <HeroUIProvider>
             <ThemeProvider>
